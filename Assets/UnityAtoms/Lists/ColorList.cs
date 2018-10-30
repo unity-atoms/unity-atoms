@@ -1,0 +1,5 @@
+using UnityEngine;
+
+namespace UnityAtoms
+{
+}
