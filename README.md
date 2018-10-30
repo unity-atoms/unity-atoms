@@ -18,44 +18,53 @@ Unity Atoms is an open source library that aims to make your game code become:
 Before you start looking into this library you should watch the video above ☝️ and read [this](https://unity3d.com/how-to/architect-with-scriptable-objects) article on how to architect your game with Scriptable Objects.
 
 ## Usage
-Unity Atoms is an event based system that encourages the game to be as data-driven possible. At its core, the 4 most fundamental pieces (atoms) that are used are: 
+Unity Atoms is an event based system that encourages the game to be as data-driven as possible. The 4 most fundamental pieces (atoms) of Unity Atoms are: 
 - Variables
 - (Game) Events
 - (Game Event) Listeners
 - Responses
 
 ### Variables 
-Variables are data / variables stored as Scriptable Objects. Because they Variables are stored as Scriptable Objects they are not part of any scene, but could be more seen as part of a global shared game state. Variables are also designed to make it easy to inject (via the Unity Inspector) to your MonoBehaviours. Unity Atoms also offer some variations / additions to Variables such as Contants, References and Lists.
+Variables are data / variables stored as Scriptable Objects. Because Variables are stored as Scriptable Objects they are not part of any scene, but could be instead be seen as part of a global shared game state. Variables are also designed to make it easy to inject (via the Unity Inspector) to your MonoBehaviours. 
+
+It is possible to attach an event to a Variable that gets raised when its updated. This makes it possible to write more data-driven code.
+
+It is also possible to attach another event to a Variable that also gets raised when a Variable is changed, but that contains both the old and the new value of the Variable.
+
+Unity Atoms also offer some variations / additions to Variables such as Contants, References and Lists.
 
 #### Constants
-TODO 
+Exactly the same as Variables, but can not be changed via script and therefore does not contain the change events that Variables does. The idea is to use Constants for for example tags instead of hard coding tags in your scripts. 
 
 #### References
-TODO
+References can be toggled between "use as constant" or "use variable" via the Unity Inspector. When a reference is "used as constant" then it functions exactly like a regular serialized variable in a MonoBehaviour script. However, when it is set to "use variable" it functions exactly like a Variable.
 
 #### Lists
-TODO
+A list is an array of values that is stored as a Scriptable Object. There is the possibility to add Game Events for when the following happens to the list: 
+- An item is added to the list. 
+- An item is removed from the list. 
+- The list is cleared.
 
 ### Game Events 
-An event is a thing that happens that others could listen / subscribe to. Events are also Scriptable Objects that lives outside of a specific scene.
+A game event is a thing that happens in the game that others could listen / subscribe to. Game events are also Scriptable Objects that lives outside of a specific scene. It is possible to raise a Game Event from the Unity Inspector for debug purposes.
 
-### Listeners 
-A listener listens / observes / subscribes to an event and raises / invokes zero to many responses to that event. Listeners are Monobehaviours and lives in a scene.
+### Game Event Listeners 
+A listener listens / observes / subscribes to an event and raises / invokes zero to many responses to that event. Game Event Listeners are Monobehaviours and lives in a scene. See below for more information on the type of responses there are. 
 
 ### Responses 
-Responses are usually, but not always, raised by a listener in response to an event. Responses can live both in the scene as [UnityEvents](https://docs.unity3d.com/ScriptReference/Events.UnityEvent.html) or outside the scene as a Scriptable Object in the shape of a Game Action or a Game Function.
+A responses is raised by a listener in response to an event. Responses can live both in the scene as [UnityEvents](https://docs.unity3d.com/ScriptReference/Events.UnityEvent.html) or outside the scene as a Scriptable Object in the shape of a Game Action or a Game Function.
 
 #### Game Actions
-TODO
+A Game Action is a C# function as a Scriptable Object. A Game Function can be used as a response in a Game Event Listener. 
 
 #### Game Functions
-TODO
+A Game Function is basically the same as a Game Action, but while a Game Actions does not return something a Game Function does. 
 
 ### Mono Hooks
-Mono Hooks is a way to make it possible to have Unity lifecycle methods as events instead. The main reason for this is to make the pattern consistent and possible to use in ALL of your code. 
+Mono Hooks is a way to make it possible to have Unity lifecycle methods as events. The main reason for this is to make this pattern consistent and possible to use in ALL of your code. 
 
 ## Further Notes
 When you start thinking about this pattern you will realize that everything can be explained using the atoms above. The native Unity lifecycle methods can be thought of as variation of the pattern above, where events gets raised and passes a long data (eg. OnTriggerEnter2D) and you write a response to that event. 
 
 ## Examples
-See the examples in the project.
+Examples will soon be added to this project.
