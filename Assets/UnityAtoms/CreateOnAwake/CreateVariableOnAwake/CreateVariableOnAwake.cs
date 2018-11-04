@@ -29,7 +29,7 @@ namespace UnityAtoms
 
         void Awake()
         {
-            var variable = VariableUtils.RuntimeCreate<T, V, E1, E2>(CreateChangedEvent, CreateChangedWithHistoryEvent);
+            var variable = VariableUtils.CreateVariable<T, V, E1, E2>(CreateChangedEvent, CreateChangedWithHistoryEvent);
 
             if (variable.Changed != null)
             {

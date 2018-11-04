@@ -5,14 +5,12 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [Serializable]
-    public abstract class ScriptableObjectList<T> : ScriptableObject
+    public abstract class ScriptableObjectList<T, E> : ScriptableObject where E : GameEvent<T>
     {
         [SerializeField]
         private List<T> list = new List<T>();
-
-        protected abstract GameEvent<T> _Added { get; }
-        protected abstract GameEvent<T> _Removed { get; }
-        [SerializeField]
+        public E Added;
+        public E Removed;
         public VoidEvent Cleared;
 
         public int Count { get { return list.Count; } }
@@ -22,9 +20,9 @@ namespace UnityAtoms
             if (!list.Contains(item))
             {
                 list.Add(item);
-                if (null != _Added)
+                if (null != Added)
                 {
-                    _Added.Raise(item);
+                    Added.Raise(item);
                 }
             }
         }
@@ -34,9 +32,9 @@ namespace UnityAtoms
             if (list.Contains(item))
             {
                 list.Remove(item);
-                if (null != _Removed)
+                if (null != Removed)
                 {
-                    _Removed.Raise(item);
+                    Removed.Raise(item);
                 }
             }
         }
@@ -48,6 +46,11 @@ namespace UnityAtoms
             {
                 Cleared.Raise();
             }
+        }
+
+        public bool Contains(T item)
+        {
+            return list.Contains(item);
         }
 
         public T Get(int i)
@@ -72,5 +75,6 @@ namespace UnityAtoms
                 list[index] = value;
             }
         }
+
     }
 }
