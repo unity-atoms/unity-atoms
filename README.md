@@ -68,3 +68,6 @@ When you start thinking about this pattern you will realize that everything can 
 
 ## Examples
 Examples will soon be added to this project.
+
+## Contribution
+Would ❤️ if you would like to contribute to the project. Post me a message if you want to become a contributer. 
