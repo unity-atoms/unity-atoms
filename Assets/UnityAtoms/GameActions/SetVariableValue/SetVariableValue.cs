@@ -10,7 +10,6 @@ namespace UnityAtoms
         [SerializeField]
         private R Value;
 
-
         public override void Do()
         {
             Variable.Value = Value.Value;
