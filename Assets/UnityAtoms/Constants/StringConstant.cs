@@ -2,6 +2,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Constants/String")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Constants/String")]
     public class StringConstant : ScriptableObjectVariableBase<string> { }
 }

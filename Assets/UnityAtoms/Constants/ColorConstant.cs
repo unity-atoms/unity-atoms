@@ -2,6 +2,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Constants/Color")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Constants/Color")]
     public class ColorConstant : ScriptableObjectVariableBase<Color> { }
 }

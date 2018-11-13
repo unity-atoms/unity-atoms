@@ -2,6 +2,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Lists/Color")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Lists/Color")]
     public class ColorList : ScriptableObjectList<Color, ColorEvent> { }
 }

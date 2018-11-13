@@ -2,6 +2,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Lists/Int")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Lists/Int")]
     public class IntList : ScriptableObjectList<int, IntEvent> { }
 }

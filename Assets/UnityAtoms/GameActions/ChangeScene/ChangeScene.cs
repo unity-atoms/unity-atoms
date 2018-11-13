@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Game Actions/Change Scene")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Game Actions/Change Scene")]
     public class ChangeScene : VoidAction
     {
         [SerializeField]

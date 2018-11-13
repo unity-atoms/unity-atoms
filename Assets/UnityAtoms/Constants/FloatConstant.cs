@@ -2,6 +2,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Constants/Float")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Constants/Float")]
     public class FloatConstant : ScriptableObjectVariableBase<float> { }
 }

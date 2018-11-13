@@ -2,6 +2,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Game Events/Int")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Game Events/Int")]
     public class IntEvent : GameEvent<int> { }
 }

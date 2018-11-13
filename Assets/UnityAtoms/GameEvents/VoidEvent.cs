@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Game Events/Void")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Game Events/Void")]
     public class VoidEvent : GameEvent<Void>
     {
         public void Raise()

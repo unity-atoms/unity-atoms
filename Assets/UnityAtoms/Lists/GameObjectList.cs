@@ -3,6 +3,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Lists/GameObject")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Lists/GameObject")]
     public class GameObjectList : ScriptableObjectList<GameObject, GameObjectEvent> { }
 }

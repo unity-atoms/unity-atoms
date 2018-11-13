@@ -2,6 +2,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Lists/Bool")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Lists/Bool")]
     public class BoolList : ScriptableObjectList<bool, BoolEvent> { }
 }

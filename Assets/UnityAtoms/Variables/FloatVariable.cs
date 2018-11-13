@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Variables/Float")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Variables/Float")]
     public class FloatVariable : EquatableScriptableObjectVariable<float, FloatEvent, FloatFloatEvent>, IWithApplyChange<float, FloatEvent, FloatFloatEvent>
     {
         public bool ApplyChange(float amount)

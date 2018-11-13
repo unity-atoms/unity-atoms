@@ -2,6 +2,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "UnityAtoms/Constants/Bool")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Constants/Bool")]
     public class BoolConstant : ScriptableObjectVariableBase<bool> { }
 }

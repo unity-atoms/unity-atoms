@@ -7,7 +7,7 @@ namespace UnityAtoms
     /* Gets an unused GameObject from the GameObjectList. If an GameObject is used or not is determined by IsUsed GameFunction.
 	 * If no unused GameObject is found a new one is instantiated and added to the GameObjectList.
 	 */
-    [CreateAssetMenu(menuName = "UnityAtoms/Game Functions/Get Unused GameObject")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Game Functions/Get Unused GameObject")]
     public class GetUnusedGameObject : GameObjectVector3QuaternionFunction
     {
         [SerializeField]
