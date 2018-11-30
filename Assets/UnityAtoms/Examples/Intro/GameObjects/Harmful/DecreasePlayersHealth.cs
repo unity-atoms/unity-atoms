@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnityAtoms.Examples
 {
-    [CreateAssetMenu(menuName = "Unity Atoms/Examples/Intro/Game Actions/Decrease Players Health")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Examples/Intro/Decrease Players Health")]
     public class DecreasePlayersHealth : Collider2DAction
     {
         [SerializeField]

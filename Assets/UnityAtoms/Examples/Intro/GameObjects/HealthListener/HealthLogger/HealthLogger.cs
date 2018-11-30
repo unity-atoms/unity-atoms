@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms.Examples
 {
-    [CreateAssetMenu(menuName = "Unity Atoms/Examples/Intro/Game Actions/Health Logger")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Examples/Intro/Health Logger")]
     public class HealthLogger : IntAction
     {
         public override void Do(int health)

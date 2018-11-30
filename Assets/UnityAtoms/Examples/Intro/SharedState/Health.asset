@@ -8,11 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b17ea82f8224441299e0d1a63841f64f, type: 3}
+  m_Script: {fileID: 11500000, guid: f64af2ed99cb146358b8752c3e393fcc, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: 
   DeveloperDescription: 
-  value: 100
+  value: 0
   oldValue: 0
   Changed: {fileID: 11400000, guid: 739733ee170564820972eacff604acdc, type: 2}
   ChangedWithHistory: {fileID: 0}
