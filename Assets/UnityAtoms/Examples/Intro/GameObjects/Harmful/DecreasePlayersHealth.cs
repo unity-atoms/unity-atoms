@@ -12,7 +12,7 @@ namespace UnityAtoms.Examples
 
         public override void Do(Collider2D collider)
         {
-            if (collider.tag == TagPlayer.Value)
+            if (collider.gameObject.HasTag(TagPlayer))
             {
                 collider.GetComponent<PlayerHealth>().Health.Value -= 10;
             }
