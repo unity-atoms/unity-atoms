@@ -18,6 +18,12 @@ namespace UnityAtoms
 
         protected abstract bool AreEqual(T first, T second);
 
+        private void OnEnable()
+        {
+            if (Changed == null) return;
+            Changed.Raise(Value);
+        }
+
         public bool SetValue(T value)
         {
             if (!AreEqual(this.value, value))

@@ -7,7 +7,7 @@ namespace UnityAtoms
     {
         protected override bool AreEqual(GameObject first, GameObject second)
         {
-            return first.GetInstanceID() == second.GetInstanceID();
+            return (first == null && second == null) || first != null && second != null && first.GetInstanceID() == second.GetInstanceID();
         }
     }
 }
