@@ -13,5 +13,10 @@ namespace UnityAtoms
 
         [SerializeField]
         protected T value;
+        
+        public static implicit operator T(ScriptableObjectVariableBase<T> variable)
+        {
+            return variable.Value;
+        }        
     }
 }

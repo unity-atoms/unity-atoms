@@ -9,5 +9,10 @@ namespace UnityAtoms
         {
             return first.Equals(second);
         }
+        
+        public static implicit operator Color(ColorVariable variable)
+        {
+            return variable.Value;
+        }        
     }
 }

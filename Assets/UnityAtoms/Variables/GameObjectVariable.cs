@@ -9,5 +9,11 @@ namespace UnityAtoms
         {
             return first.GetInstanceID() == second.GetInstanceID();
         }
+        
+        public static implicit operator GameObject(GameObjectVariable variable)
+        {
+            return variable.Value;
+        }
+        
     }
 }

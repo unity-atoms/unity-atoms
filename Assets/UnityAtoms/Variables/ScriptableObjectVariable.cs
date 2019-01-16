@@ -35,5 +35,10 @@ namespace UnityAtoms
         {
             return SetValue(variable.Value);
         }
+        
+        public static implicit operator T(ScriptableObjectVariable<T, E1, E2> variable)
+        {
+            return variable.Value;
+        }        
     }
 }

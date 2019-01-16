@@ -9,5 +9,10 @@ namespace UnityAtoms
         {
             return first.Equals(second);
         }
+        
+        public static implicit operator Vector2(Vector2Variable variable)
+        {
+            return variable.Value;
+        }
     }
 }

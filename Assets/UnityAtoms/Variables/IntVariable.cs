@@ -15,5 +15,10 @@ namespace UnityAtoms
         {
             return SetValue(Value + amount.Value);
         }
+        
+        public static implicit operator int(IntVariable variable)
+        {
+            return variable.Value;
+        }
     }
 }
