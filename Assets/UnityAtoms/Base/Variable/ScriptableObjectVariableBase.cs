@@ -9,7 +9,7 @@ namespace UnityAtoms
         [Multiline]
         public string DeveloperDescription = "";
 
-        public virtual T Value { get { return value; } set { } }
+        public virtual T Value { get { return value; } set { throw new NotImplementedException(); } }
 
         [SerializeField]
         protected T value;
