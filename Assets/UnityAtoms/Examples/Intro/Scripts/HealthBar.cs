@@ -4,14 +4,14 @@ using UnityAtoms;
 
 namespace UnityAtoms.Examples
 {
-    public class HealthBar : MonoBehaviour
-    {
-        [SerializeField]
-        private IntConstant MaxHealth;
+	public class HealthBar : MonoBehaviour
+	{
+		[SerializeField]
+		private IntConstant MaxHealth = null;
 
-        public void HealthChanged(int health)
-        {
-            GetComponent<Image>().fillAmount = 1.0f * health / MaxHealth.Value;
-        }
-    }
+		public void HealthChanged(int health)
+		{
+			GetComponent<Image>().fillAmount = 1.0f * health / MaxHealth.Value;
+		}
+	}
 }

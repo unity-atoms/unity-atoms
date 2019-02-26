@@ -6,9 +6,9 @@ namespace UnityAtoms
     public class OnAwakeHook : VoidHook
     {
         [SerializeField]
-        private VoidListener listener;
+        private VoidListener listener = null;
         [SerializeField]
-        private VoidGameObjectListener listenerWithGO;
+        private VoidGameObjectListener listenerWithGO = null;
 
         private void Awake()
         {

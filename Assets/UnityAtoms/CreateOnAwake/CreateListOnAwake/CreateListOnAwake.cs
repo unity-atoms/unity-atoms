@@ -21,16 +21,16 @@ namespace UnityAtoms
         private bool CreateClearedEvent = false;
 
         [SerializeField]
-        private TEL AddedListener;
+        private TEL AddedListener = null;
         [SerializeField]
-        private TEL RemovedListener;
+        private TEL RemovedListener = null;
         [SerializeField]
-        private VoidListener ClearedListener;
+        private VoidListener ClearedListener = null;
 
         [SerializeField]
-        private GA1 OnListCreate;
+        private GA1 OnListCreate = null;
         [SerializeField]
-        private GA2 OnListCreateWithGO;
+        private GA2 OnListCreateWithGO = null;
 
         void Awake()
         {

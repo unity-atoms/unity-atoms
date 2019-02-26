@@ -18,14 +18,14 @@ namespace UnityAtoms
         private bool CreateChangedWithHistoryEvent = false;
 
         [SerializeField]
-        private L1 Listener;
+        private L1 Listener = null;
         [SerializeField]
-        private L2 ListenerWithHistory;
+        private L2 ListenerWithHistory = null;
 
         [SerializeField]
-        private GA3 OnVariableCreate;
+        private GA3 OnVariableCreate = null;
         [SerializeField]
-        private GA4 OnVariableCreateWithGO;
+        private GA4 OnVariableCreateWithGO = null;
 
         void Awake()
         {
