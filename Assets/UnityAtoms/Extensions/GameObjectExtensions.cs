@@ -15,29 +15,19 @@ namespace UnityAtoms
             /// </summary>
             /// <returns>
             /// - null if the GameObject does not have Atomic Tags or they (or the GO) are disabled)
-            /// - an array of strings containing the tags
+            /// - an readonly list of strings containing the tags
             /// </returns>
-            public static string[] GetAtomicTags(this GameObject go) {
+            public static ReadOnlyList<StringConstant> GetAtomicTags(this GameObject go) {
                 return AtomicTags.GetAtomicTags(go);
             }
 
             /// <returns>
             /// - False if the GameObject does not have the AtomicTag, else True
             /// </returns>
-            public static bool HasTag(this GameObject go, string str) {
+            public static bool HasTag(this GameObject go, string tag) {
                 var atomicTags = AtomicTags.GetForGameObject(go);
                 if (atomicTags == null) return false;
-
-                var tags = atomicTags.Tags;
-                for (int i = 0; tags != null && i < tags.Length; ++i)
-                {
-                    if (tags[i].Value == str)
-                    {
-                        return true;
-                    }
-                }
-    
-                return false;
+                return atomicTags.HasTag(tag);
             }
     
             /// <returns>
@@ -54,22 +44,8 @@ namespace UnityAtoms
                 var atomicTags = AtomicTags.GetForGameObject(go);
                 if (atomicTags == null) return false;
 
-                strings.Sort();
-                var tags = atomicTags.Tags;
-
-                // this makes use of Tags being always sorted
-                // instead of O(n*m) this is worst case: O(n + m) +(because of the sort) O(n * log(n))
-                // O(n*m) ~= O(n^2)  <-> O(n+m)+O(n * log(n)) ~= O(3n * log(n))
-                for (int i = 0, j = 0; i < strings.Count && j < tags.Length;) {
-                    var x = String.CompareOrdinal(strings[i], tags[j].Value);
-                    if (x == 0) {
-                        return true;
-                    }
-                    if (x > 0) {
-                        ++j;
-                    } else {
-                        ++i;
-                    }
+                for (var i = 0; i < strings.Count; i++) {
+                    if (atomicTags.HasTag(strings[i])) return true;
                 }
                 return false;
             }
@@ -82,19 +58,8 @@ namespace UnityAtoms
                 var atomicTags = AtomicTags.GetForGameObject(go);
                 if (atomicTags == null) return false;
 
-                stringConstants.Sort((x, y) => String.Compare(x.Value, y.Value, StringComparison.Ordinal));
-                var tags = atomicTags.Tags;
-
-                for (int i = 0, j = 0; i < stringConstants.Count && j < tags.Length;) {
-                    var x = String.CompareOrdinal(stringConstants[i].Value, tags[j].Value);
-                    if (x == 0) {
-                        return true;
-                    }
-                    if (x > 0) {
-                        ++j;
-                    } else {
-                        ++i;
-                    }
+                for (var i = 0; i < stringConstants.Count; i++) {
+                    if (atomicTags.HasTag(stringConstants[i].Value)) return true;
                 }
                 return false;
             }
