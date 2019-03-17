@@ -24,7 +24,7 @@ Go to your projects `Packages/manifest.json` and add this:
 
      "dependencies": {
         ...
-        "com.mambojambostudios.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git#v1.0.0",
+        "com.mambojambostudios.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git",
         ...
      }
 
