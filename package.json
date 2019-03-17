@@ -1,0 +1,24 @@
+{
+    "name": "com.mambojambostudios.unity-atoms",
+    "displayName": "Unity Atoms",
+    "version": "1.0.0",
+    "unity": "2018.3",
+    "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
+    "keywords": [
+        "scriptable objects",
+        "unity"
+    ],
+    "category": "Unity",
+    "files": [
+        "/LICENSE",
+        "/LICENSE.meta",
+        "/README.md",
+        "/README.md.meta",
+        "/package.json",
+        "/package.json.meta",
+        "/Source",
+        "/Source.meta",
+        "/UnityAtoms.asmdef",
+        "/UnityAtoms.asmdef.meta"
+    ]
+}

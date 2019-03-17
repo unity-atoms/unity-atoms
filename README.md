@@ -19,6 +19,17 @@ Unity Atoms is an open source library that aims to make your game code:
 ## Introduction
 Before you start looking into this library you should watch the video above ☝️ and read [this](https://unity3d.com/how-to/architect-with-scriptable-objects) article on how to architect your game with Scriptable Objects.
 
+## Installation 2018.3+
+Go to your projects `Packages/manifest.json` and add this:
+
+     "dependencies": {
+        ...
+        "com.mambojambostudios.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git#v1.0.0",
+        ...
+     }
+
+This will make the Unity packagemager install it.
+
 ## Usage
 Unity Atoms is an event based system that encourages the game to be as data-driven as possible. The 4 most fundamental pieces (atoms) of Unity Atoms are: 
 - Variables
