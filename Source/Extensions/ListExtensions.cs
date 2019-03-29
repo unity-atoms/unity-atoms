@@ -135,6 +135,12 @@ namespace UnityAtoms.Extensions
             return false;
         }
 
+        public static List<T> ChainableAdd<T>(this List<T> list, T item)
+        {
+            list.Add(item);
+            return list;
+        }
+
         public static T GetOrInstantiate<T>(this List<T> list, UnityEngine.Object prefab, Vector3 position, Quaternion quaternion, Func<T, bool> condition) where T : UnityEngine.Component
         {
             var component = list.First(condition);
