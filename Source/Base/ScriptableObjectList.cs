@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityAtoms.Extensions;
 
 namespace UnityAtoms
 {
@@ -45,6 +46,16 @@ namespace UnityAtoms
             {
                 Cleared.Raise();
             }
+        }
+
+        public bool Some(Func<T, bool> func)
+        {
+            return list.Some(func);
+        }
+
+        public T First(Func<T, bool> func)
+        {
+            return list.First(func);
         }
 
         public bool Contains(T item)
