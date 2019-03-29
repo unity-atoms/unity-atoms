@@ -106,6 +106,22 @@ namespace UnityAtoms.Extensions
             return accumulator;
         }
 
+        public static R Reduce<R, T, A>(this List<T> list, Func<R, R, A, R> reducer, Func<T, R> getValue, R initialValue, A reducerArg1, Func<T, bool> skip = null)
+        {
+            R accumulator = initialValue;
+            for (int i = 0; list != null && i < list.Count; ++i)
+            {
+                if (skip != null && skip(list[i]))
+                {
+                    continue;
+                }
+
+                accumulator = reducer(accumulator, getValue(list[i]), reducerArg1);
+            }
+
+            return accumulator;
+        }
+
         public static float ReturnMaxFloat(float acc, float cur) { return Mathf.Max(acc, cur); }
         public static float ReturnMinFloat(float acc, float cur) { return Mathf.Min(acc, cur); }
 
