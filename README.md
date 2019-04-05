@@ -19,16 +19,27 @@ Unity Atoms is an open source library that aims to make your game code:
 ## Introduction
 Before you start looking into this library you should watch the video above ☝️ and read [this](https://unity3d.com/how-to/architect-with-scriptable-objects) article on how to architect your game with Scriptable Objects.
 
-## Installation 2018.3+
-Go to your projects `Packages/manifest.json` and add this:
+## Installation
+*Prerequisite: Since Unity Atoms is using the Unity Package Manager (UPM) you need to use Unity version 2018.3 >=*
 
+There are 2 versions you can install, either the stable version (master branch) or the canary version (latest and greatest - canary branch). Be aware that the canary version might sometimes break. 
+
+### Stable
+Go to your projects `Packages/manifest.json` and add this:
      "dependencies": {
         ...
         "com.mambojambostudios.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git",
         ...
      }
 
-This will make the Unity packagemager install it.
+### Canary
+Go to your projects `Packages/manifest.json` and add this:
+     "dependencies": {
+        ...
+        "com.mambojambostudios.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git#canary",
+        ...
+     }
+
 
 ## Usage
 Unity Atoms is an event based system that encourages the game to be as data-driven as possible. The 4 most fundamental pieces (atoms) of Unity Atoms are: 
@@ -80,7 +91,26 @@ Mono Hooks is a way to make it possible to have Unity lifecycle methods as event
 When you start thinking about this pattern you will realize that everything can be explained using the atoms above. The native Unity lifecycle methods can be thought of as variation of the pattern above, where events gets raised and passes a long data (eg. OnTriggerEnter2D) and you write a response to that event. 
 
 ## Examples
-Examples will soon be added to this project.
+Examples can be found in the UnityAtomsTestsAndExamples folder.
 
 ## Contribution
-Would ❤️ if you would like to contribute to the project. Post me a message if you want to become a contributer. 
+Would ❤️ if you would like to contribute to the project. Post me a message, create an issue or start working on an existing issue if you want to contribute. 
+
+### Project structure
+- Source - contains all the source code for the library
+- UnityAtomsTestsAndExamples - this folder is a Unity project folder that contains examples and tests. This folder is not included in the distribution of Unity Atoms. 
+
+The reason for this project structure is that we want to include tests and examples in the repo (both needing a Unity project), but there are at the same time currently some restrictions when using the UPM regarding how to import it to your project. 
+
+#### UPM doesn't allow... 
+- importing a sub folder in a Git repo. 
+- excluding files (using property "files" in package.json) when importing locally using the file syntax (eg. "com.mambojambostudios.unity-atoms-src": "file:../../Source"). 
+- package.json in subdirectories (only root level)
+
+#### Current project structure therefore allows for... 
+- including an example repo for examples and tests
+- use the local source in the example repo
+- referencing this git repo in another project's manifest file
+
+### Pull requests
+Pull requests should be made to the [canary branch](https://github.com/AdamRamberg/unity-atoms/tree/canary).
