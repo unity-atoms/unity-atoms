@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class GameEvent<T> : ScriptableObject, IGameEvent<T>
+    public abstract class GameEvent<T> : ScriptableObject
     {
         private readonly List<IGameEventListener<T>> eventListeners = new List<IGameEventListener<T>>();
 
@@ -27,7 +27,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class GameEvent<T1, T2> : ScriptableObject, IGameEvent<T1, T2>
+    public abstract class GameEvent<T1, T2> : ScriptableObject
     {
         private readonly List<IGameEventListener<T1, T2>> eventListeners = new List<IGameEventListener<T1, T2>>();
 
