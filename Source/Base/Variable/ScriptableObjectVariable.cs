@@ -32,9 +32,10 @@ namespace UnityAtoms
                 this.value = value;
                 if (Changed != null) { Changed.Raise(value); }
                 if (ChangedWithHistory != null) { ChangedWithHistory.Raise(this.value, this.oldValue); }
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         public bool SetValue(ScriptableObjectVariable<T, E1, E2> variable)
