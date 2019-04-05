@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityAtoms.Extensions;
+#if UNITY_EDITOR
+using UnityAtoms.Logger;
+#endif
 
 namespace UnityAtoms
 {
@@ -24,7 +27,9 @@ namespace UnityAtoms
         {
             if (IsNotUsed == null)
             {
-                Debug.LogWarning("IsUsed must be defined!");
+#if UNITY_EDITOR
+                AtomsLogger.Warning("IsUsed must be defined when using GetUnusedGameObject");
+#endif
             }
 
             return List.List.GetOrInstantiate(Prefab, position, quaternion, IsNotUsed.Call);
