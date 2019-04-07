@@ -4,21 +4,21 @@ namespace UnityAtoms.Logger
 {
     public static class AtomsLogger
     {
-        private const string logPrefix = "Unity Atoms :: ";
+        private const string LogPrefix = "Unity Atoms :: ";
 
         public static void Log(string msg)
         {
-            Debug.Log(logPrefix + msg);
+            Debug.Log(LogPrefix + msg);
         }
 
         public static void Warning(string msg)
         {
-            Debug.LogWarning(logPrefix + msg);
+            Debug.LogWarning(LogPrefix + msg);
         }
 
         public static void Error(string msg)
         {
-            Debug.LogError(logPrefix + msg);
+            Debug.LogError(LogPrefix + msg);
         }
     }
 }

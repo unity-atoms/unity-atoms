@@ -5,7 +5,6 @@ namespace UnityAtoms.Extensions
 {
     public static class TransformExtensions
     {
-
         /* Finds a child to this transform by name. Searches not only the first level in the
          * tree hierarchy of child objects, but all the children, grand children, and so on.
          */

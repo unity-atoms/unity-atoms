@@ -1,4 +1,9 @@
 namespace UnityAtoms
 {
-    public class VoidListener : GameEventListener<Void, VoidAction, VoidEvent, UnityVoidEvent> { }
+    public sealed class VoidListener : GameEventListener<
+        Void,
+        VoidAction,
+        VoidEvent,
+        UnityVoidEvent>
+    { }
 }

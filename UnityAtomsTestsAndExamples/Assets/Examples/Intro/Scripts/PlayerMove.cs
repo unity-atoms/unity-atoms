@@ -1,18 +1,21 @@
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+namespace UnityAtoms.Examples
 {
-    float horizontal = 0f;
-    float vertical = 0f;
-
-    void Update()
+    public class PlayerMove : MonoBehaviour
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
-    }
+        private float _horizontal;
+        private float _vertical;
 
-    void FixedUpdate()
-    {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(horizontal, vertical) * 5f;
+        private void Update()
+        {
+            _horizontal = Input.GetAxis("Horizontal");
+            _vertical = Input.GetAxis("Vertical");
+        }
+
+        private void FixedUpdate()
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(_horizontal, _vertical) * 5f;
+        }
     }
 }

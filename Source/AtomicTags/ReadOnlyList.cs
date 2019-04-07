@@ -1,35 +1,62 @@
 using System.Collections;
- using System.Collections.Generic;
+using System.Collections.Generic;
 
- namespace UnityAtoms {
-     /// <summary>
-     /// This is basically an IList without everything that could mutate the list
-     /// </summary>
-     public class ReadOnlyList<T> : IEnumerable, IEnumerable<T> {
-         private readonly IList<T> referenceList;
+namespace UnityAtoms
+{
+    /// <summary>
+    /// This is basically an IList without everything that could mutate the list
+    /// </summary>
+    public class ReadOnlyList<T> : IEnumerable<T>
+    {
+        private readonly IList<T> _referenceList;
 
-         public ReadOnlyList(IList<T> referenceList) { this.referenceList = referenceList; }
+        public ReadOnlyList(IList<T> referenceList)
+        {
+            _referenceList = referenceList;
+        }
 
-         public IEnumerator<T> GetEnumerator() { return referenceList.GetEnumerator(); }
+        #region IEnumerable<T>
 
-         IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return _referenceList.GetEnumerator();
+        }
 
-         public bool Contains(T item) { return referenceList.Contains(item); }
-         public int IndexOf(T item) { return referenceList.IndexOf(item); }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
-         public void CopyTo(T[] array, int arrayIndex) { referenceList.CopyTo(array, arrayIndex); }
+        #endregion
 
-         public int Count {
-             get { return referenceList.Count; }
-         }
+        public bool Contains(T item)
+        {
+            return _referenceList.Contains(item);
+        }
 
-         public bool IsReadOnly {
-             get { return true; }
-         }
+        public int IndexOf(T item)
+        {
+            return _referenceList.IndexOf(item);
+        }
 
-         public T this[int index] {
-             get { return referenceList[index]; }
-         }
-     }
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            _referenceList.CopyTo(array, arrayIndex);
+        }
 
- }
+        public int Count
+        {
+            get { return _referenceList.Count; }
+        }
+
+        public bool IsReadOnly
+        {
+            get { return true; }
+        }
+
+        public T this[int index]
+        {
+            get { return _referenceList[index]; }
+        }
+    }
+}

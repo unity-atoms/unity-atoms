@@ -1,6 +1,6 @@
 namespace UnityAtoms
 {
-    public class OnLateUpdateHook : VoidHook
+    public sealed class OnLateUpdateHook : VoidHook
     {
         private void LateUpdate()
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public class OnTriggerStayHook : ColliderHook
+    public sealed class OnTriggerStayHook : ColliderHook
     {
         private void OnTriggerStay(Collider other)
         {

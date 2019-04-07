@@ -3,10 +3,13 @@ using UnityEngine;
 namespace UnityAtoms.Mobile
 {
     [CreateAssetMenu(menuName = "Unity Atoms/Mobile/Touch User Input/Variable", fileName = "TouchUserInputVariable", order = CreateAssetMenuUtils.Order.VARIABLE)]
-    public class TouchUserInputVariable : ScriptableObjectVariable<TouchUserInput, TouchUserInputGameEvent, TouchUserInputTouchUserInputGameEvent>
+    public sealed class TouchUserInputVariable : ScriptableObjectVariable<
+        TouchUserInput,
+        TouchUserInputGameEvent,
+        TouchUserInputTouchUserInputGameEvent>
     {
         [SerializeField]
-        private DetectTap DetectTap = null;
+        private DetectTap DetectTap;
 
         private void OnEnable()
         {

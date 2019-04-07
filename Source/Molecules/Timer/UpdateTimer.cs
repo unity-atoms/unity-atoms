@@ -1,20 +1,23 @@
-﻿using UnityEngine;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    /* Updates the Timer. Meant to be placed on a OnUpdateMonoHook.
-    */
+    /// <summary>
+    /// Updates the Timer. Meant to be placed on a OnUpdateMonoHook.
+    /// </summary>
     [CreateAssetMenu(menuName = "Unity Atoms/Molecules/Timer/Update Timer")]
-    public class UpdateTimer : VoidAction
+    public sealed class UpdateTimer : VoidAction
     {
+        [FormerlySerializedAs("Timer")]
         [SerializeField]
-        private Timer Timer = null;
+        private Timer _timer;
 
         public override void Do()
         {
-            if (Timer.Started)
+            if (_timer.Started)
             {
-                Timer.TimeElapsed += Time.deltaTime;
+                _timer.TimeElapsed += Time.deltaTime;
             }
         }
     }

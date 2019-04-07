@@ -4,5 +4,10 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [Serializable]
-    public class GameObjectReference : ScriptableObjectReference<GameObject, GameObjectVariable, GameObjectEvent, GameObjectGameObjectEvent> { }
+    public sealed class GameObjectReference : ScriptableObjectReference<
+        GameObject,
+        GameObjectVariable,
+        GameObjectEvent,
+        GameObjectGameObjectEvent>
+    { }
 }

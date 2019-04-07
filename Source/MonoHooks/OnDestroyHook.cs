@@ -1,6 +1,6 @@
-﻿namespace UnityAtoms
+namespace UnityAtoms
 {
-    public class OnDestroyHook : VoidHook
+    public sealed class OnDestroyHook : VoidHook
     {
         private void OnDestroy()
         {

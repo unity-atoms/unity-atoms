@@ -7,15 +7,22 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public class AtomicTags : MonoBehaviour, ISerializationCallbackReceiver
+    public sealed class AtomicTags : MonoBehaviour, ISerializationCallbackReceiver
     {
         public ReadOnlyList<StringConstant> Tags { get; private set; }
-        private SortedList<string, StringConstant> sortedTags = new SortedList<string, StringConstant>();
-        private static Dictionary<string, List<GameObject>> taggedGOs = new Dictionary<string, List<GameObject>>();
-        private static Dictionary<GameObject, AtomicTags> instances = new Dictionary<GameObject, AtomicTags>();
+
+        private SortedList<string, StringConstant> _sortedTags = new SortedList<string, StringConstant>();
+
+        private static readonly Dictionary<string, List<GameObject>> TaggedGameObjects
+            = new Dictionary<string, List<GameObject>>();
+
+        private static readonly Dictionary<GameObject, AtomicTags> AtomicTagInstances
+            = new Dictionary<GameObject, AtomicTags>();
+
+        public List<StringConstant> _tags = new List<StringConstant>();
 
         #region Serialization
-        public List<StringConstant> _tags = new List<StringConstant>();
+
         public void OnBeforeSerialize()
         {
 #if UNITY_EDITOR
@@ -24,7 +31,7 @@ namespace UnityAtoms
             && !EditorApplication.isCompiling) return;
 #endif
             _tags.Clear();
-            foreach (var kvp in sortedTags)
+            foreach (var kvp in _sortedTags)
             {
                 _tags.Add(kvp.Value);
             }
@@ -32,13 +39,13 @@ namespace UnityAtoms
 
         public void OnAfterDeserialize()
         {
-            sortedTags = new SortedList<string, StringConstant>();
+            _sortedTags = new SortedList<string, StringConstant>();
 
             for (int i = 0; i != _tags.Count; i++)
             {
                 if (_tags[i] == null || _tags[i].Value == null) continue;
-                if (sortedTags.ContainsKey(_tags[i].Value)) continue;
-                sortedTags.Add(_tags[i].Value, _tags[i]);
+                if (_sortedTags.ContainsKey(_tags[i].Value)) continue;
+                _sortedTags.Add(_tags[i].Value, _tags[i]);
             }
         }
         #endregion
@@ -47,11 +54,10 @@ namespace UnityAtoms
         private void OnValidate()
         {
             OnAfterDeserialize(); // removes double values and nulls
-            _tags = sortedTags.Values.ToList();
+            _tags = _sortedTags.Values.ToList();
 
             // this null value is just for easier editing and could also be archived with an custom inspector
             if(!EditorApplication.isPlaying){ _tags.Add(null); }
-
         }
 #endif
 
@@ -59,31 +65,31 @@ namespace UnityAtoms
 
         private void Awake()
         {
-            Tags = new ReadOnlyList<StringConstant>(sortedTags.Values);
+            Tags = new ReadOnlyList<StringConstant>(_sortedTags.Values);
         }
 
         private void OnEnable()
         {
-            if (!instances.ContainsKey(gameObject)) instances.Add(gameObject, this);
+            if (!AtomicTagInstances.ContainsKey(gameObject)) AtomicTagInstances.Add(gameObject, this);
             for (var i = 0; i < Tags.Count; i++)
             {
                 var stringConstant = Tags[i];
                 if (stringConstant == null) continue;
                 var atomicTag = stringConstant.Value;
-                if (!taggedGOs.ContainsKey(atomicTag)) taggedGOs.Add(atomicTag, new List<GameObject>());
-                taggedGOs[atomicTag].Add(gameObject);
+                if (!TaggedGameObjects.ContainsKey(atomicTag)) TaggedGameObjects.Add(atomicTag, new List<GameObject>());
+                TaggedGameObjects[atomicTag].Add(gameObject);
             }
         }
 
         private void OnDisable()
         {
-            if (instances.ContainsKey(gameObject)) instances.Remove(gameObject);
+            if (AtomicTagInstances.ContainsKey(gameObject)) AtomicTagInstances.Remove(gameObject);
             for (var i = 0; i < Tags.Count; i++)
             {
                 var stringConstant = Tags[i];
                 if (stringConstant == null) continue;
                 var atomicTag = stringConstant.Value;
-                if (taggedGOs.ContainsKey(atomicTag)) taggedGOs[atomicTag].Remove(gameObject);
+                if (TaggedGameObjects.ContainsKey(atomicTag)) TaggedGameObjects[atomicTag].Remove(gameObject);
             }
         }
 
@@ -92,54 +98,54 @@ namespace UnityAtoms
         public bool HasTag(string atomicTag)
         {
             if (atomicTag == null) return false;
-            return sortedTags.ContainsKey(atomicTag);
+            return _sortedTags.ContainsKey(atomicTag);
         }
 
         public void AddTag(StringConstant atomicTag)
         {
             if (atomicTag == null || atomicTag.Value == null) return;
-            if (sortedTags.ContainsKey(atomicTag.Value)) return;
-            sortedTags.Add(atomicTag.Value, atomicTag);
+            if (_sortedTags.ContainsKey(atomicTag.Value)) return;
+            _sortedTags.Add(atomicTag.Value, atomicTag);
 
-            Tags = new ReadOnlyList<StringConstant>(sortedTags.Values);
+            Tags = new ReadOnlyList<StringConstant>(_sortedTags.Values);
 
             // Update static accessors:
-            if (!taggedGOs.ContainsKey(atomicTag.Value)) taggedGOs.Add(atomicTag.Value, new List<GameObject>());
-            taggedGOs[atomicTag.Value].Add(this.gameObject);
+            if (!TaggedGameObjects.ContainsKey(atomicTag.Value)) TaggedGameObjects.Add(atomicTag.Value, new List<GameObject>());
+            TaggedGameObjects[atomicTag.Value].Add(this.gameObject);
         }
 
         public void RemoveTag(string atomicTag)
         {
             if (atomicTag == null) return;
-            if (sortedTags.ContainsKey(atomicTag)) return;
-            sortedTags.Remove(atomicTag);
+            if (_sortedTags.ContainsKey(atomicTag)) return;
+            _sortedTags.Remove(atomicTag);
 
-            Tags = new ReadOnlyList<StringConstant>(sortedTags.Values);
+            Tags = new ReadOnlyList<StringConstant>(_sortedTags.Values);
 
             // Update static accessors:
-            if (!taggedGOs.ContainsKey(atomicTag)) return; // this should never happen
-            taggedGOs[atomicTag].Remove(this.gameObject);
+            if (!TaggedGameObjects.ContainsKey(atomicTag)) return; // this should never happen
+            TaggedGameObjects[atomicTag].Remove(this.gameObject);
         }
 
         public static GameObject FindByTag(string tag)
         {
-            if (!taggedGOs.ContainsKey(tag)) return null;
-            return taggedGOs[tag][0];
+            if (!TaggedGameObjects.ContainsKey(tag)) return null;
+            return TaggedGameObjects[tag][0];
         }
 
         public static GameObject[] FindAllByTag(string tag)
         {
-            if (!taggedGOs.ContainsKey(tag)) return null;
-            return taggedGOs[tag].ToArray();
+            if (!TaggedGameObjects.ContainsKey(tag)) return null;
+            return TaggedGameObjects[tag].ToArray();
         }
 
         public static void FindAllByTagNoAlloc(string tag, List<GameObject> output)
         {
             output.Clear();
-            if (!taggedGOs.ContainsKey(tag)) return;
-            for (var i = 0; i < taggedGOs[tag].Count; ++i)
+            if (!TaggedGameObjects.ContainsKey(tag)) return;
+            for (var i = 0; i < TaggedGameObjects[tag].Count; ++i)
             {
-                output.Add(taggedGOs[tag][i]);
+                output.Add(TaggedGameObjects[tag][i]);
             }
         }
 
@@ -152,8 +158,8 @@ namespace UnityAtoms
         /// </returns>
         public static AtomicTags GetForGameObject(GameObject go)
         {
-            if (!instances.ContainsKey(go)) return null;
-            return instances[go];
+            if (!AtomicTagInstances.ContainsKey(go)) return null;
+            return AtomicTagInstances[go];
         }
 
         /// <summary>
@@ -166,8 +172,8 @@ namespace UnityAtoms
         /// </returns>
         public static ReadOnlyList<StringConstant> GetAtomicTags(GameObject go)
         {
-            if (!instances.ContainsKey(go)) return null;
-            var atomicTags = instances[go];
+            if (!AtomicTagInstances.ContainsKey(go)) return null;
+            var atomicTags = AtomicTagInstances[go];
             return atomicTags.Tags;
         }
     }

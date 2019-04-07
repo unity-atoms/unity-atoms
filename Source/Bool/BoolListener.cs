@@ -1,4 +1,9 @@
 namespace UnityAtoms
 {
-    public class BoolListener : GameEventListener<bool, BoolAction, BoolEvent, UnityBoolEvent> { }
+    public sealed class BoolListener : GameEventListener<
+        bool,
+        BoolAction,
+        BoolEvent,
+        UnityBoolEvent>
+    { }
 }

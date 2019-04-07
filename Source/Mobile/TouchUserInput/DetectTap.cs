@@ -1,99 +1,107 @@
-﻿using System;
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms.Mobile
 {
     [Serializable]
     public class DetectTap : IGameEventListener<TouchUserInput>
     {
+        [FormerlySerializedAs("FirstTapTimer")]
         [SerializeField]
-        private Timer FirstTapTimer = null;
-        [SerializeField]
-        private Timer SecondTapTimer = null;
-        [SerializeField]
-        private FloatReference MaxTimeBetweenTaps = null;
-        [SerializeField]
-        private FloatReference MaxDistanceBetweenTaps = null;
-        [SerializeField]
-        private FloatReference MaxMovementToCountAsTap = null;
-        [SerializeField]
-        private TouchUserInputGameEvent OnTapDetectedEvent = null;
-        [SerializeField]
-        private TouchUserInputGameEvent OnDoubleTapDetectedEvent = null;
+        private Timer _firstTapTimer;
 
-        private Vector2 inputPosFirstTapDown;
+        [FormerlySerializedAs("SecondTapTimer")]
+        [SerializeField]
+        private Timer _secondTapTimer;
 
-        private void OnEnable()
-        {
-            FirstTapTimer.Stop();
-            SecondTapTimer.Stop();
-        }
+        [FormerlySerializedAs("MaxTimeBetweenTaps")]
+        [SerializeField]
+        private FloatReference _maxTimeBetweenTaps;
+
+        [FormerlySerializedAs("MaxDistanceBetweenTaps")]
+        [SerializeField]
+        private FloatReference _maxDistanceBetweenTaps;
+
+        [FormerlySerializedAs("MaxMovementToCountAsTap")]
+        [SerializeField]
+        private FloatReference _maxMovementToCountAsTap;
+
+        [FormerlySerializedAs("OnTapDetectedEvent")]
+        [SerializeField]
+        private TouchUserInputGameEvent _onTapDetectedEvent;
+
+        [FormerlySerializedAs("OnDoubleTapDetectedEvent")]
+        [SerializeField]
+        private TouchUserInputGameEvent _onDoubleTapDetectedEvent;
+
+        private Vector2 _inputPosFirstTapDown;
 
         public void OnEventRaised(TouchUserInput touchUserInput)
         {
             if (!IsPotentialDoubleTapInProgress())
             {
-                FirstTapTimer.Stop();
-                SecondTapTimer.Stop();
+                _firstTapTimer.Stop();
+                _secondTapTimer.Stop();
             }
 
             if (touchUserInput.InputState == TouchUserInput.State.Down && CanStartDoubleTap())
             {
-                inputPosFirstTapDown = touchUserInput.InputPos;
-                FirstTapTimer.Start();
+                _inputPosFirstTapDown = touchUserInput.InputPos;
+                _firstTapTimer.Start();
             }
-            else if (touchUserInput.InputState == TouchUserInput.State.Drag && FirstTapTimer.IsStarted() && Vector2.Distance(touchUserInput.InputPos, inputPosFirstTapDown) > MaxMovementToCountAsTap.Value)
+            else if (touchUserInput.InputState == TouchUserInput.State.Drag && _firstTapTimer.IsStarted() && Vector2.Distance(touchUserInput.InputPos, _inputPosFirstTapDown) > _maxMovementToCountAsTap.Value)
             {
-                FirstTapTimer.Stop();
+                _firstTapTimer.Stop();
             }
             else if (touchUserInput.InputState == TouchUserInput.State.Up && WaitingForFinishingFirstTap())
             {
-                if (FirstTapTimer.GetElapsedTime() <= MaxTimeBetweenTaps.Value)
+                if (_firstTapTimer.GetElapsedTime() <= _maxTimeBetweenTaps.Value)
                 {
-                    if (OnTapDetectedEvent != null)
+                    if (_onTapDetectedEvent != null)
                     {
-                        OnTapDetectedEvent.Raise(touchUserInput);
+                        _onTapDetectedEvent.Raise(touchUserInput);
                     }
-                    SecondTapTimer.Start();
+                    _secondTapTimer.Start();
                 }
-                FirstTapTimer.Stop();
+                _firstTapTimer.Stop();
             }
             else if (touchUserInput.InputState == TouchUserInput.State.Down && WaitingForSecondTap())
             {
-                if (Vector2.Distance(touchUserInput.InputPos, inputPosFirstTapDown) <= MaxDistanceBetweenTaps.Value && SecondTapTimer.GetElapsedTime() <= MaxTimeBetweenTaps.Value)
+                if (Vector2.Distance(touchUserInput.InputPos, _inputPosFirstTapDown) <= _maxDistanceBetweenTaps.Value && _secondTapTimer.GetElapsedTime() <= _maxTimeBetweenTaps.Value)
                 {
-                    if (OnDoubleTapDetectedEvent != null)
+                    if (_onDoubleTapDetectedEvent != null)
                     {
-                        OnDoubleTapDetectedEvent.Raise(touchUserInput); // OPEN POINT: Should we raise event on state up or down?
+                        _onDoubleTapDetectedEvent.Raise(touchUserInput); // OPEN POINT: Should we raise event on state up or down?
                     }
                 }
-                SecondTapTimer.Stop();
+                _secondTapTimer.Stop();
             }
         }
 
         private bool CanStartDoubleTap()
         {
-            return !SecondTapTimer.IsStarted();
+            return !_secondTapTimer.IsStarted();
         }
 
         private bool WaitingForFinishingFirstTap()
         {
-            return FirstTapTimer.IsStarted();
+            return _firstTapTimer.IsStarted();
         }
 
         private bool WaitingForSecondTap()
         {
-            return SecondTapTimer.IsStarted();
+            return _secondTapTimer.IsStarted();
         }
 
         public bool IsPotentialDoubleTapInProgress()
         {
-            return (FirstTapTimer.IsStarted() && FirstTapTimer.GetElapsedTime() <= MaxTimeBetweenTaps.Value) || (SecondTapTimer.IsStarted() && SecondTapTimer.GetElapsedTime() <= MaxTimeBetweenTaps.Value);
+            return (_firstTapTimer.IsStarted() && _firstTapTimer.GetElapsedTime() <= _maxTimeBetweenTaps.Value) || (_secondTapTimer.IsStarted() && _secondTapTimer.GetElapsedTime() <= _maxTimeBetweenTaps.Value);
         }
 
         public bool InUse()
         {
-            return FirstTapTimer != null && SecondTapTimer != null && OnDoubleTapDetectedEvent != null;
+            return _firstTapTimer != null && _secondTapTimer != null && _onDoubleTapDetectedEvent != null;
         }
     }
 

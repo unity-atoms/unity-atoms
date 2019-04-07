@@ -2,5 +2,11 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public class ColliderGameObjectListener : GameEventListener<Collider, GameObject, ColliderGameObjectAction, ColliderGameObjectEvent, UnityColliderGameObjectEvent> { }
+    public sealed class ColliderGameObjectListener : GameEventListener<
+        Collider,
+        GameObject,
+        ColliderGameObjectAction,
+        ColliderGameObjectEvent,
+        UnityColliderGameObjectEvent>
+    { }
 }
