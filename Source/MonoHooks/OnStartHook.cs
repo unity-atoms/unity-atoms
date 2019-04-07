@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace UnityAtoms
 {
     public class OnStartHook : VoidHook

@@ -1,14 +1,13 @@
 using UnityEngine;
 using System;
-using System.Collections;
 
 namespace UnityAtoms.Extensions
 {
     public static class TransformExtensions
     {
 
-        /* Finds a child to this transform by name. Searches not only the first level in the 
-         * tree hierarchy of child objects, but all the children, grand children, and so on.  
+        /* Finds a child to this transform by name. Searches not only the first level in the
+         * tree hierarchy of child objects, but all the children, grand children, and so on.
          */
         public static Transform FindDeepChild(this Transform parent, string name)
         {

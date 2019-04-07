@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace UnityAtoms
+﻿namespace UnityAtoms
 {
     public class OnDestroyHook : VoidHook
     {
