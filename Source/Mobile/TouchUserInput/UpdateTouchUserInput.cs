@@ -20,12 +20,12 @@ namespace UnityAtoms.Mobile
             if (Input.touchCount > 0)
             {
                 inputPos = Input.GetTouch(0).position;
-                if (Input.GetTouch(0).phase == TouchPhase.Began) 
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     inputPosLastDown = inputPos;
                     inputState = TouchUserInput.State.Down;
-                } 
-                else if (Input.GetTouch(0).phase == TouchPhase.Ended) 
+                }
+                else if (Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
                     inputState = TouchUserInput.State.Up;
                 }
@@ -34,7 +34,7 @@ namespace UnityAtoms.Mobile
                     inputState = TouchUserInput.State.Drag;
                 }
             }
-            else 
+            else
             {
                 inputPos = Vector2.zero;
                 inputState = TouchUserInput.State.None;
