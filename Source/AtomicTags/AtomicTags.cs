@@ -9,7 +9,6 @@ namespace UnityAtoms
 {
     public class AtomicTags : MonoBehaviour, ISerializationCallbackReceiver
     {
-
         public ReadOnlyList<StringConstant> Tags { get; private set; }
         private SortedList<string, StringConstant> sortedTags = new SortedList<string, StringConstant>();
         private static Dictionary<string, List<GameObject>> taggedGOs = new Dictionary<string, List<GameObject>>();
@@ -44,15 +43,17 @@ namespace UnityAtoms
         }
         #endregion
 
+#if UNITY_EDITOR
         private void OnValidate()
         {
             OnAfterDeserialize(); // removes double values and nulls
             _tags = sortedTags.Values.ToList();
-#if UNITY_EDITOR
+
             // this null value is just for easier editing and could also be archived with an custom inspector
             if(!EditorApplication.isPlaying){ _tags.Add(null); }
-#endif
+
         }
+#endif
 
         #region Lifecycle
 
@@ -63,25 +64,27 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
-            if (!instances.ContainsKey(this.gameObject)) instances.Add(this.gameObject, this);
-            foreach (var stringConstant in Tags)
+            if (!instances.ContainsKey(gameObject)) instances.Add(gameObject, this);
+            for (var i = 0; i < Tags.Count; i++)
             {
+                var stringConstant = Tags[i];
                 if (stringConstant == null) continue;
-                var tag = stringConstant.Value;
-                if (!taggedGOs.ContainsKey(tag)) taggedGOs.Add(tag, new List<GameObject>());
-                taggedGOs[tag].Add(this.gameObject);
-            };
+                var atomicTag = stringConstant.Value;
+                if (!taggedGOs.ContainsKey(atomicTag)) taggedGOs.Add(atomicTag, new List<GameObject>());
+                taggedGOs[atomicTag].Add(gameObject);
+            }
         }
 
         private void OnDisable()
         {
-            if (instances.ContainsKey(this.gameObject)) instances.Remove(this.gameObject);
-            foreach (var stringConstant in Tags)
+            if (instances.ContainsKey(gameObject)) instances.Remove(gameObject);
+            for (var i = 0; i < Tags.Count; i++)
             {
+                var stringConstant = Tags[i];
                 if (stringConstant == null) continue;
-                var tag = stringConstant.Value;
-                if (taggedGOs.ContainsKey(tag)) taggedGOs[tag].Remove(this.gameObject);
-            };
+                var atomicTag = stringConstant.Value;
+                if (taggedGOs.ContainsKey(atomicTag)) taggedGOs[atomicTag].Remove(gameObject);
+            }
         }
 
         #endregion
@@ -167,7 +170,5 @@ namespace UnityAtoms
             var atomicTags = instances[go];
             return atomicTags.Tags;
         }
-
-
     }
 }
