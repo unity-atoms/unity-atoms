@@ -23,14 +23,14 @@ namespace UnityAtoms
             Changed.Raise(Value);
         }
 
-        public bool SetValue(T value)
+        public bool SetValue(T newValue)
         {
-            if (!AreEqual(this.value, value))
+            if (!AreEqual(value, newValue))
             {
-                this.oldValue = this.value;
-                this.value = value;
-                if (Changed != null) { Changed.Raise(value); }
-                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(this.value, this.oldValue); }
+                oldValue = value;
+                value = newValue;
+                if (Changed != null) { Changed.Raise(newValue); }
+                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(value, oldValue); }
                 return true;
             }
 

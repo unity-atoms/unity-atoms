@@ -86,36 +86,36 @@ namespace UnityAtoms
 
         #endregion
 
-        public bool HasTag(string tag)
+        public bool HasTag(string atomicTag)
         {
-            if (tag == null) return false;
-            return sortedTags.ContainsKey(tag);
+            if (atomicTag == null) return false;
+            return sortedTags.ContainsKey(atomicTag);
         }
 
-        public void AddTag(StringConstant tag)
+        public void AddTag(StringConstant atomicTag)
         {
-            if (tag == null || tag.Value == null) return;
-            if (sortedTags.ContainsKey(tag.Value)) return;
-            sortedTags.Add(tag.Value, tag);
+            if (atomicTag == null || atomicTag.Value == null) return;
+            if (sortedTags.ContainsKey(atomicTag.Value)) return;
+            sortedTags.Add(atomicTag.Value, atomicTag);
 
             Tags = new ReadOnlyList<StringConstant>(sortedTags.Values);
 
             // Update static accessors:
-            if (!taggedGOs.ContainsKey(tag.Value)) taggedGOs.Add(tag.Value, new List<GameObject>());
-            taggedGOs[tag.Value].Add(this.gameObject);
+            if (!taggedGOs.ContainsKey(atomicTag.Value)) taggedGOs.Add(atomicTag.Value, new List<GameObject>());
+            taggedGOs[atomicTag.Value].Add(this.gameObject);
         }
 
-        public void RemoveTag(string tag)
+        public void RemoveTag(string atomicTag)
         {
-            if (tag == null) return;
-            if (sortedTags.ContainsKey(tag)) return;
-            sortedTags.Remove(tag);
+            if (atomicTag == null) return;
+            if (sortedTags.ContainsKey(atomicTag)) return;
+            sortedTags.Remove(atomicTag);
 
             Tags = new ReadOnlyList<StringConstant>(sortedTags.Values);
 
             // Update static accessors:
-            if (!taggedGOs.ContainsKey(tag)) return; // this should never happen
-            taggedGOs[tag].Remove(this.gameObject);
+            if (!taggedGOs.ContainsKey(atomicTag)) return; // this should never happen
+            taggedGOs[atomicTag].Remove(this.gameObject);
         }
 
         public static GameObject FindByTag(string tag)
