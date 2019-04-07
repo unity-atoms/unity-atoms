@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityAtoms.Extensions;
 #if UNITY_EDITOR
 using UnityAtoms.Logger;

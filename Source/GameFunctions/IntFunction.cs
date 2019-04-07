@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace UnityAtoms
+﻿namespace UnityAtoms
 {
     public abstract class IntFunction : GameFunction<int> { }
 }
