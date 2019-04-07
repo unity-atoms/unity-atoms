@@ -137,7 +137,17 @@ namespace UnityAtoms.Extensions
 
         public static bool Some<T>(this List<T> list, Func<T, bool> func)
         {
-            return EqualityComparer<T>.Default.Equals(list.First(func), default(T));
+            return !EqualityComparer<T>.Default.Equals(list.First(func), default(T));
+        }
+
+        public static bool Every<T>(this List<T> list, Func<T, bool> func)
+        {
+            for (int i = 0; list != null && i < list.Count; ++i)
+            {
+                if (!func(list[i])) return false;
+            }
+
+            return true;
         }
 
         public static bool AddIfNotExists<T>(this List<T> list, T item)
