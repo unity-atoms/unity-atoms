@@ -1,6 +1,6 @@
 namespace UnityAtoms
 {
-    public class OnFixedUpdateHook : VoidHook
+    public sealed class OnFixedUpdateHook : VoidHook
     {
         private void FixedUpdate()
         {

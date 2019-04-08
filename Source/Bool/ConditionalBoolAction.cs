@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
@@ -7,14 +8,15 @@ namespace UnityAtoms
     public class ConditionalBoolGameActionHelper : ConditionalGameActionHelper<bool, BoolAction, BoolBoolFunction> { }
 
     [CreateAssetMenu(menuName = "Unity Atoms/Bool/Conditional", fileName = "ConditionalBoolAction", order = CreateAssetMenuUtils.Order.CONDITIONAL)]
-    public class ConditionalBoolAction : BoolAction
+    public sealed class ConditionalBoolAction : BoolAction
     {
+        [FormerlySerializedAs("Conditional")]
         [SerializeField]
-        private ConditionalBoolGameActionHelper Conditional = null;
+        private ConditionalBoolGameActionHelper _conditional;
 
         public override void Do(bool t1)
         {
-            Conditional.Do(t1);
+            _conditional.Do(t1);
         }
     }
 }

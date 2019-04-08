@@ -1,15 +1,20 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectVariable<T, E1, E2> : ScriptableObjectVariableBase<T>, IWithOldValue<T> where E1 : GameEvent<T> where E2 : GameEvent<T, T>
+    public abstract class ScriptableObjectVariable<T, E1, E2> : ScriptableObjectVariableBase<T>,
+        IWithOldValue<T>
+        where E1 : GameEvent<T>
+        where E2 : GameEvent<T, T>
     {
-        public override T Value { get { return value; } set { SetValue(value); } }
+        public override T Value { get { return _value; } set { SetValue(value); } }
 
-        public T OldValue { get { return oldValue; } }
+        public T OldValue { get { return _oldValue; } }
 
+        [FormerlySerializedAs("oldValue")]
         [SerializeField]
-        private T oldValue;
+        private T _oldValue;
 
         public E1 Changed;
 
@@ -25,12 +30,12 @@ namespace UnityAtoms
 
         public bool SetValue(T newValue)
         {
-            if (!AreEqual(value, newValue))
+            if (!AreEqual(_value, newValue))
             {
-                oldValue = value;
-                value = newValue;
+                _oldValue = _value;
+                _value = newValue;
                 if (Changed != null) { Changed.Raise(newValue); }
-                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(value, oldValue); }
+                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(_value, _oldValue); }
                 return true;
             }
 

@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace UnityAtoms
 {
     [CreateAssetMenu(menuName = "Unity Atoms/Int/Variable", fileName = "IntVariable", order = CreateAssetMenuUtils.Order.VARIABLE)]
-    public class IntVariable : EquatableScriptableObjectVariable<int, IntEvent, IntIntEvent>, IWithApplyChange<int, IntEvent, IntIntEvent>
+    public sealed class IntVariable : EquatableScriptableObjectVariable<int, IntEvent, IntIntEvent>, IWithApplyChange<int, IntEvent, IntIntEvent>
     {
         public bool ApplyChange(int amount)
         {

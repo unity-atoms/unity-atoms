@@ -16,7 +16,7 @@ namespace UnityAtoms.Extensions
             return mb.StartCoroutine(SetTimeout(function, delay));
         }
 
-        static IEnumerator SetTimeout(Action function, float delay)
+        private static IEnumerator SetTimeout(Action function, float delay)
         {
             yield return new WaitForSeconds(delay);
             function();
@@ -27,7 +27,7 @@ namespace UnityAtoms.Extensions
             return mb.StartCoroutine(SetInterval(function, delay));
         }
 
-        static IEnumerator SetInterval(Action function, float delay)
+        private static IEnumerator SetInterval(Action function, float delay)
         {
             while (true && function != null)
             {

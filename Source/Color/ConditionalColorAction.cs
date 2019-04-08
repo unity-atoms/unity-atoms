@@ -1,20 +1,22 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
     [Serializable]
-    public class ConditionalColorGameActionHelper : ConditionalGameActionHelper<Color, ColorAction, BoolColorFunction> { }
+    public sealed class ConditionalColorGameActionHelper : ConditionalGameActionHelper<Color, ColorAction, BoolColorFunction> { }
 
     [CreateAssetMenu(menuName = "Unity Atoms/Color/Conditional", fileName = "ConditionalColorAction", order = CreateAssetMenuUtils.Order.CONDITIONAL)]
-    public class ConditionalColorAction : ColorAction
+    public sealed class ConditionalColorAction : ColorAction
     {
+        [FormerlySerializedAs("Conditional")]
         [SerializeField]
-        private ConditionalColorGameActionHelper Conditional = null;
+        private ConditionalColorGameActionHelper _conditional;
 
         public override void Do(Color t1)
         {
-            Conditional.Do(t1);
+            _conditional.Do(t1);
         }
     }
 }

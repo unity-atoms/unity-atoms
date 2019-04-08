@@ -1,18 +1,25 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class SetVariableValue<T, V, R, E1, E2> : VoidAction where E1 : GameEvent<T> where E2 : GameEvent<T, T> where V : ScriptableObjectVariable<T, E1, E2> where R : ScriptableObjectReference<T, V, E1, E2>
+    public abstract class SetVariableValue<T, V, R, E1, E2> : VoidAction
+        where E1 : GameEvent<T>
+        where E2 : GameEvent<T, T>
+        where V : ScriptableObjectVariable<T, E1, E2>
+        where R : ScriptableObjectReference<T, V, E1, E2>
     {
+        [FormerlySerializedAs("Variable")]
         [SerializeField]
-        private V Variable = null;
+        private V _variable;
 
+        [FormerlySerializedAs("Value")]
         [SerializeField]
-        private R Value = null;
+        private R _value;
 
         public override void Do()
         {
-            Variable.Value = Value.Value;
+            _variable.Value = _value.Value;
         }
     }
 }

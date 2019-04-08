@@ -1,148 +1,185 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public class ConditionalGameActionHelper<T1, GA, C> where GA : GameAction<T1> where C : GameFunction<bool, T1>
+    [Serializable]
+    public abstract class ConditionalGameActionHelper<T1, GA, C>
+        where GA : GameAction<T1>
+        where C : GameFunction<bool, T1>
     {
+        [FormerlySerializedAs("Condition")]
         [SerializeField]
-        private C Condition = null;
-        [SerializeField]
-        private GA Action = null;
-        [SerializeField]
-        private VoidAction VoidAction = null;
+        private C _condition;
 
+        [FormerlySerializedAs("Action")]
         [SerializeField]
-        private GA ElseAction = null;
+        private GA _action;
+
+        [FormerlySerializedAs("VoidAction")]
         [SerializeField]
-        private VoidAction ElseVoidAction = null;
+        private VoidAction _voidAction;
+
+        [FormerlySerializedAs("ElseAction")]
+        [SerializeField]
+        private GA _elseAction;
+
+        [FormerlySerializedAs("ElseVoidAction")]
+        [SerializeField]
+        private VoidAction _elseVoidAction;
 
         public void Do(T1 t1)
         {
-            if (Condition == null || Condition.Call(t1))
+            if (_condition == null || _condition.Call(t1))
             {
-                if (Action != null) { Action.Do(t1); }
-                if (VoidAction != null) { VoidAction.Do(); }
+                if (_action != null) { _action.Do(t1); }
+                if (_voidAction != null) { _voidAction.Do(); }
             }
             else
             {
-                if (ElseAction != null) { ElseAction.Do(t1); }
-                if (ElseVoidAction != null) { ElseVoidAction.Do(); }
+                if (_elseAction != null) { _elseAction.Do(t1); }
+                if (_elseVoidAction != null) { _elseVoidAction.Do(); }
             }
         }
     }
 
-    public class ConditionalGameActionHelper<T1, T2, GA, C> where GA : GameAction<T1, T2> where C : GameFunction<bool, T1, T2>
+    [Serializable]
+    public abstract class ConditionalGameActionHelper<T1, T2, GA, C>
+        where GA : GameAction<T1, T2>
+        where C : GameFunction<bool, T1, T2>
     {
         [SerializeField]
-        private C Condition = null;
-        [SerializeField]
-        private GA Action = null;
-        [SerializeField]
-        private VoidAction VoidAction = null;
+        private C _condition;
 
         [SerializeField]
-        private GA ElseAction = null;
+        private GA _action;
+
         [SerializeField]
-        private VoidAction ElseVoidAction = null;
+        private VoidAction _voidAction;
+
+        [SerializeField]
+        private GA _elseAction;
+
+        [SerializeField]
+        private VoidAction _elseVoidAction;
 
         public void Do(T1 t1, T2 t2)
         {
-            if (Condition == null || Condition.Call(t1, t2))
+            if (_condition == null || _condition.Call(t1, t2))
             {
-                if (Action != null) { Action.Do(t1, t2); }
-                if (VoidAction != null) { VoidAction.Do(); }
+                if (_action != null) { _action.Do(t1, t2); }
+                if (_voidAction != null) { _voidAction.Do(); }
             }
             else
             {
-                if (ElseAction != null) { ElseAction.Do(t1, t2); }
-                if (ElseVoidAction != null) { ElseVoidAction.Do(); }
+                if (_elseAction != null) { _elseAction.Do(t1, t2); }
+                if (_elseVoidAction != null) { _elseVoidAction.Do(); }
             }
         }
     }
 
-    public class ConditionalGameActionHelper<T1, T2, T3, GA, C> where GA : GameAction<T1, T2, T3> where C : GameFunction<bool, T1, T2, T3>
+    [Serializable]
+    public abstract class ConditionalGameActionHelper<T1, T2, T3, GA, C>
+        where GA : GameAction<T1, T2, T3>
+        where C : GameFunction<bool, T1, T2, T3>
     {
         [SerializeField]
-        private C Condition = null;
-        [SerializeField]
-        private GA Action = null;
-        [SerializeField]
-        private VoidAction VoidAction = null;
+        private C _condition;
 
         [SerializeField]
-        private GA ElseAction = null;
+        private GA _action;
+
         [SerializeField]
-        private VoidAction ElseVoidAction = null;
+        private VoidAction _voidAction;
+
+        [SerializeField]
+        private GA _elseAction;
+
+        [SerializeField]
+        private VoidAction _elseVoidAction;
 
         public void Do(T1 t1, T2 t2, T3 t3)
         {
-            if (Condition == null || Condition.Call(t1, t2, t3))
+            if (_condition == null || _condition.Call(t1, t2, t3))
             {
-                if (Action != null) { Action.Do(t1, t2, t3); }
-                if (VoidAction != null) { VoidAction.Do(); }
+                if (_action != null) { _action.Do(t1, t2, t3); }
+                if (_voidAction != null) { _voidAction.Do(); }
             }
             else
             {
-                if (ElseAction != null) { ElseAction.Do(t1, t2, t3); }
-                if (ElseVoidAction != null) { ElseVoidAction.Do(); }
+                if (_elseAction != null) { _elseAction.Do(t1, t2, t3); }
+                if (_elseVoidAction != null) { _elseVoidAction.Do(); }
             }
         }
     }
 
-    public class ConditionalGameActionHelper<T1, T2, T3, T4, GA, C> where GA : GameAction<T1, T2, T3, T4> where C : GameFunction<bool, T1, T2, T3, T4>
+    [Serializable]
+    public abstract class ConditionalGameActionHelper<T1, T2, T3, T4, GA, C>
+        where GA : GameAction<T1, T2, T3, T4>
+        where C : GameFunction<bool, T1, T2, T3, T4>
     {
         [SerializeField]
-        private C Condition = null;
-        [SerializeField]
-        private GA Action = null;
-        [SerializeField]
-        private VoidAction VoidAction = null;
+        private C _condition;
 
         [SerializeField]
-        private GA ElseAction = null;
+        private GA _action;
+
         [SerializeField]
-        private VoidAction ElseVoidAction = null;
+        private VoidAction _voidAction;
+
+        [SerializeField]
+        private GA _elseAction;
+
+        [SerializeField]
+        private VoidAction _elseVoidAction;
 
         public void Do(T1 t1, T2 t2, T3 t3, T4 t4)
         {
-            if (Condition == null || Condition.Call(t1, t2, t3, t4))
+            if (_condition == null || _condition.Call(t1, t2, t3, t4))
             {
-                if (Action != null) { Action.Do(t1, t2, t3, t4); }
-                if (VoidAction != null) { VoidAction.Do(); }
+                if (_action != null) { _action.Do(t1, t2, t3, t4); }
+                if (_voidAction != null) { _voidAction.Do(); }
             }
             else
             {
-                if (ElseAction != null) { ElseAction.Do(t1, t2, t3, t4); }
-                if (ElseVoidAction != null) { ElseVoidAction.Do(); }
+                if (_elseAction != null) { _elseAction.Do(t1, t2, t3, t4); }
+                if (_elseVoidAction != null) { _elseVoidAction.Do(); }
             }
         }
     }
 
-    public class ConditionalGameActionHelper<T1, T2, T3, T4, T5, GA, C> where GA : GameAction<T1, T2, T3, T4, T5> where C : GameFunction<bool, T1, T2, T3, T4, T5>
+    [Serializable]
+    public abstract class ConditionalGameActionHelper<T1, T2, T3, T4, T5, GA, C>
+        where GA : GameAction<T1, T2, T3, T4, T5>
+        where C : GameFunction<bool, T1, T2, T3, T4, T5>
     {
         [SerializeField]
-        private C Condition = null;
-        [SerializeField]
-        private GA Action = null;
-        [SerializeField]
-        private VoidAction VoidAction = null;
+        private C _condition;
 
         [SerializeField]
-        private GA ElseAction = null;
+        private GA _action;
+
         [SerializeField]
-        private VoidAction ElseVoidAction = null;
+        private VoidAction _voidAction;
+
+        [SerializeField]
+        private GA _elseAction;
+
+        [SerializeField]
+        private VoidAction _elseVoidAction;
 
         public void Do(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5)
         {
-            if (Condition == null || Condition.Call(t1, t2, t3, t4, t5))
+            if (_condition == null || _condition.Call(t1, t2, t3, t4, t5))
             {
-                if (Action != null) { Action.Do(t1, t2, t3, t4, t5); }
-                if (VoidAction != null) { VoidAction.Do(); }
+                if (_action != null) { _action.Do(t1, t2, t3, t4, t5); }
+                if (_voidAction != null) { _voidAction.Do(); }
             }
             else
             {
-                if (ElseAction != null) { ElseAction.Do(t1, t2, t3, t4, t5); }
-                if (ElseVoidAction != null) { ElseVoidAction.Do(); }
+                if (_elseAction != null) { _elseAction.Do(t1, t2, t3, t4, t5); }
+                if (_elseVoidAction != null) { _elseVoidAction.Do(); }
             }
         }
     }

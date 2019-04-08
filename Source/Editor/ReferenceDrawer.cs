@@ -5,17 +5,17 @@ namespace UnityAtoms
 {
     public abstract class ReferenceDrawer : PropertyDrawer
     {
-        private readonly string[] popupOptions =
+        private static readonly string[] PopupOptions =
             { "Use Constant", "Use Variable" };
 
-        private GUIStyle popupStyle;
+        private static GUIStyle PopupStyle;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (popupStyle == null)
+            if (PopupStyle == null)
             {
-                popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
-                popupStyle.imagePosition = ImagePosition.ImageOnly;
+                PopupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
+                PopupStyle.imagePosition = ImagePosition.ImageOnly;
             }
 
             label = EditorGUI.BeginProperty(position, label, property);
@@ -30,15 +30,15 @@ namespace UnityAtoms
 
             // Calculate rect for configuration button
             Rect buttonRect = new Rect(position);
-            buttonRect.yMin += popupStyle.margin.top;
-            buttonRect.width = popupStyle.fixedWidth + popupStyle.margin.right;
+            buttonRect.yMin += PopupStyle.margin.top;
+            buttonRect.width = PopupStyle.fixedWidth + PopupStyle.margin.right;
             position.xMin = buttonRect.xMax;
 
             // Store old indent level and set it to 0, the PrefixLabel takes care of it
             int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
-            int result = EditorGUI.Popup(buttonRect, useConstant.boolValue ? 0 : 1, popupOptions, popupStyle);
+            int result = EditorGUI.Popup(buttonRect, useConstant.boolValue ? 0 : 1, PopupOptions, PopupStyle);
 
             useConstant.boolValue = result == 0;
 
@@ -54,24 +54,24 @@ namespace UnityAtoms
         }
 
         [CustomPropertyDrawer(typeof(BoolReference))]
-        public class BoolReferenceDrawer : ReferenceDrawer { }
+        public sealed class BoolReferenceDrawer : ReferenceDrawer { }
 
         [CustomPropertyDrawer(typeof(ColorReference))]
-        public class ColorReferenceDrawer : ReferenceDrawer { }
+        public sealed class ColorReferenceDrawer : ReferenceDrawer { }
 
         [CustomPropertyDrawer(typeof(FloatReference))]
-        public class FloatReferenceDrawer : ReferenceDrawer { }
+        public sealed class FloatReferenceDrawer : ReferenceDrawer { }
 
         [CustomPropertyDrawer(typeof(IntReference))]
-        public class IntReferenceDrawer : ReferenceDrawer { }
+        public sealed class IntReferenceDrawer : ReferenceDrawer { }
 
         [CustomPropertyDrawer(typeof(StringReference))]
-        public class StringReferenceDrawer : ReferenceDrawer { }
+        public sealed class StringReferenceDrawer : ReferenceDrawer { }
 
         [CustomPropertyDrawer(typeof(Vector2Reference))]
-        public class Vector2ReferenceDrawer : ReferenceDrawer { }
+        public sealed class Vector2ReferenceDrawer : ReferenceDrawer { }
 
         [CustomPropertyDrawer(typeof(Vector3Reference))]
-        public class Vector3ReferenceDrawer : ReferenceDrawer { }
+        public sealed class Vector3ReferenceDrawer : ReferenceDrawer { }
     }
 }

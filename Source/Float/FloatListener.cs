@@ -1,4 +1,9 @@
 namespace UnityAtoms
 {
-    public class FloatListener : GameEventListener<float, FloatAction, FloatEvent, UnityFloatEvent> { }
+    public sealed class FloatListener : GameEventListener<
+        float,
+        FloatAction,
+        FloatEvent,
+        UnityFloatEvent>
+    { }
 }

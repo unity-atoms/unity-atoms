@@ -1,4 +1,9 @@
 namespace UnityAtoms
 {
-    public abstract class VoidHook : MonoHook<VoidEvent, VoidGameObjectEvent, Void, GameObjectGameObjectFunction> { }
+    public abstract class VoidHook : MonoHook<
+        VoidEvent,
+        VoidGameObjectEvent,
+        Void,
+        GameObjectGameObjectFunction>
+    { }
 }

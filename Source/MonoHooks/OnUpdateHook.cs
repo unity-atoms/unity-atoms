@@ -1,6 +1,6 @@
 namespace UnityAtoms
 {
-    public class OnUpdateHook : VoidHook
+    public sealed class OnUpdateHook : VoidHook
     {
         private void Update()
         {

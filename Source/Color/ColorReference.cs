@@ -4,5 +4,10 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [Serializable]
-    public class ColorReference : ScriptableObjectReference<Color, ColorVariable, ColorEvent, ColorColorEvent> { }
+    public sealed class ColorReference : ScriptableObjectReference<
+        Color,
+        ColorVariable,
+        ColorEvent,
+        ColorColorEvent>
+    { }
 }

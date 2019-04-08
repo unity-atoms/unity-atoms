@@ -4,5 +4,5 @@ using UnityEngine.Events;
 namespace UnityAtoms
 {
     [Serializable]
-    public class UnityFloatEvent : UnityEvent<float> { }
+    public sealed class UnityFloatEvent : UnityEvent<float> { }
 }
