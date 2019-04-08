@@ -8,7 +8,7 @@ namespace UnityAtoms
         where E1 : GameEvent<T>
         where E2 : GameEvent<T, T>
     {
-        public override T Value { get { return _value; } set { SetValue(value); } }
+        public override T Value { get { return _runtimeValue; } set { SetValue(value); } }
 
         public T OldValue { get { return _oldValue; } }
 
@@ -30,12 +30,12 @@ namespace UnityAtoms
 
         public bool SetValue(T newValue)
         {
-            if (!AreEqual(_value, newValue))
+            if (!AreEqual(this._runtimeValue, newValue))
             {
-                _oldValue = _value;
-                _value = newValue;
+                this._initialValue = this._runtimeValue;
+                this._runtimeValue = newValue;
                 if (Changed != null) { Changed.Raise(newValue); }
-                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(_value, _oldValue); }
+                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(this._runtimeValue, this._oldValue); }
                 return true;
             }
 
