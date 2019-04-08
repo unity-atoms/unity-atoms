@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityAtoms.Extensions;
+using UnityEngine.Serialization;
 #if UNITY_EDITOR
 using UnityAtoms.Logger;
 #endif
@@ -12,27 +11,30 @@ namespace UnityAtoms
 	 * If no unused GameObject is found a new one is instantiated and added to the GameObjectList.
 	 */
     [CreateAssetMenu(menuName = "Unity Atoms/GameObject/Get Unused GameObject (GameObject - (V3, Quat))", fileName = "GetUnusedGameObject")]
-    public class GetUnusedGameObject : GameObjectVector3QuaternionFunction
+    public sealed class GetUnusedGameObject : GameObjectVector3QuaternionFunction
     {
+        [FormerlySerializedAs("List")]
         [SerializeField]
-        private GameObjectList List = null;
+        private GameObjectList _list = null;
 
+        [FormerlySerializedAs("Prefab")]
         [SerializeField]
-        private GameObject Prefab = null;
+        private GameObject _prefab = null;
 
+        [FormerlySerializedAs("IsNotUsed")]
         [SerializeField]
-        private BoolGameObjectFunction IsNotUsed = null;
+        private BoolGameObjectFunction _isNotUsed = null;
 
         public override GameObject Call(Vector3 position, Quaternion quaternion)
         {
-            if (IsNotUsed == null)
+            if (_isNotUsed == null)
             {
 #if UNITY_EDITOR
                 AtomsLogger.Warning("IsUsed must be defined when using GetUnusedGameObject");
 #endif
             }
 
-            return List.List.GetOrInstantiate(Prefab, position, quaternion, IsNotUsed.Call);
+            return _list.List.GetOrInstantiate(_prefab, position, quaternion, _isNotUsed.Call);
         }
     }
 }

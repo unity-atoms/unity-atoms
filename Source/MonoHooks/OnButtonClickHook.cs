@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityAtoms.Logger;
@@ -7,7 +7,7 @@ using UnityAtoms.Logger;
 namespace UnityAtoms
 {
     [RequireComponent(typeof(Button))]
-    public class OnButtonClickHook : VoidHook
+    public sealed class OnButtonClickHook : VoidHook
     {
         private void Awake()
         {

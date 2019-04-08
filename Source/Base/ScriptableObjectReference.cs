@@ -1,14 +1,22 @@
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectReference<T, V, E1, E2> where E1 : GameEvent<T> where E2 : GameEvent<T, T> where V : ScriptableObjectVariable<T, E1, E2>
+    public abstract class ScriptableObjectReference<T, V, E1, E2>
+        where E1 : GameEvent<T>
+        where E2 : GameEvent<T, T>
+        where V : ScriptableObjectVariable<T, E1, E2>
     {
-        public bool UseConstant = true;
+        public bool UseConstant;
+
         public T ConstantValue;
+
         public V Variable;
 
-        public ScriptableObjectReference() { }
+        protected ScriptableObjectReference()
+        {
+            UseConstant = true;
+        }
 
-        public ScriptableObjectReference(T value)
+        protected ScriptableObjectReference(T value) : this()
         {
             UseConstant = true;
             ConstantValue = value;

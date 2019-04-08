@@ -1,33 +1,35 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
     public abstract class ScriptableObjectVariableBase<T> : ScriptableObject, IWithValue<T>
     {
+        public virtual T Value { get { return _value; } set { throw new NotImplementedException(); } }
+
         [Multiline]
         public string DeveloperDescription = "";
 
-        public virtual T Value { get { return value; } set { throw new NotImplementedException(); } }
-
+        [FormerlySerializedAs("value")]
         [SerializeField]
-        protected T value;
+        protected T _value;
 
         protected bool Equals(ScriptableObjectVariableBase<T> other) {
-            return EqualityComparer<T>.Default.Equals(value, other.value);
+            return EqualityComparer<T>.Default.Equals(_value, other._value);
         }
 
         public override bool Equals(object obj) {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((ScriptableObjectVariableBase<T>) obj);
         }
 
         public override int GetHashCode() {
             unchecked {
-                return EqualityComparer<T>.Default.GetHashCode(value);
+                return EqualityComparer<T>.Default.GetHashCode(_value);
             }
         }
 

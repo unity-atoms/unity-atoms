@@ -1,5 +1,10 @@
-﻿namespace UnityAtoms.Mobile
+namespace UnityAtoms.Mobile
 {
-    public class TouchUserInputListener : GameEventListener<TouchUserInput, TouchUserInputAction, TouchUserInputGameEvent, UnityTouchUserInputEvent> { }
+    public sealed class TouchUserInputListener : GameEventListener<
+        TouchUserInput,
+        TouchUserInputAction,
+        TouchUserInputGameEvent,
+        UnityTouchUserInputEvent>
+    { }
 }
 

@@ -1,8 +1,6 @@
-using UnityEngine;
-
 namespace UnityAtoms
 {
-    public class OnStartHook : VoidHook
+    public sealed class OnStartHook : VoidHook
     {
         private void Start()
         {

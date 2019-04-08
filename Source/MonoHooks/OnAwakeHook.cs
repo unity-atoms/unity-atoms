@@ -1,25 +1,28 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-
-    public class OnAwakeHook : VoidHook
+    public sealed class OnAwakeHook : VoidHook
     {
+        [FormerlySerializedAs("listener")]
         [SerializeField]
-        private VoidListener listener = null;
+        private VoidListener _listener;
+
+        [FormerlySerializedAs("listenerWithGO")]
         [SerializeField]
-        private VoidGameObjectListener listenerWithGO = null;
+        private VoidGameObjectListener _listenerWithGameObject;
 
         private void Awake()
         {
             // This is needed because it's not certain that OnEnable on all scripts are called before Awake on all scripts
-            if (Event != null && listener != null)
+            if (Event != null && _listener != null)
             {
-                Event.RegisterListener(listener);
+                Event.RegisterListener(_listener);
             }
-            if (EventWithGORef != null && listenerWithGO != null)
+            if (EventWithGameObjectReference != null && _listenerWithGameObject != null)
             {
-                EventWithGORef.RegisterListener(listenerWithGO);
+                EventWithGameObjectReference.RegisterListener(_listenerWithGameObject);
             }
 
             OnHook(new Void());

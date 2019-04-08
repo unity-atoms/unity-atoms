@@ -1,20 +1,22 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
     [Serializable]
-    public class ConditionalVoidGameActionHelper : ConditionalGameActionHelper<Void, VoidAction, BoolVoidFunction> { }
+    public sealed class ConditionalVoidGameActionHelper : ConditionalGameActionHelper<Void, VoidAction, BoolVoidFunction> { }
 
     [CreateAssetMenu(menuName = "Unity Atoms/Void/Conditional", fileName = "ConditionalVoidAction", order = CreateAssetMenuUtils.Order.CONDITIONAL)]
-    public class ConditionalVoidAction : VoidAction
+    public sealed class ConditionalVoidAction : VoidAction
     {
+        [FormerlySerializedAs("Conditional")]
         [SerializeField]
-        private ConditionalVoidGameActionHelper Conditional = null;
+        private ConditionalVoidGameActionHelper _conditional = null;
 
         public override void Do()
         {
-            Conditional.Do(new Void());
+            _conditional.Do(new Void());
         }
     }
 }

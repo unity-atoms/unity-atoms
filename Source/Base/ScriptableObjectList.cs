@@ -5,15 +5,19 @@ using UnityAtoms.Extensions;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectList<T, E> : ScriptableObject where E : GameEvent<T>
+    public abstract class ScriptableObjectList<T, E> : ScriptableObject
+        where E : GameEvent<T>
     {
-        [SerializeField]
-        private List<T> list = new List<T>();
         public E Added;
+
         public E Removed;
+
         public VoidEvent Cleared;
 
         public int Count { get { return list.Count; } }
+
+        [SerializeField]
+        private List<T> list = new List<T>();
 
         public void Add(T item)
         {

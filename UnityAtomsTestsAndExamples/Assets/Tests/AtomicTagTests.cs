@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace Tests
             List<string> random_tags_raw = new List<string>() { "a", "c", "e", "g", "i", "k", "m" };
             random_tags_raw.OrderBy((s => Random.value)).ToList();
 
-            var fieldinfo = typeof(StringConstant).GetField("value", BindingFlags.NonPublic | BindingFlags.Instance);
+            var fieldinfo = typeof(StringConstant).GetField("_value", BindingFlags.NonPublic | BindingFlags.Instance);
             for (int i = 0; i < random_tags_raw.Count; ++i)
             {
                 var stringConstant = ScriptableObject.CreateInstance<StringConstant>();

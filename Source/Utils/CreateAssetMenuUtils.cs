@@ -14,6 +14,6 @@ namespace UnityAtoms
             public const int SET_VARIABLE = 7;
         }
 
-        // TODO: Use interpolated strings to set menu names (need to upgrade to C#6) 
+        // TODO: Use interpolated strings to set menu names (need to upgrade to C#6)
     }
 }

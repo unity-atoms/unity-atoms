@@ -1,18 +1,20 @@
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public class MonoHook<E1, E2, EV, SF> : MonoBehaviour
+    public abstract class MonoHook<E1, E2, EV, SF> : MonoBehaviour
         where E1 : GameEvent<EV> where E2 : GameEvent<EV, GameObject>
         where SF : GameFunction<GameObject, GameObject>
     {
         public E1 Event;
 
-        public E2 EventWithGORef;
+        [FormerlySerializedAs("EventWithGORef")]
+        public E2 EventWithGameObjectReference;
 
+        [FormerlySerializedAs("SelectGORef")]
         [SerializeField]
-        protected SF SelectGORef;
+        protected SF _selectGameObjectReference;
 
         protected void OnHook(EV value)
         {
@@ -20,9 +22,9 @@ namespace UnityAtoms
             {
                 Event.Raise(value);
             }
-            if (EventWithGORef != null)
+            if (EventWithGameObjectReference != null)
             {
-                EventWithGORef.Raise(value, SelectGORef != null ? SelectGORef.Call(gameObject) : gameObject);
+                EventWithGameObjectReference.Raise(value, _selectGameObjectReference != null ? _selectGameObjectReference.Call(gameObject) : gameObject);
             }
         }
     }

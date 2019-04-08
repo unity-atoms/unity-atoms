@@ -1,25 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class GameEventListener<T, GA, E, UER> : MonoBehaviour, IGameEventListener<T> where GA : GameAction<T> where E : GameEvent<T> where UER : UnityEvent<T>
+    public abstract class GameEventListener<T, GA, E, UER> : MonoBehaviour, IGameEventListener<T>
+        where GA : GameAction<T>
+        where E : GameEvent<T> where UER : UnityEvent<T>
     {
+        [FormerlySerializedAs("Event")]
         [SerializeField]
-        private E Event = null;
+        private E _event = null;
 
-        public E GameEvent { get { return Event; } set { Event = value; } }
+        public E GameEvent { get { return _event; } set { _event = value; } }
 
+        [FormerlySerializedAs("UnityEventResponse")]
         [SerializeField]
-        private UER UnityEventResponse = null;
+        private UER _unityEventResponse = null;
 
+        [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]
-        private List<GA> GameActionResponses = new List<GA>();
+        private List<GA> _gameActionResponses = new List<GA>();
 
         private void OnEnable()
         {
-            if (Event == null) return;
+            if (_event == null) return;
             GameEvent.RegisterListener(this);
         }
 
@@ -30,45 +36,51 @@ namespace UnityAtoms
 
         public void OnEventRaised(T item)
         {
-            if (UnityEventResponse != null) { UnityEventResponse.Invoke(item); }
-            for (int i = 0; GameActionResponses != null && i < GameActionResponses.Count; ++i)
+            if (_unityEventResponse != null) { _unityEventResponse.Invoke(item); }
+            for (int i = 0; _gameActionResponses != null && i < _gameActionResponses.Count; ++i)
             {
-                GameActionResponses[i].Do(item);
+                _gameActionResponses[i].Do(item);
             }
         }
     }
 
-    public abstract class GameEventListener<T1, T2, GA, E, UER> : MonoBehaviour, IGameEventListener<T1, T2> where GA : GameAction<T1, T2> where E : GameEvent<T1, T2> where UER : UnityEvent<T1, T2>
+    public abstract class GameEventListener<T1, T2, GA, E, UER> : MonoBehaviour, IGameEventListener<T1, T2>
+        where GA : GameAction<T1, T2>
+        where E : GameEvent<T1, T2>
+        where UER : UnityEvent<T1, T2>
     {
+        [FormerlySerializedAs("Event")]
         [SerializeField]
-        private E Event = null;
+        private E _event;
 
-        public E GameEvent { get { return Event; } set { Event = value; } }
+        public E GameEvent { get { return _event; } set { _event = value; } }
 
+        [FormerlySerializedAs("UnityEventResponse")]
         [SerializeField]
-        private UER UnityEventResponse = null;
+        private UER _unityEventResponse;
 
+        [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]
-        private List<GA> GameActionResponses = new List<GA>();
+        private List<GA> _gameActionResponses = new List<GA>();
 
         private void OnEnable()
         {
-            if (Event == null) return;
+            if (_event == null) return;
             GameEvent.RegisterListener(this);
         }
 
         private void OnDisable()
         {
-            if (Event == null) return;
+            if (_event == null) return;
             GameEvent.UnregisterListener(this);
         }
 
         public void OnEventRaised(T1 first, T2 second)
         {
-            if (UnityEventResponse != null) { UnityEventResponse.Invoke(first, second); }
-            for (int i = 0; GameActionResponses != null && i < GameActionResponses.Count; ++i)
+            if (_unityEventResponse != null) { _unityEventResponse.Invoke(first, second); }
+            for (int i = 0; _gameActionResponses != null && i < _gameActionResponses.Count; ++i)
             {
-                GameActionResponses[i].Do(first, second);
+                _gameActionResponses[i].Do(first, second);
             }
         }
     }

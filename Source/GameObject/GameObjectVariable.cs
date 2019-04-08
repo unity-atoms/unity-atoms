@@ -3,7 +3,10 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [CreateAssetMenu(menuName = "Unity Atoms/GameObject/Variable", fileName = "GameObjectVariable", order = CreateAssetMenuUtils.Order.VARIABLE)]
-    public class GameObjectVariable : ScriptableObjectVariable<GameObject, GameObjectEvent, GameObjectGameObjectEvent>
+    public sealed class GameObjectVariable : ScriptableObjectVariable<
+        GameObject,
+        GameObjectEvent,
+        GameObjectGameObjectEvent>
     {
         protected override bool AreEqual(GameObject first, GameObject second)
         {

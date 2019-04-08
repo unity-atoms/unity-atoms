@@ -1,20 +1,22 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
     [Serializable]
-    public class ConditionalFloatGameActionHelper : ConditionalGameActionHelper<float, FloatAction, BoolFloatFunction> { }
+    public sealed class ConditionalFloatGameActionHelper : ConditionalGameActionHelper<float, FloatAction, BoolFloatFunction> { }
 
     [CreateAssetMenu(menuName = "Unity Atoms/Float/Conditional", fileName = "ConditionalFloatAction", order = CreateAssetMenuUtils.Order.CONDITIONAL)]
-    public class ConditionalFloatAction : FloatAction
+    public sealed class ConditionalFloatAction : FloatAction
     {
+        [FormerlySerializedAs("Conditional")]
         [SerializeField]
-        private ConditionalFloatGameActionHelper Conditional = null;
+        private ConditionalFloatGameActionHelper _conditional;
 
         public override void Do(float t1)
         {
-            Conditional.Do(t1);
+            _conditional.Do(t1);
         }
     }
 }

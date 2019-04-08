@@ -5,5 +5,5 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [Serializable]
-    public class UnityColorEvent : UnityEvent<Color> { }
+    public sealed class UnityColorEvent : UnityEvent<Color> { }
 }

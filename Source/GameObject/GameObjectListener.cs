@@ -2,5 +2,10 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public class GameObjectListener : GameEventListener<GameObject, GameObjectAction, GameObjectEvent, UnityGameObjectEvent> { }
+    public sealed class GameObjectListener : GameEventListener<
+        GameObject,
+        GameObjectAction,
+        GameObjectEvent,
+        UnityGameObjectEvent>
+    { }
 }

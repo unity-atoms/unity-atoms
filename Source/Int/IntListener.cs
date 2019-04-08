@@ -1,4 +1,4 @@
 namespace UnityAtoms
 {
-    public class IntListener : GameEventListener<int, IntAction, IntEvent, UnityIntEvent> { }
+    public sealed class IntListener : GameEventListener<int, IntAction, IntEvent, UnityIntEvent> { }
 }

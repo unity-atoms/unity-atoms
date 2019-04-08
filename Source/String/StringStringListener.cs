@@ -1,6 +1,9 @@
-using UnityEngine;
-
 namespace UnityAtoms
 {
-    public class StringStringListener : GameEventListener<string, string, StringStringAction, StringStringEvent, UnityStringStringEvent> { }
+    public sealed class StringStringListener : GameEventListener<
+        string,
+        string,
+        StringStringAction,
+        StringStringEvent,
+        UnityStringStringEvent> { }
 }

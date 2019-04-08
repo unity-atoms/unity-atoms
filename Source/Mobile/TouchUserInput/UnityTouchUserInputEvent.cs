@@ -1,12 +1,8 @@
-﻿using System;
-using UnityEngine;
+using System;
 using UnityEngine.Events;
 
 namespace UnityAtoms.Mobile
 {
     [Serializable]
-    public class UnityTouchUserInputEvent : UnityEvent<TouchUserInput> { }
-
-    [Serializable]
-    public class UnityTouchUserInputTouchUserInputEvent : UnityEvent<TouchUserInput, TouchUserInput> { }
+    public sealed class UnityTouchUserInputEvent : UnityEvent<TouchUserInput> { }
 }

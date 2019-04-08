@@ -2,5 +2,10 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public class ColorListener : GameEventListener<Color, ColorAction, ColorEvent, UnityColorEvent> { }
+    public sealed class ColorListener : GameEventListener<
+        Color,
+        ColorAction,
+        ColorEvent,
+        UnityColorEvent>
+    { }
 }

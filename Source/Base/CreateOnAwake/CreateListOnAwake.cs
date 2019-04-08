@@ -1,68 +1,80 @@
-
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityAtoms.Utils;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public class CreateListOnAwake<T, L, E, TEL, TELR, GA1, GA2, UER> : MonoBehaviour
+    public abstract class CreateListOnAwake<T, L, E, TEL, TELR, GA1, GA2, UER> : MonoBehaviour
         where L : ScriptableObjectList<T, E> where E : GameEvent<T>
         where TEL : GameEventListener<T, TELR, E, UER>
         where TELR : GameAction<T>
         where GA1 : GameAction<L> where GA2 : GameAction<L, GameObject>
         where UER : UnityEvent<T>
     {
+        [FormerlySerializedAs("CreateAddedEvent")]
         [SerializeField]
-        private bool CreateAddedEvent = true;
-        [SerializeField]
-        private bool CreateRemovedEvent = true;
-        [SerializeField]
-        private bool CreateClearedEvent = false;
+        private bool _createAddedEvent = true;
 
+        [FormerlySerializedAs("CreateRemovedEvent")]
         [SerializeField]
-        private TEL AddedListener = null;
-        [SerializeField]
-        private TEL RemovedListener = null;
-        [SerializeField]
-        private VoidListener ClearedListener = null;
+        private bool _createRemovedEvent = true;
 
+        [FormerlySerializedAs("CreateClearedEvent")]
         [SerializeField]
-        private GA1 OnListCreate = null;
-        [SerializeField]
-        private GA2 OnListCreateWithGO = null;
+        private bool _createClearedEvent = false;
 
-        void Awake()
+        [FormerlySerializedAs("AddedListener")]
+        [SerializeField]
+        private TEL _addedListener = null;
+
+        [FormerlySerializedAs("RemovedListener")]
+        [SerializeField]
+        private TEL _removedListener = null;
+
+        [FormerlySerializedAs("ClearedListener")]
+        [SerializeField]
+        private VoidListener _clearedListener = null;
+
+        [FormerlySerializedAs("OnListCreate")]
+        [SerializeField]
+        private GA1 _onListCreate = null;
+
+        [FormerlySerializedAs("OnListCreateWithGO")]
+        [SerializeField]
+        private GA2 _onListCreateWithGO = null;
+
+        private void Awake()
         {
-            var list = DynamicAtoms.CreateList<T, L, E>(CreateAddedEvent, CreateRemovedEvent, CreateClearedEvent);
+            var list = DynamicAtoms.CreateList<T, L, E>(_createAddedEvent, _createRemovedEvent, _createClearedEvent);
 
             if (list.Added != null)
             {
-                if (AddedListener != null)
+                if (_addedListener != null)
                 {
-                    AddedListener.GameEvent = list.Added;
-                    AddedListener.GameEvent.RegisterListener(AddedListener);
+                    _addedListener.GameEvent = list.Added;
+                    _addedListener.GameEvent.RegisterListener(_addedListener);
                 }
             }
             if (list.Removed != null)
             {
-                if (RemovedListener != null)
+                if (_removedListener != null)
                 {
-                    RemovedListener.GameEvent = list.Removed;
-                    RemovedListener.GameEvent.RegisterListener(RemovedListener);
+                    _removedListener.GameEvent = list.Removed;
+                    _removedListener.GameEvent.RegisterListener(_removedListener);
                 }
             }
             if (list.Cleared != null)
             {
-                if (ClearedListener != null)
+                if (_clearedListener != null)
                 {
-                    ClearedListener.GameEvent = list.Cleared;
-                    ClearedListener.GameEvent.RegisterListener(ClearedListener);
+                    _clearedListener.GameEvent = list.Cleared;
+                    _clearedListener.GameEvent.RegisterListener(_clearedListener);
                 }
             }
 
-            if (OnListCreate != null) { OnListCreate.Do(list); }
-            if (OnListCreateWithGO != null) { OnListCreateWithGO.Do(list, gameObject); }
+            if (_onListCreate != null) { _onListCreate.Do(list); }
+            if (_onListCreateWithGO != null) { _onListCreateWithGO.Do(list, gameObject); }
         }
     }
 }

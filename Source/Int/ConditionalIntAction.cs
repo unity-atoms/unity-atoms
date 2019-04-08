@@ -1,20 +1,22 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
     [Serializable]
-    public class ConditionalIntGameActionHelper : ConditionalGameActionHelper<int, IntAction, BoolIntFunction> { }
+    public sealed class ConditionalIntGameActionHelper : ConditionalGameActionHelper<int, IntAction, BoolIntFunction> { }
 
     [CreateAssetMenu(menuName = "Unity Atoms/Int/Conditional", fileName = "ConditionalIntAction", order = CreateAssetMenuUtils.Order.CONDITIONAL)]
-    public class ConditionalIntAction : IntAction
+    public sealed class ConditionalIntAction : IntAction
     {
+        [FormerlySerializedAs("Conditional")]
         [SerializeField]
-        private ConditionalIntGameActionHelper Conditional = null;
+        private ConditionalIntGameActionHelper _conditional = null;
 
         public override void Do(int t1)
         {
-            Conditional.Do(t1);
+            _conditional.Do(t1);
         }
     }
 }
