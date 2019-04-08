@@ -4,11 +4,15 @@ using UnityEngine.Serialization;
 namespace UnityAtoms
 {
     public abstract class ScriptableObjectVariable<T, E1, E2> : ScriptableObjectVariableBase<T>,
-        IWithOldValue<T>
+        IWithOldValue<T>,
+        ISerializationCallbackReceiver
         where E1 : GameEvent<T>
         where E2 : GameEvent<T, T>
     {
-        public override T Value { get { return _runtimeValue; } set { SetValue(value); } }
+        public override T Value { get { return _value; } set { SetValue(value); } }
+
+        [SerializeField]
+        private T _initialValue;
 
         public T OldValue { get { return _oldValue; } }
 
@@ -30,12 +34,12 @@ namespace UnityAtoms
 
         public bool SetValue(T newValue)
         {
-            if (!AreEqual(this._runtimeValue, newValue))
+            if (!AreEqual(_value, newValue))
             {
-                this._initialValue = this._runtimeValue;
-                this._runtimeValue = newValue;
-                if (Changed != null) { Changed.Raise(newValue); }
-                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(this._runtimeValue, this._oldValue); }
+                _oldValue = _value;
+                _value = newValue;
+                if (Changed != null) { Changed.Raise(_value); }
+                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(_value, _oldValue); }
                 return true;
             }
 
@@ -46,5 +50,8 @@ namespace UnityAtoms
         {
             return SetValue(variable.Value);
         }
+
+        public void OnBeforeSerialize() { }
+        public void OnAfterDeserialize() { _value = _initialValue; }
     }
 }
