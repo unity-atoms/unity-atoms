@@ -12,7 +12,7 @@ namespace UnityAtoms
     {
         [FormerlySerializedAs("Conditional")]
         [SerializeField]
-        private ConditionalBoolGameActionHelper _conditional;
+        private ConditionalBoolGameActionHelper _conditional = null;
 
         public override void Do(bool t1)
         {

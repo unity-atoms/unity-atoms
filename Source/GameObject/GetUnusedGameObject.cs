@@ -15,15 +15,15 @@ namespace UnityAtoms
     {
         [FormerlySerializedAs("List")]
         [SerializeField]
-        private GameObjectList _list;
+        private GameObjectList _list = null;
 
         [FormerlySerializedAs("Prefab")]
         [SerializeField]
-        private GameObject _prefab;
+        private GameObject _prefab = null;
 
         [FormerlySerializedAs("IsNotUsed")]
         [SerializeField]
-        private BoolGameObjectFunction _isNotUsed;
+        private BoolGameObjectFunction _isNotUsed = null;
 
         public override GameObject Call(Vector3 position, Quaternion quaternion)
         {

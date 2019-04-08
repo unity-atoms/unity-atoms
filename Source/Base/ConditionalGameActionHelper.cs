@@ -11,23 +11,23 @@ namespace UnityAtoms
     {
         [FormerlySerializedAs("Condition")]
         [SerializeField]
-        private C _condition;
+        private C _condition = null;
 
         [FormerlySerializedAs("Action")]
         [SerializeField]
-        private GA _action;
+        private GA _action = null;
 
         [FormerlySerializedAs("VoidAction")]
         [SerializeField]
-        private VoidAction _voidAction;
+        private VoidAction _voidAction = null;
 
         [FormerlySerializedAs("ElseAction")]
         [SerializeField]
-        private GA _elseAction;
+        private GA _elseAction = null;
 
         [FormerlySerializedAs("ElseVoidAction")]
         [SerializeField]
-        private VoidAction _elseVoidAction;
+        private VoidAction _elseVoidAction = null;
 
         public void Do(T1 t1)
         {
@@ -85,19 +85,19 @@ namespace UnityAtoms
         where C : GameFunction<bool, T1, T2, T3>
     {
         [SerializeField]
-        private C _condition;
+        private C _condition = null;
 
         [SerializeField]
-        private GA _action;
+        private GA _action = null;
 
         [SerializeField]
-        private VoidAction _voidAction;
+        private VoidAction _voidAction = null;
 
         [SerializeField]
-        private GA _elseAction;
+        private GA _elseAction = null;
 
         [SerializeField]
-        private VoidAction _elseVoidAction;
+        private VoidAction _elseVoidAction = null;
 
         public void Do(T1 t1, T2 t2, T3 t3)
         {
@@ -120,19 +120,19 @@ namespace UnityAtoms
         where C : GameFunction<bool, T1, T2, T3, T4>
     {
         [SerializeField]
-        private C _condition;
+        private C _condition = null;
 
         [SerializeField]
-        private GA _action;
+        private GA _action = null;
 
         [SerializeField]
-        private VoidAction _voidAction;
+        private VoidAction _voidAction = null;
 
         [SerializeField]
-        private GA _elseAction;
+        private GA _elseAction = null;
 
         [SerializeField]
-        private VoidAction _elseVoidAction;
+        private VoidAction _elseVoidAction = null;
 
         public void Do(T1 t1, T2 t2, T3 t3, T4 t4)
         {
@@ -155,19 +155,19 @@ namespace UnityAtoms
         where C : GameFunction<bool, T1, T2, T3, T4, T5>
     {
         [SerializeField]
-        private C _condition;
+        private C _condition = null;
 
         [SerializeField]
-        private GA _action;
+        private GA _action = null;
 
         [SerializeField]
-        private VoidAction _voidAction;
+        private VoidAction _voidAction = null;
 
         [SerializeField]
-        private GA _elseAction;
+        private GA _elseAction = null;
 
         [SerializeField]
-        private VoidAction _elseVoidAction;
+        private VoidAction _elseVoidAction = null;
 
         public void Do(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5)
         {

@@ -8,11 +8,11 @@ namespace UnityAtoms.UI
     {
         [FormerlySerializedAs("UIStateVariable")]
         [SerializeField]
-        private StringVariable _UIStateVariable;
+        private StringVariable _UIStateVariable = null;
 
         [FormerlySerializedAs("VisibleForStates")]
         [SerializeField]
-        private List<StringConstant> _visibleForStates;
+        private List<StringConstant> _visibleForStates = null;
 
         private void Start()
         {

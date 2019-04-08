@@ -11,13 +11,13 @@ namespace UnityAtoms
     {
         [FormerlySerializedAs("Event")]
         [SerializeField]
-        private E _event;
+        private E _event = null;
 
         public E GameEvent { get { return _event; } set { _event = value; } }
 
         [FormerlySerializedAs("UnityEventResponse")]
         [SerializeField]
-        private UER _unityEventResponse;
+        private UER _unityEventResponse = null;
 
         [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]

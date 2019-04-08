@@ -8,7 +8,7 @@ namespace UnityAtoms.Examples
     {
         [FormerlySerializedAs("MaxHealth")]
         [SerializeField]
-        private IntConstant _maxHealth;
+        private IntConstant _maxHealth = null;
 
         public void HealthChanged(int health)
         {

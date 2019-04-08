@@ -5,17 +5,17 @@ namespace UnityAtoms
 {
     public abstract class ReferenceDrawer : PropertyDrawer
     {
-        private static readonly string[] PopupOptions =
+        private static readonly string[] _popupOptions =
             { "Use Constant", "Use Variable" };
 
-        private static GUIStyle PopupStyle;
+        private static GUIStyle _popupStyle;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (PopupStyle == null)
+            if (_popupStyle == null)
             {
-                PopupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
-                PopupStyle.imagePosition = ImagePosition.ImageOnly;
+                _popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
+                _popupStyle.imagePosition = ImagePosition.ImageOnly;
             }
 
             label = EditorGUI.BeginProperty(position, label, property);
@@ -30,15 +30,15 @@ namespace UnityAtoms
 
             // Calculate rect for configuration button
             Rect buttonRect = new Rect(position);
-            buttonRect.yMin += PopupStyle.margin.top;
-            buttonRect.width = PopupStyle.fixedWidth + PopupStyle.margin.right;
+            buttonRect.yMin += _popupStyle.margin.top;
+            buttonRect.width = _popupStyle.fixedWidth + _popupStyle.margin.right;
             position.xMin = buttonRect.xMax;
 
             // Store old indent level and set it to 0, the PrefixLabel takes care of it
             int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
-            int result = EditorGUI.Popup(buttonRect, useConstant.boolValue ? 0 : 1, PopupOptions, PopupStyle);
+            int result = EditorGUI.Popup(buttonRect, useConstant.boolValue ? 0 : 1, _popupOptions, _popupStyle);
 
             useConstant.boolValue = result == 0;
 

@@ -18,6 +18,7 @@ namespace UnityAtoms
 
         protected ScriptableObjectReference(T value) : this()
         {
+            UseConstant = true;
             ConstantValue = value;
         }
 

@@ -126,10 +126,17 @@ There is an `.editorconfig` at the root of the repository located [here](/.edito
 * **White Space:** Trim empty whitespace from the ends of lines.
 
 #### Naming and Formatting
-* Namespaces, Defined Types, Methods, and Events should all be in upper pascal case.
-* Public fields should be in lower pascal case like `isLoaded` while private fields should be lower pascal case prefixed with a `_` character like `_isLoaded`.
-* Public and private properties should be in upper pascal case `IsLoaded`.
-* Readonly, static, or const fields should be in upper pascal case `IsLoaded`.
+| Object Name | Notation | Example |
+| ----------- | -------- | ------- |
+| Namespaces | PascalCase | UnityAtoms |
+| Classes | PascalCase | AtomicTags |
+| Methods | PascalCase | GetTags |
+| Method arguments | camelCase | oldValue |
+| Properties | PascalCase | Value |
+| Public fields | PascalCase | Value |
+| Private fields | _camelCase | _value |
+| Constants | SNAKE_CASE | NETWORK_ACCESS_TOKEN_SIZE |
+| Inline variables | camelCase | value |
 
 #### Structure
 * Follow good encapsulation principles and try to limit exposing fields directly as public; unless necessary everything should be marked as private/protected unless necessary. Where public access to a field is needed, use a public property instead.

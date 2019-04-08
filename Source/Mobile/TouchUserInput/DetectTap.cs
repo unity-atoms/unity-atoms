@@ -9,31 +9,31 @@ namespace UnityAtoms.Mobile
     {
         [FormerlySerializedAs("FirstTapTimer")]
         [SerializeField]
-        private Timer _firstTapTimer;
+        private Timer _firstTapTimer = null;
 
         [FormerlySerializedAs("SecondTapTimer")]
         [SerializeField]
-        private Timer _secondTapTimer;
+        private Timer _secondTapTimer = null;
 
         [FormerlySerializedAs("MaxTimeBetweenTaps")]
         [SerializeField]
-        private FloatReference _maxTimeBetweenTaps;
+        private FloatReference _maxTimeBetweenTaps = null;
 
         [FormerlySerializedAs("MaxDistanceBetweenTaps")]
         [SerializeField]
-        private FloatReference _maxDistanceBetweenTaps;
+        private FloatReference _maxDistanceBetweenTaps = null;
 
         [FormerlySerializedAs("MaxMovementToCountAsTap")]
         [SerializeField]
-        private FloatReference _maxMovementToCountAsTap;
+        private FloatReference _maxMovementToCountAsTap = null;
 
         [FormerlySerializedAs("OnTapDetectedEvent")]
         [SerializeField]
-        private TouchUserInputGameEvent _onTapDetectedEvent;
+        private TouchUserInputGameEvent _onTapDetectedEvent = null;
 
         [FormerlySerializedAs("OnDoubleTapDetectedEvent")]
         [SerializeField]
-        private TouchUserInputGameEvent _onDoubleTapDetectedEvent;
+        private TouchUserInputGameEvent _onDoubleTapDetectedEvent = null;
 
         private Vector2 _inputPosFirstTapDown;
 

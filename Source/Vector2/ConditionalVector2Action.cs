@@ -12,7 +12,7 @@ namespace UnityAtoms
     {
         [FormerlySerializedAs("Conditional")]
         [SerializeField]
-        private ConditionalVector2GameActionHelper _conditional;
+        private ConditionalVector2GameActionHelper _conditional = null;
 
         public override void Do(Vector2 t1)
         {

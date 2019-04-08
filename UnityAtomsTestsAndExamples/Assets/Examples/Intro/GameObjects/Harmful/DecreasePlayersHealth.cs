@@ -9,7 +9,7 @@ namespace UnityAtoms.Examples
     {
         [FormerlySerializedAs("TagPlayer")]
         [SerializeField]
-        private StringConstant _tagPlayer;
+        private StringConstant _tagPlayer = null;
 
         public override void Do(Collider2D collider)
         {

@@ -8,7 +8,7 @@ namespace UnityAtoms
     /// </summary>
     public class ReadOnlyList<T> : IEnumerable<T>
     {
-        private readonly IList<T> _referenceList;
+        private readonly IList<T> _referenceList = null;
 
         public ReadOnlyList(IList<T> referenceList)
         {

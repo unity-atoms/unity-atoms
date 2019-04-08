@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e564c43d8cd6f404fbf20034291d3354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: fb1508338b66f42099fceb52aa22cf4c, type: 2}
-  UnityEventResponse:
+  _event: {fileID: 11400000, guid: fb1508338b66f42099fceb52aa22cf4c, type: 2}
+  _unityEventResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
@@ -60,5 +60,5 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityAtoms.UnityIntEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  GameActionResponses:
+  _gameActionResponses:
   - {fileID: 11400000, guid: 58f78c691d84e44cd84c884aadacf21a, type: 2}

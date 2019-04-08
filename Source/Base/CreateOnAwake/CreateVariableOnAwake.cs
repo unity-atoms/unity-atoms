@@ -24,23 +24,23 @@ namespace UnityAtoms
 
         [FormerlySerializedAs("CreateChangedWithHistoryEvent")]
         [SerializeField]
-        private bool _createChangedWithHistoryEvent;
+        private bool _createChangedWithHistoryEvent = false;
 
         [FormerlySerializedAs("Listener")]
         [SerializeField]
-        private L1 _listener;
+        private L1 _listener = null;
 
         [FormerlySerializedAs("ListenerWithHistory")]
         [SerializeField]
-        private L2 _listenerWithHistory;
+        private L2 _listenerWithHistory = null;
 
         [FormerlySerializedAs("OnVariableCreate")]
         [SerializeField]
-        private GA3 _onVariableCreate;
+        private GA3 _onVariableCreate = null;
 
         [FormerlySerializedAs("OnVariableCreateWithGO")]
         [SerializeField]
-        private GA4 _onVariableCreateWithGO;
+        private GA4 _onVariableCreateWithGO = null;
 
         private void Awake()
         {

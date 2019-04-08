@@ -11,11 +11,11 @@ namespace UnityAtoms
     {
         [FormerlySerializedAs("Variable")]
         [SerializeField]
-        private V _variable;
+        private V _variable = null;
 
         [FormerlySerializedAs("Value")]
         [SerializeField]
-        private R _value;
+        private R _value = null;
 
         public override void Do()
         {
