@@ -241,8 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd80c08b2c1349c0839fcab63bcf9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: {fileID: 11400000, guid: 41aa2296cd68a4b718a8fd1bd8ad5a95, type: 2}
-  Health: {fileID: 11400000, guid: 30c71ebe6587c4fe8b18d5279710b4dc, type: 2}
+  _maxHealth: {fileID: 11400000, guid: 41aa2296cd68a4b718a8fd1bd8ad5a95, type: 2}
 --- !u!114 &145633449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,13 +664,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
-  UnityEventResponse:
+  _event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
+  _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityAtoms.UnityVoidEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  GameActionResponses:
+  _gameActionResponses:
   - {fileID: 11400000, guid: 1ec7260c4832945c8b7bc4bb1cd57ff2, type: 2}
 --- !u!114 &1025272941
 MonoBehaviour:
@@ -686,8 +685,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
-  EventWithGORef: {fileID: 0}
-  SelectGORef: {fileID: 0}
+  EventWithGameObjectReference: {fileID: 0}
+  _selectGameObjectReference: {fileID: 0}
 --- !u!114 &1025272942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,8 +839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bced320f87ec14de98a51ee9c0ebb03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIStateVariable: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
-  VisibleForStates:
+  _UIStateVariable: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
+  _visibleForStates:
   - {fileID: 11400000, guid: 0f191ae005f2448dfb420563d3f089a7, type: 2}
 --- !u!1 &1067648696
 GameObject:
@@ -963,8 +962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
-  EventWithGORef: {fileID: 0}
-  SelectGORef: {fileID: 0}
+  EventWithGameObjectReference: {fileID: 0}
+  _selectGameObjectReference: {fileID: 0}
 --- !u!114 &1128657633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,13 +1055,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
-  UnityEventResponse:
+  _event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
+  _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityAtoms.UnityVoidEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  GameActionResponses:
+  _gameActionResponses:
   - {fileID: 11400000, guid: ffb54297f78ca406286c62b7a33578df, type: 2}
 --- !u!1 &1244410470
 GameObject:
@@ -1236,8 +1235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bced320f87ec14de98a51ee9c0ebb03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIStateVariable: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
-  VisibleForStates:
+  _UIStateVariable: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
+  _visibleForStates:
   - {fileID: 11400000, guid: cb8238ac7ef5d407fb31219fe114d2ae, type: 2}
 --- !u!1 &1459948897
 GameObject:
@@ -1372,8 +1371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
-  EventWithGORef: {fileID: 0}
-  SelectGORef: {fileID: 0}
+  EventWithGameObjectReference: {fileID: 0}
+  _selectGameObjectReference: {fileID: 0}
 --- !u!114 &1522469498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,13 +1464,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
-  UnityEventResponse:
+  _event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
+  _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityAtoms.UnityVoidEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  GameActionResponses:
+  _gameActionResponses:
   - {fileID: 11400000, guid: 23bac2fbe8e7545e78e859bde7d6573c, type: 2}
 --- !u!1 &1613897678
 GameObject:
@@ -1526,13 +1525,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
-  UnityEventResponse:
+  _event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
+  _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityAtoms.UnityVoidEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  GameActionResponses:
+  _gameActionResponses:
   - {fileID: 11400000, guid: a87b1f24aa74e491ba5615e100d194ed, type: 2}
 --- !u!114 &1613897681
 MonoBehaviour:
@@ -1547,8 +1546,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
-  EventWithGORef: {fileID: 0}
-  SelectGORef: {fileID: 0}
+  EventWithGameObjectReference: {fileID: 0}
+  _selectGameObjectReference: {fileID: 0}
 --- !u!114 &1613897682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1764,7 +1763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b,
         type: 3}
-      propertyPath: UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 145633448}
     m_RemovedComponents: []
@@ -1822,11 +1821,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114195744032534706, guid: d6eebf14bca0b4ed3b474f95998bafc9,
-        type: 3}
-      propertyPath: GameActionResponses.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
