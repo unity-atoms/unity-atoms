@@ -8,9 +8,9 @@ namespace UnityAtoms.Extensions
     // Create an Action delegates that takes 5 parameters. Not included in the standard lib.
     public delegate void Action<T1, T2, T3, T4, T5>(T1 p1, T2 p2, T3 p3, T4 p4, T5 p5);
 
-    public static class ListExtensions
+    public static class IListExtensions
     {
-        public static void ForEach<T, P1>(this List<T> list, Action<T, P1> action, P1 param1)
+        public static void ForEach<T, P1>(this IList<T> list, Action<T, P1> action, P1 param1)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -18,7 +18,7 @@ namespace UnityAtoms.Extensions
             }
         }
 
-        public static void ForEach<T, P1, P2>(this List<T> list, Action<T, P1, P2> action, P1 param1, P2 param2)
+        public static void ForEach<T, P1, P2>(this IList<T> list, Action<T, P1, P2> action, P1 param1, P2 param2)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -26,7 +26,7 @@ namespace UnityAtoms.Extensions
             }
         }
 
-        public static void ForEach<T, P1, P2, P3>(this List<T> list, Action<T, P1, P2, P3> action, P1 param1, P2 param2, P3 param3)
+        public static void ForEach<T, P1, P2, P3>(this IList<T> list, Action<T, P1, P2, P3> action, P1 param1, P2 param2, P3 param3)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -34,7 +34,7 @@ namespace UnityAtoms.Extensions
             }
         }
 
-        public static void ForEach<T, V, P1>(this List<T> list, Func<T, V> selector, Action<V, P1> action, P1 param1)
+        public static void ForEach<T, V, P1>(this IList<T> list, Func<T, V> selector, Action<V, P1> action, P1 param1)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -42,7 +42,7 @@ namespace UnityAtoms.Extensions
             }
         }
 
-        public static void ForEach<T, V, P1, P2>(this List<T> list, Func<T, V> selector, Action<V, P1, P2> action, P1 param1, P2 param2)
+        public static void ForEach<T, V, P1, P2>(this IList<T> list, Func<T, V> selector, Action<V, P1, P2> action, P1 param1, P2 param2)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -50,7 +50,7 @@ namespace UnityAtoms.Extensions
             }
         }
 
-        public static void ForEach<T, V, P1, P2, P3>(this List<T> list, Func<T, V> selector, Action<V, P1, P2, P3> action, P1 param1, P2 param2, P3 param3)
+        public static void ForEach<T, V, P1, P2, P3>(this IList<T> list, Func<T, V> selector, Action<V, P1, P2, P3> action, P1 param1, P2 param2, P3 param3)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -58,7 +58,7 @@ namespace UnityAtoms.Extensions
             }
         }
 
-        public static void ForEach<T>(this List<T> list, Action<T, int> action)
+        public static void ForEach<T>(this IList<T> list, Action<T, int> action)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -66,7 +66,7 @@ namespace UnityAtoms.Extensions
             }
         }
 
-        public static void ForEach<T, P1>(this List<T> list, Action<T, int, P1> action, P1 param1)
+        public static void ForEach<T, P1>(this IList<T> list, Action<T, int, P1> action, P1 param1)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -74,7 +74,7 @@ namespace UnityAtoms.Extensions
             }
         }
 
-        public static void ForEach<T, P1, P2>(this List<T> list, Action<T, int, P1, P2> action, P1 param1, P2 param2)
+        public static void ForEach<T, P1, P2>(this IList<T> list, Action<T, int, P1, P2> action, P1 param1, P2 param2)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -82,7 +82,7 @@ namespace UnityAtoms.Extensions
             }
         }
 
-        public static void ForEach<T, P1, P2, P3>(this List<T> list, Action<T, int, P1, P2, P3> action, P1 param1, P2 param2, P3 param3)
+        public static void ForEach<T, P1, P2, P3>(this IList<T> list, Action<T, int, P1, P2, P3> action, P1 param1, P2 param2, P3 param3)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -90,7 +90,7 @@ namespace UnityAtoms.Extensions
             }
         }
 
-        public static R Reduce<R, T>(this List<T> list, Func<R, R, R> reducer, Func<T, R> getValue, R initialValue, Func<T, bool> skip = null)
+        public static R Reduce<R, T>(this IList<T> list, Func<R, R, R> reducer, Func<T, R> getValue, R initialValue, Func<T, bool> skip = null)
         {
             R accumulator = initialValue;
             for (int i = 0; list != null && i < list.Count; ++i)
@@ -106,7 +106,7 @@ namespace UnityAtoms.Extensions
             return accumulator;
         }
 
-        public static R Reduce<R, T, A>(this List<T> list, Func<R, R, A, R> reducer, Func<T, R> getValue, R initialValue, A reducerArg1, Func<T, bool> skip = null)
+        public static R Reduce<R, T, A>(this IList<T> list, Func<R, R, A, R> reducer, Func<T, R> getValue, R initialValue, A reducerArg1, Func<T, bool> skip = null)
         {
             R accumulator = initialValue;
             for (int i = 0; list != null && i < list.Count; ++i)
@@ -125,7 +125,7 @@ namespace UnityAtoms.Extensions
         public static float ReturnMaxFloat(float acc, float cur) { return Mathf.Max(acc, cur); }
         public static float ReturnMinFloat(float acc, float cur) { return Mathf.Min(acc, cur); }
 
-        public static T First<T>(this List<T> list, Func<T, bool> func)
+        public static T First<T>(this IList<T> list, Func<T, bool> func)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
             {
@@ -135,12 +135,12 @@ namespace UnityAtoms.Extensions
             return default(T);
         }
 
-        public static bool Some<T>(this List<T> list, Func<T, bool> func)
+        public static bool Some<T>(this IList<T> list, Func<T, bool> func)
         {
             return EqualityComparer<T>.Default.Equals(list.First(func), default(T));
         }
 
-        public static bool AddIfNotExists<T>(this List<T> list, T item)
+        public static bool AddIfNotExists<T>(this IList<T> list, T item)
         {
             if (!list.Contains(item))
             {
@@ -151,13 +151,13 @@ namespace UnityAtoms.Extensions
             return false;
         }
 
-        public static List<T> ChainableAdd<T>(this List<T> list, T item)
+        public static IList<T> ChainableAdd<T>(this IList<T> list, T item)
         {
             list.Add(item);
             return list;
         }
 
-        public static T GetOrInstantiate<T>(this List<T> list, UnityEngine.Object prefab, Vector3 position, Quaternion quaternion, Func<T, bool> condition) where T : UnityEngine.Component
+        public static T GetOrInstantiate<T>(this IList<T> list, UnityEngine.Object prefab, Vector3 position, Quaternion quaternion, Func<T, bool> condition) where T : UnityEngine.Component
         {
             var component = list.First(condition);
 
@@ -173,7 +173,7 @@ namespace UnityAtoms.Extensions
             return newComponent;
         }
 
-        public static GameObject GetOrInstantiate(this List<GameObject> list, UnityEngine.Object prefab, Vector3 position, Quaternion quaternion, Func<GameObject, bool> condition)
+        public static GameObject GetOrInstantiate(this IList<GameObject> list, UnityEngine.Object prefab, Vector3 position, Quaternion quaternion, Func<GameObject, bool> condition)
         {
             var component = list.First(condition);
 
@@ -189,7 +189,7 @@ namespace UnityAtoms.Extensions
             return newGameObject;
         }
 
-        public static T InstantiateAndAdd<T>(this List<T> list, UnityEngine.Object prefab, Vector3 position, Quaternion quaternion) where T : UnityEngine.Component
+        public static T InstantiateAndAdd<T>(this IList<T> list, UnityEngine.Object prefab, Vector3 position, Quaternion quaternion) where T : UnityEngine.Component
         {
             var component = GameObject.Instantiate(prefab, position, quaternion) as T;
             list.Add(component);

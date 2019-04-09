@@ -1,11 +1,11 @@
 {
-    "dependencies": {
-        "com.mambojambostudios.unity-atoms-src": "file:../../Source",
-        "com.unity.package-manager-ui": "2.0.3",
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.physics2d": "1.0.0",
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.modules.uielements": "1.0.0"
-    }
+  "dependencies": {
+    "com.mambojambostudios.unity-atoms-src": "file:../../Source",
+    "com.unity.package-manager-ui": "2.0.7",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.physics2d": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0"
+  }
 }
