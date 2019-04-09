@@ -9,7 +9,7 @@ namespace UnityAtoms
     public abstract class ScriptableObjectList<T, E> : ScriptableObject, IList<T> where E : GameEvent<T>
     {
         [SerializeField]
-        private IList<T> list = new List<T>();
+        private List<T> list = new List<T>();
         public E Added;
         public E Removed;
         public VoidEvent Cleared;
