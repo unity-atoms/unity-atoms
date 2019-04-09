@@ -16,7 +16,7 @@ namespace UnityAtoms
 
         public int Count => list.Count;
 
-        public bool IsReadOnly => list.IsReadOnly;
+        public bool IsReadOnly => false;
 
         public void Add(T item)
         {
@@ -70,7 +70,7 @@ namespace UnityAtoms
             return list[i];
         }
 
-        public IList<T> List
+        public List<T> List
         {
             get { return list; }
             set { list = value; }
