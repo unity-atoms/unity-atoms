@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -137,7 +136,17 @@ namespace UnityAtoms.Extensions
 
         public static bool Some<T>(this IList<T> list, Func<T, bool> func)
         {
-            return EqualityComparer<T>.Default.Equals(list.First(func), default(T));
+            return !EqualityComparer<T>.Default.Equals(list.First(func), default(T));
+        }
+
+        public static bool Every<T>(this List<T> list, Func<T, bool> func)
+        {
+            for (int i = 0; list != null && i < list.Count; ++i)
+            {
+                if (!func(list[i])) return false;
+            }
+
+            return true;
         }
 
         public static bool AddIfNotExists<T>(this IList<T> list, T item)

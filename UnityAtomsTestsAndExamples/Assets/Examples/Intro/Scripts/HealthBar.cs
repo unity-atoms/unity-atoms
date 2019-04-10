@@ -1,14 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityAtoms;
+using UnityEngine.Serialization;
 
-public class HealthBar : MonoBehaviour
+namespace UnityAtoms.Examples
 {
-    [SerializeField]
-    private IntConstant MaxHealth = null;
-
-    public void HealthChanged(int health)
+    public class HealthBar : MonoBehaviour
     {
-        GetComponent<Image>().fillAmount = 1.0f * health / MaxHealth.Value;
+        [FormerlySerializedAs("MaxHealth")]
+        [SerializeField]
+        private IntConstant _maxHealth = null;
+
+        public void HealthChanged(int health)
+        {
+            GetComponent<Image>().fillAmount = 1.0f * health / _maxHealth.Value;
+        }
     }
 }

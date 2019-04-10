@@ -1,19 +1,22 @@
-﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms.UI
 {
     public class UIContainer : MonoBehaviour, IGameEventListener<string>
     {
+        [FormerlySerializedAs("UIStateVariable")]
         [SerializeField]
-        private StringVariable UIStateVariable = null;
-        [SerializeField]
-        private List<StringConstant> VisibleForStates = null;
+        private StringVariable _UIStateVariable = null;
 
-        void Start()
+        [FormerlySerializedAs("VisibleForStates")]
+        [SerializeField]
+        private List<StringConstant> _visibleForStates = null;
+
+        private void Start()
         {
-            StateNameChanged(UIStateVariable.Value);
+            StateNameChanged(_UIStateVariable.Value);
         }
 
         public void OnEventRaised(string stateName)
@@ -23,7 +26,7 @@ namespace UnityAtoms.UI
 
         private void StateNameChanged(string stateName)
         {
-            if (VisibleForStates.Exists((state) => state.Value == stateName))
+            if (_visibleForStates.Exists((state) => state.Value == stateName))
             {
                 GetComponent<CanvasGroup>().alpha = 1f;
                 GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -39,17 +42,17 @@ namespace UnityAtoms.UI
 
         private void Awake()
         {
-            if (UIStateVariable.Changed != null)
+            if (_UIStateVariable.Changed != null)
             {
-                UIStateVariable.Changed.RegisterListener(this);
+                _UIStateVariable.Changed.RegisterListener(this);
             }
         }
 
         private void OnDestroy()
         {
-            if (UIStateVariable.Changed != null)
+            if (_UIStateVariable.Changed != null)
             {
-                UIStateVariable.Changed.UnregisterListener(this);
+                _UIStateVariable.Changed.UnregisterListener(this);
             }
         }
     }

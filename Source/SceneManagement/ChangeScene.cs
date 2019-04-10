@@ -1,21 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
     [CreateAssetMenu(menuName = "Unity Atoms/Scene Management/Void Actions/Change Scene")]
-    public class ChangeScene : VoidAction
+    public sealed class ChangeScene : VoidAction
     {
+        [FormerlySerializedAs("SceneName")]
         [SerializeField]
-        private StringReference SceneName = null;
+        private StringReference _sceneName;
 
         public override void Do()
         {
-            SceneManager.LoadScene(SceneName.Value);
+            SceneManager.LoadScene(_sceneName.Value);
         }
     }
-
 }
 

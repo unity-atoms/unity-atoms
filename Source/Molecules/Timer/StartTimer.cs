@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
     [CreateAssetMenu(menuName = "Unity Atoms/Molecules/Timer/Start Timer")]
-    public class StartTimer : VoidAction
+    public sealed class StartTimer : VoidAction
     {
+        [FormerlySerializedAs("Timer")]
         [SerializeField]
-        private Timer Timer = null;
+        private Timer _timer = null;
 
         public override void Do()
         {
-            Timer.Start();
+            _timer.Start();
         }
     }
 }

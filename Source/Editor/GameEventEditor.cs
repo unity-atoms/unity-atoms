@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public class GameEventEditor<T, E> : Editor where E : GameEvent<T>
+    public abstract class GameEventEditor<T, E> : Editor
+        where E : GameEvent<T>
     {
         public override void OnInspectorGUI()
         {
@@ -20,29 +21,29 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(BoolEvent))]
-    public class BoolEventEditor : GameEventEditor<bool, BoolEvent> { }
+    public sealed class BoolEventEditor : GameEventEditor<bool, BoolEvent> { }
 
     [CustomEditor(typeof(Collider2DEvent))]
-    public class Collider2DEventEditor : GameEventEditor<Collider2D, Collider2DEvent> { }
+    public sealed class Collider2DEventEditor : GameEventEditor<Collider2D, Collider2DEvent> { }
 
     [CustomEditor(typeof(ColorEvent))]
-    public class ColorEventEditor : GameEventEditor<Color, ColorEvent> { }
+    public sealed class ColorEventEditor : GameEventEditor<Color, ColorEvent> { }
 
     [CustomEditor(typeof(FloatEvent))]
-    public class FloatEventEditor : GameEventEditor<float, FloatEvent> { }
+    public sealed class FloatEventEditor : GameEventEditor<float, FloatEvent> { }
 
     [CustomEditor(typeof(GameObjectEvent))]
-    public class GameObjectEventEditor : GameEventEditor<GameObject, GameObjectEvent> { }
+    public sealed class GameObjectEventEditor : GameEventEditor<GameObject, GameObjectEvent> { }
 
     [CustomEditor(typeof(IntEvent))]
-    public class IntGameEventEditor : GameEventEditor<int, IntEvent> { }
+    public sealed class IntGameEventEditor : GameEventEditor<int, IntEvent> { }
 
     [CustomEditor(typeof(Vector2Event))]
-    public class Vector2EventEditor : GameEventEditor<Vector2, Vector2Event> { }
+    public sealed class Vector2EventEditor : GameEventEditor<Vector2, Vector2Event> { }
 
     [CustomEditor(typeof(Vector3Event))]
-    public class Vector3EventEditor : GameEventEditor<Vector3, Vector3Event> { }
+    public sealed class Vector3EventEditor : GameEventEditor<Vector3, Vector3Event> { }
 
     [CustomEditor(typeof(VoidEvent))]
-    public class VoidEventEditor : GameEventEditor<Void, VoidEvent> { }
+    public sealed class VoidEventEditor : GameEventEditor<Void, VoidEvent> { }
 }

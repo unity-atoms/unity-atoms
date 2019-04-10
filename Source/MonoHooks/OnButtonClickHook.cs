@@ -1,18 +1,40 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityAtoms.Logger;
+#endif
 
 namespace UnityAtoms
 {
-    public class OnButtonClickHook : VoidHook
+    [RequireComponent(typeof(Button))]
+    public sealed class OnButtonClickHook : VoidHook
     {
         private void Awake()
         {
-            GetComponent<Button>().onClick.AddListener(OnClick);
+            var button = GetComponent<Button>();
+            if (button == null)
+            {
+#if UNITY_EDITOR
+                AtomsLogger.Warning("OnButtonClickHook needs a Button component");
+#endif
+                return;
+            }
+
+            button.onClick.AddListener(OnClick);
         }
 
         private void OnDestroy()
         {
-            GetComponent<Button>().onClick.RemoveListener(OnClick);
+            var button = GetComponent<Button>();
+            if (button == null)
+            {
+#if UNITY_EDITOR
+                AtomsLogger.Warning("OnButtonClickHook needs a Button component");
+#endif
+                return;
+            }
+
+            button.onClick.RemoveListener(OnClick);
         }
 
         private void OnClick()

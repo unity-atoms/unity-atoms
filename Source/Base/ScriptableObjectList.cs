@@ -8,15 +8,18 @@ namespace UnityAtoms
 {
     public abstract class ScriptableObjectList<T, E> : ScriptableObject, IList<T> where E : GameEvent<T>
     {
-        [SerializeField]
-        private List<T> list = new List<T>();
         public E Added;
+
         public E Removed;
+
         public VoidEvent Cleared;
 
         public int Count => list.Count;
 
         public bool IsReadOnly => false;
+
+        [SerializeField]
+        private List<T> list = new List<T>();
 
         public void Add(T item)
         {
@@ -101,7 +104,6 @@ namespace UnityAtoms
 
         public void RemoveAt(int index)
         {
-            if (index >= list.Count) return;
             var item = list[index];
             list.RemoveAt(index);
             if (null != Removed)

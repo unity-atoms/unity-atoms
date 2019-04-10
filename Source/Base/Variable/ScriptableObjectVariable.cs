@@ -1,16 +1,24 @@
-using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectVariable<T, E1, E2> : ScriptableObjectVariableBase<T>, IWithOldValue<T> where E1 : GameEvent<T> where E2 : GameEvent<T, T>
+    public abstract class ScriptableObjectVariable<T, E1, E2> : ScriptableObjectVariableBase<T>,
+        IWithOldValue<T>,
+        ISerializationCallbackReceiver
+        where E1 : GameEvent<T>
+        where E2 : GameEvent<T, T>
     {
-        public override T Value { get { return value; } set { SetValue(value); } }
-
-        public T OldValue { get { return oldValue; } }
+        public override T Value { get { return _value; } set { SetValue(value); } }
 
         [SerializeField]
-        private T oldValue;
+        private T _initialValue;
+
+        public T OldValue { get { return _oldValue; } }
+
+        [FormerlySerializedAs("oldValue")]
+        [SerializeField]
+        private T _oldValue;
 
         public E1 Changed;
 
@@ -24,14 +32,14 @@ namespace UnityAtoms
             Changed.Raise(Value);
         }
 
-        public bool SetValue(T value)
+        public bool SetValue(T newValue)
         {
-            if (!AreEqual(this.value, value))
+            if (!AreEqual(_value, newValue))
             {
-                this.oldValue = this.value;
-                this.value = value;
-                if (Changed != null) { Changed.Raise(value); }
-                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(this.value, this.oldValue); }
+                _oldValue = _value;
+                _value = newValue;
+                if (Changed != null) { Changed.Raise(_value); }
+                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(_value, _oldValue); }
                 return true;
             }
 
@@ -42,5 +50,8 @@ namespace UnityAtoms
         {
             return SetValue(variable.Value);
         }
+
+        public void OnBeforeSerialize() { }
+        public void OnAfterDeserialize() { _value = _initialValue; }
     }
 }

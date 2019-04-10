@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Reflection;
 using NUnit.Framework;
 using UnityAtoms;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Tests
 {
@@ -14,7 +12,7 @@ namespace Tests
         public void ScriptableObjectBaseTest_EqualityMembers()
         {
 
-            var fieldinfo = typeof(StringConstant).GetField("value", BindingFlags.NonPublic | BindingFlags.Instance);
+            var fieldinfo = typeof(StringConstant).GetField("_value", BindingFlags.NonPublic | BindingFlags.Instance);
 
             var stringConstant = ScriptableObject.CreateInstance<StringConstant>();
             fieldinfo.SetValue(stringConstant, "some constant string");
