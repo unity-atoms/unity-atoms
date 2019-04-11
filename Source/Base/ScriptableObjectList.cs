@@ -115,7 +115,10 @@ namespace UnityAtoms
         public void Insert(int index, T item)
         {
             list.Insert(index, item);
-            Added.Raise(item);
+            if (Added != null)
+            {            
+                Added.Raise(item);
+            }
         }
 
     }
