@@ -134,9 +134,24 @@ namespace UnityAtoms.Extensions
             return default(T);
         }
 
+        public static T First<T, P1>(this IList<T> list, Func<T, P1, bool> func, P1 param1)
+        {
+            for (int i = 0; list != null && i < list.Count; ++i)
+            {
+                if (func(list[i], param1)) return list[i];
+            }
+
+            return default(T);
+        }
+
         public static bool Some<T>(this IList<T> list, Func<T, bool> func)
         {
             return !EqualityComparer<T>.Default.Equals(list.First(func), default(T));
+        }
+
+        public static bool Some<T, P1>(this IList<T> list, Func<T, P1, bool> func, P1 param1)
+        {
+            return !EqualityComparer<T>.Default.Equals(list.First(func, param1), default(T));
         }
 
         public static bool Every<T>(this List<T> list, Func<T, bool> func)
