@@ -25,12 +25,13 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
-            if (_event == null) return;
+            if (GameEvent == null) return;
             GameEvent.RegisterListener(this);
         }
 
         private void OnDisable()
         {
+            if (GameEvent == null) return;
             GameEvent.UnregisterListener(this);
         }
 
