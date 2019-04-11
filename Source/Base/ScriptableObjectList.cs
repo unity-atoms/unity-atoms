@@ -53,16 +53,6 @@ namespace UnityAtoms
             }
         }
 
-        public bool Some(Func<T, bool> func)
-        {
-            return list.Some<T>(func);
-        }
-
-        public T First(Func<T, bool> func)
-        {
-            return list.First<T>(func);
-        }
-
         public bool Contains(T item)
         {
             return list.Contains(item);
@@ -116,7 +106,7 @@ namespace UnityAtoms
         {
             list.Insert(index, item);
             if (Added != null)
-            {            
+            {
                 Added.Raise(item);
             }
         }
