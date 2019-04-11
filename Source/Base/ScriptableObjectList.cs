@@ -1,12 +1,12 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityAtoms.Extensions;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectList<T, E> : ScriptableObject
-        where E : GameEvent<T>
+    public abstract class ScriptableObjectList<T, E> : ScriptableObject, IList<T> where E : GameEvent<T>
     {
         public E Added;
 
@@ -14,7 +14,9 @@ namespace UnityAtoms
 
         public VoidEvent Cleared;
 
-        public int Count { get { return list.Count; } }
+        public int Count => list.Count;
+
+        public bool IsReadOnly => false;
 
         [SerializeField]
         private List<T> list = new List<T>();
@@ -31,16 +33,15 @@ namespace UnityAtoms
             }
         }
 
-        public void Remove(T item)
+        public bool Remove(T item)
         {
-            if (list.Contains(item))
+            var removed = list.Remove(item);
+            if (!removed) return false;
+            if (null != Removed)
             {
-                list.Remove(item);
-                if (null != Removed)
-                {
-                    Removed.Raise(item);
-                }
+                Removed.Raise(item);
             }
+            return true;
         }
 
         public void Clear()
@@ -54,12 +55,12 @@ namespace UnityAtoms
 
         public bool Some(Func<T, bool> func)
         {
-            return list.Some(func);
+            return list.Some<T>(func);
         }
 
         public T First(Func<T, bool> func)
         {
-            return list.First(func);
+            return list.First<T>(func);
         }
 
         public bool Contains(T item)
@@ -87,6 +88,36 @@ namespace UnityAtoms
             set
             {
                 list[index] = value;
+            }
+        }
+
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            list.CopyTo(array, arrayIndex);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => list.GetEnumerator();
+
+        public IEnumerator<T> GetEnumerator() => list.GetEnumerator();
+
+        public int IndexOf(T item) => list.IndexOf(item);
+
+        public void RemoveAt(int index)
+        {
+            var item = list[index];
+            list.RemoveAt(index);
+            if (null != Removed)
+            {
+                Removed.Raise(item);
+            }
+        }
+
+        public void Insert(int index, T item)
+        {
+            list.Insert(index, item);
+            if (Added != null)
+            {            
+                Added.Raise(item);
             }
         }
 
