@@ -46,7 +46,11 @@ namespace UnityAtoms
 
         private void Awake()
         {
-            var list = DynamicAtoms.CreateList<T, L, E>(_createAddedEvent, _createRemovedEvent, _createClearedEvent);
+            var list = DynamicAtoms.CreateList<T, L, E>(
+                added: _createAddedEvent ? ScriptableObject.CreateInstance<E>() : null,
+                removed: _createRemovedEvent ? ScriptableObject.CreateInstance<E>() : null,
+                cleared: _createClearedEvent ? ScriptableObject.CreateInstance<VoidEvent>() : null
+            );
 
             if (list.Added != null)
             {

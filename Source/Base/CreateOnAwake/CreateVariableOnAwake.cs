@@ -44,7 +44,11 @@ namespace UnityAtoms
 
         private void Awake()
         {
-            var variable = DynamicAtoms.CreateVariable<T, V, E1, E2>(_createChangedEvent, _createChangedWithHistoryEvent);
+            var variable = DynamicAtoms.CreateVariable<T, V, E1, E2>(
+                initialValue: default(T),
+                changed: _createChangedEvent ? ScriptableObject.CreateInstance<E1>() : null,
+                changedWithHistory: _createChangedWithHistoryEvent ? ScriptableObject.CreateInstance<E2>() : null
+            );
 
             if (variable.Changed != null)
             {
