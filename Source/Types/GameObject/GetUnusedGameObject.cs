@@ -29,9 +29,7 @@ namespace UnityAtoms
         {
             if (_isNotUsed == null)
             {
-#if UNITY_EDITOR
                 AtomsLogger.Warning("IsUsed must be defined when using GetUnusedGameObject");
-#endif
             }
 
             return _list.List.GetOrInstantiate(_prefab, position, quaternion, _isNotUsed.Call);

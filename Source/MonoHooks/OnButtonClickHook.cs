@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-#if UNITY_EDITOR
 using UnityAtoms.Logger;
-#endif
 
 namespace UnityAtoms
 {
@@ -14,9 +12,7 @@ namespace UnityAtoms
             var button = GetComponent<Button>();
             if (button == null)
             {
-#if UNITY_EDITOR
                 AtomsLogger.Warning("OnButtonClickHook needs a Button component");
-#endif
                 return;
             }
 
@@ -28,9 +24,7 @@ namespace UnityAtoms
             var button = GetComponent<Button>();
             if (button == null)
             {
-#if UNITY_EDITOR
                 AtomsLogger.Warning("OnButtonClickHook needs a Button component");
-#endif
                 return;
             }
 

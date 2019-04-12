@@ -10,9 +10,7 @@ namespace UnityAtoms.Examples
     {
         public override void Do(int health)
         {
-#if UNITY_EDITOR
             AtomsLogger.Log("<3: " + health);
-#endif
         }
     }
 }
