@@ -17,6 +17,12 @@ namespace UnityAtoms
 
             throw new Exception("Either set Func or override the Call method.");
         }
+
+        public GameFunction<R> SetFunc(Func<R> func)
+        {
+            Func = func;
+            return this;
+        }
     }
 
     public abstract class GameFunction<R, T1> : ScriptableObject
@@ -32,6 +38,12 @@ namespace UnityAtoms
             }
 
             throw new Exception("Either set Func or override the Call method.");
+        }
+
+        public GameFunction<R, T1> SetFunc(Func<T1, R> func)
+        {
+            Func = func;
+            return this;
         }
     }
 
@@ -49,6 +61,12 @@ namespace UnityAtoms
 
             throw new Exception("Either set Func or override the Call method.");
         }
+
+        public GameFunction<R, T1, T2> SetFunc(Func<T1, T2, R> func)
+        {
+            Func = func;
+            return this;
+        }
     }
 
     public abstract class GameFunction<R, T1, T2, T3> : ScriptableObject
@@ -64,6 +82,12 @@ namespace UnityAtoms
             }
 
             throw new Exception("Either set Func or override the Call method.");
+        }
+
+        public GameFunction<R, T1, T2, T3> SetFunc(Func<T1, T2, T3, R> func)
+        {
+            Func = func;
+            return this;
         }
     }
 
@@ -81,6 +105,12 @@ namespace UnityAtoms
 
             throw new Exception("Either set Func or override the Call method.");
         }
+
+        public GameFunction<R, T1, T2, T3, T4> SetFunc(Func<T1, T2, T3, T4, R> func)
+        {
+            Func = func;
+            return this;
+        }
     }
 
     public abstract class GameFunction<R, T1, T2, T3, T4, T5> : ScriptableObject
@@ -96,6 +126,12 @@ namespace UnityAtoms
             }
 
             throw new Exception("Either set Func or override the Call method.");
+        }
+
+        public GameFunction<R, T1, T2, T3, T4, T5> SetFunc(Func<T1, T2, T3, T4, T5, R> func)
+        {
+            Func = func;
+            return this;
         }
     }
 }
