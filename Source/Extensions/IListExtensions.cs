@@ -219,5 +219,36 @@ namespace UnityAtoms.Extensions
             list.Add(component);
             return component;
         }
+
+        public static Func<T, T> Pipe<T>(this IList<Func<T, T>> list)
+        {
+            // OPEN POINT: Is it possible to make Reduce more flexible and use it here instead of this custom implementation
+            return x =>
+            {
+                T accumulator = x;
+                for (int i = 0; list != null && i < list.Count; ++i)
+                {
+                    accumulator = list[i](accumulator);
+                }
+
+                return accumulator;
+            };
+        }
+
+        public static Func<T, T> Pipe<T, GF>(this IList<GF> list) where GF : GameFunction<T, T>
+        {
+            // OPEN POINT: Is it possible to make Reduce more flexible and use it here instead of this custom implementation
+            return x =>
+            {
+                T accumulator = x;
+                for (int i = 0; list != null && i < list.Count; ++i)
+                {
+                    accumulator = list[i].Call(accumulator);
+                }
+
+                return accumulator;
+            };
+        }
+
     }
 }
