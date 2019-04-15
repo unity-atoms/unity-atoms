@@ -4,7 +4,6 @@ using UnityEngine.Serialization;
 namespace UnityAtoms
 {
     public abstract class ScriptableObjectVariable<T, E1, E2> : ScriptableObjectVariableBase<T>,
-        IWithOldValue<T>,
         ISerializationCallbackReceiver
         where E1 : GameEvent<T>
         where E2 : GameEvent<T, T>

@@ -1,13 +1,13 @@
 using System.IO;
 using System.Reflection;
+using UnityAtoms.Utils;
 using UnityEditor;
 using UnityEditor.Experimental.UIElements;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.Experimental.UIElements.StyleEnums;
-using UnityAtoms.Logger;
 
-namespace UnityAtoms
+namespace UnityAtoms.Editor
 {
     public class CodeGenerator : EditorWindow
     {
@@ -62,10 +62,10 @@ namespace UnityAtoms
         {
             if (string.IsNullOrEmpty(_typeName))
             {
-                AtomsLogger.Warning("You need to specify a type name. Aborting!");
+                Debug.LogWarning(RuntimeConstants.LOG_PREFIX + "You need to specify a type name. Aborting!");
                 return;
             }
-            AtomsLogger.Log("Generating " + _typeName);
+            Debug.Log(RuntimeConstants.LOG_PREFIX + " ::Generating " + _typeName);
 
             GenerateAction(_typeName);
             GenerateConstant(_typeName);

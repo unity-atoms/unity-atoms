@@ -5,13 +5,12 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectVariableBase<T> : ScriptableObject, IWithValue<T>
+    public abstract class ScriptableObjectVariableBase<T> : ScriptableObject
     {
         public virtual T Value { get { return _value; } set { throw new NotImplementedException(); } }
 
         [Multiline]
         public string DeveloperDescription = "";
-
 
         [FormerlySerializedAs("value")]
         [SerializeField]

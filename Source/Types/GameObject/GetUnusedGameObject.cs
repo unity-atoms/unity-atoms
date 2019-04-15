@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityAtoms.Extensions;
+using UnityAtoms.Utils;
+using UnityEngine.Assertions;
 using UnityEngine.Serialization;
-#if UNITY_EDITOR
-using UnityAtoms.Logger;
-#endif
 
 namespace UnityAtoms
 {
@@ -27,12 +26,9 @@ namespace UnityAtoms
 
         public override GameObject Call(Vector3 position, Quaternion quaternion)
         {
-            if (_isNotUsed == null)
-            {
-#if UNITY_EDITOR
-                AtomsLogger.Warning("IsUsed must be defined when using GetUnusedGameObject");
-#endif
-            }
+            Assert.IsNotNull(_list, RuntimeConstants.LOG_PREFIX + "List must be assigned in the inspector when using GetUnusedGameObject");
+            Assert.IsNotNull(_prefab, RuntimeConstants.LOG_PREFIX + "Prefab must be assigned in the inspector when using GetUnusedGameObject");
+            Assert.IsNotNull(_isNotUsed, RuntimeConstants.LOG_PREFIX + "IsUsed must be assigned in the inspector when using GetUnusedGameObject");
 
             return _list.List.GetOrInstantiate(_prefab, position, quaternion, _isNotUsed.Call);
         }

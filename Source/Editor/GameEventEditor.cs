@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class GameEventEditor<T, E> : Editor
+    public abstract class GameEventEditor<T, E> : UnityEditor.Editor
         where E : GameEvent<T>
     {
         public override void OnInspectorGUI()
