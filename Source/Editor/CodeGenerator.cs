@@ -1,11 +1,16 @@
 using System.IO;
 using System.Reflection;
 using UnityEditor;
-using UnityEditor.Experimental.UIElements;
 using UnityEngine;
+using UnityAtoms.Logger;
+#if UNITY_2019_1_OR_NEWER
+using UnityEngine.UIElements;
+#else
+#if UNITY_2018_3_OR_NEWER
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.Experimental.UIElements.StyleEnums;
-using UnityAtoms.Logger;
+#endif
+#endif
 
 namespace UnityAtoms
 {
@@ -27,8 +32,13 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
+#if UNITY_2019_1_OR_NEWER
+            var root = this.rootVisualElement;
+#else
+#if UNITY_2018_3_OR_NEWER
             var root = this.GetRootVisualContainer();
-
+#endif
+#endif
             var inlineVE = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
             inlineVE.Add(new Label() { text = "Write Path", style = { width = 100 } });
             var textfield = new TextField() { value = _writePath, style = { flexGrow = 1 } };
