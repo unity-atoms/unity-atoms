@@ -6,7 +6,6 @@ namespace UnityAtoms.Examples
 {
     public class HealthBar : MonoBehaviour
     {
-        [FormerlySerializedAs("MaxHealth")]
         [SerializeField]
         private IntConstant _maxHealth = null;
 
