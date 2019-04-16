@@ -111,5 +111,37 @@ namespace UnityAtoms
             }
         }
 
+        #region Observable
+        public IObservable<T> ObserveAdd()
+        {
+            if (Added == null)
+            {
+                throw new Exception("You must assign an Added event in order to observe when adding to the list.");
+            }
+
+            return new ObservableEvent<T>(Added.Register, Added.Unregister);
+        }
+
+        public IObservable<T> ObserveRemove()
+        {
+            if (Removed == null)
+            {
+                throw new Exception("You must assign a Removed event in order to observe when removing from the list.");
+            }
+
+            return new ObservableEvent<T>(Removed.Register, Removed.Unregister);
+        }
+
+        public IObservable<Void> ObserveClear()
+        {
+            if (Cleared == null)
+            {
+                throw new Exception("You must assign a Cleared event in order to observe when clearing the list.");
+            }
+
+            return new ObservableEvent<Void>(Cleared.Register, Cleared.Unregister);
+        }
+
+        #endregion // Observable
     }
 }

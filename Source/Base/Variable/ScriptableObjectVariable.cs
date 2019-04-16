@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -53,5 +55,17 @@ namespace UnityAtoms
 
         public void OnBeforeSerialize() { }
         public void OnAfterDeserialize() { _value = _initialValue; }
+
+        #region Observable
+        public IObservable<T> ObserveChange()
+        {
+            if (Changed == null)
+            {
+                throw new Exception("You must assign a Changed event in order to observe variable changes.");
+            }
+
+            return new ObservableEvent<T>(Changed.Register, Changed.Unregister);
+        }
+        #endregion // Observable
     }
 }
