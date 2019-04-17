@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
@@ -24,9 +26,13 @@ namespace UnityAtoms {
 
         public int callbackOrder { get; }
 
-        [Conditional("UNITY_EDITOR")]
         void Validate()
         {
+#if UNITY_EDITOR
+            if(! EditorApplication.isPlayingOrWillChangePlaymode
+            || EditorApplication.isCompiling
+            ) return;
+
             if (sceneAsset == null)
             {
                 scenePath = "";
@@ -35,10 +41,14 @@ namespace UnityAtoms {
                 return;
             }
             buildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
-            if (buildIndex == -1)
+            if (sceneAsset != null && buildIndex == -1)
             {
+                /* Sadly its not easy to find which gameobject/component has this SceneField, at least not at this point */
                 Debug.LogError($"A scene [{sceneName}] you used as reference has no valid build Index", sceneAsset);
+                EditorApplication.ExitPlaymode(); // this might be a bit hard, but at least its instant pretty fast
+
             }
+    #endif
         }
 
         public void OnBeforeSerialize() { Validate(); }
