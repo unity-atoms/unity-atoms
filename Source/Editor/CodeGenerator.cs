@@ -222,7 +222,7 @@ using System;
 
 namespace UnityAtoms {
     [Serializable]
-    public sealed class {TYPENAME}Reference : ScriptableObjectReference<{TYPE}, {TYPENAME}Variable, {TYPENAME}Event, {TYPENAME}{TYPENAME}Event> {
+    public sealed class {TYPENAME}Reference : ScriptableObjectReference<{TYPE}, {TYPENAME}Variable> {
     }
 }";
             var name = Capitalize(typeName);
@@ -238,7 +238,7 @@ namespace UnityAtoms {
 
 namespace UnityAtoms {
 [CreateAssetMenu(menuName = ""Unity Atoms/{TYPENAME}/Variable"", fileName = ""{TYPENAME}Variable"", order = CreateAssetMenuUtils.Order.VARIABLE)]
-    public sealed class {TYPENAME}Variable : EquatableScriptableObjectVariable<{TYPE}, {TYPENAME}Event, {TYPENAME}{TYPENAME}Event> {
+    public sealed class {TYPENAME}Variable : ScriptableObjectVariable<{TYPE}, {TYPENAME}Event, {TYPENAME}{TYPENAME}Event> {
     }
 }";
             var name = Capitalize(typeName);

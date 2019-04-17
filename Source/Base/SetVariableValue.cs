@@ -7,7 +7,7 @@ namespace UnityAtoms
         where E1 : GameEvent<T>
         where E2 : GameEvent<T, T>
         where V : ScriptableObjectVariable<T, E1, E2>
-        where R : ScriptableObjectReference<T, V, E1, E2>
+        where R : ScriptableObjectReference<T, V>
     {
         [FormerlySerializedAs("Variable")]
         [SerializeField]

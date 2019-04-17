@@ -5,8 +5,6 @@ namespace UnityAtoms
     [Serializable]
     public sealed class IntReference : ScriptableObjectReference<
         int,
-        IntVariable,
-        IntEvent,
-        IntIntEvent>
+        IntVariable>
     { }
 }
