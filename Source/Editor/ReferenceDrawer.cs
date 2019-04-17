@@ -3,7 +3,9 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class ReferenceDrawer : PropertyDrawer
+
+    [CustomPropertyDrawer(typeof(ScriptableObjectReference), true)]
+    public class ReferenceDrawer : PropertyDrawer
     {
         private static readonly string[] _popupOptions =
             { "Use Constant", "Use Variable" };
@@ -53,25 +55,8 @@ namespace UnityAtoms
             EditorGUI.EndProperty();
         }
 
-        [CustomPropertyDrawer(typeof(BoolReference))]
-        public sealed class BoolReferenceDrawer : ReferenceDrawer { }
 
-        [CustomPropertyDrawer(typeof(ColorReference))]
-        public sealed class ColorReferenceDrawer : ReferenceDrawer { }
 
-        [CustomPropertyDrawer(typeof(FloatReference))]
-        public sealed class FloatReferenceDrawer : ReferenceDrawer { }
 
-        [CustomPropertyDrawer(typeof(IntReference))]
-        public sealed class IntReferenceDrawer : ReferenceDrawer { }
-
-        [CustomPropertyDrawer(typeof(StringReference))]
-        public sealed class StringReferenceDrawer : ReferenceDrawer { }
-
-        [CustomPropertyDrawer(typeof(Vector2Reference))]
-        public sealed class Vector2ReferenceDrawer : ReferenceDrawer { }
-
-        [CustomPropertyDrawer(typeof(Vector3Reference))]
-        public sealed class Vector3ReferenceDrawer : ReferenceDrawer { }
     }
 }

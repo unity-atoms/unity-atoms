@@ -1,6 +1,8 @@
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectReference<T, V>
+    public abstract class ScriptableObjectReference{}
+
+    public abstract class ScriptableObjectReference<T, V> : ScriptableObjectReference
         where V : ScriptableObjectVariableBase<T>
     {
         public bool UseConstant;
