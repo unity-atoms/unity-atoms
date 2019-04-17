@@ -1,9 +1,7 @@
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectReference<T, V, E1, E2>
-        where E1 : GameEvent<T>
-        where E2 : GameEvent<T, T>
-        where V : ScriptableObjectVariable<T, E1, E2>
+    public abstract class ScriptableObjectReference<T, V>
+        where V : ScriptableObjectVariableBase<T>
     {
         public bool UseConstant;
 
@@ -27,7 +25,7 @@ namespace UnityAtoms
             get { return UseConstant ? ConstantValue : Variable.Value; }
         }
 
-        public static implicit operator T(ScriptableObjectReference<T, V, E1, E2> reference)
+        public static implicit operator T(ScriptableObjectReference<T, V> reference)
         {
             return reference.Value;
         }

@@ -5,8 +5,6 @@ namespace UnityAtoms
     [Serializable]
     public sealed class StringReference : ScriptableObjectReference<
         string,
-        StringVariable,
-        StringEvent,
-        StringStringEvent>
+        StringVariable>
     { }
 }

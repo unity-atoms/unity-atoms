@@ -6,8 +6,6 @@ namespace UnityAtoms
     [Serializable]
     public sealed class GameObjectReference : ScriptableObjectReference<
         GameObject,
-        GameObjectVariable,
-        GameObjectEvent,
-        GameObjectGameObjectEvent>
+        GameObjectVariable>
     { }
 }
