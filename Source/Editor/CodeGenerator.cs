@@ -1,16 +1,10 @@
+#if UNITY_2019_1_OR_NEWER
 using System.IO;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityAtoms.Logger;
-#if UNITY_2019_1_OR_NEWER
 using UnityEngine.UIElements;
-#else
-#if UNITY_2018_3_OR_NEWER
-using UnityEngine.Experimental.UIElements;
-using UnityEngine.Experimental.UIElements.StyleEnums;
-#endif
-#endif
 
 namespace UnityAtoms
 {
@@ -32,13 +26,9 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
-#if UNITY_2019_1_OR_NEWER
+
             var root = this.rootVisualElement;
-#else
-#if UNITY_2018_3_OR_NEWER
             var root = this.GetRootVisualContainer();
-#endif
-#endif
             var inlineVE = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
             inlineVE.Add(new Label() { text = "Write Path", style = { width = 100 } });
             var textfield = new TextField() { value = _writePath, style = { flexGrow = 1 } };
@@ -90,7 +80,7 @@ namespace UnityAtoms
             AssetDatabase.Refresh();
         }
 
-        #region Util_Functions
+#region Util_Functions
 
         private static string Capitalize(string s)
         {
@@ -110,9 +100,9 @@ namespace UnityAtoms
             AssetDatabase.ImportAsset(path);
         }
 
-        #endregion
+#endregion
 
-        #region Code_Files
+#region Code_Files
 
         private void GenerateAction(string typeName)
         {
@@ -257,6 +247,7 @@ namespace UnityAtoms {
             CreateFile(typeName, TEMPLATE, name, filename);
         }
 
-        #endregion
+#endregion
     }
 }
+#endif
