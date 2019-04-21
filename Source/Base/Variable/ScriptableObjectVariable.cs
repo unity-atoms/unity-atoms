@@ -66,6 +66,20 @@ namespace UnityAtoms
 
             return new ObservableEvent<T>(Changed.Register, Changed.Unregister);
         }
+
+        public IObservable<ValueTuple<T, T>> ObserveChangeWithHistory()
+        {
+            if (ChangedWithHistory == null)
+            {
+                throw new Exception("You must assign a ChangedWithHistory event in order to observe variable changes.");
+            }
+
+            return new ObservableEvent<T, T, ValueTuple<T, T>>(
+                register: ChangedWithHistory.Register,
+                unregister: ChangedWithHistory.Unregister,
+                createCombinedModel: (n, o) => new ValueTuple<T, T>(n, o)
+            );
+        }
         #endregion // Observable
     }
 }
