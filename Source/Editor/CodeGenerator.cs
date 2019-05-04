@@ -28,7 +28,6 @@ namespace UnityAtoms.Editor
         {
 
             var root = this.rootVisualElement;
-            var root = this.GetRootVisualContainer();
             var inlineVE = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
             inlineVE.Add(new Label() { text = "Write Path", style = { width = 100 } });
             var textfield = new TextField() { value = _writePath, style = { flexGrow = 1 } };
@@ -80,7 +79,7 @@ namespace UnityAtoms.Editor
             AssetDatabase.Refresh();
         }
 
-#region Util_Functions
+        #region Util_Functions
 
         private static string Capitalize(string s)
         {
@@ -100,9 +99,9 @@ namespace UnityAtoms.Editor
             AssetDatabase.ImportAsset(path);
         }
 
-#endregion
+        #endregion
 
-#region Code_Files
+        #region Code_Files
 
         private void GenerateAction(string typeName)
         {
@@ -247,7 +246,7 @@ namespace UnityAtoms {
             CreateFile(typeName, TEMPLATE, name, filename);
         }
 
-#endregion
+        #endregion
     }
 }
 #endif
