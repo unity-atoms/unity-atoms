@@ -27,7 +27,8 @@ namespace UnityAtoms
                 if (range > 0)
                 {
                     rest = new Rect(rect.x + range, rect.y, rect.width - range, rect.height);
-                } else
+                }
+                else
                 {
                     rest = new Rect(rect.x, rect.y, rect.width + range, rect.height);
                 }
@@ -52,7 +53,8 @@ namespace UnityAtoms
                 if (range > 0)
                 {
                     rest = new Rect(rect.x, rect.y + range, rect.width, rect.height - range);
-                } else
+                }
+                else
                 {
                     rest = new Rect(rect.x, rect.y, rect.width, rect.height + range);
                 }
@@ -79,7 +81,7 @@ namespace UnityAtoms
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            if(HasValidBuildIndex(property)) return base.GetPropertyHeight(property, label);
+            if (HasValidBuildIndex(property)) return base.GetPropertyHeight(property, label);
             return base.GetPropertyHeight(property, label) * 2 + 5;
         }
 
@@ -89,22 +91,26 @@ namespace UnityAtoms
             Rect buttonRect = new Rect();
             var scene = property.FindPropertyRelative("sceneAsset")?.objectReferenceValue;
 
-            if(scene == null){ // update values cause the build index could've changed
+            if (scene == null)
+            { // update values cause the build index could've changed
                 property.FindPropertyRelative("sceneName").stringValue = "";
                 property.FindPropertyRelative("scenePath").stringValue = "";
                 property.FindPropertyRelative("buildIndex").intValue = -1;
             }
 
             position = HelperMethods.SnipRectV(position, EditorGUIUtility.singleLineHeight, out lower);
-            if (HasValidBuildIndex(property)){
-                if(scene != null){ // update values cause the build index could've changed
+            if (HasValidBuildIndex(property))
+            {
+                if (scene != null)
+                { // update values cause the build index could've changed
                     property.FindPropertyRelative("sceneName").stringValue = scene.name;
                     property.FindPropertyRelative("scenePath").stringValue = AssetDatabase.GetAssetPath(scene);
                     property.FindPropertyRelative("buildIndex").intValue = SceneUtility.GetBuildIndexByScenePath(
                         property.FindPropertyRelative("scenePath").stringValue
                     );
                 }
-            } else
+            }
+            else
             {
                 position = HelperMethods.SnipRectH(position, position.width - 70, out buttonRect);
                 property.FindPropertyRelative("buildIndex").intValue = -1;
@@ -148,9 +154,6 @@ namespace UnityAtoms
         private void AddSceneToBuildSettings(SceneAsset sceneAsset)
         {
             var scenePath = AssetDatabase.GetAssetPath(sceneAsset);
-            // var assetsIndex = scenePath.IndexOf("Assets", StringComparison.Ordinal) + 7;
-            // var extensionIndex = scenePath.LastIndexOf(".unity", StringComparison.Ordinal);
-            // scenePath = scenePath.Substring(assetsIndex, extensionIndex - assetsIndex);
 
             var scenes = EditorBuildSettings.scenes.ToList();
             scenes.Add(new EditorBuildSettingsScene(scenePath, true));
