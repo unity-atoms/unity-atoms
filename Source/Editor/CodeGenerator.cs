@@ -1,12 +1,12 @@
 #if UNITY_2019_1_OR_NEWER
 using System.IO;
 using System.Reflection;
+using UnityAtoms.Utils;
 using UnityEditor;
 using UnityEngine;
-using UnityAtoms.Logger;
 using UnityEngine.UIElements;
 
-namespace UnityAtoms
+namespace UnityAtoms.Editor
 {
     public class CodeGenerator : EditorWindow
     {
@@ -62,10 +62,10 @@ namespace UnityAtoms
         {
             if (string.IsNullOrEmpty(_typeName))
             {
-                AtomsLogger.Warning("You need to specify a type name. Aborting!");
+                Debug.LogWarning(RuntimeConstants.LOG_PREFIX + "You need to specify a type name. Aborting!");
                 return;
             }
-            AtomsLogger.Log("Generating " + _typeName);
+            Debug.Log(RuntimeConstants.LOG_PREFIX + " ::Generating " + _typeName);
 
             GenerateAction(_typeName);
             GenerateConstant(_typeName);
