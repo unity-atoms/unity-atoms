@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   DeveloperDescription: 
-  value: 80
-  oldValue: 90
+  _value: 100
+  _initialValue: 100
+  _oldValue: 60
   Changed: {fileID: 11400000, guid: fb1508338b66f42099fceb52aa22cf4c, type: 2}
   ChangedWithHistory: {fileID: 0}

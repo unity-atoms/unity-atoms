@@ -15,16 +15,16 @@ namespace UnityAtoms
 
         public override VisualElement CreateInspectorGUI()
         {
-            var uxmlVE = new VisualElement();
-            uxmlVE.SetEnabled(Application.isPlaying);
+            var wrapper = new VisualElement();
+            wrapper.SetEnabled(Application.isPlaying);
 
             var input = GetRaiseValueInput();
             if (input != null)
             {
-                uxmlVE.Add(input);
+                wrapper.Add(input);
             }
 
-            uxmlVE.Add(new Button(() =>
+            wrapper.Add(new Button(() =>
             {
                 E e = target as E;
                 e.Raise(_raiseValue);
@@ -33,7 +33,7 @@ namespace UnityAtoms
                 text = "Raise"
             });
 
-            return uxmlVE;
+            return wrapper;
         }
     }
 
