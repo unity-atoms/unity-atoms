@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnityAtoms.Extensions
 {
-    public static class IListExtensions
+    internal static class IListExtensions
     {
         public static T First<T>(this IList<T> list, Func<T, bool> func)
         {
