@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityAtoms.Extensions;
+using UnityAtoms.Tags;
 using UnityEngine.Serialization;
 
 namespace UnityAtoms.Examples

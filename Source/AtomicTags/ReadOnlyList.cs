@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace UnityAtoms
+namespace UnityAtoms.Tags
 {
     /// <summary>
     /// This is basically an IList without everything that could mutate the list

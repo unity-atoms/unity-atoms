@@ -7,7 +7,7 @@ using NUnit.Framework;
 using Unity.Profiling;
 using UnityEngine.TestTools;
 using UnityAtoms;
-using UnityAtoms.Extensions;
+using UnityAtoms.Tags;
 using UnityEngine;
 using UnityEngine.TestTools.Constraints;
 using Is = UnityEngine.TestTools.Constraints.Is;

@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnityAtoms.Extensions
+namespace UnityAtoms.Tags
 {
-    public static class GameObjectExtensions
+    public static class AtomicTagsExtensions
     {
-        #region AtomicTagExtensions
-
         /// <summary>
         /// Retrieves all AtomicTags for a given GameObject
         /// </summary>
@@ -64,6 +62,5 @@ namespace UnityAtoms.Extensions
             }
             return false;
         }
-        #endregion
     }
 }
