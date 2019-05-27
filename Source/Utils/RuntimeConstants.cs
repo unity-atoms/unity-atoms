@@ -1,4 +1,4 @@
-namespace UnityAtoms.Utils
+namespace UnityAtoms
 {
     /// <summary>
     /// Internal constant and static readonly members for runtime usage.

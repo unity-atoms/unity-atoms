@@ -1,7 +1,4 @@
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityAtoms.Logger;
-#endif
 
 namespace UnityAtoms.Examples
 {
@@ -10,7 +7,7 @@ namespace UnityAtoms.Examples
     {
         public override void Do(int health)
         {
-            AtomsLogger.Log("<3: " + health);
+            Debug.Log("<3: " + health);
         }
     }
 }
