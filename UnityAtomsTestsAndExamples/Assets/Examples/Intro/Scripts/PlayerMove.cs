@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms.Examples
 {
+    [AddComponentMenu("Unity Atoms/Examples/PlayerMove")]
     public class PlayerMove : MonoBehaviour
     {
         private float _horizontal;

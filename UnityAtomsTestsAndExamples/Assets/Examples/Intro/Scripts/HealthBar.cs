@@ -4,6 +4,7 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms.Examples
 {
+    [AddComponentMenu("Unity Atoms/Examples/HealthBar")]
     public class HealthBar : MonoBehaviour
     {
         [SerializeField]

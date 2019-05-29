@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace UnityAtoms.Tags
 {
+    [AddComponentMenu("Unity Atoms/Tags/Atomic Tags")]
     public sealed class AtomicTags : MonoBehaviour, ISerializationCallbackReceiver
     {
         public ReadOnlyList<StringConstant> Tags { get; private set; }

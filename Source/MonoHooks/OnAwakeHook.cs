@@ -3,6 +3,7 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
+    [AddComponentMenu("Unity Atoms/Hooks/On Awake")]
     public sealed class OnAwakeHook : VoidHook
     {
         [FormerlySerializedAs("listener")]

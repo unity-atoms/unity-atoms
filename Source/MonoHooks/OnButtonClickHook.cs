@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace UnityAtoms
 {
+    [AddComponentMenu("Unity Atoms/Hooks/On Button Click")]
     [RequireComponent(typeof(Button))]
     public sealed class OnButtonClickHook : VoidHook
     {
