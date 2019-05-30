@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public class ObservableEvent<T> : IObservable<T>
+    internal class ObservableEvent<T> : IObservable<T>
     {
         private Action<Action<T>> _unregister;
         private List<IObserver<T>> _observers = new List<IObserver<T>>();
@@ -39,7 +39,7 @@ namespace UnityAtoms
         }
     }
 
-    public class ObservableEvent<T1, T2, M> : IObservable<M>
+    internal class ObservableEvent<T1, T2, M> : IObservable<M>
     {
         private Action<Action<T1, T2>> _unregister;
         private List<IObserver<M>> _observers = new List<IObserver<M>>();

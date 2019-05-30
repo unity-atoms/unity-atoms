@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UnityAtoms
 {
-    public class MergeObservables<T1, T2, M> : BaseObservable<M>, IObservable<M>
+    internal class MergeObservables<T1, T2, M> : BaseObservable<M>, IObservable<M>
     {
         ProxyObserver<T1> _observer1;
         IDisposable _unsubscriber1;
@@ -42,7 +42,7 @@ namespace UnityAtoms
         }
     }
 
-    public class MergeObservables<T1, T2, T3, M> : BaseObservable<M>, IObservable<M>
+    internal class MergeObservables<T1, T2, T3, M> : BaseObservable<M>, IObservable<M>
     {
         ProxyObserver<T1> _observer1;
         IDisposable _unsubscriber1;
@@ -93,7 +93,7 @@ namespace UnityAtoms
         }
     }
 
-    public class MergeObservables<T1, T2, T3, T4, M> : BaseObservable<M>, IObservable<M>
+    internal class MergeObservables<T1, T2, T3, T4, M> : BaseObservable<M>, IObservable<M>
     {
         ProxyObserver<T1> _observer1;
         IDisposable _unsubscriber1;
@@ -188,7 +188,7 @@ namespace UnityAtoms
         }
     }
 
-    public class MergeObservables<T1, T2, T3, T4, T5, M> : BaseObservable<M>, IObservable<M>
+    internal class MergeObservables<T1, T2, T3, T4, T5, M> : BaseObservable<M>, IObservable<M>
     {
         ProxyObserver<T1> _observer1;
         IDisposable _unsubscriber1;
