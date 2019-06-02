@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace UnityAtoms.Mobile
 {
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/TouchUserInput", fileName = "TouchUserInputVariable")]
-    public sealed class TouchUserInputVariable : ScriptableObjectVariable<
+    public sealed class TouchUserInputVariable : EquatableScriptableObjectVariable<
         TouchUserInput,
         TouchUserInputGameEvent,
         TouchUserInputTouchUserInputGameEvent>
@@ -32,11 +33,6 @@ namespace UnityAtoms.Mobile
         public bool IsPotentialDoubleTapInProgress()
         {
             return _detectTap != null && _detectTap.InUse() && _detectTap.IsPotentialDoubleTapInProgress();
-        }
-
-        protected override bool AreEqual(TouchUserInput first, TouchUserInput second)
-        {
-            return first.Equals(second);
         }
     }
 

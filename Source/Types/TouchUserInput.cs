@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UnityAtoms.Mobile
 {
     [Serializable]
-    public struct TouchUserInput
+    public struct TouchUserInput : IEquatable<TouchUserInput>
     {
         public enum State
         {
@@ -33,6 +33,25 @@ namespace UnityAtoms.Mobile
         public bool Equals(TouchUserInput other)
         {
             return this.InputState == other.InputState && this.InputWorldPos == other.InputWorldPos && this.InputWorldPosLastFrame == other.InputWorldPosLastFrame;
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 17;
+            hash = hash * 31 + this.InputState.GetHashCode();
+            hash = hash * 31 + this.InputPos.GetHashCode();
+            hash = hash * 31 + this.InputPosLastFrame.GetHashCode();
+            return hash;
+        }
+
+        public static bool operator ==(TouchUserInput touch1, TouchUserInput touch2)
+        {
+            return touch1.Equals(touch2);
+        }
+
+        public static bool operator !=(TouchUserInput touch1, TouchUserInput touch2)
+        {
+            return !touch1.Equals(touch2);
         }
     }
 }
