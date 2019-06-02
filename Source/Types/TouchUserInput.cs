@@ -35,6 +35,12 @@ namespace UnityAtoms.Mobile
             return this.InputState == other.InputState && this.InputWorldPos == other.InputWorldPos && this.InputWorldPosLastFrame == other.InputWorldPosLastFrame;
         }
 
+        public override bool Equals(object obj)
+        {
+            TouchUserInput tui = (TouchUserInput)obj;
+            return Equals(tui);
+        }
+
         public override int GetHashCode()
         {
             int hash = 17;
