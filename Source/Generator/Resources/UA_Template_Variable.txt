@@ -1,0 +1,20 @@
+<%IF !EQUATABLE%>
+using System;
+<%ENDIF%>
+using UnityEngine;
+
+namespace UnityAtoms
+{
+    [CreateAssetMenu(menuName = "Unity Atoms/Variables/{TYPE_NAME}", fileName = "{TYPE_NAME}Variable")]
+<%IF EQUATABLE%>
+    public sealed class {TYPE_NAME}Variable : EquatableScriptableObjectVariable<{TYPE}, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event> { }
+<%ELSE%>
+    public sealed class {TYPE_NAME}Variable : ScriptableObjectVariable<{TYPE}, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event>
+    {
+        protected override bool AreEqual({TYPE} first, {TYPE} second)
+        {
+            throw new NotImplementedException();
+        }
+    }
+<%ENDIF%>
+}

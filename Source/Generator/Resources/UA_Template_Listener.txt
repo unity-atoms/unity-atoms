@@ -1,0 +1,12 @@
+using UnityEngine;
+
+namespace UnityAtoms
+{
+    [AddComponentMenu("Unity Atoms/Listeners/{TYPE_NAME}")]
+    public sealed class {TYPE_NAME}Listener : GameEventListener<
+        {TYPE},
+        {TYPE_NAME}Action,
+        {TYPE_NAME}Event,
+        Unity{TYPE_NAME}Event>
+    { }
+}

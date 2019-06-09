@@ -1,0 +1,9 @@
+using System;
+
+namespace UnityAtoms
+{
+    [Serializable]
+    public sealed class {TYPE_NAME}Reference : ScriptableObjectReference<
+        {TYPE},
+        {TYPE_NAME}Variable> { }
+}
