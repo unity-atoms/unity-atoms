@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class GameEventListener<T, GA, E, UER> : MonoBehaviour, IGameEventListener<T>
+    public abstract class GameEventListener<T, GA, E, UER> : MonoBehaviour, IGameEventListener<T>, IListenerIcon
         where GA : GameAction<T>
         where E : GameEvent<T> where UER : UnityEvent<T>
     {
@@ -45,7 +45,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class GameEventListener<T1, T2, GA, E, UER> : MonoBehaviour, IGameEventListener<T1, T2>
+    public abstract class GameEventListener<T1, T2, GA, E, UER> : MonoBehaviour, IGameEventListener<T1, T2>, IListenerIcon
         where GA : GameAction<T1, T2>
         where E : GameEvent<T1, T2>
         where UER : UnityEvent<T1, T2>

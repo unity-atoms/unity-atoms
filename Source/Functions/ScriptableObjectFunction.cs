@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class GameFunction<R> : ScriptableObject
+    public abstract class GameFunction<R> : ScriptableObject, IFunctionIcon
     {
         [HideInInspector]
         public Func<R> Func;

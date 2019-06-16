@@ -6,7 +6,8 @@ using UnityAtoms.Extensions;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectList<T, E> : ScriptableObject, IList<T> where E : GameEvent<T>
+    public abstract class ScriptableObjectList<T, E> : ScriptableObject, IList<T>, IListIcon
+        where E : GameEvent<T>
     {
         public E Added;
 

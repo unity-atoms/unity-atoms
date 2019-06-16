@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class GameEvent<T> : ScriptableObject, ISerializationCallbackReceiver
+    public abstract class GameEvent<T> : ScriptableObject, ISerializationCallbackReceiver, IEventIcon
     {
         public event Action<T> OnEvent;
 
@@ -55,7 +55,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class GameEvent<T1, T2> : ScriptableObject, ISerializationCallbackReceiver
+    public abstract class GameEvent<T1, T2> : ScriptableObject, ISerializationCallbackReceiver, IEventIcon
     {
         public event Action<T1, T2> OnEvent;
 

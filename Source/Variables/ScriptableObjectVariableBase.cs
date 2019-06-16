@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectVariableBase<T> : ScriptableObject
+    public abstract class ScriptableObjectVariableBase<T> : ScriptableObject, IConstantIcon
     {
         public virtual T Value { get { return _value; } set { throw new NotImplementedException(); } }
 
