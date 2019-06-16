@@ -80,7 +80,7 @@ namespace UnityAtoms.Editor
 
         private string GetPathToUnityAtoms()
         {
-            return System.Environment.CurrentDirectory.Contains("unity-atoms/UnityAtomsTestsAndExamples") ?
+            return System.Environment.CurrentDirectory.Contains($"unity-atoms{Path.DirectorySeparatorChar}UnityAtomsTestsAndExamples") ?
                 $"{Path.DirectorySeparatorChar}Source{Path.DirectorySeparatorChar}" :
                 "";
         }
