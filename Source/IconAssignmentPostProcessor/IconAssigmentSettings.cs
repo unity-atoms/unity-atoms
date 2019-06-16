@@ -69,7 +69,7 @@ namespace UnityAtoms
             }
             catch (Exception e)
             {
-                Debug.Log("No Settings Loaded: " + e.Message);
+                Debug.LogError("No Settings Loaded: " + e.Message);
             }
         }
 

@@ -37,7 +37,7 @@ namespace UnityAtoms
                     }
                     else if (typeof(IVariableIcon).IsAssignableFrom(type))
                     {
-                        return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-orange");
+                        return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-lush");
                     }
                     else if (typeof(IConstantIcon).IsAssignableFrom(type))
                     {
@@ -45,11 +45,11 @@ namespace UnityAtoms
                     }
                     else if (typeof(IEventIcon).IsAssignableFrom(type))
                     {
-                        return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-teal");
+                        return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-cherry");
                     }
                     else if (typeof(IFunctionIcon).IsAssignableFrom(type))
                     {
-                        return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-lush");
+                        return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-sand");
                     }
                     else if (typeof(IListenerIcon).IsAssignableFrom(type))
                     {
@@ -57,8 +57,9 @@ namespace UnityAtoms
                     }
                     else if (typeof(IListIcon).IsAssignableFrom(type))
                     {
-                        return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-pinky");
+                        return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-orange");
                     }
+                    return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-delicate");
                 }
 
                 return null;

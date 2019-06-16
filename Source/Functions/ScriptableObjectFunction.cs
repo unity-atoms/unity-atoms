@@ -25,7 +25,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class GameFunction<R, T1> : ScriptableObject
+    public abstract class GameFunction<R, T1> : ScriptableObject, IFunctionIcon
     {
         [HideInInspector]
         public Func<T1, R> Func;
@@ -47,7 +47,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class GameFunction<R, T1, T2> : ScriptableObject
+    public abstract class GameFunction<R, T1, T2> : ScriptableObject, IFunctionIcon
     {
         [HideInInspector]
         public Func<T1, T2, R> Func;
@@ -69,7 +69,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class GameFunction<R, T1, T2, T3> : ScriptableObject
+    public abstract class GameFunction<R, T1, T2, T3> : ScriptableObject, IFunctionIcon
     {
         [HideInInspector]
         public Func<T1, T2, T3, R> Func;
@@ -91,7 +91,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class GameFunction<R, T1, T2, T3, T4> : ScriptableObject
+    public abstract class GameFunction<R, T1, T2, T3, T4> : ScriptableObject, IFunctionIcon
     {
         [HideInInspector]
         public Func<T1, T2, T3, T4, R> Func;
@@ -113,7 +113,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class GameFunction<R, T1, T2, T3, T4, T5> : ScriptableObject
+    public abstract class GameFunction<R, T1, T2, T3, T4, T5> : ScriptableObject, IFunctionIcon
     {
         [HideInInspector]
         public Func<T1, T2, T3, T4, T5, R> Func;
