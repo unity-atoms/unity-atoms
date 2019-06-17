@@ -5,61 +5,42 @@ namespace UnityAtoms.Editor
 {
     internal class Templating
     {
-        public static string ResolveConditionals(string template, List<string> trueConditions = null)
+
+        public static string ResolveConditionals(string template, List<string> trueConditions)
         {
             var templateCopy = String.Copy(template);
-            if (trueConditions == null) return templateCopy;
             
-            int indexOfIf;
-            while ((indexOfIf = templateCopy.IndexOf("<%IF", StringComparison.Ordinal)) != -1)
+            int indexIfOpened = templateCopy.LastIndexOf("<%IF ", StringComparison.Ordinal);
+            if (indexIfOpened == -1) return templateCopy; // there are no IF blocks anymore -> finished processing.
+            
+            var indexIfClosed = templateCopy.IndexOf("%>", indexIfOpened + 5, StringComparison.Ordinal);
+            if(indexIfClosed == -1)  throw new Exception("Found Opened <%IF block but it was never closed (missing %> )");
+            
+            var condition = templateCopy.Substring(indexIfOpened + 5, indexIfClosed - (indexIfOpened + 5));
+            var isNegatedCondition = condition.Substring(0, 1) == "!";
+            if (isNegatedCondition) { condition = condition.Substring(1); }
+            
+            var indexOfNextEndIf = templateCopy.IndexOf("<%ENDIF%>", indexIfClosed, StringComparison.Ordinal);
+            if(indexOfNextEndIf == -1)  throw new Exception($"No closing <%ENDIF%> for condition .");
+            
+            var indexOfNextElse = templateCopy.IndexOf("<%ELSE%>", indexIfClosed, StringComparison.Ordinal);
+
+            var endThenBlock = indexOfNextElse != -1 ? indexOfNextElse : indexOfNextEndIf; 
+            
+            string resolved = "";
+            if (trueConditions.Contains(condition) ^ isNegatedCondition)
             {
-                var indexOfEndOfIf = templateCopy.IndexOf("\n", indexOfIf, StringComparison.Ordinal) + 1;
-                var indexOfNextElse = templateCopy.IndexOf("<%ELSE%>", StringComparison.Ordinal);
-                var indexOfEndOfNextElse = templateCopy.IndexOf("\n", indexOfNextElse, StringComparison.Ordinal) + 1;
-                var indexOfNextEndIf = templateCopy.IndexOf("<%ENDIF%>", StringComparison.Ordinal);
-                var indexOfEndOfNextEndIf = templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal) + 1;
-                var containsElseStatement = indexOfNextElse != -1 && indexOfNextElse < indexOfNextEndIf;
-                var condition = templateCopy.Substring(indexOfIf + 5, templateCopy.IndexOf("%>", indexOfIf, StringComparison.Ordinal) - 2 - (indexOfIf + 5));
-                var isNegatedCondition = condition.Substring(0, 1) == "!";
-                if (isNegatedCondition) { condition = condition.Substring(1); }
-
-                if (indexOfNextEndIf == -1)
-                {
-                    throw new Exception($"No closing <%ENDIF%> for condition {condition}.");
-                }
-
-                if (trueConditions.Contains(condition) ^ isNegatedCondition)  
-                {
-                    // Remove if statement
-                    int lastRemoveCount, nextRemoveCount;
-                    lastRemoveCount = nextRemoveCount = indexOfEndOfIf - indexOfIf;
-                    templateCopy = templateCopy.Remove(indexOfIf, nextRemoveCount);
-
-                    // Remove everything after if block
-                    templateCopy = containsElseStatement ?
-                        templateCopy.Remove(indexOfNextElse - lastRemoveCount, indexOfEndOfNextEndIf - indexOfNextElse) :
-                        templateCopy.Remove(indexOfNextEndIf - lastRemoveCount, indexOfEndOfNextEndIf - indexOfNextEndIf);
-                }
-                else if (containsElseStatement)
-                {
-                    // Remove if block and else statement
-                    int lastRemoveCount, nextRemoveCount;
-                    lastRemoveCount = nextRemoveCount = indexOfEndOfNextElse - indexOfIf;
-                    templateCopy = templateCopy.Remove(indexOfIf, nextRemoveCount);
-
-                    // Remove ENDIF statement
-                    nextRemoveCount = indexOfEndOfNextEndIf - indexOfNextEndIf;
-                    templateCopy = templateCopy.Remove(indexOfNextEndIf - lastRemoveCount, nextRemoveCount);
-                }
-                else
-                {
-                    // Remove full if / else block
-                    var nextRemoveCount = indexOfEndOfNextEndIf - indexOfIf;
-                    templateCopy = templateCopy.Remove(indexOfIf, nextRemoveCount);
-                }
+                resolved = templateCopy.Substring(indexIfClosed + 2, endThenBlock - (indexIfClosed + 2));
+            }else if (indexOfNextElse != -1)
+            {
+                resolved = templateCopy.Substring(indexOfNextElse + 8, indexOfNextEndIf - (indexOfNextElse + 8));
             }
 
-            return templateCopy;
+            resolved = resolved.Trim('\n');
+            templateCopy = templateCopy.Remove(indexIfOpened, (indexOfNextEndIf + 9) - indexIfOpened);
+            templateCopy = templateCopy.Insert(indexIfOpened, resolved);
+            
+            return ResolveConditionals(templateCopy, trueConditions);
         }
     }
 }

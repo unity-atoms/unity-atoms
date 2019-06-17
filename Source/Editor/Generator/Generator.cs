@@ -43,16 +43,16 @@ namespace UnityAtoms.Editor
                 var templateNameStartIndex = templatePath.LastIndexOf(Path.DirectorySeparatorChar) + 1;
                 var fileExtLength = 4;
                 var templateName = templatePath.Substring(templateNameStartIndex, templatePath.Length - templateNameStartIndex - fileExtLength);
-                var lastIndexOfUnderscore = templateName.LastIndexOf("_");
+                var lastIndexOfUnderscore = templateName.LastIndexOf('_');
                 var atomType = templateName.Substring(lastIndexOfUnderscore + 1);
-                var typeOccurences = templateName.Substring(lastIndexOfUnderscore - 1, 1).ToInt(def: 1);
+                var typeOccurrences = templateName.Substring(lastIndexOfUnderscore - 1, 1).ToInt(def: 1);
 
                 GenerateAtom(
                     type: type,
                     atomType: atomType,
                     template: template,
                     writePath: writePath,
-                    typeOccurences: typeOccurences,
+                    typeOccurences: typeOccurrences,
                     templateConditions: templateConditions
                 );
             }
