@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
@@ -9,23 +8,18 @@ namespace UnityAtoms.Editor
         public static string ResolveConditionals(string template, List<string> trueConditions = null)
         {
             var templateCopy = String.Copy(template);
-
-            while (true && trueConditions != null)
+            if (trueConditions == null) return templateCopy;
+            
+            int indexOfIf;
+            while ((indexOfIf = templateCopy.IndexOf("<%IF", StringComparison.Ordinal)) != -1)
             {
-                var indexOfIf = templateCopy.IndexOf("<%IF");
-
-                if (indexOfIf == -1)
-                {
-                    break;
-                }
-
-                var indexOfEndOfIf = templateCopy.IndexOf("\n", indexOfIf) + 1;
-                var indexOfNextElse = templateCopy.IndexOf("<%ELSE%>");
-                var indexOfEndOfNextElse = templateCopy.IndexOf("\n", indexOfNextElse) + 1;
-                var indexOfNextEndIf = templateCopy.IndexOf("<%ENDIF%>");
-                var indexOfEndOfNextEndIf = templateCopy.IndexOf("\n", indexOfNextEndIf) + 1;
+                var indexOfEndOfIf = templateCopy.IndexOf("\n", indexOfIf, StringComparison.Ordinal) + 1;
+                var indexOfNextElse = templateCopy.IndexOf("<%ELSE%>", StringComparison.Ordinal);
+                var indexOfEndOfNextElse = templateCopy.IndexOf("\n", indexOfNextElse, StringComparison.Ordinal) + 1;
+                var indexOfNextEndIf = templateCopy.IndexOf("<%ENDIF%>", StringComparison.Ordinal);
+                var indexOfEndOfNextEndIf = templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal) + 1;
                 var containsElseStatement = indexOfNextElse != -1 && indexOfNextElse < indexOfNextEndIf;
-                var condition = templateCopy.Substring(indexOfIf + 5, templateCopy.IndexOf("%>", indexOfIf) - 2 - (indexOfIf + 5));
+                var condition = templateCopy.Substring(indexOfIf + 5, templateCopy.IndexOf("%>", indexOfIf, StringComparison.Ordinal) - 2 - (indexOfIf + 5));
                 var isNegatedCondition = condition.Substring(0, 1) == "!";
                 if (isNegatedCondition) { condition = condition.Substring(1); }
 
@@ -34,7 +28,7 @@ namespace UnityAtoms.Editor
                     throw new Exception($"No closing <%ENDIF%> for condition {condition}.");
                 }
 
-                if ((!isNegatedCondition && trueConditions.Contains(condition)) || (isNegatedCondition && !trueConditions.Contains(condition)))
+                if (trueConditions.Contains(condition) ^ isNegatedCondition)  
                 {
                     // Remove if statement
                     int lastRemoveCount, nextRemoveCount;

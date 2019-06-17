@@ -1,12 +1,10 @@
-#if UNITY_2019_1_OR_NEWER
-using System.IO;
-using System.Linq;
+using System;
 using System.Collections.Generic;
-using UnityAtoms.Utils;
-using UnityAtoms.Extensions;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
+#if UNITY_2019_1_OR_NEWER
+using UnityAtoms.Extensions;
 
 namespace UnityAtoms.Editor
 {
@@ -32,7 +30,7 @@ namespace UnityAtoms.Editor
             Directory.CreateDirectory(writePath);
 
             // Recursively search for template files. TODO: Is there a better way to find and load templates?
-            var templateSearchPath = System.Environment.CurrentDirectory.Contains("unity-atoms/UnityAtomsTestsAndExamples") ?
+            var templateSearchPath = Environment.CurrentDirectory.Contains("unity-atoms/UnityAtomsTestsAndExamples") ?
                 Directory.GetParent(Directory.GetParent(Application.dataPath).FullName).FullName :
                 Directory.GetParent(Application.dataPath).FullName;
             var templatePaths = Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
@@ -62,12 +60,6 @@ namespace UnityAtoms.Editor
             AssetDatabase.Refresh();
         }
 
-        private static string[] GetRecursivePaths(string pathToSearch, string searchPattern)
-        {
-            string[] files = Directory.GetFiles(pathToSearch, searchPattern, SearchOption.AllDirectories);
-            return null;
-        }
-
         private static string Capitalize(string s)
         {
             if (string.IsNullOrEmpty(s))
@@ -76,13 +68,6 @@ namespace UnityAtoms.Editor
             char[] a = s.ToCharArray();
             a[0] = char.ToUpper(a[0]);
             return new string(a);
-        }
-
-        private string GetPathToUnityAtoms()
-        {
-            return System.Environment.CurrentDirectory.Contains($"unity-atoms{Path.DirectorySeparatorChar}UnityAtomsTestsAndExamples") ?
-                $"{Path.DirectorySeparatorChar}Source{Path.DirectorySeparatorChar}" :
-                "";
         }
 
         private void GenerateAtom(string type, string atomType, string template, string writePath, int typeOccurences, List<string> templateConditions = null)
