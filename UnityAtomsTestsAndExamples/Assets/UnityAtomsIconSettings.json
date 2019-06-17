@@ -605,10 +605,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Generator/Generator.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Utils/DynamicAtoms.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
@@ -717,10 +713,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Generator/Editor/GeneratorEditor.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/References/BoolReference.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
@@ -769,10 +761,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Generator/Templating.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnTriggerEnter2DHook.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
@@ -794,6 +782,18 @@
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/CreateOnAwake/CreateCollider2DListOnAwake.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/Generator/Generator.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/Generator/GeneratorEditor.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/Generator/Templating.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         }
     ]
