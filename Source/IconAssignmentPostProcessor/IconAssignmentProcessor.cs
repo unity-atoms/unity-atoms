@@ -8,7 +8,6 @@ namespace UnityAtoms
 {
     public abstract class IconAssignmentProcessor
     {
-        protected virtual string IconSearchPath { get => Directory.GetParent(Application.dataPath).FullName; }
         protected abstract string IconSearchFilter { get; }
         protected virtual string SettingsPath { get => $"{Application.dataPath}{Path.DirectorySeparatorChar}IconAssignmentSettings.json"; }
         protected abstract List<IIconAssigner> IconAssigners { get; }
@@ -69,7 +68,7 @@ namespace UnityAtoms
 
         private void GenerateIconsList()
         {
-            var iconGuids = AssetDatabase.FindAssets($"{IconSearchFilter} t:texture2D");
+            var iconGuids = AssetDatabase.FindAssets(!string.IsNullOrEmpty(IconSearchFilter) ? $"{IconSearchFilter} t:texture2D" : "t:texture2D");
             var iconGuidsList = iconGuids.ToList();
 
             // Add icons to our internal list

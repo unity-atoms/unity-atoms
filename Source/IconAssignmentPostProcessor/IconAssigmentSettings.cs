@@ -31,6 +31,11 @@ namespace UnityAtoms
             }
         }
 
+        public bool Contains(IconAssigmentSetting setting)
+        {
+            return _listOfSettings.List.Find((s) => s.AssetPath == setting.AssetPath && s.IconPath == setting.IconPath) != null;
+        }
+
         public void RemoveAt(int index)
         {
             if (index > -1 && index < _listOfSettings.List.Count)

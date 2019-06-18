@@ -9,12 +9,6 @@ namespace UnityAtoms
 {
     internal class AtomsIconAssignmentProcessor : IconAssignmentProcessor
     {
-        protected override string IconSearchPath
-        {
-            get => System.Environment.CurrentDirectory.Contains("unity-atoms/UnityAtomsTestsAndExamples") ?
-                Directory.GetParent(Directory.GetParent(Application.dataPath).FullName).FullName :
-                Directory.GetParent(Application.dataPath).FullName;
-        }
         protected override string IconSearchFilter { get => "atom-icon-"; }
         protected override string SettingsPath { get => $"{Application.dataPath}{Path.DirectorySeparatorChar}UnityAtomsIconSettings.json"; }
         protected override List<IIconAssigner> IconAssigners { get => new List<IIconAssigner>() { new AtomMonoScriptAssigner() }; }

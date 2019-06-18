@@ -795,6 +795,14 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/Generator/Templating.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/IconAssignmentPostProcessor/AttributeIconAssignmentProcessor.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/IconAssignmentPostProcessor/AttributeIconAssignmentPostprocessor.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         }
     ]
 }
