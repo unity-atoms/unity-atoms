@@ -1,19 +1,13 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
 using UnityEditor;
 
 namespace UnityAtoms
 {
-    internal class AtomsIconAssignmentProcessor : IconAssignmentProcessor
-    {
-        protected override string IconSearchFilter { get => "atom-icon-"; }
-        protected override string SettingsPath { get => $"{Application.dataPath}{Path.DirectorySeparatorChar}UnityAtomsIconSettings.json"; }
-        protected override List<IIconAssigner> IconAssigners { get => new List<IIconAssigner>() { new AtomMonoScriptAssigner() }; }
-    }
-
+    /// <summary>
+    /// Custom icon assigner for Unity Atoms.
+    /// </summary>
     internal class AtomMonoScriptAssigner : IconAssigner<MonoScript>
     {
         protected override Func<MonoScript, List<IconData>, IconData> SelectIcon

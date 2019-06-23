@@ -2,10 +2,13 @@ using System;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Specify a texture name from your assets that will be assigned as an icon to the MonoBehaviour.
+    /// </summary>
     [AttributeUsage(AttributeTargets.All, Inherited = true, AllowMultiple = false)]
-    public class ScriptIcon : Attribute
+    public class AssignIcon : Attribute
     {
-        public ScriptIcon(string iconName)
+        public AssignIcon(string iconName)
         {
             IconName = iconName;
         }

@@ -6,24 +6,58 @@ using UnityEditor;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// An IconAssignmentProcessor is used by IconAssignmentPostprocessor. It specifies
+    /// an icon search filter (icons to use by calling AssetDatabase.FindAssets), if you
+    /// don't specify a filter all asset images can be later be selected by one of the assigners.
+    /// A processor also contains a list assigners that are called on each asset import. See
+    /// the IconAssigner class for more info about it.
+    /// </summary>
     public abstract class IconAssignmentProcessor
     {
-        protected abstract string IconSearchFilter { get; }
+        // Override in order to specifiy your own icon search filter.
+        protected virtual string IconSearchFilter { get => null; }
+        // Override in order to specifiy your own path where the icon settings are stored.
         protected virtual string SettingsPath { get => $"{Application.dataPath}{Path.DirectorySeparatorChar}IconAssignmentSettings.json"; }
-        protected abstract List<IIconAssigner> IconAssigners { get; }
+        protected List<IIconAssigner> IconAssigners
+        {
+            get
+            {
+                if (_iconAssigners == null)
+                {
+                    _iconAssigners = new List<IIconAssigner>();
+                }
+                return _iconAssigners;
+            }
+        }
 
+        private List<IIconAssigner> _iconAssigners;
         private List<IconData> _icons = new List<IconData>();
         private IconAssigmentSettings _settings;
-        private bool _haveReloadIconsFromSettings = false;
+        private bool _haveReloadedIconsFromSettings = false;
+
+        public void AddAssigner(IIconAssigner iAssigner)
+        {
+            IconAssigners.Add(iAssigner);
+        }
+
+        public void RemoveAssigner(IIconAssigner iAssigner)
+        {
+            IconAssigners.Remove(iAssigner);
+        }
 
         public IconAssignmentProcessor()
         {
             _settings = new IconAssigmentSettings(SettingsPath);
         }
 
+        /// <summary>
+        /// Handles icon settings and call all icon assigners for each imported asset.
+        /// </summary>
+        /// <param name="importedAssets">List of imported assets.</param>
         public void Process(string[] importedAssets)
         {
-            GenerateIconsList();
+            UpdateIconsList();
 
             foreach (string assetPath in importedAssets)
             {
@@ -38,12 +72,15 @@ namespace UnityAtoms
             AssetDatabase.Refresh();
         }
 
+        /// <summary>
+        /// Called on startup in order reload all icons from stored settings.
+        /// </summary>
         public void ReloadIconsFromSettings()
         {
-            if (_haveReloadIconsFromSettings) { return; }
-            _haveReloadIconsFromSettings = true;
+            if (_haveReloadedIconsFromSettings) { return; }
+            _haveReloadedIconsFromSettings = true;
 
-            GenerateIconsList();
+            UpdateIconsList();
             _settings.LoadFromFile();
 
             var listOfSettings = _settings.GetListOfSettings();
@@ -66,7 +103,7 @@ namespace UnityAtoms
             AssetDatabase.Refresh();
         }
 
-        private void GenerateIconsList()
+        private void UpdateIconsList()
         {
             var iconGuids = AssetDatabase.FindAssets(!string.IsNullOrEmpty(IconSearchFilter) ? $"{IconSearchFilter} t:texture2D" : "t:texture2D");
             var iconGuidsList = iconGuids.ToList();

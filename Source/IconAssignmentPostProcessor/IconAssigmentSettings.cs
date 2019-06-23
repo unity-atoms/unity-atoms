@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Model for icon settings. Handles the logic to store and load settings from disk.
+    /// </summary>
     [Serializable]
     public class IconAssigmentSettings
     {

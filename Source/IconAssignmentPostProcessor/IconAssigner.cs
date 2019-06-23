@@ -12,6 +12,7 @@ namespace UnityAtoms
         {
             DoAssign(assetPath, icons, settings);
         }
+
         protected abstract Func<T, List<IconData>, IconData> SelectIcon { get; }
 
         private void DoAssign(string assetPath, List<IconData> icons, IconAssigmentSettings settings)

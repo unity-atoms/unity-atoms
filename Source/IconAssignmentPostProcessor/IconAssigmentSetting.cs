@@ -2,6 +2,9 @@ using System;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Model for one icon assignment setting.
+    /// </summary>
     [Serializable]
     public class IconAssigmentSetting
     {
