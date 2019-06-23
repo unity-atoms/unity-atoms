@@ -121,10 +121,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Molecules/Timer/StartTimer.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/TouchUserInputTouchUserInputAction.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -449,10 +445,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Molecules/Timer/Timer.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Functions/BoolColorFunction.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-sand.png"
         },
@@ -617,10 +609,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Molecules/Timer/UpdateTimer.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/Vector2Vector2Event.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
@@ -659,10 +647,6 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/VoidGameObjectEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Listeners/DetectTap.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Functions/GameObjectVector3QuaternionFunction.cs",
@@ -711,10 +695,6 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/ColliderEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Molecules/Timer/StopTimer.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Listeners/VoidListener.cs",

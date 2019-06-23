@@ -9,31 +9,6 @@ namespace UnityAtoms.Mobile
         TouchUserInput,
         TouchUserInputGameEvent,
         TouchUserInputTouchUserInputGameEvent>
-    {
-        [FormerlySerializedAs("DetectTap")]
-        [SerializeField]
-        private DetectTap _detectTap = null;
-
-        private void OnEnable()
-        {
-            if (_detectTap.InUse())
-            {
-                Changed.RegisterListener(_detectTap);
-            }
-        }
-
-        private void OnDisable()
-        {
-            if (_detectTap.InUse())
-            {
-                Changed.UnregisterListener(_detectTap);
-            }
-        }
-
-        public bool IsPotentialDoubleTapInProgress()
-        {
-            return _detectTap != null && _detectTap.InUse() && _detectTap.IsPotentialDoubleTapInProgress();
-        }
-    }
+    { }
 
 }
