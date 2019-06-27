@@ -2,7 +2,7 @@
     "name": "com.mambojambostudios.unity-atoms",
     "displayName": "Unity Atoms",
     "version": "2.0.0",
-    "unity": "2018.3",
+    "unity": "2019.2",
     "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
     "keywords": [
         "scriptable objects",
