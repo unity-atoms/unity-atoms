@@ -117,20 +117,12 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-piglet.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/ConditionalActions/ConditionalVector2Action.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/UnityEvents/UnityTouchUserInputEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Extensions/IListExtensions.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/ConditionalActions/ConditionalFloatAction.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Lists/Vector3List.cs",
@@ -241,14 +233,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/ConditionalActions/ConditionalBoolAction.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/ConditionalActions/ConditionalIntAction.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/SceneManagement/ChangeScene.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -289,10 +273,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-sand.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/ConditionalActions/ConditionalVector3Action.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/ColliderGameObjectAction.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -325,10 +305,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/ConditionalActions/ConditionalTouchUserInputAction.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/GameObjectAction.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -339,10 +315,6 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Lists/StringList.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-orange.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/ConditionalActions/ConditionalVoidAction.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/ColliderGameObjectEvent.cs",
@@ -643,10 +615,6 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Lists/BoolList.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-orange.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/ConditionalActions/ConditionalColorAction.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/AtomicUI/UIContainer.cs",
