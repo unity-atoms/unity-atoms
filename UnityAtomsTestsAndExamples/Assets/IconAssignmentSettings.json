@@ -269,10 +269,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-piglet.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Functions/GetUnusedGameObject.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-sand.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/ColliderGameObjectAction.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -555,10 +551,6 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/VoidGameObjectEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Functions/GameObjectVector3QuaternionFunction.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-sand.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/UnityEvents/UnityVector2Event.cs",

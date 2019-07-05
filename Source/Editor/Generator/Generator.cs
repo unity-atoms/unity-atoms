@@ -46,12 +46,14 @@ namespace UnityAtoms.Editor
                 var lastIndexOfUnderscore = templateName.LastIndexOf('_');
                 var atomType = templateName.Substring(lastIndexOfUnderscore + 1);
                 var typeOccurrences = templateName.Substring(lastIndexOfUnderscore - 1, 1).ToInt(def: 1);
+                var dirPath = templateName.Contains("AtomDrawers") ? Path.Combine(writePath, "Editor", "AtomDrawers") : Path.Combine(writePath, $"{Capitalize(atomType)}s");
+                Directory.CreateDirectory(dirPath);
 
                 GenerateAtom(
                     type: type,
                     atomType: atomType,
                     template: template,
-                    writePath: writePath,
+                    dirPath: dirPath,
                     typeOccurences: typeOccurrences,
                     templateConditions: templateConditions
                 );
@@ -70,20 +72,15 @@ namespace UnityAtoms.Editor
             return new string(a);
         }
 
-        private void GenerateAtom(string type, string atomType, string template, string writePath, int typeOccurences, List<string> templateConditions = null)
+        private void GenerateAtom(string type, string atomType, string template, string dirPath, int typeOccurences, List<string> templateConditions = null)
         {
             // Adjust content
             var capitalizedType = Capitalize(type);
             var content = template.Replace("{TYPE_NAME}", capitalizedType).Replace("{TYPE}", type);
             content = Templating.ResolveConditionals(template: content, trueConditions: templateConditions);
 
-            // Create directory if it doesn't exist
-            var capitalizedAtomType = Capitalize(atomType);
-            var dirPath = Path.Combine(writePath, $"{capitalizedAtomType}s");
-            Directory.CreateDirectory(dirPath);
-
             // Write to file
-            var fileName = $"{capitalizedType.Repeat(typeOccurences)}{capitalizedAtomType}.cs";
+            var fileName = $"{capitalizedType.Repeat(typeOccurences)}{Capitalize(atomType)}.cs";
             var filePath = Path.Combine(dirPath, fileName);
             File.WriteAllText(filePath, content);
 
