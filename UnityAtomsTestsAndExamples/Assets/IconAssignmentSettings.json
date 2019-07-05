@@ -17,10 +17,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/Collider2DHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/SetVariable/SetVector2VariableValue.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -35,10 +31,6 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Constants/StringConstant.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-teal.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/ColliderHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/SetVariable/SetFloatVariableValue.cs",
@@ -113,20 +105,12 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnAwakeHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/IntIntEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/TouchUserInputTouchUserInputAction.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnTriggerStay2DHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Listeners/ColorListener.cs",
@@ -173,10 +157,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnStartHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/BoolBoolEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
@@ -202,10 +182,6 @@
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/UnityEvents/UnityStringStringEvent.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/VoidHook.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
@@ -265,10 +241,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnPointerDownHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/ConditionalActions/ConditionalBoolAction.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -289,15 +261,7 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-teal.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnDestroyHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/IconAssignmentPostProcessor/IconAssigmentSettingsList.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/CreateOnAwake/CreateStringVariableOnAwake.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
@@ -313,20 +277,12 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnTriggerStayHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Listeners/BoolListener.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-piglet.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Listeners/Vector3Listener.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-piglet.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnUpdateHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Functions/GetUnusedGameObject.cs",
@@ -373,10 +329,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnTriggerExit2DHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/GameObjectAction.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -401,19 +353,11 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnButtonClickHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Lists/IntList.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-orange.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/UnityEvents/UnityFloatEvent.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnLateUpdateHook.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
@@ -541,10 +485,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-teal.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnTriggerEnterHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/SceneFieldAction.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -605,10 +545,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-teal.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/CreateOnAwake/CreateCollider2DEventOnAwake.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/Vector2Vector2Event.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
@@ -654,10 +590,6 @@
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/UnityEvents/UnityVector2Event.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnTriggerEnter2DHook.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
@@ -745,19 +677,11 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/MonoHooks/OnFixedUpdateHook.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Lists/Collider2DList.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-orange.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Utils/RuntimeConstants.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/CreateOnAwake/CreateCollider2DListOnAwake.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
@@ -769,10 +693,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Assets/Examples/Intro/Scripts/PlayerHealth.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Assets/Examples/Intro/GameObjects/HealthListener/HealthLogger/HealthLogger.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -781,11 +701,23 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
         {
-            "AssetPath": "Assets/Examples/Intro/Scripts/PlayerMove.cs",
+            "AssetPath": "Assets/Examples/Intro/GameObjects/Player/PlayerHealth.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Assets/Examples/Intro/Scripts/HealthBar.cs",
+            "AssetPath": "Assets/Examples/Intro/GameObjects/Harmful/HarmfulTrigger.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Assets/Examples/Intro/GameObjects/Player/PlayerMove.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Assets/Examples/Intro/UI/HealthBar/HealthBar.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Assets/Examples/Intro/UI/RaiseEventOnButtonClick.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         }
     ]

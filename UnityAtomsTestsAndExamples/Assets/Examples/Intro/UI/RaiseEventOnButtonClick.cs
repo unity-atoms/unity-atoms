@@ -1,12 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityAtoms
+namespace UnityAtoms.Examples
 {
-    [AddComponentMenu("Unity Atoms/Hooks/On Button Click")]
     [RequireComponent(typeof(Button))]
-    public sealed class OnButtonClickHook : VoidHook
+    public sealed class RaiseEventOnButtonClick : MonoBehaviour
     {
+        [SerializeField]
+        private VoidEvent _event;
+
         private void Awake()
         {
             var button = GetComponent<Button>();
@@ -21,7 +23,7 @@ namespace UnityAtoms
 
         private void OnClick()
         {
-            OnHook(new Void());
+            _event.Raise();
         }
     }
 }

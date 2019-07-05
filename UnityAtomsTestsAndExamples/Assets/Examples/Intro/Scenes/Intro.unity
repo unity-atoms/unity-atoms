@@ -404,11 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe09a2350f1f64d15b116366c3e6630f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test:
-    _sceneAsset: {fileID: 102900000, guid: 5975690ceb19c40728375ab924af0fbe, type: 3}
-    _sceneName: Intro
-    _scenePath: Assets/Examples/Intro/Scenes/Intro.unity
-    _buildIndex: 1
 --- !u!4 &854994180
 Transform:
   m_ObjectHideFlags: 0
@@ -637,8 +632,8 @@ GameObject:
   - component: {fileID: 1025272944}
   - component: {fileID: 1025272943}
   - component: {fileID: 1025272942}
-  - component: {fileID: 1025272941}
   - component: {fileID: 1025272940}
+  - component: {fileID: 1025272941}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -695,12 +690,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1025272938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b03eaf88e356c4afdb770e29376248bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 95e7034c8162d45689ce85701c27eeb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
-  EventWithGameObjectReference: {fileID: 0}
-  _selectGameObjectReference: {fileID: 0}
+  _event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
 --- !u!114 &1025272942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,8 +930,8 @@ GameObject:
   - component: {fileID: 1128657635}
   - component: {fileID: 1128657634}
   - component: {fileID: 1128657633}
-  - component: {fileID: 1128657632}
   - component: {fileID: 1128657636}
+  - component: {fileID: 1128657632}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -975,12 +968,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1128657630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b03eaf88e356c4afdb770e29376248bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 95e7034c8162d45689ce85701c27eeb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
-  EventWithGameObjectReference: {fileID: 0}
-  _selectGameObjectReference: {fileID: 0}
+  _event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
 --- !u!114 &1128657633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,8 +1340,8 @@ GameObject:
   - component: {fileID: 1522469500}
   - component: {fileID: 1522469499}
   - component: {fileID: 1522469498}
-  - component: {fileID: 1522469497}
   - component: {fileID: 1522469501}
+  - component: {fileID: 1522469497}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1387,12 +1378,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1522469495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b03eaf88e356c4afdb770e29376248bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 95e7034c8162d45689ce85701c27eeb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
-  EventWithGameObjectReference: {fileID: 0}
-  _selectGameObjectReference: {fileID: 0}
+  _event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
 --- !u!114 &1522469498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1507,8 +1496,8 @@ GameObject:
   - component: {fileID: 1613897684}
   - component: {fileID: 1613897683}
   - component: {fileID: 1613897682}
-  - component: {fileID: 1613897681}
   - component: {fileID: 1613897680}
+  - component: {fileID: 1613897681}
   m_Layer: 5
   m_Name: ResetHealthButton
   m_TagString: Untagged
@@ -1555,7 +1544,7 @@ MonoBehaviour:
     m_TypeName: UnityAtoms.UnityVoidEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _gameActionResponses:
-  - {fileID: 11400000, guid: a87b1f24aa74e491ba5615e100d194ed, type: 2}
+  - {fileID: 0}
 --- !u!114 &1613897681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1565,12 +1554,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1613897678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b03eaf88e356c4afdb770e29376248bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 95e7034c8162d45689ce85701c27eeb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
-  EventWithGameObjectReference: {fileID: 0}
-  _selectGameObjectReference: {fileID: 0}
+  _event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
 --- !u!114 &1613897682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1789,88 +1776,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b,
         type: 3}
-      propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b,
-        type: 3}
       propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 145633448}
-    - target: {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b,
-        type: 3}
-      propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HealthChanged
-      objectReference: {fileID: 0}
-    - target: {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b,
-        type: 3}
-      propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b,
-        type: 3}
-      propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4cdf4b23d0154814b9975c71d15466b, type: 3}
---- !u!1001 &1810705942969211579
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1868152053602222, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_Name
-      value: OnLevelStart
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325993638842916, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d6eebf14bca0b4ed3b474f95998bafc9, type: 3}
 --- !u!1001 &4425509693841326314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1925,37 +1835,6 @@ PrefabInstance:
     - target: {fileID: 4014875790597442, guid: 01e7046886cdb499a99f4bed284db6a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212802685174810290, guid: 01e7046886cdb499a99f4bed284db6a1,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: bcb9bdff5d4664c74a932c679135aff5,
-        type: 3}
-    - target: {fileID: 212802685174810290, guid: 01e7046886cdb499a99f4bed284db6a1,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212802685174810290, guid: 01e7046886cdb499a99f4bed284db6a1,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212802685174810290, guid: 01e7046886cdb499a99f4bed284db6a1,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61545807772720694, guid: 01e7046886cdb499a99f4bed284db6a1,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61545807772720694, guid: 01e7046886cdb499a99f4bed284db6a1,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01e7046886cdb499a99f4bed284db6a1, type: 3}

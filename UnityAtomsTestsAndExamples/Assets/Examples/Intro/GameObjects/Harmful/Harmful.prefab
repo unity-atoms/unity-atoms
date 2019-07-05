@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4014875790597442}
   - component: {fileID: 212802685174810290}
   - component: {fileID: 61545807772720694}
-  - component: {fileID: 114388860614982982}
   - component: {fileID: 114969515430056306}
+  - component: {fileID: 5067224520480043162}
   m_Layer: 0
   m_Name: Harmful
   m_TagString: Untagged
@@ -71,15 +71,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ca71068637cec4e8fa7c6e9f8940c066, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bcb9bdff5d4664c74a932c679135aff5, type: 3}
   m_Color: {r: 1, g: 0.93066514, b: 0.5330188, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &61545807772720694
@@ -100,7 +100,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -108,21 +108,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114388860614982982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776152155576434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e59599d275cb4274a3aad685171b1f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5c0f015f6258d41f0bfefbfe014169cf, type: 2}
-  EventWithGORef: {fileID: 0}
-  SelectGORef: {fileID: 0}
 --- !u!114 &114969515430056306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,11 +120,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e00e9acb6f645bdaf444077c20a48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5c0f015f6258d41f0bfefbfe014169cf, type: 2}
-  UnityEventResponse:
+  _event: {fileID: 11400000, guid: 5c0f015f6258d41f0bfefbfe014169cf, type: 2}
+  _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityAtoms.UnityCollider2DEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  GameActionResponses:
+  _gameActionResponses:
   - {fileID: 11400000, guid: 310af909517714e69887a197f337882c, type: 2}
+--- !u!114 &5067224520480043162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776152155576434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b41e529fa1742758a234f799872bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _harmfullEvent: {fileID: 11400000, guid: 5c0f015f6258d41f0bfefbfe014169cf, type: 2}
