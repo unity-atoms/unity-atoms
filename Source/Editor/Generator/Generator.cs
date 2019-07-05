@@ -10,7 +10,7 @@ namespace UnityAtoms.Editor
 {
     internal class Generator
     {
-        public void Generate(string type, string writePath, bool isEquatable)
+        public void Generate(string type, string baseWritePath, bool isEquatable)
         {
             // TODO More validation of that the type exists / is correct.
             if (string.IsNullOrEmpty(type))
@@ -18,7 +18,7 @@ namespace UnityAtoms.Editor
                 Debug.LogWarning($"{RuntimeConstants.LOG_PREFIX} You need to specify a type name. Aborting!");
                 return;
             }
-            if (string.IsNullOrEmpty(writePath))
+            if (string.IsNullOrEmpty(baseWritePath))
             {
                 Debug.LogWarning($"{RuntimeConstants.LOG_PREFIX} You need to specify a write path. Aborting!");
                 return;
@@ -27,7 +27,7 @@ namespace UnityAtoms.Editor
             Debug.Log($"{RuntimeConstants.LOG_PREFIX} Generating " + type);
 
             // Create directories in path if they don't exists
-            Directory.CreateDirectory(writePath);
+            Directory.CreateDirectory(baseWritePath);
 
             // Recursively search for template files. TODO: Is there a better way to find and load templates?
             var templateSearchPath = Environment.CurrentDirectory.Contains("unity-atoms/UnityAtomsTestsAndExamples") ?
@@ -35,6 +35,8 @@ namespace UnityAtoms.Editor
                 Directory.GetParent(Application.dataPath).FullName;
             var templatePaths = Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
             var templateConditions = isEquatable ? new List<string>() { "EQUATABLE" } : new List<string>();
+            var capitalizedType = Capitalize(type);
+            var templateVariables = new Dictionary<string, string>() { { "TYPE_NAME", capitalizedType }, { "TYPE", type } };
 
             foreach (var templatePath in templatePaths)
             {
@@ -43,23 +45,61 @@ namespace UnityAtoms.Editor
                 var templateNameStartIndex = templatePath.LastIndexOf(Path.DirectorySeparatorChar) + 1;
                 var fileExtLength = 4;
                 var templateName = templatePath.Substring(templateNameStartIndex, templatePath.Length - templateNameStartIndex - fileExtLength);
-                var lastIndexOfUnderscore = templateName.LastIndexOf('_');
-                var atomType = templateName.Substring(lastIndexOfUnderscore + 1);
-                var typeOccurrences = templateName.Substring(lastIndexOfUnderscore - 1, 1).ToInt(def: 1);
-                var dirPath = templateName.Contains("AtomDrawers") ? Path.Combine(writePath, "Editor", "AtomDrawers") : Path.Combine(writePath, $"{Capitalize(atomType)}s");
+                var lastIndexOfDoubleUnderscore = templateName.LastIndexOf("__");
+                var atomType = templateName.Substring(lastIndexOfDoubleUnderscore + 2);
+                var capitalizedAtomType = Capitalize(atomType);
+
+                // Create write directory
+                var dirPath = ResolveDirPath(baseWritePath, capitalizedAtomType);
                 Directory.CreateDirectory(dirPath);
 
-                GenerateAtom(
-                    type: type,
-                    atomType: atomType,
-                    template: template,
-                    dirPath: dirPath,
-                    typeOccurences: typeOccurrences,
-                    templateConditions: templateConditions
-                );
+                // Adjust content
+                var content = ResolveVariables(templateVariables, template);
+                content = Templating.ResolveConditionals(template: content, trueConditions: templateConditions);
+
+                // Write to file
+                var fileName = ResolveFileName(templateVariables, templateName, lastIndexOfDoubleUnderscore, capitalizedType, capitalizedAtomType);
+                var filePath = Path.Combine(dirPath, fileName);
+                File.WriteAllText(filePath, content);
+
+                AssetDatabase.ImportAsset(filePath);
             }
 
             AssetDatabase.Refresh();
+        }
+
+        private static string ResolveFileName(Dictionary<string, string> templateVariables, string templateName, int lastIndexOfDoubleUnderscore, string capitalizedType, string capitalizedAtomType)
+        {
+            if (templateName.Contains("Set{TYPE_NAME}VariableValue"))
+            {
+                return ResolveVariables(templateVariables, $"{capitalizedAtomType}.cs");
+            }
+            var typeOccurrences = templateName.Substring(lastIndexOfDoubleUnderscore - 1, 1).ToInt(def: 1);
+            return ResolveVariables(templateVariables, $"{capitalizedType.Repeat(typeOccurrences)}{capitalizedAtomType}.cs");
+        }
+
+        private static string ResolveDirPath(string baseWritePath, string capitalizedAtomType)
+        {
+            if (capitalizedAtomType.Contains("AtomDrawers"))
+            {
+                return Path.Combine(baseWritePath, "Editor", "AtomDrawers");
+            }
+            else if (capitalizedAtomType.Contains("Set{TYPE_NAME}VariableValue"))
+            {
+                return Path.Combine(baseWritePath, "Actions", "SetVariableValue");
+            }
+
+            return Path.Combine(baseWritePath, $"{capitalizedAtomType}s");
+        }
+
+        private static string ResolveVariables(Dictionary<string, string> templateVariables, string toResolve)
+        {
+            var resolvedString = toResolve;
+            foreach (var kvp in templateVariables)
+            {
+                resolvedString = resolvedString.Replace("{" + kvp.Key + "}", kvp.Value);
+            }
+            return resolvedString;
         }
 
         private static string Capitalize(string s)
@@ -70,21 +110,6 @@ namespace UnityAtoms.Editor
             char[] a = s.ToCharArray();
             a[0] = char.ToUpper(a[0]);
             return new string(a);
-        }
-
-        private void GenerateAtom(string type, string atomType, string template, string dirPath, int typeOccurences, List<string> templateConditions = null)
-        {
-            // Adjust content
-            var capitalizedType = Capitalize(type);
-            var content = template.Replace("{TYPE_NAME}", capitalizedType).Replace("{TYPE}", type);
-            content = Templating.ResolveConditionals(template: content, trueConditions: templateConditions);
-
-            // Write to file
-            var fileName = $"{capitalizedType.Repeat(typeOccurences)}{Capitalize(atomType)}.cs";
-            var filePath = Path.Combine(dirPath, fileName);
-            File.WriteAllText(filePath, content);
-
-            AssetDatabase.ImportAsset(filePath);
         }
     }
 }

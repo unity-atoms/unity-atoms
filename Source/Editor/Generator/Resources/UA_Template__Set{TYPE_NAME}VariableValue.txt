@@ -1,0 +1,13 @@
+using UnityEngine;
+
+namespace UnityAtoms
+{
+    [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/{TYPE_NAME}", fileName = "Set{TYPE_NAME}VariableValue")]
+    public sealed class Set{TYPE_NAME}VariableValue : SetVariableValue<
+        {TYPE},
+        {TYPE_NAME}Variable,
+        {TYPE_NAME}Reference,
+        {TYPE_NAME}Event,
+        {TYPE_NAME}{TYPE_NAME}Event>
+    { }
+}

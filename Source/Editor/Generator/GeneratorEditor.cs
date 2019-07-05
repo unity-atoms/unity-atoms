@@ -62,7 +62,7 @@ namespace UnityAtoms.Editor
             };
             inlineVE.Add(button1);
 
-            var button2 = new Button(() => generator.Generate(type: _type, writePath: _writePath, isEquatable: _isEquatable))
+            var button2 = new Button(() => generator.Generate(type: _type, baseWritePath: _writePath, isEquatable: _isEquatable))
             {
                 text = "Generate",
                 style = { flexGrow = 1 }
