@@ -143,6 +143,12 @@ namespace UnityAtoms
     [CustomPropertyDrawer(typeof(VoidEvent))]
     public class VoidEventDrawer : AtomDrawer<VoidEvent> { }
 
+    [CustomPropertyDrawer(typeof(Collision2DEvent))]
+    public class Collision2DEventDrawer : AtomDrawer<Collision2DEvent> { }
+
+    [CustomPropertyDrawer(typeof(CollisionEvent))]
+    public class CollisionEventDrawer : AtomDrawer<CollisionEvent> { }
+
 
     // Event x 2
     [CustomPropertyDrawer(typeof(BoolBoolEvent))]
@@ -221,6 +227,11 @@ namespace UnityAtoms
     [CustomPropertyDrawer(typeof(Vector3List))]
     public class Vector3ListDrawer : AtomDrawer<Vector3List> { }
 
+    [CustomPropertyDrawer(typeof(Collision2DList))]
+    public class Collision2DListDrawer : AtomDrawer<Collision2DList> { }
+
+    [CustomPropertyDrawer(typeof(CollisionList))]
+    public class CollisionListDrawer : AtomDrawer<CollisionList> { }
 
 
     // Variables

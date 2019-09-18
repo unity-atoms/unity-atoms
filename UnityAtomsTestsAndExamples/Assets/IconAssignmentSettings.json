@@ -89,10 +89,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/IconAssignmentPostProcessor/IconAssignmentProcessor.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/IconAssignmentPostProcessor/IconAssigmentSetting.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
@@ -257,10 +253,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/IconAssignmentPostProcessor/IconAssignmentPostprocessor.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Listeners/BoolListener.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-piglet.png"
         },
@@ -385,10 +377,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/IconAssignmentPostProcessor/AttributeMonoScriptAssigner.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/References/GameObjectReference.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
@@ -423,10 +411,6 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/VoidEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/IconAssignmentPostProcessor/CommonIconAssignmentProcessor.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/StringVariableGameObjectAction.cs",
@@ -518,10 +502,6 @@
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/IMGUIUtils.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/IconAssignmentPostProcessor/AtomMonoScriptAssigner.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
@@ -678,6 +658,14 @@
         },
         {
             "AssetPath": "Assets/Examples/Intro/UI/RaiseEventOnButtonClick.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/UnityEvents/UnityCollision2DEvent.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/UnityEvents/UnityCollisionEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         }
     ]
