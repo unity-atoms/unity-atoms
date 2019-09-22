@@ -1544,7 +1544,7 @@ MonoBehaviour:
     m_TypeName: UnityAtoms.UnityVoidEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _gameActionResponses:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2a78a712f17364d78a94a0fc47933b55, type: 2}
 --- !u!114 &1613897681
 MonoBehaviour:
   m_ObjectHideFlags: 0

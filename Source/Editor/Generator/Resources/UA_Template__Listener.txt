@@ -7,6 +7,6 @@ namespace UnityAtoms
         {TYPE},
         {TYPE_NAME}Action,
         {TYPE_NAME}Event,
-        Unity{TYPE_NAME}Event>
+        {TYPE_NAME}UnityEvent>
     { }
 }

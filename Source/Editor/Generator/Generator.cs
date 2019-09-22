@@ -10,9 +10,9 @@ namespace UnityAtoms.Editor
 {
     internal class Generator
     {
-        public void Generate(string type, string baseWritePath, bool isEquatable)
+        public void Generate(string type, string baseWritePath, bool isEquatable, List<AtomType> atomTypesToGenerate)
         {
-            // TODO More validation of that the type exists / is correct.
+            // TODO: More validation of that the type exists / is correct.
             if (string.IsNullOrEmpty(type))
             {
                 Debug.LogWarning($"{RuntimeConstants.LOG_PREFIX} You need to specify a type name. Aborting!");
@@ -40,17 +40,23 @@ namespace UnityAtoms.Editor
 
             foreach (var templatePath in templatePaths)
             {
-                var template = File.ReadAllText(templatePath);
-
                 var templateNameStartIndex = templatePath.LastIndexOf(Path.DirectorySeparatorChar) + 1;
                 var fileExtLength = 4;
                 var templateName = templatePath.Substring(templateNameStartIndex, templatePath.Length - templateNameStartIndex - fileExtLength);
                 var lastIndexOfDoubleUnderscore = templateName.LastIndexOf("__");
                 var atomType = templateName.Substring(lastIndexOfDoubleUnderscore + 2);
                 var capitalizedAtomType = Capitalize(atomType);
+                var typeOccurrences = templateName.Substring(lastIndexOfDoubleUnderscore - 1, 1).ToInt(def: 1);
+
+                if (ShouldSkipTemplate(atomTypesToGenerate, capitalizedAtomType, typeOccurrences))
+                {
+                    continue;
+                }
+
+                var template = File.ReadAllText(templatePath);
 
                 // Create write directory
-                var dirPath = ResolveDirPath(baseWritePath, capitalizedAtomType);
+                var dirPath = ResolveDirPath(baseWritePath, capitalizedAtomType, templateName);
                 Directory.CreateDirectory(dirPath);
 
                 // Adjust content
@@ -58,7 +64,7 @@ namespace UnityAtoms.Editor
                 content = Templating.ResolveConditionals(template: content, trueConditions: templateConditions);
 
                 // Write to file
-                var fileName = ResolveFileName(templateVariables, templateName, lastIndexOfDoubleUnderscore, capitalizedType, capitalizedAtomType);
+                var fileName = ResolveFileName(templateVariables, templateName, lastIndexOfDoubleUnderscore, capitalizedType, capitalizedAtomType, typeOccurrences);
                 var filePath = Path.Combine(dirPath, fileName);
                 File.WriteAllText(filePath, content);
 
@@ -68,19 +74,20 @@ namespace UnityAtoms.Editor
             AssetDatabase.Refresh();
         }
 
-        private static string ResolveFileName(Dictionary<string, string> templateVariables, string templateName, int lastIndexOfDoubleUnderscore, string capitalizedType, string capitalizedAtomType)
+        private static string ResolveFileName(Dictionary<string, string> templateVariables, string templateName, int lastIndexOfDoubleUnderscore, string capitalizedType, string capitalizedAtomType, int typeOccurrences)
         {
             if (templateName.Contains("Set{TYPE_NAME}VariableValue"))
             {
                 return ResolveVariables(templateVariables, $"{capitalizedAtomType}.cs");
             }
-            var typeOccurrences = templateName.Substring(lastIndexOfDoubleUnderscore - 1, 1).ToInt(def: 1);
-            return ResolveVariables(templateVariables, $"{capitalizedType.Repeat(typeOccurrences)}{capitalizedAtomType}.cs");
+            // Editor/AtomDrawers/IntVariableDrawer
+            var fileName = templateName.Contains("AtomDrawer") ? $"{capitalizedType.Repeat(typeOccurrences)}{capitalizedAtomType}Drawer.cs" : $"{capitalizedType.Repeat(typeOccurrences)}{capitalizedAtomType}.cs";
+            return ResolveVariables(templateVariables, fileName);
         }
 
-        private static string ResolveDirPath(string baseWritePath, string capitalizedAtomType)
+        private static string ResolveDirPath(string baseWritePath, string capitalizedAtomType, string templateName)
         {
-            if (capitalizedAtomType.Contains("AtomDrawers"))
+            if (templateName.Contains("AtomDrawer"))
             {
                 return Path.Combine(baseWritePath, "Editor", "AtomDrawers");
             }
@@ -110,6 +117,11 @@ namespace UnityAtoms.Editor
             char[] a = s.ToCharArray();
             a[0] = char.ToUpper(a[0]);
             return new string(a);
+        }
+
+        private static bool ShouldSkipTemplate(List<AtomType> atomTypesToGenerate, string capitalizedAtomType, int typeOccurrences)
+        {
+            return !atomTypesToGenerate.Exists((a) => a.Type == capitalizedAtomType && a.TypeOccurences == typeOccurrences);
         }
     }
 }
