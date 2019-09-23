@@ -7,6 +7,6 @@ namespace UnityAtoms
         Void,
         VoidAction,
         VoidEvent,
-        UnityVoidEvent>
+        VoidUnityEvent>
     { }
 }

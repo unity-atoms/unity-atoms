@@ -6,6 +6,6 @@ namespace UnityAtoms
         float,
         FloatAction,
         FloatEvent,
-        UnityFloatEvent>
+        FloatUnityEvent>
     { }
 }

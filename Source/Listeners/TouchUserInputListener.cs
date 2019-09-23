@@ -7,7 +7,7 @@ namespace UnityAtoms.Mobile
         TouchUserInput,
         TouchUserInputAction,
         TouchUserInputGameEvent,
-        UnityTouchUserInputEvent>
+        TouchUserInputUnityEvent>
     { }
 }
 

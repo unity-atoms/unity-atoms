@@ -7,6 +7,6 @@ namespace UnityAtoms
         Vector2,
         Vector2Action,
         Vector2Event,
-        UnityVector2Event>
+        Vector2UnityEvent>
     { }
 }

@@ -5,5 +5,5 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [Serializable]
-    public sealed class UnityGameObjectEvent : UnityEvent<GameObject> { }
+    public sealed class Collider2DUnityEvent : UnityEvent<Collider2D> { }
 }

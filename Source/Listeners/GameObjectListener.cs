@@ -7,6 +7,6 @@ namespace UnityAtoms
         GameObject,
         GameObjectAction,
         GameObjectEvent,
-        UnityGameObjectEvent>
+        GameObjectUnityEvent>
     { }
 }

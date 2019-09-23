@@ -7,6 +7,6 @@ namespace UnityAtoms
         string,
         StringAction,
         StringEvent,
-        UnityStringEvent>
+        StringUnityEvent>
     { }
 }

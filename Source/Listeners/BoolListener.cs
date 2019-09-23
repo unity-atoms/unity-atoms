@@ -7,6 +7,6 @@ namespace UnityAtoms
         bool,
         BoolAction,
         BoolEvent,
-        UnityBoolEvent>
+        BoolUnityEvent>
     { }
 }

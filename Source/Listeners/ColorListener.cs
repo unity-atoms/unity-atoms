@@ -7,6 +7,6 @@ namespace UnityAtoms
         Color,
         ColorAction,
         ColorEvent,
-        UnityColorEvent>
+        ColorUnityEvent>
     { }
 }
