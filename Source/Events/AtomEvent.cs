@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class GameEvent<T> : ScriptableObject, ISerializationCallbackReceiver, IEventIcon
+    public abstract class AtomEvent<T> : ScriptableObject, ISerializationCallbackReceiver, IAtomEventIcon
     {
         public event Action<T> OnEvent;
 
@@ -23,12 +23,12 @@ namespace UnityAtoms
             OnEvent -= del;
         }
 
-        public void RegisterListener(IGameEventListener<T> listener)
+        public void RegisterListener(IAtomListener<T> listener)
         {
             OnEvent += listener.OnEventRaised;
         }
 
-        public void UnregisterListener(IGameEventListener<T> listener)
+        public void UnregisterListener(IAtomListener<T> listener)
         {
             OnEvent -= listener.OnEventRaised;
         }
@@ -55,7 +55,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class GameEvent<T1, T2> : ScriptableObject, ISerializationCallbackReceiver, IEventIcon
+    public abstract class AtomEvent<T1, T2> : ScriptableObject, ISerializationCallbackReceiver, IAtomEventIcon
     {
         public event Action<T1, T2> OnEvent;
 
@@ -74,12 +74,12 @@ namespace UnityAtoms
             OnEvent -= del;
         }
 
-        public void RegisterListener(IGameEventListener<T1, T2> listener)
+        public void RegisterListener(IAtomListener<T1, T2> listener)
         {
             OnEvent += listener.OnEventRaised;
         }
 
-        public void UnregisterListener(IGameEventListener<T1, T2> listener)
+        public void UnregisterListener(IAtomListener<T1, T2> listener)
         {
             OnEvent -= listener.OnEventRaised;
         }

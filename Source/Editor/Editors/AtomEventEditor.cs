@@ -6,8 +6,8 @@ using UnityEditor.UIElements;
 
 namespace UnityAtoms
 {
-    public abstract class GameEventEditor<T, E> : UnityEditor.Editor
-        where E : GameEvent<T>
+    public abstract class AtomEventEditor<T, E> : UnityEditor.Editor
+        where E : AtomEvent<T>
     {
         protected T _raiseValue = default(T);
 
@@ -38,7 +38,7 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(BoolEvent))]
-    public sealed class BoolEventEditor : GameEventEditor<bool, BoolEvent>
+    public sealed class BoolEventEditor : AtomEventEditor<bool, BoolEvent>
     {
         protected override VisualElement GetRaiseValueInput()
         {
@@ -49,7 +49,7 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(ColliderEvent))]
-    public sealed class ColliderEventEventEditor : GameEventEditor<Collider, ColliderEvent>
+    public sealed class ColliderEventEventEditor : AtomEventEditor<Collider, ColliderEvent>
     {
         protected override VisualElement GetRaiseValueInput()
         {
@@ -60,7 +60,7 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(Collider2DEvent))]
-    public sealed class Collider2DEventEditor : GameEventEditor<Collider2D, Collider2DEvent>
+    public sealed class Collider2DEventEditor : AtomEventEditor<Collider2D, Collider2DEvent>
     {
         protected override VisualElement GetRaiseValueInput()
         {
@@ -71,7 +71,7 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(ColorEvent))]
-    public sealed class ColorEventEditor : GameEventEditor<Color, ColorEvent>
+    public sealed class ColorEventEditor : AtomEventEditor<Color, ColorEvent>
     {
         protected override VisualElement GetRaiseValueInput()
         {
@@ -82,7 +82,7 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(FloatEvent))]
-    public sealed class FloatEventEditor : GameEventEditor<float, FloatEvent>
+    public sealed class FloatEventEditor : AtomEventEditor<float, FloatEvent>
     {
         protected override VisualElement GetRaiseValueInput()
         {
@@ -93,7 +93,7 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(GameObjectEvent))]
-    public sealed class GameObjectEventEditor : GameEventEditor<GameObject, GameObjectEvent>
+    public sealed class GameObjectEventEditor : AtomEventEditor<GameObject, GameObjectEvent>
     {
         protected override VisualElement GetRaiseValueInput()
         {
@@ -104,7 +104,7 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(IntEvent))]
-    public sealed class IntGameEventEditor : GameEventEditor<int, IntEvent>
+    public sealed class IntEventEditor : AtomEventEditor<int, IntEvent>
     {
         protected override VisualElement GetRaiseValueInput()
         {
@@ -115,7 +115,7 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(Vector2Event))]
-    public sealed class Vector2EventEditor : GameEventEditor<Vector2, Vector2Event>
+    public sealed class Vector2EventEditor : AtomEventEditor<Vector2, Vector2Event>
     {
         protected override VisualElement GetRaiseValueInput()
         {
@@ -126,7 +126,7 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(Vector3Event))]
-    public sealed class Vector3EventEditor : GameEventEditor<Vector3, Vector3Event>
+    public sealed class Vector3EventEditor : AtomEventEditor<Vector3, Vector3Event>
     {
         protected override VisualElement GetRaiseValueInput()
         {
@@ -137,10 +137,10 @@ namespace UnityAtoms
     }
 
     [CustomEditor(typeof(VoidEvent))]
-    public sealed class VoidEventEditor : GameEventEditor<Void, VoidEvent> { }
+    public sealed class VoidEventEditor : AtomEventEditor<Void, VoidEvent> { }
 
     [CustomEditor(typeof(StringEvent))]
-    public sealed class StringEventEditor : GameEventEditor<string, StringEvent>
+    public sealed class StringEventEditor : AtomEventEditor<string, StringEvent>
     {
         protected override VisualElement GetRaiseValueInput()
         {

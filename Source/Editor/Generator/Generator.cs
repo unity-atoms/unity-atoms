@@ -1,9 +1,9 @@
+#if UNITY_2019_1_OR_NEWER
 using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-#if UNITY_2019_1_OR_NEWER
 using UnityAtoms.Extensions;
 
 namespace UnityAtoms.Editor
@@ -80,8 +80,21 @@ namespace UnityAtoms.Editor
             {
                 return ResolveVariables(templateVariables, $"{capitalizedAtomType}.cs");
             }
-            // Editor/AtomDrawers/IntVariableDrawer
-            var fileName = templateName.Contains("AtomDrawer") ? $"{capitalizedType.Repeat(typeOccurrences)}{capitalizedAtomType}Drawer.cs" : $"{capitalizedType.Repeat(typeOccurrences)}{capitalizedAtomType}.cs";
+
+            string fileName;
+            if (templateName.Contains("AtomDrawer"))
+            {
+                fileName = $"{capitalizedType.Repeat(typeOccurrences)}{capitalizedAtomType}Drawer.cs";
+            }
+            else if (templateName.Contains("AtomEditor"))
+            {
+                fileName = $"{capitalizedType.Repeat(typeOccurrences)}{capitalizedAtomType}Editor.cs";
+            }
+            else
+            {
+                fileName = $"{capitalizedType.Repeat(typeOccurrences)}{capitalizedAtomType}.cs";
+            }
+
             return ResolveVariables(templateVariables, fileName);
         }
 
@@ -90,6 +103,10 @@ namespace UnityAtoms.Editor
             if (templateName.Contains("AtomDrawer"))
             {
                 return Path.Combine(baseWritePath, "Editor", "AtomDrawers");
+            }
+            else if (capitalizedAtomType.Contains("AtomEditor"))
+            {
+                return Path.Combine(baseWritePath, "Editor", "AtomEditors");
             }
             else if (capitalizedAtomType.Contains("Set{TYPE_NAME}VariableValue"))
             {

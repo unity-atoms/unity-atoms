@@ -4,8 +4,8 @@ using UnityEngine;
 namespace UnityAtoms
 {
 
-    [CustomPropertyDrawer(typeof(ScriptableObjectReference), true)]
-    public class ReferenceDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(AtomReference), true)]
+    public class AtomReferenceDrawer : PropertyDrawer
     {
         private static readonly string[] _popupOptions =
             { "Use Constant", "Use Variable" };

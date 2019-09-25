@@ -33,10 +33,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/References/ScriptableObjectReference.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/GameObjectEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
@@ -79,10 +75,6 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/BoolBoolEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/ReferenceDrawer.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/StringStringAction.cs",
@@ -373,10 +365,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-lush.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/SceneFieldDrawer.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/ColliderEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
         },
@@ -558,6 +546,18 @@
         },
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/UnityEvents/VoidUnityEvent.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/Drawers/AtomReferenceDrawer.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/Drawers/SceneFieldDrawer.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/References/AtomReference.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         }
     ]

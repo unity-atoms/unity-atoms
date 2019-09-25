@@ -19,31 +19,31 @@ namespace UnityAtoms
                 var inUnityAtomsNS = scriptName != null && type != null && type.Namespace != null && type.Namespace.StartsWith("UnityAtoms");
                 if (inUnityAtomsNS)
                 {
-                    if (typeof(IGameActionIcon).IsAssignableFrom(type))
+                    if (typeof(IAtomActionIcon).IsAssignableFrom(type))
                     {
                         return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-purple");
                     }
-                    else if (typeof(IVariableIcon).IsAssignableFrom(type))
+                    else if (typeof(IAtomVariableIcon).IsAssignableFrom(type))
                     {
                         return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-lush");
                     }
-                    else if (typeof(IConstantIcon).IsAssignableFrom(type))
+                    else if (typeof(IAtomConstantIcon).IsAssignableFrom(type))
                     {
                         return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-teal");
                     }
-                    else if (typeof(IEventIcon).IsAssignableFrom(type))
+                    else if (typeof(IAtomEventIcon).IsAssignableFrom(type))
                     {
                         return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-cherry");
                     }
-                    else if (typeof(IFunctionIcon).IsAssignableFrom(type))
+                    else if (typeof(IAtomFunctionIcon).IsAssignableFrom(type))
                     {
                         return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-sand");
                     }
-                    else if (typeof(IListenerIcon).IsAssignableFrom(type))
+                    else if (typeof(IAtomListenerIcon).IsAssignableFrom(type))
                     {
                         return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-piglet");
                     }
-                    else if (typeof(IListIcon).IsAssignableFrom(type))
+                    else if (typeof(IAtomListIcon).IsAssignableFrom(type))
                     {
                         return icons.FirstOrDefault((icon) => icon.Name == "atom-icon-orange");
                     }

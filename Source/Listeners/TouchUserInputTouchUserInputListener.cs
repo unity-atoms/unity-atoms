@@ -3,11 +3,11 @@ using UnityEngine;
 namespace UnityAtoms.Mobile
 {
     [AddComponentMenu("Unity Atoms/Listeners/TouchUserInput - TouchUserInput")]
-    public sealed class TouchUserInputTouchUserInputListener : GameEventListener<
+    public sealed class TouchUserInputTouchUserInputListener : AtomListener<
         TouchUserInput,
         TouchUserInput,
         TouchUserInputTouchUserInputAction,
-        TouchUserInputTouchUserInputGameEvent,
+        TouchUserInputTouchUserInputEvent,
         TouchUserInputTouchUserInputUnityEvent>
     { }
 }

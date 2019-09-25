@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectVariableBase<T> : ScriptableObject, IConstantIcon
+    public abstract class AtomVariableBase<T> : ScriptableObject, IAtomConstantIcon
     {
         public virtual T Value { get { return _value; } set { throw new NotImplementedException(); } }
 
@@ -16,7 +16,7 @@ namespace UnityAtoms
         [SerializeField]
         protected T _value;
 
-        protected bool Equals(ScriptableObjectVariableBase<T> other)
+        protected bool Equals(AtomVariableBase<T> other)
         {
             return EqualityComparer<T>.Default.Equals(_value, other._value);
         }
@@ -26,7 +26,7 @@ namespace UnityAtoms
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((ScriptableObjectVariableBase<T>)obj);
+            return Equals((AtomVariableBase<T>)obj);
         }
 
         public override int GetHashCode()
@@ -37,7 +37,7 @@ namespace UnityAtoms
             }
         }
 
-        public static bool operator ==(ScriptableObjectVariableBase<T> left, ScriptableObjectVariableBase<T> right) { return Equals(left, right); }
-        public static bool operator !=(ScriptableObjectVariableBase<T> left, ScriptableObjectVariableBase<T> right) { return !Equals(left, right); }
+        public static bool operator ==(AtomVariableBase<T> left, AtomVariableBase<T> right) { return Equals(left, right); }
+        public static bool operator !=(AtomVariableBase<T> left, AtomVariableBase<T> right) { return !Equals(left, right); }
     }
 }

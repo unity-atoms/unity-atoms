@@ -5,10 +5,10 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectVariable<T, E1, E2> : ScriptableObjectVariableBase<T>,
-        ISerializationCallbackReceiver, IVariableIcon
-        where E1 : GameEvent<T>
-        where E2 : GameEvent<T, T>
+    public abstract class AtomVariable<T, E1, E2> : AtomVariableBase<T>,
+        ISerializationCallbackReceiver, IAtomVariableIcon
+        where E1 : AtomEvent<T>
+        where E2 : AtomEvent<T, T>
     {
         public override T Value { get { return _value; } set { SetValue(value); } }
 
@@ -47,7 +47,7 @@ namespace UnityAtoms
             return false;
         }
 
-        public bool SetValue(ScriptableObjectVariable<T, E1, E2> variable)
+        public bool SetValue(AtomVariable<T, E1, E2> variable)
         {
             return SetValue(variable.Value);
         }

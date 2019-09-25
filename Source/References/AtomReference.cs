@@ -1,9 +1,9 @@
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectReference{}
+    public abstract class AtomReference { }
 
-    public abstract class ScriptableObjectReference<T, V> : ScriptableObjectReference
-        where V : ScriptableObjectVariableBase<T>
+    public abstract class AtomReference<T, V> : AtomReference
+        where V : AtomVariableBase<T>
     {
         public bool UseConstant;
 
@@ -11,12 +11,12 @@ namespace UnityAtoms
 
         public V Variable;
 
-        protected ScriptableObjectReference()
+        protected AtomReference()
         {
             UseConstant = true;
         }
 
-        protected ScriptableObjectReference(T value) : this()
+        protected AtomReference(T value) : this()
         {
             UseConstant = true;
             ConstantValue = value;
@@ -27,7 +27,7 @@ namespace UnityAtoms
             get { return UseConstant ? ConstantValue : Variable.Value; }
         }
 
-        public static implicit operator T(ScriptableObjectReference<T, V> reference)
+        public static implicit operator T(AtomReference<T, V> reference)
         {
             return reference.Value;
         }

@@ -2,10 +2,10 @@ using System;
 
 namespace UnityAtoms
 {
-    public abstract class EquatableScriptableObjectVariable<T, E1, E2> : ScriptableObjectVariable<T, E1, E2>
+    public abstract class EquatableAtomVariable<T, E1, E2> : AtomVariable<T, E1, E2>
         where T : IEquatable<T>
-        where E1 : GameEvent<T>
-        where E2 : GameEvent<T, T>
+        where E1 : AtomEvent<T>
+        where E2 : AtomEvent<T, T>
     {
         protected override bool AreEqual(T t1, T t2)
         {

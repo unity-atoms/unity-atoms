@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [Serializable]
-    public sealed class GameObjectReference : ScriptableObjectReference<
+    public sealed class GameObjectReference : AtomReference<
         GameObject,
         GameObjectVariable>
     { }

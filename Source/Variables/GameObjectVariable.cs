@@ -3,7 +3,7 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/GameObject", fileName = "GameObjectVariable")]
-    public sealed class GameObjectVariable : ScriptableObjectVariable<
+    public sealed class GameObjectVariable : AtomVariable<
         GameObject,
         GameObjectEvent,
         GameObjectGameObjectEvent>

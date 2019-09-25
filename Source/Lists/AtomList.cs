@@ -2,12 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityAtoms.Extensions;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectList<T, E> : ScriptableObject, IList<T>, IListIcon
-        where E : GameEvent<T>
+    public abstract class AtomList<T, E> : ScriptableObject, IList<T>, IAtomListIcon
+        where E : AtomEvent<T>
     {
         public E Added;
 

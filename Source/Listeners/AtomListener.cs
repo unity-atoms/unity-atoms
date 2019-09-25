@@ -5,9 +5,9 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class GameEventListener<T, GA, E, UER> : MonoBehaviour, IGameEventListener<T>, IListenerIcon
-        where GA : GameAction<T>
-        where E : GameEvent<T> where UER : UnityEvent<T>
+    public abstract class AtomListener<T, GA, E, UER> : MonoBehaviour, IAtomListener<T>, IAtomListenerIcon
+        where GA : AtomAction<T>
+        where E : AtomEvent<T> where UER : UnityEvent<T>
     {
         [FormerlySerializedAs("Event")]
         [SerializeField]
@@ -21,7 +21,7 @@ namespace UnityAtoms
 
         [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]
-        private List<GA> _gameActionResponses = new List<GA>();
+        private List<GA> _actionResponses = new List<GA>();
 
         private void OnEnable()
         {
@@ -38,16 +38,16 @@ namespace UnityAtoms
         public void OnEventRaised(T item)
         {
             if (_unityEventResponse != null) { _unityEventResponse.Invoke(item); }
-            for (int i = 0; _gameActionResponses != null && i < _gameActionResponses.Count; ++i)
+            for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
             {
-                _gameActionResponses[i].Do(item);
+                _actionResponses[i].Do(item);
             }
         }
     }
 
-    public abstract class GameEventListener<T1, T2, GA, E, UER> : MonoBehaviour, IGameEventListener<T1, T2>, IListenerIcon
-        where GA : GameAction<T1, T2>
-        where E : GameEvent<T1, T2>
+    public abstract class AtomListener<T1, T2, GA, E, UER> : MonoBehaviour, IAtomListener<T1, T2>, IAtomListenerIcon
+        where GA : AtomAction<T1, T2>
+        where E : AtomEvent<T1, T2>
         where UER : UnityEvent<T1, T2>
     {
         [FormerlySerializedAs("Event")]
@@ -62,7 +62,7 @@ namespace UnityAtoms
 
         [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]
-        private List<GA> _gameActionResponses = new List<GA>();
+        private List<GA> _actionResponses = new List<GA>();
 
         private void OnEnable()
         {
@@ -79,9 +79,9 @@ namespace UnityAtoms
         public void OnEventRaised(T1 first, T2 second)
         {
             if (_unityEventResponse != null) { _unityEventResponse.Invoke(first, second); }
-            for (int i = 0; _gameActionResponses != null && i < _gameActionResponses.Count; ++i)
+            for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
             {
-                _gameActionResponses[i].Do(first, second);
+                _actionResponses[i].Do(first, second);
             }
         }
     }

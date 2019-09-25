@@ -4,10 +4,10 @@ using UnityEngine.Serialization;
 namespace UnityAtoms
 {
     public abstract class SetVariableValue<T, V, R, E1, E2> : VoidAction
-        where E1 : GameEvent<T>
-        where E2 : GameEvent<T, T>
-        where V : ScriptableObjectVariable<T, E1, E2>
-        where R : ScriptableObjectReference<T, V>
+        where E1 : AtomEvent<T>
+        where E2 : AtomEvent<T, T>
+        where V : AtomVariable<T, E1, E2>
+        where R : AtomReference<T, V>
     {
         [FormerlySerializedAs("Variable")]
         [SerializeField]
