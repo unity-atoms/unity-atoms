@@ -15,16 +15,16 @@ namespace UnityAtoms.Editor
             // TODO: More validation of that the type exists / is correct.
             if (string.IsNullOrEmpty(type))
             {
-                Debug.LogWarning($"{RuntimeConstants.LOG_PREFIX} You need to specify a type name. Aborting!");
+                Debug.LogWarning($"{Runtime.Constants.LOG_PREFIX} You need to specify a type name. Aborting!");
                 return;
             }
             if (string.IsNullOrEmpty(baseWritePath))
             {
-                Debug.LogWarning($"{RuntimeConstants.LOG_PREFIX} You need to specify a write path. Aborting!");
+                Debug.LogWarning($"{Runtime.Constants.LOG_PREFIX} You need to specify a write path. Aborting!");
                 return;
             }
 
-            Debug.Log($"{RuntimeConstants.LOG_PREFIX} Generating " + type);
+            Debug.Log($"{Runtime.Constants.LOG_PREFIX} Generating " + type);
 
             // Create directories in path if they don't exists
             Directory.CreateDirectory(baseWritePath);
@@ -56,7 +56,7 @@ namespace UnityAtoms.Editor
                 var template = File.ReadAllText(templatePath);
 
                 // Create write directory
-                var dirPath = ResolveDirPath(baseWritePath, capitalizedAtomType, templateName);
+                var dirPath = ResolveDirPath(baseWritePath, capitalizedAtomType, templateName, atomType);
                 Directory.CreateDirectory(dirPath);
 
                 // Adjust content
@@ -98,15 +98,15 @@ namespace UnityAtoms.Editor
             return ResolveVariables(templateVariables, fileName);
         }
 
-        private static string ResolveDirPath(string baseWritePath, string capitalizedAtomType, string templateName)
+        private static string ResolveDirPath(string baseWritePath, string capitalizedAtomType, string templateName, string atomType)
         {
             if (templateName.Contains("AtomDrawer"))
             {
-                return Path.Combine(baseWritePath, "Editor", "Drawers");
+                return Path.Combine(baseWritePath, "Editor", Runtime.IsUnityAtomsRepo ? "Drawers" : "AtomDrawers", $"{atomType}s");
             }
             else if (templateName.Contains("AtomEditor"))
             {
-                return Path.Combine(baseWritePath, "Editor", "Editors");
+                return Path.Combine(baseWritePath, "Editor", Runtime.IsUnityAtomsRepo ? "Editors" : "AtomEditors", $"{atomType}s");
             }
             else if (capitalizedAtomType.Contains("Set{TYPE_NAME}VariableValue"))
             {

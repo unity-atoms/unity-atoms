@@ -100,7 +100,7 @@ namespace UnityAtoms.Editor
             }
         }
 
-        private static string _writePath = System.Environment.CurrentDirectory.Contains("unity-atoms/UnityAtomsTestsAndExamples")
+        private static string _writePath = Runtime.IsUnityAtomsRepo
             ? "../Source/" : "Assets/Atoms/";
 
         private void OnEnable()

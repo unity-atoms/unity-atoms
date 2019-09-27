@@ -409,10 +409,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-orange.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Utils/RuntimeConstants.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Assets/Examples/Intro/GameObjects/HealthListener/HealthLogger/HealthLogger.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
         },
@@ -549,6 +545,10 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/References/AtomReference.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/Drawers/AtomReferenceDrawer.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
@@ -557,7 +557,7 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/References/AtomReference.cs",
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Utils/Runtime.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
         }
     ]
