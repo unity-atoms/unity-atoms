@@ -102,11 +102,11 @@ namespace UnityAtoms.Editor
         {
             if (templateName.Contains("AtomDrawer"))
             {
-                return Path.Combine(baseWritePath, "Editor", "AtomDrawers");
+                return Path.Combine(baseWritePath, "Editor", "Drawers");
             }
-            else if (capitalizedAtomType.Contains("AtomEditor"))
+            else if (templateName.Contains("AtomEditor"))
             {
-                return Path.Combine(baseWritePath, "Editor", "AtomEditors");
+                return Path.Combine(baseWritePath, "Editor", "Editors");
             }
             else if (capitalizedAtomType.Contains("Set{TYPE_NAME}VariableValue"))
             {

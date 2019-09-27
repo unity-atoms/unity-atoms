@@ -3,7 +3,7 @@ using System;
 namespace UnityAtoms
 {
     [Serializable]
-    public sealed class {TYPE_NAME}Reference : ScriptableObjectReference<
+    public sealed class {TYPE_NAME}Reference : AtomReference<
         {TYPE},
         {TYPE_NAME}Variable> { }
 }

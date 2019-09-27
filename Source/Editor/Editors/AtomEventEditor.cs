@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 
-namespace UnityAtoms
+namespace UnityAtoms.Editor
 {
     public abstract class AtomEventEditor<T, E> : UnityEditor.Editor
         where E : AtomEvent<T>

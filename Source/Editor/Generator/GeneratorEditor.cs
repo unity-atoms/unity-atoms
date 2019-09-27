@@ -20,31 +20,23 @@ namespace UnityAtoms.Editor
             window.Show();
         }
 
-        public static readonly string ACTION = "Action";
-        public static readonly string CONSTANT = "Constant";
-        public static readonly string EVENT = "Event";
-        public static readonly string EVENT_X2 = "Event x 2";
-        public static readonly string LIST = "List";
-        public static readonly string LISTENER = "Listener";
-        public static readonly string REFERENCE = "Reference";
-        public static readonly string SET_VARIABLE_VALUE = "Set Variable Value (Action)";
-        public static readonly string UNITY_EVENT = "Unity Event";
-        public static readonly string VARIABLE = "Variable";
-
         private string _type = "";
         private bool _isEquatable = true;
 
         private List<AtomType> _atomTypesToGenerate = new List<AtomType>()
         {
             AtomTypes.ACTION,
+            AtomTypes.ACTION_X2,
             AtomTypes.CONSTANT,
             AtomTypes.EVENT,
             AtomTypes.EVENT_X2,
             AtomTypes.LIST,
             AtomTypes.LISTENER,
+            AtomTypes.LISTENER_X2,
             AtomTypes.REFERENCE,
             AtomTypes.SET_VARIABLE_VALUE,
             AtomTypes.UNITY_EVENT,
+            AtomTypes.UNITY_EVENT_X2,
             AtomTypes.VARIABLE
         };
         private Dictionary<AtomType, VisualElement> _typeVEDict = new Dictionary<AtomType, VisualElement>();
@@ -53,13 +45,11 @@ namespace UnityAtoms.Editor
         private Dictionary<AtomType, List<AtomType>> _dependencies = new Dictionary<AtomType, List<AtomType>>() {
             { AtomTypes.LIST, new List<AtomType>() { AtomTypes.EVENT } },
             { AtomTypes.LISTENER, new List<AtomType>() { AtomTypes.ACTION, AtomTypes.EVENT, AtomTypes.UNITY_EVENT } },
+            { AtomTypes.LISTENER_X2, new List<AtomType>() { AtomTypes.ACTION_X2, AtomTypes.EVENT_X2, AtomTypes.UNITY_EVENT_X2 } },
             { AtomTypes.REFERENCE, new List<AtomType>() { AtomTypes.VARIABLE } },
             { AtomTypes.SET_VARIABLE_VALUE, new List<AtomType>() { AtomTypes.VARIABLE, AtomTypes.REFERENCE, AtomTypes.EVENT, AtomTypes.EVENT_X2 } },
             { AtomTypes.VARIABLE, new List<AtomType>() { AtomTypes.EVENT, AtomTypes.EVENT_X2 } }
         };
-
-
-
 
         private void AddAtomTypeToGenerate(AtomType atomType)
         {
@@ -115,7 +105,22 @@ namespace UnityAtoms.Editor
 
         private void OnEnable()
         {
-            _atomTypesToGenerate = new List<AtomType>() { AtomTypes.ACTION, AtomTypes.CONSTANT, AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.LIST, AtomTypes.LISTENER, AtomTypes.REFERENCE, AtomTypes.SET_VARIABLE_VALUE, AtomTypes.UNITY_EVENT, AtomTypes.VARIABLE };
+            _atomTypesToGenerate = new List<AtomType>()
+            {
+                AtomTypes.ACTION,
+                AtomTypes.ACTION_X2,
+                AtomTypes.CONSTANT,
+                AtomTypes.EVENT,
+                AtomTypes.EVENT_X2,
+                AtomTypes.LIST,
+                AtomTypes.LISTENER,
+                AtomTypes.LISTENER_X2,
+                AtomTypes.REFERENCE,
+                AtomTypes.SET_VARIABLE_VALUE,
+                AtomTypes.UNITY_EVENT,
+                AtomTypes.UNITY_EVENT_X2,
+                AtomTypes.VARIABLE
+            };
             generator = generator == null ? new Generator() : generator;
 
             var root = this.rootVisualElement;
@@ -148,6 +153,8 @@ namespace UnityAtoms.Editor
 
             _typeVEDict.Add(AtomTypes.ACTION, CreateAtomTypeToGenerateToggleRow(AtomTypes.ACTION));
             root.Add(_typeVEDict[AtomTypes.ACTION]);
+            _typeVEDict.Add(AtomTypes.ACTION_X2, CreateAtomTypeToGenerateToggleRow(AtomTypes.ACTION_X2));
+            root.Add(_typeVEDict[AtomTypes.ACTION_X2]);
             _typeVEDict.Add(AtomTypes.CONSTANT, CreateAtomTypeToGenerateToggleRow(AtomTypes.CONSTANT));
             root.Add(_typeVEDict[AtomTypes.CONSTANT]);
             _typeVEDict.Add(AtomTypes.EVENT, CreateAtomTypeToGenerateToggleRow(AtomTypes.EVENT));
@@ -158,12 +165,16 @@ namespace UnityAtoms.Editor
             root.Add(_typeVEDict[AtomTypes.LIST]);
             _typeVEDict.Add(AtomTypes.LISTENER, CreateAtomTypeToGenerateToggleRow(AtomTypes.LISTENER));
             root.Add(_typeVEDict[AtomTypes.LISTENER]);
+            _typeVEDict.Add(AtomTypes.LISTENER_X2, CreateAtomTypeToGenerateToggleRow(AtomTypes.LISTENER_X2));
+            root.Add(_typeVEDict[AtomTypes.LISTENER_X2]);
             _typeVEDict.Add(AtomTypes.REFERENCE, CreateAtomTypeToGenerateToggleRow(AtomTypes.REFERENCE));
             root.Add(_typeVEDict[AtomTypes.REFERENCE]);
             _typeVEDict.Add(AtomTypes.SET_VARIABLE_VALUE, CreateAtomTypeToGenerateToggleRow(AtomTypes.SET_VARIABLE_VALUE));
             root.Add(_typeVEDict[AtomTypes.SET_VARIABLE_VALUE]);
             _typeVEDict.Add(AtomTypes.UNITY_EVENT, CreateAtomTypeToGenerateToggleRow(AtomTypes.UNITY_EVENT));
             root.Add(_typeVEDict[AtomTypes.UNITY_EVENT]);
+            _typeVEDict.Add(AtomTypes.UNITY_EVENT_X2, CreateAtomTypeToGenerateToggleRow(AtomTypes.UNITY_EVENT_X2));
+            root.Add(_typeVEDict[AtomTypes.UNITY_EVENT_X2]);
             _typeVEDict.Add(AtomTypes.VARIABLE, CreateAtomTypeToGenerateToggleRow(AtomTypes.VARIABLE));
             root.Add(_typeVEDict[AtomTypes.VARIABLE]);
 

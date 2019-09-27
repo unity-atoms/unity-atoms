@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace UnityAtoms
+namespace UnityAtoms.Editor
 {
 
     [CustomPropertyDrawer(typeof(AtomReference), true)]

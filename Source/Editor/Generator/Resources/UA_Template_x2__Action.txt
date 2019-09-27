@@ -1,0 +1,4 @@
+namespace UnityAtoms
+{
+    public abstract class {TYPE_NAME}{TYPE_NAME}Action : AtomAction<{TYPE}, {TYPE}> { }
+}

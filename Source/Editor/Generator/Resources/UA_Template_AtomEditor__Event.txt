@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 
-namespace UnityAtoms
+namespace UnityAtoms.Editor
 {
     [CustomEditor(typeof({TYPE_NAME}Event))]
     public sealed class {TYPE_NAME}EventEditor : AtomEventEditor<{TYPE}, {TYPE_NAME}Event>

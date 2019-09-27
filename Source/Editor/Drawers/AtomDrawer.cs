@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace UnityAtoms
+namespace UnityAtoms.Editor
 {
     public abstract class AtomDrawer<T> : PropertyDrawer where T : ScriptableObject
     {

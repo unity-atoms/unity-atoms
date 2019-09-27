@@ -1,7 +1,7 @@
 #if UNITY_2019_1_OR_NEWER
 using UnityEditor;
 
-namespace UnityAtoms
+namespace UnityAtoms.Editor
 {
     [CustomPropertyDrawer(typeof({TYPE_NAME}Event))]
     public class {TYPE_NAME}EventDrawer : AtomDrawer<{TYPE_NAME}Event> { }

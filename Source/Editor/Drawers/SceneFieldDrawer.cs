@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace UnityAtoms
+namespace UnityAtoms.Editor
 {
     [CustomPropertyDrawer(typeof(SceneField))]
     public class SceneFieldDrawer : PropertyDrawer
