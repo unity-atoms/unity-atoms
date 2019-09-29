@@ -4,12 +4,47 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class AtomEvent<T> : ScriptableObject, ISerializationCallbackReceiver, IAtomEventIcon
+    public abstract class AtomEvent : BaseAtom, ISerializationCallbackReceiver, IAtomEventIcon
+    {
+        public event Action OnEventNoValue;
+        protected void RaiseNoValue()
+        {
+            OnEventNoValue?.Invoke();
+        }
+
+        public void Register(Action del)
+        {
+            OnEventNoValue += del;
+        }
+
+        public void Unregister(Action del)
+        {
+            OnEventNoValue -= del;
+        }
+
+        public void OnBeforeSerialize() { }
+
+        public virtual void OnAfterDeserialize()
+        {
+            // Clear all delegates when exiting play mode
+            if (OnEventNoValue != null)
+            {
+                foreach (var d in OnEventNoValue.GetInvocationList())
+                {
+                    OnEventNoValue -= (Action)d;
+                }
+            }
+        }
+
+    }
+
+    public abstract class AtomEvent<T> : AtomEvent
     {
         public event Action<T> OnEvent;
 
         public void Raise(T item)
         {
+            base.RaiseNoValue();
             OnEvent?.Invoke(item);
         }
 
@@ -40,10 +75,9 @@ namespace UnityAtoms
         }
         #endregion // Observable
 
-        public void OnBeforeSerialize() { }
-
-        public void OnAfterDeserialize()
+        public override void OnAfterDeserialize()
         {
+            base.OnAfterDeserialize();
             // Clear all delegates when exiting play mode
             if (OnEvent != null)
             {
@@ -55,12 +89,13 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class AtomEvent<T1, T2> : ScriptableObject, ISerializationCallbackReceiver, IAtomEventIcon
+    public abstract class AtomEvent<T1, T2> : AtomEvent
     {
         public event Action<T1, T2> OnEvent;
 
         public void Raise(T1 item1, T2 item2)
         {
+            base.RaiseNoValue();
             OnEvent?.Invoke(item1, item2);
         }
 
@@ -91,10 +126,9 @@ namespace UnityAtoms
         }
         #endregion // Observable
 
-        public void OnBeforeSerialize() { }
-
-        public void OnAfterDeserialize()
+        public override void OnAfterDeserialize()
         {
+            base.OnAfterDeserialize();
             // Clear all delegates when exiting play mode
             if (OnEvent != null)
                 foreach (var d in OnEvent.GetInvocationList())

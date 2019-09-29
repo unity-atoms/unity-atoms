@@ -15,16 +15,27 @@ namespace UnityAtoms.Editor
 
         public override VisualElement CreateInspectorGUI()
         {
-            var wrapper = new VisualElement();
-            wrapper.SetEnabled(Application.isPlaying);
+            var root = new VisualElement();
+
+            var desc = serializedObject.FindProperty("_developerDescription");
+            var developerDescription = new TextField("Developer Description") { value = desc.stringValue, multiline = true };
+            developerDescription.RegisterCallback<ChangeEvent<string>>(evt =>
+            {
+                desc.stringValue = evt.newValue;
+                serializedObject.ApplyModifiedProperties();
+            });
+            root.Add(developerDescription);
+
+            var runtimeWrapper = new VisualElement();
+            runtimeWrapper.SetEnabled(Application.isPlaying);
 
             var input = GetRaiseValueInput();
             if (input != null)
             {
-                wrapper.Add(input);
+                runtimeWrapper.Add(input);
             }
 
-            wrapper.Add(new Button(() =>
+            runtimeWrapper.Add(new Button(() =>
             {
                 E e = target as E;
                 e.Raise(_raiseValue);
@@ -32,8 +43,9 @@ namespace UnityAtoms.Editor
             {
                 text = "Raise"
             });
+            root.Add(runtimeWrapper);
 
-            return wrapper;
+            return root;
         }
     }
 }
