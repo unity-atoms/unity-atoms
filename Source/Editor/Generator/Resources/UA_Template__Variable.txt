@@ -1,6 +1,4 @@
-<%IF !EQUATABLE%>
 using System;
-<%ENDIF%>
 using UnityEngine;
 
 namespace UnityAtoms

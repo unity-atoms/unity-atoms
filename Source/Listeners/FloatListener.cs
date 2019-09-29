@@ -1,4 +1,5 @@
 using UnityEngine;
+
 namespace UnityAtoms
 {
     [AddComponentMenu("Unity Atoms/Listeners/Float")]

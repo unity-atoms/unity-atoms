@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable/String", fileName = "SetStringVariableValueAction")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/String", fileName = "SetStringVariableValue")]
     public sealed class SetStringVariableValue : SetVariableValue<
         string,
         StringVariable,
