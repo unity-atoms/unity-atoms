@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class AtomVariable<T, E1, E2> : AtomVariableBase<T>,
+    public abstract class AtomVariable<T, E1, E2> : AtomBaseVariable<T>,
         ISerializationCallbackReceiver, IAtomVariableIcon
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<T, T>
@@ -33,9 +33,17 @@ namespace UnityAtoms
             Changed.Raise(Value);
         }
 
-        public void ResetValue()
+        public override sealed void ResetValue(bool shouldTriggerEvents = false)
         {
-            SetValue(_initialValue);
+            if (!shouldTriggerEvents)
+            {
+                _oldValue = _value;
+                _value = _initialValue;
+            }
+            else
+            {
+                SetValue(_initialValue);
+            }
         }
 
         public bool SetValue(T newValue)

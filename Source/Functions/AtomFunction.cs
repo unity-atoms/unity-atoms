@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class AtomFunction<R> : ScriptableObject, IAtomFunctionIcon
+    public abstract class AtomFunction<R> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
         public Func<R> Func;
@@ -25,7 +25,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class AtomFunction<R, T1> : ScriptableObject, IAtomFunctionIcon
+    public abstract class AtomFunction<R, T1> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
         public Func<T1, R> Func;
@@ -47,7 +47,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class AtomFunction<R, T1, T2> : ScriptableObject, IAtomFunctionIcon
+    public abstract class AtomFunction<R, T1, T2> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
         public Func<T1, T2, R> Func;
@@ -69,7 +69,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class AtomFunction<R, T1, T2, T3> : ScriptableObject, IAtomFunctionIcon
+    public abstract class AtomFunction<R, T1, T2, T3> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
         public Func<T1, T2, T3, R> Func;
@@ -91,7 +91,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class AtomFunction<R, T1, T2, T3, T4> : ScriptableObject, IAtomFunctionIcon
+    public abstract class AtomFunction<R, T1, T2, T3, T4> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
         public Func<T1, T2, T3, T4, R> Func;
@@ -113,7 +113,7 @@ namespace UnityAtoms
         }
     }
 
-    public abstract class AtomFunction<R, T1, T2, T3, T4, T5> : ScriptableObject, IAtomFunctionIcon
+    public abstract class AtomFunction<R, T1, T2, T3, T4, T5> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
         public Func<T1, T2, T3, T4, T5, R> Func;

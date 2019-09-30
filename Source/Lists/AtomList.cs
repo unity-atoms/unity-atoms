@@ -5,14 +5,12 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class AtomList<T, E> : ScriptableObject, IList<T>, IAtomListIcon
+    public abstract class AtomList<T, E> : BaseAtomList, IList<T>, IAtomListIcon
         where E : AtomEvent<T>
     {
         public E Added;
 
         public E Removed;
-
-        public VoidEvent Cleared;
 
         public int Count => list.Count;
 
@@ -42,15 +40,6 @@ namespace UnityAtoms
                 Removed.Raise(item);
             }
             return true;
-        }
-
-        public void Clear()
-        {
-            list.Clear();
-            if (null != Cleared)
-            {
-                Cleared.Raise();
-            }
         }
 
         public bool Contains(T item)
@@ -143,5 +132,7 @@ namespace UnityAtoms
         }
 
         #endregion // Observable
+
+        protected override IList IList { get => List; }
     }
 }

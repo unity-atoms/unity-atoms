@@ -3,7 +3,7 @@ namespace UnityAtoms
     public abstract class AtomReference { }
 
     public abstract class AtomReference<T, V> : AtomReference
-        where V : AtomVariableBase<T>
+        where V : AtomBaseVariable<T>
     {
         public bool UseConstant;
 
