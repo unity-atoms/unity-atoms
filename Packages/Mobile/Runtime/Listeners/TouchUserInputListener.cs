@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityAtoms;
 
 namespace UnityAtoms.Mobile
 {
@@ -11,4 +10,3 @@ namespace UnityAtoms.Mobile
         TouchUserInputUnityEvent>
     { }
 }
-

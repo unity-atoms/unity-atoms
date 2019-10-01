@@ -59,6 +59,46 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-core/Editor/Generator/Generator.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/Events/TouchUserInputEvent.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-cherry.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/Events/TouchUserInputTouchUserInputEvent.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-cherry.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/Actions/TouchUserInputTouchUserInputAction.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-purple.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/UnityEvents/TouchUserInputUnityEvent.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/Listeners/TouchUserInputListener.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-piglet.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/UnityEvents/TouchUserInputTouchUserInputUnityEvent.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/Variables/TouchUserInputVariable.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-lush.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/Actions/TouchUserInputAction.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-purple.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/Listeners/TouchUserInputTouchUserInputListener.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-piglet.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/Actions/UpdateTouchUserInput.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-purple.png"
         }
     ]
 }

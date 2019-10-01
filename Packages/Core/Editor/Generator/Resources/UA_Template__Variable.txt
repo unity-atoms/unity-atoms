@@ -6,7 +6,11 @@ using UnityEngine;
 using {TYPE_NAMESPACE};
 <%ENDIF%>
 
+<%IF HAS_SUB_UA_NAMESPACE%>
+namespace UnityAtoms.{SUB_UA_NAMESPACE}
+<%ELSE%>
 namespace UnityAtoms
+<%ENDIF%>
 {
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/{TYPE_NAME}", fileName = "{TYPE_NAME}Variable")]
 <%IF EQUATABLE%>

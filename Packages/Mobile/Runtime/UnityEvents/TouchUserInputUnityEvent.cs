@@ -1,6 +1,5 @@
 using System;
 using UnityEngine.Events;
-using UnityAtoms;
 
 namespace UnityAtoms.Mobile
 {
