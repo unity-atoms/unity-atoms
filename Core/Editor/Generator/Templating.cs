@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
@@ -21,6 +22,7 @@ namespace UnityAtoms.Editor
 
             var indexOfNextEndIf = templateCopy.IndexOf("<%ENDIF%>", indexIfClosed, StringComparison.Ordinal);
             if (indexOfNextEndIf == -1) throw new Exception("No closing <%ENDIF%> for condition.");
+            var indexOfNextLineAfterEndIf = templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal) + 1;
 
             var indexOfNextElse = templateCopy.IndexOf("<%ELSE%>", indexIfClosed, StringComparison.Ordinal);
 
@@ -37,8 +39,8 @@ namespace UnityAtoms.Editor
             }
 
             resolved = resolved.Trim('\n');
-            templateCopy = templateCopy.Remove(indexIfOpened, (indexOfNextEndIf + 9) - indexIfOpened);
-            templateCopy = templateCopy.Insert(indexIfOpened, resolved);
+            templateCopy = templateCopy.Remove(indexIfOpened, indexOfNextLineAfterEndIf - indexIfOpened);
+            templateCopy = templateCopy.Insert(indexIfOpened, string.IsNullOrEmpty(resolved) ? "" : $"{resolved}\n");
 
             return ResolveConditionals(templateCopy, trueConditions);
         }
