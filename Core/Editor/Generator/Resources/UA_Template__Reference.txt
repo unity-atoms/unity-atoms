@@ -1,5 +1,7 @@
 using System;
-using UnityEngine;
+<%IF TYPE_HAS_NAMESPACE%>
+using {TYPE_NAMESPACE};
+<%ENDIF%>
 
 namespace UnityAtoms
 {

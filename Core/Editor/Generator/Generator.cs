@@ -9,7 +9,7 @@ namespace UnityAtoms.Editor
 {
     internal class Generator
     {
-        public void Generate(string type, string baseWritePath, bool isEquatable, List<AtomType> atomTypesToGenerate)
+        public void Generate(string type, string baseWritePath, bool isEquatable, List<AtomType> atomTypesToGenerate, string typeNamespace)
         {
             // TODO: More validation of that the type exists / is correct.
             if (string.IsNullOrEmpty(type))
@@ -33,9 +33,12 @@ namespace UnityAtoms.Editor
                 Directory.GetParent(Directory.GetParent(Application.dataPath).FullName).FullName :
                 Directory.GetParent(Application.dataPath).FullName;
             var templatePaths = Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
-            var templateConditions = isEquatable ? new List<string>() { "EQUATABLE" } : new List<string>();
+            var templateConditions = new List<string>();
+            if (isEquatable) { templateConditions.Add("EQUATABLE"); }
+            if (!string.IsNullOrEmpty(typeNamespace)) { templateConditions.Add("TYPE_HAS_NAMESPACE"); }
             var capitalizedType = Capitalize(type);
             var templateVariables = new Dictionary<string, string>() { { "TYPE_NAME", capitalizedType }, { "TYPE", type } };
+            if (!string.IsNullOrEmpty(typeNamespace)) { templateVariables.Add("TYPE_NAMESPACE", typeNamespace); }
 
             foreach (var templatePath in templatePaths)
             {
@@ -59,8 +62,9 @@ namespace UnityAtoms.Editor
                 Directory.CreateDirectory(dirPath);
 
                 // Adjust content
-                var content = ResolveVariables(templateVariables, template);
+                var content = Templating.ResolveVariables(templateVariables: templateVariables, toResolve: template);
                 content = Templating.ResolveConditionals(template: content, trueConditions: templateConditions);
+                content = RemoveDuplicateNamespaces(content);
 
                 // Write to file
                 var fileName = ResolveFileName(templateVariables, templateName, lastIndexOfDoubleUnderscore, capitalizedType, capitalizedAtomType, typeOccurrences);
@@ -73,11 +77,46 @@ namespace UnityAtoms.Editor
             AssetDatabase.Refresh();
         }
 
+        private static string RemoveDuplicateNamespaces(string content)
+        {
+            var currentIndex = 0;
+            var countNamespaces = new Dictionary<string, int>();
+            while (true)
+            {
+                currentIndex = content.IndexOf("using ", currentIndex);
+                if (currentIndex == -1) break;
+                var namespaceStartIndex = currentIndex + 6;
+                var namespaceEndIndex = content.IndexOf(";", namespaceStartIndex);
+                var ns = content.Substring(namespaceStartIndex, namespaceEndIndex - namespaceStartIndex);
+                if (countNamespaces.ContainsKey(ns))
+                {
+                    countNamespaces[ns] = countNamespaces[ns] + 1;
+                }
+                else
+                {
+                    countNamespaces.Add(ns, 1);
+                }
+                currentIndex = namespaceEndIndex;
+            }
+
+            var contentCopy = String.Copy(content);
+            foreach (var kvp in countNamespaces)
+            {
+                if (kvp.Value > 1)
+                {
+                    var usingStr = $"using {kvp.Key};\n";
+                    contentCopy = contentCopy.Remove(contentCopy.IndexOf(usingStr), usingStr.Length);
+                }
+            }
+
+            return contentCopy;
+        }
+
         private static string ResolveFileName(Dictionary<string, string> templateVariables, string templateName, int lastIndexOfDoubleUnderscore, string capitalizedType, string capitalizedAtomType, int typeOccurrences)
         {
             if (templateName.Contains("Set{TYPE_NAME}VariableValue"))
             {
-                return ResolveVariables(templateVariables, $"{capitalizedAtomType}.cs");
+                return Templating.ResolveVariables(templateVariables: templateVariables, toResolve: $"{capitalizedAtomType}.cs");
             }
 
             string fileName;
@@ -94,7 +133,7 @@ namespace UnityAtoms.Editor
                 fileName = $"{capitalizedType.Repeat(typeOccurrences)}{capitalizedAtomType}.cs";
             }
 
-            return ResolveVariables(templateVariables, fileName);
+            return Templating.ResolveVariables(templateVariables: templateVariables, toResolve: fileName);
         }
 
         private static string ResolveDirPath(string baseWritePath, string capitalizedAtomType, string templateName, string atomType)
@@ -113,16 +152,6 @@ namespace UnityAtoms.Editor
             }
 
             return Path.Combine(baseWritePath, Runtime.IsUnityAtomsRepo ? "Runtime" : "", $"{capitalizedAtomType}s");
-        }
-
-        private static string ResolveVariables(Dictionary<string, string> templateVariables, string toResolve)
-        {
-            var resolvedString = toResolve;
-            foreach (var kvp in templateVariables)
-            {
-                resolvedString = resolvedString.Replace("{" + kvp.Key + "}", kvp.Value);
-            }
-            return resolvedString;
         }
 
         private static string Capitalize(string s)
