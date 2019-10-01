@@ -1,0 +1,19 @@
+{
+    "name": "MamboJamboStudios.UnityAtomsMobile.Editor",
+    "references": [
+        "MamboJamboStudios.UnityAtomsMobile.Runtime",
+        "MamboJamboStudios.UnityAtomsCore.Runtime",
+        "MamboJamboStudios.UnityAtomsCore.Editor"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

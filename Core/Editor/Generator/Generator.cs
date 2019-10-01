@@ -9,7 +9,7 @@ namespace UnityAtoms.Editor
 {
     internal class Generator
     {
-        public void Generate(string type, string baseWritePath, bool isEquatable, List<AtomType> atomTypesToGenerate, string typeNamespace)
+        public void Generate(string type, string baseWritePath, bool isEquatable, List<AtomType> atomTypesToGenerate, string typeNamespace, string subUnityAtomsNamespace)
         {
             // TODO: More validation of that the type exists / is correct.
             if (string.IsNullOrEmpty(type))
@@ -36,9 +36,11 @@ namespace UnityAtoms.Editor
             var templateConditions = new List<string>();
             if (isEquatable) { templateConditions.Add("EQUATABLE"); }
             if (!string.IsNullOrEmpty(typeNamespace)) { templateConditions.Add("TYPE_HAS_NAMESPACE"); }
+            if (!string.IsNullOrEmpty(subUnityAtomsNamespace)) { templateConditions.Add("HAS_SUB_UA_NAMESPACE"); }
             var capitalizedType = Capitalize(type);
             var templateVariables = new Dictionary<string, string>() { { "TYPE_NAME", capitalizedType }, { "TYPE", type } };
             if (!string.IsNullOrEmpty(typeNamespace)) { templateVariables.Add("TYPE_NAMESPACE", typeNamespace); }
+            if (!string.IsNullOrEmpty(subUnityAtomsNamespace)) { templateVariables.Add("SUB_UA_NAMESPACE", subUnityAtomsNamespace); }
 
             foreach (var templatePath in templatePaths)
             {
