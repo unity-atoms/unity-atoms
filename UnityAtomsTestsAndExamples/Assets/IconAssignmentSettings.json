@@ -33,14 +33,6 @@
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-purple.png"
         },
         {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-tags/Runtime/AtomicTags.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
-        },
-        {
-            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-tags/Runtime/AtomicTagsExtensions.cs",
-            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
-        },
-        {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-ui/Runtime/UIContainer.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
         },
@@ -111,6 +103,18 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-scene-mgmt/Runtime/Variables/SceneFieldVariable.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-lush.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-tags/Runtime/UnityAtomsTags.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-tags/Runtime/UnityAtomsTagsExtensions.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-tags/Tests/Runtime/UnityAtomsTagsTests.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
         }
     ]
 }
