@@ -99,6 +99,18 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-mobile/Runtime/Actions/UpdateTouchUserInput.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-purple.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-scene-mgmt/Runtime/References/SceneFieldReference.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-scene-mgmt/Runtime/Actions/SceneFieldAction.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-purple.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-scene-mgmt/Runtime/Variables/SceneFieldVariable.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-lush.png"
         }
     ]
 }

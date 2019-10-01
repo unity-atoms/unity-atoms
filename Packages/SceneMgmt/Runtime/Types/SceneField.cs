@@ -10,7 +10,7 @@ using Object = UnityEngine.Object;
 namespace UnityAtoms.SceneMgmt
 {
     [Serializable]
-    public struct SceneField : ISerializationCallbackReceiver
+    public struct SceneField : ISerializationCallbackReceiver, IEquatable<SceneField>
     {
         [SerializeField] private Object _sceneAsset;
         [SerializeField] private string _sceneName;
@@ -59,5 +59,34 @@ namespace UnityAtoms.SceneMgmt
         public void OnBeforeSerialize() { Validate(); }
 
         public void OnAfterDeserialize() { }
+
+        public bool Equals(SceneField other)
+        {
+            return (this == null && other == null) || (this != null && other != null && this._sceneName == other._sceneName);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null && this != null) return false;
+
+            SceneField sf = (SceneField)obj;
+            return this != null && sf != null && this.Equals(sf);
+        }
+
+        public override int GetHashCode()
+        {
+            if (this == null || this._sceneName == null) return 0;
+            return this._sceneName.GetHashCode();
+        }
+
+        public static bool operator ==(SceneField sf1, SceneField sf2)
+        {
+            return (sf1 == null && sf2 == null) || (sf1 != null && sf1.Equals(sf2));
+        }
+
+        public static bool operator !=(SceneField sf1, SceneField sf2)
+        {
+            return (sf1 == null && sf2 != null) || (sf1 != null && !sf1.Equals(sf2));
+        }
     }
 }
