@@ -1,0 +1,23 @@
+{
+    "name": "com.mambojambostudios.unity-atoms-ui",
+    "displayName": "Unity Atoms UI",
+    "version": "2.0.0",
+    "unity": "2019.1",
+    "description": "An UI system using Unity Atoms.",
+    "keywords": [
+        "scriptable objects",
+        "unity"
+    ],
+    "category": "Unity",
+    "files": [
+        "/package.json",
+        "/package.json.meta",
+        "/Runtime",
+        "/Runtime.meta",
+        "/Editor",
+        "/Editor.meta"
+    ],
+    "dependencies": {
+        "com.mambojambostudios.unity-atoms-core": "2.0.0"
+    }
+}

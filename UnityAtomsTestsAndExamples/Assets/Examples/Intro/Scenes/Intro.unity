@@ -677,8 +677,8 @@ MonoBehaviour:
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityAtoms.VoidUnityEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    m_TypeName: UnityAtoms.VoidUnityEvent, MamboJamboStudios.UnityAtomsCore.Runtime,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   _actionResponses:
   - {fileID: 11400000, guid: 1ec7260c4832945c8b7bc4bb1cd57ff2, type: 2}
 --- !u!114 &1025272941
@@ -1070,8 +1070,8 @@ MonoBehaviour:
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityAtoms.VoidUnityEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    m_TypeName: UnityAtoms.VoidUnityEvent, MamboJamboStudios.UnityAtomsCore.Runtime,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   _actionResponses:
   - {fileID: 11400000, guid: ffb54297f78ca406286c62b7a33578df, type: 2}
 --- !u!1 &1244410470
@@ -1480,8 +1480,8 @@ MonoBehaviour:
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityAtoms.VoidUnityEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    m_TypeName: UnityAtoms.VoidUnityEvent, MamboJamboStudios.UnityAtomsCore.Runtime,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   _actionResponses:
   - {fileID: 11400000, guid: 23bac2fbe8e7545e78e859bde7d6573c, type: 2}
 --- !u!1 &1613897678
@@ -1541,8 +1541,8 @@ MonoBehaviour:
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityAtoms.VoidUnityEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    m_TypeName: UnityAtoms.VoidUnityEvent, MamboJamboStudios.UnityAtomsCore.Runtime,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   _actionResponses:
   - {fileID: 11400000, guid: 2a78a712f17364d78a94a0fc47933b55, type: 2}
 --- !u!114 &1613897681
