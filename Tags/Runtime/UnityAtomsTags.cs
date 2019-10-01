@@ -8,7 +8,7 @@ using UnityEngine;
 namespace UnityAtoms.Tags
 {
     [AddComponentMenu("Unity Atoms/Tags/Atomic Tags")]
-    public sealed class AtomicTags : MonoBehaviour, ISerializationCallbackReceiver
+    public sealed class UnityAtomsTags : MonoBehaviour, ISerializationCallbackReceiver
     {
         public ReadOnlyList<StringConstant> Tags { get; private set; }
 
@@ -17,8 +17,8 @@ namespace UnityAtoms.Tags
         private static readonly Dictionary<string, List<GameObject>> TaggedGameObjects
             = new Dictionary<string, List<GameObject>>();
 
-        private static readonly Dictionary<GameObject, AtomicTags> AtomicTagInstances
-            = new Dictionary<GameObject, AtomicTags>();
+        private static readonly Dictionary<GameObject, UnityAtomsTags> AtomicTagInstances
+            = new Dictionary<GameObject, UnityAtomsTags>();
 
         public List<StringConstant> _tags = new List<StringConstant>();
 
@@ -157,7 +157,7 @@ namespace UnityAtoms.Tags
         /// - null if the GameObject does not have AtomicTags or they (or the GO) are disabled
         /// - the AtomicTag component
         /// </returns>
-        public static AtomicTags GetForGameObject(GameObject go)
+        public static UnityAtomsTags GetForGameObject(GameObject go)
         {
             if (!AtomicTagInstances.ContainsKey(go)) return null;
             return AtomicTagInstances[go];

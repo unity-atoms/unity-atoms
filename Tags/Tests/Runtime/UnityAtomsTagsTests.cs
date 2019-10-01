@@ -15,14 +15,14 @@ using Random = UnityEngine.Random;
 
 namespace UnityAtoms.Tags.Tests
 {
-    public class AtomicTagTests
+    public class UnityAtomsTagsTests
     {
 
         [UnityTest]
         public IEnumerator TestingAndProfiling()
         {
             var go = new GameObject();
-            var atomicTags = go.AddComponent<AtomicTags>();
+            var atomicTags = go.AddComponent<UnityAtomsTags>();
 
             List<string> random_tags_raw = new List<string>() { "a", "c", "e", "g", "i", "k", "m" };
             random_tags_raw.OrderBy((s => Random.value)).ToList();
@@ -52,10 +52,10 @@ namespace UnityAtoms.Tags.Tests
             Assert.That(() => { var t1 = atomicTags.Tags[2].Value; }, Is.Not.AllocatingGCMemory());
             Assert.That(() => { atomicTags.HasTag(null); }, Is.Not.AllocatingGCMemory());
 
-            Assert.AreSame(go, AtomicTags.FindByTag("e"));
+            Assert.AreSame(go, UnityAtomsTags.FindByTag("e"));
             using (new ProfilerMarker("MySystem.FindByTag").Auto())
             {
-                AtomicTags.FindByTag("e");
+                UnityAtomsTags.FindByTag("e");
             }
             // THIS:
             // Assert.That(() => { var t1 = AtomicTags.FindByTag("e"); }, Is.AllocatingGCMemory());
@@ -71,7 +71,7 @@ namespace UnityAtoms.Tags.Tests
 
             using (new ProfilerMarker("MySystem.GetGlobal").Auto())
             {
-                AtomicTags.GetForGameObject(go);
+                UnityAtomsTags.GetForGameObject(go);
             }
 
             Assert.AreEqual(random_tags_raw.Count, atomicTags.Tags.Count);

@@ -4,7 +4,7 @@ using UnityAtoms;
 
 namespace UnityAtoms.Tags
 {
-    public static class AtomicTagsExtensions
+    public static class UnityAtomsTagsExtensions
     {
         /// <summary>
         /// Retrieves all AtomicTags for a given GameObject
@@ -15,7 +15,7 @@ namespace UnityAtoms.Tags
         /// </returns>
         public static ReadOnlyList<StringConstant> GetAtomicTags(this GameObject go)
         {
-            return AtomicTags.GetAtomicTags(go);
+            return UnityAtomsTags.GetAtomicTags(go);
         }
 
         /// <returns>
@@ -23,7 +23,7 @@ namespace UnityAtoms.Tags
         /// </returns>
         public static bool HasTag(this GameObject go, string tag)
         {
-            var atomicTags = AtomicTags.GetForGameObject(go);
+            var atomicTags = UnityAtomsTags.GetForGameObject(go);
             if (atomicTags == null) return false;
             return atomicTags.HasTag(tag);
         }
@@ -39,7 +39,7 @@ namespace UnityAtoms.Tags
 
         public static bool HasAnyTag(this GameObject go, List<string> strings)
         {
-            var atomicTags = AtomicTags.GetForGameObject(go);
+            var atomicTags = UnityAtomsTags.GetForGameObject(go);
             if (atomicTags == null) return false;
 
             for (var i = 0; i < strings.Count; i++)
@@ -54,7 +54,7 @@ namespace UnityAtoms.Tags
         {
             // basically same method as above, the code is mostly copy and pasted because its not preferable to convert
             // stringconstants to strings and calling the other method, because of memory allocation
-            var atomicTags = AtomicTags.GetForGameObject(go);
+            var atomicTags = UnityAtomsTags.GetForGameObject(go);
             if (atomicTags == null) return false;
 
             for (var i = 0; i < stringConstants.Count; i++)
