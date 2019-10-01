@@ -44,5 +44,15 @@ namespace UnityAtoms.Editor
 
             return ResolveConditionals(templateCopy, trueConditions);
         }
+
+        public static string ResolveVariables(Dictionary<string, string> templateVariables, string toResolve)
+        {
+            var resolvedString = toResolve;
+            foreach (var kvp in templateVariables)
+            {
+                resolvedString = resolvedString.Replace("{" + kvp.Key + "}", kvp.Value);
+            }
+            return resolvedString;
+        }
     }
 }

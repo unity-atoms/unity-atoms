@@ -55,6 +55,10 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-core/Editor/Generator/Templating.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-core/Editor/Generator/Generator.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-core/Runtime/IconMap/atom-icon-delicate.png"
         }
     ]
 }

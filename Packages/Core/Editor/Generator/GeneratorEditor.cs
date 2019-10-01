@@ -15,13 +15,14 @@ namespace UnityAtoms.Editor
         [MenuItem("Tools/Unity Atoms/Generator")]
         static void Init()
         {
-            var window = GetWindow<GeneratorEditor>(false, "Generator");
-            window.position = new Rect(Screen.width / 2, Screen.height / 2, 400, 280);
+            var window = GetWindow<GeneratorEditor>(false, "Unity Atoms - Generator");
+            window.position = new Rect(Screen.width / 2, Screen.height / 2, 400, 374);
             window.Show();
         }
 
         private string _type = "";
         private bool _isEquatable = true;
+        private string _typeNamespace = "";
 
         private List<AtomType> _atomTypesToGenerate = new List<AtomType>()
         {
@@ -145,6 +146,13 @@ namespace UnityAtoms.Editor
             equatableRow.Add(equatableToggle);
             root.Add(equatableRow);
 
+            var typeNamespaceRow = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
+            typeNamespaceRow.Add(new Label() { text = "Type Namespace", style = { width = 100, marginRight = 8 } });
+            textfield = new TextField() { value = _typeNamespace, style = { flexGrow = 1 } };
+            textfield.RegisterCallback<ChangeEvent<string>>(evt => _typeNamespace = evt.newValue);
+            typeNamespaceRow.Add(textfield);
+            root.Add(typeNamespaceRow);
+
             root.Add(CreateDivider());
 
             var typesToGenerateLabelRow = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
@@ -198,7 +206,7 @@ namespace UnityAtoms.Editor
             };
             buttonRow.Add(button1);
 
-            var button2 = new Button(() => generator.Generate(type: _type, baseWritePath: _writePath, isEquatable: _isEquatable, atomTypesToGenerate: _atomTypesToGenerate))
+            var button2 = new Button(() => generator.Generate(type: _type, baseWritePath: _writePath, isEquatable: _isEquatable, atomTypesToGenerate: _atomTypesToGenerate, typeNamespace: _typeNamespace))
             {
                 text = "Generate",
                 style = { flexGrow = 1 }

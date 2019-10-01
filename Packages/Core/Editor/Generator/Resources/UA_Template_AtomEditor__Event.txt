@@ -1,7 +1,9 @@
 #if UNITY_2019_1_OR_NEWER
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.UIElements;
+<%IF TYPE_HAS_NAMESPACE%>
+using {TYPE_NAMESPACE};
+<%ENDIF%>
 
 namespace UnityAtoms.Editor
 {
