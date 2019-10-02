@@ -15,6 +15,6 @@ namespace UnityAtoms
             /// </summary>
             public const string LOG_PREFIX = "UnityAtoms :: ";
         }
-        public static bool IsUnityAtomsRepo { get => System.Environment.CurrentDirectory.Contains("unity-atoms/UnityAtomsTestsAndExamples"); }
+        public static bool IsUnityAtomsRepo { get => System.Environment.CurrentDirectory.Contains("unity-atoms/Examples"); }
     }
 }
