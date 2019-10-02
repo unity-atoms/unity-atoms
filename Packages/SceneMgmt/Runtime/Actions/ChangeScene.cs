@@ -4,6 +4,7 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms.SceneMgmt
 {
+    [UseIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Scene Management/Change Scene")]
     public sealed class ChangeScene : VoidAction
     {
