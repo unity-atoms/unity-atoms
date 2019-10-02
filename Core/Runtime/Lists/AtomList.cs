@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
+    [UseIcon("atom-icon-piglet")]
     public abstract class AtomList<T, E> : BaseAtomList, IList<T>, IAtomListIcon
         where E : AtomEvent<T>
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
+    [UseIcon("atom-icon-cherry")]
     public abstract class AtomEvent : BaseAtom, ISerializationCallbackReceiver, IAtomEventIcon
     {
         public event Action OnEventNoValue;
@@ -38,6 +39,7 @@ namespace UnityAtoms
 
     }
 
+    [UseIcon("atom-icon-cherry")]
     public abstract class AtomEvent<T> : AtomEvent
     {
         public event Action<T> OnEvent;
@@ -89,6 +91,7 @@ namespace UnityAtoms
         }
     }
 
+    [UseIcon("atom-icon-cherry")]
     public abstract class AtomEvent<T1, T2> : AtomEvent
     {
         public event Action<T1, T2> OnEvent;

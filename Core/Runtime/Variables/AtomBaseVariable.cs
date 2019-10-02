@@ -5,12 +5,14 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
+    [UseIcon("atom-icon-teal")]
     public abstract class AtomBaseVariable : BaseAtom, IAtomConstantIcon
     {
         public abstract object BaseValue { get; set; }
         public abstract void ResetValue(bool shouldTriggerEvents = false);
     }
 
+    [UseIcon("atom-icon-teal")]
     public abstract class AtomBaseVariable<T> : AtomBaseVariable
     {
         public override object BaseValue
