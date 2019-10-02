@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
+    [UseIcon("atom-icon-lush")]
     public abstract class AtomVariable<T, E1, E2> : AtomBaseVariable<T>,
         ISerializationCallbackReceiver, IAtomVariableIcon
         where E1 : AtomEvent<T>
