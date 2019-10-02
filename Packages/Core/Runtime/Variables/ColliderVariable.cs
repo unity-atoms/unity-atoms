@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
+    [UseIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Collider", fileName = "ColliderVariable")]
     public sealed class ColliderVariable : AtomVariable<Collider, ColliderEvent, ColliderColliderEvent>
     {

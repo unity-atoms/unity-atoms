@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
+    [UseIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/Vector2", fileName = "SetVector2VariableValue")]
     public sealed class SetVector2VariableValue : SetVariableValue<
         Vector2,
