@@ -8,5 +8,6 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}
 namespace UnityAtoms
 <%ENDIF%>
 {
+    [UseIcon("atom-icon-purple")]
     public abstract class {TYPE_NAME}{TYPE_NAME}Action : AtomAction<{TYPE}, {TYPE}> { }
 }
