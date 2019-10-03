@@ -11,13 +11,13 @@
 const siteConfig = {
     title: 'Unity Atoms', // Title for your website.
     tagline: 'Tiny modular pieces utilizing the power of Scriptable Objects',
-    url: 'https://adamramberg.github.io/unity-atoms', // Your website URL
-    baseUrl: '/',
+    url: 'https://adamramberg.github.io', // Your website URL
+    baseUrl: '/unity-atoms/',
     docsUrl: '',
 
   // Used for publishing and more
   projectName: 'unity-atoms',
-  organizationName: 'Mambo Jambo Studios',
+  organizationName: 'AdamRamberg',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
