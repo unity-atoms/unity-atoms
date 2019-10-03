@@ -1,4 +1,22 @@
 {
-    "description": "Top level package in order to run scripts for publishing",
-    "category": "Unity"
+    "name": "com.mambojambostudios.unity-atoms",
+    "displayName": "Unity Atoms",
+    "version": "2.0.0",
+    "unity": "2019.1",
+    "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
+    "keywords": [
+        "scriptable objects",
+        "unity"
+    ],
+    "category": "Unity",
+    "files": [
+        "/LICENSE",
+        "/LICENSE.meta",
+        "/README.md",
+        "/README.md.meta",
+        "/package.json",
+        "/package.json.meta",
+        "/Packages",
+        "/Packages.meta"
+    ]
 }
