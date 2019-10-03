@@ -1,0 +1,60 @@
+# Quick start
+
+## Installation
+
+_Prerequisite: Since Unity Atoms is using the Unity Package Manager (UPM) you need to use Unity version 2018.3 >=_
+
+### NPM (Recommended)
+
+Add the following to your `manifest.json`:
+
+```
+{
+    "scopedRegistries": [
+        {
+            "name": "NPM Registry",
+            "url": "https://registry.npmjs.org",
+            "scopes": [
+                "com.mambojambostudios.unity-atoms-core",
+                "com.mambojambostudios.unity-atoms-mobile",
+                "com.mambojambostudios.unity-atoms-tags",
+                "com.mambojambostudios.unity-atoms-scene-mgmt",
+                "com.mambojambostudios.unity-atoms-ui"
+            ]
+        }
+    ],
+    "dependencies": {
+        ...
+        "com.mambojambostudios.unity-atoms-core": "2.0.0",
+        "com.mambojambostudios.unity-atoms-mobile": "2.0.0",
+        "com.mambojambostudios.unity-atoms-tags": "2.0.0",
+        "com.mambojambostudios.unity-atoms-scene-mgmt": "2.0.0",
+        "com.mambojambostudios.unity-atoms-ui": "2.0.0",
+        ...
+    }
+}
+```
+
+Note that the core package is mandatory while the others are optional. If you don't want a subpackage, simply remove it from your `dependencies`.
+
+### Github URL
+
+There is an alternative approach installing Unity Atoms using the Github URL to this repo.
+
+Add the following to your `manifest.json`:
+
+```
+{
+    "dependencies": {
+    ...
+    "com.mambojambostudios.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git",
+    ...
+    }
+}
+```
+
+## Create your first Atom
+
+You are now ready to create your first Atom. Simply right click somewhere in the Project window and go to **Create / Unity Atoms** and pick the Atom of your choice.
+
+[**TODO: Add image on the right click menu**]
