@@ -1,7 +1,14 @@
+---
+id: tags
+title: Tags
+hide_title: true
+sidebar_label: Tags
+---
+
 # Unity Atoms / Tags
 
-[**TODO**]
-
-## What does it do?
+A replacement to Unity´s tags based on Unity Atoms.
 
 ## API
+
+[**TODO**]

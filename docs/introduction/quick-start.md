@@ -1,3 +1,10 @@
+---
+id: quick-start
+title: Quick start
+hide_title: true
+sidebar_label: Quick start
+---
+
 # Quick start
 
 ## Installation

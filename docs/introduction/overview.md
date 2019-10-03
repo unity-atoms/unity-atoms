@@ -1,3 +1,10 @@
+---
+id: overview
+title: Overview and philosopy
+hide_title: true
+sidebar_label: Overview and philosopy
+---
+
 # Overview and philosopy
 
 Unity Atoms is an event based system that encourages the game to be as data-driven as possible. The four most fundamental parts of Unity Atoms are:
@@ -25,7 +32,7 @@ Exactly the same as Variables, but can not be changed via script and therefore d
 
 References can be toggled between `use as constant` or `use variable` via the Unity Inspector. When a reference is `used as constant` then it functions exactly like a regular serialized variable in a MonoBehaviour script. However, when it is set to `use variable` it functions exactly like a Variable.
 
-#### Lists
+### Lists
 
 A List is an array of values that is stored as a Scriptable Object. There is the possibility to add Events for when the following happens to the list:
 
@@ -33,22 +40,22 @@ A List is an array of values that is stored as a Scriptable Object. There is the
 -   An item is removed from the List.
 -   The List is cleared.
 
-### Events
+## Events
 
 An event is a thing that happens in the game that others can listen / subscribe to. Events in Unity Atoms are also Scriptable Objects that lives outside of a specific scene. It is possible to raise an Event from the Unity Inspector for debug purposes.
 
-### Listeners
+## Listeners
 
 A Listener listens / observes / subscribes to an event and raises / invokes zero to many responses to that event. Listeners are MonoBehaviours and lives in a scene. See below for more information on the type of responses there are.
 
-### Responses
+## Responses
 
 A responses is raised by a listener in response to an event. Responses can live both in the scene as [UnityEvents](https://docs.unity3d.com/ScriptReference/Events.UnityEvent.html) or outside the scene as a Scriptable Object in the shape of an Action.
 
-#### Actions
+### Actions
 
 An Action in Unity Atoms is a C# function as a Scriptable Object. An Action can be used as a response in a Listener.
 
-#### Game Functions
+### Game Functions
 
 A Function in Unity Atoms is basically the same as an Action, but while an Actions does not return something a Function does.

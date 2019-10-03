@@ -1,7 +1,14 @@
+---
+id: ui
+title: UI
+hide_title: true
+sidebar_label: UI
+---
+
 # Unity Atoms / UI
 
-[**TODO**]
-
-## What does it do?
+UI system using Unity Atoms.
 
 ## API
+
+[**TODO**]

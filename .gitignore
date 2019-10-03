@@ -38,3 +38,9 @@ sysinfo.txt
 
 # VS Code Settings
 .vscode
+
+# Node
+node_modules
+
+# Website build folder
+/website/build
