@@ -17,7 +17,11 @@
         "/package.json.meta",
         "/Runtime",
         "/Runtime.meta",
+        "/Runtime/MamboJamboStudios.UnityAtomsCore.Runtime.asmdef",
+        "/Runtime/MamboJamboStudios.UnityAtomsCore.Runtime.asmdef.meta",
         "/Editor",
-        "/Editor.meta"
+        "/Editor.meta",
+        "/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef",
+        "/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef.meta"
     ]
 }

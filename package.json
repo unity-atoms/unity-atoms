@@ -32,6 +32,20 @@
         "/package.json",
         "/package.json.meta",
         "/Packages",
-        "/Packages.meta"
+        "/Packages.meta",
+        "/Packages/Core",
+        "/Packages/Core.meta",
+        "/Packages/Core/package.json",
+        "/Packages/Core/package.json.meta",
+        "/Packages/Core/package.json",
+        "/Packages/Core/package.json.meta",
+        "/Packages/Core/Runtime",
+        "/Packages/Core/Runtime.meta",
+        "/Packages/Core/Runtime/MamboJamboStudios.UnityAtomsCore.Runtime.asmdef",
+        "/Packages/Core/Runtime/MamboJamboStudios.UnityAtomsCore.Runtime.asmdef.meta",
+        "/Packages/Core/Editor",
+        "/Packages/Core/Editor.meta",
+        "/Packages/Core/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef",
+        "/Packages/Core/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef.meta"
     ]
 }
