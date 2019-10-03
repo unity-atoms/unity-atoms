@@ -3,7 +3,7 @@
     "displayName": "Unity Atoms UI",
     "version": "2.0.0-beta.0",
     "unity": "2019.1",
-    "description": "An UI system using Unity Atoms.",
+    "description": "UI system using Unity Atoms.",
     "keywords": [
         "scriptable objects",
         "unity"
