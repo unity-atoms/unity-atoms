@@ -4,7 +4,7 @@
 
 -   The repo has been split up to 5 different packages: core, mobile, scene-mgmt, tags and ui
 -   None generic base classes for all atoms
--   Generator to generate new atoms with ease. Could be found under Tools / Unity Atoms / Generator.
+-   Generator to generate new atoms with ease 🚀 Could be found under Tools / Unity Atoms / Generator.
 -   Custom icons for all atoms. The solution is not 100%, but is good enough for now.
 -   MonoHooks are no more 💀 After some discussions and thoughts it has been decided that the value they bring is not worth it.
 -   Custom property drawers for all atoms.
