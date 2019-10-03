@@ -60,7 +60,7 @@ namespace UnityAtoms
 
         [FormerlySerializedAs("UnityEventResponse")]
         [SerializeField]
-        private UER _unityEventResponse;
+        private UER _unityEventResponse = null;
 
         [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]

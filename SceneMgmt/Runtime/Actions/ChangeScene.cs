@@ -10,7 +10,7 @@ namespace UnityAtoms.SceneMgmt
     {
         [FormerlySerializedAs("SceneName")]
         [SerializeField]
-        private StringReference _sceneName;
+        private StringReference _sceneName = null;
 
         public override void Do()
         {

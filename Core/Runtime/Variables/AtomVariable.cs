@@ -14,7 +14,7 @@ namespace UnityAtoms
         public override T Value { get { return _value; } set { SetValue(value); } }
 
         [SerializeField]
-        private T _initialValue;
+        private T _initialValue = default(T);
 
         public T OldValue { get { return _oldValue; } }
 
