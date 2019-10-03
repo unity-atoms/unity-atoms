@@ -16,9 +16,7 @@
         "/package.json",
         "/package.json.meta",
         "/Runtime",
-        "/Runtime.meta",
-        "/Editor",
-        "/Editor.meta"
+        "/Runtime.meta"
     ],
     "dependencies": {
         "com.mambojambostudios.unity-atoms-core": "2.0.0-beta.0"

@@ -12,14 +12,20 @@ namespace UnityAtoms.SceneMgmt
     [Serializable]
     public struct SceneField : ISerializationCallbackReceiver, IEquatable<SceneField>
     {
-        [SerializeField] private Object _sceneAsset;
-        [SerializeField] private string _sceneName;
-        [SerializeField] private string _scenePath;
-        [SerializeField] private int _buildIndex;
+        [SerializeField]
+        private Object _sceneAsset;
+        [SerializeField]
+        private string _sceneName;
+        [SerializeField]
+        private string _scenePath;
+        [SerializeField]
+        private int _buildIndex;
 
         public string SceneName { get { return _sceneName; } }
         public string ScenePath { get { return _scenePath; } }
         public int BuildIndex { get { return _buildIndex; } }
+        private Object SceneAsset { set { _sceneAsset = value; } } // NOTE: Needed in order to supress warning CS0649
+
 
         // makes it work with the existing Unity methods (LoadLevel/LoadScene)
         public static implicit operator string(SceneField sceneField) { return sceneField.SceneName; }
