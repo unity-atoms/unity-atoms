@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [AddComponentMenu("Unity Atoms/Listeners/Collider2D")]
+    [AddComponentMenu("Unity Atoms/Listeners/Collider")]
     public sealed class ColliderListener : GameEventListener<
         Collider,
         ColliderAction,

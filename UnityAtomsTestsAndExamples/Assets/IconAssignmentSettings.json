@@ -699,6 +699,10 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Events/Collision2DEvent.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-cherry.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Listeners/ColliderListener.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-piglet.png"
         }
     ]
 }
