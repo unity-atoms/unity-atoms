@@ -1,28 +1,28 @@
 {
-    "docs": {
-        "Introduction": [
-            "introduction/quick-start",
-            "introduction/overview",
-            "introduction/basic-tutorial",
-            "introduction/generator",
-            "introduction/unirx"
-        ],
-        "API Reference": [
-            "api/actions",
-            "api/constants",
-            "api/events",
-            "api/functions",
-            "api/listeners",
-            "api/lists",
-            "api/references",
-            "api/unity-events",
-            "api/variables"
-        ],
-        "Subpackages": [
-            "subpackages/mobile",
-            "subpackages/scene-mgmt",
-            "subpackages/tags",
-            "subpackages/ui"
-        ]
-    }
+  "docs": {
+    "Introduction": [
+      "introduction/quick-start",
+      "introduction/overview",
+      "introduction/basic-tutorial",
+      "introduction/generator",
+      "introduction/unirx"
+    ],
+    "API Reference": [
+      "api/actions",
+      "api/constants",
+      "api/events",
+      "api/functions",
+      "api/listeners",
+      "api/lists",
+      "api/references",
+      "api/unity-events",
+      "api/variables"
+    ],
+    "Subpackages": [
+      "subpackages/mobile",
+      "subpackages/scene-mgmt",
+      "subpackages/tags",
+      "subpackages/ui"
+    ]
+  }
 }

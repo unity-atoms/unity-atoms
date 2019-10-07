@@ -15,5 +15,9 @@ csharp_new_line_before_open_brace = all
 trim_trailing_whitespace = false
 
 [*.json]
+indent_size = 2
 trim_trailing_whitespace = false
 insert_final_newline = false
+
+[*.js]
+indent_size = 2

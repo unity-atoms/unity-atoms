@@ -1,28 +1,28 @@
 {
-    "dependencies": {
-        "com.mambojambostudios.unity-atoms-core": "file:../../Packages/Core",
-        "com.mambojambostudios.unity-atoms-mobile": "file:../../Packages/Mobile",
-        "com.mambojambostudios.unity-atoms-scene-mgmt": "file:../../Packages/SceneMgmt",
-        "com.mambojambostudios.unity-atoms-tags": "file:../../Packages/Tags",
-        "com.mambojambostudios.unity-atoms-ui": "file:../../Packages/UI",
-        "com.unity.package-manager-ui": "2.1.2",
-        "com.unity.modules.animation": "1.0.0",
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.director": "1.0.0",
-        "com.unity.modules.imgui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.modules.particlesystem": "1.0.0",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.physics2d": "1.0.0",
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.modules.uielements": "1.0.0",
-        "com.unity.modules.unitywebrequest": "1.0.0"
-    },
-    "testables": [
-        "com.mambojambostudios.unity-atoms-core",
-        "com.mambojambostudios.unity-atoms-mobile",
-        "com.mambojambostudios.unity-atoms-scene-mgmt",
-        "com.mambojambostudios.unity-atoms-tags",
-        "com.mambojambostudios.unity-atoms-ui"
-    ]
+  "dependencies": {
+    "com.mambojambostudios.unity-atoms-core": "file:../../Packages/Core",
+    "com.mambojambostudios.unity-atoms-mobile": "file:../../Packages/Mobile",
+    "com.mambojambostudios.unity-atoms-scene-mgmt": "file:../../Packages/SceneMgmt",
+    "com.mambojambostudios.unity-atoms-tags": "file:../../Packages/Tags",
+    "com.mambojambostudios.unity-atoms-ui": "file:../../Packages/UI",
+    "com.unity.package-manager-ui": "2.1.2",
+    "com.unity.modules.animation": "1.0.0",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.director": "1.0.0",
+    "com.unity.modules.imgui": "1.0.0",
+    "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.particlesystem": "1.0.0",
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.physics2d": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.modules.unitywebrequest": "1.0.0"
+  },
+  "testables": [
+    "com.mambojambostudios.unity-atoms-core",
+    "com.mambojambostudios.unity-atoms-mobile",
+    "com.mambojambostudios.unity-atoms-scene-mgmt",
+    "com.mambojambostudios.unity-atoms-tags",
+    "com.mambojambostudios.unity-atoms-ui"
+  ]
 }

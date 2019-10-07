@@ -1,23 +1,23 @@
 {
-    "name": "com.mambojambostudios.unity-atoms-scene-mgmt",
-    "displayName": "Unity Atoms Scene Mgmt",
-    "version": "2.0.0-beta.0",
-    "unity": "2019.1",
-    "description": "Unity Atoms to manage your scenes.",
-    "keywords": [
-        "scriptable objects",
-        "unity"
-    ],
-    "category": "Unity",
-    "files": [
-        "/package.json",
-        "/package.json.meta",
-        "/Runtime",
-        "/Runtime.meta",
-        "/Editor",
-        "/Editor.meta"
-    ],
-    "dependencies": {
-        "com.mambojambostudios.unity-atoms-core": "2.0.0-beta.0"
-    }
+  "name": "com.mambojambostudios.unity-atoms-scene-mgmt",
+  "displayName": "Unity Atoms Scene Mgmt",
+  "version": "2.0.0-beta.0",
+  "unity": "2019.1",
+  "description": "Unity Atoms to manage your scenes.",
+  "keywords": [
+    "scriptable objects",
+    "unity"
+  ],
+  "category": "Unity",
+  "files": [
+    "/package.json",
+    "/package.json.meta",
+    "/Runtime",
+    "/Runtime.meta",
+    "/Editor",
+    "/Editor.meta"
+  ],
+  "dependencies": {
+    "com.mambojambostudios.unity-atoms-core": "2.0.0-beta.0"
+  }
 }
