@@ -1,24 +1,24 @@
 {
-    "name": "com.mambojambostudios.unity-atoms-core",
-    "displayName": "Unity Atoms Core",
-    "version": "2.0.0-beta.0",
-    "unity": "2019.1",
-    "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
-    "keywords": [
-        "scriptable objects",
-        "unity"
-    ],
-    "category": "Unity",
-    "files": [
-        "/package.json",
-        "/package.json.meta",
-        "/Runtime",
-        "/Runtime.meta",
-        "/Runtime/MamboJamboStudios.UnityAtomsCore.Runtime.asmdef",
-        "/Runtime/MamboJamboStudios.UnityAtomsCore.Runtime.asmdef.meta",
-        "/Editor",
-        "/Editor.meta",
-        "/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef",
-        "/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef.meta"
-    ]
+  "name": "com.mambojambostudios.unity-atoms-core",
+  "displayName": "Unity Atoms Core",
+  "version": "2.0.0-beta.0",
+  "unity": "2019.1",
+  "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
+  "keywords": [
+    "scriptable objects",
+    "unity"
+  ],
+  "category": "Unity",
+  "files": [
+    "/package.json",
+    "/package.json.meta",
+    "/Runtime",
+    "/Runtime.meta",
+    "/Runtime/MamboJamboStudios.UnityAtomsCore.Runtime.asmdef",
+    "/Runtime/MamboJamboStudios.UnityAtomsCore.Runtime.asmdef.meta",
+    "/Editor",
+    "/Editor.meta",
+    "/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef",
+    "/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef.meta"
+  ]
 }

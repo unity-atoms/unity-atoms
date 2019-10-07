@@ -1,21 +1,21 @@
 {
-    "name": "com.mambojambostudios.unity-atoms-tags",
-    "displayName": "Unity Atoms Tags",
-    "version": "2.0.0-beta.0",
-    "unity": "2019.1",
-    "description": "A replacement to Unity´s tags based on Unity Atoms.",
-    "keywords": [
-        "scriptable objects",
-        "unity"
-    ],
-    "category": "Unity",
-    "files": [
-        "/package.json",
-        "/package.json.meta",
-        "/Runtime",
-        "/Runtime.meta"
-    ],
-    "dependencies": {
-        "com.mambojambostudios.unity-atoms-core": "2.0.0-beta.0"
-    }
+  "name": "com.mambojambostudios.unity-atoms-tags",
+  "displayName": "Unity Atoms Tags",
+  "version": "2.0.0-beta.0",
+  "unity": "2019.1",
+  "description": "A replacement to Unity´s tags based on Unity Atoms.",
+  "keywords": [
+    "scriptable objects",
+    "unity"
+  ],
+  "category": "Unity",
+  "files": [
+    "/package.json",
+    "/package.json.meta",
+    "/Runtime",
+    "/Runtime.meta"
+  ],
+  "dependencies": {
+    "com.mambojambostudios.unity-atoms-core": "2.0.0-beta.0"
+  }
 }
