@@ -9,49 +9,48 @@ const React = require('react');
 
 class Footer extends React.Component {
   docUrl(doc, language) {
-    const baseUrl = this.props.config.baseUrl;
-    const docsUrl = this.props.config.docsUrl;
+    const { config } = this.props;
+    const { baseUrl, docsUrl } = config;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
     const langPart = `${language ? `${language}/` : ''}`;
     return `${baseUrl}${docsPart}${langPart}${doc}`;
   }
 
   pageUrl(doc, language) {
-    const baseUrl = this.props.config.baseUrl;
+    const { config } = this.props;
+    const { baseUrl } = config;
     return baseUrl + (language ? `${language}/` : '') + doc;
   }
 
   render() {
+    const { config } = this.props;
+    const { baseUrl, footerIcon, title, repoUrl, copyright } = config;
+
     return (
       <footer className="nav-footer" id="footer">
         <section className="sitemap">
-          <a href={this.props.config.baseUrl} className="nav-home">
-            {this.props.config.footerIcon && (
+          <a href={baseUrl} className="nav-home">
+            {footerIcon && (
               <img
-                src={this.props.config.baseUrl + this.props.config.footerIcon}
-                alt={this.props.config.title}
+                src={baseUrl + footerIcon}
+                alt={title}
                 style={{ width: '52px', height: '52px' }}
               />
             )}
           </a>
           <div>
             <h5>Docs</h5>
-            <a href={this.docUrl('introduction/quick-start')}>
-              Quick Start
-            </a>
-            <a href={this.docUrl('api/actions')}>
-              API
-            </a>
-            <a href={this.docUrl('subpackages/mobile')}>
-              Subpackages
-            </a>
+            <a href={this.docUrl('introduction/quick-start')}>Quick Start</a>
+            <a href={this.docUrl('api/actions')}>API</a>
+            <a href={this.docUrl('subpackages/mobile')}>Subpackages</a>
           </div>
           <div>
             <h5>Community</h5>
             <a
               href="https://gitter.im/unity-atoms/community#"
               target="_blank"
-              rel="noreferrer noopener">
+              rel="noreferrer noopener"
+            >
               Gitter
             </a>
           </div>
@@ -61,7 +60,7 @@ class Footer extends React.Component {
             <a href="https://github.com/AdamRamberg/unity-atoms">GitHub</a>
             <a
               className="github-button"
-              href={this.props.config.repoUrl}
+              href={repoUrl}
               data-icon="octicon-star"
               data-count-href="/AdamRamberg/unity-atoms/stargazers"
               data-show-count="true"
@@ -72,7 +71,7 @@ class Footer extends React.Component {
             </a>
           </div>
         </section>
-        <section className="copyright">{this.props.config.copyright}</section>
+        <section className="copyright">{copyright}</section>
       </footer>
     );
   }
