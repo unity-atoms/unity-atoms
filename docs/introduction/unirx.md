@@ -39,7 +39,7 @@ public class HealthBar : MonoBehaviour
 
 Here is another example of a `PlayerMove.cs` script that is a little bit more advanced. Horizontal and vertical input is only getting a value from the `Input` class as long as the UI state is in the state of `_uiStatePlaying`.
 
-_NOTE: This example is also using [Marvelous](https://github.com/AdamRamberg/marvelous) for its `MergeObservables` method._
+_NOTE: This example is also using [Marvelous](https://github.com/AdamRamberg/marvelous) for its `Fuse` method._
 
 ```cs
 using System;
@@ -59,14 +59,14 @@ public class PlayerMove : MonoBehaviour
         float _horizontal = 0f, _vertical = 0f;
         string HORIZONTAL = "Horizontal", VERTICAL = "Vertical";
 
-        Observable.EveryUpdate().MergeObservables<long, string, ValueTuple<long, string>>(
-            observable2: _uiState.ObserveChange(),
-            createCombinedModel: (frame, state) => new ValueTuple<long, string>(frame, state),
+        Observable.EveryUpdate().Fuse<long, string>(
+            _uiState.ObserveChange(),
             initialValue2: _uiState.Value
         ).Subscribe(t =>
         {
-            _horizontal = t.Item2 == _uiStatePlaying.Value ? Input.GetAxis(HORIZONTAL) : 0f;
-            _vertical = t.Item2 == _uiStatePlaying.Value ? Input.GetAxis(VERTICAL) : 0f;
+            var (_, state) = t;
+            _horizontal = state == _uiStatePlaying.Value ? Input.GetAxis(HORIZONTAL) : 0f;
+            _vertical = state == _uiStatePlaying.Value ? Input.GetAxis(VERTICAL) : 0f;
         });
 
         Observable.EveryFixedUpdate().Subscribe(t =>
@@ -77,4 +77,4 @@ public class PlayerMove : MonoBehaviour
 }
 ```
 
-Using Unity Atoms together with UniRx and Marvelous (for its `MergeObservables`) makes your scripts really data driven.
+Using Unity Atoms together with UniRx and Marvelous (for its `Fuse`) makes your scripts really data driven.
