@@ -703,6 +703,42 @@
         {
             "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Listeners/ColliderListener.cs",
             "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-piglet.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/ColliderEventAction.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Actions/ColliderAction.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-purple.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/UnityEvents/UnityColliderEvent.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/IconAssignmentPostProcessor/IconAssignmentProcessor.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/IconAssignmentPostProcessor/IconAssignmentPostprocessor.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/IconAssignmentPostProcessor/AttributeMonoScriptAssigner.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/IconAssignmentPostProcessor/CommonIconAssignmentProcessor.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Editor/IconAssignmentPostProcessor/AtomMonoScriptAssigner.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-delicate.png"
+        },
+        {
+            "AssetPath": "Packages/com.mambojambostudios.unity-atoms-src/Variables/ObjectVariable.cs",
+            "IconPath": "Packages/com.mambojambostudios.unity-atoms-src/IconMap/atom-icon-lush.png"
         }
     ]
 }

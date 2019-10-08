@@ -149,6 +149,9 @@ namespace UnityAtoms
     [CustomPropertyDrawer(typeof(CollisionEvent))]
     public class CollisionEventDrawer : AtomDrawer<CollisionEvent> { }
 
+    [CustomPropertyDrawer(typeof(ObjectEvent))]
+    public class ObjectEventDrawer : AtomDrawer<ObjectEvent> { }
+
 
     // Event x 2
     [CustomPropertyDrawer(typeof(BoolBoolEvent))]
@@ -175,6 +178,8 @@ namespace UnityAtoms
     [CustomPropertyDrawer(typeof(Vector3Vector3Event))]
     public class Vector3Vector3EventDrawer : AtomDrawer<Vector3Vector3Event> { }
 
+    [CustomPropertyDrawer(typeof(ObjectObjectEvent))]
+    public class ObjectObjectEventDrawer : AtomDrawer<ObjectObjectEvent> { }
 
     // Constants
     [CustomPropertyDrawer(typeof(BoolConstant))]
@@ -233,6 +238,9 @@ namespace UnityAtoms
     [CustomPropertyDrawer(typeof(CollisionList))]
     public class CollisionListDrawer : AtomDrawer<CollisionList> { }
 
+    [CustomPropertyDrawer(typeof(ObjectList))]
+    public class ObjectListDrawer : AtomDrawer<ObjectList> { }
+
 
     // Variables
     [CustomPropertyDrawer(typeof(BoolVariable))]
@@ -258,5 +266,8 @@ namespace UnityAtoms
 
     [CustomPropertyDrawer(typeof(Vector3Variable))]
     public class Vector3VariableDrawer : AtomDrawer<Vector3Variable> { }
+
+    [CustomPropertyDrawer(typeof(ObjectVariable))]
+    public class ObjectVariableDrawer : AtomDrawer<ObjectVariable> { }
 }
 #endif
