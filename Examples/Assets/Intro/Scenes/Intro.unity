@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: {fileID: 11400000, guid: 41aa2296cd68a4b718a8fd1bd8ad5a95, type: 2}
+  _health: {fileID: 11400000, guid: 30c71ebe6587c4fe8b18d5279710b4dc, type: 2}
 --- !u!114 &145633449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe09a2350f1f64d15b116366c3e6630f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiState: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
+  _uiStatePlaying: {fileID: 11400000, guid: cb8238ac7ef5d407fb31219fe114d2ae, type: 2}
 --- !u!4 &854994180
 Transform:
   m_ObjectHideFlags: 0
