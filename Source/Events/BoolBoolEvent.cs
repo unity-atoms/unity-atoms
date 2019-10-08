@@ -2,6 +2,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "Unity Atoms/Events/Bool - Bool", fileName = "BoolBoolEvent")]
-    public sealed class BoolBoolEvent : GameEvent<bool, bool> { }
+    [CreateAssetMenu(menuName = "Unity Atoms/Events/Bool x 2", fileName = "BoolBoolEvent")]
+    public sealed class BoolBoolEvent : AtomEvent<bool, bool> { }
 }

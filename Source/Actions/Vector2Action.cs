@@ -2,5 +2,5 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class Vector2Action : GameAction<Vector2> { }
+    public abstract class Vector2Action : AtomAction<Vector2> { }
 }

@@ -2,5 +2,5 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class Collision2DAction : GameAction<Collision2D> { }
+    public abstract class Collision2DAction : AtomAction<Collision2D> { }
 }

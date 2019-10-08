@@ -2,6 +2,6 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [CreateAssetMenu(menuName = "Unity Atoms/Events/String - String", fileName = "StringStringEvent")]
-    public sealed class StringStringEvent : GameEvent<string, string> { }
+    [CreateAssetMenu(menuName = "Unity Atoms/Events/String x 2", fileName = "StringStringEvent")]
+    public sealed class StringStringEvent : AtomEvent<string, string> { }
 }

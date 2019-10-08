@@ -1,0 +1,9 @@
+using System;
+using UnityEngine.Events;
+using UnityEngine;
+
+namespace UnityAtoms
+{
+    [Serializable]
+    public sealed class {TYPE_NAME}{TYPE_NAME}UnityEvent : UnityEvent<{TYPE}, {TYPE}> { }
+}

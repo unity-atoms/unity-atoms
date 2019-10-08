@@ -1,6 +1,6 @@
 namespace UnityAtoms
 {
-    public abstract class VoidAction : GameAction<Void>
+    public abstract class VoidAction : AtomAction<Void>
     {
         public override void Do(Void _)
         {

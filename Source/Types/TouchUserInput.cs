@@ -43,10 +43,10 @@ namespace UnityAtoms.Mobile
 
         public override int GetHashCode()
         {
-            int hash = 17;
-            hash = hash * 31 + this.InputState.GetHashCode();
-            hash = hash * 31 + this.InputPos.GetHashCode();
-            hash = hash * 31 + this.InputPosLastFrame.GetHashCode();
+            var hash = 17;
+            hash = hash * 23 + this.InputState.GetHashCode();
+            hash = hash * 23 + this.InputPos.GetHashCode();
+            hash = hash * 23 + this.InputPosLastFrame.GetHashCode();
             return hash;
         }
 

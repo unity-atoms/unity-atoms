@@ -124,9 +124,9 @@ MonoBehaviour:
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityAtoms.UnityCollider2DEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: UnityAtoms.Collider2DUnityEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  _gameActionResponses:
+  _actionResponses:
   - {fileID: 11400000, guid: 310af909517714e69887a197f337882c, type: 2}
 --- !u!114 &5067224520480043162
 MonoBehaviour:

@@ -3,7 +3,7 @@ using System;
 namespace UnityAtoms
 {
     [Serializable]
-    public sealed class BoolReference : ScriptableObjectReference<
+    public sealed class BoolReference : AtomReference<
         bool,
         BoolVariable> { }
 }

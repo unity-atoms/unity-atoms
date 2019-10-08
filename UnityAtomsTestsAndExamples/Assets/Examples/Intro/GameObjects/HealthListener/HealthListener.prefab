@@ -58,7 +58,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityAtoms.UnityIntEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: UnityAtoms.IntUnityEvent, UnityAtoms, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  _gameActionResponses:
+  _actionResponses:
   - {fileID: 11400000, guid: 58f78c691d84e44cd84c884aadacf21a, type: 2}

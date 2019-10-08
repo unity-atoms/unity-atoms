@@ -1,4 +1,4 @@
 namespace UnityAtoms
 {
-    public abstract class BoolAction : GameAction<bool> { }
+    public abstract class BoolAction : AtomAction<bool> { }
 }
