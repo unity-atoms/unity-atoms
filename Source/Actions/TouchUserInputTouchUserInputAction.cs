@@ -1,4 +1,4 @@
 namespace UnityAtoms.Mobile
 {
-    public abstract class TouchUserInputTouchUserInputAction : GameAction<TouchUserInput, TouchUserInput> { }
+    public abstract class TouchUserInputTouchUserInputAction : AtomAction<TouchUserInput, TouchUserInput> { }
 }

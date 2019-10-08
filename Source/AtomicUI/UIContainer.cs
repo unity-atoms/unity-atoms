@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 namespace UnityAtoms.UI
 {
     [AddComponentMenu("Unity Atoms/UI/Container")]
-    public class UIContainer : MonoBehaviour, IGameEventListener<string>
+    public class UIContainer : MonoBehaviour, IAtomListener<string>
     {
         [FormerlySerializedAs("UIStateVariable")]
         [SerializeField]

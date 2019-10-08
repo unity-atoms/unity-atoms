@@ -2,5 +2,5 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    public abstract class GameObjectAction : GameAction<GameObject> { }
+    public abstract class GameObjectAction : AtomAction<GameObject> { }
 }

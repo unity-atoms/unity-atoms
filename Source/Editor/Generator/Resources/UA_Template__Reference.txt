@@ -1,0 +1,10 @@
+using System;
+using UnityEngine;
+
+namespace UnityAtoms
+{
+    [Serializable]
+    public sealed class {TYPE_NAME}Reference : AtomReference<
+        {TYPE},
+        {TYPE_NAME}Variable> { }
+}

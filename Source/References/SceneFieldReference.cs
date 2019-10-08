@@ -4,7 +4,7 @@ using System;
 namespace UnityAtoms
 {
     [Serializable]
-    public sealed class SceneFieldReference : ScriptableObjectReference<
+    public sealed class SceneFieldReference : AtomReference<
         SceneField,
         SceneFieldVariable>
     { }

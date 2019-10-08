@@ -1,4 +1,4 @@
 namespace UnityAtoms
 {
-    public abstract class ColliderEventAction : GameAction<ColliderEvent> { }
+    public abstract class ColliderEventAction : AtomAction<ColliderEvent> { }
 }

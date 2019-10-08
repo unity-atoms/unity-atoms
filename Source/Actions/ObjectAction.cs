@@ -1,4 +1,4 @@
 namespace UnityAtoms
 {
-    public abstract class ObjectAction : GameAction<object> { }
+    public abstract class ObjectAction : AtomAction<object> { }
 }

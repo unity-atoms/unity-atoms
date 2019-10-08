@@ -3,10 +3,10 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [AddComponentMenu("Unity Atoms/Listeners/Void")]
-    public sealed class VoidListener : GameEventListener<
+    public sealed class VoidListener : AtomListener<
         Void,
         VoidAction,
         VoidEvent,
-        UnityVoidEvent>
+        VoidUnityEvent>
     { }
 }

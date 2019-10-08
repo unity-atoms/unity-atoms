@@ -3,10 +3,10 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [AddComponentMenu("Unity Atoms/Listeners/Collider")]
-    public sealed class ColliderListener : GameEventListener<
+    public sealed class ColliderListener : AtomListener<
         Collider,
         ColliderAction,
         ColliderEvent,
-        UnityColliderEvent>
+        ColliderUnityEvent>
     { }
 }

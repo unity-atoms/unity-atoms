@@ -3,10 +3,10 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [AddComponentMenu("Unity Atoms/Listeners/GameObject")]
-    public sealed class GameObjectListener : GameEventListener<
+    public sealed class GameObjectListener : AtomListener<
         GameObject,
         GameObjectAction,
         GameObjectEvent,
-        UnityGameObjectEvent>
+        GameObjectUnityEvent>
     { }
 }

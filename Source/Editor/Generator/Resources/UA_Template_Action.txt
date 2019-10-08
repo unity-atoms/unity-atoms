@@ -1,4 +1,0 @@
-namespace UnityAtoms
-{
-    public abstract class {TYPE_NAME}Action : GameAction<{TYPE}> { }
-}
