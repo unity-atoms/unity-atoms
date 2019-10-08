@@ -18,7 +18,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 
-public class HealthBar : MonoBehaviour
+public class HealthBarUniRx : MonoBehaviour
 {
     [SerializeField]
     private IntConstant _maxHealth = null;
@@ -47,7 +47,7 @@ using UnityEngine;
 using Marvelous;
 using UniRx;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMoveUniRx : MonoBehaviour
 {
     [SerializeField]
     private StringVariable _uiState;
