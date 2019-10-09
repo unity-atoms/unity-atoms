@@ -7,6 +7,6 @@ namespace UnityAtoms
         Collision,
         CollisionAction,
         CollisionEvent,
-        UnityCollisionEvent>
+        CollisionUnityEvent>
     { }
 }
