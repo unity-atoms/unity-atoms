@@ -1,15 +1,15 @@
 {
     "name": "MamboJamboStudios.UnityAtomsSceneMgmt.Editor",
     "references": [
+        "MamboJamboStudios.UnityAtomsCore.Editor",
         "MamboJamboStudios.UnityAtomsSceneMgmt.Runtime",
-        "MamboJamboStudios.UnityAtomsCore.Runtime",
-        "MamboJamboStudios.UnityAtomsCore.Editor"
+        "MamboJamboStudios.UnityAtomsCore.Runtime"
     ],
     "optionalUnityReferences": [],
-    "includePlatforms": [],
-    "excludePlatforms": [
+    "includePlatforms": [
         "Editor"
     ],
+    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    internal static class IMGUIUtils
+    public static class IMGUIUtils
     {
         private static Rect SnipRectH(Rect rect, float range)
         {
