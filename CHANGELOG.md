@@ -9,7 +9,7 @@
 -   MonoHooks are no more 💀 After some discussions and thoughts it has been decided that the value they bring is not worth it.
 -   Custom property drawers for all atoms.
 -   Variables now discards playmode changes.
--   Add public method `ResetValue` to Variables.
+-   Add public method `Reset` to Variables.
 -   Improved documentation.
 -   Improved examples.
 

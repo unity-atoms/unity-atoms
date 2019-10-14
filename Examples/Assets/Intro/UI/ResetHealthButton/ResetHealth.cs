@@ -11,7 +11,7 @@ namespace UnityAtoms.Examples
 
         public override void Do()
         {
-            _variable.ResetValue(true);
+            _variable.Reset(true);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace UnityAtoms
             Changed.Raise(Value);
         }
 
-        public override sealed void ResetValue(bool shouldTriggerEvents = false)
+        public override sealed void Reset(bool shouldTriggerEvents = false)
         {
             if (!shouldTriggerEvents)
             {
