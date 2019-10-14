@@ -14,7 +14,7 @@ namespace UnityAtoms
         [SerializeField]
         private E _event = null;
 
-        public E GameEvent { get { return _event; } set { _event = value; } }
+        public E Event { get { return _event; } set { _event = value; } }
 
         [FormerlySerializedAs("UnityEventResponse")]
         [SerializeField]
@@ -26,14 +26,14 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
-            if (GameEvent == null) return;
-            GameEvent.RegisterListener(this);
+            if (Event == null) return;
+            Event.RegisterListener(this);
         }
 
         private void OnDisable()
         {
-            if (GameEvent == null) return;
-            GameEvent.UnregisterListener(this);
+            if (Event == null) return;
+            Event.UnregisterListener(this);
         }
 
         public void OnEventRaised(T item)
@@ -56,7 +56,7 @@ namespace UnityAtoms
         [SerializeField]
         private E _event;
 
-        public E GameEvent { get { return _event; } set { _event = value; } }
+        public E Event { get { return _event; } set { _event = value; } }
 
         [FormerlySerializedAs("UnityEventResponse")]
         [SerializeField]
@@ -69,13 +69,13 @@ namespace UnityAtoms
         private void OnEnable()
         {
             if (_event == null) return;
-            GameEvent.RegisterListener(this);
+            Event.RegisterListener(this);
         }
 
         private void OnDisable()
         {
             if (_event == null) return;
-            GameEvent.UnregisterListener(this);
+            Event.UnregisterListener(this);
         }
 
         public void OnEventRaised(T1 first, T2 second)
