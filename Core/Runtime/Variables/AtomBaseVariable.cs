@@ -9,7 +9,7 @@ namespace UnityAtoms
     public abstract class AtomBaseVariable : BaseAtom, IAtomConstantIcon
     {
         public abstract object BaseValue { get; set; }
-        public abstract void ResetValue(bool shouldTriggerEvents = false);
+        public abstract void Reset(bool shouldTriggerEvents = false);
     }
 
     [UseIcon("atom-icon-teal")]
@@ -55,7 +55,7 @@ namespace UnityAtoms
         public static bool operator ==(AtomBaseVariable<T> left, AtomBaseVariable<T> right) { return Equals(left, right); }
         public static bool operator !=(AtomBaseVariable<T> left, AtomBaseVariable<T> right) { return !Equals(left, right); }
 
-        public override void ResetValue(bool shouldTriggerEvents = false)
+        public override void Reset(bool shouldTriggerEvents = false)
         {
             throw new NotImplementedException();
         }
