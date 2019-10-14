@@ -2,7 +2,7 @@ using System.Collections;
 
 namespace UnityAtoms
 {
-    [UseIcon("atom-icon-piglet")]
+    [EditorIcon("atom-icon-piglet")]
     public abstract class BaseAtomList : BaseAtom
     {
         public VoidEvent Cleared;

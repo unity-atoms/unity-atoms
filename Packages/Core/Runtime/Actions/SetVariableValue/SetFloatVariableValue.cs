@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [UseIcon("atom-icon-purple")]
+    [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/Float", fileName = "SetFloatVariableValue")]
     public sealed class SetFloatVariableValue : SetVariableValue<
         float,

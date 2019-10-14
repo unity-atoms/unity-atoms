@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [UseIcon("atom-icon-purple")]
+    [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/Bool", fileName = "SetBoolVariableValue")]
     public sealed class SetBoolVariableValue : SetVariableValue<
         bool,

@@ -9,7 +9,7 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}
 namespace UnityAtoms
 <%ENDIF%>
 {
-    [UseIcon("atom-icon-purple")]
+    [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/{TYPE_NAME}", fileName = "Set{TYPE_NAME}VariableValue")]
     public sealed class Set{TYPE_NAME}VariableValue : SetVariableValue<
         {TYPE},

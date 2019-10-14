@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [UseIcon("atom-icon-lush")]
+    [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/GameObject", fileName = "GameObjectVariable")]
     public sealed class GameObjectVariable : AtomVariable<GameObject, GameObjectEvent, GameObjectGameObjectEvent>
     {
