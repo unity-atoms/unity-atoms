@@ -31,7 +31,7 @@ namespace UnityAtoms
                     {
                         // Extract icon name from attribute
                         // We are assuming that template strings are not used
-                        var attrIconNameStartIndex = scriptText.IndexOf("[EditorIcon(") + 10;
+                        var attrIconNameStartIndex = scriptText.IndexOf("[EditorIcon(") + 13;
                         var attrIconNameLength = scriptText.IndexOf("\")", attrIconNameStartIndex) - attrIconNameStartIndex;
                         var iconName = scriptText.Substring(attrIconNameStartIndex, attrIconNameLength);
 
