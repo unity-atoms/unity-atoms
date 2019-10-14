@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [UseIcon("atom-icon-orange")]
+    [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Vector2 - Vector2")]
     public sealed class Vector2Vector2Listener : AtomListener<
         Vector2,

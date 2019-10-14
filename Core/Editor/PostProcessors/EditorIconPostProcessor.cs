@@ -6,9 +6,9 @@ using UnityEditor;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Postprocessor that processes all scripts using the UseIcon attr and assigns the matching icon guid (matching the icon query name) to the script's meta.
+    /// Postprocessor that processes all scripts using the EditorIcon attr and assigns the matching icon guid (matching the icon query name) to the script's meta.
     /// </summary>
-    public class UseIconPostProcessor : AssetPostprocessor
+    public class EditorIconPostProcessor : AssetPostprocessor
     {
         static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
         {
@@ -25,13 +25,13 @@ namespace UnityAtoms
                 {
                     // Hack, hack, hack away....
                     var scriptText = File.ReadAllText(assetPath);
-                    var containsUseIconAttr = scriptText.Contains("[UseIcon(");
+                    var containsEditorIconAttr = scriptText.Contains("[EditorIcon(");
 
-                    if (containsUseIconAttr)
+                    if (containsEditorIconAttr)
                     {
                         // Extract icon name from attribute
                         // We are assuming that template strings are not used
-                        var attrIconNameStartIndex = scriptText.IndexOf("[UseIcon(") + 10;
+                        var attrIconNameStartIndex = scriptText.IndexOf("[EditorIcon(") + 10;
                         var attrIconNameLength = scriptText.IndexOf("\")", attrIconNameStartIndex) - attrIconNameStartIndex;
                         var iconName = scriptText.Substring(attrIconNameStartIndex, attrIconNameLength);
 
@@ -68,7 +68,7 @@ namespace UnityAtoms
             // We need to reimport all assets where the meta was changed
             if (metaChangedForAssets.Count > 0)
             {
-                foreach(var assetPath in metaChangedForAssets)
+                foreach (var assetPath in metaChangedForAssets)
                 {
                     AssetDatabase.ImportAsset(assetPath);
                 }

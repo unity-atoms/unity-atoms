@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [UseIcon("atom-icon-sand")]
+    [EditorIcon("atom-icon-sand")]
     public abstract class AtomFunction<R> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
@@ -26,7 +26,7 @@ namespace UnityAtoms
         }
     }
 
-    [UseIcon("atom-icon-sand")]
+    [EditorIcon("atom-icon-sand")]
     public abstract class AtomFunction<R, T1> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
@@ -49,7 +49,7 @@ namespace UnityAtoms
         }
     }
 
-    [UseIcon("atom-icon-sand")]
+    [EditorIcon("atom-icon-sand")]
     public abstract class AtomFunction<R, T1, T2> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
@@ -72,7 +72,7 @@ namespace UnityAtoms
         }
     }
 
-    [UseIcon("atom-icon-sand")]
+    [EditorIcon("atom-icon-sand")]
     public abstract class AtomFunction<R, T1, T2, T3> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
@@ -95,7 +95,7 @@ namespace UnityAtoms
         }
     }
 
-    [UseIcon("atom-icon-sand")]
+    [EditorIcon("atom-icon-sand")]
     public abstract class AtomFunction<R, T1, T2, T3, T4> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]
@@ -118,7 +118,7 @@ namespace UnityAtoms
         }
     }
 
-    [UseIcon("atom-icon-sand")]
+    [EditorIcon("atom-icon-sand")]
     public abstract class AtomFunction<R, T1, T2, T3, T4, T5> : BaseAtom, IAtomFunctionIcon
     {
         [HideInInspector]

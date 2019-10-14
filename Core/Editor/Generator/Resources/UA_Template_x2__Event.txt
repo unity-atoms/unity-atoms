@@ -9,7 +9,7 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}
 namespace UnityAtoms
 <%ENDIF%>
 {
-    [UseIcon("atom-icon-cherry")]
+    [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/{TYPE_NAME} x 2", fileName = "{TYPE_NAME}{TYPE_NAME}Event")]
     public sealed class {TYPE_NAME}{TYPE_NAME}Event : AtomEvent<{TYPE}, {TYPE}> { }
 }
