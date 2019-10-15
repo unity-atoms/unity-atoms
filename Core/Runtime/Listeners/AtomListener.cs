@@ -8,28 +8,43 @@ namespace UnityAtoms
     /// <summary>
     /// Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener&lt;T&gt;`
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <typeparam name="GA"></typeparam>
-    /// <typeparam name="E"></typeparam>
-    /// <typeparam name="UER"></typeparam>
+    /// <typeparam name="T">The type that we are listening for.</typeparam>
+    /// <typeparam name="A">Acion of type `AtomAction&lt;T&gt;`.</typeparam>
+    /// <typeparam name="E">Event of type `AtomEvent&lt;T&gt;`.</typeparam>
+    /// <typeparam name="UER">Unity Event of type `UnityEvent&lt;T&gt;`.</typeparam>
     [EditorIcon("atom-icon-orange")]
-    public abstract class AtomListener<T, GA, E, UER> : MonoBehaviour, IAtomListener<T>
-        where GA : AtomAction<T>
+    public abstract class AtomListener<T, A, E, UER> : MonoBehaviour, IAtomListener<T>
+        where A : AtomAction<T>
         where E : AtomEvent<T> where UER : UnityEvent<T>
     {
+        /// <summary>
+        /// The Event that we are listening to.
+        /// </summary>
         [FormerlySerializedAs("Event")]
         [SerializeField]
         private E _event = null;
 
+        /// <summary>
+        /// The Event we are listening for as a proeprty.
+        /// </summary>
+        /// <value>The Event of type `E`.</value>
         public E Event { get { return _event; } set { _event = value; } }
 
+        /// <summary>
+        /// The Unity Event responses.
+        /// </summary>
         [FormerlySerializedAs("UnityEventResponse")]
         [SerializeField]
         private UER _unityEventResponse = null;
 
+        /// <summary>
+        /// The Action responses;
+        /// </summary>
+        /// <typeparam name="A">The Action type.</typeparam>
+        /// <returns>A `List&lt;A&gt;` of Actions.</returns>
         [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]
-        private List<GA> _actionResponses = new List<GA>();
+        private List<A> _actionResponses = new List<A>();
 
         private void OnEnable()
         {
@@ -43,6 +58,10 @@ namespace UnityAtoms
             Event.UnregisterListener(this);
         }
 
+        /// <summary>
+        /// Handler for when the Event gets raised.
+        /// </summary>
+        /// <param name="item">The Event type.</param>
         public void OnEventRaised(T item)
         {
             if (_unityEventResponse != null) { _unityEventResponse.Invoke(item); }
@@ -53,25 +72,48 @@ namespace UnityAtoms
         }
     }
 
+    /// <summary>
+    /// Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener&lt;T1, T2&gt;`
+    /// </summary>
+    /// <typeparam name="T1">The first type that we are listening for.</typeparam>
+    /// <typeparam name="T2">The second type that we are listening for.</typeparam>
+    /// <typeparam name="A">Acion of type `AtomAction&lt;T1, T2&gt;`.</typeparam>
+    /// <typeparam name="E">Event of type `AtomEvent&lt;T1, T2&gt;`.</typeparam>
+    /// <typeparam name="UER">Unity Event of type `UnityEvent&lt;T1, T2&gt;`.</typeparam>
     [EditorIcon("atom-icon-orange")]
-    public abstract class AtomListener<T1, T2, GA, E, UER> : MonoBehaviour, IAtomListener<T1, T2>
-        where GA : AtomAction<T1, T2>
+    public abstract class AtomListener<T1, T2, A, E, UER> : MonoBehaviour, IAtomListener<T1, T2>
+        where A : AtomAction<T1, T2>
         where E : AtomEvent<T1, T2>
         where UER : UnityEvent<T1, T2>
     {
+        /// <summary>
+        /// The Event that we are listening to.
+        /// </summary>
         [FormerlySerializedAs("Event")]
         [SerializeField]
         private E _event;
 
+        /// <summary>
+        /// The Event we are listening for as a proeprty.
+        /// </summary>
+        /// <value>The Event of type `E`.</value>
         public E Event { get { return _event; } set { _event = value; } }
 
+        /// <summary>
+        /// The Unity Event responses.
+        /// </summary>
         [FormerlySerializedAs("UnityEventResponse")]
         [SerializeField]
         private UER _unityEventResponse = null;
 
+        /// <summary>
+        /// The Action responses;
+        /// </summary>
+        /// <typeparam name="A">The Action type.</typeparam>
+        /// <returns>A `List&lt;A&gt;` of Actions.</returns>
         [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]
-        private List<GA> _actionResponses = new List<GA>();
+        private List<A> _actionResponses = new List<A>();
 
         private void OnEnable()
         {
@@ -85,6 +127,11 @@ namespace UnityAtoms
             Event.UnregisterListener(this);
         }
 
+        /// <summary>
+        /// Handler for when the Event gets raised.
+        /// </summary>
+        /// <param name="first">The first Event type.</param>
+        /// <param name="second">The second Event type.</param>
         public void OnEventRaised(T1 first, T2 second)
         {
             if (_unityEventResponse != null) { _unityEventResponse.Invoke(first, second); }
