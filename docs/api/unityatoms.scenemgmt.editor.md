@@ -1,0 +1,44 @@
+---
+id: unityatoms.scenemgmt.editor
+title: UnityAtoms.SceneMgmt.Editor
+hide_title: true
+sidebar_label: UnityAtoms.SceneMgmt.Editor
+---
+
+# Namespace - `UnityAtoms.SceneMgmt.Editor`
+
+## `SceneFieldConstantDrawer`
+
+Constant property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SceneFieldEventDrawer`
+
+Event property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SceneFieldSceneFieldEventDrawer`
+
+Event x 2 property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldSceneFieldEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SceneFieldListDrawer`
+
+List property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SceneFieldVariableDrawer`
+
+Variable property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SceneFieldEventEditor`
+
+Event property drawer of type `SceneField`. Inherits from `AtomEventEditor<SceneField, SceneFieldEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
