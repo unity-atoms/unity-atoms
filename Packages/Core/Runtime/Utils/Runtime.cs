@@ -7,6 +7,9 @@ namespace UnityAtoms
     /// </summary>
     public static class Runtime
     {
+        /// <summary>
+        /// Runtime constants
+        /// </summary>
         public static class Constants
         {
             /// <summary>

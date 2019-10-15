@@ -12,6 +12,8 @@
 -   Add public method `Reset` to Variables.
 -   Improved documentation.
 -   Improved examples.
+-   Changed name on Atomic Tags to UA Tags.
+-   Automatic generation of API docs in markdown format from C# XML comments.
 
 # 1.0.0 (Mars 17, 2019)
 

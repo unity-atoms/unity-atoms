@@ -8,15 +8,9 @@
       "introduction/unirx"
     ],
     "API Reference": [
-      "api/actions",
-      "api/constants",
-      "api/events",
-      "api/functions",
-      "api/listeners",
-      "api/lists",
-      "api/references",
-      "api/unity-events",
-      "api/variables"
+      "api/unityatoms",
+      "api/unityatoms.editor",
+      "api/unityatoms.tags"
     ],
     "Subpackages": [
       "subpackages/mobile",

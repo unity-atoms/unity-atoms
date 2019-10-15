@@ -37,6 +37,18 @@
         "title": "Unity Events",
         "sidebar_label": "Unity Events"
       },
+      "api/unityatoms.editor": {
+        "title": "UnityAtoms.Editor",
+        "sidebar_label": "UnityAtoms.Editor"
+      },
+      "api/unityatoms": {
+        "title": "UnityAtoms",
+        "sidebar_label": "UnityAtoms"
+      },
+      "api/unityatoms.tags": {
+        "title": "UnityAtoms.Tags",
+        "sidebar_label": "UnityAtoms.Tags"
+      },
       "api/variables": {
         "title": "Variables",
         "sidebar_label": "Variables"

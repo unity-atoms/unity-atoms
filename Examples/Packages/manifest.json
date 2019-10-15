@@ -37,9 +37,7 @@
     {
       "name": "NPM",
       "url": "https://registry.npmjs.org",
-      "scopes": [
-        "com.mambojambostudios.marvelous"
-      ]
+      "scopes": ["com.mambojambostudios.marvelous"]
     }
   ],
   "lock": {

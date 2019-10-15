@@ -25,7 +25,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     { doc: 'introduction/quick-start', label: 'Quick Start' },
-    { doc: 'api/actions', label: 'API' },
+    { doc: 'api/unityatoms', label: 'API' },
     { href: 'https://www.github.com/AdamRamberg/unity-atoms', label: 'Github' },
   ],
 

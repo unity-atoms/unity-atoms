@@ -33,5 +33,9 @@
     "/package.json.meta",
     "/Packages",
     "/Packages.meta"
-  ]
+  ],
+  "devDependencies": {
+    "rimraf": "^3.0.0",
+    "xml2js": "^0.4.22"
+  }
 }
