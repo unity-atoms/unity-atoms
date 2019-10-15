@@ -5,13 +5,24 @@ using UnityAtoms;
 
 namespace UnityAtoms.UI
 {
+    /// <summary>
+    /// A MonoBehaviour that you can add to a `CanvasGroup` and makes it transition based on a `StringVariable` value.
+    ///
+    /// **TODO**: Add support for differnt transitions. Maybe integrate with DOTween?
+    /// </summary>
     [AddComponentMenu("Unity Atoms/UI/Container")]
     public class UIContainer : MonoBehaviour, IAtomListener<string>
     {
+        /// <summary>
+        /// Variable that we listens to.
+        /// </summary>
         [FormerlySerializedAs("UIStateVariable")]
         [SerializeField]
         private StringVariable _UIStateVariable = null;
 
+        /// <summary>
+        /// A list of states that this `UIContainer` will be visible for.
+        /// </summary>
         [FormerlySerializedAs("VisibleForStates")]
         [SerializeField]
         private List<StringConstant> _visibleForStates = null;
@@ -21,6 +32,10 @@ namespace UnityAtoms.UI
             StateNameChanged(_UIStateVariable.Value);
         }
 
+        /// <summary>
+        /// Handler for when the state is changed.
+        /// </summary>
+        /// <param name="stateName"></param>
         public void OnEventRaised(string stateName)
         {
             StateNameChanged(stateName);
