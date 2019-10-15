@@ -5,6 +5,9 @@ using UnityAtoms.Editor;
 
 namespace UnityAtoms.Mobile.Editor
 {
+    /// <summary>
+    /// Event property drawer of type `TouchUserInput`. Inherits from `AtomEventEditor&lt;TouchUserInput, TouchUserInputEvent&gt;`.
+    /// </summary>
     [CustomEditor(typeof(TouchUserInputEvent))]
     public sealed class TouchUserInputEventEditor : AtomEventEditor<TouchUserInput, TouchUserInputEvent>
     {

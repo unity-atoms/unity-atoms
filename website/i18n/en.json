@@ -5,38 +5,6 @@
     "previous": "Previous",
     "tagline": "Tiny modular pieces utilizing the power of Scriptable Objects",
     "docs": {
-      "api/actions": {
-        "title": "Actions",
-        "sidebar_label": "Actions"
-      },
-      "api/constants": {
-        "title": "Constants",
-        "sidebar_label": "Constants"
-      },
-      "api/events": {
-        "title": "Events",
-        "sidebar_label": "Events"
-      },
-      "api/functions": {
-        "title": "Functions",
-        "sidebar_label": "Functions"
-      },
-      "api/listeners": {
-        "title": "Listeners",
-        "sidebar_label": "Listeners"
-      },
-      "api/lists": {
-        "title": "Lists",
-        "sidebar_label": "Lists"
-      },
-      "api/references": {
-        "title": "References",
-        "sidebar_label": "References"
-      },
-      "api/unity-events": {
-        "title": "Unity Events",
-        "sidebar_label": "Unity Events"
-      },
       "api/unityatoms.editor": {
         "title": "UnityAtoms.Editor",
         "sidebar_label": "UnityAtoms.Editor"
@@ -44,6 +12,10 @@
       "api/unityatoms": {
         "title": "UnityAtoms",
         "sidebar_label": "UnityAtoms"
+      },
+      "api/unityatoms.mobile": {
+        "title": "UnityAtoms.Mobile",
+        "sidebar_label": "UnityAtoms.Mobile"
       },
       "api/unityatoms.tags": {
         "title": "UnityAtoms.Tags",

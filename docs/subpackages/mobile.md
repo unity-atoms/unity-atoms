@@ -7,8 +7,4 @@ sidebar_label: Mobile
 
 # Unity Atoms / Mobile
 
-Unity Atoms for your mobile project.
-
-## API
-
-[**TODO**]
+Unity Atoms specific for mobile projects. See the [API](../api/unityatoms.mobile) for more info.

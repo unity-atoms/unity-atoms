@@ -8,6 +8,9 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}
 namespace UnityAtoms
 <%ENDIF%>
 {
+    /// <summary>
+    /// Action x 2 of type `{TYPE}`. Inherits from `AtomAction&lt;{TYPE}, {TYPE}&gt;`.
+    /// </summary>
     [EditorIcon("atom-icon-purple")]
     public abstract class {TYPE_NAME}{TYPE_NAME}Action : AtomAction<{TYPE}, {TYPE}> { }
 }

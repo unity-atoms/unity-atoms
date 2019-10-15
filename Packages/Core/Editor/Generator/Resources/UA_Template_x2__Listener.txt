@@ -9,6 +9,9 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}
 namespace UnityAtoms
 <%ENDIF%>
 {
+    /// <summary>
+    /// Listener x 2 of type `{TYPE}`. Inherits from `AtomListener&lt;{TYPE}, {TYPE}, {TYPE_NAME}{TYPE_NAME}Action, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}UnityEvent&gt;`.
+    /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/{TYPE_NAME} - {TYPE_NAME}")]
     public sealed class {TYPE_NAME}{TYPE_NAME}Listener : AtomListener<

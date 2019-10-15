@@ -10,7 +10,8 @@
     "API Reference": [
       "api/unityatoms",
       "api/unityatoms.editor",
-      "api/unityatoms.tags"
+      "api/unityatoms.tags",
+      "api/unityatoms.mobile"
     ],
     "Subpackages": [
       "subpackages/mobile",
