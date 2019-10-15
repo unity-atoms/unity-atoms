@@ -1090,9 +1090,312 @@ Clear the list.
 
 ---
 
+## `AtomReference`
+
+None generic base class for `AtomReference<T, V>`.
+
+---
+
+## `Void`
+
+Dummy module class used for representing nothing in for example empty Events, eg: `AtomEvent<Void>`
+
+---
+
+## `DynamicAtoms`
+
+Static helper class for when creating Atoms a runtime (yes it is indeed possible 🤯).
+
+### Methods
+
+#### `CreateVariable<T,V,E1,E2>(initialValue,changed,changedWithHistory)`
+
+Create a Variable at runtime.
+
+#### Type Parameters
+
+-   `T` - The Variable value type.
+-   `V` - The Variable type AtomVariable<T, E1, E2>`.
+-   `E1` - The type of the `changed` Event of type `AtomEvent<T>`.
+-   `E2` - The type of the `changedWithHistory` Event of type `AtomEvent<T, T>`.
+
+##### Parameters
+
+-   `initialValue` - Inital value of the Variable created.
+-   `changed` - Changed Event of type `E1`.
+-   `changedWithHistory` - Changed with history Event of type `E2`.
+
+##### Returns
+
+The Variable created.
+
+---
+
+#### `CreateList<T,L,E>(added,removed,cleared)`
+
+Create a List at runtime.
+
+#### Type Parameters
+
+-   `T` - The list item type.
+-   `L` - The List type to create of type `AtomList<T, E>`.
+-   `E` - The Event tyoe used for `removed` and `added` of type `AtomEvent<T>`.
+
+##### Parameters
+
+-   `added` - Added Event of type `E`.
+-   `removed` - Removed Event of type `E`.
+-   `cleared` - Cleared Event of type `Void`.
+
+##### Returns
+
+The List created.
+
+---
+
+#### `CreateAction<A,T1>(action)`
+
+Create an Action at runtime.
+
+#### Type Parameters
+
+-   `A` - The Action created of type `AtomAction<T>`.
+-   `T1` - The type of the first parameter of the Action.
+
+##### Parameters
+
+-   `action` - The action.
+
+##### Returns
+
+The Action created
+
+---
+
+#### `CreateAction<A,T1,T2>(action)`
+
+Create an Action at runtime.
+
+#### Type Parameters
+
+-   `A` - The Action created of type `AtomAction<T1, T2>`.
+-   `T1` - The type of the first parameter of the Action.
+-   `T2` - The type of the second parameter of the Action.
+
+##### Parameters
+
+-   `action` - The action.
+
+##### Returns
+
+The Action created
+
+---
+
+#### `CreateAction<A,T1,T2,T3>(action)`
+
+Create an Action at runtime.
+
+#### Type Parameters
+
+-   `A` - The Action created of type `AtomAction<T1, T2, T3>`.
+-   `T1` - The type of the first parameter of the Action.
+-   `T2` - The type of the second parameter of the Action.
+-   `T3` - The type of the third parameter of the Action.
+
+##### Parameters
+
+-   `action` - The action.
+
+##### Returns
+
+The Action created
+
+---
+
+#### `CreateAction<A,T1,T2,T3,T4>(action)`
+
+Create an Action at runtime.
+
+#### Type Parameters
+
+-   `A` - The Action created of type `AtomAction<T1, T2, T3, T4>`.
+-   `T1` - The type of the first parameter of the Action.
+-   `T2` - The type of the second parameter of the Action.
+-   `T3` - The type of the third parameter of the Action.
+-   `T4` - The type of the fourth parameter of the Action.
+
+##### Parameters
+
+-   `action` - The action.
+
+##### Returns
+
+The Action created
+
+---
+
+#### `CreateAction<A,T1,T2,T3,T4,T5>(action)`
+
+Create an Action at runtime.
+
+#### Type Parameters
+
+-   `A` - The Action created of type `AtomAction<T1, T2, T3, T4, T5>`.
+-   `T1` - The type of the first parameter of the Action.
+-   `T2` - The type of the second parameter of the Action.
+-   `T3` - The type of the third parameter of the Action.
+-   `T4` - The type of the fourth parameter of the Action.
+-   `T5` - The type of the fifth parameter of the Action.
+
+##### Parameters
+
+-   `action` - The action.
+
+##### Returns
+
+The Action created
+
+---
+
+#### `CreateFunction<F,R>(func)`
+
+Create a Function at runtime.
+
+#### Type Parameters
+
+-   `F` - The Function created of type `AtomFunction<R>`.
+-   `R` - The return type.
+
+##### Parameters
+
+-   `func` - The function.
+
+##### Returns
+
+The Function crated.
+
+---
+
+#### `CreateFunction<F,R,T1>(func)`
+
+Create a Function at runtime.
+
+#### Type Parameters
+
+-   `F` - The Function created of type `AtomFunction<R, T1>`.
+-   `R` - The return type.
+-   `T1` - The type of the first parameter of the Function.
+
+##### Parameters
+
+-   `func` - The function.
+
+##### Returns
+
+The Function crated.
+
+---
+
+#### `CreateFunction<F,R,T1,T2>(func)`
+
+Create a Function at runtime.
+
+#### Type Parameters
+
+-   `F` - The Function created of type `AtomFunction<R, T1, T2>`.
+-   `R` - The return type.
+-   `T1` - The type of the first parameter of the Function.
+-   `T2` - The type of the second parameter of the Function.
+
+##### Parameters
+
+-   `func` - The function.
+
+##### Returns
+
+The Function crated.
+
+---
+
+#### `CreateFunction<F,R,T1,T2,T3>(func)`
+
+Create a Function at runtime.
+
+#### Type Parameters
+
+-   `F` - The Function created of type `AtomFunction<R, T1, T2, T3>`.
+-   `R` - The return type.
+-   `T1` - The type of the first parameter of the Function.
+-   `T2` - The type of the second parameter of the Function.
+-   `T3` - The type of the third parameter of the Function.
+
+##### Parameters
+
+-   `func` - The function.
+
+##### Returns
+
+The Function crated.
+
+---
+
+#### `CreateFunction<F,R,T1,T2,T3,T4>(func)`
+
+Create a Function at runtime.
+
+#### Type Parameters
+
+-   `F` - The Function created of type `AtomFunction<R, T1, T2, T3, T4>`.
+-   `R` - The return type.
+-   `T1` - The type of the first parameter of the Function.
+-   `T2` - The type of the second parameter of the Function.
+-   `T3` - The type of the third parameter of the Function.
+-   `T4` - The type of the fourth parameter of the Function.
+
+##### Parameters
+
+-   `func` - The function.
+
+##### Returns
+
+The Function crated.
+
+---
+
+#### `CreateFunction<F,R,T1,T2,T3,T4,T5>(func)`
+
+Create a Function at runtime.
+
+#### Type Parameters
+
+-   `F` - The Function created of type `AtomFunction<R, T1, T2, T3, T4, T5>`.
+-   `R` - The return type.
+-   `T1` - The type of the first parameter of the Function.
+-   `T2` - The type of the second parameter of the Function.
+-   `T3` - The type of the third parameter of the Function.
+-   `T4` - The type of the fourth parameter of the Function.
+-   `T5` - The type of the fifth parameter of the Function.
+
+##### Parameters
+
+-   `func` - The function.
+
+##### Returns
+
+The Function crated.
+
+---
+
 ## `Runtime`
 
 Internal constant and static readonly members for runtime usage.
+
+### Properties
+
+#### `IsUnityAtomsRepo`
+
+Determine if we are working the Unity Atoms source library / repo or not.
 
 ---
 
