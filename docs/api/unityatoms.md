@@ -263,6 +263,18 @@ Perform the Action.
 
 ---
 
+## `BoolAction`
+
+Action of type `bool`. Inherits from `AtomAction<bool>`.
+
+---
+
+## `BoolBoolAction`
+
+Action x 2 of type `bool`. Inherits from `AtomAction<bool, bool>`.
+
+---
+
 ## `VoidAction`
 
 Action of type Void. Inherits from `AtomAction<Void>`.
@@ -282,6 +294,12 @@ Do the Action.
 #### `Do`
 
 Do the Action.
+
+---
+
+## `SetBoolVariableValue`
+
+Set variable value Action of type `bool`. Inherits from `SetVariableValue<bool, BoolVariable, BoolReference, BoolEvent, BoolBoolEvent>`.
 
 ---
 
@@ -332,6 +350,12 @@ None generic base class for all atoms.
 #### `_developerDescription`
 
 A description of the Atom made for developers to document their Atoms.
+
+---
+
+## `BoolConstant`
+
+Constant of type `bool`. Inherits from `AtomBaseVariable<bool>`.
 
 ---
 
@@ -508,6 +532,18 @@ Turn the Event into an `IObservable<M>`. Makes Events compatible with for exampl
 ##### Returns
 
 The Event as an `IObservable<M>`.
+
+---
+
+## `BoolBoolEvent`
+
+Event x 2 of type `bool`. Inherits from `AtomEvent<bool, bool>`.
+
+---
+
+## `BoolEvent`
+
+Event of type `bool`. Inherits from `AtomEvent<bool>`.
 
 ---
 
@@ -892,6 +928,18 @@ Handler for when the Event gets raised.
 
 ---
 
+## `BoolBoolListener`
+
+Listener x 2 of type `bool`. Inherits from `AtomListener<bool, bool, BoolBoolAction, BoolBoolEvent, BoolBoolUnityEvent>`.
+
+---
+
+## `BoolListener`
+
+Listener of type `bool`. Inherits from `AtomListener<bool, BoolAction, BoolEvent, BoolUnityEvent>`.
+
+---
+
 ## `AtomList<T,E>`
 
 #### Type Parameters
@@ -1090,15 +1138,39 @@ Clear the list.
 
 ---
 
+## `BoolList`
+
+List of type `bool`. Inherits from `AtomList<bool, BoolEvent>`.
+
+---
+
 ## `AtomReference`
 
 None generic base class for `AtomReference<T, V>`.
 
 ---
 
+## `BoolReference`
+
+Reference of type `bool`. Inherits from `AtomReference<bool, BoolVariable>`.
+
+---
+
 ## `Void`
 
 Dummy module class used for representing nothing in for example empty Events, eg: `AtomEvent<Void>`
+
+---
+
+## `BoolBoolUnityEvent`
+
+None generic Unity Event x 2 of type `bool`. Inherits from `UnityEvent<bool, bool>`.
+
+---
+
+## `BoolUnityEvent`
+
+None generic Unity Event of type `bool`. Inherits from `UnityEvent<bool>`.
 
 ---
 
@@ -1604,5 +1676,11 @@ Turn the Variable's change with history Event into an `IObservable<T, T>`. Makes
 ##### Returns
 
 The Variable's change Event as an `IObservable<T, T>`.
+
+---
+
+## `BoolVariable`
+
+Variable of type `bool`. Inherits from `EquatableAtomVariable<bool, BoolEvent, BoolBoolEvent>`.
 
 ---

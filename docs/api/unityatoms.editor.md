@@ -23,6 +23,36 @@ A custom property drawer for References. Makes it possible to choose between a V
 
 ---
 
+## `BoolConstantDrawer`
+
+Constant property drawer of type `bool`. Inherits from `AtomDrawer<BoolConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolBoolEventDrawer`
+
+Event x 2 property drawer of type `bool`. Inherits from `AtomDrawer<BoolBoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolEventDrawer`
+
+Event property drawer of type `bool`. Inherits from `AtomDrawer<BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolListDrawer`
+
+List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolVariableDrawer`
+
+Variable property drawer of type `bool`. Inherits from `AtomDrawer<BoolVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `AtomEventEditor<T,E>`
 
 #### Type Parameters
@@ -31,6 +61,12 @@ A custom property drawer for References. Makes it possible to choose between a V
 -   `E` - undefined
 
 Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
+
+---
+
+## `BoolEventEditor`
+
+Event property drawer of type `bool`. Inherits from `AtomEventEditor<bool, BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
