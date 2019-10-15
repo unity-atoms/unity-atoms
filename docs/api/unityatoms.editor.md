@@ -203,6 +203,12 @@ Event x 2 property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Ve
 
 ---
 
+## `VoidEventDrawer`
+
+Event property drawer of type `Void`. Inherits from `AtomDrawer<VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolListDrawer`
 
 List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -391,6 +397,12 @@ Event property drawer of type `Vector2`. Inherits from `AtomEventEditor<Vector2,
 ## `Vector3EventEditor`
 
 Event property drawer of type `Vector3`. Inherits from `AtomEventEditor<Vector3, Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `VoidEventEditor`
+
+Event property drawer of type `Void`. Inherits from `AtomEventEditor<Void, VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 

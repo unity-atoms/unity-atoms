@@ -385,7 +385,7 @@ Action x 2 of type `Vector3`. Inherits from `AtomAction<Vector3, Vector3>`.
 
 ## `VoidAction`
 
-Action of type Void. Inherits from `AtomAction<Void>`.
+Action of type `Void`. Inherits from `AtomAction<Void>`.
 
 ### Methods
 
@@ -868,6 +868,12 @@ Event of type `Vector3`. Inherits from `AtomEvent<Vector3>`.
 ## `Vector3Vector3Event`
 
 Event x 2 of type `Vector3`. Inherits from `AtomEvent<Vector3, Vector3>`.
+
+---
+
+## `VoidEvent`
+
+Event of type `Void`. Inherits from `AtomEvent<Void>`.
 
 ---
 
@@ -1372,6 +1378,12 @@ Listener x 2 of type `Vector3`. Inherits from `AtomListener<Vector3, Vector3, Ve
 
 ---
 
+## `VoidListener`
+
+Listener of type `Void`. Inherits from `AtomListener<Void, VoidAction, VoidEvent, VoidUnityEvent>`.
+
+---
+
 ## `AtomList<T,E>`
 
 #### Type Parameters
@@ -1819,6 +1831,12 @@ None generic Unity Event of type `Vector3`. Inherits from `UnityEvent<Vector3>`.
 ## `Vector3Vector3UnityEvent`
 
 None generic Unity Event x 2 of type `Vector3`. Inherits from `UnityEvent<Vector3, Vector3>`.
+
+---
+
+## `VoidUnityEvent`
+
+None generic Unity Event of type `Void`. Inherits from `UnityEvent<Void>`.
 
 ---
 
