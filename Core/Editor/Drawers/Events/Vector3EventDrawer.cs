@@ -3,6 +3,9 @@ using UnityEditor;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// Event property drawer of type `Vector3`. Inherits from `AtomDrawer&lt;Vector3Event&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
+    /// </summary>
     [CustomPropertyDrawer(typeof(Vector3Event))]
     public class Vector3EventDrawer : AtomDrawer<Vector3Event> { }
 }
