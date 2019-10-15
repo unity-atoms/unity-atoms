@@ -805,7 +805,7 @@ An `AtomFunction<R, T1, T2, T3, T4, T5>`.
 -   `E` - Event of type `AtomEvent<T>`.
 -   `UER` - Unity Event of type `UnityEvent<T>`.
 
-Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener<T>`
+Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener<T>`.
 
 ### Variables
 
@@ -889,6 +889,204 @@ Handler for when the Event gets raised.
 
 -   `first` - The first Event type.
 -   `second` - The second Event type.
+
+---
+
+## `AtomList<T,E>`
+
+#### Type Parameters
+
+-   `T` - The list item type.
+-   `E` - Event of type `AtomEvent<T>`.
+
+Generic base class for Lists. Inherits from `BaseAtomList` and `IList<T>`.
+
+### Variables
+
+#### `Added`
+
+Event for when something is added to the list.
+
+---
+
+#### `Removed`
+
+Event for when something is removed from the list.
+
+---
+
+#### `list`
+
+Actual `List<T>`.
+
+### Properties
+
+#### `Count`
+
+Get the count of the list.
+
+---
+
+#### `IsReadOnly`
+
+Is the list read only?
+
+---
+
+#### `List`
+
+The actual `List<T>` as a property.
+
+---
+
+#### `Item(System.Int32)`
+
+Indexer of the list.
+
+### Methods
+
+#### `Add(item)`
+
+Add an item to tje list.
+
+##### Parameters
+
+-   `item` - The item to add.
+
+---
+
+#### `Remove(item)`
+
+Remove and item from the list.
+
+##### Parameters
+
+-   `item` - The item to remove.
+
+##### Returns
+
+The removed item.
+
+---
+
+#### `Contains(item)`
+
+Does the list contain the item provided?
+
+##### Parameters
+
+-   `item` - The item to check if it is contained in the list.
+
+##### Returns
+
+`true` if the item exists in the list, otherwise `false`.
+
+---
+
+#### `Get(System.Int32)`
+
+Get item at index.
+
+##### Parameters
+
+-   `i` - The index.
+
+##### Returns
+
+The item if it exists.
+
+---
+
+#### `GetEnumerator`
+
+Get an `IEnumerator<T>` of the list.
+
+##### Returns
+
+An `IEnumerator<T>`
+
+---
+
+#### `IndexOf(item)`
+
+Returns the index of the specified item.
+
+##### Parameters
+
+-   `item` - The item to search for.
+
+##### Returns
+
+The zero-based index of the first occurrence of `item`. If not found it returns -1.
+
+---
+
+#### `RemoveAt(System.Int32)`
+
+Remove an item at provided index.
+
+##### Parameters
+
+-   `index` - The index to remove item at.
+
+---
+
+#### `Insert(index,item)`
+
+Insert item at index.
+
+##### Parameters
+
+-   `index` - Index to insert item at.
+-   `item` - Item to insert.
+
+---
+
+#### `ObserveAdd`
+
+Make the add event into an `IObservable<T>`. Makes List's add Event compatible with for example UniRx.
+
+##### Returns
+
+The add Event as an `IObservable<T>`.
+
+---
+
+#### `ObserveRemove`
+
+Make the remove event into an `IObservable<T>`. Makes List's remove Event compatible with for example UniRx.
+
+##### Returns
+
+The remove Event as an `IObservable<T>`.
+
+---
+
+#### `ObserveClear`
+
+Make the clear event into an `IObservable<Void>`. Makes List's clear Event compatible with for example UniRx.
+
+##### Returns
+
+The clear Event as an `IObservable<Void>`.
+
+---
+
+## `BaseAtomList`
+
+None generic base class of Lists.Inherits from `BaseAtom`.
+
+### Variables
+
+#### `Cleared`
+
+Event for when the list is cleared.
+
+### Methods
+
+#### `Clear`
+
+Clear the list.
 
 ---
 
