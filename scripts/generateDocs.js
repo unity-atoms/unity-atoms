@@ -3,6 +3,7 @@ const fs = require('fs');
 const xml2js = require('xml2js');
 const rimraf = require('rimraf');
 const path = require('path');
+const argv = require('yargs').argv
 
 const run = async () => {
   // Extract dlls
@@ -24,7 +25,11 @@ const run = async () => {
   const apiXmlName = `api.xml`;
   const assemblyName = `Packages.dll`;
   const cmd = `csc -recurse:${path.join(process.cwd(), 'Packages', '/*.cs')} /doc:${path.join(process.cwd(), apiXmlName)} -t:library -out:${path.join(process.cwd(), assemblyName)} -r:${dlls.join(',')}`;
-  child_process.execSync(cmd);
+  const compileStdout = child_process.execSync(cmd);
+  if (argv.verbose) {
+    console.log("Stdout from source code compilation:");
+    console.log(compileStdout.toString());
+  }
 
   // Remove generated assembly
   rimraf.sync(path.join(process.cwd(), assemblyName));

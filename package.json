@@ -23,7 +23,8 @@
     "publish:scene": "npm publish ./Packages/SceneMgmt --tag beta",
     "publish:tags": "npm publish ./Packages/Tags --tag beta",
     "publish:ui": "npm publish ./Packages/UI --tag beta",
-    "generate:docs": "node scripts/generateDocs.js"
+    "generate:docs": "node scripts/generateDocs.js",
+    "generate:docs:verbose": "node scripts/generateDocs.js --verbose"
   },
   "files": [
     "/LICENSE.md",
@@ -37,6 +38,7 @@
   ],
   "devDependencies": {
     "rimraf": "^3.0.0",
-    "xml2js": "^0.4.22"
+    "xml2js": "^0.4.22",
+    "yargs": "^14.2.0"
   }
 }
