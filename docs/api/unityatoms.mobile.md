@@ -222,13 +222,13 @@ Enum for different touch user input states.
 
 ## `TouchUserInputTouchUserInputUnityEvent`
 
-Unity Event x 2 of type `TouchUserInput`. Inherits from `UnityEvent<TouchUserInput, TouchUserInput>`.
+None generic Unity Event x 2 of type `TouchUserInput`. Inherits from `UnityEvent<TouchUserInput, TouchUserInput>`.
 
 ---
 
 ## `TouchUserInputUnityEvent`
 
-Unity Event of type `TouchUserInput`. Inherits from `UnityEvent<TouchUserInput>`.
+None generic Unity Event of type `TouchUserInput`. Inherits from `UnityEvent<TouchUserInput>`.
 
 ---
 

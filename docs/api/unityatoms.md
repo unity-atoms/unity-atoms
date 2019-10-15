@@ -1410,3 +1410,199 @@ Runtime constants
 Prefix that should be pre-pended to all Debug.Logs made from UnityAtoms to help immediately inform a user that those logs are made from this library.
 
 ---
+
+## `AtomBaseVariable`
+
+None generic base class for Variables. Inherits from `BaseAtom`.
+
+### Properties
+
+#### `BaseValue`
+
+The Variable value as an `object`.abstract Beware of boxing! 🥊
+
+### Methods
+
+#### `Reset(System.Boolean)`
+
+Abstract method that could be implemented to reset the Variable value.
+
+---
+
+## `AtomBaseVariable<T>`
+
+#### Type Parameters
+
+-   `T` - The Variable value type.
+
+Generic base class for Variables. Inherits from `AtomBaseVariable`.
+
+### Properties
+
+#### `BaseValue`
+
+The Variable value as an `object`.abstract Beware of boxing! 🥊
+
+---
+
+#### `Value`
+
+The Variable value as a property.
+
+### Methods
+
+#### `Equals(System.Object)`
+
+Determines equality between Variables.
+
+##### Parameters
+
+-   `obj` - The other Variable to compare as an `object`.
+
+##### Returns
+
+`true` if they are equal, otherwise `false`.
+
+---
+
+#### `GetHashCode`
+
+Get an unique hash code for this Variable based on the Variable's value.
+
+---
+
+#### `op_Equality(left,right)`
+
+Equal operator.
+
+##### Parameters
+
+-   `left` - The first Variable to compare.
+-   `right` - The second Variable to compare.
+
+##### Returns
+
+`true` if eqaul, otherwise `false`.
+
+---
+
+#### `op_Inequality(left,right)`
+
+None equality operator.
+
+##### Parameters
+
+-   `left` - The first Variable to compare.
+-   `right` - The second Variable to compare.
+
+##### Returns
+
+`true` if not eqaul, otherwise `false`.
+
+---
+
+#### `Reset(System.Boolean)`
+
+Not implemented.abstract Throws Exception
+
+---
+
+## `AtomVariable<T,E1,E2>`
+
+#### Type Parameters
+
+-   `T` - The Variable value type.
+-   `E1` - Event of type `AtomEvent<T>`.
+-   `E2` - Event of type `AtomEvent<T, T>`.
+
+Generic base class for Variables. Inherits from `AtomBaseVariable<T>`.
+
+### Variables
+
+#### `_initialValue`
+
+The inital value of the Variable.
+
+---
+
+#### `Changed`
+
+Changed Event triggered when the Variable value gets changed.
+
+---
+
+#### `ChangedWithHistory`
+
+Changed with history Event triggered when the Variable value gets changed.
+
+### Properties
+
+#### `Value`
+
+The Variable value as a property.
+
+---
+
+#### `OldValue`
+
+The value the Variable had before its value got changed last time.
+
+### Methods
+
+#### `Reset(System.Boolean)`
+
+Reset the Variable to its `_initalValue`.
+
+##### Parameters
+
+-   `shouldTriggerEvents` - Set to `true` if Events should be triggered on reset, otherwise `false`.
+
+---
+
+#### `SetValue(newValue)`
+
+Set the Variable value.
+
+##### Parameters
+
+-   `newValue` - The new value to set.
+
+##### Returns
+
+`true` if the value got changed, otherwise `false`.
+
+---
+
+#### `SetValue(variable)`
+
+Set the Variable value.
+
+##### Parameters
+
+-   `variable` - The value to set provided from another Variable.
+
+##### Returns
+
+`true` if the value got changed, otherwise `false`.
+
+---
+
+#### `ObserveChange`
+
+Turn the Variable's change Event into an `IObservable<T>`. Makes the Variable's change Event compatible with for example UniRx.
+
+##### Returns
+
+The Variable's change Event as an `IObservable<T>`.
+
+---
+
+#### `ObserveChangeWithHistory`
+
+Turn the Variable's change with history Event into an `IObservable<T, T>`. Makes the Variable's change with history Event compatible with for example UniRx.
+
+##### Returns
+
+The Variable's change Event as an `IObservable<T, T>`.
+
+---
