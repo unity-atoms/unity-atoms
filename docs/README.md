@@ -9,8 +9,11 @@
 -   API
     -   [UnityAtoms](./api/unityatoms.md)
     -   [UnityAtoms.Editor](./api/unityatoms.editor.md)
-    -   [UnityAtoms.Tags](./api/unityatoms.tags.md)
     -   [UnityAtoms.Mobile](./api/unityatoms.mobile.md)
+    -   [UnityAtoms.Mobile.Editor](./api/unityatoms.mobile.editor.md)
+    -   [UnityAtoms.SceneMgmt](./api/unityatoms.scenemgmt.md)
+    -   [UnityAtoms.SceneMgmt.Editor](./api/unityatoms.scenemgmt.editor.md)
+    -   [UnityAtoms.Tags](./api/unityatoms.tags.md)
 -   Subpackages
     -   [Mobile](./subpackages/mobile.md)
     -   [SceneMgmt](./subpackages/scene-mgmt.md)

@@ -10,8 +10,12 @@
     "API Reference": [
       "api/unityatoms",
       "api/unityatoms.editor",
+      "api/unityatoms.mobile",
+      "api/unityatoms.mobile.editor",
+      "api/unityatoms.scenemgmt",
+      "api/unityatoms.scenemgmt.editor",
       "api/unityatoms.tags",
-      "api/unityatoms.mobile"
+      "api/unityatoms.ui"
     ],
     "Subpackages": [
       "subpackages/mobile",

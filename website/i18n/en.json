@@ -13,17 +13,29 @@
         "title": "UnityAtoms",
         "sidebar_label": "UnityAtoms"
       },
+      "api/unityatoms.mobile.editor": {
+        "title": "UnityAtoms.Mobile.Editor",
+        "sidebar_label": "UnityAtoms.Mobile.Editor"
+      },
       "api/unityatoms.mobile": {
         "title": "UnityAtoms.Mobile",
         "sidebar_label": "UnityAtoms.Mobile"
+      },
+      "api/unityatoms.scenemgmt.editor": {
+        "title": "UnityAtoms.SceneMgmt.Editor",
+        "sidebar_label": "UnityAtoms.SceneMgmt.Editor"
+      },
+      "api/unityatoms.scenemgmt": {
+        "title": "UnityAtoms.SceneMgmt",
+        "sidebar_label": "UnityAtoms.SceneMgmt"
       },
       "api/unityatoms.tags": {
         "title": "UnityAtoms.Tags",
         "sidebar_label": "UnityAtoms.Tags"
       },
-      "api/variables": {
-        "title": "Variables",
-        "sidebar_label": "Variables"
+      "api/unityatoms.ui": {
+        "title": "UnityAtoms.UI",
+        "sidebar_label": "UnityAtoms.UI"
       },
       "introduction/basic-tutorial": {
         "title": "Basic tutorial",
