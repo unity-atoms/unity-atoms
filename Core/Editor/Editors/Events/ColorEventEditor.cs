@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// Event property drawer of type `Color`. Inherits from `AtomEventEditor&lt;Color, ColorEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
+    /// </summary>
     [CustomEditor(typeof(ColorEvent))]
     public sealed class ColorEventEditor : AtomEventEditor<Color, ColorEvent>
     {
