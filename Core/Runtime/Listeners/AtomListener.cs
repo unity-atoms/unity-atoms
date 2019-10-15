@@ -5,6 +5,13 @@ using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener&lt;T&gt;`
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="GA"></typeparam>
+    /// <typeparam name="E"></typeparam>
+    /// <typeparam name="UER"></typeparam>
     [EditorIcon("atom-icon-orange")]
     public abstract class AtomListener<T, GA, E, UER> : MonoBehaviour, IAtomListener<T>
         where GA : AtomAction<T>
