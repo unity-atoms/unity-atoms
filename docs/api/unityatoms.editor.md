@@ -29,6 +29,12 @@ Constant property drawer of type `bool`. Inherits from `AtomDrawer<BoolConstant>
 
 ---
 
+## `ColliderConstantDrawer`
+
+Constant property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `ColorConstantDrawer`
 
 Constant property drawer of type `Color`. Inherits from `AtomDrawer<ColorConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -44,6 +50,18 @@ Event x 2 property drawer of type `bool`. Inherits from `AtomDrawer<BoolBoolEven
 ## `BoolEventDrawer`
 
 Event property drawer of type `bool`. Inherits from `AtomDrawer<BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderColliderEventDrawer`
+
+Event x 2 property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderEventDrawer`
+
+Event property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -65,6 +83,12 @@ List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only 
 
 ---
 
+## `ColliderListDrawer`
+
+List property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `ColorListDrawer`
 
 List property drawer of type `Color`. Inherits from `AtomDrawer<ColorList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -74,6 +98,12 @@ List property drawer of type `Color`. Inherits from `AtomDrawer<ColorList>`. Onl
 ## `BoolVariableDrawer`
 
 Variable property drawer of type `bool`. Inherits from `AtomDrawer<BoolVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderVariableDrawer`
+
+Variable property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -97,6 +127,12 @@ Custom editor for Events. Adds the possiblity to raise an Event from Unity's Ins
 ## `BoolEventEditor`
 
 Event property drawer of type `bool`. Inherits from `AtomEventEditor<bool, BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderEventEditor`
+
+Event property drawer of type `Collider`. Inherits from `AtomEventEditor<Collider, ColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 

@@ -275,6 +275,18 @@ Action x 2 of type `bool`. Inherits from `AtomAction<bool, bool>`.
 
 ---
 
+## `ColliderAction`
+
+Action of type `Collider`. Inherits from `AtomAction<Collider>`.
+
+---
+
+## `ColliderColliderAction`
+
+Action x 2 of type `Collider`. Inherits from `AtomAction<Collider, Collider>`.
+
+---
+
 ## `ColorAction`
 
 Action of type `Color`. Inherits from `AtomAction<Color>`.
@@ -312,6 +324,12 @@ Do the Action.
 ## `SetBoolVariableValue`
 
 Set variable value Action of type `bool`. Inherits from `SetVariableValue<bool, BoolVariable, BoolReference, BoolEvent, BoolBoolEvent>`.
+
+---
+
+## `SetColliderVariableValue`
+
+Set variable value Action of type `Collider`. Inherits from `SetVariableValue<Collider, ColliderVariable, ColliderReference, ColliderEvent, ColliderColliderEvent>`.
 
 ---
 
@@ -374,6 +392,12 @@ A description of the Atom made for developers to document their Atoms.
 ## `BoolConstant`
 
 Constant of type `bool`. Inherits from `AtomBaseVariable<bool>`.
+
+---
+
+## `ColliderConstant`
+
+Constant of type `Collider`. Inherits from `AtomBaseVariable<Collider>`.
 
 ---
 
@@ -568,6 +592,18 @@ Event x 2 of type `bool`. Inherits from `AtomEvent<bool, bool>`.
 ## `BoolEvent`
 
 Event of type `bool`. Inherits from `AtomEvent<bool>`.
+
+---
+
+## `ColliderColliderEvent`
+
+Event x 2 of type `Collider`. Inherits from `AtomEvent<Collider, Collider>`.
+
+---
+
+## `ColliderEvent`
+
+Event of type `Collider`. Inherits from `AtomEvent<Collider>`.
 
 ---
 
@@ -976,6 +1012,18 @@ Listener of type `bool`. Inherits from `AtomListener<bool, BoolAction, BoolEvent
 
 ---
 
+## `ColliderColliderListener`
+
+Listener x 2 of type `Collider`. Inherits from `AtomListener<Collider, Collider, ColliderColliderAction, ColliderColliderEvent, ColliderColliderUnityEvent>`.
+
+---
+
+## `ColliderListener`
+
+Listener of type `Collider`. Inherits from `AtomListener<Collider, ColliderAction, ColliderEvent, ColliderUnityEvent>`.
+
+---
+
 ## `ColorColorListener`
 
 Listener x 2 of type `Color`. Inherits from `AtomListener<Color, Color, ColorColorAction, ColorColorEvent, ColorColorUnityEvent>`.
@@ -1192,6 +1240,12 @@ List of type `bool`. Inherits from `AtomList<bool, BoolEvent>`.
 
 ---
 
+## `ColliderList`
+
+List of type `Collider`. Inherits from `AtomList<Collider, ColliderEvent>`.
+
+---
+
 ## `ColorList`
 
 List of type `Color`. Inherits from `AtomList<Color, ColorEvent>`.
@@ -1207,6 +1261,12 @@ None generic base class for `AtomReference<T, V>`.
 ## `BoolReference`
 
 Reference of type `bool`. Inherits from `AtomReference<bool, BoolVariable>`.
+
+---
+
+## `ColliderReference`
+
+Reference of type `Collider`. Inherits from `AtomReference<Collider, ColliderVariable>`.
 
 ---
 
@@ -1231,6 +1291,18 @@ None generic Unity Event x 2 of type `bool`. Inherits from `UnityEvent<bool, boo
 ## `BoolUnityEvent`
 
 None generic Unity Event of type `bool`. Inherits from `UnityEvent<bool>`.
+
+---
+
+## `ColliderColliderUnityEvent`
+
+None generic Unity Event x 2 of type `Collider`. Inherits from `UnityEvent<Collider, Collider>`.
+
+---
+
+## `ColliderUnityEvent`
+
+None generic Unity Event of type `Collider`. Inherits from `UnityEvent<Collider>`.
 
 ---
 
@@ -1754,6 +1826,12 @@ The Variable's change Event as an `IObservable<T, T>`.
 ## `BoolVariable`
 
 Variable of type `bool`. Inherits from `EquatableAtomVariable<bool, BoolEvent, BoolBoolEvent>`.
+
+---
+
+## `ColliderVariable`
+
+Variable of type `Collider`. Inherits from `AtomVariable<Collider, ColliderEvent, ColliderColliderEvent>`.
 
 ---
 
