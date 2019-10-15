@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Generic abstract base class for Actions. Inherits from `BaseAtom`.
+    /// </summary>
+    /// <typeparam name="T1">The type for this Action.</typeparam>
     [EditorIcon("atom-icon-purple")]
     public abstract class AtomAction<T1> : BaseAtom
     {

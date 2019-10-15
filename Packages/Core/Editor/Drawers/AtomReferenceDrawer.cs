@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// A custom property drawer for References. Makes it possible to choose between a Variable and a constant value (not a Atom Contant, but a regular value).
+    /// </summary>
 
     [CustomPropertyDrawer(typeof(AtomReference), true)]
     public class AtomReferenceDrawer : PropertyDrawer

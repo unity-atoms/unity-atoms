@@ -2,6 +2,9 @@ using System;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// Internal module class that holds that regarding an Atom type.
+    /// </summary>
 
     internal struct AtomType : IEquatable<AtomType>
     {

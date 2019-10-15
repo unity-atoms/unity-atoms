@@ -1,6 +1,9 @@
 namespace UnityAtoms.Editor
 {
-    internal class AtomTypes
+    /// <summary>
+    /// Internal static class holding predefined static `AtomType`s.
+    /// </summary>
+    internal static class AtomTypes
     {
         public static readonly AtomType ACTION = new AtomType(type: "Action");
         public static readonly AtomType ACTION_X2 = new AtomType(type: "Action", displayName: "Action x 2", typeOccurences: 2);

@@ -26,6 +26,7 @@ Retrieves all tags for a given `GameObject`. A faster alternative to `gameObject
 A `ReadOnlyList<T>` of tags stored as `StringContant`s. Returns `null` if the `GameObject` does not have any tags or if the `GameObject` is disabled.
 
 ---
+
 #### `HasTag(UnityEngine.GameObject,System.String)`
 
 Check if the tag provided is associated with this `GameObject`.
@@ -40,6 +41,7 @@ Check if the tag provided is associated with this `GameObject`.
 `true` if the tag exists, otherwise `false`.
 
 ---
+
 #### `HasTag(UnityEngine.GameObject,UnityAtoms.StringConstant)`
 
 Check if the tag provided is associated with this `GameObject`.
@@ -54,6 +56,7 @@ Check if the tag provided is associated with this `GameObject`.
 `true` if the tag exists, otherwise `false`.
 
 ---
+
 #### `HasAnyTag(UnityEngine.GameObject,System.Collections.Generic.List{System.String})`
 
 Check if any of the tags provided are associated with this `GameObject`.
@@ -68,6 +71,7 @@ Check if any of the tags provided are associated with this `GameObject`.
 `true` if any of the tags exist, otherwise `false`.
 
 ---
+
 #### `HasAnyTag(UnityEngine.GameObject,System.Collections.Generic.List{UnityAtoms.StringConstant})`
 
 Check if any of the tags provided are associated with this `GameObject`.
@@ -82,6 +86,7 @@ Check if any of the tags provided are associated with this `GameObject`.
 `true` if any of the tags exist, otherwise `false`.
 
 ---
+
 ## `ReadOnlyList<T>`
 
 #### Type Parameters
@@ -104,11 +109,13 @@ Debug.Log(readOnlyList.Count); // Outputs: 3
 ```
 
 ---
+
 #### `IsReadOnly`
 
 Determines if the `ReadOnlyList<T>` is read only or not.
 
 ---
+
 #### `Item(System.Int32)`
 
 Get the element at the specified index.
@@ -124,6 +131,7 @@ Creates a new class of the `ReadOnlyList<T>` class.
 -   `list` - The `IList<T>` to initialize the `ReadOnlyList<T>` with.
 
 ---
+
 #### `GetEnumerator`
 
 Implements `GetEnumerator()` of `IEnumerable<T>`
@@ -133,6 +141,7 @@ Implements `GetEnumerator()` of `IEnumerable<T>`
 The list's `IEnumerator<T>`.
 
 ---
+
 #### `Contains(item)`
 
 Determines whether an element is in the `ReadOnlyList<T>`.
@@ -146,6 +155,7 @@ Determines whether an element is in the `ReadOnlyList<T>`.
 `true` if item is found in the `ReadOnlyList<T>`; otherwise, `false`.
 
 ---
+
 #### `IndexOf(item)`
 
 Searches for the specified object and returns the index of its first occurrence in a one-dimensional array.
@@ -159,6 +169,7 @@ Searches for the specified object and returns the index of its first occurrence 
 The index of the first occurrence of value in array, if found; otherwise, the lower bound of the array minus 1.
 
 ---
+
 #### `CopyTo(array,arrayIndex)`
 
 Copies all the elements of the current one-dimensional array to the specified one-dimensional array starting at the specified destination array index. The index is specified as a 32-bit integer.
@@ -169,6 +180,7 @@ Copies all the elements of the current one-dimensional array to the specified on
 -   `arrayIndex` - A 32-bit integer that represents the index in array at which copying begins.
 
 ---
+
 ## `UATags`
 
 A MonoBehaviour that adds tags the Unity Atoms way to a GameObject.
@@ -194,6 +206,7 @@ Check if the tag provided is associated with this `GameObject`.
 `true` if the tag exists, otherwise `false`.
 
 ---
+
 #### `AddTag(UnityAtoms.StringConstant)`
 
 Add a tag to this `GameObject`.
@@ -203,6 +216,7 @@ Add a tag to this `GameObject`.
 -   `tag` - The tag to add as a `StringContant`.
 
 ---
+
 #### `RemoveTag(System.String)`
 
 Remove a tag from this `GameObject`.
@@ -212,6 +226,7 @@ Remove a tag from this `GameObject`.
 -   `tag` - The tag to remove as a `string`
 
 ---
+
 #### `FindByTag(System.String)`
 
 Find first `GameObject` that has the tag provided.
@@ -225,6 +240,7 @@ Find first `GameObject` that has the tag provided.
 The first `GameObject` with the provided tag found. If no `GameObject`is found, it returns `null`.
 
 ---
+
 #### `FindAllByTag(System.String)`
 
 Find all `GameObject`s that have the tag provided.
@@ -238,6 +254,7 @@ Find all `GameObject`s that have the tag provided.
 An array of `GameObject`s with the provided tag. If not found it returns `null`.
 
 ---
+
 #### `FindAllByTagNoAlloc(System.String,System.Collections.Generic.List{UnityEngine.GameObject})`
 
 Find all `GameObject`s that have the tag provided. Mutates the output `List<GameObject>` and adds the `GameObject`s found to it.
@@ -248,6 +265,7 @@ Find all `GameObject`s that have the tag provided. Mutates the output `List<Game
 -   `output` - A `List<GameObject>` that this method will clear and add the `GameObject`s found to.
 
 ---
+
 #### `GetTagsForGameObject(UnityEngine.GameObject)`
 
 A faster alternative to `gameObject.GetComponen<UATags>()`.
@@ -257,6 +275,7 @@ A faster alternative to `gameObject.GetComponen<UATags>()`.
 Returns the `UATags` component. Returns `null` if the `GameObject` does not have a `UATags` component or if the `GameObject` is disabled.
 
 ---
+
 #### `GetTags(UnityEngine.GameObject)`
 
 Retrieves all tags for a given `GameObject`. A faster alternative to `gameObject.GetComponen<UATags>().Tags`.

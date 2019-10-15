@@ -2,8 +2,18 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Utility methods for IMGUI.
+    /// </summary>
     public static class IMGUIUtils
     {
+        /// <summary>
+        /// Snip a `Rect` horizontally.
+        /// </summary>
+        /// <param name="rect">The rect.</param>
+        /// <param name="range">The range.</param>
+        /// <returns>A new `Rect` snipped horizontally.</returns>
+
         private static Rect SnipRectH(Rect rect, float range)
         {
             if (range == 0) return new Rect(rect);
@@ -15,6 +25,14 @@ namespace UnityAtoms
             return new Rect(rect.x + rect.width + range, rect.y, -range, rect.height);
         }
 
+        /// <summary>
+        /// Snip a `Rect` horizontally.
+        /// </summary>
+        /// <param name="rect">The rect.</param>
+        /// <param name="range">The range.</param>
+        /// <param name="rest">Rest rect.</param>
+        /// <param name="gutter">Gutter</param>
+        /// <returns>A new `Rect` snipped horizontally.</returns>
         public static Rect SnipRectH(Rect rect, float range, out Rect rest, float gutter = 0f)
         {
             if (range == 0) rest = new Rect();
@@ -30,6 +48,12 @@ namespace UnityAtoms
             return SnipRectH(rect, range);
         }
 
+        /// <summary>
+        /// Snip a `Rect` vertically.
+        /// </summary>
+        /// <param name="rect">The rect.</param>
+        /// <param name="range">The range.</param>
+        /// <returns>A new `Rect` snipped vertically.</returns>
         private static Rect SnipRectV(Rect rect, float range)
         {
             if (range == 0) return new Rect(rect);
@@ -41,6 +65,14 @@ namespace UnityAtoms
             return new Rect(rect.x, rect.y + rect.height + range, rect.width, -range);
         }
 
+        /// <summary>
+        /// Snip a `Rect` vertically.
+        /// </summary>
+        /// <param name="rect">The rect.</param>
+        /// <param name="range">The range.</param>
+        /// <param name="rest">Rest rect.</param>
+        /// <param name="gutter">Gutter</param>
+        /// <returns>A new `Rect` snipped vertically.</returns>
         public static Rect SnipRectV(Rect rect, float range, out Rect rest, float gutter = 0f)
         {
             if (range == 0) rest = new Rect();

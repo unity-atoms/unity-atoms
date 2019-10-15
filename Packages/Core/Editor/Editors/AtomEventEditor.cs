@@ -4,6 +4,11 @@ using UnityEngine.UIElements;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="E"></typeparam>
     public abstract class AtomEventEditor<T, E> : UnityEditor.Editor
         where E : AtomEvent<T>
     {

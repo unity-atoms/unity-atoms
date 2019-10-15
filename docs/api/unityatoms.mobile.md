@@ -12,18 +12,18 @@ sidebar_label: UnityAtoms.Mobile
 Action of type `TouchUserInput`. Inherits from `AtomAction<TouchUserInput>`.
 
 ---
+
 ## `TouchUserInputTouchUserInputAction`
 
 Action x 2 of type `TouchUserInput`. Inherits from `AtomAction<TouchUserInput, TouchUserInput>`.
 
 ---
+
 ## `UpdateTouchUserInput`
 
 Updates the `TouchUserInputVariable` on every Update tick. Meant to be called every Update.
 
 ### Variables
-
-
 
 #### `TouchUserInputVariable`
 
@@ -36,53 +36,60 @@ The `TouchUserInputVariable` to update.
 Update the `TouchUserInputVariable`.abstract Call this on every Update tick.
 
 ---
+
 ## `SetTouchUserInputVariableValue`
 
 Set variable value Action of type `TouchUserInput`. Inherits from `SetVariableValue<TouchUserInput, TouchUserInputVariable, TouchUserInputReference, TouchUserInputEvent, TouchUserInputTouchUserInputEvent>`.
 
 ---
+
 ## `TouchUserInputConstant`
 
 Constant of type `TouchUserInput`. Inherits from `AtomBaseVariable<TouchUserInput>`.
 
 ---
+
 ## `TouchUserInputEvent`
 
 Event of type `TouchUserInput`. Inherits from `AtomEvent<TouchUserInput>`.
 
 ---
+
 ## `TouchUserInputTouchUserInputEvent`
 
 Event x 2 of type `TouchUserInput`. Inherits from `AtomEvent<TouchUserInput, TouchUserInput>`.
 
 ---
+
 ## `TouchUserInputListener`
 
 Listener of type `TouchUserInput`. Inherits from `AtomListener<TouchUserInput, TouchUserInputAction, TouchUserInputEvent, TouchUserInputUnityEvent>`.
 
 ---
+
 ## `TouchUserInputTouchUserInputListener`
 
 Listener x 2 of type `TouchUserInput`. Inherits from `AtomListener<TouchUserInput, TouchUserInput, TouchUserInputTouchUserInputAction, TouchUserInputTouchUserInputEvent, TouchUserInputTouchUserInputUnityEvent>`.
 
 ---
+
 ## `TouchUserInputList`
 
 List of type `TouchUserInput`. Inherits from `AtomList<TouchUserInput, TouchUserInputEvent>`.
 
 ---
+
 ## `TouchUserInputReference`
 
 Reference of type `TouchUserInput`. Inherits from `AtomReference<TouchUserInput, TouchUserInputVariable>`.
 
 ---
+
 ## `TouchUserInput`
 
 Module class holding data for touch user input.
 
 ### Variables
-
-
 
 #### `InputState`
 
@@ -90,20 +97,17 @@ Current input state.
 
 ---
 
-
 #### `InputPos`
 
 Current input position.
 
 ---
 
-
 #### `InputPosLastFrame`
 
 Input position last frame.
 
 ---
-
 
 #### `InputPosLastDown`
 
@@ -116,11 +120,13 @@ Input position last time the user pressed down.
 The input position in world space.
 
 ---
+
 #### `InputWorldPosLastFrame`
 
 The input position in world space from last frame.
 
 ---
+
 #### `InputWorldPosLastDown`
 
 Input position last time the user pressed down in world space.
@@ -139,6 +145,7 @@ Create a `TouchUserInput` class.
 -   `inputPosLastDown` - Initial input position last time the user pressed down.
 
 ---
+
 #### `Equals(UnityAtoms.Mobile.TouchUserInput)`
 
 Determine if 2 `TouchUserInput` are equal.
@@ -152,6 +159,7 @@ Determine if 2 `TouchUserInput` are equal.
 `true` if equal, otherwise `false`.
 
 ---
+
 #### `Equals(System.Object)`
 
 Determine if 2 `TouchUserInput` are equal comparing against another `object`.
@@ -165,6 +173,7 @@ Determine if 2 `TouchUserInput` are equal comparing against another `object`.
 `true` if equal, otherwise `false`.
 
 ---
+
 #### `GetHashCode`
 
 `GetHashCode()` in order to implement `IEquatable<TouchUserInput>`
@@ -174,6 +183,7 @@ Determine if 2 `TouchUserInput` are equal comparing against another `object`.
 An unique hashcode for the current value.
 
 ---
+
 #### `op_Equality(UnityAtoms.Mobile.TouchUserInput,UnityAtoms.Mobile.TouchUserInput)`
 
 Equality operator
@@ -188,6 +198,7 @@ Equality operator
 `true` if equal, otherwise `false`.
 
 ---
+
 #### `op_Inequality(UnityAtoms.Mobile.TouchUserInput,UnityAtoms.Mobile.TouchUserInput)`
 
 Inequality operator
@@ -202,21 +213,25 @@ Inequality operator
 `true` if they are not equal, otherwise `false`.
 
 ---
+
 ## `TouchUserInput.State`
 
 Enum for different touch user input states.
 
 ---
+
 ## `TouchUserInputTouchUserInputUnityEvent`
 
 Unity Event x 2 of type `TouchUserInput`. Inherits from `UnityEvent<TouchUserInput, TouchUserInput>`.
 
 ---
+
 ## `TouchUserInputUnityEvent`
 
 Unity Event of type `TouchUserInput`. Inherits from `UnityEvent<TouchUserInput>`.
 
 ---
+
 ## `TouchUserInputVariable`
 
 Variable of type `TouchUserInput`. Inherits from `EquatableAtomVariable<TouchUserInput, TouchUserInputEvent, TouchUserInputTouchUserInputEvent>`.

@@ -4,8 +4,17 @@ using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// Internal class used for templating when generating new Atoms using the `Generator`.
+    /// </summary>
     internal class Templating
     {
+        /// <summary>
+        /// Resolve conditionals from the provided tempalte.
+        /// </summary>
+        /// <param name="template">Template to resolve the conditionals from.</param>
+        /// <param name="trueConditions">A list of conditionals that are `true`.</param>
+        /// <returns>A new template string resolved and based on the provided `template`.</returns>
         public static string ResolveConditionals(string template, List<string> trueConditions)
         {
             var templateCopy = String.Copy(template);
@@ -45,6 +54,12 @@ namespace UnityAtoms.Editor
             return ResolveConditionals(templateCopy, trueConditions);
         }
 
+        /// <summary>
+        /// Resolve variables in the provided string.
+        /// </summary>
+        /// <param name="templateVariables">Dictionay mapping template variables and their resolutions.</param>
+        /// <param name="toResolve">The string to resolve.</param>
+        /// <returns>A new template string resolved and based on the provided `toResolve` string.</returns>
         public static string ResolveVariables(Dictionary<string, string> templateVariables, string toResolve)
         {
             var resolvedString = toResolve;
