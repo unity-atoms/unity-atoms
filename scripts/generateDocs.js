@@ -24,7 +24,7 @@ const run = async () => {
   // Compile code
   const apiXmlName = `api.xml`;
   const assemblyName = `Packages.dll`;
-  const cmd = `csc -recurse:${path.join(process.cwd(), 'Packages', '/*.cs')} /doc:${path.join(process.cwd(), apiXmlName)} -t:library -out:${path.join(process.cwd(), assemblyName)} -r:${dlls.join(',')}`;
+  const cmd = `csc -recurse:${path.join(process.cwd(), 'Packages', '/*.cs')} /doc:${path.join(process.cwd(), apiXmlName)} -t:library -out:${path.join(process.cwd(), assemblyName)} -r:${dlls.join(',')} -define:UNITY_2019_1_OR_NEWER`;
   const compileStdout = child_process.execSync(cmd);
   if (argv.verbose) {
     console.log("Stdout from source code compilation:");
