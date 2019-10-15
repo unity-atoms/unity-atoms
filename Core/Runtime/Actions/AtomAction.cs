@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [EditorIcon("atom-icon-purple")]
-    public abstract class AtomAction<T1> : BaseAtom, IAtomActionIcon
+    public abstract class AtomAction<T1> : BaseAtom
     {
         [HideInInspector]
         public Action<T1> Action;
@@ -22,7 +22,7 @@ namespace UnityAtoms
     }
 
     [EditorIcon("atom-icon-purple")]
-    public abstract class AtomAction<T1, T2> : BaseAtom, IAtomActionIcon
+    public abstract class AtomAction<T1, T2> : BaseAtom
     {
         [HideInInspector]
         public Action<T1, T2> Action;
@@ -40,7 +40,7 @@ namespace UnityAtoms
     }
 
     [EditorIcon("atom-icon-purple")]
-    public abstract class AtomAction<T1, T2, T3> : BaseAtom, IAtomActionIcon
+    public abstract class AtomAction<T1, T2, T3> : BaseAtom
     {
         [HideInInspector]
         public Action<T1, T2, T3> Action;
@@ -58,7 +58,7 @@ namespace UnityAtoms
     }
 
     [EditorIcon("atom-icon-purple")]
-    public abstract class AtomAction<T1, T2, T3, T4> : BaseAtom, IAtomActionIcon
+    public abstract class AtomAction<T1, T2, T3, T4> : BaseAtom
     {
         [HideInInspector]
         public Action<T1, T2, T3, T4> Action;
@@ -76,7 +76,7 @@ namespace UnityAtoms
     }
 
     [EditorIcon("atom-icon-purple")]
-    public abstract class AtomAction<T1, T2, T3, T4, T5> : BaseAtom, IAtomActionIcon
+    public abstract class AtomAction<T1, T2, T3, T4, T5> : BaseAtom
     {
         [HideInInspector]
         public Action<T1, T2, T3, T4, T5> Action;

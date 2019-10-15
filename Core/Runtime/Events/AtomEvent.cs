@@ -5,7 +5,7 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [EditorIcon("atom-icon-cherry")]
-    public abstract class AtomEvent : BaseAtom, ISerializationCallbackReceiver, IAtomEventIcon
+    public abstract class AtomEvent : BaseAtom, ISerializationCallbackReceiver
     {
         public event Action OnEventNoValue;
         protected void RaiseNoValue()

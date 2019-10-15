@@ -7,7 +7,7 @@ namespace UnityAtoms
 {
     [EditorIcon("atom-icon-lush")]
     public abstract class AtomVariable<T, E1, E2> : AtomBaseVariable<T>,
-        ISerializationCallbackReceiver, IAtomVariableIcon
+        ISerializationCallbackReceiver
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<T, T>
     {
