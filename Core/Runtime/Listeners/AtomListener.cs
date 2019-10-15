@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener&lt;T&gt;`
+    /// Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener&lt;T&gt;`.
     /// </summary>
     /// <typeparam name="T">The type that we are listening for.</typeparam>
     /// <typeparam name="A">Acion of type `AtomAction&lt;T&gt;`.</typeparam>
