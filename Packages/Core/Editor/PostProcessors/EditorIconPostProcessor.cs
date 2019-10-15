@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEditor;
 
-namespace UnityAtoms
+namespace UnityAtoms.Editor
 {
     /// <summary>
     /// Postprocessor that processes all scripts using the EditorIcon attr and assigns the matching icon guid (matching the icon query name) to the script's meta.
