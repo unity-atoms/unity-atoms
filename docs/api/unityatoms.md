@@ -796,16 +796,99 @@ An `AtomFunction<R, T1, T2, T3, T4, T5>`.
 
 ---
 
-## `AtomListener<T,GA,E,UER>`
+## `AtomListener<T,A,E,UER>`
 
 #### Type Parameters
 
--   `T` - undefined
--   `GA` - undefined
--   `E` - undefined
--   `UER` - undefined
+-   `T` - The type that we are listening for.
+-   `A` - Acion of type `AtomAction<T>`.
+-   `E` - Event of type `AtomEvent<T>`.
+-   `UER` - Unity Event of type `UnityEvent<T>`.
 
 Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener<T>`
+
+### Variables
+
+#### `_event`
+
+The Event that we are listening to.
+
+---
+
+#### `_unityEventResponse`
+
+The Unity Event responses.
+
+---
+
+#### `_actionResponses`
+
+The Action responses;
+
+### Properties
+
+#### `Event`
+
+The Event we are listening for as a proeprty.
+
+### Methods
+
+#### `OnEventRaised(item)`
+
+Handler for when the Event gets raised.
+
+##### Parameters
+
+-   `item` - The Event type.
+
+---
+
+## `AtomListener<T1,T2,A,E,UER>`
+
+#### Type Parameters
+
+-   `T1` - The first type that we are listening for.
+-   `T2` - The second type that we are listening for.
+-   `A` - Acion of type `AtomAction<T1, T2>`.
+-   `E` - Event of type `AtomEvent<T1, T2>`.
+-   `UER` - Unity Event of type `UnityEvent<T1, T2>`.
+
+Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener<T1, T2>`
+
+### Variables
+
+#### `_event`
+
+The Event that we are listening to.
+
+---
+
+#### `_unityEventResponse`
+
+The Unity Event responses.
+
+---
+
+#### `_actionResponses`
+
+The Action responses;
+
+### Properties
+
+#### `Event`
+
+The Event we are listening for as a proeprty.
+
+### Methods
+
+#### `OnEventRaised(first,second)`
+
+Handler for when the Event gets raised.
+
+##### Parameters
+
+-   `first` - The first Event type.
+-   `second` - The second Event type.
 
 ---
 
