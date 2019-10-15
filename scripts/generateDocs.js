@@ -195,28 +195,28 @@ const run = async () => {
   const printVariablesSection = (variables) => {
     if (!variables || variables.length <= 0) return '';
     return `### Variables\n\n${variables.map((v) => {
-      return `\n\n#### \`${v.name}\`\n\n${printSummary(v.summary)}`;
-    }).join('---\n')}`;
+      return `#### \`${v.name}\`\n\n${printSummary(v.summary)}`;
+    }).join('---\n\n')}`;
   }
 
   const printPropertiesSection = (properties) => {
     if (!properties || properties.length <= 0) return '';
     return `### Properties\n\n${properties.map((prop) => {
       return `#### \`${prop.name}\`\n\n${printSummary(prop.summary)}${printValues(prop.values)}${printExamples(prop.examples)}`
-    }).join('---\n')}`;
+    }).join('---\n\n')}`;
   }
 
   const printMethodsSection = (methods) => {
     if (!methods || methods.length <= 0) return '';
     return `### Methods\n\n${methods.map((method) => {
       return `#### \`${method.name}\`\n\n${printSummary(method.summary)}${printTypeParams(method.typeparams)}${printParameters(method.params)}${printReturns(method.returns)}${printExamples(method.examples)}`
-    }).join('---\n')}`;
+    }).join('---\n\n')}`;
   }
 
   const printClasses = (classes) => {
     if (!classes || classes.length <= 0) return '';
     return classes.map((c) => {
-      return `## \`${c.name}\`\n\n${printTypeParams(c.typeparams)}${printSummary(c.summary)}${printVariablesSection(c.variables)}${printPropertiesSection(c.properties)}${printMethodsSection(c.methods)}---\n`
+      return `## \`${c.name}\`\n\n${printTypeParams(c.typeparams)}${printSummary(c.summary)}${printVariablesSection(c.variables)}${printPropertiesSection(c.properties)}${printMethodsSection(c.methods)}---\n\n`
     }).join('');
   }
 
@@ -227,7 +227,8 @@ const run = async () => {
   // Create one MD file per namespace
   prettifiedAndGroupedJson.forEach((namespace) => {
     const mdPath = path.join(process.cwd(), 'docs', 'api', `${namespace.namespace.toLowerCase()}.md`);
-    fs.writeFileSync(mdPath, `${printPageMeta(namespace.namespace)}${printNamespace(namespace)}`);
+    const mdFile = `${printPageMeta(namespace.namespace)}${printNamespace(namespace)}`;
+    fs.writeFileSync(mdPath, mdFile.substring(0, mdFile.length - 1)); // Trim last new line
   });
 
   // Remove generated xml
