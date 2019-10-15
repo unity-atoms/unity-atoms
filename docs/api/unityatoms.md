@@ -359,6 +359,18 @@ Action x 2 of type `string`. Inherits from `AtomAction<string, string>`.
 
 ---
 
+## `Vector2Action`
+
+Action of type `Vector2`. Inherits from `AtomAction<Vector2>`.
+
+---
+
+## `Vector2Vector2Action`
+
+Action x 2 of type `Vector2`. Inherits from `AtomAction<Vector2, Vector2>`.
+
+---
+
 ## `VoidAction`
 
 Action of type Void. Inherits from `AtomAction<Void>`.
@@ -461,6 +473,12 @@ Perform the action.
 
 ---
 
+## `SetVector2VariableValue`
+
+Set variable value Action of type `Vector2`. Inherits from `SetVariableValue<Vector2, Vector2Variable, Vector2Reference, Vector2Event, Vector2Vector2Event>`.
+
+---
+
 ## `EditorIcon`
 
 Specify a texture name from your assets which you want to be assigned as an icon to the MonoScript.
@@ -524,6 +542,12 @@ Constant of type `int`. Inherits from `AtomBaseVariable<int>`.
 ## `StringConstant`
 
 Constant of type `string`. Inherits from `AtomBaseVariable<string>`.
+
+---
+
+## `Vector2Constant`
+
+Constant of type `Vector2`. Inherits from `AtomBaseVariable<Vector2>`.
 
 ---
 
@@ -796,6 +820,18 @@ Event of type `string`. Inherits from `AtomEvent<string>`.
 ## `StringStringEvent`
 
 Event x 2 of type `string`. Inherits from `AtomEvent<string, string>`.
+
+---
+
+## `Vector2Event`
+
+Event of type `Vector2`. Inherits from `AtomEvent<Vector2>`.
+
+---
+
+## `Vector2Vector2Event`
+
+Event x 2 of type `Vector2`. Inherits from `AtomEvent<Vector2, Vector2>`.
 
 ---
 
@@ -1276,6 +1312,18 @@ Listener x 2 of type `string`. Inherits from `AtomListener<string, string, Strin
 
 ---
 
+## `Vector2Listener`
+
+Listener of type `Vector2`. Inherits from `AtomListener<Vector2, Vector2Action, Vector2Event, Vector2UnityEvent>`.
+
+---
+
+## `Vector2Vector2Listener`
+
+Listener x 2 of type `Vector2`. Inherits from `AtomListener<Vector2, Vector2, Vector2Vector2Action, Vector2Vector2Event, Vector2Vector2UnityEvent>`.
+
+---
+
 ## `AtomList<T,E>`
 
 #### Type Parameters
@@ -1522,6 +1570,12 @@ List of type `string`. Inherits from `AtomList<string, StringEvent>`.
 
 ---
 
+## `Vector2List`
+
+List of type `Vector2`. Inherits from `AtomList<Vector2, Vector2Event>`.
+
+---
+
 ## `AtomReference`
 
 None generic base class for `AtomReference<T, V>`.
@@ -1573,6 +1627,12 @@ Reference of type `int`. Inherits from `AtomReference<int, IntVariable>`.
 ## `StringReference`
 
 Reference of type `string`. Inherits from `AtomReference<string, StringVariable>`.
+
+---
+
+## `Vector2Reference`
+
+Reference of type `Vector2`. Inherits from `AtomReference<Vector2, Vector2Variable>`.
 
 ---
 
@@ -1675,6 +1735,18 @@ None generic Unity Event x 2 of type `string`. Inherits from `UnityEvent<string,
 ## `StringUnityEvent`
 
 None generic Unity Event of type `string`. Inherits from `UnityEvent<string>`.
+
+---
+
+## `Vector2UnityEvent`
+
+None generic Unity Event of type `Vector2`. Inherits from `UnityEvent<Vector2>`.
+
+---
+
+## `Vector2Vector2UnityEvent`
+
+None generic Unity Event x 2 of type `Vector2`. Inherits from `UnityEvent<Vector2, Vector2>`.
 
 ---
 
@@ -2228,5 +2300,11 @@ Variable of type `int`. Inherits from `EquatableAtomVariable<int, IntEvent, IntI
 ## `StringVariable`
 
 Variable of type `string`. Inherits from `EquatableAtomVariable<string, StringEvent, StringStringEvent>`.
+
+---
+
+## `Vector2Variable`
+
+Variable of type `Vector2`. Inherits from `EquatableAtomVariable<Vector2, Vector2Event, Vector2Vector2Event>`.
 
 ---
