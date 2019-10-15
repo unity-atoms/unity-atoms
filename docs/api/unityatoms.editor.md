@@ -77,6 +77,12 @@ Constant property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Con
 
 ---
 
+## `Vector3ConstantDrawer`
+
+Constant property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Constant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolBoolEventDrawer`
 
 Event x 2 property drawer of type `bool`. Inherits from `AtomDrawer<BoolBoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -185,6 +191,18 @@ Event x 2 property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Ve
 
 ---
 
+## `Vector3EventDrawer`
+
+Event property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3Vector3EventDrawer`
+
+Event x 2 property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolListDrawer`
 
 List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -239,6 +257,12 @@ List property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2List>`.
 
 ---
 
+## `Vector3ListDrawer`
+
+List property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3List>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolVariableDrawer`
 
 Variable property drawer of type `bool`. Inherits from `AtomDrawer<BoolVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -290,6 +314,12 @@ Variable property drawer of type `string`. Inherits from `AtomDrawer<StringVaria
 ## `Vector2VariableDrawer`
 
 Variable property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Variable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3VariableDrawer`
+
+Variable property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Variable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -355,6 +385,12 @@ Event property drawer of type `string`. Inherits from `AtomEventEditor<string, S
 ## `Vector2EventEditor`
 
 Event property drawer of type `Vector2`. Inherits from `AtomEventEditor<Vector2, Vector2Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3EventEditor`
+
+Event property drawer of type `Vector3`. Inherits from `AtomEventEditor<Vector3, Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
