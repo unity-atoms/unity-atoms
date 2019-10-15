@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 namespace UnityAtoms.Editor
 {
     /// <summary>
-    /// Editor class for the `Generator`. Use it via the top window bar at _Tools / Unity Atoms / Generator_.
+    /// Editor class for the `Generator`. Use it via the top window bar at _Tools / Unity Atoms / Generator_. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     public class GeneratorEditor : EditorWindow
     {

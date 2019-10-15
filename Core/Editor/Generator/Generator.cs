@@ -8,7 +8,7 @@ using UnityEngine;
 namespace UnityAtoms.Editor
 {
     /// <summary>
-    /// Generator that generates new Atom types based on the input data. Used by the `GeneratorEditor`.
+    /// Generator that generates new Atom types based on the input data. Used by the `GeneratorEditor`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     internal class Generator
     {
@@ -226,7 +226,7 @@ namespace UnityAtoms.Editor
         /// <param name="atomTypesToGenerate">List of Atom types to generate.</param>
         /// <param name="capitalizedAtomType">Capitalized Atom type (string).</param>
         /// <param name="typeOccurrences">Number of occurrences of the type.</param>
-        /// <returns></returns>
+        /// <returns>If we should skip the template or not.</returns>
         private static bool ShouldSkipTemplate(List<AtomType> atomTypesToGenerate, string capitalizedAtomType, int typeOccurrences)
         {
             return !atomTypesToGenerate.Exists((a) => a.Type == capitalizedAtomType && a.TypeOccurences == typeOccurrences);
