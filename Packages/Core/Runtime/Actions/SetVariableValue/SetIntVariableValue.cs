@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Set variable value Action of type `int`. Inherits from `SetVariableValue&lt;int, IntVariable, IntReference, IntEvent, IntIntEvent&gt;`.
+    /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/Int", fileName = "SetIntVariableValue")]
     public sealed class SetIntVariableValue : SetVariableValue<

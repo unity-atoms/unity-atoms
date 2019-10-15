@@ -59,6 +59,12 @@ Constant property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObj
 
 ---
 
+## `IntConstantDrawer`
+
+Constant property drawer of type `int`. Inherits from `AtomDrawer<IntConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolBoolEventDrawer`
 
 Event x 2 property drawer of type `bool`. Inherits from `AtomDrawer<BoolBoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -131,6 +137,18 @@ Event x 2 property drawer of type `GameObject`. Inherits from `AtomDrawer<GameOb
 
 ---
 
+## `IntEventDrawer`
+
+Event property drawer of type `int`. Inherits from `AtomDrawer<IntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntIntEventDrawer`
+
+Event x 2 property drawer of type `int`. Inherits from `AtomDrawer<IntIntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolListDrawer`
 
 List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -167,6 +185,12 @@ List property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectL
 
 ---
 
+## `IntListDrawer`
+
+List property drawer of type `int`. Inherits from `AtomDrawer<IntList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolVariableDrawer`
 
 Variable property drawer of type `bool`. Inherits from `AtomDrawer<BoolVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -200,6 +224,12 @@ Variable property drawer of type `float`. Inherits from `AtomDrawer<FloatVariabl
 ## `GameObjectVariableDrawer`
 
 Variable property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntVariableDrawer`
+
+Variable property drawer of type `int`. Inherits from `AtomDrawer<IntVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -247,6 +277,12 @@ Event property drawer of type `float`. Inherits from `AtomEventEditor<float, Flo
 ## `GameObjectEventEditor`
 
 Event property drawer of type `GameObject`. Inherits from `AtomEventEditor<GameObject, GameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntEventEditor`
+
+Event property drawer of type `int`. Inherits from `AtomEventEditor<int, IntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 

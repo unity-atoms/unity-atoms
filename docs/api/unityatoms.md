@@ -335,6 +335,18 @@ Action x 2 of type `GameObject`. Inherits from `AtomAction<GameObject, GameObjec
 
 ---
 
+## `IntAction`
+
+Action of type `int`. Inherits from `AtomAction<int>`.
+
+---
+
+## `IntIntAction`
+
+Action x 2 of type `int`. Inherits from `AtomAction<int, int>`.
+
+---
+
 ## `VoidAction`
 
 Action of type Void. Inherits from `AtomAction<Void>`.
@@ -390,6 +402,12 @@ Set variable value Action of type `float`. Inherits from `SetVariableValue<float
 ## `SetGameObjectVariableValue`
 
 Set variable value Action of type `GameObject`. Inherits from `SetVariableValue<GameObject, GameObjectVariable, GameObjectReference, GameObjectEvent, GameObjectGameObjectEvent>`.
+
+---
+
+## `SetIntVariableValue`
+
+Set variable value Action of type `int`. Inherits from `SetVariableValue<int, IntVariable, IntReference, IntEvent, IntIntEvent>`.
 
 ---
 
@@ -476,6 +494,12 @@ Constant of type `float`. Inherits from `AtomBaseVariable<float>`.
 ## `GameObjectConstant`
 
 Constant of type `GameObject`. Inherits from `AtomBaseVariable<GameObject>`.
+
+---
+
+## `IntConstant`
+
+Constant of type `int`. Inherits from `AtomBaseVariable<int>`.
 
 ---
 
@@ -724,6 +748,18 @@ Event of type `GameObject`. Inherits from `AtomEvent<GameObject>`.
 ## `GameObjectGameObjectEvent`
 
 Event x 2 of type `GameObject`. Inherits from `AtomEvent<GameObject, GameObject>`.
+
+---
+
+## `IntEvent`
+
+Event of type `int`. Inherits from `AtomEvent<int>`.
+
+---
+
+## `IntIntEvent`
+
+Event x 2 of type `int`. Inherits from `AtomEvent<int, int>`.
 
 ---
 
@@ -1180,6 +1216,18 @@ Listener of type `GameObject`. Inherits from `AtomListener<GameObject, GameObjec
 
 ---
 
+## `IntIntListener`
+
+Listener x 2 of type `int`. Inherits from `AtomListener<int, int, IntIntAction, IntIntEvent, IntIntUnityEvent>`.
+
+---
+
+## `IntListener`
+
+Listener of type `int`. Inherits from `AtomListener<int, IntAction, IntEvent, IntUnityEvent>`.
+
+---
+
 ## `AtomList<T,E>`
 
 #### Type Parameters
@@ -1414,6 +1462,12 @@ List of type `GameObject`. Inherits from `AtomList<GameObject, GameObjectEvent>`
 
 ---
 
+## `IntList`
+
+List of type `int`. Inherits from `AtomList<int, IntEvent>`.
+
+---
+
 ## `AtomReference`
 
 None generic base class for `AtomReference<T, V>`.
@@ -1453,6 +1507,12 @@ Reference of type `float`. Inherits from `AtomReference<float, FloatVariable>`.
 ## `GameObjectReference`
 
 Reference of type `GameObject`. Inherits from `AtomReference<GameObject, GameObjectVariable>`.
+
+---
+
+## `IntReference`
+
+Reference of type `int`. Inherits from `AtomReference<int, IntVariable>`.
 
 ---
 
@@ -1531,6 +1591,18 @@ None generic Unity Event x 2 of type `GameObject`. Inherits from `UnityEvent<Gam
 ## `GameObjectUnityEvent`
 
 None generic Unity Event of type `GameObject`. Inherits from `UnityEvent<GameObject>`.
+
+---
+
+## `IntIntUnityEvent`
+
+None generic Unity Event x 2 of type `int`. Inherits from `UnityEvent<int, int>`.
+
+---
+
+## `IntUnityEvent`
+
+None generic Unity Event of type `int`. Inherits from `UnityEvent<int>`.
 
 ---
 
@@ -2072,5 +2144,11 @@ Variable of type `float`. Inherits from `EquatableAtomVariable<float, FloatEvent
 ## `GameObjectVariable`
 
 Variable of type `GameObject`. Inherits from `AtomVariable<GameObject, GameObjectEvent, GameObjectGameObjectEvent>`.
+
+---
+
+## `IntVariable`
+
+Variable of type `int`. Inherits from `EquatableAtomVariable<int, IntEvent, IntIntEvent>`.
 
 ---
