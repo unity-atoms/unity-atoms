@@ -4,21 +4,23 @@ Thanks for considering contributing to Unity Atoms ❤️ Read the guidelines be
 
 ## Project structure
 
--   Source - contains all the source code for the library
--   UnityAtomsTestsAndExamples - this folder is a Unity project folder that contains examples and tests. This folder is not included in the distribution of Unity Atoms.
+Unity Atoms is a [monorepo](https://en.wikipedia.org/wiki/Monorepo). Basically that means that there are several packages / projects contained in one repository.
 
-The reason for this project structure is that we want to include tests and examples in the repo (both needing a Unity project), but there are at the same time currently some restrictions when using the UPM regarding how to import it to your project.
+-   Packages - contains all the different packages.
+-   Examples - this folder is a Unity project folder that contains examples. This folder is not included in the distribution of Unity Atoms.
+
+The reason for this project structure is that we want to include examples in the repo (needing a Unity project), but there are at the same time currently some restrictions when using the UPM regarding how to import it to your project.
 
 ### UPM doesn't allow...
 
--   importing a sub folder in a Git repo.
--   excluding files (using property "files" in package.json) when importing locally using the file syntax (eg. "com.mambojambostudios.unity-atoms-src": "file:../../Source").
+-   importing a sub folder in a Git repo when depending on a package through a Git URL.
+-   excluding files (using property "files" in package.json) when importing locally using the file syntax (eg. "com.mambojambostudios.unity-atoms-core": "file:../../Packages/Core").
 -   package.json in subdirectories (only root level)
 
 ### Current project structure therefore allows for...
 
--   including an example repo for examples and tests
--   use the local source in the example repo
+-   including an example repo for examples
+-   use the local pacakges in the example repo
 -   referencing this git repo in another project's manifest file
 
 ## Style Guide
@@ -103,6 +105,19 @@ namespace Example
     }
 }
 ```
+
+## Documentation
+
+All new features added to the project should be documented using [C# XML comments](https://docs.microsoft.com/en-us/dotnet/csharp/codedoc). There is a node.js script included in this project to auto generate documentation for the website based on the C# XML comments. This is something needed for a PR to be accepted.
+
+**Prerequisites for running documentation generation script:**
+
+-   Install [Node.js](https://nodejs.org/en/).
+-   Install [NPM CLI](https://docs.npmjs.com/cli/npm).
+-   Install [csc](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/command-line-building-with-csc-exe) (C# compiler) included in for example [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
+-   Run `npm install` in the root of the project to install necessary dependencies.
+
+When you are all setup you simply run `npm run generate:docs` in the root of the project and voila, fresh documentation is generated for you!
 
 ## Pull requests
 
