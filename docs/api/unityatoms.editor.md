@@ -53,6 +53,12 @@ Constant property drawer of type `float`. Inherits from `AtomDrawer<FloatConstan
 
 ---
 
+## `GameObjectConstantDrawer`
+
+Constant property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolBoolEventDrawer`
 
 Event x 2 property drawer of type `bool`. Inherits from `AtomDrawer<BoolBoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -113,6 +119,18 @@ Event x 2 property drawer of type `float`. Inherits from `AtomDrawer<FloatFloatE
 
 ---
 
+## `GameObjectEventDrawer`
+
+Event property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectGameObjectEventDrawer`
+
+Event x 2 property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectGameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolListDrawer`
 
 List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -143,6 +161,12 @@ List property drawer of type `float`. Inherits from `AtomDrawer<FloatList>`. Onl
 
 ---
 
+## `GameObjectListDrawer`
+
+List property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolVariableDrawer`
 
 Variable property drawer of type `bool`. Inherits from `AtomDrawer<BoolVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -170,6 +194,12 @@ Variable property drawer of type `Color`. Inherits from `AtomDrawer<ColorVariabl
 ## `FloatVariableDrawer`
 
 Variable property drawer of type `float`. Inherits from `AtomDrawer<FloatVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectVariableDrawer`
+
+Variable property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -211,6 +241,12 @@ Event property drawer of type `Color`. Inherits from `AtomEventEditor<Color, Col
 ## `FloatEventEditor`
 
 Event property drawer of type `float`. Inherits from `AtomEventEditor<float, FloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectEventEditor`
+
+Event property drawer of type `GameObject`. Inherits from `AtomEventEditor<GameObject, GameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 

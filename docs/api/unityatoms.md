@@ -323,6 +323,18 @@ Action x 2 of type `float`. Inherits from `AtomAction<float, float>`.
 
 ---
 
+## `GameObjectAction`
+
+Action of type `GameObject`. Inherits from `AtomAction<GameObject>`.
+
+---
+
+## `GameObjectGameObjectAction`
+
+Action x 2 of type `GameObject`. Inherits from `AtomAction<GameObject, GameObject>`.
+
+---
+
 ## `VoidAction`
 
 Action of type Void. Inherits from `AtomAction<Void>`.
@@ -372,6 +384,12 @@ Set variable value Action of type `Color`. Inherits from `SetVariableValue<Color
 ## `SetFloatVariableValue`
 
 Set variable value Action of type `float`. Inherits from `SetVariableValue<float, FloatVariable, FloatReference, FloatEvent, FloatFloatEvent>`.
+
+---
+
+## `SetGameObjectVariableValue`
+
+Set variable value Action of type `GameObject`. Inherits from `SetVariableValue<GameObject, GameObjectVariable, GameObjectReference, GameObjectEvent, GameObjectGameObjectEvent>`.
 
 ---
 
@@ -452,6 +470,12 @@ Constant of type `Color`. Inherits from `AtomBaseVariable<Color>`.
 ## `FloatConstant`
 
 Constant of type `float`. Inherits from `AtomBaseVariable<float>`.
+
+---
+
+## `GameObjectConstant`
+
+Constant of type `GameObject`. Inherits from `AtomBaseVariable<GameObject>`.
 
 ---
 
@@ -688,6 +712,18 @@ Event of type `float`. Inherits from `AtomEvent<float>`.
 ## `FloatFloatEvent`
 
 Event x 2 of type `float`. Inherits from `AtomEvent<float, float>`.
+
+---
+
+## `GameObjectEvent`
+
+Event of type `GameObject`. Inherits from `AtomEvent<GameObject>`.
+
+---
+
+## `GameObjectGameObjectEvent`
+
+Event x 2 of type `GameObject`. Inherits from `AtomEvent<GameObject, GameObject>`.
 
 ---
 
@@ -1132,6 +1168,18 @@ Listener of type `float`. Inherits from `AtomListener<float, FloatAction, FloatE
 
 ---
 
+## `GameObjectGameObjectListener`
+
+Listener x 2 of type `GameObject`. Inherits from `AtomListener<GameObject, GameObject, GameObjectGameObjectAction, GameObjectGameObjectEvent, GameObjectGameObjectUnityEvent>`.
+
+---
+
+## `GameObjectListener`
+
+Listener of type `GameObject`. Inherits from `AtomListener<GameObject, GameObjectAction, GameObjectEvent, GameObjectUnityEvent>`.
+
+---
+
 ## `AtomList<T,E>`
 
 #### Type Parameters
@@ -1360,6 +1408,12 @@ List of type `float`. Inherits from `AtomList<float, FloatEvent>`.
 
 ---
 
+## `GameObjectList`
+
+List of type `GameObject`. Inherits from `AtomList<GameObject, GameObjectEvent>`.
+
+---
+
 ## `AtomReference`
 
 None generic base class for `AtomReference<T, V>`.
@@ -1393,6 +1447,12 @@ Reference of type `Color`. Inherits from `AtomReference<Color, ColorVariable>`.
 ## `FloatReference`
 
 Reference of type `float`. Inherits from `AtomReference<float, FloatVariable>`.
+
+---
+
+## `GameObjectReference`
+
+Reference of type `GameObject`. Inherits from `AtomReference<GameObject, GameObjectVariable>`.
 
 ---
 
@@ -1459,6 +1519,18 @@ None generic Unity Event x 2 of type `float`. Inherits from `UnityEvent<float, f
 ## `FloatUnityEvent`
 
 None generic Unity Event of type `float`. Inherits from `UnityEvent<float>`.
+
+---
+
+## `GameObjectGameObjectUnityEvent`
+
+None generic Unity Event x 2 of type `GameObject`. Inherits from `UnityEvent<GameObject, GameObject>`.
+
+---
+
+## `GameObjectUnityEvent`
+
+None generic Unity Event of type `GameObject`. Inherits from `UnityEvent<GameObject>`.
 
 ---
 
@@ -1994,5 +2066,11 @@ Variable of type `Color`. Inherits from `EquatableAtomVariable<Color, ColorEvent
 ## `FloatVariable`
 
 Variable of type `float`. Inherits from `EquatableAtomVariable<float, FloatEvent, FloatFloatEvent>`.
+
+---
+
+## `GameObjectVariable`
+
+Variable of type `GameObject`. Inherits from `AtomVariable<GameObject, GameObjectEvent, GameObjectGameObjectEvent>`.
 
 ---
