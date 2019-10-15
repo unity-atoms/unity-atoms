@@ -4,6 +4,9 @@ using UnityAtoms.Editor;
 
 namespace UnityAtoms.Mobile.Editor
 {
+    /// <summary>
+    /// Variable property drawer of type `TouchUserInput`. Inherits from `AtomDrawer&lt;TouchUserInputVariable&gt;`.
+    /// </summary>
     [CustomPropertyDrawer(typeof(TouchUserInputVariable))]
     public class TouchUserInputVariableDrawer : AtomDrawer<TouchUserInputVariable> { }
 }

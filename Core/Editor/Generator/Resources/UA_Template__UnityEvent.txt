@@ -10,6 +10,9 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}
 namespace UnityAtoms
 <%ENDIF%>
 {
+    /// <summary>
+    /// Unity Event of type `{TYPE}`. Inherits from `UnityEvent&lt;{TYPE}&gt;`.
+    /// </summary>
     [Serializable]
     public sealed class {TYPE_NAME}UnityEvent : UnityEvent<{TYPE}> { }
 }

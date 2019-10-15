@@ -10,6 +10,9 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}.Editor
 namespace UnityAtoms.Editor
 <%ENDIF%>
 {
+    /// <summary>
+    /// Event x 2 property drawer of type `{TYPE}`. Inherits from `AtomDrawer&lt;{TYPE_NAME}{TYPE_NAME}Event&gt;`.
+    /// </summary>
     [CustomPropertyDrawer(typeof({TYPE_NAME}{TYPE_NAME}Event))]
     public class {TYPE_NAME}{TYPE_NAME}EventDrawer : AtomDrawer<{TYPE_NAME}{TYPE_NAME}Event> { }
 }

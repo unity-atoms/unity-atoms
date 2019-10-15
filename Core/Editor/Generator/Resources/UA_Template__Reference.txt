@@ -9,6 +9,9 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}
 namespace UnityAtoms
 <%ENDIF%>
 {
+    /// <summary>
+    /// Reference of type `{TYPE}`. Inherits from `AtomReference&lt;{TYPE}, {TYPE_NAME}Variable&gt;`.
+    /// </summary>
     [Serializable]
     public sealed class {TYPE_NAME}Reference : AtomReference<
         {TYPE},

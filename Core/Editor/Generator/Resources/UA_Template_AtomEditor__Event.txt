@@ -14,6 +14,9 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}.Editor
 namespace UnityAtoms.Editor
 <%ENDIF%>
 {
+    /// <summary>
+    /// Event property drawer of type `{TYPE}`. Inherits from `AtomEventEditor&lt;{TYPE}, {TYPE_NAME}Event&gt;`.
+    /// </summary>
     [CustomEditor(typeof({TYPE_NAME}Event))]
     public sealed class {TYPE_NAME}EventEditor : AtomEventEditor<{TYPE}, {TYPE_NAME}Event>
     {

@@ -10,6 +10,9 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}.Editor
 namespace UnityAtoms.Editor
 <%ENDIF%>
 {
+    /// <summary>
+    /// Constant property drawer of type `{TYPE}`. Inherits from `AtomDrawer&lt;{TYPE_NAME}Constant&gt;`.
+    /// </summary>
     [CustomPropertyDrawer(typeof({TYPE_NAME}Constant))]
     public class {TYPE_NAME}ConstantDrawer : AtomDrawer<{TYPE_NAME}Constant> { }
 }

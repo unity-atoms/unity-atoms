@@ -10,6 +10,9 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}.Editor
 namespace UnityAtoms.Editor
 <%ENDIF%>
 {
+    /// <summary>
+    /// Variable property drawer of type `{TYPE}`. Inherits from `AtomDrawer&lt;{TYPE_NAME}Variable&gt;`.
+    /// </summary>
     [CustomPropertyDrawer(typeof({TYPE_NAME}Variable))]
     public class {TYPE_NAME}VariableDrawer : AtomDrawer<{TYPE_NAME}Variable> { }
 }

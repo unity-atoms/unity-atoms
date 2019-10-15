@@ -3,11 +3,15 @@ using UnityAtoms;
 
 namespace UnityAtoms.Mobile
 {
-    /* Updates the TouchUserInputVariable on every Update tick. Meant to be called every Update.
-    */
+    /// <summary>
+    /// Updates the `TouchUserInputVariable` on every Update tick. Meant to be called every Update.
+    /// </summary>
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/UpdateTouchUserInput", fileName = "UpdateTouchUserInputVariable")]
     public sealed class UpdateTouchUserInput : VoidAction
     {
+        /// <summary>
+        /// The `TouchUserInputVariable` to update.
+        /// </summary>
         public TouchUserInputVariable TouchUserInputVariable;
 
         private TouchUserInput.State _inputState = TouchUserInput.State.None;
@@ -18,6 +22,9 @@ namespace UnityAtoms.Mobile
 
         private Vector2 _inputPosLastDown = Vector2.zero;
 
+        /// <summary>
+        /// Update the `TouchUserInputVariable`.abstract Call this on every Update tick.
+        /// </summary>
         public override void Do()
         {
 #if (UNITY_ANDROID || UNITY_IOS || UNITY_IPHONE) && !UNITY_EDITOR
