@@ -77,7 +77,7 @@ namespace UnityAtoms
         /// <summary>
         /// Get an unique hash code for this Variable based on the Variable's value.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>An unique hash.</returns>
         public override int GetHashCode()
         {
             unchecked

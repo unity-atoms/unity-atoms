@@ -2207,6 +2207,10 @@ Determines equality between Variables.
 
 Get an unique hash code for this Variable based on the Variable's value.
 
+##### Returns
+
+An unique hash.
+
 ---
 
 #### `op_Equality(left,right)`

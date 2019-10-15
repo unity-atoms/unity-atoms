@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 namespace UnityAtoms.SceneMgmt.Editor
 {
+    /// <summary>
+    /// Customer property drawer for `SceneField`.
+    /// </summary>
     [CustomPropertyDrawer(typeof(SceneField))]
     public class SceneFieldDrawer : PropertyDrawer
     {
