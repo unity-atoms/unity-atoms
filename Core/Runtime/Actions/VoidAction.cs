@@ -1,7 +1,8 @@
+using UnityAtoms;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Action of type Void. Inherits from `AtomAction&lt;Void&gt;`.
+    /// Action of type `Void`. Inherits from `AtomAction&lt;Void&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     public abstract class VoidAction : AtomAction<Void>
