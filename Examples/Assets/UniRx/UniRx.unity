@@ -246,10 +246,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 145633446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd80c08b2c1349c0839fcab63bcf9a3, type: 3}
+  m_Script: {fileID: 11500000, guid: df9d93e69065440c2b752b81e4dbacd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: {fileID: 11400000, guid: 41aa2296cd68a4b718a8fd1bd8ad5a95, type: 2}
+  _health: {fileID: 11400000, guid: 30c71ebe6587c4fe8b18d5279710b4dc, type: 2}
 --- !u!114 &145633449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,9 +1779,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b,
         type: 3}
+      propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b,
+        type: 3}
       propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 145633448}
+      objectReference: {fileID: 145633446}
+    - target: {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b,
+        type: 3}
+      propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4cdf4b23d0154814b9975c71d15466b, type: 3}
 --- !u!1001 &4425509693841326314
