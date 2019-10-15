@@ -11,7 +11,7 @@ namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>
-    /// Unity Event x 2 of type `{TYPE}`. Inherits from `UnityEvent&lt;{TYPE}, {TYPE}&gt;`.
+    /// None generic Unity Event x 2 of type `{TYPE}`. Inherits from `UnityEvent&lt;{TYPE}, {TYPE}&gt;`.
     /// </summary>
     [Serializable]
     public sealed class {TYPE_NAME}{TYPE_NAME}UnityEvent : UnityEvent<{TYPE}, {TYPE}> { }
