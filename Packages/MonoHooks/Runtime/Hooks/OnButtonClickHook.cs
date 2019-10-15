@@ -1,14 +1,16 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityAtoms.Examples
+namespace UnityAtoms.MonoHooks
 {
+    /// <summary>
+    /// Mono Hook for On Button Click
+    /// </summary>
+    [EditorIcon("atom-icon-delicate")]
+    [AddComponentMenu("Unity Atoms/Hooks/On Button Click")]
     [RequireComponent(typeof(Button))]
-    public sealed class RaiseEventOnButtonClick : MonoBehaviour
+    public sealed class OnButtonClickHook : VoidHook
     {
-        [SerializeField]
-        private VoidEvent _event;
-
         private void Awake()
         {
             var button = GetComponent<Button>();
@@ -23,7 +25,7 @@ namespace UnityAtoms.Examples
 
         private void OnClick()
         {
-            _event.Raise();
+            OnHook(new Void());
         }
     }
 }

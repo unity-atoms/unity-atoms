@@ -127,7 +127,7 @@ And then inject the `HealthChangedEvent` to our `HealthBar` component:
 
 We now react to global state changes instead of checking the Variable value each Update tick. In other words we only update our `Image` component when we actually need to. That is pretty sweet!
 
-## Seperate concerns using listeners
+## Seperate concerns using Listeners
 
 There is still an issue that the `HealthBar.cs` script is in charge of registering itself as a listener and at the same time defining what happens when a Event is raised. We need to seperate its concerns! This brings us to the third concept of Unity Atoms, Listeners. A Listener listens (sometimes also referred to as observes or subscribes) to a Event and responds by firing off zero to many responses. Listeners are MonoBehaviours and therefore lives in a scene. They can be seen as the glue between Events and Actions (see the next section of this post).
 
@@ -176,3 +176,26 @@ It is possible to create the `HealthLogger` by right clicking and go _Create / U
 Every time the player’s health is changed we now log out the player’s health. This particular example is pretty simple, but I’m sure you can come up with lots of other use cases for it (for example play a sound or emit some particles).
 
 That is it! We have covered the four most fundamental core pieces of Unity Atoms.
+
+## Use Mono Hooks to keep yourself DRY
+
+Mono Hooks are Unity's lifecycles as Events. A great use for Mono Hooks in our example would allow us to remove the `Harmful.cs` script created earlier. We could instead attach a `OnTrigger2DHook.cs` to the Harmful GameObject and toggle on `Trigger On Enter` like this:
+
+![mono-hooks-trigger-2d](assets/mono-hooks-trigger-2d.png)
+
+We could then create a Collider2DAction called `DecreasePlayersHealth.cs` and add it to a Collder2D Listener attached to the Harmful GameObject:
+
+```cs
+    public class DecreasePlayersHealth : Collider2DAction
+    {
+        public override void Do(Collider2D collider)
+        {
+            if (collider.tag == "Player")
+            {
+                collider.GetComponent<PlayerHealth>().Health.Value -= 10;
+            }
+        }
+    }
+```
+
+![mono-hooks-listener](assets/mono-hooks-listener.png)

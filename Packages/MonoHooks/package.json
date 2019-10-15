@@ -1,0 +1,23 @@
+{
+  "name": "com.mambojambostudios.unity-atoms-mono-hooks",
+  "displayName": "Unity Atoms Mono Hooks",
+  "version": "2.0.0-beta.1",
+  "unity": "2019.1",
+  "description": "Hook into Unity's lifecycle methods with Atom Events.",
+  "keywords": [
+    "scriptable objects",
+    "unity"
+  ],
+  "category": "Unity",
+  "files": [
+    "/package.json",
+    "/package.json.meta",
+    "/Runtime",
+    "/Runtime.meta",
+    "/Documentation",
+    "/Documentation.meta"
+  ],
+  "dependencies": {
+    "com.mambojambostudios.unity-atoms-core": "2.0.0-beta.1"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "name": "com.mambojambostudios.unity-atoms-core",
   "displayName": "Unity Atoms Core",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "unity": "2019.1",
   "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
   "keywords": [
@@ -19,6 +19,8 @@
     "/Editor",
     "/Editor.meta",
     "/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef",
-    "/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef.meta"
+    "/Editor/MamboJamboStudios.UnityAtomsCore.Editor.asmdef.meta",
+    "/Documentation",
+    "/Documentation.meta"
   ]
 }

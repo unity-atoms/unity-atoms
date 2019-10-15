@@ -11,11 +11,13 @@
     -   [UnityAtoms.Editor](./api/unityatoms.editor.md)
     -   [UnityAtoms.Mobile](./api/unityatoms.mobile.md)
     -   [UnityAtoms.Mobile.Editor](./api/unityatoms.mobile.editor.md)
+    -   [UnityAtoms.MonoHooks](./api/unityatoms.monohooks.md)
     -   [UnityAtoms.SceneMgmt](./api/unityatoms.scenemgmt.md)
     -   [UnityAtoms.SceneMgmt.Editor](./api/unityatoms.scenemgmt.editor.md)
     -   [UnityAtoms.Tags](./api/unityatoms.tags.md)
 -   Subpackages
     -   [Mobile](./subpackages/mobile.md)
+    -   [MonoHooks](./subpackages/mono-hooks.md)
     -   [SceneMgmt](./subpackages/scene-mgmt.md)
     -   [Tags](./subpackages/tags.md)
     -   [UI](./subpackages/ui.md)

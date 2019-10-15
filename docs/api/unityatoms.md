@@ -2408,3 +2408,9 @@ Variable of type `Vector2`. Inherits from `EquatableAtomVariable<Vector2, Vector
 Variable of type `Vector3`. Inherits from `EquatableAtomVariable<Vector3, Vector3Event, Vector3Vector3Event>`.
 
 ---
+
+## `VoidGameObjectUnityEvent`
+
+None generic Unity Event x 2 of type `Void` and `GameObject`. Inherits from `UnityEvent<Void, GameObject>`.
+
+---

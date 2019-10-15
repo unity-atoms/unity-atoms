@@ -24,6 +24,7 @@ Add the following to your `manifest.json`:
             "scopes": [
                 "com.mambojambostudios.unity-atoms-core",
                 "com.mambojambostudios.unity-atoms-mobile",
+                "com.mambojambostudios.unity-atoms-mono-hooks",
                 "com.mambojambostudios.unity-atoms-tags",
                 "com.mambojambostudios.unity-atoms-scene-mgmt",
                 "com.mambojambostudios.unity-atoms-ui"
@@ -34,6 +35,7 @@ Add the following to your `manifest.json`:
         ...
         "com.mambojambostudios.unity-atoms-core": "2.0.0",
         "com.mambojambostudios.unity-atoms-mobile": "2.0.0",
+        "com.mambojambostudios.unity-atoms-mono-hooks": "2.0.0",
         "com.mambojambostudios.unity-atoms-tags": "2.0.0",
         "com.mambojambostudios.unity-atoms-scene-mgmt": "2.0.0",
         "com.mambojambostudios.unity-atoms-ui": "2.0.0",

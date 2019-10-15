@@ -21,6 +21,10 @@
         "title": "UnityAtoms.Mobile",
         "sidebar_label": "UnityAtoms.Mobile"
       },
+      "api/unityatoms.monohooks": {
+        "title": "UnityAtoms.MonoHooks",
+        "sidebar_label": "UnityAtoms.MonoHooks"
+      },
       "api/unityatoms.scenemgmt.editor": {
         "title": "UnityAtoms.SceneMgmt.Editor",
         "sidebar_label": "UnityAtoms.SceneMgmt.Editor"
@@ -63,6 +67,10 @@
       "subpackages/mobile": {
         "title": "Mobile",
         "sidebar_label": "Mobile"
+      },
+      "subpackages/mono-hooks": {
+        "title": "Mono Hooks",
+        "sidebar_label": "Mono Hooks"
       },
       "subpackages/scene-mgmt": {
         "title": "Scene Mgmt",

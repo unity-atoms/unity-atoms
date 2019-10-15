@@ -250,7 +250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: {fileID: 11400000, guid: 41aa2296cd68a4b718a8fd1bd8ad5a95, type: 2}
-  _health: {fileID: 11400000, guid: 30c71ebe6587c4fe8b18d5279710b4dc, type: 2}
 --- !u!114 &145633449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,8 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe09a2350f1f64d15b116366c3e6630f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiState: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
-  _uiStatePlaying: {fileID: 11400000, guid: cb8238ac7ef5d407fb31219fe114d2ae, type: 2}
 --- !u!4 &854994180
 Transform:
   m_ObjectHideFlags: 0
@@ -693,10 +690,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1025272938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e7034c8162d45689ce85701c27eeb9, type: 3}
+  m_Script: {fileID: 11500000, guid: bd63f3a800fe74586b3a87357d763173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
+  Event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
+  EventWithGameObjectReference: {fileID: 0}
+  _selectGameObjectReference: {fileID: 0}
 --- !u!114 &1025272942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,10 +970,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1128657630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e7034c8162d45689ce85701c27eeb9, type: 3}
+  m_Script: {fileID: 11500000, guid: bd63f3a800fe74586b3a87357d763173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
+  Event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
+  EventWithGameObjectReference: {fileID: 0}
+  _selectGameObjectReference: {fileID: 0}
 --- !u!114 &1128657633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,10 +1382,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1522469495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e7034c8162d45689ce85701c27eeb9, type: 3}
+  m_Script: {fileID: 11500000, guid: bd63f3a800fe74586b3a87357d763173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
+  Event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
+  EventWithGameObjectReference: {fileID: 0}
+  _selectGameObjectReference: {fileID: 0}
 --- !u!114 &1522469498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1557,10 +1560,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1613897678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e7034c8162d45689ce85701c27eeb9, type: 3}
+  m_Script: {fileID: 11500000, guid: bd63f3a800fe74586b3a87357d763173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
+  Event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
+  EventWithGameObjectReference: {fileID: 0}
+  _selectGameObjectReference: {fileID: 0}
 --- !u!114 &1613897682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,5 +1844,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5067224520480043162, guid: 01e7046886cdb499a99f4bed284db6a1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 01e7046886cdb499a99f4bed284db6a1, type: 3}
+--- !u!1 &4425509693841326315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1776152155576434, guid: 01e7046886cdb499a99f4bed284db6a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4425509693841326314}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4425509693841326316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4425509693841326315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2ba18c3f8e4b409ccb9db0bcd4ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 5c0f015f6258d41f0bfefbfe014169cf, type: 2}
+  EventWithGameObjectReference: {fileID: 0}
+  _selectGameObjectReference: {fileID: 0}
+  _triggerOnEnter: 1
+  _triggerOnExit: 0
+  _triggerOnStay: 0
