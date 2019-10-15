@@ -275,6 +275,18 @@ Action x 2 of type `bool`. Inherits from `AtomAction<bool, bool>`.
 
 ---
 
+## `ColorAction`
+
+Action of type `Color`. Inherits from `AtomAction<Color>`.
+
+---
+
+## `ColorColorAction`
+
+Action x 2 of type `Color`. Inherits from `AtomAction<Color, Color>`.
+
+---
+
 ## `VoidAction`
 
 Action of type Void. Inherits from `AtomAction<Void>`.
@@ -300,6 +312,12 @@ Do the Action.
 ## `SetBoolVariableValue`
 
 Set variable value Action of type `bool`. Inherits from `SetVariableValue<bool, BoolVariable, BoolReference, BoolEvent, BoolBoolEvent>`.
+
+---
+
+## `SetColorVariableValue`
+
+Set variable value Action of type `Color`. Inherits from `SetVariableValue<Color, ColorVariable, ColorReference, ColorEvent, ColorColorEvent>`.
 
 ---
 
@@ -356,6 +374,12 @@ A description of the Atom made for developers to document their Atoms.
 ## `BoolConstant`
 
 Constant of type `bool`. Inherits from `AtomBaseVariable<bool>`.
+
+---
+
+## `ColorConstant`
+
+Constant of type `Color`. Inherits from `AtomBaseVariable<Color>`.
 
 ---
 
@@ -544,6 +568,18 @@ Event x 2 of type `bool`. Inherits from `AtomEvent<bool, bool>`.
 ## `BoolEvent`
 
 Event of type `bool`. Inherits from `AtomEvent<bool>`.
+
+---
+
+## `ColorColorEvent`
+
+Event x 2 of type `Color`. Inherits from `AtomEvent<Color, Color>`.
+
+---
+
+## `ColorEvent`
+
+Event of type `Color`. Inherits from `AtomEvent<Color>`.
 
 ---
 
@@ -940,6 +976,18 @@ Listener of type `bool`. Inherits from `AtomListener<bool, BoolAction, BoolEvent
 
 ---
 
+## `ColorColorListener`
+
+Listener x 2 of type `Color`. Inherits from `AtomListener<Color, Color, ColorColorAction, ColorColorEvent, ColorColorUnityEvent>`.
+
+---
+
+## `ColorListener`
+
+Listener of type `Color`. Inherits from `AtomListener<Color, ColorAction, ColorEvent, ColorUnityEvent>`.
+
+---
+
 ## `AtomList<T,E>`
 
 #### Type Parameters
@@ -1144,6 +1192,12 @@ List of type `bool`. Inherits from `AtomList<bool, BoolEvent>`.
 
 ---
 
+## `ColorList`
+
+List of type `Color`. Inherits from `AtomList<Color, ColorEvent>`.
+
+---
+
 ## `AtomReference`
 
 None generic base class for `AtomReference<T, V>`.
@@ -1153,6 +1207,12 @@ None generic base class for `AtomReference<T, V>`.
 ## `BoolReference`
 
 Reference of type `bool`. Inherits from `AtomReference<bool, BoolVariable>`.
+
+---
+
+## `ColorReference`
+
+Reference of type `Color`. Inherits from `AtomReference<Color, ColorVariable>`.
 
 ---
 
@@ -1171,6 +1231,18 @@ None generic Unity Event x 2 of type `bool`. Inherits from `UnityEvent<bool, boo
 ## `BoolUnityEvent`
 
 None generic Unity Event of type `bool`. Inherits from `UnityEvent<bool>`.
+
+---
+
+## `ColorColorUnityEvent`
+
+None generic Unity Event x 2 of type `Color`. Inherits from `UnityEvent<Color, Color>`.
+
+---
+
+## `ColorUnityEvent`
+
+None generic Unity Event of type `Color`. Inherits from `UnityEvent<Color>`.
 
 ---
 
@@ -1682,5 +1754,11 @@ The Variable's change Event as an `IObservable<T, T>`.
 ## `BoolVariable`
 
 Variable of type `bool`. Inherits from `EquatableAtomVariable<bool, BoolEvent, BoolBoolEvent>`.
+
+---
+
+## `ColorVariable`
+
+Variable of type `Color`. Inherits from `EquatableAtomVariable<Color, ColorEvent, ColorColorEvent>`.
 
 ---

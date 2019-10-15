@@ -29,6 +29,12 @@ Constant property drawer of type `bool`. Inherits from `AtomDrawer<BoolConstant>
 
 ---
 
+## `ColorConstantDrawer`
+
+Constant property drawer of type `Color`. Inherits from `AtomDrawer<ColorConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolBoolEventDrawer`
 
 Event x 2 property drawer of type `bool`. Inherits from `AtomDrawer<BoolBoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -41,15 +47,39 @@ Event property drawer of type `bool`. Inherits from `AtomDrawer<BoolEvent>`. Onl
 
 ---
 
+## `ColorColorEventDrawer`
+
+Event x 2 property drawer of type `Color`. Inherits from `AtomDrawer<ColorColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorEventDrawer`
+
+Event property drawer of type `Color`. Inherits from `AtomDrawer<ColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolListDrawer`
 
 List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
+## `ColorListDrawer`
+
+List property drawer of type `Color`. Inherits from `AtomDrawer<ColorList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolVariableDrawer`
 
 Variable property drawer of type `bool`. Inherits from `AtomDrawer<BoolVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorVariableDrawer`
+
+Variable property drawer of type `Color`. Inherits from `AtomDrawer<ColorVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -67,6 +97,12 @@ Custom editor for Events. Adds the possiblity to raise an Event from Unity's Ins
 ## `BoolEventEditor`
 
 Event property drawer of type `bool`. Inherits from `AtomEventEditor<bool, BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorEventEditor`
+
+Event property drawer of type `Color`. Inherits from `AtomEventEditor<Color, ColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
