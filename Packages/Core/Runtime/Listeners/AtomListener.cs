@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 namespace UnityAtoms
 {
     [EditorIcon("atom-icon-orange")]
-    public abstract class AtomListener<T, GA, E, UER> : MonoBehaviour, IAtomListener<T>, IAtomListenerIcon
+    public abstract class AtomListener<T, GA, E, UER> : MonoBehaviour, IAtomListener<T>
         where GA : AtomAction<T>
         where E : AtomEvent<T> where UER : UnityEvent<T>
     {
@@ -47,7 +47,7 @@ namespace UnityAtoms
     }
 
     [EditorIcon("atom-icon-orange")]
-    public abstract class AtomListener<T1, T2, GA, E, UER> : MonoBehaviour, IAtomListener<T1, T2>, IAtomListenerIcon
+    public abstract class AtomListener<T1, T2, GA, E, UER> : MonoBehaviour, IAtomListener<T1, T2>
         where GA : AtomAction<T1, T2>
         where E : AtomEvent<T1, T2>
         where UER : UnityEvent<T1, T2>

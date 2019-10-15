@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [EditorIcon("atom-icon-sand")]
-    public abstract class AtomFunction<R> : BaseAtom, IAtomFunctionIcon
+    public abstract class AtomFunction<R> : BaseAtom
     {
         [HideInInspector]
         public Func<R> Func;
@@ -27,7 +27,7 @@ namespace UnityAtoms
     }
 
     [EditorIcon("atom-icon-sand")]
-    public abstract class AtomFunction<R, T1> : BaseAtom, IAtomFunctionIcon
+    public abstract class AtomFunction<R, T1> : BaseAtom
     {
         [HideInInspector]
         public Func<T1, R> Func;
@@ -50,7 +50,7 @@ namespace UnityAtoms
     }
 
     [EditorIcon("atom-icon-sand")]
-    public abstract class AtomFunction<R, T1, T2> : BaseAtom, IAtomFunctionIcon
+    public abstract class AtomFunction<R, T1, T2> : BaseAtom
     {
         [HideInInspector]
         public Func<T1, T2, R> Func;
@@ -73,7 +73,7 @@ namespace UnityAtoms
     }
 
     [EditorIcon("atom-icon-sand")]
-    public abstract class AtomFunction<R, T1, T2, T3> : BaseAtom, IAtomFunctionIcon
+    public abstract class AtomFunction<R, T1, T2, T3> : BaseAtom
     {
         [HideInInspector]
         public Func<T1, T2, T3, R> Func;
@@ -96,7 +96,7 @@ namespace UnityAtoms
     }
 
     [EditorIcon("atom-icon-sand")]
-    public abstract class AtomFunction<R, T1, T2, T3, T4> : BaseAtom, IAtomFunctionIcon
+    public abstract class AtomFunction<R, T1, T2, T3, T4> : BaseAtom
     {
         [HideInInspector]
         public Func<T1, T2, T3, T4, R> Func;
@@ -119,7 +119,7 @@ namespace UnityAtoms
     }
 
     [EditorIcon("atom-icon-sand")]
-    public abstract class AtomFunction<R, T1, T2, T3, T4, T5> : BaseAtom, IAtomFunctionIcon
+    public abstract class AtomFunction<R, T1, T2, T3, T4, T5> : BaseAtom
     {
         [HideInInspector]
         public Func<T1, T2, T3, T4, T5, R> Func;

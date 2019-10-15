@@ -6,7 +6,7 @@ using UnityEngine;
 namespace UnityAtoms
 {
     [EditorIcon("atom-icon-piglet")]
-    public abstract class AtomList<T, E> : BaseAtomList, IList<T>, IAtomListIcon
+    public abstract class AtomList<T, E> : BaseAtomList, IList<T>
         where E : AtomEvent<T>
     {
         public E Added;
