@@ -8,10 +8,16 @@ using UnityEngine.UIElements;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// Editor class for the `Generator`. Use it via the top window bar at _Tools / Unity Atoms / Generator_.
+    /// </summary>
     public class GeneratorEditor : EditorWindow
     {
         private Generator generator;
 
+        /// <summary>
+        /// Create the editor window.
+        /// </summary>
         [MenuItem("Tools/Unity Atoms/Generator")]
         static void Init()
         {
@@ -53,6 +59,10 @@ namespace UnityAtoms.Editor
             { AtomTypes.VARIABLE, new List<AtomType>() { AtomTypes.EVENT, AtomTypes.EVENT_X2 } }
         };
 
+        /// <summary>
+        /// Add provided `AtomType` to the list of Atom types to be generated.
+        /// </summary>
+        /// <param name="atomType">The `AtomType` to be added.</param>
         private void AddAtomTypeToGenerate(AtomType atomType)
         {
             _atomTypesToGenerate.Add(atomType);
@@ -68,6 +78,10 @@ namespace UnityAtoms.Editor
             _typesToGenerateInfoRow.Query<Label>().First().text = "";
         }
 
+        /// <summary>
+        /// Remove provided `AtomType` from the list of Atom types to be generated.
+        /// </summary>
+        /// <param name="atomType">The `AtomType` to be removed.</param>
         private List<AtomType> RemoveAtomTypeToGenerate(AtomType atomType)
         {
             _atomTypesToGenerate.Remove(atomType);
@@ -89,6 +103,11 @@ namespace UnityAtoms.Editor
             return disabledDeps;
         }
 
+        /// <summary>
+        /// Set and display warning text in the editor.
+        /// </summary>
+        /// <param name="atomType">`AtomType` to generate the warning for.</param>
+        /// <param name="dependencies">The `AtomType`s that this `AtomType` is depending on.</param>
         private void SetWarningText(AtomType atomType, List<AtomType> dependencies = null)
         {
             if (dependencies != null && dependencies.Count > 0)
@@ -105,6 +124,9 @@ namespace UnityAtoms.Editor
         private static string _writePath = Runtime.IsUnityAtomsRepo
             ? "../Packages/Core" : "Assets/Atoms";
 
+        /// <summary>
+        /// Called when editor is enabled.
+        /// </summary>
         private void OnEnable()
         {
             _atomTypesToGenerate = new List<AtomType>()
@@ -230,6 +252,10 @@ namespace UnityAtoms.Editor
             root.Add(buttonRow);
         }
 
+        /// <summary>
+        /// Helper method to create a divider.
+        /// </summary>
+        /// <returns>The divider (`VisualElement`) created.</returns>
         private VisualElement CreateDivider()
         {
             return new VisualElement()
@@ -238,6 +264,11 @@ namespace UnityAtoms.Editor
             };
         }
 
+        /// <summary>
+        /// Helper to create toogle row for a specific `AtomType`.
+        /// </summary>
+        /// <param name="atomType">The provided `AtomType`.</param>
+        /// <returns>A new toggle row (`VisualElement`).</returns>
         private VisualElement CreateAtomTypeToGenerateToggleRow(AtomType atomType)
         {
             var row = new VisualElement() { style = { flexDirection = FlexDirection.Row } };

@@ -7,8 +7,34 @@ using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// Generator that generates new Atom types based on the input data. Used by the `GeneratorEditor`.
+    /// </summary>
     internal class Generator
     {
+        /// <summary>
+        /// Generate new Atoms based on the input data.
+        /// </summary>
+        /// <param name="type">The type of Atom to generate.abstract Eg. double, byte, MyStruct, MyClass.</param>
+        /// <param name="baseWritePath">Base write path (relative to the Asset folder) where the Atoms are going to be written to.</param>
+        /// <param name="isEquatable">Is the `type` provided implementing `IEquatable`?</param>
+        /// <param name="atomTypesToGenerate">A list of `AtomType`s to be generated.</param>
+        /// <param name="typeNamespace">If the `type` provided is defined under a namespace, provide that namespace here.</param>
+        /// <param name="subUnityAtomsNamespace">By default the Atoms that gets generated will be under the namespace `UnityAtoms`. If you for example like it to be under `UnityAtoms.MyNamespace` you would then enter `MyNamespace` in this field.</param>
+        /// <example>
+        /// <code>
+        /// namespace MyNamespace
+        /// {
+        ///     public struct MyStruct
+        ///     {
+        ///         public string Text;
+        ///         public int Number;
+        ///     }
+        /// }
+        /// var generator = new Generator();
+        /// generator.Generate("MyStruct", "", false, new List&lt;AtomType&gt;() { AtomTypes.ACTION }, "MyNamespace", ""); // Generates an Atom Action of type MyStruct
+        /// </code>
+        /// </example>
         public void Generate(string type, string baseWritePath, bool isEquatable, List<AtomType> atomTypesToGenerate, string typeNamespace, string subUnityAtomsNamespace)
         {
             // TODO: More validation of that the type exists / is correct.
@@ -79,6 +105,11 @@ namespace UnityAtoms.Editor
             AssetDatabase.Refresh();
         }
 
+        /// <summary>
+        /// Removes duplicate namespaces, given content from a template.
+        /// </summary>
+        /// <param name="content">The content template to remove namespace from.</param>
+        /// <returns>A copy of `content`, but without duplicate namespaces.</returns>
         private static string RemoveDuplicateNamespaces(string content)
         {
             var currentIndex = 0;
@@ -114,6 +145,16 @@ namespace UnityAtoms.Editor
             return contentCopy;
         }
 
+        /// <summary>
+        /// Resolve file name based on input data.
+        /// </summary>
+        /// <param name="templateVariables">Template variables. </param>
+        /// <param name="templateName">Template name.</param>
+        /// <param name="lastIndexOfDoubleUnderscore">Last index of double underscore.</param>
+        /// <param name="capitalizedType">Capitalized type.</param>
+        /// <param name="capitalizedAtomType">Capitalized Atom type (string).</param>
+        /// <param name="typeOccurrences">Number of occurrences of the type.</param>
+        /// <returns>The filename to use.</returns>
         private static string ResolveFileName(Dictionary<string, string> templateVariables, string templateName, int lastIndexOfDoubleUnderscore, string capitalizedType, string capitalizedAtomType, int typeOccurrences)
         {
             if (templateName.Contains("Set{TYPE_NAME}VariableValue"))
@@ -138,6 +179,14 @@ namespace UnityAtoms.Editor
             return Templating.ResolveVariables(templateVariables: templateVariables, toResolve: fileName);
         }
 
+        /// <summary>
+        /// Resolves the directory path based on the input data.
+        /// </summary>
+        /// <param name="baseWritePath">The base write path (relative to the Assets folder).</param>
+        /// <param name="capitalizedAtomType">Capitalized Atom type (string).</param>
+        /// <param name="templateName">Template name.</param>
+        /// <param name="atomType">Atom type.</param>
+        /// <returns>The directory to use.</returns>
         private static string ResolveDirPath(string baseWritePath, string capitalizedAtomType, string templateName, string atomType)
         {
             if (templateName.Contains("AtomDrawer"))
@@ -156,6 +205,11 @@ namespace UnityAtoms.Editor
             return Path.Combine(baseWritePath, Runtime.IsUnityAtomsRepo ? "Runtime" : "", $"{capitalizedAtomType}s");
         }
 
+        /// <summary>
+        /// Capitalize the provided string.
+        /// </summary>
+        /// <param name="s">The string to capitalize.</param>
+        /// <returns>A capitalized version of the string provided.</returns>
         private static string Capitalize(string s)
         {
             if (string.IsNullOrEmpty(s))
@@ -166,6 +220,13 @@ namespace UnityAtoms.Editor
             return new string(a);
         }
 
+        /// <summary>
+        /// Given the input data, should generation of this template be skipped.
+        /// </summary>
+        /// <param name="atomTypesToGenerate">List of Atom types to generate.</param>
+        /// <param name="capitalizedAtomType">Capitalized Atom type (string).</param>
+        /// <param name="typeOccurrences">Number of occurrences of the type.</param>
+        /// <returns></returns>
         private static bool ShouldSkipTemplate(List<AtomType> atomTypesToGenerate, string capitalizedAtomType, int typeOccurrences)
         {
             return !atomTypesToGenerate.Exists((a) => a.Type == capitalizedAtomType && a.TypeOccurences == typeOccurrences);

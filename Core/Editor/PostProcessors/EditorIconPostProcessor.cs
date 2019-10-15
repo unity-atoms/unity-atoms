@@ -6,10 +6,17 @@ using UnityEditor;
 namespace UnityAtoms.Editor
 {
     /// <summary>
-    /// Postprocessor that processes all scripts using the EditorIcon attr and assigns the matching icon guid (matching the icon query name) to the script's meta.
+    /// Postprocessor that processes all scripts using the EditorIcon attribute and assigns the matching icon guid (matching the icon query name) to the script's meta. It's a very simple solution (and very hacky), but works really great.
     /// </summary>
     public class EditorIconPostProcessor : AssetPostprocessor
     {
+        /// <summary>
+        /// Called when new assets are imported, deleted or moved.
+        /// </summary>
+        /// <param name="importedAssets">Imported assets.</param>
+        /// <param name="deletedAssets">Deleted assets.</param>
+        /// <param name="movedAssets">Moved assets.</param>
+        /// <param name="movedFromAssetPaths">Moved from asset paths.</param>
         static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
         {
             var metaChangedForAssets = new List<string>();
