@@ -65,6 +65,12 @@ Constant property drawer of type `int`. Inherits from `AtomDrawer<IntConstant>`.
 
 ---
 
+## `StringConstantDrawer`
+
+Constant property drawer of type `string`. Inherits from `AtomDrawer<StringConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolBoolEventDrawer`
 
 Event x 2 property drawer of type `bool`. Inherits from `AtomDrawer<BoolBoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -149,6 +155,18 @@ Event x 2 property drawer of type `int`. Inherits from `AtomDrawer<IntIntEvent>`
 
 ---
 
+## `StringEventDrawer`
+
+Event property drawer of type `string`. Inherits from `AtomDrawer<StringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringStringEventDrawer`
+
+Event x 2 property drawer of type `string`. Inherits from `AtomDrawer<StringStringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolListDrawer`
 
 List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -191,6 +209,12 @@ List property drawer of type `int`. Inherits from `AtomDrawer<IntList>`. Only av
 
 ---
 
+## `StringListDrawer`
+
+List property drawer of type `string`. Inherits from `AtomDrawer<StringList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolVariableDrawer`
 
 Variable property drawer of type `bool`. Inherits from `AtomDrawer<BoolVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -230,6 +254,12 @@ Variable property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObj
 ## `IntVariableDrawer`
 
 Variable property drawer of type `int`. Inherits from `AtomDrawer<IntVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringVariableDrawer`
+
+Variable property drawer of type `string`. Inherits from `AtomDrawer<StringVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -283,6 +313,12 @@ Event property drawer of type `GameObject`. Inherits from `AtomEventEditor<GameO
 ## `IntEventEditor`
 
 Event property drawer of type `int`. Inherits from `AtomEventEditor<int, IntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringEventEditor`
+
+Event property drawer of type `string`. Inherits from `AtomEventEditor<string, StringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 

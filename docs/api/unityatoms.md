@@ -347,6 +347,18 @@ Action x 2 of type `int`. Inherits from `AtomAction<int, int>`.
 
 ---
 
+## `StringAction`
+
+Action of type `string`. Inherits from `AtomAction<string>`.
+
+---
+
+## `StringStringAction`
+
+Action x 2 of type `string`. Inherits from `AtomAction<string, string>`.
+
+---
+
 ## `VoidAction`
 
 Action of type Void. Inherits from `AtomAction<Void>`.
@@ -408,6 +420,12 @@ Set variable value Action of type `GameObject`. Inherits from `SetVariableValue<
 ## `SetIntVariableValue`
 
 Set variable value Action of type `int`. Inherits from `SetVariableValue<int, IntVariable, IntReference, IntEvent, IntIntEvent>`.
+
+---
+
+## `SetStringVariableValue`
+
+Set variable value Action of type `string`. Inherits from `SetVariableValue<string, StringVariable, StringReference, StringEvent, StringStringEvent>`.
 
 ---
 
@@ -500,6 +518,12 @@ Constant of type `GameObject`. Inherits from `AtomBaseVariable<GameObject>`.
 ## `IntConstant`
 
 Constant of type `int`. Inherits from `AtomBaseVariable<int>`.
+
+---
+
+## `StringConstant`
+
+Constant of type `string`. Inherits from `AtomBaseVariable<string>`.
 
 ---
 
@@ -760,6 +784,18 @@ Event of type `int`. Inherits from `AtomEvent<int>`.
 ## `IntIntEvent`
 
 Event x 2 of type `int`. Inherits from `AtomEvent<int, int>`.
+
+---
+
+## `StringEvent`
+
+Event of type `string`. Inherits from `AtomEvent<string>`.
+
+---
+
+## `StringStringEvent`
+
+Event x 2 of type `string`. Inherits from `AtomEvent<string, string>`.
 
 ---
 
@@ -1228,6 +1264,18 @@ Listener of type `int`. Inherits from `AtomListener<int, IntAction, IntEvent, In
 
 ---
 
+## `StringListener`
+
+Listener of type `string`. Inherits from `AtomListener<string, StringAction, StringEvent, StringUnityEvent>`.
+
+---
+
+## `StringStringListener`
+
+Listener x 2 of type `string`. Inherits from `AtomListener<string, string, StringStringAction, StringStringEvent, StringStringUnityEvent>`.
+
+---
+
 ## `AtomList<T,E>`
 
 #### Type Parameters
@@ -1468,6 +1516,12 @@ List of type `int`. Inherits from `AtomList<int, IntEvent>`.
 
 ---
 
+## `StringList`
+
+List of type `string`. Inherits from `AtomList<string, StringEvent>`.
+
+---
+
 ## `AtomReference`
 
 None generic base class for `AtomReference<T, V>`.
@@ -1513,6 +1567,12 @@ Reference of type `GameObject`. Inherits from `AtomReference<GameObject, GameObj
 ## `IntReference`
 
 Reference of type `int`. Inherits from `AtomReference<int, IntVariable>`.
+
+---
+
+## `StringReference`
+
+Reference of type `string`. Inherits from `AtomReference<string, StringVariable>`.
 
 ---
 
@@ -1603,6 +1663,18 @@ None generic Unity Event x 2 of type `int`. Inherits from `UnityEvent<int, int>`
 ## `IntUnityEvent`
 
 None generic Unity Event of type `int`. Inherits from `UnityEvent<int>`.
+
+---
+
+## `StringStringUnityEvent`
+
+None generic Unity Event x 2 of type `string`. Inherits from `UnityEvent<string, string>`.
+
+---
+
+## `StringUnityEvent`
+
+None generic Unity Event of type `string`. Inherits from `UnityEvent<string>`.
 
 ---
 
@@ -2150,5 +2222,11 @@ Variable of type `GameObject`. Inherits from `AtomVariable<GameObject, GameObjec
 ## `IntVariable`
 
 Variable of type `int`. Inherits from `EquatableAtomVariable<int, IntEvent, IntIntEvent>`.
+
+---
+
+## `StringVariable`
+
+Variable of type `string`. Inherits from `EquatableAtomVariable<string, StringEvent, StringStringEvent>`.
 
 ---
