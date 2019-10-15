@@ -311,6 +311,18 @@ Action x 2 of type `Color`. Inherits from `AtomAction<Color, Color>`.
 
 ---
 
+## `FloatAction`
+
+Action of type `float`. Inherits from `AtomAction<float>`.
+
+---
+
+## `FloatFloatAction`
+
+Action x 2 of type `float`. Inherits from `AtomAction<float, float>`.
+
+---
+
 ## `VoidAction`
 
 Action of type Void. Inherits from `AtomAction<Void>`.
@@ -354,6 +366,12 @@ Set variable value Action of type `Collider`. Inherits from `SetVariableValue<Co
 ## `SetColorVariableValue`
 
 Set variable value Action of type `Color`. Inherits from `SetVariableValue<Color, ColorVariable, ColorReference, ColorEvent, ColorColorEvent>`.
+
+---
+
+## `SetFloatVariableValue`
+
+Set variable value Action of type `float`. Inherits from `SetVariableValue<float, FloatVariable, FloatReference, FloatEvent, FloatFloatEvent>`.
 
 ---
 
@@ -428,6 +446,12 @@ Constant of type `Collider`. Inherits from `AtomBaseVariable<Collider>`.
 ## `ColorConstant`
 
 Constant of type `Color`. Inherits from `AtomBaseVariable<Color>`.
+
+---
+
+## `FloatConstant`
+
+Constant of type `float`. Inherits from `AtomBaseVariable<float>`.
 
 ---
 
@@ -652,6 +676,18 @@ Event x 2 of type `Color`. Inherits from `AtomEvent<Color, Color>`.
 ## `ColorEvent`
 
 Event of type `Color`. Inherits from `AtomEvent<Color>`.
+
+---
+
+## `FloatEvent`
+
+Event of type `float`. Inherits from `AtomEvent<float>`.
+
+---
+
+## `FloatFloatEvent`
+
+Event x 2 of type `float`. Inherits from `AtomEvent<float, float>`.
 
 ---
 
@@ -1084,6 +1120,18 @@ Listener of type `Color`. Inherits from `AtomListener<Color, ColorAction, ColorE
 
 ---
 
+## `FloatFloatListener`
+
+Listener x 2 of type `float`. Inherits from `AtomListener<float, float, FloatFloatAction, FloatFloatEvent, FloatFloatUnityEvent>`.
+
+---
+
+## `FloatListener`
+
+Listener of type `float`. Inherits from `AtomListener<float, FloatAction, FloatEvent, FloatUnityEvent>`.
+
+---
+
 ## `AtomList<T,E>`
 
 #### Type Parameters
@@ -1306,6 +1354,12 @@ List of type `Color`. Inherits from `AtomList<Color, ColorEvent>`.
 
 ---
 
+## `FloatList`
+
+List of type `float`. Inherits from `AtomList<float, FloatEvent>`.
+
+---
+
 ## `AtomReference`
 
 None generic base class for `AtomReference<T, V>`.
@@ -1333,6 +1387,12 @@ Reference of type `Collider`. Inherits from `AtomReference<Collider, ColliderVar
 ## `ColorReference`
 
 Reference of type `Color`. Inherits from `AtomReference<Color, ColorVariable>`.
+
+---
+
+## `FloatReference`
+
+Reference of type `float`. Inherits from `AtomReference<float, FloatVariable>`.
 
 ---
 
@@ -1387,6 +1447,18 @@ None generic Unity Event x 2 of type `Color`. Inherits from `UnityEvent<Color, C
 ## `ColorUnityEvent`
 
 None generic Unity Event of type `Color`. Inherits from `UnityEvent<Color>`.
+
+---
+
+## `FloatFloatUnityEvent`
+
+None generic Unity Event x 2 of type `float`. Inherits from `UnityEvent<float, float>`.
+
+---
+
+## `FloatUnityEvent`
+
+None generic Unity Event of type `float`. Inherits from `UnityEvent<float>`.
 
 ---
 
@@ -1916,5 +1988,11 @@ Variable of type `Collider`. Inherits from `AtomVariable<Collider, ColliderEvent
 ## `ColorVariable`
 
 Variable of type `Color`. Inherits from `EquatableAtomVariable<Color, ColorEvent, ColorColorEvent>`.
+
+---
+
+## `FloatVariable`
+
+Variable of type `float`. Inherits from `EquatableAtomVariable<float, FloatEvent, FloatFloatEvent>`.
 
 ---

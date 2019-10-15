@@ -47,6 +47,12 @@ Constant property drawer of type `Color`. Inherits from `AtomDrawer<ColorConstan
 
 ---
 
+## `FloatConstantDrawer`
+
+Constant property drawer of type `float`. Inherits from `AtomDrawer<FloatConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolBoolEventDrawer`
 
 Event x 2 property drawer of type `bool`. Inherits from `AtomDrawer<BoolBoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -95,6 +101,18 @@ Event property drawer of type `Color`. Inherits from `AtomDrawer<ColorEvent>`. O
 
 ---
 
+## `FloatEventDrawer`
+
+Event property drawer of type `float`. Inherits from `AtomDrawer<FloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatFloatEventDrawer`
+
+Event x 2 property drawer of type `float`. Inherits from `AtomDrawer<FloatFloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolListDrawer`
 
 List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -119,6 +137,12 @@ List property drawer of type `Color`. Inherits from `AtomDrawer<ColorList>`. Onl
 
 ---
 
+## `FloatListDrawer`
+
+List property drawer of type `float`. Inherits from `AtomDrawer<FloatList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolVariableDrawer`
 
 Variable property drawer of type `bool`. Inherits from `AtomDrawer<BoolVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -140,6 +164,12 @@ Variable property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderV
 ## `ColorVariableDrawer`
 
 Variable property drawer of type `Color`. Inherits from `AtomDrawer<ColorVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatVariableDrawer`
+
+Variable property drawer of type `float`. Inherits from `AtomDrawer<FloatVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -175,6 +205,12 @@ Event property drawer of type `Collider`. Inherits from `AtomEventEditor<Collide
 ## `ColorEventEditor`
 
 Event property drawer of type `Color`. Inherits from `AtomEventEditor<Color, ColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatEventEditor`
+
+Event property drawer of type `float`. Inherits from `AtomEventEditor<float, FloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
