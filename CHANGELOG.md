@@ -13,6 +13,7 @@
 -   Improved examples.
 -   Changed name on Atomic Tags to UA Tags.
 -   Automatic generation of API docs in markdown format from C# XML comments.
+-   Added internal tool to regenerate all existing Atoms. Nifty when doing changes that requires you to update all types of Atoms.
 
 # 1.0.0 (Mars 17, 2019)
 

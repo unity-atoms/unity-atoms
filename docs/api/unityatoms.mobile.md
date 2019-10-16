@@ -39,7 +39,7 @@ Update the `TouchUserInputVariable`.abstract Call this on every Update tick.
 
 ## `SetTouchUserInputVariableValue`
 
-Set variable value Action of type `TouchUserInput`. Inherits from `SetVariableValue<TouchUserInput, TouchUserInputVariable, TouchUserInputReference, TouchUserInputEvent, TouchUserInputTouchUserInputEvent>`.
+Set variable value Action of type `TouchUserInput`. Inherits from `SetVariableValue<TouchUserInput, TouchUserInputVariable, TouchUserInputConstant, TouchUserInputReference, TouchUserInputEvent, TouchUserInputTouchUserInputEvent>`.
 
 ---
 
@@ -81,7 +81,7 @@ List of type `TouchUserInput`. Inherits from `AtomList<TouchUserInput, TouchUser
 
 ## `TouchUserInputReference`
 
-Reference of type `TouchUserInput`. Inherits from `AtomReference<TouchUserInput, TouchUserInputVariable>`.
+Reference of type `TouchUserInput`. Inherits from `AtomReference<TouchUserInput, TouchUserInputVariable, TouchUserInputConstant>`.
 
 ---
 

@@ -119,6 +119,14 @@ All new features added to the project should be documented using [C# XML comment
 
 When you are all setup you simply run `npm run generate:docs` in the root of the project and voila, fresh documentation is generated for you!
 
+## Generator
+
+Before submitting a PR please check and see if the change requires you to update the Generator and the templates.
+
+### Pro tip
+
+If you are doing updates that requires you to update all existing Atoms you can use `Unity Atoms/Tools/Regenerate all Atoms` from the top menu bar.
+
 ## Pull requests
 
 Pull requests should be made to the [canary branch](https://github.com/AdamRamberg/unity-atoms/tree/canary).

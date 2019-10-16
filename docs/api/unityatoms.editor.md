@@ -607,6 +607,18 @@ A new toggle row (`VisualElement`).
 
 ---
 
+## `RegenereateAllAtoms`
+
+Internal utility class to regenerate all Atoms. Reachable via top menu bar and `Tools/Unity Atoms/Regenerate All Atoms`.
+
+### Methods
+
+#### `Regenereate`
+
+Create the editor window.
+
+---
+
 ## `Templating`
 
 Internal class used for templating when generating new Atoms using the `Generator`.

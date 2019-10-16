@@ -407,58 +407,59 @@ Do the Action.
 
 ## `SetBoolVariableValue`
 
-Set variable value Action of type `bool`. Inherits from `SetVariableValue<bool, BoolVariable, BoolReference, BoolEvent, BoolBoolEvent>`.
+Set variable value Action of type `bool`. Inherits from `SetVariableValue<bool, BoolVariable, BoolConstant, BoolReference, BoolEvent, BoolBoolEvent>`.
 
 ---
 
 ## `SetCollider2DVariableValue`
 
-Set variable value Action of type `Collider2D`. Inherits from `SetVariableValue<Collider2D, Collider2DVariable, Collider2DReference, Collider2DEvent, Collider2DCollider2DEvent>`.
+Set variable value Action of type `Collider2D`. Inherits from `SetVariableValue<Collider2D, Collider2DVariable, Collider2DConstant, Collider2DReference, Collider2DEvent, Collider2DCollider2DEvent>`.
 
 ---
 
 ## `SetColliderVariableValue`
 
-Set variable value Action of type `Collider`. Inherits from `SetVariableValue<Collider, ColliderVariable, ColliderReference, ColliderEvent, ColliderColliderEvent>`.
+Set variable value Action of type `Collider`. Inherits from `SetVariableValue<Collider, ColliderVariable, ColliderConstant, ColliderReference, ColliderEvent, ColliderColliderEvent>`.
 
 ---
 
 ## `SetColorVariableValue`
 
-Set variable value Action of type `Color`. Inherits from `SetVariableValue<Color, ColorVariable, ColorReference, ColorEvent, ColorColorEvent>`.
+Set variable value Action of type `Color`. Inherits from `SetVariableValue<Color, ColorVariable, ColorConstant, ColorReference, ColorEvent, ColorColorEvent>`.
 
 ---
 
 ## `SetFloatVariableValue`
 
-Set variable value Action of type `float`. Inherits from `SetVariableValue<float, FloatVariable, FloatReference, FloatEvent, FloatFloatEvent>`.
+Set variable value Action of type `float`. Inherits from `SetVariableValue<float, FloatVariable, FloatConstant, FloatReference, FloatEvent, FloatFloatEvent>`.
 
 ---
 
 ## `SetGameObjectVariableValue`
 
-Set variable value Action of type `GameObject`. Inherits from `SetVariableValue<GameObject, GameObjectVariable, GameObjectReference, GameObjectEvent, GameObjectGameObjectEvent>`.
+Set variable value Action of type `GameObject`. Inherits from `SetVariableValue<GameObject, GameObjectVariable, GameObjectConstant, GameObjectReference, GameObjectEvent, GameObjectGameObjectEvent>`.
 
 ---
 
 ## `SetIntVariableValue`
 
-Set variable value Action of type `int`. Inherits from `SetVariableValue<int, IntVariable, IntReference, IntEvent, IntIntEvent>`.
+Set variable value Action of type `int`. Inherits from `SetVariableValue<int, IntVariable, IntConstant, IntReference, IntEvent, IntIntEvent>`.
 
 ---
 
 ## `SetStringVariableValue`
 
-Set variable value Action of type `string`. Inherits from `SetVariableValue<string, StringVariable, StringReference, StringEvent, StringStringEvent>`.
+Set variable value Action of type `string`. Inherits from `SetVariableValue<string, StringVariable, StringConstant, StringReference, StringEvent, StringStringEvent>`.
 
 ---
 
-## `SetVariableValue<T,V,R,E1,E2>`
+## `SetVariableValue<T,V,C,R,E1,E2>`
 
 #### Type Parameters
 
 -   `T` - The type of the Variable to set.
 -   `V` - A Variable class of type `type` to set.
+-   `C` - A Constant class of type `type` to set.
 -   `R` - A Reference of type `type`.
 -   `E1` - An Event of type `type`.
 -   `E2` - An Event x 2 of type `type`.
@@ -487,13 +488,13 @@ Perform the action.
 
 ## `SetVector2VariableValue`
 
-Set variable value Action of type `Vector2`. Inherits from `SetVariableValue<Vector2, Vector2Variable, Vector2Reference, Vector2Event, Vector2Vector2Event>`.
+Set variable value Action of type `Vector2`. Inherits from `SetVariableValue<Vector2, Vector2Variable, Vector2Constant, Vector2Reference, Vector2Event, Vector2Vector2Event>`.
 
 ---
 
 ## `SetVector3VariableValue`
 
-Set variable value Action of type `Vector3`. Inherits from `SetVariableValue<Vector3, Vector3Variable, Vector3Reference, Vector3Event, Vector3Vector3Event>`.
+Set variable value Action of type `Vector3`. Inherits from `SetVariableValue<Vector3, Vector3Variable, Vector3Constant, Vector3Reference, Vector3Event, Vector3Vector3Event>`.
 
 ---
 
@@ -1646,65 +1647,77 @@ List of type `Vector3`. Inherits from `AtomList<Vector3, Vector3Event>`.
 
 None generic base class for `AtomReference<T, V>`.
 
+### Variables
+
+#### `_usage`
+
+Should we use the provided value (via inspector), the Constant value or the Variable value?
+
+---
+
+## `AtomReference.Usage`
+
+Enum for how to use the Reference.
+
 ---
 
 ## `BoolReference`
 
-Reference of type `bool`. Inherits from `AtomReference<bool, BoolVariable>`.
+Reference of type `bool`. Inherits from `AtomReference<bool, BoolVariable, BoolConstant>`.
 
 ---
 
 ## `Collider2DReference`
 
-Reference of type `Collider2D`. Inherits from `AtomReference<Collider2D, Collider2DVariable>`.
+Reference of type `Collider2D`. Inherits from `AtomReference<Collider2D, Collider2DVariable, Collider2DConstant>`.
 
 ---
 
 ## `ColliderReference`
 
-Reference of type `Collider`. Inherits from `AtomReference<Collider, ColliderVariable>`.
+Reference of type `Collider`. Inherits from `AtomReference<Collider, ColliderVariable, ColliderConstant>`.
 
 ---
 
 ## `ColorReference`
 
-Reference of type `Color`. Inherits from `AtomReference<Color, ColorVariable>`.
+Reference of type `Color`. Inherits from `AtomReference<Color, ColorVariable, ColorConstant>`.
 
 ---
 
 ## `FloatReference`
 
-Reference of type `float`. Inherits from `AtomReference<float, FloatVariable>`.
+Reference of type `float`. Inherits from `AtomReference<float, FloatVariable, FloatConstant>`.
 
 ---
 
 ## `GameObjectReference`
 
-Reference of type `GameObject`. Inherits from `AtomReference<GameObject, GameObjectVariable>`.
+Reference of type `GameObject`. Inherits from `AtomReference<GameObject, GameObjectVariable, GameObjectConstant>`.
 
 ---
 
 ## `IntReference`
 
-Reference of type `int`. Inherits from `AtomReference<int, IntVariable>`.
+Reference of type `int`. Inherits from `AtomReference<int, IntVariable, IntConstant>`.
 
 ---
 
 ## `StringReference`
 
-Reference of type `string`. Inherits from `AtomReference<string, StringVariable>`.
+Reference of type `string`. Inherits from `AtomReference<string, StringVariable, StringConstant>`.
 
 ---
 
 ## `Vector2Reference`
 
-Reference of type `Vector2`. Inherits from `AtomReference<Vector2, Vector2Variable>`.
+Reference of type `Vector2`. Inherits from `AtomReference<Vector2, Vector2Variable, Vector2Constant>`.
 
 ---
 
 ## `Vector3Reference`
 
-Reference of type `Vector3`. Inherits from `AtomReference<Vector3, Vector3Variable>`.
+Reference of type `Vector3`. Inherits from `AtomReference<Vector3, Vector3Variable, Vector3Constant>`.
 
 ---
 

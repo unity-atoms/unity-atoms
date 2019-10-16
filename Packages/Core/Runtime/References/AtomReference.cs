@@ -1,37 +1,58 @@
+using UnityEngine;
+
 namespace UnityAtoms
 {
     /// <summary>
     /// None generic base class for `AtomReference&lt;T, V&gt;`.
     /// </summary>
-    public abstract class AtomReference { }
-
-    public abstract class AtomReference<T, V> : AtomReference
-        where V : AtomBaseVariable<T>
+    public abstract class AtomReference
     {
         /// <summary>
-        /// If set to `true` then use constant instead of Variable value.
+        /// Enum for how to use the Reference.
         /// </summary>
-        public bool UseConstant;
+        public enum Usage
+        {
+            Value = 0,
+            Constant = 1,
+            Variable = 2,
+        }
 
         /// <summary>
-        /// Constant value used if `UseConstant` is set to `true`.
+        /// Should we use the provided value (via inspector), the Constant value or the Variable value?
         /// </summary>
-        public T ConstantValue;
+        [SerializeField]
+        protected Usage _usage;
+    }
+
+    public abstract class AtomReference<T, V, C> : AtomReference
+        where V : AtomBaseVariable<T>
+        where C : AtomBaseVariable<T>
+    {
+        /// <summary>
+        /// Value used if `Usage` is set to `Value`.
+        /// </summary>
+        [SerializeField]
+        private T _value;
 
         /// <summary>
-        /// Variable used if `UseConstant` is set to `false`.
+        /// Constant used if `Usage` is set to `Constant`.
         /// </summary>
-        public V Variable;
+        public C _constant;
+
+        /// <summary>
+        /// Variable used if `Usage` is set to `Variable`.
+        /// </summary>
+        public V _variable;
 
         protected AtomReference()
         {
-            UseConstant = true;
+            _usage = AtomReference.Usage.Value;
         }
 
         protected AtomReference(T value) : this()
         {
-            UseConstant = true;
-            ConstantValue = value;
+            _usage = AtomReference.Usage.Value;
+            _value = value;
         }
 
         /// <summary>
@@ -40,10 +61,20 @@ namespace UnityAtoms
         /// <value>The value of type `T`.</value>
         public T Value
         {
-            get { return UseConstant ? ConstantValue : Variable.Value; }
+            get
+            {
+                switch (_usage)
+                {
+                    case (AtomReference.Usage.Constant): return _constant.Value;
+                    case (AtomReference.Usage.Variable): return _variable.Value;
+                    case (AtomReference.Usage.Value):
+                    default:
+                        return _value;
+                }
+            }
         }
 
-        public static implicit operator T(AtomReference<T, V> reference)
+        public static implicit operator T(AtomReference<T, V, C> reference)
         {
             return reference.Value;
         }

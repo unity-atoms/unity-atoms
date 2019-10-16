@@ -8,14 +8,16 @@ namespace UnityAtoms
     /// </summary>
     /// <typeparam name="T">The type of the Variable to set.</typeparam>
     /// <typeparam name="V">A Variable class of type `type` to set.</typeparam>
+    /// <typeparam name="C">A Constant class of type `type` to set.</typeparam>
     /// <typeparam name="R">A Reference of type `type`.</typeparam>
     /// <typeparam name="E1">An Event of type `type`.</typeparam>
     /// <typeparam name="E2">An Event x 2 of type `type`.</typeparam>
-    public abstract class SetVariableValue<T, V, R, E1, E2> : VoidAction
+    public abstract class SetVariableValue<T, V, C, R, E1, E2> : VoidAction
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<T, T>
         where V : AtomVariable<T, E1, E2>
-        where R : AtomReference<T, V>
+        where C : AtomBaseVariable<T>
+        where R : AtomReference<T, V, C>
     {
         /// <summary>
         /// The Variable to set.

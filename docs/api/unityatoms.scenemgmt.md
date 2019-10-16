@@ -51,7 +51,7 @@ Action x 2 of type `SceneField`. Inherits from `AtomAction<SceneField, SceneFiel
 
 ## `SetSceneFieldVariableValue`
 
-Set variable value Action of type `SceneField`. Inherits from `SetVariableValue<SceneField, SceneFieldVariable, SceneFieldReference, SceneFieldEvent, SceneFieldSceneFieldEvent>`.
+Set variable value Action of type `SceneField`. Inherits from `SetVariableValue<SceneField, SceneFieldVariable, SceneFieldConstant, SceneFieldReference, SceneFieldEvent, SceneFieldSceneFieldEvent>`.
 
 ---
 
@@ -93,7 +93,7 @@ List of type `SceneField`. Inherits from `AtomList<SceneField, SceneFieldEvent>`
 
 ## `SceneFieldReference`
 
-Reference of type `SceneField`. Inherits from `AtomReference<SceneField, SceneFieldVariable>`.
+Reference of type `SceneField`. Inherits from `AtomReference<SceneField, SceneFieldVariable, SceneFieldConstant>`.
 
 ---
 
