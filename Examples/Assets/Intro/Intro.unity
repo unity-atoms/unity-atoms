@@ -673,6 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _developerDescription: 
   _event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
   _unityEventResponse:
     m_PersistentCalls:
@@ -1070,6 +1071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _developerDescription: 
   _event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
   _unityEventResponse:
     m_PersistentCalls:
@@ -1482,6 +1484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _developerDescription: 
   _event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
   _unityEventResponse:
     m_PersistentCalls:
@@ -1543,6 +1546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _developerDescription: 
   _event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
   _unityEventResponse:
     m_PersistentCalls:
@@ -1787,6 +1791,11 @@ PrefabInstance:
       propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 145633448}
+    - target: {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b,
+        type: 3}
+      propertyPath: _developerDescription
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4cdf4b23d0154814b9975c71d15466b, type: 3}
 --- !u!1001 &4425509693841326314

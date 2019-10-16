@@ -506,13 +506,13 @@ Specify a texture name from your assets which you want to be assigned as an icon
 
 ## `BaseAtom`
 
-None generic base class for all atoms.
+None generic base class for all Atoms.
 
 ### Variables
 
 #### `_developerDescription`
 
-A description of the Atom made for developers to document their Atoms.
+A description of the Atom made for documentation purposes.
 
 ---
 
@@ -1172,7 +1172,7 @@ An `AtomFunction<R, T1, T2, T3, T4, T5>`.
 -   `E` - Event of type `AtomEvent<T>`.
 -   `UER` - Unity Event of type `UnityEvent<T>`.
 
-Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener<T>`.
+Generic base class for Listeners. Inherits from `BaseAtomListener` and `IAtomListener<T>`.
 
 ### Variables
 
@@ -1220,7 +1220,7 @@ Handler for when the Event gets raised.
 -   `E` - Event of type `AtomEvent<T1, T2>`.
 -   `UER` - Unity Event of type `UnityEvent<T1, T2>`.
 
-Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener<T1, T2>`
+Generic base class for Listeners. Inherits from `BaseAtomListener` and `IAtomListener<T1, T2>`
 
 ### Variables
 
@@ -1256,6 +1256,18 @@ Handler for when the Event gets raised.
 
 -   `first` - The first Event type.
 -   `second` - The second Event type.
+
+---
+
+## `BaseAtomListener`
+
+None generic base class for all Listeners.
+
+### Variables
+
+#### `_developerDescription`
+
+A description of the Listener made for documentation purposes.
 
 ---
 
