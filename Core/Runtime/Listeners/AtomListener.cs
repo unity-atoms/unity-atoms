@@ -6,14 +6,14 @@ using UnityEngine.Serialization;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener&lt;T&gt;`.
+    /// Generic base class for Listeners. Inherits from `BaseAtomListener` and `IAtomListener&lt;T&gt;`.
     /// </summary>
     /// <typeparam name="T">The type that we are listening for.</typeparam>
     /// <typeparam name="A">Acion of type `AtomAction&lt;T&gt;`.</typeparam>
     /// <typeparam name="E">Event of type `AtomEvent&lt;T&gt;`.</typeparam>
     /// <typeparam name="UER">Unity Event of type `UnityEvent&lt;T&gt;`.</typeparam>
     [EditorIcon("atom-icon-orange")]
-    public abstract class AtomListener<T, A, E, UER> : MonoBehaviour, IAtomListener<T>
+    public abstract class AtomListener<T, A, E, UER> : BaseAtomListener, IAtomListener<T>
         where A : AtomAction<T>
         where E : AtomEvent<T> where UER : UnityEvent<T>
     {
@@ -73,7 +73,7 @@ namespace UnityAtoms
     }
 
     /// <summary>
-    /// Generic base class for Listeners. Inherits from `MonoBehaviour` and `IAtomListener&lt;T1, T2&gt;`
+    /// Generic base class for Listeners. Inherits from `BaseAtomListener` and `IAtomListener&lt;T1, T2&gt;`
     /// </summary>
     /// <typeparam name="T1">The first type that we are listening for.</typeparam>
     /// <typeparam name="T2">The second type that we are listening for.</typeparam>
@@ -81,7 +81,7 @@ namespace UnityAtoms
     /// <typeparam name="E">Event of type `AtomEvent&lt;T1, T2&gt;`.</typeparam>
     /// <typeparam name="UER">Unity Event of type `UnityEvent&lt;T1, T2&gt;`.</typeparam>
     [EditorIcon("atom-icon-orange")]
-    public abstract class AtomListener<T1, T2, A, E, UER> : MonoBehaviour, IAtomListener<T1, T2>
+    public abstract class AtomListener<T1, T2, A, E, UER> : BaseAtomListener, IAtomListener<T1, T2>
         where A : AtomAction<T1, T2>
         where E : AtomEvent<T1, T2>
         where UER : UnityEvent<T1, T2>

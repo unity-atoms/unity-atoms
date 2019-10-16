@@ -3,12 +3,12 @@ using UnityEngine;
 namespace UnityAtoms
 {
     /// <summary>
-    /// None generic base class for all Atoms.
+    /// None generic base class for all Listeners.
     /// </summary>
-    public abstract class BaseAtom : ScriptableObject
+    public abstract class BaseAtomListener : MonoBehaviour
     {
         /// <summary>
-        /// A description of the Atom made for documentation purposes.
+        /// A description of the Listener made for documentation purposes.
         /// </summary>
         [SerializeField]
         [Multiline]
