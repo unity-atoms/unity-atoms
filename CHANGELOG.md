@@ -1,19 +1,47 @@
+💥 = Breaking changes
+🐛 = Bug fixes
+📝 = Documentation
+🏠 = Internal
+🏃‍♀= Performance
+💅 = Polish
+🚀 = New feature
+
 # [Unreleased]
+
+-   <Fill in your change here>
 
 # 2.0.0 (September 3, 2019)
 
--   The repo has been split up to 5 different packages: core, mobile, mono-hooks, scene-mgmt, tags and ui
--   None generic base classes for all atoms
--   Generator to generate new atoms with ease 🚀 Could be found under Tools / Unity Atoms / Generator.
--   Custom icons for all atoms. The solution is not 100%, but is good enough for now.
--   Custom property drawers for all atoms.
--   Variables now discards playmode changes.
--   Add public method `Reset` to Variables.
--   Improved documentation.
--   Improved examples.
+The release notes were introduced halfway through the work with version `2.0.0`. The list below might therefore not me 100% complete.
+
+## 💥 Breaking changes
+
+-   The repo has been split up to 6 different packages: core, mobile, mono-hooks, scene-mgmt, tags and ui
 -   Changed name on Atomic Tags to UA Tags.
+
+## 📝 Documentation
+
+-   New website launched - https://adamramberg.github.io/unity-atoms
+-   Improved / added documentation (READMEs).
 -   Automatic generation of API docs in markdown format from C# XML comments.
+
+## 🏠 Internal
+
 -   Added internal tool to regenerate all existing Atoms. Nifty when doing changes that requires you to update all types of Atoms.
+
+## 💅 Polish
+
+-   Improved examples.
+
+## 🚀 New features
+
+-   Events can now be turned into IObservables making it possible to subscribe to them. this also makes Atoms compatible with UniRx.
+-   None generic base classes for all atoms
+-   Generator to generate new atoms with ease. Could be found under Tools / Unity Atoms / Generator.
+-   Custom icons for all atoms.
+-   Custom property drawers for all atoms.
+-   Variables now discards play mode changes.
+-   Public method `Reset` added to Variables.
 
 # 1.0.0 (Mars 17, 2019)
 

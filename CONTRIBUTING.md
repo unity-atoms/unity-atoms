@@ -130,3 +130,13 @@ If you are doing updates that requires you to update all existing Atoms you can 
 ## Pull requests
 
 Pull requests should be made to the [canary branch](https://github.com/AdamRamberg/unity-atoms/tree/canary).
+
+### Checklist before submitting a PR
+
+-   [ ] A PR should always reference an issue - create one if there is none.
+-   [ ] Document your code using C# XML comments.
+-   [ ] Add documentation to the `docs` folder if needed.
+-   [ ] Run `npm run generate:docs` to generate new docs.
+-   [ ] Update templates in generator if needed.
+-   [ ] Add what you changed in the `CHANGELOG.md`.
+-   [ ] Make sure you follow the styleguide listed above.
