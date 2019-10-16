@@ -1184,7 +1184,7 @@ The Event that we are listening to.
 
 #### `_unityEventResponse`
 
-The Unity Event responses.
+The Unity Event responses. NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
 
 ---
 
@@ -1232,7 +1232,7 @@ The Event that we are listening to.
 
 #### `_unityEventResponse`
 
-The Unity Event responses.
+The Unity Event responses. NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
 
 ---
 

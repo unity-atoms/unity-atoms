@@ -32,10 +32,10 @@ namespace UnityAtoms
 
         /// <summary>
         /// The Unity Event responses.
+        /// NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
         /// </summary>
         [FormerlySerializedAs("UnityEventResponse")]
-        [SerializeField]
-        private UER _unityEventResponse = null;
+        public UER _unityEventResponse = null;
 
         /// <summary>
         /// The Action responses;
@@ -101,10 +101,10 @@ namespace UnityAtoms
 
         /// <summary>
         /// The Unity Event responses.
+        /// NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
         /// </summary>
         [FormerlySerializedAs("UnityEventResponse")]
-        [SerializeField]
-        private UER _unityEventResponse = null;
+        public UER _unityEventResponse = null;
 
         /// <summary>
         /// The Action responses;
