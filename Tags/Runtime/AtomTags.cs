@@ -12,7 +12,7 @@ namespace UnityAtoms.Tags
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
     [AddComponentMenu("Unity Atoms/Tags")]
-    public sealed class UATags : MonoBehaviour, ISerializationCallbackReceiver
+    public sealed class AtomTags : MonoBehaviour, ISerializationCallbackReceiver
     {
         /// <summary>
         /// Get the tags associated with this GameObject as `StringConstants` in a `ReadOnlyList&lt;T&gt;`.
@@ -28,8 +28,8 @@ namespace UnityAtoms.Tags
         private static readonly Dictionary<string, List<GameObject>> TaggedGameObjects
             = new Dictionary<string, List<GameObject>>();
 
-        private static readonly Dictionary<GameObject, UATags> TagInstances
-            = new Dictionary<GameObject, UATags>();
+        private static readonly Dictionary<GameObject, AtomTags> TagInstances
+            = new Dictionary<GameObject, AtomTags>();
 
 
         #region Serialization
@@ -194,7 +194,7 @@ namespace UnityAtoms.Tags
         /// <returns>
         /// Returns the `UATags` component. Returns `null` if the `GameObject` does not have a `UATags` component or if the `GameObject` is disabled.
         /// </returns>
-        public static UATags GetTagsForGameObject(GameObject go)
+        public static AtomTags GetTagsForGameObject(GameObject go)
         {
             if (!TagInstances.ContainsKey(go)) return null;
             return TagInstances[go];
