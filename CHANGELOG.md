@@ -12,12 +12,12 @@
 
 # 2.0.0 (September 3, 2019)
 
-The release notes were introduced halfway through the work with version `2.0.0`. The list below might therefore not me 100% complete.
+_The release notes were introduced halfway through the work with version `2.0.0`. The list below might therefore not me 100% complete._
 
 ## 💥 Breaking changes
 
 -   The repo has been split up to 6 different packages: core, mobile, mono-hooks, scene-mgmt, tags and ui
--   Changed name on Atomic Tags to UA Tags.
+-   Changed name on Atomic Tags to Atom Tags.
 
 ## 📝 Documentation
 

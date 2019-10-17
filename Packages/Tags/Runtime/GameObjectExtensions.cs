@@ -18,7 +18,7 @@ namespace UnityAtoms.Tags
         /// </returns>
         public static ReadOnlyList<StringConstant> GetTags(this GameObject go)
         {
-            return UATags.GetTags(go);
+            return AtomTags.GetTags(go);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace UnityAtoms.Tags
         /// <returns>`true` if the tag exists, otherwise `false`.</returns>
         public static bool HasTag(this GameObject go, string tag)
         {
-            var tags = UATags.GetTagsForGameObject(go);
+            var tags = AtomTags.GetTagsForGameObject(go);
             if (tags == null) return false;
             return tags.HasTag(tag);
         }
@@ -54,7 +54,7 @@ namespace UnityAtoms.Tags
         /// <returns>`true` if any of the tags exist, otherwise `false`.</returns>
         public static bool HasAnyTag(this GameObject go, List<string> tags)
         {
-            var goTags = UATags.GetTagsForGameObject(go);
+            var goTags = AtomTags.GetTagsForGameObject(go);
             if (goTags == null) return false;
 
             for (var i = 0; i < tags.Count; i++)
@@ -74,7 +74,7 @@ namespace UnityAtoms.Tags
         {
             // basically same method as above, the code is mostly copy and pasted because its not preferable to convert
             // stringconstants to strings and calling the other method, because of memory allocation
-            var tags = UATags.GetTagsForGameObject(go);
+            var tags = AtomTags.GetTagsForGameObject(go);
             if (tags == null) return false;
 
             for (var i = 0; i < stringConstants.Count; i++)
