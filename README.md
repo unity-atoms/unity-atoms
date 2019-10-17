@@ -42,12 +42,12 @@ Add the following to your `manifest.json`:
     ],
     "dependencies": {
         ...
-        "com.mambojambostudios.unity-atoms-core": "2.0.0",
-        "com.mambojambostudios.unity-atoms-mobile": "2.0.0",
-        "com.mambojambostudios.unity-atoms-mono-hooks": "2.0.0",
-        "com.mambojambostudios.unity-atoms-tags": "2.0.0",
-        "com.mambojambostudios.unity-atoms-scene-mgmt": "2.0.0",
-        "com.mambojambostudios.unity-atoms-ui": "2.0.0",
+        "com.mambojambostudios.unity-atoms-core": "2.0.0-beta.1",
+        "com.mambojambostudios.unity-atoms-mobile": "2.0.0-beta.1",
+        "com.mambojambostudios.unity-atoms-mono-hooks": "2.0.0-beta.1",
+        "com.mambojambostudios.unity-atoms-tags": "2.0.0-beta.1",
+        "com.mambojambostudios.unity-atoms-scene-mgmt": "2.0.0-beta.1",
+        "com.mambojambostudios.unity-atoms-ui": "2.0.0-beta.1",
         ...
     }
 }
@@ -63,7 +63,7 @@ The Unity Atoms docs are now published at **https://adamramberg.github.io/unity-
 
 Read [this](https://medium.com/@adamramberg/unity-atoms-tiny-modular-pieces-utilizing-the-power-of-scriptable-objects-e8add1b95201) article on Medium for a great introduction to Unity Atoms.
 
-## Maintainers
+    ## Maintainers
 
 -   [AdamRamberg](https://github.com/AdamRamberg)
 -   [soraphis](https://github.com/soraphis)
