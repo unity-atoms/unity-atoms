@@ -12,4 +12,5 @@ _Here is a check list for publishing a new version:_
     -   [] Go (via the terminal) to the `website` folder.
     -   [] Run `npm start` to test and see that it runs as expected.
     -   [] Run `GIT_USER=<your-username> \ CURRENT_BRANCH=master \ npm run publish-gh-pages` to publish the website.
+-   [] Create a new release under `releases` on the Github repo.
 -   [] From the root run `npm publish:all`. This is only possible for me (Adam Ramberg) at the moment. Will need to look into a solution for this.
