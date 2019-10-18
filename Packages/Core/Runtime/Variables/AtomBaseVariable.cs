@@ -52,7 +52,6 @@ namespace UnityAtoms
         /// <returns>Get or set the Variable value.</returns>
         public virtual T Value { get { return _value; } set { throw new NotImplementedException(); } }
 
-        [FormerlySerializedAs("value")]
         [SerializeField]
         protected T _value;
 

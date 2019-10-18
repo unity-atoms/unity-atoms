@@ -7,7 +7,6 @@ namespace UnityAtoms.Examples
     [CreateAssetMenu(menuName = "Unity Atoms/Examples/Intro/Decrease Players Health")]
     public sealed class DecreasePlayersHealth : Collider2DAction
     {
-        [FormerlySerializedAs("TagPlayer")]
         [SerializeField]
         private StringConstant _tagPlayer = null;
 

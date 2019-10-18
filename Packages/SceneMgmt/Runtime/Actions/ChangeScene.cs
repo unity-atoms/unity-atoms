@@ -14,7 +14,6 @@ namespace UnityAtoms.SceneMgmt
         /// <summary>
         /// Scene to change to.
         /// </summary>
-        [FormerlySerializedAs("SceneName")]
         [SerializeField]
         private StringReference _sceneName = null;
 

@@ -23,13 +23,11 @@ namespace UnityAtoms.MonoHooks
         /// <summary>
         /// Event including a GameObject reference.
         /// </summary>
-        [FormerlySerializedAs("EventWithGORef")]
         public E2 EventWithGameObjectReference;
 
         /// <summary>
         /// Selector function for the Event `EventWithGameObjectReference`. Makes it possible to for example select the parent GameObject and pass that a long to the `EventWithGameObjectReference`.
         /// </summary>
-        [FormerlySerializedAs("SelectGORef")]
         [SerializeField]
         protected F _selectGameObjectReference;
 

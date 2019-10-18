@@ -28,6 +28,7 @@ _The release notes were introduced halfway through the work with version `2.0.0`
 ## 🏠 Internal
 
 -   Added internal tool to regenerate all existing Atoms. Nifty when doing changes that requires you to update all types of Atoms.
+-   Removed all `FormerlySerializedAs` attributes.
 
 ## 💅 Polish
 
