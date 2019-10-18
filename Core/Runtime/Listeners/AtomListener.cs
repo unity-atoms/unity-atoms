@@ -20,7 +20,6 @@ namespace UnityAtoms
         /// <summary>
         /// The Event that we are listening to.
         /// </summary>
-        [FormerlySerializedAs("Event")]
         [SerializeField]
         private E _event = null;
 
@@ -34,7 +33,6 @@ namespace UnityAtoms
         /// The Unity Event responses.
         /// NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
         /// </summary>
-        [FormerlySerializedAs("UnityEventResponse")]
         public UER _unityEventResponse = null;
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace UnityAtoms
         /// </summary>
         /// <typeparam name="A">The Action type.</typeparam>
         /// <returns>A `List&lt;A&gt;` of Actions.</returns>
-        [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]
         private List<A> _actionResponses = new List<A>();
 
@@ -89,7 +86,6 @@ namespace UnityAtoms
         /// <summary>
         /// The Event that we are listening to.
         /// </summary>
-        [FormerlySerializedAs("Event")]
         [SerializeField]
         private E _event;
 
@@ -103,7 +99,6 @@ namespace UnityAtoms
         /// The Unity Event responses.
         /// NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
         /// </summary>
-        [FormerlySerializedAs("UnityEventResponse")]
         public UER _unityEventResponse = null;
 
         /// <summary>
@@ -111,7 +106,6 @@ namespace UnityAtoms
         /// </summary>
         /// <typeparam name="A">The Action type.</typeparam>
         /// <returns>A `List&lt;A&gt;` of Actions.</returns>
-        [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]
         private List<A> _actionResponses = new List<A>();
 

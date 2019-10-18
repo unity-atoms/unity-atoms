@@ -16,14 +16,12 @@ namespace UnityAtoms.UI
         /// <summary>
         /// Variable that we listens to.
         /// </summary>
-        [FormerlySerializedAs("UIStateVariable")]
         [SerializeField]
         private StringVariable _UIStateVariable = null;
 
         /// <summary>
         /// A list of states that this `UIContainer` will be visible for.
         /// </summary>
-        [FormerlySerializedAs("VisibleForStates")]
         [SerializeField]
         private List<StringConstant> _visibleForStates = null;
 

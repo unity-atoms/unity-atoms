@@ -35,7 +35,6 @@ namespace UnityAtoms
         /// <value></value>
         public T OldValue { get { return _oldValue; } }
 
-        [FormerlySerializedAs("oldValue")]
         [SerializeField]
         private T _oldValue;
 

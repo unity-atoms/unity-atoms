@@ -13,14 +13,12 @@ namespace UnityAtoms.MonoHooks
         /// <summary>
         /// Listener
         /// </summary>
-        [FormerlySerializedAs("listener")]
         [SerializeField]
         private VoidListener _listener;
 
         /// <summary>
         /// Listener with GameObject reference
         /// </summary>
-        [FormerlySerializedAs("listenerWithGO")]
         [SerializeField]
         private VoidGameObjectListener _listenerWithGameObject;
 

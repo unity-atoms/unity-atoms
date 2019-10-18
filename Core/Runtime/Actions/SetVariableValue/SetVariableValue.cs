@@ -22,14 +22,12 @@ namespace UnityAtoms
         /// <summary>
         /// The Variable to set.
         /// </summary>
-        [FormerlySerializedAs("Variable")]
         [SerializeField]
         private V _variable = null;
 
         /// <summary>
         /// The value to set.
         /// </summary>
-        [FormerlySerializedAs("Value")]
         [SerializeField]
         private R _value = null;
 
