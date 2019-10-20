@@ -2310,6 +2310,12 @@ The Variable value as a property.
 
 ---
 
+#### `InitialValue`
+
+The inital Variable value as a property.
+
+---
+
 #### `OldValue`
 
 The value the Variable had before its value got changed last time.
