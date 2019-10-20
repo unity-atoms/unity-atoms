@@ -14,13 +14,13 @@ namespace UnityAtoms.MonoHooks
         /// Listener
         /// </summary>
         [SerializeField]
-        private VoidListener _listener;
+        private VoidListener _listener = null;
 
         /// <summary>
         /// Listener with GameObject reference
         /// </summary>
         [SerializeField]
-        private VoidGameObjectListener _listenerWithGameObject;
+        private VoidGameObjectListener _listenerWithGameObject = null;
 
         private void Awake()
         {
