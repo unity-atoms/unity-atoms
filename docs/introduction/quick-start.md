@@ -64,6 +64,8 @@ Add the following to your `manifest.json`:
 
 ## Create your first Atom
 
-You are now ready to create your first Atom. Simply right click somewhere in the Project window and go to **Create / Unity Atoms** and pick the Atom of your choice.
+You are now ready to create your first Atom. Simply right click somewhere in the Project window and go to **Create / Unity Atoms** and pick the Atom of your choice:
 
-[**TODO: Add image on the right click menu**]
+![create-your-first-atom](assets/create-your-first-atom.png)
+
+Now you are ready to go to [Overview and philosopy](./overview.md) to learn more about Unity Atoms!
