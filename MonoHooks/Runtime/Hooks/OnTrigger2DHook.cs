@@ -13,17 +13,17 @@ namespace UnityAtoms.MonoHooks
         /// Set to true if Event should be triggered on `OnTriggerEnter2D`
         /// </summary>
         [SerializeField]
-        private bool _triggerOnEnter;
+        private bool _triggerOnEnter = default(bool);
         /// <summary>
         /// Set to true if Event should be triggered on `OnTriggerExit2D`
         /// </summary>
         [SerializeField]
-        private bool _triggerOnExit;
+        private bool _triggerOnExit = default(bool);
         /// <summary>
         /// Set to true if Event should be triggered on `OnTriggerStay2D`
         /// </summary>
         [SerializeField]
-        private bool _triggerOnStay;
+        private bool _triggerOnStay = default(bool);
 
         private void OnTriggerEnter2D(Collider2D other)
         {
