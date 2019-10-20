@@ -1,4 +1,5 @@
 #if UNITY_2019_1_OR_NEWER
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,28 +11,47 @@ namespace UnityAtoms.Editor
     /// <typeparam name="T">The type of Atom the property drawer should apply to.</typeparam>
     public abstract class AtomDrawer<T> : PropertyDrawer where T : ScriptableObject
     {
-        private bool _userClickedToCreateAtom = false;
-        private string _nameOfNewAtom = "";
-        private string _warningText = "";
+        class DrawerData
+        {
+            public bool UserClickedToCreateAtom = false;
+            public string NameOfNewAtom = "";
+            public string WarningText = "";
+        }
+
+        private Dictionary<string, DrawerData> _perPropertyViewData = new Dictionary<string, DrawerData>();
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            var isCreatingSO = _userClickedToCreateAtom && property.objectReferenceValue == null;
-            if (!isCreatingSO || _warningText.Length <= 0) return base.GetPropertyHeight(property, label);
+            DrawerData drawerData = GetDrawerData(property.propertyPath);
+            var isCreatingSO = drawerData.UserClickedToCreateAtom && property.objectReferenceValue == null;
+            if (!isCreatingSO || drawerData.WarningText.Length <= 0) return base.GetPropertyHeight(property, label);
             return base.GetPropertyHeight(property, label) * 2 + 4f;
+        }
+
+        private DrawerData GetDrawerData(string propertyPath)
+        {
+            DrawerData drawerData;
+            if (!_perPropertyViewData.TryGetValue(propertyPath, out drawerData))
+            {
+                drawerData = new DrawerData();
+                _perPropertyViewData[propertyPath] = drawerData;
+            }
+            return drawerData;
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var isCreatingSO = _userClickedToCreateAtom && property.objectReferenceValue == null;
-            var restWidth = _userClickedToCreateAtom ? 50 : 58;
-            var gutter = _userClickedToCreateAtom ? 2f : 6f;
+            EditorGUI.BeginProperty(position, label, property);
+
+            DrawerData drawerData = GetDrawerData(property.propertyPath);
+
+            var isCreatingSO = drawerData.UserClickedToCreateAtom && property.objectReferenceValue == null;
+            var restWidth = drawerData.UserClickedToCreateAtom ? 50 : 58;
+            var gutter = drawerData.UserClickedToCreateAtom ? 2f : 6f;
             Rect restRect = new Rect();
             Rect warningRect = new Rect();
 
-            EditorGUI.BeginProperty(position, label, property);
-
-            if (_warningText.Length > 0)
+            if (drawerData.WarningText.Length > 0)
             {
                 position = IMGUIUtils.SnipRectV(position, EditorGUIUtility.singleLineHeight, out warningRect, 2f);
             }
@@ -46,9 +66,12 @@ namespace UnityAtoms.Editor
             position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), isCreatingSO ? new GUIContent("Name of New Atom") : label);
             GUI.color = defaultGUIColor;
 
+            var indent = EditorGUI.indentLevel;
+            EditorGUI.indentLevel = 0;
+
             if (isCreatingSO)
             {
-                _nameOfNewAtom = EditorGUI.TextField(position, _nameOfNewAtom);
+                drawerData.NameOfNewAtom = EditorGUI.TextField(position, drawerData.NameOfNewAtom);
             }
             else
             {
@@ -64,13 +87,13 @@ namespace UnityAtoms.Editor
                     Rect firstButtonRect = IMGUIUtils.SnipRectH(restRect, restRect.width - buttonWidth, out secondButtonRect, gutter);
                     if (GUI.Button(firstButtonRect, "✓"))
                     {
-                        if (_nameOfNewAtom.Length > 0)
+                        if (drawerData.NameOfNewAtom.Length > 0)
                         {
                             try
                             {
                                 // Create asset
                                 T so = ScriptableObject.CreateInstance<T>();
-                                AssetDatabase.CreateAsset(so, "Assets/" + _nameOfNewAtom + ".asset");
+                                AssetDatabase.CreateAsset(so, "Assets/" + drawerData.NameOfNewAtom + ".asset");
                                 AssetDatabase.SaveAssets();
                                 // Assign the newly created SO
                                 property.objectReferenceValue = so;
@@ -80,35 +103,36 @@ namespace UnityAtoms.Editor
                                 Debug.LogError("Not able to create Atom");
                             }
 
-                            _userClickedToCreateAtom = false;
-                            _warningText = "";
+                            drawerData.UserClickedToCreateAtom = false;
+                            drawerData.WarningText = "";
                         }
                         else
                         {
-                            _warningText = "Name of new Atom must be specified!";
+                            drawerData.WarningText = "Name of new Atom must be specified!";
                         }
                     }
                     if (GUI.Button(secondButtonRect, "✗"))
                     {
-                        _userClickedToCreateAtom = false;
-                        _warningText = "";
+                        drawerData.UserClickedToCreateAtom = false;
+                        drawerData.WarningText = "";
                     }
 
-                    if (_warningText.Length > 0)
+                    if (drawerData.WarningText.Length > 0)
                     {
-                        EditorGUI.HelpBox(warningRect, _warningText, MessageType.Warning);
+                        EditorGUI.HelpBox(warningRect, drawerData.WarningText, MessageType.Warning);
                     }
                 }
                 else
                 {
                     if (GUI.Button(restRect, "Create"))
                     {
-                        _nameOfNewAtom = "";
-                        _userClickedToCreateAtom = true;
+                        drawerData.NameOfNewAtom = "";
+                        drawerData.UserClickedToCreateAtom = true;
                     }
                 }
             }
 
+            EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
         }
     }

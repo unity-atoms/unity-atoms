@@ -14,6 +14,10 @@
 
 _The release notes were introduced halfway through the work with version `2.0.0`. The list below might therefore not me 100% complete._
 
+## 🐛 Bug fixes
+
+-   Fix indent and ui state issues of the `AtomDrawer&lt;T&gt;`
+
 ## 💥 Breaking changes
 
 -   The repo has been split up to 6 different packages: core, mobile, mono-hooks, scene-mgmt, tags and ui
