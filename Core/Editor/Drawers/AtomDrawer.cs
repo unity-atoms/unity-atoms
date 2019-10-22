@@ -24,7 +24,7 @@ namespace UnityAtoms.Editor
         {
             if (property.serializedObject.isEditingMultipleObjects)
             {
-                return 0f;
+                return EditorGUI.GetPropertyHeight(property);
             }
 
             DrawerData drawerData = GetDrawerData(property.propertyPath);
@@ -48,6 +48,7 @@ namespace UnityAtoms.Editor
         {
             if (property.serializedObject.isEditingMultipleObjects)
             {
+                EditorGUI.PropertyField(position, property, label, true);
                 return;
             }
 
