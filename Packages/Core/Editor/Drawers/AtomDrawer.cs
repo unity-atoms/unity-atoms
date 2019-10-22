@@ -22,6 +22,11 @@ namespace UnityAtoms.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
+            if (property.serializedObject.isEditingMultipleObjects)
+            {
+                return 0f;
+            }
+
             DrawerData drawerData = GetDrawerData(property.propertyPath);
             var isCreatingSO = drawerData.UserClickedToCreateAtom && property.objectReferenceValue == null;
             if (!isCreatingSO || drawerData.WarningText.Length <= 0) return base.GetPropertyHeight(property, label);
@@ -41,6 +46,11 @@ namespace UnityAtoms.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property.serializedObject.isEditingMultipleObjects)
+            {
+                return;
+            }
+
             EditorGUI.BeginProperty(position, label, property);
 
             DrawerData drawerData = GetDrawerData(property.propertyPath);
