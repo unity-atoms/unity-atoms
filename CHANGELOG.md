@@ -10,7 +10,7 @@
 
 -   <Fill in your change here>
 
-# 2.0.0 (September 3, 2019)
+# 2.0.0 (October 24, 2019)
 
 _The release notes were introduced halfway through the work with version `2.0.0`. The list below might therefore not me 100% complete._
 

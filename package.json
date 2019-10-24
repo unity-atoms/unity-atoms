@@ -1,7 +1,7 @@
 {
   "name": "com.mambojambostudios.unity-atoms",
   "displayName": "Unity Atoms",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
@@ -18,12 +18,12 @@
   "category": "Unity",
   "scripts": {
     "publish:all": "npm run publish:core && npm run publish:mobile && npm run publish:scene && npm run publish:tags && npm run publish:ui && npm run publish:mono",
-    "publish:core": "npm publish ./Packages/Core --tag beta",
-    "publish:mobile": "npm publish ./Packages/Mobile --tag beta",
-    "publish:scene": "npm publish ./Packages/SceneMgmt --tag beta",
-    "publish:tags": "npm publish ./Packages/Tags --tag beta",
-    "publish:ui": "npm publish ./Packages/UI --tag beta",
-    "publish:mono": "npm publish ./Packages/MonoHooks --tag beta",
+    "publish:core": "npm publish ./Packages/Core",
+    "publish:mobile": "npm publish ./Packages/Mobile",
+    "publish:scene": "npm publish ./Packages/SceneMgmt",
+    "publish:tags": "npm publish ./Packages/Tags",
+    "publish:ui": "npm publish ./Packages/UI",
+    "publish:mono": "npm publish ./Packages/MonoHooks",
     "generate:docs": "node scripts/generateDocs.js",
     "generate:docs:verbose": "node scripts/generateDocs.js --verbose"
   },
