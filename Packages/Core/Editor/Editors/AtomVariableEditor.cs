@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine;
 
 namespace UnityAtoms.Editor{
     public abstract class AtomVariableEditor<T> : UnityEditor.Editor
@@ -6,14 +7,24 @@ namespace UnityAtoms.Editor{
         protected virtual T FromProperty(SerializedProperty property) => property.GetValue<T>();
         protected abstract T Field(string label, T value);
 
+        private bool _lockedInitialValue = true;
         public override void OnInspectorGUI()
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
             EditorGUILayout.Space();
 
-            EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUI.BeginDisabledGroup(_lockedInitialValue && EditorApplication.isPlayingOrWillChangePlaymode);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_initialValue"));
             EditorGUI.EndDisabledGroup();
+            if(EditorApplication.isPlaying)
+            {
+                _lockedInitialValue = GUILayout.Toggle(_lockedInitialValue, "", new GUIStyle("IN LockButton"){fixedHeight = 16, margin = new RectOffset(0, 2, 4, 0)});
+            }
+            EditorGUILayout.EndHorizontal();
+
+
+
 
             EditorGUI.BeginChangeCheck();
             EditorGUI.BeginDisabledGroup(!EditorApplication.isPlaying);
