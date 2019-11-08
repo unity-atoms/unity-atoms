@@ -1,15 +1,14 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
 namespace UnityAtoms.Editor{
     public abstract class AtomVariableEditor<T> : UnityEditor.Editor
     {
-        protected virtual T FromProperty(SerializedProperty property) => property.GetValue<T>();
-        protected abstract T Field(string label, T value);
-
         private bool _lockedInitialValue = true;
         public override void OnInspectorGUI()
         {
+            bool dontApply = false;
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
             EditorGUILayout.Space();
 
@@ -23,18 +22,17 @@ namespace UnityAtoms.Editor{
             }
             EditorGUILayout.EndHorizontal();
 
-
-
-
-            EditorGUI.BeginChangeCheck();
             EditorGUI.BeginDisabledGroup(!EditorApplication.isPlaying);
-            T value = FromProperty(serializedObject.FindProperty("_value"));
-            value = Field("Value", value);
-            EditorGUI.EndDisabledGroup();
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_value"));
             if (EditorGUI.EndChangeCheck() && target is AtomBaseVariable atomTarget)
             {
+                var value = serializedObject.FindProperty("_value").GetPropertyValue();
                 atomTarget.BaseValue = value;
+                dontApply = true;
             }
+            EditorGUI.EndDisabledGroup();
+
 
             EditorGUI.BeginDisabledGroup(true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_oldValue"));
@@ -43,8 +41,7 @@ namespace UnityAtoms.Editor{
             EditorGUILayout.PropertyField(serializedObject.FindProperty("Changed"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("ChangedWithHistory"));
 
-            serializedObject.ApplyModifiedProperties();
-
+            if(!dontApply) serializedObject.ApplyModifiedProperties();
         }
     }
 }

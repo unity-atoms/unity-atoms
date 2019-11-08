@@ -16,6 +16,5 @@ namespace UnityAtoms.Editor
     [CustomEditor(typeof({TYPE_NAME}Variable))]
     public sealed class {TYPE_NAME}VariableEditor : AtomVariableEditor<{TYPE}>
     {
-        protected override {TYPE} Field(string label, {TYPE} value) => SerializedPropertyExtensions.ValueLayoutField(label, value);
     }
 }
