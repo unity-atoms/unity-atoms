@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace UnityAtoms
@@ -56,7 +57,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Get the value for the Reference.
+        /// Get or set the value for the Reference.
         /// </summary>
         /// <value>The value of type `T`.</value>
         public T Value
@@ -70,6 +71,23 @@ namespace UnityAtoms
                     case (AtomReference.Usage.Value):
                     default:
                         return _value;
+                }
+            }
+            set
+            {
+                switch (_usage)
+                {
+                    case (AtomReference.Usage.Constant): throw new NotSupportedException("Can't reassign constant value");
+                    case (AtomReference.Usage.Variable):
+                    {
+                        _variable.Value = value;
+                        break;
+                    }
+                    case (AtomReference.Usage.Value):
+                    {
+                        _value = value;
+                        break;
+                    }
                 }
             }
         }
