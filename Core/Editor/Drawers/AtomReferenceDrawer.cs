@@ -14,6 +14,19 @@ namespace UnityAtoms.Editor
             { "Use Value", "Use Constant", "Use Variable" };
         private static GUIStyle _popupStyle;
 
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            SerializedProperty _usage = property.FindPropertyRelative("_usage");
+            SerializedProperty _value = property.FindPropertyRelative("_value");
+            SerializedProperty _constant = property.FindPropertyRelative("_constant");
+            SerializedProperty _variable = property.FindPropertyRelative("_variable");
+
+            var usage = (AtomReference.Usage)_usage.intValue;
+            var valueToUse = usage == AtomReference.Usage.Value ? _value : usage == AtomReference.Usage.Constant ? _constant : _variable;
+
+            return EditorGUI.GetPropertyHeight(valueToUse, label);
+        }
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             if (_popupStyle == null)
