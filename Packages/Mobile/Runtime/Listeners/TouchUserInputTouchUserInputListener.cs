@@ -7,7 +7,7 @@ namespace UnityAtoms.Mobile
     /// Listener x 2 of type `TouchUserInput`. Inherits from `AtomListener&lt;TouchUserInput, TouchUserInput, TouchUserInputTouchUserInputAction, TouchUserInputTouchUserInputEvent, TouchUserInputTouchUserInputUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Listeners/TouchUserInput - TouchUserInput")]
+    [AddComponentMenu("Unity Atoms/Listeners/TouchUserInput TouchUserInput Listener")]
     public sealed class TouchUserInputTouchUserInputListener : AtomListener<
         TouchUserInput,
         TouchUserInput,
