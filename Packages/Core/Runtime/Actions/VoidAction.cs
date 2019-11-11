@@ -15,10 +15,5 @@ namespace UnityAtoms
         {
             Do();
         }
-
-        /// <summary>
-        /// Do the Action.
-        /// </summary>
-        public abstract void Do();
     }
 }
