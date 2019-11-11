@@ -63,6 +63,10 @@ The Unity Atoms docs are now published at **https://adamramberg.github.io/unity-
 
 Read [this](https://medium.com/@adamramberg/unity-atoms-tiny-modular-pieces-utilizing-the-power-of-scriptable-objects-e8add1b95201) article on Medium for a great introduction to Unity Atoms.
 
+## Looking for support?
+
+For questions and support please join our [Discord channel](https://discord.gg/W4yd7E7).
+
 ## Maintainers
 
 -   [AdamRamberg](https://github.com/AdamRamberg)
