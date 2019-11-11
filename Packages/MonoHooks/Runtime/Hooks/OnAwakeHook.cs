@@ -7,7 +7,7 @@ namespace UnityAtoms.MonoHooks
     /// Mono Hook for [`Awake`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html).
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
-    [AddComponentMenu("Unity Atoms/Hooks/On Awake")]
+    [AddComponentMenu("Unity Atoms/Hooks/On Awake Hook")]
     public sealed class OnAwakeHook : VoidHook
     {
         /// <summary>
