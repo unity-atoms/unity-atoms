@@ -77,7 +77,6 @@ namespace UnityAtoms
             {
                 switch (_usage)
                 {
-                    case (AtomReference.Usage.Constant): throw new NotSupportedException("Can't reassign constant value");
                     case (AtomReference.Usage.Variable):
                     {
                         _variable.Value = value;
@@ -88,6 +87,9 @@ namespace UnityAtoms
                         _value = value;
                         break;
                     }
+                    case (AtomReference.Usage.Constant):
+                    default:
+                        throw new NotSupportedException("Can't reassign constant value");
                 }
             }
         }
