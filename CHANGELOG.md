@@ -8,7 +8,13 @@
 
 # [Unreleased]
 
--   <Fill in your change here>
+## 📝 Documentation
+
+-   [#73](https://github.com/AdamRamberg/unity-atoms/issues/73) Add discord link to docs. ([@AdamRamberg](https://github.com/AdamRamberg))
+
+## 🚀 New feature
+
+-   [#78](https://github.com/AdamRamberg/unity-atoms/pull/78) Setter to AtomReference's Value was added. ([@Saso222](https://github.com/Saso222), [@soraphis](https://github.com/soraphis))
 
 # 2.0.0 (October 24, 2019)
 
