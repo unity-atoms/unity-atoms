@@ -6,7 +6,7 @@ namespace UnityAtoms
     /// Listener of type `Collider`. Inherits from `AtomListener&lt;Collider, ColliderAction, ColliderEvent, ColliderUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Listeners/Collider")]
+    [AddComponentMenu("Unity Atoms/Listeners/Collider Listener")]
     public sealed class ColliderListener : AtomListener<
         Collider,
         ColliderAction,

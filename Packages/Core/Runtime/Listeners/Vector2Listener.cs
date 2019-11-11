@@ -6,7 +6,7 @@ namespace UnityAtoms
     /// Listener of type `Vector2`. Inherits from `AtomListener&lt;Vector2, Vector2Action, Vector2Event, Vector2UnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Listeners/Vector2")]
+    [AddComponentMenu("Unity Atoms/Listeners/Vector2 Listener")]
     public sealed class Vector2Listener : AtomListener<
         Vector2,
         Vector2Action,

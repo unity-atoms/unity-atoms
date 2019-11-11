@@ -6,7 +6,7 @@ namespace UnityAtoms
     /// Listener x 2 of type `Color`. Inherits from `AtomListener&lt;Color, Color, ColorColorAction, ColorColorEvent, ColorColorUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Listeners/Color - Color")]
+    [AddComponentMenu("Unity Atoms/Listeners/Color Color Listener")]
     public sealed class ColorColorListener : AtomListener<
         Color,
         Color,
