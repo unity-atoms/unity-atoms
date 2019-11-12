@@ -13,7 +13,7 @@ namespace UnityAtoms
     /// Listener x 2 of type `{TYPE}`. Inherits from `AtomListener&lt;{TYPE}, {TYPE}, {TYPE_NAME}{TYPE_NAME}Action, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}UnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Listeners/{TYPE_NAME} {TYPE_NAME} Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/{TYPE_NAME} x 2 Listener")]
     public sealed class {TYPE_NAME}{TYPE_NAME}Listener : AtomListener<
         {TYPE},
         {TYPE},
