@@ -1,0 +1,30 @@
+{
+    "name": "MamboJamboStudios.UnityAtomsConditions.Editor",
+    "references": [
+        "GUID:14165214884ae4a619bfb290f28194a7",
+        "GUID:0014f6b0a4534f94f86d62fb57e0332c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "Android",
+        "BJM",
+        "iOS",
+        "LinuxStandalone64",
+        "Lumin",
+        "macOSStandalone",
+        "PS4",
+        "Switch",
+        "tvOS",
+        "WSA",
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64",
+        "XboxOne"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

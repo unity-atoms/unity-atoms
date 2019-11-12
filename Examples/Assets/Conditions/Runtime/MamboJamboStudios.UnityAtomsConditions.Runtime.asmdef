@@ -1,0 +1,14 @@
+{
+    "name": "MamboJamboStudios.UnityAtomsConditions.Runtime",
+    "references": [
+        "GUID:14165214884ae4a619bfb290f28194a7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
