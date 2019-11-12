@@ -32,19 +32,16 @@ namespace UnityAtoms.Editor
                 case SerializedPropertyType.RectInt: return property.rectIntValue;
                 case SerializedPropertyType.BoundsInt: return property.boundsIntValue;
                 case SerializedPropertyType.Bounds: return property.boundsValue;
-                case SerializedPropertyType.ExposedReference: return property.exposedReferenceValue;
                 case SerializedPropertyType.Character: return (char)property.intValue;
                 case SerializedPropertyType.AnimationCurve: return property.animationCurveValue;
                 case SerializedPropertyType.FixedBufferSize: return property.fixedBufferSize;
-                case SerializedPropertyType.ManagedReference: // return property.managedReferenceValue;
+                case SerializedPropertyType.ExposedReference: return property.exposedReferenceValue;
                 case SerializedPropertyType.Generic:
                 case SerializedPropertyType.Gradient:
                     throw new InvalidOperationException($"Cant handle {SerializedPropertyType.Gradient} types.");
                 default:
                     throw new NotImplementedException();
             }
-
-            return null;
         }
 
     }

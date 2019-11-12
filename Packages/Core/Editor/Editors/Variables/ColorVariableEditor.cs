@@ -1,9 +1,14 @@
+// generated file
 using UnityEditor;
 using UnityEngine;
 
-namespace UnityAtoms.Editor{
+namespace UnityAtoms.Editor
+{
+    /// <summary>
+    /// Variable Inspector of type `Color`. Inherits from `AtomVariableEditor`
+    /// </summary>
     [CustomEditor(typeof(ColorVariable))]
-    public class ColorVariableEditor : AtomVariableEditor<Color>
+    public sealed class ColorVariableEditor : AtomVariableEditor
     {
     }
 }

@@ -1,9 +1,14 @@
+// generated file
 using UnityEditor;
 using UnityEngine;
 
-namespace UnityAtoms.Editor{
+namespace UnityAtoms.Editor
+{
+    /// <summary>
+    /// Variable Inspector of type `Vector3`. Inherits from `AtomVariableEditor`
+    /// </summary>
     [CustomEditor(typeof(Vector3Variable))]
-    public class Vector3VariableEditor : AtomVariableEditor<Vector3>
+    public sealed class Vector3VariableEditor : AtomVariableEditor
     {
     }
 }

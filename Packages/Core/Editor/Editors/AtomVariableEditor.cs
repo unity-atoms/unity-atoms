@@ -3,7 +3,10 @@ using UnityEditor;
 using UnityEngine;
 
 namespace UnityAtoms.Editor{
-    public abstract class AtomVariableEditor<T> : UnityEditor.Editor
+    /// <summary>
+    /// Custom editor for Variables. Provides a better user workflow and indicates when which variables can be edited
+    /// </summary>
+    public abstract class AtomVariableEditor : UnityEditor.Editor
     {
         private bool _lockedInitialValue = true;
         public override void OnInspectorGUI()
@@ -24,7 +27,7 @@ namespace UnityAtoms.Editor{
 
             EditorGUI.BeginDisabledGroup(!EditorApplication.isPlaying);
             EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_value"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_value"), true);
             if (EditorGUI.EndChangeCheck() && target is AtomBaseVariable atomTarget)
             {
                 var value = serializedObject.FindProperty("_value").GetPropertyValue();

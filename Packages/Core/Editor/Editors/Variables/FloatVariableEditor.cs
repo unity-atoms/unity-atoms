@@ -1,8 +1,13 @@
+// generated file
 using UnityEditor;
 
-namespace UnityAtoms.Editor{
+namespace UnityAtoms.Editor
+{
+    /// <summary>
+    /// Variable Inspector of type `float`. Inherits from `AtomVariableEditor`
+    /// </summary>
     [CustomEditor(typeof(FloatVariable))]
-    public class FloatVariableEditor : AtomVariableEditor<float>
+    public sealed class FloatVariableEditor : AtomVariableEditor
     {
     }
 }
