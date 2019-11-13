@@ -7,7 +7,7 @@ namespace UnityAtoms
     /// Listener of type `Void`. Inherits from `AtomListener&lt;Void, VoidAction, VoidEvent, VoidUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Listeners/Void")]
+    [AddComponentMenu("Unity Atoms/Listeners/Void Listener")]
     public sealed class VoidListener : AtomListener<
         Void,
         VoidAction,

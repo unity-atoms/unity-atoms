@@ -7,7 +7,7 @@ namespace UnityAtoms.MonoHooks
     /// Mono Hook for On Button Click
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
-    [AddComponentMenu("Unity Atoms/Hooks/On Button Click")]
+    [AddComponentMenu("Unity Atoms/Hooks/On Button Click Hook")]
     [RequireComponent(typeof(Button))]
     public sealed class OnButtonClickHook : VoidHook
     {

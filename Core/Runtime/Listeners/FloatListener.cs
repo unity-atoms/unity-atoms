@@ -6,7 +6,7 @@ namespace UnityAtoms
     /// Listener of type `float`. Inherits from `AtomListener&lt;float, FloatAction, FloatEvent, FloatUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Listeners/Float")]
+    [AddComponentMenu("Unity Atoms/Listeners/Float Listener")]
     public sealed class FloatListener : AtomListener<
         float,
         FloatAction,
