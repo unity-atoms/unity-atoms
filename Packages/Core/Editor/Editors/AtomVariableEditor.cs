@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -25,33 +26,64 @@ namespace UnityAtoms.Editor{
             }
             EditorGUILayout.EndHorizontal();
 
-            EditorGUI.BeginDisabledGroup(!EditorApplication.isPlaying);
-            EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_value"), true);
-            if (EditorGUI.EndChangeCheck() && target is AtomBaseVariable atomTarget)
-            {
-                try
+
+            using(new EditorGUI.DisabledGroupScope(!EditorApplication.isPlaying)){
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("_value"), true);
+                if (EditorGUI.EndChangeCheck() && target is AtomBaseVariable atomTarget)
                 {
-                    var value = serializedObject.FindProperty("_value").GetPropertyValue();
-                    atomTarget.BaseValue = value;
-                    dontApply = true;
-                }
-                catch (InvalidOperationException)
-                {
-                    var value = serializedObject.FindProperty("_value").GetGenericPropertyValue(atomTarget.BaseValue);
-                    atomTarget.BaseValue = value;
-                    dontApply = true;
+                    try
+                    {
+                        var value = serializedObject.FindProperty("_value").GetPropertyValue();
+                        atomTarget.BaseValue = value;
+                        dontApply = true;
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        var value = serializedObject.FindProperty("_value").GetGenericPropertyValue(atomTarget.BaseValue);
+                        atomTarget.BaseValue = value;
+                        dontApply = true;
+                    }
                 }
             }
-            EditorGUI.EndDisabledGroup();
+
 
 
             EditorGUI.BeginDisabledGroup(true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_oldValue"));
             EditorGUI.EndDisabledGroup();
 
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("Changed"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("ChangedWithHistory"));
+            const int raiseButtonWidth = 52;
+
+            using(new EditorGUILayout.HorizontalScope())
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("Changed"));
+                var listener = serializedObject.FindProperty("Changed").objectReferenceValue;
+                if (listener != null && listener is AtomEvent evt && target is AtomBaseVariable atomTarget)
+                {
+                    GUILayout.Space(2);
+                    if(GUILayout.Button("Raise", GUILayout.Width(raiseButtonWidth), GUILayout.Height(EditorGUIUtility.singleLineHeight)))
+                        evt.GetType().GetMethod("Raise", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new []{atomTarget.BaseValue});
+                }
+
+            }
+
+            using(new EditorGUILayout.HorizontalScope())
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("ChangedWithHistory"));
+                var listener = serializedObject.FindProperty("ChangedWithHistory").objectReferenceValue;
+                if (listener != null && listener is AtomEvent evt && target is AtomBaseVariable atomTarget)
+                {
+                    object oldValue = serializedObject.FindProperty("_oldValue").GetGenericPropertyValue(atomTarget.BaseValue);
+
+                    GUILayout.Space(2);
+                    if(GUILayout.Button("Raise", GUILayout.Width(raiseButtonWidth), GUILayout.Height(EditorGUIUtility.singleLineHeight)))
+                        evt.GetType().GetMethod("Raise", BindingFlags.Public | BindingFlags.Instance)
+                            ?.Invoke(evt, new []{atomTarget.BaseValue, oldValue});
+                }
+
+            }
+
 
             if(!dontApply) serializedObject.ApplyModifiedProperties();
         }
