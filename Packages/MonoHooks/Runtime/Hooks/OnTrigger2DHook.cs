@@ -6,7 +6,7 @@ namespace UnityAtoms.MonoHooks
     /// Mono Hook for [`OnTriggerEnter2D`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerEnter2D.html), [`OnTriggerExit2D`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerExit2D.html) and [`OnTriggerStay2D`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerStay2D.html)
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
-    [AddComponentMenu("Unity Atoms/Hooks/On Trigger 2D")]
+    [AddComponentMenu("Unity Atoms/Hooks/On Trigger 2D Hook")]
     public sealed class OnTrigger2DHook : Collider2DHook
     {
         /// <summary>

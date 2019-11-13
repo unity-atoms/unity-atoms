@@ -6,7 +6,7 @@ namespace UnityAtoms.MonoHooks
     /// Mono Hook for [`OnTriggerEnter`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerEnter.html), [`OnTriggerExit`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerExit.html) and [`OnTriggerStay`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerStay.html)
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
-    [AddComponentMenu("Unity Atoms/Hooks/On Trigger")]
+    [AddComponentMenu("Unity Atoms/Hooks/On Trigger Hook")]
     public sealed class OnTriggerStayHook : ColliderHook
     {
         /// <summary>
