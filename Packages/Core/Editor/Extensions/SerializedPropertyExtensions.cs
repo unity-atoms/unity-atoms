@@ -1,6 +1,7 @@
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,6 +9,24 @@ namespace UnityAtoms.Editor
 {
     internal static class SerializedPropertyExtensions
     {
+
+        public static T GetGenericPropertyValue<T>(this SerializedProperty property, T managedObjectOut)
+        {
+            object box = managedObjectOut;
+            var type = managedObjectOut.GetType();
+            foreach (var field in type.GetFields(BindingFlags.Instance | BindingFlags.Public))
+            {
+                try
+                {
+                    field.SetValue(box, property.FindPropertyRelative(field.Name).GetPropertyValue());
+                }
+                catch (InvalidOperationException)
+                {
+                }
+            }
+            return (T)box;
+        }
+
         public static object GetPropertyValue(this SerializedProperty property)
         {
             if (property == null) throw new ArgumentNullException(nameof(property));
@@ -37,8 +56,9 @@ namespace UnityAtoms.Editor
                 case SerializedPropertyType.FixedBufferSize: return property.fixedBufferSize;
                 case SerializedPropertyType.ExposedReference: return property.exposedReferenceValue;
                 case SerializedPropertyType.Generic:
+                    throw new InvalidOperationException($"Cant handle {property.propertyType} types. for property {property.name}");
                 case SerializedPropertyType.Gradient:
-                    throw new InvalidOperationException($"Cant handle {SerializedPropertyType.Gradient} types.");
+                    throw new InvalidOperationException($"Cant handle {property.propertyType} types. for property {property.name}");
                 default:
                     throw new NotImplementedException();
             }

@@ -30,9 +30,18 @@ namespace UnityAtoms.Editor{
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_value"), true);
             if (EditorGUI.EndChangeCheck() && target is AtomBaseVariable atomTarget)
             {
-                var value = serializedObject.FindProperty("_value").GetPropertyValue();
-                atomTarget.BaseValue = value;
-                dontApply = true;
+                try
+                {
+                    var value = serializedObject.FindProperty("_value").GetPropertyValue();
+                    atomTarget.BaseValue = value;
+                    dontApply = true;
+                }
+                catch (InvalidOperationException)
+                {
+                    var value = serializedObject.FindProperty("_value").GetGenericPropertyValue(atomTarget.BaseValue);
+                    atomTarget.BaseValue = value;
+                    dontApply = true;
+                }
             }
             EditorGUI.EndDisabledGroup();
 
