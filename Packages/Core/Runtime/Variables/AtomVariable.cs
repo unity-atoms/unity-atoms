@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
@@ -12,8 +10,7 @@ namespace UnityAtoms
     /// <typeparam name="E1">Event of type `AtomEvent&lt;T&gt;`.</typeparam>
     /// <typeparam name="E2">Event of type `AtomEvent&lt;T, T&gt;`.</typeparam>
     [EditorIcon("atom-icon-lush")]
-    public abstract class AtomVariable<T, E1, E2> : AtomBaseVariable<T>,
-        ISerializationCallbackReceiver
+    public abstract class AtomVariable<T, E1, E2> : AtomBaseVariable<T>
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<T, T>
     {
@@ -58,6 +55,9 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
+            _oldValue = _initialValue;
+            _value = _initialValue;
+
             if (Changed == null) return;
             Changed.Raise(Value);
         }
@@ -107,9 +107,6 @@ namespace UnityAtoms
         {
             return SetValue(variable.Value);
         }
-
-        public void OnBeforeSerialize() { }
-        public void OnAfterDeserialize() { _value = _initialValue; }
 
         #region Observable
 
