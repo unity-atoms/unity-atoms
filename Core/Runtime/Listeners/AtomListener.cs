@@ -67,6 +67,14 @@ namespace UnityAtoms
                 _actionResponses[i].Do(item);
             }
         }
+
+        /// <summary>
+        /// Helper to regiser as listener callback
+        /// </summary>
+        public void DebugLog(T item)
+        {
+            Debug.Log(item.ToString());
+        }
     }
 
     /// <summary>
@@ -133,6 +141,14 @@ namespace UnityAtoms
             {
                 _actionResponses[i].Do(first, second);
             }
+        }
+
+        /// <summary>
+        /// Helper to regiser as listener callback
+        /// </summary>
+        public void DebugLog(T1 item1, T2 item2)
+        {
+            Debug.Log(item1.ToString() + " <- " + item2);
         }
     }
 }
