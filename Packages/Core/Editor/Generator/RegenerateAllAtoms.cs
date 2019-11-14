@@ -45,7 +45,7 @@ namespace UnityAtoms.Editor
                 Debug.LogWarning("This is currently only available working in the Unity Atoms project...");
             }
 
-            string path = EditorUtility.OpenFolderPanel("Select 'Packages' folder (containing Core)", ".", "");
+            string path = EditorUtility.OpenFolderPanel("Select the 'Packages' folder (containing Core)", ".", "");
             if (string.IsNullOrEmpty(path))
             {
                 Debug.LogWarning("Empty path. Abort.");
@@ -54,13 +54,13 @@ namespace UnityAtoms.Editor
             // make path relative:
             path = new Uri(Application.dataPath).MakeRelativeUri(new Uri(path)).ToString();
 
-            var i = EditorUtility.DisplayDialogComplex("Is UnityAtoms Repository?",
-                "Should the files be generated, like in the UnityAtoms Repository?\n"+path,
-                "yes, i know what I'm doing", "cancel", "no");
+            var i = EditorUtility.DisplayDialogComplex("Regenerate Atoms",
+                $"Do you want to regenerate all Atoms and write them to '{path}'?\n",
+                "Yes, I know what I'm doing!", "Cancel", "");
 
-            if(i == 1)
+            if (i == 1)
             {
-                Debug.LogWarning("Empty path. Abort.");
+                Debug.LogWarning("Cancelled generating Atoms.");
                 return;
             }
 
