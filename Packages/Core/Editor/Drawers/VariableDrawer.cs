@@ -14,15 +14,27 @@ namespace UnityAtoms.Editor
                 return;
             }
 
-            var widht = 58 + (property.depth == 0 ? EditorGUIUtility.labelWidth : 0);
-            var restRect = IMGUIUtils.SnipRectH(position, widht, out position, 6f);
+            var inner = new SerializedObject(property.objectReferenceValue);
+            var valueProp = inner.FindProperty("_value");
+            var width = GetPreviewSpace(valueProp.type) + (property.depth == 0 ? EditorGUIUtility.labelWidth : 0);
+            var restRect = IMGUIUtils.SnipRectH(position, width, out position, 6f);
             base.OnGUI(position, property, GUIContent.none);
 
             EditorGUI.BeginDisabledGroup(true);
-
-            var inner = new SerializedObject(property.objectReferenceValue);
-            EditorGUI.PropertyField(restRect, inner.FindProperty("_value"), label, false);
+            EditorGUI.PropertyField(restRect, valueProp, label, false);
             EditorGUI.EndDisabledGroup();
+        }
+
+        private float GetPreviewSpace(string type)
+        {
+            switch (type)
+            {
+                case "Vector2":
+                case "Vector3":
+                    return 128;
+                default:
+                    return 58;
+            }
         }
     }
 }
