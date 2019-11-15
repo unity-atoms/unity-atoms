@@ -8,6 +8,10 @@
 
 # [Unreleased]
 
+## 🐛 Bug fixes
+
+-   [#91](https://github.com/AdamRamberg/unity-atoms/issues/91) Name OnTriggerHook class properly. ([@AdamRamberg](https://github.com/AdamRamberg))
+
 ## 📝 Documentation
 
 -   [#73](https://github.com/AdamRamberg/unity-atoms/issues/73) Add discord link to docs. ([@AdamRamberg](https://github.com/AdamRamberg))
