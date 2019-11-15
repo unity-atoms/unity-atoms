@@ -7,7 +7,7 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
     [AddComponentMenu("Unity Atoms/Hooks/On Trigger Hook")]
-    public sealed class OnTriggerStayHook : ColliderHook
+    public sealed class OnTriggerHook : ColliderHook
     {
         /// <summary>
         /// Set to true if Event should be triggered on `OnTriggerEnter`
