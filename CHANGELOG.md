@@ -4,7 +4,7 @@
 🏠 = Internal
 🏃‍♀= Performance
 💅 = Polish
-🚀 = New feature
+🚀 = New features
 
 # [Unreleased]
 
@@ -17,7 +17,7 @@
 -   [#73](https://github.com/AdamRamberg/unity-atoms/issues/73) Add discord link to docs. ([@AdamRamberg](https://github.com/AdamRamberg))
 -   [#84](https://github.com/AdamRamberg/unity-atoms/pull/84) Changed AddComponentMenu names for Listeners/Hooks. ([@IceTrooper](https://github.com/IceTrooper))
 
-## 🚀 New feature
+## 🚀 New features
 
 -   [#78](https://github.com/AdamRamberg/unity-atoms/pull/78) Setter to AtomReference's Value was added. ([@Saso222](https://github.com/Saso222), [@soraphis](https://github.com/soraphis))
 
