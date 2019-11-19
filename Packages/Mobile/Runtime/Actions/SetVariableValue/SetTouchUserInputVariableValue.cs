@@ -14,6 +14,7 @@ namespace UnityAtoms.Mobile
         TouchUserInputConstant,
         TouchUserInputReference,
         TouchUserInputEvent,
-        TouchUserInputTouchUserInputEvent>
+        TouchUserInputTouchUserInputEvent,
+        TouchUserInputTouchUserInputFunction>
     { }
 }

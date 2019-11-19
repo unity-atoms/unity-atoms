@@ -13,6 +13,7 @@ namespace UnityAtoms
         GameObjectConstant,
         GameObjectReference,
         GameObjectEvent,
-        GameObjectGameObjectEvent>
+        GameObjectGameObjectEvent,
+        GameObjectGameObjectFunction>
     { }
 }

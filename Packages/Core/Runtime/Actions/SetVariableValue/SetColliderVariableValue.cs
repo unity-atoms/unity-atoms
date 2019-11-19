@@ -13,6 +13,7 @@ namespace UnityAtoms
         ColliderConstant,
         ColliderReference,
         ColliderEvent,
-        ColliderColliderEvent>
+        ColliderColliderEvent,
+        ColliderColliderFunction>
     { }
 }

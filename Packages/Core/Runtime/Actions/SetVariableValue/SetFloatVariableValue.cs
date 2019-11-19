@@ -13,6 +13,7 @@ namespace UnityAtoms
         FloatConstant,
         FloatReference,
         FloatEvent,
-        FloatFloatEvent>
+        FloatFloatEvent,
+        FloatFloatFunction>
     { }
 }

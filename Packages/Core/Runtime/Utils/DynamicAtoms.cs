@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityAtoms
@@ -18,15 +19,18 @@ namespace UnityAtoms
         /// <typeparam name="V">The Variable type AtomVariable&lt;T, E1, E2&gt;`.</typeparam>
         /// <typeparam name="E1">The type of the `changed` Event of type `AtomEvent&lt;T&gt;`.</typeparam>
         /// <typeparam name="E2">The type of the `changedWithHistory` Event of type `AtomEvent&lt;T, T&gt;`.</typeparam>
+        /// <typeparam name="F">The type of the `preProcessors` Functions of type `AtomFunction&lt;T, T&gt;`.</typeparam>
         /// <returns>The Variable created.</returns>
-        public static V CreateVariable<T, V, E1, E2>(T initialValue, E1 changed = null, E2 changedWithHistory = null)
-            where V : AtomVariable<T, E1, E2>
+        public static V CreateVariable<T, V, E1, E2, F>(T initialValue, E1 changed = null, E2 changedWithHistory = null, List<F> preProcessors = null)
+            where V : AtomVariable<T, E1, E2, F>
             where E1 : AtomEvent<T> where E2 : AtomEvent<T, T>
+            where F : AtomFunction<T, T>
         {
             var sov = ScriptableObject.CreateInstance<V>();
             sov.Changed = changed;
             sov.ChangedWithHistory = changedWithHistory;
             sov.Value = initialValue;
+            sov.PreChangeTransformers = preProcessors;
             return sov;
         }
 

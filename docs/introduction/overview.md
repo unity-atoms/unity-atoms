@@ -22,6 +22,8 @@ It is possible to attach an event to a Variable that gets raised when its update
 
 It is also possible to attach another event to a Variable that also gets raised when a Variable is changed, but that contains both the old and the new value of the Variable.
 
+You can also add pre change transformers to a Variable. A pre change transformer is an AtomFunction that takes the value type of the Variable, performs some logic, and returns a new value of the same type. It's called on `OnEnable` as well as before setting a new Value of a Variable. An example of a pre change transformer is `ClampInt`, an `IntIntFunction` that clamps the Variable's value between two values.
+
 Unity Atoms also offer some variations / additions to Variables such as Contants, References and Lists.
 
 ### Constants
