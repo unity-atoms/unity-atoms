@@ -57,16 +57,36 @@ namespace UnityAtoms
         /// <summary>
         /// When setting the value of a Variable the new value will be piped through all the pre change transformers, which allows you to create custom logic and restriction on for example what values can be set for this Variable.
         /// </summary>
+        /// <value>Get the list of pre change transformers.</value>
+        public List<F> PreChangeTransformers
+        {
+            get => _preChangeTransformers;
+            set
+            {
+                if (value == null)
+                {
+                    _preChangeTransformers.Clear();
+                }
+                else
+                {
+                    _preChangeTransformers = value;
+                }
+            }
+        }
+
         [SerializeField]
-        public List<F> PreChangeTransformers;
+        private List<F> _preChangeTransformers = new List<F>();
 
         protected abstract bool AreEqual(T first, T second);
 
+        private void OnValidate()
+        {
+            _initialValue = RunPreChangeTransformers(_initialValue);
+            _value = RunPreChangeTransformers(_value);
+        }
+
         private void OnEnable()
         {
-            if (PreChangeTransformers == null) { PreChangeTransformers = new List<F>(); }
-            _initialValue = RunPreChangeTransformers(_initialValue);
-
             _oldValue = _initialValue;
             _value = _initialValue;
 
@@ -159,18 +179,21 @@ namespace UnityAtoms
 
         private T RunPreChangeTransformers(T value)
         {
-            var preProcessedValue = value;
-            if (PreChangeTransformers != null && PreChangeTransformers.Count > 0)
+            if (_preChangeTransformers.Count <= 0)
             {
-                for (var i = 0; i < PreChangeTransformers.Count; ++i)
+                return value;
+            }
+
+            var preProcessedValue = value;
+            for (var i = 0; i < _preChangeTransformers.Count; ++i)
+            {
+                var Transformer = _preChangeTransformers[i];
+                if (Transformer != null)
                 {
-                    var Transformer = PreChangeTransformers[i];
-                    if (Transformer != null)
-                    {
-                        preProcessedValue = Transformer.Call(preProcessedValue);
-                    }
+                    preProcessedValue = Transformer.Call(preProcessedValue);
                 }
             }
+
 
             return preProcessedValue;
         }

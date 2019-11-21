@@ -7,8 +7,8 @@ namespace UnityAtoms
     /// An `AtomFunction&lt;int, int&gt;` that clamps the value using a min and a max value and returns it.
     /// </summary>
     [EditorIcon("atom-icon-sand")]
-    [CreateAssetMenu(menuName = "Unity Atoms/Functions/Clamp Int (int => int)", fileName = "ClampInt")]
-    public class ClampInt : IntIntFunction
+    [CreateAssetMenu(menuName = "Unity Atoms/Functions/Transformers/Clamp Int (int => int)", fileName = "ClampInt")]
+    public class ClampInt : IntIntFunction, IIsValid
     {
         /// <summary>
         /// The minimum value.

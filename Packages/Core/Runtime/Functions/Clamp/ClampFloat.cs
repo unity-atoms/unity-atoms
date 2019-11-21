@@ -7,8 +7,8 @@ namespace UnityAtoms
     /// An `AtomFunction&lt;float, float&gt;` that clamps the value using a min and a max value and returns it.
     /// </summary>
     [EditorIcon("atom-icon-sand")]
-    [CreateAssetMenu(menuName = "Unity Atoms/Functions/Clamp Float (float => float)", fileName = "ClampFloat")]
-    public class ClampFloat : FloatFloatFunction
+    [CreateAssetMenu(menuName = "Unity Atoms/Functions/Transformers/Clamp Float (float => float)", fileName = "ClampFloat")]
+    public class ClampFloat : FloatFloatFunction, IIsValid
     {
         /// <summary>
         /// The minimum value.

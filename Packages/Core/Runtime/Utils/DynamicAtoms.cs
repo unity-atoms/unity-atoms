@@ -15,13 +15,14 @@ namespace UnityAtoms
         /// <param name="initialValue">Inital value of the Variable created.</param>
         /// <param name="changed">Changed Event of type `E1`.</param>
         /// <param name="changedWithHistory">Changed with history Event of type `E2`.</param>
+        /// <param name="preChangeTransformers">List of pre change transformers of the type `List&lt;F&gt;`.</param>
         /// <typeparam name="T">The Variable value type.</typeparam>
         /// <typeparam name="V">The Variable type AtomVariable&lt;T, E1, E2&gt;`.</typeparam>
         /// <typeparam name="E1">The type of the `changed` Event of type `AtomEvent&lt;T&gt;`.</typeparam>
         /// <typeparam name="E2">The type of the `changedWithHistory` Event of type `AtomEvent&lt;T, T&gt;`.</typeparam>
-        /// <typeparam name="F">The type of the `preProcessors` Functions of type `AtomFunction&lt;T, T&gt;`.</typeparam>
+        /// <typeparam name="F">The type of the `preChangeTransformers` Functions of type `AtomFunction&lt;T, T&gt;`.</typeparam>
         /// <returns>The Variable created.</returns>
-        public static V CreateVariable<T, V, E1, E2, F>(T initialValue, E1 changed = null, E2 changedWithHistory = null, List<F> preProcessors = null)
+        public static V CreateVariable<T, V, E1, E2, F>(T initialValue, E1 changed = null, E2 changedWithHistory = null, List<F> preChangeTransformers = null)
             where V : AtomVariable<T, E1, E2, F>
             where E1 : AtomEvent<T> where E2 : AtomEvent<T, T>
             where F : AtomFunction<T, T>
@@ -30,7 +31,7 @@ namespace UnityAtoms
             sov.Changed = changed;
             sov.ChangedWithHistory = changedWithHistory;
             sov.Value = initialValue;
-            sov.PreChangeTransformers = preProcessors;
+            sov.PreChangeTransformers = preChangeTransformers;
             return sov;
         }
 

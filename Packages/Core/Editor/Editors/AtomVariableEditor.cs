@@ -90,7 +90,7 @@ namespace UnityAtoms.Editor
 
             }
 
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("PreChangeTransformers"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_preChangeTransformers"), true);
 
 
             if (!valueWasUpdated)
