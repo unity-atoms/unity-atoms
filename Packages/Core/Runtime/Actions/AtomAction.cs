@@ -6,7 +6,6 @@ namespace UnityAtoms
     /// <summary>
     /// Base abstract class for Actions. Inherits from `BaseAtom`.
     /// </summary>
-    [EditorIcon("atom-icon-purple")]
     public abstract class AtomAction : BaseAtom
     {
         /// <summary>
