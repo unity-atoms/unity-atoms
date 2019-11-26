@@ -37,6 +37,24 @@ namespace UnityAtoms
             OnEventNoValue -= del;
         }
 
+        /// <summary>
+        /// Register a Listener that in turn trigger all its associated handlers when the Event triggers.
+        /// </summary>
+        /// <param name="listener">The Listener to register.</param>
+        public void RegisterListener(IAtomListener listener)
+        {
+            OnEventNoValue += listener.OnEventRaised;
+        }
+
+        /// <summary>
+        /// Unregister a listener that was registered using the `RegisterListener` method.
+        /// </summary>
+        /// <param name="listener">The Listener to unregister.</param>
+        public void UnregisterListener(IAtomListener listener)
+        {
+            OnEventNoValue -= listener.OnEventRaised;
+        }
+
         public void OnBeforeSerialize() { }
 
         public virtual void OnAfterDeserialize()
@@ -96,7 +114,7 @@ namespace UnityAtoms
         /// <summary>
         /// Register a Listener that in turn trigger all its associated handlers when the Event triggers.
         /// </summary>
-        /// <param name="listener">The Listenr to register.</param>
+        /// <param name="listener">The Listener to register.</param>
         public void RegisterListener(IAtomListener<T> listener)
         {
             OnEvent += listener.OnEventRaised;
@@ -105,7 +123,7 @@ namespace UnityAtoms
         /// <summary>
         /// Unregister a listener that was registered using the `RegisterListener` method.
         /// </summary>
-        /// <param name="listener">The Listenr to unregister.</param>
+        /// <param name="listener">The Listener to unregister.</param>
         public void UnregisterListener(IAtomListener<T> listener)
         {
             OnEvent -= listener.OnEventRaised;
@@ -181,7 +199,7 @@ namespace UnityAtoms
         /// <summary>
         /// Register a Listener that in turn trigger all its associated handlers when the Event triggers.
         /// </summary>
-        /// <param name="listener">The Listenr to register.</param>
+        /// <param name="listener">The Listener to register.</param>
         public void RegisterListener(IAtomListener<T1, T2> listener)
         {
             OnEvent += listener.OnEventRaised;
@@ -190,7 +208,7 @@ namespace UnityAtoms
         /// <summary>
         /// Unregister a listener that was registered using the `RegisterListener` method.
         /// </summary>
-        /// <param name="listener">The Listenr to unregister.</param>
+        /// <param name="listener">The Listener to unregister.</param>
         public void UnregisterListener(IAtomListener<T1, T2> listener)
         {
             OnEvent -= listener.OnEventRaised;
