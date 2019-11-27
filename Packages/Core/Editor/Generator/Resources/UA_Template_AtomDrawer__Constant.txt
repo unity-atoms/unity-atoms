@@ -14,6 +14,6 @@ namespace UnityAtoms.Editor
     /// Constant property drawer of type `{TYPE}`. Inherits from `AtomDrawer&lt;{TYPE_NAME}Constant&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomPropertyDrawer(typeof({TYPE_NAME}Constant))]
-    public class {TYPE_NAME}ConstantDrawer : AtomDrawer<{TYPE_NAME}Constant> { }
+    public class {TYPE_NAME}ConstantDrawer : VariableDrawer<{TYPE_NAME}Constant> { }
 }
 #endif
