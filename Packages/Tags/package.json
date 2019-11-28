@@ -1,7 +1,7 @@
 {
   "name": "com.mambojambostudios.unity-atoms-tags",
   "displayName": "Unity Atoms Tags",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "unity": "2019.1",
   "description": "A replacement to Unity´s tags based on Unity Atoms.",
   "keywords": [
@@ -18,6 +18,6 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "2.0.0"
+    "com.mambojambostudios.unity-atoms-core": "2.1.0"
   }
 }

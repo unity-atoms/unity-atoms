@@ -123,7 +123,7 @@ namespace UnityAtoms
         /// <summary>
         /// Copies the entire List to a compatible one-dimensional array, starting at the specified index of the target array.
         /// </summary>
-        /// <param name="array">The one-dimensional Array that is the destination of the elements copied from List. The Array must have zero-based indexing.
+        /// <param name="array">The one-dimensional Array that is the destination of the elements copied from List. The Array must have zero-based indexing.</param>
         /// <param name="arrayIndex">The zero-based index in `array` at which copying begins.</param>
         public void CopyTo(T[] array, int arrayIndex)
         {

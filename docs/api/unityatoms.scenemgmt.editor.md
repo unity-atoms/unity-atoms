@@ -48,3 +48,9 @@ Variable property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFi
 Event property drawer of type `SceneField`. Inherits from `AtomEventEditor<SceneField, SceneFieldEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
+
+## `SceneFieldVariableEditor`
+
+Variable Inspector of type `SceneField`. Inherits from `AtomVariableEditor`
+
+---

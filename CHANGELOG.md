@@ -8,6 +8,8 @@
 
 # [Unreleased]
 
+# 2.1.0 (November 28, 2019)
+
 ## 🐛 Bug fixes
 
 -   [#91](https://github.com/AdamRamberg/unity-atoms/issues/91) Name OnTriggerHook class properly. ([@AdamRamberg](https://github.com/AdamRamberg))
@@ -20,6 +22,7 @@
 ## 🚀 New features
 
 -   [#78](https://github.com/AdamRamberg/unity-atoms/pull/78) Setter to AtomReference's Value was added. ([@Saso222](https://github.com/Saso222), [@soraphis](https://github.com/soraphis))
+-   [#86](https://github.com/AdamRamberg/unity-atoms/pull/86) Parameterless AtomListener and AtomEvent. ([@IceTrooper](https://github.com/IceTrooper), [@soraphis](https://github.com/soraphis))
 
 ## 💅 Polish
 

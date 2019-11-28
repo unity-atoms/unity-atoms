@@ -42,3 +42,9 @@ Variable property drawer of type `TouchUserInput`. Inherits from `AtomDrawer<Tou
 Event property drawer of type `TouchUserInput`. Inherits from `AtomEventEditor<TouchUserInput, TouchUserInputEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
+
+## `TouchUserInputVariableEditor`
+
+Variable Inspector of type `TouchUserInput`. Inherits from `AtomVariableEditor`
+
+---

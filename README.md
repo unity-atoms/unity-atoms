@@ -4,7 +4,7 @@ _Tiny modular pieces utilizing the power of Scriptable Objects_
 
 ## Influences
 
-Unity Atoms is derrived from and a continuation of Ryan Hipple's [talk](https://www.youtube.com/watch?v=raQ3iHhE_Kk&t=2787s) from Unite 2017. The original source code can be found [here](https://github.com/roboryantron/Unite2017).
+Unity Atoms is derived from and a continuation of Ryan Hipple's [talk](https://www.youtube.com/watch?v=raQ3iHhE_Kk&t=2787s) from Unite 2017. The original source code can be found [here](https://github.com/roboryantron/Unite2017).
 
 [This](https://www.youtube.com/watch?v=6vmRwLYWNRo&t=738s) talk by Richard Fine is a forerunner to Ryan Hipple's talk during Unite 2016.
 
@@ -42,12 +42,12 @@ Add the following to your `manifest.json`:
     ],
     "dependencies": {
         ...
-        "com.mambojambostudios.unity-atoms-core": "2.0.0",
-        "com.mambojambostudios.unity-atoms-mobile": "2.0.0",
-        "com.mambojambostudios.unity-atoms-mono-hooks": "2.0.0",
-        "com.mambojambostudios.unity-atoms-tags": "2.0.0",
-        "com.mambojambostudios.unity-atoms-scene-mgmt": "2.0.0",
-        "com.mambojambostudios.unity-atoms-ui": "2.0.0",
+        "com.mambojambostudios.unity-atoms-core": "2.1.0",
+        "com.mambojambostudios.unity-atoms-mobile": "2.1.0",
+        "com.mambojambostudios.unity-atoms-mono-hooks": "2.1.0",
+        "com.mambojambostudios.unity-atoms-tags": "2.1.0",
+        "com.mambojambostudios.unity-atoms-scene-mgmt": "2.1.0",
+        "com.mambojambostudios.unity-atoms-ui": "2.1.0",
         ...
     }
 }

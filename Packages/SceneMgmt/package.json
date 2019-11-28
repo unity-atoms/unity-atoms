@@ -1,7 +1,7 @@
 {
   "name": "com.mambojambostudios.unity-atoms-scene-mgmt",
   "displayName": "Unity Atoms Scene Mgmt",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "unity": "2019.1",
   "description": "Unity Atoms to manage your scenes.",
   "keywords": [
@@ -20,6 +20,6 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "2.0.0"
+    "com.mambojambostudios.unity-atoms-core": "2.1.0"
   }
 }

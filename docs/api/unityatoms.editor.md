@@ -340,6 +340,12 @@ Custom editor for Events. Adds the possiblity to raise an Event from Unity's Ins
 
 ---
 
+## `AtomVariableEditor`
+
+Custom editor for Variables. Provides a better user workflow and indicates when which variables can be edited
+
+---
+
 ## `BoolEventEditor`
 
 Event property drawer of type `bool`. Inherits from `AtomEventEditor<bool, BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -403,6 +409,66 @@ Event property drawer of type `Vector3`. Inherits from `AtomEventEditor<Vector3,
 ## `VoidEventEditor`
 
 Event property drawer of type `Void`. Inherits from `AtomEventEditor<Void, VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolVariableEditor`
+
+Variable Inspector of type `bool`. Inherits from `AtomVariableEditor`
+
+---
+
+## `Collider2DVariableEditor`
+
+Variable Inspector of type `Collider2D`. Inherits from `AtomVariableEditor`
+
+---
+
+## `ColliderVariableEditor`
+
+Variable Inspector of type `Collider`. Inherits from `AtomVariableEditor`
+
+---
+
+## `ColorVariableEditor`
+
+Variable Inspector of type `Color`. Inherits from `AtomVariableEditor`
+
+---
+
+## `FloatVariableEditor`
+
+Variable Inspector of type `float`. Inherits from `AtomVariableEditor`
+
+---
+
+## `GameObjectVariableEditor`
+
+Variable Inspector of type `GameObject`. Inherits from `AtomVariableEditor`
+
+---
+
+## `IntVariableEditor`
+
+Variable Inspector of type `int`. Inherits from `AtomVariableEditor`
+
+---
+
+## `StringVariableEditor`
+
+Variable Inspector of type `string`. Inherits from `AtomVariableEditor`
+
+---
+
+## `Vector2VariableEditor`
+
+Variable Inspector of type `Vector2`. Inherits from `AtomVariableEditor`
+
+---
+
+## `Vector3VariableEditor`
+
+Variable Inspector of type `Vector3`. Inherits from `AtomVariableEditor`
 
 ---
 

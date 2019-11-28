@@ -152,7 +152,7 @@ Set to true if Event should be triggered on `OnTriggerStay2D`
 
 ---
 
-## `OnTriggerStayHook`
+## `OnTriggerHook`
 
 Mono Hook for [`OnTriggerEnter`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerEnter.html), [`OnTriggerExit`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerExit.html) and [`OnTriggerStay`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerStay.html)
 

@@ -33,12 +33,12 @@ Add the following to your `manifest.json`:
     ],
     "dependencies": {
         ...
-        "com.mambojambostudios.unity-atoms-core": "2.0.0",
-        "com.mambojambostudios.unity-atoms-mobile": "2.0.0",
-        "com.mambojambostudios.unity-atoms-mono-hooks": "2.0.0",
-        "com.mambojambostudios.unity-atoms-tags": "2.0.0",
-        "com.mambojambostudios.unity-atoms-scene-mgmt": "2.0.0",
-        "com.mambojambostudios.unity-atoms-ui": "2.0.0",
+        "com.mambojambostudios.unity-atoms-core": "2.1.0",
+        "com.mambojambostudios.unity-atoms-mobile": "2.1.0",
+        "com.mambojambostudios.unity-atoms-mono-hooks": "2.1.0",
+        "com.mambojambostudios.unity-atoms-tags": "2.1.0",
+        "com.mambojambostudios.unity-atoms-scene-mgmt": "2.1.0",
+        "com.mambojambostudios.unity-atoms-ui": "2.1.0",
         ...
     }
 }

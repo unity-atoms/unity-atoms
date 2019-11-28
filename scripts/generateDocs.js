@@ -19,13 +19,20 @@ const run = async () => {
     }
   });
 
-  const packages = ['Tags'];
-
   // Compile code
   const apiXmlName = `api.xml`;
   const assemblyName = `Packages.dll`;
   const cmd = `csc -recurse:${path.join(process.cwd(), 'Packages', '/*.cs')} /doc:${path.join(process.cwd(), apiXmlName)} -t:library -out:${path.join(process.cwd(), assemblyName)} -r:${dlls.join(',')} -define:UNITY_2019_1_OR_NEWER`;
-  const compileStdout = child_process.execSync(cmd);
+  try {
+    const compileStdout = child_process.execSync(cmd);
+  } catch(e) {
+    console.error(e.status);
+    console.error(e.message);
+    console.error(e.stderr.toString());
+    console.error(e.stdout.toString());
+    process.exit(1);
+  }
+
   if (argv.verbose) {
     console.log("Stdout from source code compilation:");
     console.log(compileStdout.toString());

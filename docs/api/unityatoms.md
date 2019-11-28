@@ -113,13 +113,31 @@ The string repeated X amount of times.
 
 ---
 
+## `AtomAction`
+
+Base abstract class for Actions. Inherits from `BaseAtom`.
+
+### Variables
+
+#### `ActionNoValue`
+
+The actual Action.
+
+### Methods
+
+#### `Do`
+
+Perform the Action.
+
+---
+
 ## `AtomAction<T1>`
 
 #### Type Parameters
 
 -   `T1` - The type for this Action.
 
-Generic abstract base class for Actions. Inherits from `BaseAtom`.
+Generic abstract base class for Actions. Inherits from `AtomAction`.
 
 ### Variables
 
@@ -146,7 +164,7 @@ Perform the Action.
 -   `T1` - The first type for this Action.
 -   `T2` - The second type for this Action.
 
-Generic abstract base class for Actions. Inherits from `BaseAtom`.
+Generic abstract base class for Actions. Inherits from `AtomAction`.
 
 ### Variables
 
@@ -175,7 +193,7 @@ Perform the Action.
 -   `T2` - The second type for this Action.
 -   `T3` - The third type for this Action.
 
-Generic abstract base class for Actions. Inherits from `BaseAtom`.
+Generic abstract base class for Actions. Inherits from `AtomAction`.
 
 ### Variables
 
@@ -206,7 +224,7 @@ Perform the Action.
 -   `T3` - The third type for this Action.
 -   `T4` - The fourth type for this Action.
 
-Generic abstract base class for Actions. Inherits from `BaseAtom`.
+Generic abstract base class for Actions. Inherits from `AtomAction`.
 
 ### Variables
 
@@ -239,7 +257,7 @@ Perform the Action.
 -   `T4` - The fourth type for this Action.
 -   `T5` - The fifth type for this Action.
 
-Generic abstract base class for Actions. Inherits from `BaseAtom`.
+Generic abstract base class for Actions. Inherits from `AtomAction`.
 
 ### Variables
 
@@ -396,12 +414,6 @@ Do the Action.
 ##### Parameters
 
 -   `_` - Dummy Void parameter.
-
----
-
-#### `Do`
-
-Do the Action.
 
 ---
 
@@ -602,6 +614,26 @@ Unregister handler that was registered using the `Register` method.
 
 ---
 
+#### `RegisterListener(UnityAtoms.IAtomListener)`
+
+Register a Listener that in turn trigger all its associated handlers when the Event triggers.
+
+##### Parameters
+
+-   `listener` - The Listener to register.
+
+---
+
+#### `UnregisterListener(UnityAtoms.IAtomListener)`
+
+Unregister a listener that was registered using the `RegisterListener` method.
+
+##### Parameters
+
+-   `listener` - The Listener to unregister.
+
+---
+
 ## `AtomEvent<T>`
 
 #### Type Parameters
@@ -648,7 +680,7 @@ Register a Listener that in turn trigger all its associated handlers when the Ev
 
 ##### Parameters
 
--   `listener` - The Listenr to register.
+-   `listener` - The Listener to register.
 
 ---
 
@@ -658,7 +690,7 @@ Unregister a listener that was registered using the `RegisterListener` method.
 
 ##### Parameters
 
--   `listener` - The Listenr to unregister.
+-   `listener` - The Listener to unregister.
 
 ---
 
@@ -720,7 +752,7 @@ Register a Listener that in turn trigger all its associated handlers when the Ev
 
 ##### Parameters
 
--   `listener` - The Listenr to register.
+-   `listener` - The Listener to register.
 
 ---
 
@@ -730,7 +762,7 @@ Unregister a listener that was registered using the `RegisterListener` method.
 
 ##### Parameters
 
--   `listener` - The Listenr to unregister.
+-   `listener` - The Listener to unregister.
 
 ---
 
@@ -1163,16 +1195,9 @@ An `AtomFunction<R, T1, T2, T3, T4, T5>`.
 
 ---
 
-## `AtomListener<T,A,E,UER>`
+## `AtomListener`
 
-#### Type Parameters
-
--   `T` - The type that we are listening for.
--   `A` - Acion of type `AtomAction<T>`.
--   `E` - Event of type `AtomEvent<T>`.
--   `UER` - Unity Event of type `UnityEvent<T>`.
-
-Generic base class for Listeners. Inherits from `BaseAtomListener` and `IAtomListener<T>`.
+The most basic Listener. Can use every type of AtomEvent but doesn't support its value. Inherits from `BaseAtomListener` and implements `IAtomListener`.
 
 ### Variables
 
@@ -1196,7 +1221,50 @@ The Action responses;
 
 #### `Event`
 
-The Event we are listening for as a proeprty.
+The Event we are listening for as a property.
+
+### Methods
+
+#### `OnEventRaised`
+
+Handler for when the Event gets raised.
+
+---
+
+## `AtomListener<T,A,E,UER>`
+
+#### Type Parameters
+
+-   `T` - The type that we are listening for.
+-   `A` - Acion of type `AtomAction<T>`.
+-   `E` - Event of type `AtomEvent<T>`.
+-   `UER` - Unity Event of type `UnityEvent<T>`.
+
+Generic base class for Listeners. Inherits from `BaseAtomListener` and implements `IAtomListener<T>`.
+
+### Variables
+
+#### `_event`
+
+The Event that we are listening to.
+
+---
+
+#### `_unityEventResponse`
+
+The Unity Event responses. NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
+
+---
+
+#### `_actionResponses`
+
+The Action responses;
+
+### Properties
+
+#### `Event`
+
+The Event we are listening for as a property.
 
 ### Methods
 
@@ -1210,6 +1278,12 @@ Handler for when the Event gets raised.
 
 ---
 
+#### `DebugLog(`0)`
+
+Helper to regiser as listener callback
+
+---
+
 ## `AtomListener<T1,T2,A,E,UER>`
 
 #### Type Parameters
@@ -1220,7 +1294,7 @@ Handler for when the Event gets raised.
 -   `E` - Event of type `AtomEvent<T1, T2>`.
 -   `UER` - Unity Event of type `UnityEvent<T1, T2>`.
 
-Generic base class for Listeners. Inherits from `BaseAtomListener` and `IAtomListener<T1, T2>`
+Generic base class for Listeners. Inherits from `BaseAtomListener` and implements `IAtomListener<T1, T2>`
 
 ### Variables
 
@@ -1244,7 +1318,7 @@ The Action responses;
 
 #### `Event`
 
-The Event we are listening for as a proeprty.
+The Event we are listening for as a property.
 
 ### Methods
 
@@ -1256,6 +1330,12 @@ Handler for when the Event gets raised.
 
 -   `first` - The first Event type.
 -   `second` - The second Event type.
+
+---
+
+#### `DebugLog(`0,`1)`
+
+Helper to regiser as listener callback
 
 ---
 
@@ -1499,6 +1579,17 @@ Get item at index.
 ##### Returns
 
 The item if it exists.
+
+---
+
+#### `CopyTo(array,arrayIndex)`
+
+Copies the entire List to a compatible one-dimensional array, starting at the specified index of the target array.
+
+##### Parameters
+
+-   `array` - The one-dimensional Array that is the destination of the elements copied from List. The Array must have zero-based indexing.
+-   `arrayIndex` - The zero-based index in `array` at which copying begins.
 
 ---
 
