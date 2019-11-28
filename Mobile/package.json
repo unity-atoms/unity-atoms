@@ -1,7 +1,7 @@
 {
   "name": "com.mambojambostudios.unity-atoms-mobile",
   "displayName": "Unity Atoms Mobile",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "unity": "2019.1",
   "description": "Unity Atoms for your mobile project.",
   "keywords": [
@@ -18,6 +18,6 @@
     "/Editor.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "2.0.0"
+    "com.mambojambostudios.unity-atoms-core": "2.1.0"
   }
 }
