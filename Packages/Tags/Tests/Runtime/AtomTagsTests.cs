@@ -94,9 +94,11 @@ namespace UnityAtoms.Tags.Tests
 
             using (new ProfilerMarker("MySystem.RemoveTag").Auto())
             {
-                atomicTags.RemoveTag("b");
+                atomicTags.RemoveTag(newConstant.Value);
             }
 
+            Assert.AreEqual(random_tags_raw.Count, atomicTags.Tags.Count);
+            Assert.IsFalse(atomicTags.HasTag(newConstant.Value));
 
             using (new ProfilerMarker("MySystem.AddTagAgain").Auto())
             {
