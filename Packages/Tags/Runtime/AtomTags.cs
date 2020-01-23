@@ -141,7 +141,7 @@ namespace UnityAtoms.Tags
         public void RemoveTag(string tag)
         {
             if (tag == null) return;
-            if (_sortedTags.ContainsKey(tag)) return;
+            if (!_sortedTags.ContainsKey(tag)) return;
             _sortedTags.Remove(tag);
 
             Tags = new ReadOnlyList<StringConstant>(_sortedTags.Values);
