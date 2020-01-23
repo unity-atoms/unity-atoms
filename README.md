@@ -1,11 +1,11 @@
 # ⚛️ Unity Atoms
+
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-core?label=core@openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-core/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-mobile?label=mobile&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-mobile/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-mono-hooks?label=mono-hooks&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-mono-hooks/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-tags?label=tags&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-tags/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-scene-mgmt?label=scene-mgmt&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-scene-mgmt/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-ui?label=ui&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-ui/)
-
 
 _Tiny modular pieces utilizing the power of Scriptable Objects_
 
@@ -27,7 +27,7 @@ Unity Atoms is an open source library that aims to make your game code:
 
 ## Installation
 
-### Install via NPM registry
+### NPM
 
 _Prerequisite: Since Unity Atoms is using the Unity Package Manager (UPM) you need to use Unity version 2018.3 >=_
 
@@ -64,7 +64,7 @@ Add the following to your `manifest.json`:
 
 Note that the core package is mandatory while the others are optional. If you don't want a subpackage, simply remove it from your `dependencies`.
 
-### Install via OpenUPM registry
+### OpenUPM
 
 The package is available on the [openupm registry](https://openupm.com). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli).
 

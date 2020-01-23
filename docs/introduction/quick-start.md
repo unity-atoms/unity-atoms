@@ -11,7 +11,7 @@ sidebar_label: Quick start
 
 _Prerequisite: Since Unity Atoms is using the Unity Package Manager (UPM) you need to use Unity version 2018.3 >=_
 
-### NPM (Recommended)
+### NPM
 
 Add the following to your `manifest.json`:
 
@@ -45,6 +45,22 @@ Add the following to your `manifest.json`:
 ```
 
 Note that the core package is mandatory while the others are optional. If you don't want a subpackage, simply remove it from your `dependencies`.
+
+### OpenUPM
+
+The package is available on the [openupm registry](https://openupm.com). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli).
+
+```
+# required
+openupm add com.mambojambostudios.unity-atoms-core
+
+# optional
+openupm add com.mambojambostudios.unity-atoms-mobile
+openupm add com.mambojambostudios.unity-atoms-mono-hooks
+openupm add com.mambojambostudios.unity-atoms-tags
+openupm add com.mambojambostudios.unity-atoms-scene-mgmt
+openupm add com.mambojambostudios.unity-atoms-ui
+```
 
 ### Github URL
 
