@@ -8,6 +8,21 @@
 
 # [Unreleased]
 
+# 2.1.1 (January 23, 2020)
+
+## 🐛 Bug fixes
+
+-   [#98](https://github.com/AdamRamberg/unity-atoms/pull/98) Unity v2018.4 Support. ([@fakegood](https://github.com/fakegood))
+-   [#102](https://github.com/AdamRamberg/unity-atoms/pull/102) Fix Remove Tag from AtomTags and Fix Remove Tag Test . ([@lucasrferreira](https://github.com/lucasrferreira))
+
+## 📝 Documentation
+
+-   [#100](https://github.com/AdamRamberg/unity-atoms/pull/100) Added installation options and badges for OpenUPM. ([@favoyang](https://github.com/favoyang), [@AdamRamberg](https://github.com/AdamRamberg))
+
+## 🏠 Internal
+
+-   Update example project to Unity 2019.2.17f1
+
 # 2.1.0 (November 28, 2019)
 
 ## 🐛 Bug fixes

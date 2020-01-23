@@ -77,1403 +77,63 @@ A new `Rect` snipped vertically.
 
 ---
 
-## `StringExtensions`
+## `Void`
 
-Internal extension class for strings.
-
-### Methods
-
-#### `ToInt(System.String,System.Int32)`
-
-Tries to parse a string to an int.
-
-##### Parameters
-
--   `str` - The string to parse.
--   `def` - The default value if not able to parse the provided string.
-
-##### Returns
-
-Returns the string parsed to an int. If not able to parse the string, it returns the default value provided to the method.
+Dummy module class used for representing nothing in for example empty Events, eg: `AtomEvent<Void>`
 
 ---
 
-#### `Repeat(System.String,System.Int32)`
+## `BaseAtomList`
 
-Repeats the string X amount of times.
-
-##### Parameters
-
--   `str` - The string to repeat.
--   `times` - The number of times to repeat the provided string.
-
-##### Returns
-
-The string repeated X amount of times.
-
----
-
-## `AtomAction`
-
-Base abstract class for Actions. Inherits from `BaseAtom`.
+None generic base class of Lists.Inherits from `BaseAtom`.
 
 ### Variables
 
-#### `ActionNoValue`
+#### `Cleared`
 
-The actual Action.
-
-### Methods
-
-#### `Do`
-
-Perform the Action.
-
----
-
-## `AtomAction<T1>`
-
-#### Type Parameters
-
--   `T1` - The type for this Action.
-
-Generic abstract base class for Actions. Inherits from `AtomAction`.
-
-### Variables
-
-#### `Action`
-
-The actual Action.
+Event for when the list is cleared.
 
 ### Methods
 
-#### `Do(t1)`
+#### `Clear`
 
-Perform the Action.
+Clear the list.
 
-##### Parameters
-
--   `t1` - The first parameter.
-
----
-
-## `AtomAction<T1,T2>`
-
-#### Type Parameters
-
--   `T1` - The first type for this Action.
--   `T2` - The second type for this Action.
-
-Generic abstract base class for Actions. Inherits from `AtomAction`.
-
-### Variables
-
-#### `Action`
-
-The actual Action.
-
-### Methods
-
-#### `Do(t1,t2)`
-
-Perform the Action.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
-
----
-
-## `AtomAction<T1,T2,T3>`
-
-#### Type Parameters
-
--   `T1` - The first type for this Action.
--   `T2` - The second type for this Action.
--   `T3` - The third type for this Action.
-
-Generic abstract base class for Actions. Inherits from `AtomAction`.
-
-### Variables
-
-#### `Action`
-
-The actual Action.
-
-### Methods
-
-#### `Do(t1,t2,t3)`
-
-Perform the Action.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
--   `t3` - The third parameter.
-
----
-
-## `AtomAction<T1,T2,T3,T4>`
-
-#### Type Parameters
-
--   `T1` - The first type for this Action.
--   `T2` - The second type for this Action.
--   `T3` - The third type for this Action.
--   `T4` - The fourth type for this Action.
-
-Generic abstract base class for Actions. Inherits from `AtomAction`.
-
-### Variables
-
-#### `Action`
-
-The actual Action.
-
-### Methods
-
-#### `Do(t1,t2,t3,t4)`
-
-Perform the Action.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
--   `t3` - The third parameter.
--   `t4` - The fourth parameter.
-
----
-
-## `AtomAction<T1,T2,T3,T4,T5>`
-
-#### Type Parameters
-
--   `T1` - The first type for this Action.
--   `T2` - The second type for this Action.
--   `T3` - The third type for this Action.
--   `T4` - The fourth type for this Action.
--   `T5` - The fifth type for this Action.
-
-Generic abstract base class for Actions. Inherits from `AtomAction`.
-
-### Variables
-
-#### `Action`
-
-The actual Action.
-
-### Methods
-
-#### `Do(t1,t2,t3,t4,t5)`
-
-Perform the Action.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
--   `t3` - The third parameter.
--   `t4` - The fourth parameter.
--   `t5` - The fifth parameter.
-
----
-
-## `BoolAction`
-
-Action of type `bool`. Inherits from `AtomAction<bool>`.
-
----
-
-## `BoolBoolAction`
-
-Action x 2 of type `bool`. Inherits from `AtomAction<bool, bool>`.
-
----
-
-## `Collider2DAction`
-
-Action of type `Collider2D`. Inherits from `AtomAction<Collider2D>`.
-
----
-
-## `Collider2DCollider2DAction`
-
-Action x 2 of type `Collider2D`. Inherits from `AtomAction<Collider2D, Collider2D>`.
-
----
-
-## `ColliderAction`
-
-Action of type `Collider`. Inherits from `AtomAction<Collider>`.
-
----
-
-## `ColliderColliderAction`
-
-Action x 2 of type `Collider`. Inherits from `AtomAction<Collider, Collider>`.
-
----
-
-## `ColorAction`
-
-Action of type `Color`. Inherits from `AtomAction<Color>`.
-
----
-
-## `ColorColorAction`
-
-Action x 2 of type `Color`. Inherits from `AtomAction<Color, Color>`.
-
----
-
-## `FloatAction`
-
-Action of type `float`. Inherits from `AtomAction<float>`.
-
----
-
-## `FloatFloatAction`
-
-Action x 2 of type `float`. Inherits from `AtomAction<float, float>`.
-
----
-
-## `GameObjectAction`
-
-Action of type `GameObject`. Inherits from `AtomAction<GameObject>`.
-
----
-
-## `GameObjectGameObjectAction`
-
-Action x 2 of type `GameObject`. Inherits from `AtomAction<GameObject, GameObject>`.
-
----
-
-## `IntAction`
-
-Action of type `int`. Inherits from `AtomAction<int>`.
-
----
-
-## `IntIntAction`
-
-Action x 2 of type `int`. Inherits from `AtomAction<int, int>`.
-
----
-
-## `StringAction`
-
-Action of type `string`. Inherits from `AtomAction<string>`.
-
----
-
-## `StringStringAction`
-
-Action x 2 of type `string`. Inherits from `AtomAction<string, string>`.
-
----
-
-## `Vector2Action`
-
-Action of type `Vector2`. Inherits from `AtomAction<Vector2>`.
-
----
-
-## `Vector2Vector2Action`
-
-Action x 2 of type `Vector2`. Inherits from `AtomAction<Vector2, Vector2>`.
-
----
-
-## `Vector3Action`
-
-Action of type `Vector3`. Inherits from `AtomAction<Vector3>`.
-
----
-
-## `Vector3Vector3Action`
-
-Action x 2 of type `Vector3`. Inherits from `AtomAction<Vector3, Vector3>`.
-
----
-
-## `VoidAction`
-
-Action of type `Void`. Inherits from `AtomAction<Void>`.
-
-### Methods
-
-#### `Do(UnityAtoms.Void)`
-
-Do the Action.
-
-##### Parameters
-
--   `_` - Dummy Void parameter.
-
----
-
-## `SetBoolVariableValue`
-
-Set variable value Action of type `bool`. Inherits from `SetVariableValue<bool, BoolVariable, BoolConstant, BoolReference, BoolEvent, BoolBoolEvent>`.
-
----
-
-## `SetCollider2DVariableValue`
-
-Set variable value Action of type `Collider2D`. Inherits from `SetVariableValue<Collider2D, Collider2DVariable, Collider2DConstant, Collider2DReference, Collider2DEvent, Collider2DCollider2DEvent>`.
-
----
-
-## `SetColliderVariableValue`
-
-Set variable value Action of type `Collider`. Inherits from `SetVariableValue<Collider, ColliderVariable, ColliderConstant, ColliderReference, ColliderEvent, ColliderColliderEvent>`.
-
----
-
-## `SetColorVariableValue`
-
-Set variable value Action of type `Color`. Inherits from `SetVariableValue<Color, ColorVariable, ColorConstant, ColorReference, ColorEvent, ColorColorEvent>`.
-
----
-
-## `SetFloatVariableValue`
-
-Set variable value Action of type `float`. Inherits from `SetVariableValue<float, FloatVariable, FloatConstant, FloatReference, FloatEvent, FloatFloatEvent>`.
-
----
-
-## `SetGameObjectVariableValue`
-
-Set variable value Action of type `GameObject`. Inherits from `SetVariableValue<GameObject, GameObjectVariable, GameObjectConstant, GameObjectReference, GameObjectEvent, GameObjectGameObjectEvent>`.
-
----
-
-## `SetIntVariableValue`
-
-Set variable value Action of type `int`. Inherits from `SetVariableValue<int, IntVariable, IntConstant, IntReference, IntEvent, IntIntEvent>`.
-
----
-
-## `SetStringVariableValue`
-
-Set variable value Action of type `string`. Inherits from `SetVariableValue<string, StringVariable, StringConstant, StringReference, StringEvent, StringStringEvent>`.
-
----
-
-## `SetVariableValue<T,V,C,R,E1,E2>`
-
-#### Type Parameters
-
--   `T` - The type of the Variable to set.
--   `V` - A Variable class of type `type` to set.
--   `C` - A Constant class of type `type` to set.
--   `R` - A Reference of type `type`.
--   `E1` - An Event of type `type`.
--   `E2` - An Event x 2 of type `type`.
-
-Base class for all SetVariableValue Actions. Inherits from `VoidAction`.
-
-### Variables
-
-#### `_variable`
-
-The Variable to set.
-
----
-
-#### `_value`
-
-The value to set.
-
-### Methods
-
-#### `Do`
-
-Perform the action.
-
----
-
-## `SetVector2VariableValue`
-
-Set variable value Action of type `Vector2`. Inherits from `SetVariableValue<Vector2, Vector2Variable, Vector2Constant, Vector2Reference, Vector2Event, Vector2Vector2Event>`.
-
----
-
-## `SetVector3VariableValue`
-
-Set variable value Action of type `Vector3`. Inherits from `SetVariableValue<Vector3, Vector3Variable, Vector3Constant, Vector3Reference, Vector3Event, Vector3Vector3Event>`.
-
----
-
-## `EditorIcon`
-
-Specify a texture name from your assets which you want to be assigned as an icon to the MonoScript.
-
----
-
-## `BaseAtom`
-
-None generic base class for all Atoms.
-
-### Variables
-
-#### `_developerDescription`
-
-A description of the Atom made for documentation purposes.
-
----
-
-## `BoolConstant`
-
-Constant of type `bool`. Inherits from `AtomBaseVariable<bool>`.
-
----
-
-## `Collider2DConstant`
-
-Constant of type `Collider2D`. Inherits from `AtomBaseVariable<Collider2D>`.
-
----
-
-## `ColliderConstant`
-
-Constant of type `Collider`. Inherits from `AtomBaseVariable<Collider>`.
-
----
-
-## `ColorConstant`
-
-Constant of type `Color`. Inherits from `AtomBaseVariable<Color>`.
-
----
-
-## `FloatConstant`
-
-Constant of type `float`. Inherits from `AtomBaseVariable<float>`.
-
----
-
-## `GameObjectConstant`
-
-Constant of type `GameObject`. Inherits from `AtomBaseVariable<GameObject>`.
-
----
-
-## `IntConstant`
-
-Constant of type `int`. Inherits from `AtomBaseVariable<int>`.
-
----
-
-## `StringConstant`
-
-Constant of type `string`. Inherits from `AtomBaseVariable<string>`.
-
----
-
-## `Vector2Constant`
-
-Constant of type `Vector2`. Inherits from `AtomBaseVariable<Vector2>`.
-
----
-
-## `Vector3Constant`
-
-Constant of type `Vector3`. Inherits from `AtomBaseVariable<Vector3>`.
-
----
-
-## `AtomEvent`
-
-None generic base class for Events. Inherits from `BaseAtom` and `ISerializationCallbackReceiver`.
-
-### Methods
-
-#### `Register(System.Action)`
-
-Register handler to be called when the Event triggers.
-
-##### Parameters
-
--   `del` - The handler.
-
----
-
-#### `Unregister(System.Action)`
-
-Unregister handler that was registered using the `Register` method.
-
-##### Parameters
-
--   `del` - The handler.
-
----
-
-#### `RegisterListener(UnityAtoms.IAtomListener)`
-
-Register a Listener that in turn trigger all its associated handlers when the Event triggers.
-
-##### Parameters
-
--   `listener` - The Listener to register.
-
----
-
-#### `UnregisterListener(UnityAtoms.IAtomListener)`
-
-Unregister a listener that was registered using the `RegisterListener` method.
-
-##### Parameters
-
--   `listener` - The Listener to unregister.
-
----
-
-## `AtomEvent<T>`
-
-#### Type Parameters
-
--   `T` - The type for this Event.
-
-Generic base class for Events. Inherits from `AtomEvent`.
-
-### Methods
-
-#### `Raise(item)`
-
-Raise the Event.
-
-##### Parameters
-
--   `item` - The value associated with the Event.
-
----
-
-#### `Register(del)`
-
-Register handler to be called when the Event triggers.
-
-##### Parameters
-
--   `del` - The handler.
-
----
-
-#### `Unregister(del)`
-
-Unregister handler that was registered using the `Register` method.
-
-##### Parameters
-
--   `del` - The handler.
-
----
-
-#### `RegisterListener(listener)`
-
-Register a Listener that in turn trigger all its associated handlers when the Event triggers.
-
-##### Parameters
-
--   `listener` - The Listener to register.
-
----
-
-#### `UnregisterListener(listener)`
-
-Unregister a listener that was registered using the `RegisterListener` method.
-
-##### Parameters
-
--   `listener` - The Listener to unregister.
-
----
-
-#### `Observe`
-
-Turn the Event into an `IObservable<T>`. Makes Events compatible with for example UniRx.
-
-##### Returns
-
-The Event as an `IObservable<T>`.
-
----
-
-## `AtomEvent<T1,T2>`
-
-#### Type Parameters
-
--   `T1` - The first type for this Event.
--   `T2` - The second type for this Event.
-
-Generic base class for Events. Inherits from `AtomEvent`.
-
-### Methods
-
-#### `Raise(item1,item2)`
-
-Raise the Event.
-
-##### Parameters
-
--   `item1` - The first value associated with the Event.
--   `item2` - The second value associated with the Event.
-
----
-
-#### `Register(del)`
-
-Register handler to be called when the Event triggers.
-
-##### Parameters
-
--   `del` - The handler.
-
----
-
-#### `Unregister(del)`
-
-Unregister handler that was registered using the `Register` method.
-
-##### Parameters
-
--   `del` - The handler.
-
----
-
-#### `RegisterListener(listener)`
-
-Register a Listener that in turn trigger all its associated handlers when the Event triggers.
-
-##### Parameters
-
--   `listener` - The Listener to register.
-
----
-
-#### `UnregisterListener(listener)`
-
-Unregister a listener that was registered using the `RegisterListener` method.
-
-##### Parameters
-
--   `listener` - The Listener to unregister.
-
----
-
-#### `Observe<M>(resultSelector)`
-
-Turn the Event into an `IObservable<M>`. Makes Events compatible with for example UniRx.
-
-#### Type Parameters
-
--   `M` - The result selector type.
-
-##### Parameters
-
--   `resultSelector` - Takes `T1` and `T2` and returns a new type of type `M`.abstract Most of the time this is going to be combination of T1 and T2, eg. `ValueTuple<T1, T2>`
-
-##### Returns
-
-The Event as an `IObservable<M>`.
-
----
-
-## `BoolBoolEvent`
-
-Event x 2 of type `bool`. Inherits from `AtomEvent<bool, bool>`.
-
----
-
-## `BoolEvent`
-
-Event of type `bool`. Inherits from `AtomEvent<bool>`.
-
----
-
-## `Collider2DCollider2DEvent`
-
-Event x 2 of type `Collider2D`. Inherits from `AtomEvent<Collider2D, Collider2D>`.
-
----
-
-## `Collider2DEvent`
-
-Event of type `Collider2D`. Inherits from `AtomEvent<Collider2D>`.
-
----
-
-## `ColliderColliderEvent`
-
-Event x 2 of type `Collider`. Inherits from `AtomEvent<Collider, Collider>`.
-
----
-
-## `ColliderEvent`
-
-Event of type `Collider`. Inherits from `AtomEvent<Collider>`.
-
----
-
-## `ColorColorEvent`
-
-Event x 2 of type `Color`. Inherits from `AtomEvent<Color, Color>`.
-
----
-
-## `ColorEvent`
-
-Event of type `Color`. Inherits from `AtomEvent<Color>`.
-
----
-
-## `FloatEvent`
-
-Event of type `float`. Inherits from `AtomEvent<float>`.
-
----
-
-## `FloatFloatEvent`
-
-Event x 2 of type `float`. Inherits from `AtomEvent<float, float>`.
-
----
-
-## `GameObjectEvent`
-
-Event of type `GameObject`. Inherits from `AtomEvent<GameObject>`.
-
----
-
-## `GameObjectGameObjectEvent`
-
-Event x 2 of type `GameObject`. Inherits from `AtomEvent<GameObject, GameObject>`.
-
----
-
-## `IntEvent`
-
-Event of type `int`. Inherits from `AtomEvent<int>`.
-
----
-
-## `IntIntEvent`
-
-Event x 2 of type `int`. Inherits from `AtomEvent<int, int>`.
-
----
-
-## `StringEvent`
-
-Event of type `string`. Inherits from `AtomEvent<string>`.
-
----
-
-## `StringStringEvent`
-
-Event x 2 of type `string`. Inherits from `AtomEvent<string, string>`.
-
----
-
-## `Vector2Event`
-
-Event of type `Vector2`. Inherits from `AtomEvent<Vector2>`.
-
----
-
-## `Vector2Vector2Event`
-
-Event x 2 of type `Vector2`. Inherits from `AtomEvent<Vector2, Vector2>`.
-
----
-
-## `Vector3Event`
-
-Event of type `Vector3`. Inherits from `AtomEvent<Vector3>`.
-
----
-
-## `Vector3Vector3Event`
-
-Event x 2 of type `Vector3`. Inherits from `AtomEvent<Vector3, Vector3>`.
-
----
-
-## `VoidEvent`
-
-Event of type `Void`. Inherits from `AtomEvent<Void>`.
-
----
-
-## `AtomFunction<R>`
-
-#### Type Parameters
-
--   `R` - The type to return from the Function.
-
-Generic abstract base class for Functions. Inherits from `BaseAtom`.
-
-### Variables
-
-#### `Func`
-
-The actual function.
-
-### Methods
-
-#### `Call`
-
-Call the Function.
-
-##### Returns
-
-Whatever the function decides to return of type `R`.
-
----
-
-#### `SetFunc(func)`
-
-Set the Function providing a `Func<R>`.
-
-##### Parameters
-
--   `func` - The `Func<R>` to set.
-
-##### Returns
-
-An `AtomFunction<R>`.
-
----
-
-## `AtomFunction<R,T1>`
-
-#### Type Parameters
-
--   `R` - The type to return from the Function.
--   `T1` - The parameter type for this Function.
-
-Generic abstract base class for Functions. Inherits from `BaseAtom`.
-
-### Variables
-
-#### `Func`
-
-The actual function.
-
-### Methods
-
-#### `Call(t1)`
-
-Call the Function.
-
-##### Parameters
-
--   `t1` - The first parameter.
-
-##### Returns
-
-Whatever the function decides to return of type `R`.
-
----
-
-#### `SetFunc(func)`
-
-Set the Function providing a `Func<T1, R>`.
-
-##### Parameters
-
--   `func` - The `Func<T1, R>` to set.
-
-##### Returns
-
-An `AtomFunction<R, T1>`.
-
----
-
-## `AtomFunction<R,T1,T2>`
-
-#### Type Parameters
-
--   `R` - The type to return from the Function.
--   `T1` - The first parameter type for this Function.
--   `T2` - The second parameter type for this Function.
-
-Generic abstract base class for Functions. Inherits from `BaseAtom`.
-
-### Variables
-
-#### `Func`
-
-The actual function.
-
-### Methods
-
-#### `Call(t1,t2)`
-
-Call the Function.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
-
-##### Returns
-
-Whatever the function decides to return of type `R`.
-
----
-
-#### `SetFunc(func)`
-
-Set the Function providing a `Func<T1, T2, R>`.
-
-##### Parameters
-
--   `func` - The `Func<T1, T2, R>` to set.
-
-##### Returns
-
-An `AtomFunction<R, T1, T2>`.
-
----
-
-## `AtomFunction<R,T1,T2,T3>`
-
-#### Type Parameters
-
--   `R` - The type to return from the Function.
--   `T1` - The first parameter type for this Function.
--   `T2` - The second parameter type for this Function.
--   `T3` - The third parameter type for this Function.
-
-Generic abstract base class for Functions. Inherits from `BaseAtom`.
-
-### Variables
-
-#### `Func`
-
-The actual function.
-
-### Methods
-
-#### `Call(t1,t2,t3)`
-
-Call the Function.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
--   `t3` - The third parameter.
-
-##### Returns
-
-Whatever the function decides to return of type `R`.
-
----
-
-#### `SetFunc(func)`
-
-Set the Function providing a `Func<T1, T2, T3, R>`.
-
-##### Parameters
-
--   `func` - The `Func<T1, T2, T3, R>` to set.
-
-##### Returns
-
-An `AtomFunction<R, T1, T2, T3>`.
-
----
-
-## `AtomFunction<R,T1,T2,T3,T4>`
-
-#### Type Parameters
-
--   `R` - The type to return from the Function.
--   `T1` - The first parameter type for this Function.
--   `T2` - The second parameter type for this Function.
--   `T3` - The third parameter type for this Function.
--   `T4` - The fourth parameter type for this Function.
-
-Generic abstract base class for Functions. Inherits from `BaseAtom`.
-
-### Variables
-
-#### `Func`
-
-The actual function.
-
-### Methods
-
-#### `Call(t1,t2,t3,t4)`
-
-Call the Function.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
--   `t3` - The third parameter.
--   `t4` - The fourth parameter.
-
-##### Returns
-
-Whatever the function decides to return of type `R`.
-
----
-
-#### `SetFunc(func)`
-
-Set the Function providing a `Func<T1, T2, T3, T4 R>`.
-
-##### Parameters
-
--   `func` - The `Func<T1, T2, T3, T4, R>` to set.
-
-##### Returns
-
-An `AtomFunction<R, T1, T2, T3, T4>`.
-
----
-
-## `AtomFunction<R,T1,T2,T3,T4,T5>`
-
-#### Type Parameters
-
--   `R` - The type to return from the Function.
--   `T1` - The first parameter type for this Function.
--   `T2` - The second parameter type for this Function.
--   `T3` - The third parameter type for this Function.
--   `T4` - The fourth parameter type for this Function.
--   `T5` - The fifth parameter type for this Function.
-
-Generic abstract base class for Functions. Inherits from `BaseAtom`.
-
-### Variables
-
-#### `Func`
-
-The actual function.
-
-### Methods
-
-#### `Call(t1,t2,t3,t4,t5)`
-
-Call the Function.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
--   `t3` - The third parameter.
--   `t4` - The fourth parameter.
--   `t5` - The fifth parameter.
-
-##### Returns
-
-Whatever the function decides to return of type `R`.
-
----
-
-#### `SetFunc(func)`
-
-Set the Function providing a `Func<T1, T2, T3, T4, T5 R>`.
-
-##### Parameters
-
--   `func` - The `Func<T1, T2, T3, T4, T5, R>` to set.
-
-##### Returns
-
-An `AtomFunction<R, T1, T2, T3, T4, T5>`.
-
----
-
-## `AtomListener`
-
-The most basic Listener. Can use every type of AtomEvent but doesn't support its value. Inherits from `BaseAtomListener` and implements `IAtomListener`.
-
-### Variables
-
-#### `_event`
-
-The Event that we are listening to.
-
----
-
-#### `_unityEventResponse`
-
-The Unity Event responses. NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
-
----
-
-#### `_actionResponses`
-
-The Action responses;
-
-### Properties
-
-#### `Event`
-
-The Event we are listening for as a property.
-
-### Methods
-
-#### `OnEventRaised`
-
-Handler for when the Event gets raised.
-
----
-
-## `AtomListener<T,A,E,UER>`
-
-#### Type Parameters
-
--   `T` - The type that we are listening for.
--   `A` - Acion of type `AtomAction<T>`.
--   `E` - Event of type `AtomEvent<T>`.
--   `UER` - Unity Event of type `UnityEvent<T>`.
-
-Generic base class for Listeners. Inherits from `BaseAtomListener` and implements `IAtomListener<T>`.
-
-### Variables
-
-#### `_event`
-
-The Event that we are listening to.
-
----
-
-#### `_unityEventResponse`
-
-The Unity Event responses. NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
-
----
-
-#### `_actionResponses`
-
-The Action responses;
-
-### Properties
-
-#### `Event`
-
-The Event we are listening for as a property.
-
-### Methods
-
-#### `OnEventRaised(item)`
-
-Handler for when the Event gets raised.
-
-##### Parameters
-
--   `item` - The Event type.
-
----
-
-#### `DebugLog(`0)`
-
-Helper to regiser as listener callback
-
----
-
-## `AtomListener<T1,T2,A,E,UER>`
-
-#### Type Parameters
-
--   `T1` - The first type that we are listening for.
--   `T2` - The second type that we are listening for.
--   `A` - Acion of type `AtomAction<T1, T2>`.
--   `E` - Event of type `AtomEvent<T1, T2>`.
--   `UER` - Unity Event of type `UnityEvent<T1, T2>`.
-
-Generic base class for Listeners. Inherits from `BaseAtomListener` and implements `IAtomListener<T1, T2>`
-
-### Variables
-
-#### `_event`
-
-The Event that we are listening to.
-
----
-
-#### `_unityEventResponse`
-
-The Unity Event responses. NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
-
----
-
-#### `_actionResponses`
-
-The Action responses;
-
-### Properties
-
-#### `Event`
-
-The Event we are listening for as a property.
-
-### Methods
-
-#### `OnEventRaised(first,second)`
-
-Handler for when the Event gets raised.
-
-##### Parameters
-
--   `first` - The first Event type.
--   `second` - The second Event type.
-
----
-
-#### `DebugLog(`0,`1)`
-
-Helper to regiser as listener callback
-
----
-
-## `BaseAtomListener`
-
-None generic base class for all Listeners.
-
-### Variables
-
-#### `_developerDescription`
-
-A description of the Listener made for documentation purposes.
-
----
-
-## `BoolBoolListener`
-
-Listener x 2 of type `bool`. Inherits from `AtomListener<bool, bool, BoolBoolAction, BoolBoolEvent, BoolBoolUnityEvent>`.
-
----
-
-## `BoolListener`
-
-Listener of type `bool`. Inherits from `AtomListener<bool, BoolAction, BoolEvent, BoolUnityEvent>`.
-
----
-
-## `Collider2DCollider2DListener`
-
-Listener x 2 of type `Collider2D`. Inherits from `AtomListener<Collider2D, Collider2D, Collider2DCollider2DAction, Collider2DCollider2DEvent, Collider2DCollider2DUnityEvent>`.
-
----
-
-## `Collider2DListener`
-
-Listener of type `Collider2D`. Inherits from `AtomListener<Collider2D, Collider2DAction, Collider2DEvent, Collider2DUnityEvent>`.
-
----
-
-## `ColliderColliderListener`
-
-Listener x 2 of type `Collider`. Inherits from `AtomListener<Collider, Collider, ColliderColliderAction, ColliderColliderEvent, ColliderColliderUnityEvent>`.
-
----
-
-## `ColliderListener`
-
-Listener of type `Collider`. Inherits from `AtomListener<Collider, ColliderAction, ColliderEvent, ColliderUnityEvent>`.
-
----
-
-## `ColorColorListener`
-
-Listener x 2 of type `Color`. Inherits from `AtomListener<Color, Color, ColorColorAction, ColorColorEvent, ColorColorUnityEvent>`.
-
----
-
-## `ColorListener`
-
-Listener of type `Color`. Inherits from `AtomListener<Color, ColorAction, ColorEvent, ColorUnityEvent>`.
-
----
-
-## `FloatFloatListener`
-
-Listener x 2 of type `float`. Inherits from `AtomListener<float, float, FloatFloatAction, FloatFloatEvent, FloatFloatUnityEvent>`.
-
----
-
-## `FloatListener`
-
-Listener of type `float`. Inherits from `AtomListener<float, FloatAction, FloatEvent, FloatUnityEvent>`.
-
----
-
-## `GameObjectGameObjectListener`
-
-Listener x 2 of type `GameObject`. Inherits from `AtomListener<GameObject, GameObject, GameObjectGameObjectAction, GameObjectGameObjectEvent, GameObjectGameObjectUnityEvent>`.
-
----
-
-## `GameObjectListener`
-
-Listener of type `GameObject`. Inherits from `AtomListener<GameObject, GameObjectAction, GameObjectEvent, GameObjectUnityEvent>`.
-
----
-
-## `IntIntListener`
-
-Listener x 2 of type `int`. Inherits from `AtomListener<int, int, IntIntAction, IntIntEvent, IntIntUnityEvent>`.
-
----
-
-## `IntListener`
-
-Listener of type `int`. Inherits from `AtomListener<int, IntAction, IntEvent, IntUnityEvent>`.
-
----
-
-## `StringListener`
-
-Listener of type `string`. Inherits from `AtomListener<string, StringAction, StringEvent, StringUnityEvent>`.
-
 ---
 
-## `StringStringListener`
+## `BoolList`
 
-Listener x 2 of type `string`. Inherits from `AtomListener<string, string, StringStringAction, StringStringEvent, StringStringUnityEvent>`.
+List of type `bool`. Inherits from `AtomList<bool, BoolEvent>`.
 
 ---
 
-## `Vector2Listener`
+## `StringList`
 
-Listener of type `Vector2`. Inherits from `AtomListener<Vector2, Vector2Action, Vector2Event, Vector2UnityEvent>`.
+List of type `string`. Inherits from `AtomList<string, StringEvent>`.
 
 ---
 
-## `Vector2Vector2Listener`
+## `ColliderList`
 
-Listener x 2 of type `Vector2`. Inherits from `AtomListener<Vector2, Vector2, Vector2Vector2Action, Vector2Vector2Event, Vector2Vector2UnityEvent>`.
+List of type `Collider`. Inherits from `AtomList<Collider, ColliderEvent>`.
 
 ---
 
-## `Vector3Listener`
+## `IntList`
 
-Listener of type `Vector3`. Inherits from `AtomListener<Vector3, Vector3Action, Vector3Event, Vector3UnityEvent>`.
+List of type `int`. Inherits from `AtomList<int, IntEvent>`.
 
 ---
 
-## `Vector3Vector3Listener`
+## `Vector2List`
 
-Listener x 2 of type `Vector3`. Inherits from `AtomListener<Vector3, Vector3, Vector3Vector3Action, Vector3Vector3Event, Vector3Vector3UnityEvent>`.
+List of type `Vector2`. Inherits from `AtomList<Vector2, Vector2Event>`.
 
 ---
 
-## `VoidListener`
+## `FloatList`
 
-Listener of type `Void`. Inherits from `AtomListener<Void, VoidAction, VoidEvent, VoidUnityEvent>`.
+List of type `float`. Inherits from `AtomList<float, FloatEvent>`.
 
 ---
 
@@ -1668,27 +328,15 @@ The clear Event as an `IObservable<Void>`.
 
 ---
 
-## `BaseAtomList`
+## `GameObjectList`
 
-None generic base class of Lists.Inherits from `BaseAtom`.
-
-### Variables
-
-#### `Cleared`
-
-Event for when the list is cleared.
-
-### Methods
-
-#### `Clear`
-
-Clear the list.
+List of type `GameObject`. Inherits from `AtomList<GameObject, GameObjectEvent>`.
 
 ---
 
-## `BoolList`
+## `Vector3List`
 
-List of type `bool`. Inherits from `AtomList<bool, BoolEvent>`.
+List of type `Vector3`. Inherits from `AtomList<Vector3, Vector3Event>`.
 
 ---
 
@@ -1698,51 +346,63 @@ List of type `Collider2D`. Inherits from `AtomList<Collider2D, Collider2DEvent>`
 
 ---
 
-## `ColliderList`
-
-List of type `Collider`. Inherits from `AtomList<Collider, ColliderEvent>`.
-
----
-
 ## `ColorList`
 
 List of type `Color`. Inherits from `AtomList<Color, ColorEvent>`.
 
 ---
 
-## `FloatList`
+## `FloatReference`
 
-List of type `float`. Inherits from `AtomList<float, FloatEvent>`.
-
----
-
-## `GameObjectList`
-
-List of type `GameObject`. Inherits from `AtomList<GameObject, GameObjectEvent>`.
+Reference of type `float`. Inherits from `AtomReference<float, FloatVariable, FloatConstant>`.
 
 ---
 
-## `IntList`
+## `Vector2Reference`
 
-List of type `int`. Inherits from `AtomList<int, IntEvent>`.
-
----
-
-## `StringList`
-
-List of type `string`. Inherits from `AtomList<string, StringEvent>`.
+Reference of type `Vector2`. Inherits from `AtomReference<Vector2, Vector2Variable, Vector2Constant>`.
 
 ---
 
-## `Vector2List`
+## `BoolReference`
 
-List of type `Vector2`. Inherits from `AtomList<Vector2, Vector2Event>`.
+Reference of type `bool`. Inherits from `AtomReference<bool, BoolVariable, BoolConstant>`.
 
 ---
 
-## `Vector3List`
+## `ColorReference`
 
-List of type `Vector3`. Inherits from `AtomList<Vector3, Vector3Event>`.
+Reference of type `Color`. Inherits from `AtomReference<Color, ColorVariable, ColorConstant>`.
+
+---
+
+## `ColliderReference`
+
+Reference of type `Collider`. Inherits from `AtomReference<Collider, ColliderVariable, ColliderConstant>`.
+
+---
+
+## `IntReference`
+
+Reference of type `int`. Inherits from `AtomReference<int, IntVariable, IntConstant>`.
+
+---
+
+## `Collider2DReference`
+
+Reference of type `Collider2D`. Inherits from `AtomReference<Collider2D, Collider2DVariable, Collider2DConstant>`.
+
+---
+
+## `GameObjectReference`
+
+Reference of type `GameObject`. Inherits from `AtomReference<GameObject, GameObjectVariable, GameObjectConstant>`.
+
+---
+
+## `Vector3Reference`
+
+Reference of type `Vector3`. Inherits from `AtomReference<Vector3, Vector3Variable, Vector3Constant>`.
 
 ---
 
@@ -1764,87 +424,15 @@ Enum for how to use the Reference.
 
 ---
 
-## `BoolReference`
-
-Reference of type `bool`. Inherits from `AtomReference<bool, BoolVariable, BoolConstant>`.
-
----
-
-## `Collider2DReference`
-
-Reference of type `Collider2D`. Inherits from `AtomReference<Collider2D, Collider2DVariable, Collider2DConstant>`.
-
----
-
-## `ColliderReference`
-
-Reference of type `Collider`. Inherits from `AtomReference<Collider, ColliderVariable, ColliderConstant>`.
-
----
-
-## `ColorReference`
-
-Reference of type `Color`. Inherits from `AtomReference<Color, ColorVariable, ColorConstant>`.
-
----
-
-## `FloatReference`
-
-Reference of type `float`. Inherits from `AtomReference<float, FloatVariable, FloatConstant>`.
-
----
-
-## `GameObjectReference`
-
-Reference of type `GameObject`. Inherits from `AtomReference<GameObject, GameObjectVariable, GameObjectConstant>`.
-
----
-
-## `IntReference`
-
-Reference of type `int`. Inherits from `AtomReference<int, IntVariable, IntConstant>`.
-
----
-
 ## `StringReference`
 
 Reference of type `string`. Inherits from `AtomReference<string, StringVariable, StringConstant>`.
 
 ---
 
-## `Vector2Reference`
+## `GameObjectUnityEvent`
 
-Reference of type `Vector2`. Inherits from `AtomReference<Vector2, Vector2Variable, Vector2Constant>`.
-
----
-
-## `Vector3Reference`
-
-Reference of type `Vector3`. Inherits from `AtomReference<Vector3, Vector3Variable, Vector3Constant>`.
-
----
-
-## `Void`
-
-Dummy module class used for representing nothing in for example empty Events, eg: `AtomEvent<Void>`
-
----
-
-## `BoolBoolUnityEvent`
-
-None generic Unity Event x 2 of type `bool`. Inherits from `UnityEvent<bool, bool>`.
-
----
-
-## `BoolUnityEvent`
-
-None generic Unity Event of type `bool`. Inherits from `UnityEvent<bool>`.
-
----
-
-## `Collider2DCollider2DUnityEvent`
-
-None generic Unity Event x 2 of type `Collider2D`. Inherits from `UnityEvent<Collider2D, Collider2D>`.
+None generic Unity Event of type `GameObject`. Inherits from `UnityEvent<GameObject>`.
 
 ---
 
@@ -1866,15 +454,21 @@ None generic Unity Event of type `Collider`. Inherits from `UnityEvent<Collider>
 
 ---
 
-## `ColorColorUnityEvent`
+## `BoolUnityEvent`
 
-None generic Unity Event x 2 of type `Color`. Inherits from `UnityEvent<Color, Color>`.
+None generic Unity Event of type `bool`. Inherits from `UnityEvent<bool>`.
 
 ---
 
-## `ColorUnityEvent`
+## `Collider2DCollider2DUnityEvent`
 
-None generic Unity Event of type `Color`. Inherits from `UnityEvent<Color>`.
+None generic Unity Event x 2 of type `Collider2D`. Inherits from `UnityEvent<Collider2D, Collider2D>`.
+
+---
+
+## `VoidUnityEvent`
+
+None generic Unity Event of type `Void`. Inherits from `UnityEvent<Void>`.
 
 ---
 
@@ -1884,33 +478,15 @@ None generic Unity Event x 2 of type `float`. Inherits from `UnityEvent<float, f
 
 ---
 
+## `Vector2UnityEvent`
+
+None generic Unity Event of type `Vector2`. Inherits from `UnityEvent<Vector2>`.
+
+---
+
 ## `FloatUnityEvent`
 
 None generic Unity Event of type `float`. Inherits from `UnityEvent<float>`.
-
----
-
-## `GameObjectGameObjectUnityEvent`
-
-None generic Unity Event x 2 of type `GameObject`. Inherits from `UnityEvent<GameObject, GameObject>`.
-
----
-
-## `GameObjectUnityEvent`
-
-None generic Unity Event of type `GameObject`. Inherits from `UnityEvent<GameObject>`.
-
----
-
-## `IntIntUnityEvent`
-
-None generic Unity Event x 2 of type `int`. Inherits from `UnityEvent<int, int>`.
-
----
-
-## `IntUnityEvent`
-
-None generic Unity Event of type `int`. Inherits from `UnityEvent<int>`.
 
 ---
 
@@ -1920,21 +496,9 @@ None generic Unity Event x 2 of type `string`. Inherits from `UnityEvent<string,
 
 ---
 
-## `StringUnityEvent`
+## `IntUnityEvent`
 
-None generic Unity Event of type `string`. Inherits from `UnityEvent<string>`.
-
----
-
-## `Vector2UnityEvent`
-
-None generic Unity Event of type `Vector2`. Inherits from `UnityEvent<Vector2>`.
-
----
-
-## `Vector2Vector2UnityEvent`
-
-None generic Unity Event x 2 of type `Vector2`. Inherits from `UnityEvent<Vector2, Vector2>`.
+None generic Unity Event of type `int`. Inherits from `UnityEvent<int>`.
 
 ---
 
@@ -1944,15 +508,135 @@ None generic Unity Event of type `Vector3`. Inherits from `UnityEvent<Vector3>`.
 
 ---
 
+## `ColorUnityEvent`
+
+None generic Unity Event of type `Color`. Inherits from `UnityEvent<Color>`.
+
+---
+
+## `StringUnityEvent`
+
+None generic Unity Event of type `string`. Inherits from `UnityEvent<string>`.
+
+---
+
+## `Vector2Vector2UnityEvent`
+
+None generic Unity Event x 2 of type `Vector2`. Inherits from `UnityEvent<Vector2, Vector2>`.
+
+---
+
+## `IntIntUnityEvent`
+
+None generic Unity Event x 2 of type `int`. Inherits from `UnityEvent<int, int>`.
+
+---
+
+## `ColorColorUnityEvent`
+
+None generic Unity Event x 2 of type `Color`. Inherits from `UnityEvent<Color, Color>`.
+
+---
+
 ## `Vector3Vector3UnityEvent`
 
 None generic Unity Event x 2 of type `Vector3`. Inherits from `UnityEvent<Vector3, Vector3>`.
 
 ---
 
-## `VoidUnityEvent`
+## `GameObjectGameObjectUnityEvent`
 
-None generic Unity Event of type `Void`. Inherits from `UnityEvent<Void>`.
+None generic Unity Event x 2 of type `GameObject`. Inherits from `UnityEvent<GameObject, GameObject>`.
+
+---
+
+## `BoolBoolUnityEvent`
+
+None generic Unity Event x 2 of type `bool`. Inherits from `UnityEvent<bool, bool>`.
+
+---
+
+## `GameObjectConstant`
+
+Constant of type `GameObject`. Inherits from `AtomBaseVariable<GameObject>`.
+
+---
+
+## `Collider2DConstant`
+
+Constant of type `Collider2D`. Inherits from `AtomBaseVariable<Collider2D>`.
+
+---
+
+## `BoolConstant`
+
+Constant of type `bool`. Inherits from `AtomBaseVariable<bool>`.
+
+---
+
+## `Vector2Constant`
+
+Constant of type `Vector2`. Inherits from `AtomBaseVariable<Vector2>`.
+
+---
+
+## `ColliderConstant`
+
+Constant of type `Collider`. Inherits from `AtomBaseVariable<Collider>`.
+
+---
+
+## `IntConstant`
+
+Constant of type `int`. Inherits from `AtomBaseVariable<int>`.
+
+---
+
+## `FloatConstant`
+
+Constant of type `float`. Inherits from `AtomBaseVariable<float>`.
+
+---
+
+## `StringConstant`
+
+Constant of type `string`. Inherits from `AtomBaseVariable<string>`.
+
+---
+
+## `ColorConstant`
+
+Constant of type `Color`. Inherits from `AtomBaseVariable<Color>`.
+
+---
+
+## `Vector3Constant`
+
+Constant of type `Vector3`. Inherits from `AtomBaseVariable<Vector3>`.
+
+---
+
+## `Runtime`
+
+Internal constant and static readonly members for runtime usage.
+
+### Properties
+
+#### `IsUnityAtomsRepo`
+
+Determine if we are working the Unity Atoms source library / repo or not.
+
+---
+
+## `Runtime.Constants`
+
+Runtime constants
+
+### Variables
+
+#### `LOG_PREFIX`
+
+Prefix that should be pre-pended to all Debug.Logs made from UnityAtoms to help immediately inform a user that those logs are made from this library.
 
 ---
 
@@ -2241,27 +925,9 @@ The Function crated.
 
 ---
 
-## `Runtime`
+## `BoolVariable`
 
-Internal constant and static readonly members for runtime usage.
-
-### Properties
-
-#### `IsUnityAtomsRepo`
-
-Determine if we are working the Unity Atoms source library / repo or not.
-
----
-
-## `Runtime.Constants`
-
-Runtime constants
-
-### Variables
-
-#### `LOG_PREFIX`
-
-Prefix that should be pre-pended to all Debug.Logs made from UnityAtoms to help immediately inform a user that those logs are made from this library.
+Variable of type `bool`. Inherits from `EquatableAtomVariable<bool, BoolEvent, BoolBoolEvent>`.
 
 ---
 
@@ -2362,6 +1028,36 @@ None equality operator.
 #### `Reset(System.Boolean)`
 
 Not implemented.abstract Throws Exception
+
+---
+
+## `Vector2Variable`
+
+Variable of type `Vector2`. Inherits from `EquatableAtomVariable<Vector2, Vector2Event, Vector2Vector2Event>`.
+
+---
+
+## `ColliderVariable`
+
+Variable of type `Collider`. Inherits from `AtomVariable<Collider, ColliderEvent, ColliderColliderEvent>`.
+
+---
+
+## `IntVariable`
+
+Variable of type `int`. Inherits from `EquatableAtomVariable<int, IntEvent, IntIntEvent>`.
+
+---
+
+## `FloatVariable`
+
+Variable of type `float`. Inherits from `EquatableAtomVariable<float, FloatEvent, FloatFloatEvent>`.
+
+---
+
+## `StringVariable`
+
+Variable of type `string`. Inherits from `EquatableAtomVariable<string, StringEvent, StringStringEvent>`.
 
 ---
 
@@ -2471,9 +1167,9 @@ The Variable's change Event as an `IObservable<T, T>`.
 
 ---
 
-## `BoolVariable`
+## `GameObjectVariable`
 
-Variable of type `bool`. Inherits from `EquatableAtomVariable<bool, BoolEvent, BoolBoolEvent>`.
+Variable of type `GameObject`. Inherits from `AtomVariable<GameObject, GameObjectEvent, GameObjectGameObjectEvent>`.
 
 ---
 
@@ -2483,45 +1179,9 @@ Variable of type `Collider2D`. Inherits from `AtomVariable<Collider2D, Collider2
 
 ---
 
-## `ColliderVariable`
-
-Variable of type `Collider`. Inherits from `AtomVariable<Collider, ColliderEvent, ColliderColliderEvent>`.
-
----
-
 ## `ColorVariable`
 
 Variable of type `Color`. Inherits from `EquatableAtomVariable<Color, ColorEvent, ColorColorEvent>`.
-
----
-
-## `FloatVariable`
-
-Variable of type `float`. Inherits from `EquatableAtomVariable<float, FloatEvent, FloatFloatEvent>`.
-
----
-
-## `GameObjectVariable`
-
-Variable of type `GameObject`. Inherits from `AtomVariable<GameObject, GameObjectEvent, GameObjectGameObjectEvent>`.
-
----
-
-## `IntVariable`
-
-Variable of type `int`. Inherits from `EquatableAtomVariable<int, IntEvent, IntIntEvent>`.
-
----
-
-## `StringVariable`
-
-Variable of type `string`. Inherits from `EquatableAtomVariable<string, StringEvent, StringStringEvent>`.
-
----
-
-## `Vector2Variable`
-
-Variable of type `Vector2`. Inherits from `EquatableAtomVariable<Vector2, Vector2Event, Vector2Vector2Event>`.
 
 ---
 
@@ -2531,8 +1191,1348 @@ Variable of type `Vector3`. Inherits from `EquatableAtomVariable<Vector3, Vector
 
 ---
 
+## `AtomAction`
+
+Base abstract class for Actions. Inherits from `BaseAtom`.
+
+### Variables
+
+#### `ActionNoValue`
+
+The actual Action.
+
+### Methods
+
+#### `Do`
+
+Perform the Action.
+
+---
+
+## `AtomAction<T1>`
+
+#### Type Parameters
+
+-   `T1` - The type for this Action.
+
+Generic abstract base class for Actions. Inherits from `AtomAction`.
+
+### Variables
+
+#### `Action`
+
+The actual Action.
+
+### Methods
+
+#### `Do(t1)`
+
+Perform the Action.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+
+---
+
+## `AtomAction<T1,T2>`
+
+#### Type Parameters
+
+-   `T1` - The first type for this Action.
+-   `T2` - The second type for this Action.
+
+Generic abstract base class for Actions. Inherits from `AtomAction`.
+
+### Variables
+
+#### `Action`
+
+The actual Action.
+
+### Methods
+
+#### `Do(t1,t2)`
+
+Perform the Action.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+-   `t2` - The second parameter.
+
+---
+
+## `AtomAction<T1,T2,T3>`
+
+#### Type Parameters
+
+-   `T1` - The first type for this Action.
+-   `T2` - The second type for this Action.
+-   `T3` - The third type for this Action.
+
+Generic abstract base class for Actions. Inherits from `AtomAction`.
+
+### Variables
+
+#### `Action`
+
+The actual Action.
+
+### Methods
+
+#### `Do(t1,t2,t3)`
+
+Perform the Action.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+-   `t2` - The second parameter.
+-   `t3` - The third parameter.
+
+---
+
+## `AtomAction<T1,T2,T3,T4>`
+
+#### Type Parameters
+
+-   `T1` - The first type for this Action.
+-   `T2` - The second type for this Action.
+-   `T3` - The third type for this Action.
+-   `T4` - The fourth type for this Action.
+
+Generic abstract base class for Actions. Inherits from `AtomAction`.
+
+### Variables
+
+#### `Action`
+
+The actual Action.
+
+### Methods
+
+#### `Do(t1,t2,t3,t4)`
+
+Perform the Action.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+-   `t2` - The second parameter.
+-   `t3` - The third parameter.
+-   `t4` - The fourth parameter.
+
+---
+
+## `AtomAction<T1,T2,T3,T4,T5>`
+
+#### Type Parameters
+
+-   `T1` - The first type for this Action.
+-   `T2` - The second type for this Action.
+-   `T3` - The third type for this Action.
+-   `T4` - The fourth type for this Action.
+-   `T5` - The fifth type for this Action.
+
+Generic abstract base class for Actions. Inherits from `AtomAction`.
+
+### Variables
+
+#### `Action`
+
+The actual Action.
+
+### Methods
+
+#### `Do(t1,t2,t3,t4,t5)`
+
+Perform the Action.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+-   `t2` - The second parameter.
+-   `t3` - The third parameter.
+-   `t4` - The fourth parameter.
+-   `t5` - The fifth parameter.
+
+---
+
+## `StringStringAction`
+
+Action x 2 of type `string`. Inherits from `AtomAction<string, string>`.
+
+---
+
+## `GameObjectAction`
+
+Action of type `GameObject`. Inherits from `AtomAction<GameObject>`.
+
+---
+
+## `FloatFloatAction`
+
+Action x 2 of type `float`. Inherits from `AtomAction<float, float>`.
+
+---
+
+## `Vector2Action`
+
+Action of type `Vector2`. Inherits from `AtomAction<Vector2>`.
+
+---
+
+## `Vector3Action`
+
+Action of type `Vector3`. Inherits from `AtomAction<Vector3>`.
+
+---
+
+## `VoidAction`
+
+Action of type `Void`. Inherits from `AtomAction<Void>`.
+
+### Methods
+
+#### `Do(UnityAtoms.Void)`
+
+Do the Action.
+
+##### Parameters
+
+-   `_` - Dummy Void parameter.
+
+---
+
+## `ColorAction`
+
+Action of type `Color`. Inherits from `AtomAction<Color>`.
+
+---
+
+## `IntIntAction`
+
+Action x 2 of type `int`. Inherits from `AtomAction<int, int>`.
+
+---
+
+## `BoolBoolAction`
+
+Action x 2 of type `bool`. Inherits from `AtomAction<bool, bool>`.
+
+---
+
+## `ColliderAction`
+
+Action of type `Collider`. Inherits from `AtomAction<Collider>`.
+
+---
+
+## `StringAction`
+
+Action of type `string`. Inherits from `AtomAction<string>`.
+
+---
+
+## `ColorColorAction`
+
+Action x 2 of type `Color`. Inherits from `AtomAction<Color, Color>`.
+
+---
+
+## `BoolAction`
+
+Action of type `bool`. Inherits from `AtomAction<bool>`.
+
+---
+
+## `Vector3Vector3Action`
+
+Action x 2 of type `Vector3`. Inherits from `AtomAction<Vector3, Vector3>`.
+
+---
+
+## `IntAction`
+
+Action of type `int`. Inherits from `AtomAction<int>`.
+
+---
+
+## `FloatAction`
+
+Action of type `float`. Inherits from `AtomAction<float>`.
+
+---
+
+## `Collider2DCollider2DAction`
+
+Action x 2 of type `Collider2D`. Inherits from `AtomAction<Collider2D, Collider2D>`.
+
+---
+
+## `Collider2DAction`
+
+Action of type `Collider2D`. Inherits from `AtomAction<Collider2D>`.
+
+---
+
+## `ColliderColliderAction`
+
+Action x 2 of type `Collider`. Inherits from `AtomAction<Collider, Collider>`.
+
+---
+
+## `GameObjectGameObjectAction`
+
+Action x 2 of type `GameObject`. Inherits from `AtomAction<GameObject, GameObject>`.
+
+---
+
+## `Vector2Vector2Action`
+
+Action x 2 of type `Vector2`. Inherits from `AtomAction<Vector2, Vector2>`.
+
+---
+
+## `AtomFunction<R>`
+
+#### Type Parameters
+
+-   `R` - The type to return from the Function.
+
+Generic abstract base class for Functions. Inherits from `BaseAtom`.
+
+### Variables
+
+#### `Func`
+
+The actual function.
+
+### Methods
+
+#### `Call`
+
+Call the Function.
+
+##### Returns
+
+Whatever the function decides to return of type `R`.
+
+---
+
+#### `SetFunc(func)`
+
+Set the Function providing a `Func<R>`.
+
+##### Parameters
+
+-   `func` - The `Func<R>` to set.
+
+##### Returns
+
+An `AtomFunction<R>`.
+
+---
+
+## `AtomFunction<R,T1>`
+
+#### Type Parameters
+
+-   `R` - The type to return from the Function.
+-   `T1` - The parameter type for this Function.
+
+Generic abstract base class for Functions. Inherits from `BaseAtom`.
+
+### Variables
+
+#### `Func`
+
+The actual function.
+
+### Methods
+
+#### `Call(t1)`
+
+Call the Function.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+
+##### Returns
+
+Whatever the function decides to return of type `R`.
+
+---
+
+#### `SetFunc(func)`
+
+Set the Function providing a `Func<T1, R>`.
+
+##### Parameters
+
+-   `func` - The `Func<T1, R>` to set.
+
+##### Returns
+
+An `AtomFunction<R, T1>`.
+
+---
+
+## `AtomFunction<R,T1,T2>`
+
+#### Type Parameters
+
+-   `R` - The type to return from the Function.
+-   `T1` - The first parameter type for this Function.
+-   `T2` - The second parameter type for this Function.
+
+Generic abstract base class for Functions. Inherits from `BaseAtom`.
+
+### Variables
+
+#### `Func`
+
+The actual function.
+
+### Methods
+
+#### `Call(t1,t2)`
+
+Call the Function.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+-   `t2` - The second parameter.
+
+##### Returns
+
+Whatever the function decides to return of type `R`.
+
+---
+
+#### `SetFunc(func)`
+
+Set the Function providing a `Func<T1, T2, R>`.
+
+##### Parameters
+
+-   `func` - The `Func<T1, T2, R>` to set.
+
+##### Returns
+
+An `AtomFunction<R, T1, T2>`.
+
+---
+
+## `AtomFunction<R,T1,T2,T3>`
+
+#### Type Parameters
+
+-   `R` - The type to return from the Function.
+-   `T1` - The first parameter type for this Function.
+-   `T2` - The second parameter type for this Function.
+-   `T3` - The third parameter type for this Function.
+
+Generic abstract base class for Functions. Inherits from `BaseAtom`.
+
+### Variables
+
+#### `Func`
+
+The actual function.
+
+### Methods
+
+#### `Call(t1,t2,t3)`
+
+Call the Function.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+-   `t2` - The second parameter.
+-   `t3` - The third parameter.
+
+##### Returns
+
+Whatever the function decides to return of type `R`.
+
+---
+
+#### `SetFunc(func)`
+
+Set the Function providing a `Func<T1, T2, T3, R>`.
+
+##### Parameters
+
+-   `func` - The `Func<T1, T2, T3, R>` to set.
+
+##### Returns
+
+An `AtomFunction<R, T1, T2, T3>`.
+
+---
+
+## `AtomFunction<R,T1,T2,T3,T4>`
+
+#### Type Parameters
+
+-   `R` - The type to return from the Function.
+-   `T1` - The first parameter type for this Function.
+-   `T2` - The second parameter type for this Function.
+-   `T3` - The third parameter type for this Function.
+-   `T4` - The fourth parameter type for this Function.
+
+Generic abstract base class for Functions. Inherits from `BaseAtom`.
+
+### Variables
+
+#### `Func`
+
+The actual function.
+
+### Methods
+
+#### `Call(t1,t2,t3,t4)`
+
+Call the Function.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+-   `t2` - The second parameter.
+-   `t3` - The third parameter.
+-   `t4` - The fourth parameter.
+
+##### Returns
+
+Whatever the function decides to return of type `R`.
+
+---
+
+#### `SetFunc(func)`
+
+Set the Function providing a `Func<T1, T2, T3, T4 R>`.
+
+##### Parameters
+
+-   `func` - The `Func<T1, T2, T3, T4, R>` to set.
+
+##### Returns
+
+An `AtomFunction<R, T1, T2, T3, T4>`.
+
+---
+
+## `AtomFunction<R,T1,T2,T3,T4,T5>`
+
+#### Type Parameters
+
+-   `R` - The type to return from the Function.
+-   `T1` - The first parameter type for this Function.
+-   `T2` - The second parameter type for this Function.
+-   `T3` - The third parameter type for this Function.
+-   `T4` - The fourth parameter type for this Function.
+-   `T5` - The fifth parameter type for this Function.
+
+Generic abstract base class for Functions. Inherits from `BaseAtom`.
+
+### Variables
+
+#### `Func`
+
+The actual function.
+
+### Methods
+
+#### `Call(t1,t2,t3,t4,t5)`
+
+Call the Function.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+-   `t2` - The second parameter.
+-   `t3` - The third parameter.
+-   `t4` - The fourth parameter.
+-   `t5` - The fifth parameter.
+
+##### Returns
+
+Whatever the function decides to return of type `R`.
+
+---
+
+#### `SetFunc(func)`
+
+Set the Function providing a `Func<T1, T2, T3, T4, T5 R>`.
+
+##### Parameters
+
+-   `func` - The `Func<T1, T2, T3, T4, T5, R>` to set.
+
+##### Returns
+
+An `AtomFunction<R, T1, T2, T3, T4, T5>`.
+
+---
+
+## `Collider2DCollider2DEvent`
+
+Event x 2 of type `Collider2D`. Inherits from `AtomEvent<Collider2D, Collider2D>`.
+
+---
+
+## `BoolBoolEvent`
+
+Event x 2 of type `bool`. Inherits from `AtomEvent<bool, bool>`.
+
+---
+
+## `IntIntEvent`
+
+Event x 2 of type `int`. Inherits from `AtomEvent<int, int>`.
+
+---
+
+## `StringStringEvent`
+
+Event x 2 of type `string`. Inherits from `AtomEvent<string, string>`.
+
+---
+
+## `ColliderEvent`
+
+Event of type `Collider`. Inherits from `AtomEvent<Collider>`.
+
+---
+
+## `ColorColorEvent`
+
+Event x 2 of type `Color`. Inherits from `AtomEvent<Color, Color>`.
+
+---
+
+## `GameObjectEvent`
+
+Event of type `GameObject`. Inherits from `AtomEvent<GameObject>`.
+
+---
+
+## `ColliderColliderEvent`
+
+Event x 2 of type `Collider`. Inherits from `AtomEvent<Collider, Collider>`.
+
+---
+
+## `Vector2Vector2Event`
+
+Event x 2 of type `Vector2`. Inherits from `AtomEvent<Vector2, Vector2>`.
+
+---
+
+## `Vector3Vector3Event`
+
+Event x 2 of type `Vector3`. Inherits from `AtomEvent<Vector3, Vector3>`.
+
+---
+
+## `AtomEvent`
+
+None generic base class for Events. Inherits from `BaseAtom` and `ISerializationCallbackReceiver`.
+
+### Methods
+
+#### `Register(System.Action)`
+
+Register handler to be called when the Event triggers.
+
+##### Parameters
+
+-   `del` - The handler.
+
+---
+
+#### `Unregister(System.Action)`
+
+Unregister handler that was registered using the `Register` method.
+
+##### Parameters
+
+-   `del` - The handler.
+
+---
+
+#### `RegisterListener(UnityAtoms.IAtomListener)`
+
+Register a Listener that in turn trigger all its associated handlers when the Event triggers.
+
+##### Parameters
+
+-   `listener` - The Listener to register.
+
+---
+
+#### `UnregisterListener(UnityAtoms.IAtomListener)`
+
+Unregister a listener that was registered using the `RegisterListener` method.
+
+##### Parameters
+
+-   `listener` - The Listener to unregister.
+
+---
+
+## `AtomEvent<T>`
+
+#### Type Parameters
+
+-   `T` - The type for this Event.
+
+Generic base class for Events. Inherits from `AtomEvent`.
+
+### Methods
+
+#### `Raise(item)`
+
+Raise the Event.
+
+##### Parameters
+
+-   `item` - The value associated with the Event.
+
+---
+
+#### `Register(del)`
+
+Register handler to be called when the Event triggers.
+
+##### Parameters
+
+-   `del` - The handler.
+
+---
+
+#### `Unregister(del)`
+
+Unregister handler that was registered using the `Register` method.
+
+##### Parameters
+
+-   `del` - The handler.
+
+---
+
+#### `RegisterListener(listener)`
+
+Register a Listener that in turn trigger all its associated handlers when the Event triggers.
+
+##### Parameters
+
+-   `listener` - The Listener to register.
+
+---
+
+#### `UnregisterListener(listener)`
+
+Unregister a listener that was registered using the `RegisterListener` method.
+
+##### Parameters
+
+-   `listener` - The Listener to unregister.
+
+---
+
+#### `Observe`
+
+Turn the Event into an `IObservable<T>`. Makes Events compatible with for example UniRx.
+
+##### Returns
+
+The Event as an `IObservable<T>`.
+
+---
+
+## `AtomEvent<T1,T2>`
+
+#### Type Parameters
+
+-   `T1` - The first type for this Event.
+-   `T2` - The second type for this Event.
+
+Generic base class for Events. Inherits from `AtomEvent`.
+
+### Methods
+
+#### `Raise(item1,item2)`
+
+Raise the Event.
+
+##### Parameters
+
+-   `item1` - The first value associated with the Event.
+-   `item2` - The second value associated with the Event.
+
+---
+
+#### `Register(del)`
+
+Register handler to be called when the Event triggers.
+
+##### Parameters
+
+-   `del` - The handler.
+
+---
+
+#### `Unregister(del)`
+
+Unregister handler that was registered using the `Register` method.
+
+##### Parameters
+
+-   `del` - The handler.
+
+---
+
+#### `RegisterListener(listener)`
+
+Register a Listener that in turn trigger all its associated handlers when the Event triggers.
+
+##### Parameters
+
+-   `listener` - The Listener to register.
+
+---
+
+#### `UnregisterListener(listener)`
+
+Unregister a listener that was registered using the `RegisterListener` method.
+
+##### Parameters
+
+-   `listener` - The Listener to unregister.
+
+---
+
+#### `Observe<M>(resultSelector)`
+
+Turn the Event into an `IObservable<M>`. Makes Events compatible with for example UniRx.
+
+#### Type Parameters
+
+-   `M` - The result selector type.
+
+##### Parameters
+
+-   `resultSelector` - Takes `T1` and `T2` and returns a new type of type `M`.abstract Most of the time this is going to be combination of T1 and T2, eg. `ValueTuple<T1, T2>`
+
+##### Returns
+
+The Event as an `IObservable<M>`.
+
+---
+
+## `Vector3Event`
+
+Event of type `Vector3`. Inherits from `AtomEvent<Vector3>`.
+
+---
+
+## `BoolEvent`
+
+Event of type `bool`. Inherits from `AtomEvent<bool>`.
+
+---
+
+## `GameObjectGameObjectEvent`
+
+Event x 2 of type `GameObject`. Inherits from `AtomEvent<GameObject, GameObject>`.
+
+---
+
+## `StringEvent`
+
+Event of type `string`. Inherits from `AtomEvent<string>`.
+
+---
+
+## `ColorEvent`
+
+Event of type `Color`. Inherits from `AtomEvent<Color>`.
+
+---
+
+## `VoidEvent`
+
+Event of type `Void`. Inherits from `AtomEvent<Void>`.
+
+---
+
+## `Vector2Event`
+
+Event of type `Vector2`. Inherits from `AtomEvent<Vector2>`.
+
+---
+
+## `FloatEvent`
+
+Event of type `float`. Inherits from `AtomEvent<float>`.
+
+---
+
+## `FloatFloatEvent`
+
+Event x 2 of type `float`. Inherits from `AtomEvent<float, float>`.
+
+---
+
+## `Collider2DEvent`
+
+Event of type `Collider2D`. Inherits from `AtomEvent<Collider2D>`.
+
+---
+
+## `IntEvent`
+
+Event of type `int`. Inherits from `AtomEvent<int>`.
+
+---
+
+## `FloatFloatListener`
+
+Listener x 2 of type `float`. Inherits from `AtomListener<float, float, FloatFloatAction, FloatFloatEvent, FloatFloatUnityEvent>`.
+
+---
+
+## `Collider2DListener`
+
+Listener of type `Collider2D`. Inherits from `AtomListener<Collider2D, Collider2DAction, Collider2DEvent, Collider2DUnityEvent>`.
+
+---
+
+## `BaseAtomListener`
+
+None generic base class for all Listeners.
+
+### Variables
+
+#### `_developerDescription`
+
+A description of the Listener made for documentation purposes.
+
+---
+
+## `Vector3Vector3Listener`
+
+Listener x 2 of type `Vector3`. Inherits from `AtomListener<Vector3, Vector3, Vector3Vector3Action, Vector3Vector3Event, Vector3Vector3UnityEvent>`.
+
+---
+
+## `GameObjectListener`
+
+Listener of type `GameObject`. Inherits from `AtomListener<GameObject, GameObjectAction, GameObjectEvent, GameObjectUnityEvent>`.
+
+---
+
+## `AtomListener`
+
+The most basic Listener. Can use every type of AtomEvent but doesn't support its value. Inherits from `BaseAtomListener` and implements `IAtomListener`.
+
+### Variables
+
+#### `_event`
+
+The Event that we are listening to.
+
+---
+
+#### `_unityEventResponse`
+
+The Unity Event responses. NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
+
+---
+
+#### `_actionResponses`
+
+The Action responses;
+
+### Properties
+
+#### `Event`
+
+The Event we are listening for as a property.
+
+### Methods
+
+#### `OnEventRaised`
+
+Handler for when the Event gets raised.
+
+---
+
+## `AtomListener<T,A,E,UER>`
+
+#### Type Parameters
+
+-   `T` - The type that we are listening for.
+-   `A` - Acion of type `AtomAction<T>`.
+-   `E` - Event of type `AtomEvent<T>`.
+-   `UER` - Unity Event of type `UnityEvent<T>`.
+
+Generic base class for Listeners. Inherits from `BaseAtomListener` and implements `IAtomListener<T>`.
+
+### Variables
+
+#### `_event`
+
+The Event that we are listening to.
+
+---
+
+#### `_unityEventResponse`
+
+The Unity Event responses. NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
+
+---
+
+#### `_actionResponses`
+
+The Action responses;
+
+### Properties
+
+#### `Event`
+
+The Event we are listening for as a property.
+
+### Methods
+
+#### `OnEventRaised(item)`
+
+Handler for when the Event gets raised.
+
+##### Parameters
+
+-   `item` - The Event type.
+
+---
+
+#### `DebugLog(`0)`
+
+Helper to regiser as listener callback
+
+---
+
+## `AtomListener<T1,T2,A,E,UER>`
+
+#### Type Parameters
+
+-   `T1` - The first type that we are listening for.
+-   `T2` - The second type that we are listening for.
+-   `A` - Acion of type `AtomAction<T1, T2>`.
+-   `E` - Event of type `AtomEvent<T1, T2>`.
+-   `UER` - Unity Event of type `UnityEvent<T1, T2>`.
+
+Generic base class for Listeners. Inherits from `BaseAtomListener` and implements `IAtomListener<T1, T2>`
+
+### Variables
+
+#### `_event`
+
+The Event that we are listening to.
+
+---
+
+#### `_unityEventResponse`
+
+The Unity Event responses. NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
+
+---
+
+#### `_actionResponses`
+
+The Action responses;
+
+### Properties
+
+#### `Event`
+
+The Event we are listening for as a property.
+
+### Methods
+
+#### `OnEventRaised(first,second)`
+
+Handler for when the Event gets raised.
+
+##### Parameters
+
+-   `first` - The first Event type.
+-   `second` - The second Event type.
+
+---
+
+#### `DebugLog(`0,`1)`
+
+Helper to regiser as listener callback
+
+---
+
+## `StringListener`
+
+Listener of type `string`. Inherits from `AtomListener<string, StringAction, StringEvent, StringUnityEvent>`.
+
+---
+
+## `BoolBoolListener`
+
+Listener x 2 of type `bool`. Inherits from `AtomListener<bool, bool, BoolBoolAction, BoolBoolEvent, BoolBoolUnityEvent>`.
+
+---
+
+## `FloatListener`
+
+Listener of type `float`. Inherits from `AtomListener<float, FloatAction, FloatEvent, FloatUnityEvent>`.
+
+---
+
+## `IntIntListener`
+
+Listener x 2 of type `int`. Inherits from `AtomListener<int, int, IntIntAction, IntIntEvent, IntIntUnityEvent>`.
+
+---
+
+## `ColliderListener`
+
+Listener of type `Collider`. Inherits from `AtomListener<Collider, ColliderAction, ColliderEvent, ColliderUnityEvent>`.
+
+---
+
+## `IntListener`
+
+Listener of type `int`. Inherits from `AtomListener<int, IntAction, IntEvent, IntUnityEvent>`.
+
+---
+
+## `Collider2DCollider2DListener`
+
+Listener x 2 of type `Collider2D`. Inherits from `AtomListener<Collider2D, Collider2D, Collider2DCollider2DAction, Collider2DCollider2DEvent, Collider2DCollider2DUnityEvent>`.
+
+---
+
+## `Vector2Listener`
+
+Listener of type `Vector2`. Inherits from `AtomListener<Vector2, Vector2Action, Vector2Event, Vector2UnityEvent>`.
+
+---
+
+## `BoolListener`
+
+Listener of type `bool`. Inherits from `AtomListener<bool, BoolAction, BoolEvent, BoolUnityEvent>`.
+
+---
+
+## `Vector2Vector2Listener`
+
+Listener x 2 of type `Vector2`. Inherits from `AtomListener<Vector2, Vector2, Vector2Vector2Action, Vector2Vector2Event, Vector2Vector2UnityEvent>`.
+
+---
+
+## `GameObjectGameObjectListener`
+
+Listener x 2 of type `GameObject`. Inherits from `AtomListener<GameObject, GameObject, GameObjectGameObjectAction, GameObjectGameObjectEvent, GameObjectGameObjectUnityEvent>`.
+
+---
+
+## `Vector3Listener`
+
+Listener of type `Vector3`. Inherits from `AtomListener<Vector3, Vector3Action, Vector3Event, Vector3UnityEvent>`.
+
+---
+
+## `StringStringListener`
+
+Listener x 2 of type `string`. Inherits from `AtomListener<string, string, StringStringAction, StringStringEvent, StringStringUnityEvent>`.
+
+---
+
+## `ColorColorListener`
+
+Listener x 2 of type `Color`. Inherits from `AtomListener<Color, Color, ColorColorAction, ColorColorEvent, ColorColorUnityEvent>`.
+
+---
+
+## `VoidListener`
+
+Listener of type `Void`. Inherits from `AtomListener<Void, VoidAction, VoidEvent, VoidUnityEvent>`.
+
+---
+
+## `ColliderColliderListener`
+
+Listener x 2 of type `Collider`. Inherits from `AtomListener<Collider, Collider, ColliderColliderAction, ColliderColliderEvent, ColliderColliderUnityEvent>`.
+
+---
+
+## `ColorListener`
+
+Listener of type `Color`. Inherits from `AtomListener<Color, ColorAction, ColorEvent, ColorUnityEvent>`.
+
+---
+
+## `BaseAtom`
+
+None generic base class for all Atoms.
+
+### Variables
+
+#### `_developerDescription`
+
+A description of the Atom made for documentation purposes.
+
+---
+
+## `StringExtensions`
+
+Internal extension class for strings.
+
+### Methods
+
+#### `ToInt(System.String,System.Int32)`
+
+Tries to parse a string to an int.
+
+##### Parameters
+
+-   `str` - The string to parse.
+-   `def` - The default value if not able to parse the provided string.
+
+##### Returns
+
+Returns the string parsed to an int. If not able to parse the string, it returns the default value provided to the method.
+
+---
+
+#### `Repeat(System.String,System.Int32)`
+
+Repeats the string X amount of times.
+
+##### Parameters
+
+-   `str` - The string to repeat.
+-   `times` - The number of times to repeat the provided string.
+
+##### Returns
+
+The string repeated X amount of times.
+
+---
+
 ## `VoidGameObjectUnityEvent`
 
 None generic Unity Event x 2 of type `Void` and `GameObject`. Inherits from `UnityEvent<Void, GameObject>`.
+
+---
+
+## `EditorIcon`
+
+Specify a texture name from your assets which you want to be assigned as an icon to the MonoScript.
+
+---
+
+## `SetVector2VariableValue`
+
+Set variable value Action of type `Vector2`. Inherits from `SetVariableValue<Vector2, Vector2Variable, Vector2Constant, Vector2Reference, Vector2Event, Vector2Vector2Event>`.
+
+---
+
+## `SetColorVariableValue`
+
+Set variable value Action of type `Color`. Inherits from `SetVariableValue<Color, ColorVariable, ColorConstant, ColorReference, ColorEvent, ColorColorEvent>`.
+
+---
+
+## `SetCollider2DVariableValue`
+
+Set variable value Action of type `Collider2D`. Inherits from `SetVariableValue<Collider2D, Collider2DVariable, Collider2DConstant, Collider2DReference, Collider2DEvent, Collider2DCollider2DEvent>`.
+
+---
+
+## `SetBoolVariableValue`
+
+Set variable value Action of type `bool`. Inherits from `SetVariableValue<bool, BoolVariable, BoolConstant, BoolReference, BoolEvent, BoolBoolEvent>`.
+
+---
+
+## `SetFloatVariableValue`
+
+Set variable value Action of type `float`. Inherits from `SetVariableValue<float, FloatVariable, FloatConstant, FloatReference, FloatEvent, FloatFloatEvent>`.
+
+---
+
+## `SetVector3VariableValue`
+
+Set variable value Action of type `Vector3`. Inherits from `SetVariableValue<Vector3, Vector3Variable, Vector3Constant, Vector3Reference, Vector3Event, Vector3Vector3Event>`.
+
+---
+
+## `SetVariableValue<T,V,C,R,E1,E2>`
+
+#### Type Parameters
+
+-   `T` - The type of the Variable to set.
+-   `V` - A Variable class of type `type` to set.
+-   `C` - A Constant class of type `type` to set.
+-   `R` - A Reference of type `type`.
+-   `E1` - An Event of type `type`.
+-   `E2` - An Event x 2 of type `type`.
+
+Base class for all SetVariableValue Actions. Inherits from `VoidAction`.
+
+### Variables
+
+#### `_variable`
+
+The Variable to set.
+
+---
+
+#### `_value`
+
+The value to set.
+
+### Methods
+
+#### `Do`
+
+Perform the action.
+
+---
+
+## `SetGameObjectVariableValue`
+
+Set variable value Action of type `GameObject`. Inherits from `SetVariableValue<GameObject, GameObjectVariable, GameObjectConstant, GameObjectReference, GameObjectEvent, GameObjectGameObjectEvent>`.
+
+---
+
+## `SetStringVariableValue`
+
+Set variable value Action of type `string`. Inherits from `SetVariableValue<string, StringVariable, StringConstant, StringReference, StringEvent, StringStringEvent>`.
+
+---
+
+## `SetIntVariableValue`
+
+Set variable value Action of type `int`. Inherits from `SetVariableValue<int, IntVariable, IntConstant, IntReference, IntEvent, IntIntEvent>`.
+
+---
+
+## `SetColliderVariableValue`
+
+Set variable value Action of type `Collider`. Inherits from `SetVariableValue<Collider, ColliderVariable, ColliderConstant, ColliderReference, ColliderEvent, ColliderColliderEvent>`.
 
 ---

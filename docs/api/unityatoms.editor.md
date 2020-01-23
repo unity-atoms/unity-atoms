@@ -7,325 +7,22 @@ sidebar_label: UnityAtoms.Editor
 
 # Namespace - `UnityAtoms.Editor`
 
-## `AtomDrawer<T>`
+## `EditorIconPostProcessor`
 
-#### Type Parameters
+Postprocessor that processes all scripts using the EditorIcon attribute and assigns the matching icon guid (matching the icon query name) to the script's meta. It's a very simple solution (and very hacky), but works really great.
 
--   `T` - The type of Atom the property drawer should apply to.
+### Methods
 
-The base Unity Atoms property drawer. Makes it possible to create and add a new Atom via Unity's inspector. Only availble in `UNITY_2019_1_OR_NEWER`.
+#### `OnPostprocessAllAssets(System.String[],System.String[],System.String[],System.String[])`
 
----
+Called when new assets are imported, deleted or moved.
 
-## `AtomReferenceDrawer`
+##### Parameters
 
-A custom property drawer for References. Makes it possible to choose between a Variable and a constant value (not a Atom Contant, but a regular value).
-
----
-
-## `BoolConstantDrawer`
-
-Constant property drawer of type `bool`. Inherits from `AtomDrawer<BoolConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Collider2DConstantDrawer`
-
-Constant property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColliderConstantDrawer`
-
-Constant property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColorConstantDrawer`
-
-Constant property drawer of type `Color`. Inherits from `AtomDrawer<ColorConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `FloatConstantDrawer`
-
-Constant property drawer of type `float`. Inherits from `AtomDrawer<FloatConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `GameObjectConstantDrawer`
-
-Constant property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `IntConstantDrawer`
-
-Constant property drawer of type `int`. Inherits from `AtomDrawer<IntConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `StringConstantDrawer`
-
-Constant property drawer of type `string`. Inherits from `AtomDrawer<StringConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector2ConstantDrawer`
-
-Constant property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Constant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector3ConstantDrawer`
-
-Constant property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Constant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `BoolBoolEventDrawer`
-
-Event x 2 property drawer of type `bool`. Inherits from `AtomDrawer<BoolBoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `BoolEventDrawer`
-
-Event property drawer of type `bool`. Inherits from `AtomDrawer<BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Collider2DCollider2DEventDrawer`
-
-Event x 2 property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DCollider2DEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Collider2DEventDrawer`
-
-Event property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColliderColliderEventDrawer`
-
-Event x 2 property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColliderEventDrawer`
-
-Event property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColorColorEventDrawer`
-
-Event x 2 property drawer of type `Color`. Inherits from `AtomDrawer<ColorColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColorEventDrawer`
-
-Event property drawer of type `Color`. Inherits from `AtomDrawer<ColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `FloatEventDrawer`
-
-Event property drawer of type `float`. Inherits from `AtomDrawer<FloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `FloatFloatEventDrawer`
-
-Event x 2 property drawer of type `float`. Inherits from `AtomDrawer<FloatFloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `GameObjectEventDrawer`
-
-Event property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `GameObjectGameObjectEventDrawer`
-
-Event x 2 property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectGameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `IntEventDrawer`
-
-Event property drawer of type `int`. Inherits from `AtomDrawer<IntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `IntIntEventDrawer`
-
-Event x 2 property drawer of type `int`. Inherits from `AtomDrawer<IntIntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `StringEventDrawer`
-
-Event property drawer of type `string`. Inherits from `AtomDrawer<StringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `StringStringEventDrawer`
-
-Event x 2 property drawer of type `string`. Inherits from `AtomDrawer<StringStringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector2EventDrawer`
-
-Event property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector2Vector2EventDrawer`
-
-Event x 2 property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Vector2Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector3EventDrawer`
-
-Event property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector3Vector3EventDrawer`
-
-Event x 2 property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `VoidEventDrawer`
-
-Event property drawer of type `Void`. Inherits from `AtomDrawer<VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `BoolListDrawer`
-
-List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Collider2DListDrawer`
-
-List property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColliderListDrawer`
-
-List property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColorListDrawer`
-
-List property drawer of type `Color`. Inherits from `AtomDrawer<ColorList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `FloatListDrawer`
-
-List property drawer of type `float`. Inherits from `AtomDrawer<FloatList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `GameObjectListDrawer`
-
-List property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `IntListDrawer`
-
-List property drawer of type `int`. Inherits from `AtomDrawer<IntList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `StringListDrawer`
-
-List property drawer of type `string`. Inherits from `AtomDrawer<StringList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector2ListDrawer`
-
-List property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2List>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector3ListDrawer`
-
-List property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3List>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `BoolVariableDrawer`
-
-Variable property drawer of type `bool`. Inherits from `AtomDrawer<BoolVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Collider2DVariableDrawer`
-
-Variable property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColliderVariableDrawer`
-
-Variable property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColorVariableDrawer`
-
-Variable property drawer of type `Color`. Inherits from `AtomDrawer<ColorVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `FloatVariableDrawer`
-
-Variable property drawer of type `float`. Inherits from `AtomDrawer<FloatVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `GameObjectVariableDrawer`
-
-Variable property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `IntVariableDrawer`
-
-Variable property drawer of type `int`. Inherits from `AtomDrawer<IntVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `StringVariableDrawer`
-
-Variable property drawer of type `string`. Inherits from `AtomDrawer<StringVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector2VariableDrawer`
-
-Variable property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Variable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector3VariableDrawer`
-
-Variable property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Variable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+-   `importedAssets` - Imported assets.
+-   `deletedAssets` - Deleted assets.
+-   `movedAssets` - Moved assets.
+-   `movedFromAssetPaths` - Moved from asset paths.
 
 ---
 
@@ -346,257 +43,51 @@ Custom editor for Variables. Provides a better user workflow and indicates when 
 
 ---
 
-## `BoolEventEditor`
+## `RegenereateAllAtoms`
 
-Event property drawer of type `bool`. Inherits from `AtomEventEditor<bool, BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Collider2DEventEditor`
-
-Event property drawer of type `Collider2D`. Inherits from `AtomEventEditor<Collider2D, Collider2DEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColliderEventEditor`
-
-Event property drawer of type `Collider`. Inherits from `AtomEventEditor<Collider, ColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColorEventEditor`
-
-Event property drawer of type `Color`. Inherits from `AtomEventEditor<Color, ColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `FloatEventEditor`
-
-Event property drawer of type `float`. Inherits from `AtomEventEditor<float, FloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `GameObjectEventEditor`
-
-Event property drawer of type `GameObject`. Inherits from `AtomEventEditor<GameObject, GameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `IntEventEditor`
-
-Event property drawer of type `int`. Inherits from `AtomEventEditor<int, IntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `StringEventEditor`
-
-Event property drawer of type `string`. Inherits from `AtomEventEditor<string, StringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector2EventEditor`
-
-Event property drawer of type `Vector2`. Inherits from `AtomEventEditor<Vector2, Vector2Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector3EventEditor`
-
-Event property drawer of type `Vector3`. Inherits from `AtomEventEditor<Vector3, Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `VoidEventEditor`
-
-Event property drawer of type `Void`. Inherits from `AtomEventEditor<Void, VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `BoolVariableEditor`
-
-Variable Inspector of type `bool`. Inherits from `AtomVariableEditor`
-
----
-
-## `Collider2DVariableEditor`
-
-Variable Inspector of type `Collider2D`. Inherits from `AtomVariableEditor`
-
----
-
-## `ColliderVariableEditor`
-
-Variable Inspector of type `Collider`. Inherits from `AtomVariableEditor`
-
----
-
-## `ColorVariableEditor`
-
-Variable Inspector of type `Color`. Inherits from `AtomVariableEditor`
-
----
-
-## `FloatVariableEditor`
-
-Variable Inspector of type `float`. Inherits from `AtomVariableEditor`
-
----
-
-## `GameObjectVariableEditor`
-
-Variable Inspector of type `GameObject`. Inherits from `AtomVariableEditor`
-
----
-
-## `IntVariableEditor`
-
-Variable Inspector of type `int`. Inherits from `AtomVariableEditor`
-
----
-
-## `StringVariableEditor`
-
-Variable Inspector of type `string`. Inherits from `AtomVariableEditor`
-
----
-
-## `Vector2VariableEditor`
-
-Variable Inspector of type `Vector2`. Inherits from `AtomVariableEditor`
-
----
-
-## `Vector3VariableEditor`
-
-Variable Inspector of type `Vector3`. Inherits from `AtomVariableEditor`
-
----
-
-## `AtomType`
-
-Internal module class that holds that regarding an Atom type.
-
----
-
-## `AtomTypes`
-
-Internal static class holding predefined static `AtomType`s.
-
----
-
-## `Generator`
-
-Generator that generates new Atom types based on the input data. Used by the `GeneratorEditor`. Only availble in `UNITY_2019_1_OR_NEWER`.
+Internal utility class to regenerate all Atoms. Reachable via top menu bar and `Tools/Unity Atoms/Regenerate All Atoms`.
 
 ### Methods
 
-#### `Generate(System.String,System.String,System.Boolean,System.Collections.Generic.List{UnityAtoms.Editor.AtomType},System.String,System.String)`
+#### `Regenereate`
 
-Generate new Atoms based on the input data.
-
-##### Parameters
-
--   `type` - The type of Atom to generate.abstract Eg. double, byte, MyStruct, MyClass.
--   `baseWritePath` - Base write path (relative to the Asset folder) where the Atoms are going to be written to.
--   `isEquatable` - Is the `type` provided implementing `IEquatable`?
--   `atomTypesToGenerate` - A list of `AtomType`s to be generated.
--   `typeNamespace` - If the `type` provided is defined under a namespace, provide that namespace here.
--   `subUnityAtomsNamespace` - By default the Atoms that gets generated will be under the namespace `UnityAtoms`. If you for example like it to be under `UnityAtoms.MyNamespace` you would then enter `MyNamespace` in this field.
-
-##### Examples
-
-```cs
-namespace MyNamespace
-{
-    public struct MyStruct
-    {
-        public string Text;
-        public int Number;
-    }
-}
-var generator = new Generator();
-generator.Generate("MyStruct", "", false, new List<AtomType>() { AtomTypes.ACTION }, "MyNamespace", ""); // Generates an Atom Action of type MyStruct
-```
+Create the editor window.
 
 ---
 
-#### `RemoveDuplicateNamespaces(System.String)`
+## `Templating`
 
-Removes duplicate namespaces, given content from a template.
+Internal class used for templating when generating new Atoms using the `Generator`.
+
+### Methods
+
+#### `ResolveConditionals(System.String,System.Collections.Generic.List{System.String})`
+
+Resolve conditionals from the provided tempalte.
 
 ##### Parameters
 
--   `content` - The content template to remove namespace from.
+-   `template` - Template to resolve the conditionals from.
+-   `trueConditions` - A list of conditionals that are `true`.
 
 ##### Returns
 
-A copy of `content`, but without duplicate namespaces.
+A new template string resolved and based on the provided `template`.
 
 ---
 
-#### `ResolveFileName(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32,System.String,System.String,System.Int32)`
+#### `ResolveVariables(System.Collections.Generic.Dictionary{System.String,System.String},System.String)`
 
-Resolve file name based on input data.
-
-##### Parameters
-
--   `templateVariables` - Template variables. 
--   `templateName` - Template name.
--   `lastIndexOfDoubleUnderscore` - Last index of double underscore.
--   `capitalizedType` - Capitalized type.
--   `capitalizedAtomType` - Capitalized Atom type (string).
--   `typeOccurrences` - Number of occurrences of the type.
-
-##### Returns
-
-The filename to use.
-
----
-
-#### `ResolveDirPath(System.String,System.String,System.String,System.String)`
-
-Resolves the directory path based on the input data.
+Resolve variables in the provided string.
 
 ##### Parameters
 
--   `baseWritePath` - The base write path (relative to the Assets folder).
--   `capitalizedAtomType` - Capitalized Atom type (string).
--   `templateName` - Template name.
--   `atomType` - Atom type.
+-   `templateVariables` - Dictionay mapping template variables and their resolutions.
+-   `toResolve` - The string to resolve.
 
 ##### Returns
 
-The directory to use.
-
----
-
-#### `Capitalize(System.String)`
-
-Capitalize the provided string.
-
-##### Parameters
-
--   `s` - The string to capitalize.
-
-##### Returns
-
-A capitalized version of the string provided.
-
----
-
-#### `ShouldSkipTemplate(System.Collections.Generic.List{UnityAtoms.Editor.AtomType},System.String,System.Int32)`
-
-Given the input data, should generation of this template be skipped.
-
-##### Parameters
-
--   `atomTypesToGenerate` - List of Atom types to generate.
--   `capitalizedAtomType` - Capitalized Atom type (string).
--   `typeOccurrences` - Number of occurrences of the type.
-
-##### Returns
-
-If we should skip the template or not.
+A new template string resolved and based on the provided `toResolve` string.
 
 ---
 
@@ -673,69 +164,578 @@ A new toggle row (`VisualElement`).
 
 ---
 
-## `RegenereateAllAtoms`
+## `AtomType`
 
-Internal utility class to regenerate all Atoms. Reachable via top menu bar and `Tools/Unity Atoms/Regenerate All Atoms`.
-
-### Methods
-
-#### `Regenereate`
-
-Create the editor window.
+Internal module class that holds that regarding an Atom type.
 
 ---
 
-## `Templating`
+## `Generator`
 
-Internal class used for templating when generating new Atoms using the `Generator`.
+Generator that generates new Atom types based on the input data. Used by the `GeneratorEditor`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ### Methods
 
-#### `ResolveConditionals(System.String,System.Collections.Generic.List{System.String})`
+#### `Generate(System.String,System.String,System.Boolean,System.Collections.Generic.List{UnityAtoms.Editor.AtomType},System.String,System.String)`
 
-Resolve conditionals from the provided tempalte.
+Generate new Atoms based on the input data.
 
 ##### Parameters
 
--   `template` - Template to resolve the conditionals from.
--   `trueConditions` - A list of conditionals that are `true`.
+-   `type` - The type of Atom to generate.abstract Eg. double, byte, MyStruct, MyClass.
+-   `baseWritePath` - Base write path (relative to the Asset folder) where the Atoms are going to be written to.
+-   `isEquatable` - Is the `type` provided implementing `IEquatable`?
+-   `atomTypesToGenerate` - A list of `AtomType`s to be generated.
+-   `typeNamespace` - If the `type` provided is defined under a namespace, provide that namespace here.
+-   `subUnityAtomsNamespace` - By default the Atoms that gets generated will be under the namespace `UnityAtoms`. If you for example like it to be under `UnityAtoms.MyNamespace` you would then enter `MyNamespace` in this field.
+
+##### Examples
+
+```cs
+namespace MyNamespace
+{
+    public struct MyStruct
+    {
+        public string Text;
+        public int Number;
+    }
+}
+var generator = new Generator();
+generator.Generate("MyStruct", "", false, new List<AtomType>() { AtomTypes.ACTION }, "MyNamespace", ""); // Generates an Atom Action of type MyStruct
+```
+
+---
+
+#### `RemoveDuplicateNamespaces(System.String)`
+
+Removes duplicate namespaces, given content from a template.
+
+##### Parameters
+
+-   `content` - The content template to remove namespace from.
 
 ##### Returns
 
-A new template string resolved and based on the provided `template`.
+A copy of `content`, but without duplicate namespaces.
 
 ---
 
-#### `ResolveVariables(System.Collections.Generic.Dictionary{System.String,System.String},System.String)`
+#### `ResolveFileName(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32,System.String,System.String,System.Int32)`
 
-Resolve variables in the provided string.
+Resolve file name based on input data.
 
 ##### Parameters
 
--   `templateVariables` - Dictionay mapping template variables and their resolutions.
--   `toResolve` - The string to resolve.
+-   `templateVariables` - Template variables.
+-   `templateName` - Template name.
+-   `lastIndexOfDoubleUnderscore` - Last index of double underscore.
+-   `capitalizedType` - Capitalized type.
+-   `capitalizedAtomType` - Capitalized Atom type (string).
+-   `typeOccurrences` - Number of occurrences of the type.
 
 ##### Returns
 
-A new template string resolved and based on the provided `toResolve` string.
+The filename to use.
 
 ---
 
-## `EditorIconPostProcessor`
+#### `ResolveDirPath(System.String,System.String,System.String,System.String)`
 
-Postprocessor that processes all scripts using the EditorIcon attribute and assigns the matching icon guid (matching the icon query name) to the script's meta. It's a very simple solution (and very hacky), but works really great.
-
-### Methods
-
-#### `OnPostprocessAllAssets(System.String[],System.String[],System.String[],System.String[])`
-
-Called when new assets are imported, deleted or moved.
+Resolves the directory path based on the input data.
 
 ##### Parameters
 
--   `importedAssets` - Imported assets.
--   `deletedAssets` - Deleted assets.
--   `movedAssets` - Moved assets.
--   `movedFromAssetPaths` - Moved from asset paths.
+-   `baseWritePath` - The base write path (relative to the Assets folder).
+-   `capitalizedAtomType` - Capitalized Atom type (string).
+-   `templateName` - Template name.
+-   `atomType` - Atom type.
+
+##### Returns
+
+The directory to use.
+
+---
+
+#### `Capitalize(System.String)`
+
+Capitalize the provided string.
+
+##### Parameters
+
+-   `s` - The string to capitalize.
+
+##### Returns
+
+A capitalized version of the string provided.
+
+---
+
+#### `ShouldSkipTemplate(System.Collections.Generic.List{UnityAtoms.Editor.AtomType},System.String,System.Int32)`
+
+Given the input data, should generation of this template be skipped.
+
+##### Parameters
+
+-   `atomTypesToGenerate` - List of Atom types to generate.
+-   `capitalizedAtomType` - Capitalized Atom type (string).
+-   `typeOccurrences` - Number of occurrences of the type.
+
+##### Returns
+
+If we should skip the template or not.
+
+---
+
+## `AtomTypes`
+
+Internal static class holding predefined static `AtomType`s.
+
+---
+
+## `AtomDrawer<T>`
+
+#### Type Parameters
+
+-   `T` - The type of Atom the property drawer should apply to.
+
+The base Unity Atoms property drawer. Makes it possible to create and add a new Atom via Unity's inspector. Only availble in `UNITY_2018_4_OR_NEWER`.
+
+---
+
+## `AtomReferenceDrawer`
+
+A custom property drawer for References. Makes it possible to choose between a Variable and a constant value (not a Atom Contant, but a regular value).
+
+---
+
+## `StringVariableEditor`
+
+Variable Inspector of type `string`. Inherits from `AtomVariableEditor`
+
+---
+
+## `IntVariableEditor`
+
+Variable Inspector of type `int`. Inherits from `AtomVariableEditor`
+
+---
+
+## `GameObjectVariableEditor`
+
+Variable Inspector of type `GameObject`. Inherits from `AtomVariableEditor`
+
+---
+
+## `ColliderVariableEditor`
+
+Variable Inspector of type `Collider`. Inherits from `AtomVariableEditor`
+
+---
+
+## `BoolVariableEditor`
+
+Variable Inspector of type `bool`. Inherits from `AtomVariableEditor`
+
+---
+
+## `Vector2VariableEditor`
+
+Variable Inspector of type `Vector2`. Inherits from `AtomVariableEditor`
+
+---
+
+## `Collider2DVariableEditor`
+
+Variable Inspector of type `Collider2D`. Inherits from `AtomVariableEditor`
+
+---
+
+## `Vector3VariableEditor`
+
+Variable Inspector of type `Vector3`. Inherits from `AtomVariableEditor`
+
+---
+
+## `FloatVariableEditor`
+
+Variable Inspector of type `float`. Inherits from `AtomVariableEditor`
+
+---
+
+## `ColorVariableEditor`
+
+Variable Inspector of type `Color`. Inherits from `AtomVariableEditor`
+
+---
+
+## `BoolEventEditor`
+
+Event property drawer of type `bool`. Inherits from `AtomEventEditor<bool, BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderEventEditor`
+
+Event property drawer of type `Collider`. Inherits from `AtomEventEditor<Collider, ColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorEventEditor`
+
+Event property drawer of type `Color`. Inherits from `AtomEventEditor<Color, ColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector2EventEditor`
+
+Event property drawer of type `Vector2`. Inherits from `AtomEventEditor<Vector2, Vector2Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntEventEditor`
+
+Event property drawer of type `int`. Inherits from `AtomEventEditor<int, IntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Collider2DEventEditor`
+
+Event property drawer of type `Collider2D`. Inherits from `AtomEventEditor<Collider2D, Collider2DEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `VoidEventEditor`
+
+Event property drawer of type `Void`. Inherits from `AtomEventEditor<Void, VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatEventEditor`
+
+Event property drawer of type `float`. Inherits from `AtomEventEditor<float, FloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringEventEditor`
+
+Event property drawer of type `string`. Inherits from `AtomEventEditor<string, StringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectEventEditor`
+
+Event property drawer of type `GameObject`. Inherits from `AtomEventEditor<GameObject, GameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3EventEditor`
+
+Event property drawer of type `Vector3`. Inherits from `AtomEventEditor<Vector3, Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorListDrawer`
+
+List property drawer of type `Color`. Inherits from `AtomDrawer<ColorList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringListDrawer`
+
+List property drawer of type `string`. Inherits from `AtomDrawer<StringList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectListDrawer`
+
+List property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderListDrawer`
+
+List property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolListDrawer`
+
+List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Collider2DListDrawer`
+
+List property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3ListDrawer`
+
+List property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3List>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntListDrawer`
+
+List property drawer of type `int`. Inherits from `AtomDrawer<IntList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatListDrawer`
+
+List property drawer of type `float`. Inherits from `AtomDrawer<FloatList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector2ListDrawer`
+
+List property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2List>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Collider2DConstantDrawer`
+
+Constant property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector2ConstantDrawer`
+
+Constant property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Constant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatConstantDrawer`
+
+Constant property drawer of type `float`. Inherits from `AtomDrawer<FloatConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3ConstantDrawer`
+
+Constant property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Constant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorConstantDrawer`
+
+Constant property drawer of type `Color`. Inherits from `AtomDrawer<ColorConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringConstantDrawer`
+
+Constant property drawer of type `string`. Inherits from `AtomDrawer<StringConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntConstantDrawer`
+
+Constant property drawer of type `int`. Inherits from `AtomDrawer<IntConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectConstantDrawer`
+
+Constant property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderConstantDrawer`
+
+Constant property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolConstantDrawer`
+
+Constant property drawer of type `bool`. Inherits from `AtomDrawer<BoolConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorVariableDrawer`
+
+Variable property drawer of type `Color`. Inherits from `AtomDrawer<ColorVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3VariableDrawer`
+
+Variable property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Variable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatVariableDrawer`
+
+Variable property drawer of type `float`. Inherits from `AtomDrawer<FloatVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector2VariableDrawer`
+
+Variable property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Variable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Collider2DVariableDrawer`
+
+Variable property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectVariableDrawer`
+
+Variable property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolVariableDrawer`
+
+Variable property drawer of type `bool`. Inherits from `AtomDrawer<BoolVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderVariableDrawer`
+
+Variable property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntVariableDrawer`
+
+Variable property drawer of type `int`. Inherits from `AtomDrawer<IntVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringVariableDrawer`
+
+Variable property drawer of type `string`. Inherits from `AtomDrawer<StringVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntIntEventDrawer`
+
+Event x 2 property drawer of type `int`. Inherits from `AtomDrawer<IntIntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorColorEventDrawer`
+
+Event x 2 property drawer of type `Color`. Inherits from `AtomDrawer<ColorColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringStringEventDrawer`
+
+Event x 2 property drawer of type `string`. Inherits from `AtomDrawer<StringStringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector2Vector2EventDrawer`
+
+Event x 2 property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Vector2Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3EventDrawer`
+
+Event property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatEventDrawer`
+
+Event property drawer of type `float`. Inherits from `AtomDrawer<FloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderColliderEventDrawer`
+
+Event x 2 property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectEventDrawer`
+
+Event property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringEventDrawer`
+
+Event property drawer of type `string`. Inherits from `AtomDrawer<StringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Collider2DCollider2DEventDrawer`
+
+Event x 2 property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DCollider2DEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `VoidEventDrawer`
+
+Event property drawer of type `Void`. Inherits from `AtomDrawer<VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Collider2DEventDrawer`
+
+Event property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatFloatEventDrawer`
+
+Event x 2 property drawer of type `float`. Inherits from `AtomDrawer<FloatFloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3Vector3EventDrawer`
+
+Event x 2 property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntEventDrawer`
+
+Event property drawer of type `int`. Inherits from `AtomDrawer<IntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectGameObjectEventDrawer`
+
+Event x 2 property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectGameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolBoolEventDrawer`
+
+Event x 2 property drawer of type `bool`. Inherits from `AtomDrawer<BoolBoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderEventDrawer`
+
+Event property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector2EventDrawer`
+
+Event property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorEventDrawer`
+
+Event property drawer of type `Color`. Inherits from `AtomDrawer<ColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolEventDrawer`
+
+Event property drawer of type `bool`. Inherits from `AtomDrawer<BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---

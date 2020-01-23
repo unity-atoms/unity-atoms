@@ -1,7 +1,7 @@
 {
   "name": "com.mambojambostudios.unity-atoms",
   "displayName": "Unity Atoms",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
