@@ -30,7 +30,7 @@ namespace UnityAtoms
         /// The inital Variable value as a property.
         /// </summary>
         /// <returns>Get the Variable's initial value.</returns>
-        public T InitialValue { get { return _value; } }
+        public T InitialValue { get { return _initialValue; } }
 
         /// <summary>
         /// The value the Variable had before its value got changed last time.
