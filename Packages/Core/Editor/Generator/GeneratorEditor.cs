@@ -4,12 +4,12 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-#if UNITY_2018_4_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
+using UnityEngine.UIElements;
+#elif UNITY_2018_4_OR_NEWER
 using UnityEditor.Experimental.UIElements;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.Experimental.UIElements.StyleEnums;
-#elif UNITY_2019_1_OR_NEWER
-using UnityEngine.UIElements;
 #endif
 
 namespace UnityAtoms.Editor
@@ -152,11 +152,10 @@ namespace UnityAtoms.Editor
                 AtomTypes.VARIABLE
             };
             generator = generator == null ? new Generator() : generator;
-
-#if UNITY_2018_4_OR_NEWER
-            var root = this.GetRootVisualContainer();
-#elif UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
             var root = this.rootVisualElement;
+#elif UNITY_2018_4_OR_NEWER
+            var root = this.GetRootVisualContainer();
 #endif
             var pathRow = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
             pathRow.Add(new Label() { text = "Relative Write Path", style = { width = 180, marginRight = 8 } });
