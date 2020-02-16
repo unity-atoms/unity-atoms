@@ -12,10 +12,12 @@ namespace UnityAtoms
     /// <typeparam name="R">A Reference of type `type`.</typeparam>
     /// <typeparam name="E1">An Event of type `type`.</typeparam>
     /// <typeparam name="E2">An Event x 2 of type `type`.</typeparam>
-    public abstract class SetVariableValue<T, V, C, R, E1, E2> : VoidAction
+    /// <typeparam name="F">A Function x 2 of type `type`.</typeparam>
+    public abstract class SetVariableValue<T, V, C, R, E1, E2, F> : VoidAction
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<T, T>
-        where V : AtomVariable<T, E1, E2>
+        where F : AtomFunction<T, T>
+        where V : AtomVariable<T, E1, E2, F>
         where C : AtomBaseVariable<T>
         where R : AtomReference<T, V, C>
     {

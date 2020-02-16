@@ -45,7 +45,8 @@ namespace UnityAtoms.Editor
             AtomTypes.SET_VARIABLE_VALUE,
             AtomTypes.UNITY_EVENT,
             AtomTypes.UNITY_EVENT_X2,
-            AtomTypes.VARIABLE
+            AtomTypes.VARIABLE,
+            AtomTypes.FUNCTION_X2
         };
         private Dictionary<AtomType, VisualElement> _typeVEDict = new Dictionary<AtomType, VisualElement>();
         private VisualElement _typesToGenerateInfoRow;
@@ -56,7 +57,7 @@ namespace UnityAtoms.Editor
             { AtomTypes.LISTENER_X2, new List<AtomType>() { AtomTypes.ACTION_X2, AtomTypes.EVENT_X2, AtomTypes.UNITY_EVENT_X2 } },
             { AtomTypes.REFERENCE, new List<AtomType>() { AtomTypes.VARIABLE } },
             { AtomTypes.SET_VARIABLE_VALUE, new List<AtomType>() { AtomTypes.VARIABLE, AtomTypes.REFERENCE, AtomTypes.EVENT, AtomTypes.EVENT_X2 } },
-            { AtomTypes.VARIABLE, new List<AtomType>() { AtomTypes.EVENT, AtomTypes.EVENT_X2 } }
+            { AtomTypes.VARIABLE, new List<AtomType>() { AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.FUNCTION_X2 } }
         };
 
         /// <summary>
@@ -143,7 +144,8 @@ namespace UnityAtoms.Editor
                 AtomTypes.SET_VARIABLE_VALUE,
                 AtomTypes.UNITY_EVENT,
                 AtomTypes.UNITY_EVENT_X2,
-                AtomTypes.VARIABLE
+                AtomTypes.VARIABLE,
+                AtomTypes.FUNCTION_X2
             };
             generator = generator == null ? new Generator() : generator;
 
@@ -215,6 +217,8 @@ namespace UnityAtoms.Editor
             root.Add(_typeVEDict[AtomTypes.UNITY_EVENT_X2]);
             _typeVEDict.Add(AtomTypes.VARIABLE, CreateAtomTypeToGenerateToggleRow(AtomTypes.VARIABLE));
             root.Add(_typeVEDict[AtomTypes.VARIABLE]);
+            _typeVEDict.Add(AtomTypes.FUNCTION_X2, CreateAtomTypeToGenerateToggleRow(AtomTypes.FUNCTION_X2));
+            root.Add(_typeVEDict[AtomTypes.FUNCTION_X2]);
 
             root.Add(CreateDivider());
 

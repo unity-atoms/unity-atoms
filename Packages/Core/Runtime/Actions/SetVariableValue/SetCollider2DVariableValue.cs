@@ -13,6 +13,7 @@ namespace UnityAtoms
         Collider2DConstant,
         Collider2DReference,
         Collider2DEvent,
-        Collider2DCollider2DEvent>
+        Collider2DCollider2DEvent,
+        Collider2DCollider2DFunction>
     { }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityAtoms
@@ -9,10 +10,12 @@ namespace UnityAtoms
     /// <typeparam name="T">The Variable value type.</typeparam>
     /// <typeparam name="E1">Event of type `AtomEvent&lt;T&gt;`.</typeparam>
     /// <typeparam name="E2">Event of type `AtomEvent&lt;T, T&gt;`.</typeparam>
+    /// <typeparam name="F">Function of type `FunctionEvent&lt;T, T&gt;`.</typeparam>
     [EditorIcon("atom-icon-lush")]
-    public abstract class AtomVariable<T, E1, E2> : AtomBaseVariable<T>
+    public abstract class AtomVariable<T, E1, E2, F> : AtomBaseVariable<T>
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<T, T>
+        where F : AtomFunction<T, T>
     {
         /// <summary>
         /// The Variable value as a property.
@@ -51,7 +54,36 @@ namespace UnityAtoms
         /// </summary>
         public E2 ChangedWithHistory;
 
+        /// <summary>
+        /// When setting the value of a Variable the new value will be piped through all the pre change transformers, which allows you to create custom logic and restriction on for example what values can be set for this Variable.
+        /// </summary>
+        /// <value>Get the list of pre change transformers.</value>
+        public List<F> PreChangeTransformers
+        {
+            get => _preChangeTransformers;
+            set
+            {
+                if (value == null)
+                {
+                    _preChangeTransformers.Clear();
+                }
+                else
+                {
+                    _preChangeTransformers = value;
+                }
+            }
+        }
+
+        [SerializeField]
+        private List<F> _preChangeTransformers = new List<F>();
+
         protected abstract bool AreEqual(T first, T second);
+
+        private void OnValidate()
+        {
+            _initialValue = RunPreChangeTransformers(_initialValue);
+            _value = RunPreChangeTransformers(_value);
+        }
 
         private void OnEnable()
         {
@@ -86,10 +118,12 @@ namespace UnityAtoms
         /// <returns>`true` if the value got changed, otherwise `false`.</returns>
         public bool SetValue(T newValue)
         {
-            if (!AreEqual(_value, newValue))
+            var preProcessedNewValue = RunPreChangeTransformers(newValue);
+
+            if (!AreEqual(_value, preProcessedNewValue))
             {
                 _oldValue = _value;
-                _value = newValue;
+                _value = preProcessedNewValue;
                 if (Changed != null) { Changed.Raise(_value); }
                 if (ChangedWithHistory != null) { ChangedWithHistory.Raise(_value, _oldValue); }
                 return true;
@@ -103,7 +137,7 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="variable">The value to set provided from another Variable.</param>
         /// <returns>`true` if the value got changed, otherwise `false`.</returns>
-        public bool SetValue(AtomVariable<T, E1, E2> variable)
+        public bool SetValue(AtomVariable<T, E1, E2, F> variable)
         {
             return SetValue(variable.Value);
         }
@@ -142,5 +176,26 @@ namespace UnityAtoms
             );
         }
         #endregion // Observable
+
+        private T RunPreChangeTransformers(T value)
+        {
+            if (_preChangeTransformers.Count <= 0)
+            {
+                return value;
+            }
+
+            var preProcessedValue = value;
+            for (var i = 0; i < _preChangeTransformers.Count; ++i)
+            {
+                var Transformer = _preChangeTransformers[i];
+                if (Transformer != null)
+                {
+                    preProcessedValue = Transformer.Call(preProcessedValue);
+                }
+            }
+
+
+            return preProcessedValue;
+        }
     }
 }

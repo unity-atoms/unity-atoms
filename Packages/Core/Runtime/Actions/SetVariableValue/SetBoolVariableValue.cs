@@ -13,6 +13,7 @@ namespace UnityAtoms
         BoolConstant,
         BoolReference,
         BoolEvent,
-        BoolBoolEvent>
+        BoolBoolEvent,
+        BoolBoolFunction>
     { }
 }

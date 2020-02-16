@@ -81,7 +81,8 @@ namespace UnityAtoms.Editor
                 AtomTypes.SET_VARIABLE_VALUE,
                 AtomTypes.UNITY_EVENT,
                 AtomTypes.UNITY_EVENT_X2,
-                AtomTypes.VARIABLE
+                AtomTypes.VARIABLE,
+                AtomTypes.FUNCTION_X2,
             };
 
 
