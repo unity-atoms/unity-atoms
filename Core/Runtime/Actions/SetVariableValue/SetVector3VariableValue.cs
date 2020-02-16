@@ -13,6 +13,7 @@ namespace UnityAtoms
         Vector3Constant,
         Vector3Reference,
         Vector3Event,
-        Vector3Vector3Event>
+        Vector3Vector3Event,
+        Vector3Vector3Function>
     { }
 }

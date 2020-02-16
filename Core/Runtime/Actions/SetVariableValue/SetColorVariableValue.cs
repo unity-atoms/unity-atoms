@@ -13,6 +13,7 @@ namespace UnityAtoms
         ColorConstant,
         ColorReference,
         ColorEvent,
-        ColorColorEvent>
+        ColorColorEvent,
+        ColorColorFunction>
     { }
 }

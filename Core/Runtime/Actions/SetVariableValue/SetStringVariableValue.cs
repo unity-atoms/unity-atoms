@@ -13,6 +13,7 @@ namespace UnityAtoms
         StringConstant,
         StringReference,
         StringEvent,
-        StringStringEvent>
+        StringStringEvent,
+        StringStringFunction>
     { }
 }

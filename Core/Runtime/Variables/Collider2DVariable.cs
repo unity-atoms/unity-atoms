@@ -4,11 +4,11 @@ using UnityEngine;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Variable of type `Collider2D`. Inherits from `AtomVariable&lt;Collider2D, Collider2DEvent, Collider2DCollider2DEvent&gt;`.
+    /// Variable of type `Collider2D`. Inherits from `AtomVariable&lt;Collider2D, Collider2DEvent, Collider2DCollider2DEvent, Collider2DCollider2DFunction&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Collider2D", fileName = "Collider2DVariable")]
-    public sealed class Collider2DVariable : AtomVariable<Collider2D, Collider2DEvent, Collider2DCollider2DEvent>
+    public sealed class Collider2DVariable : AtomVariable<Collider2D, Collider2DEvent, Collider2DCollider2DEvent, Collider2DCollider2DFunction>
     {
         protected override bool AreEqual(Collider2D first, Collider2D second)
         {
