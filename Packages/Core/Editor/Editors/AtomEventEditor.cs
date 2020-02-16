@@ -1,6 +1,10 @@
-#if UNITY_2019_1_OR_NEWER
+#if UNITY_2018_4_OR_NEWER
 using UnityEngine;
+#if UNITY_2018_4_OR_NEWER
+using UnityEngine.Experimental.UIElements;
+#elif UNITY_2019_1_OR_NEWER
 using UnityEngine.UIElements;
+#endif
 
 namespace UnityAtoms.Editor
 {
@@ -12,6 +16,9 @@ namespace UnityAtoms.Editor
     public abstract class AtomEventEditor<T, E> : UnityEditor.Editor
         where E : AtomEvent<T>
     {
+#if UNITY_2018_4_OR_NEWER
+
+#elif UNITY_2019_1_OR_NEWER
         protected T _raiseValue = default(T);
 
         protected virtual VisualElement GetRaiseValueInput() { return null; }
@@ -50,6 +57,7 @@ namespace UnityAtoms.Editor
 
             return root;
         }
+#endif
     }
 }
 #endif

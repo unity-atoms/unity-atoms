@@ -1,4 +1,4 @@
-#if UNITY_2019_1_OR_NEWER
+#if UNITY_2018_4_OR_NEWER
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -58,7 +58,11 @@ namespace UnityAtoms.Editor
             var templateSearchPath = Runtime.IsUnityAtomsRepo ?
                 Directory.GetParent(baseWritePath).FullName : // "Packages"
                 Directory.GetParent(Application.dataPath).FullName;
+#if UNITY_2018_4_OR_NEWER
+            var templatePaths = AssetDatabase.FindAssets("UA_Template t:textasset");
+#elif UNITY_2019_1_OR_NEWER
             var templatePaths = Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
+#endif
             var templateConditions = new List<string>();
             if (isEquatable) { templateConditions.Add("EQUATABLE"); }
             if (!string.IsNullOrEmpty(typeNamespace)) { templateConditions.Add("TYPE_HAS_NAMESPACE"); }
@@ -70,12 +74,17 @@ namespace UnityAtoms.Editor
 
             foreach (var templatePath in templatePaths)
             {
-                var templateNameStartIndex = templatePath.LastIndexOf(Path.DirectorySeparatorChar) + 1;
+#if UNITY_2018_4_OR_NEWER
+                var localTemplatePath = AssetDatabase.GUIDToAssetPath(templatePath);
+#else
+                var localTemplatePath = templatePath;
+#endif
+                var templateNameStartIndex = localTemplatePath.LastIndexOf(Path.DirectorySeparatorChar) + 1;
                 var fileExtLength = 4;
-                var templateName = templatePath.Substring(templateNameStartIndex, templatePath.Length - templateNameStartIndex - fileExtLength);
+                var templateName = localTemplatePath.Substring(templateNameStartIndex, localTemplatePath.Length - templateNameStartIndex - fileExtLength);
                 var lastIndexOfDoubleUnderscore = templateName.LastIndexOf("__");
                 var atomType = templateName.Substring(lastIndexOfDoubleUnderscore + 2);
-                var capitalizedAtomType = Capitalize(atomType);
+                var capitalizedAtomType = Capitalize(atomType); Debug.Log(localTemplatePath + " : " + templateName);
                 var typeOccurrences = templateName.Substring(lastIndexOfDoubleUnderscore - 1, 1).ToInt(def: 1);
 
                 if (ShouldSkipTemplate(atomTypesToGenerate, capitalizedAtomType, typeOccurrences))
@@ -83,7 +92,7 @@ namespace UnityAtoms.Editor
                     continue;
                 }
 
-                var template = File.ReadAllText(templatePath);
+                var template = File.ReadAllText(localTemplatePath);
 
                 // Create write directory
                 var dirPath = ResolveDirPath(baseWritePath, capitalizedAtomType, templateName, atomType);
