@@ -50,7 +50,6 @@ namespace UnityAtoms.Editor
 
             return root;
         }
-
     }
 }
 #endif
