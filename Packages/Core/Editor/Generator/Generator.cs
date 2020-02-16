@@ -74,10 +74,10 @@ namespace UnityAtoms.Editor
 
             foreach (var templatePath in templatePaths)
             {
-#if UNITY_2018_4_OR_NEWER
-                var localTemplatePath = AssetDatabase.GUIDToAssetPath(templatePath);
-#else
+#if UNITY_2019_1_OR_NEWER
                 var localTemplatePath = templatePath;
+#else
+                var localTemplatePath = AssetDatabase.GUIDToAssetPath(templatePath);
 #endif
                 var templateNameStartIndex = localTemplatePath.LastIndexOf(Path.DirectorySeparatorChar) + 1;
                 var fileExtLength = 4;
