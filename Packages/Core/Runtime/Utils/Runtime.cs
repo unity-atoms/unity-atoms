@@ -26,14 +26,5 @@ namespace UnityAtoms
         {
             get => System.Environment.CurrentDirectory.Contains("unity-atoms/Examples");
         }
-
-        /// <summary>
-        /// Returns the path to Unity Atoms Core.
-        /// Mainly used to search for Templates.
-        /// </summary>
-        public static string UnityAtomsCorePath
-        {
-            get => "../Packages/Core";
-        }
     }
 }
