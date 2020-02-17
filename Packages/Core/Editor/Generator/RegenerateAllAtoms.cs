@@ -64,9 +64,7 @@ namespace UnityAtoms.Editor
                 Debug.LogWarning("Cancelled generating Atoms.");
                 return;
             }
-#if UNITY_EDITOR
-            Runtime.IsUnityAtomsRepo = i == 0;
-#endif
+
             List<AtomType> ALL_ATOM_TYPES = new List<AtomType>()
             {
                 AtomTypes.ACTION,
@@ -81,7 +79,8 @@ namespace UnityAtoms.Editor
                 AtomTypes.SET_VARIABLE_VALUE,
                 AtomTypes.UNITY_EVENT,
                 AtomTypes.UNITY_EVENT_X2,
-                AtomTypes.VARIABLE
+                AtomTypes.VARIABLE,
+                AtomTypes.FUNCTION_X2,
             };
 
 

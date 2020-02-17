@@ -96,7 +96,7 @@ This is a list of Atom types that you want to generate. Simply select the Atoms 
 -   Listener x 2 - depends on Action x 2, Event x 2 and Unity Event x 2
 -   Reference - depends on Variable
 -   Set Variable Value - depends on Variable, Reference, Event and Event x 2
--   Variable - depends on Event and Event x 2
+-   Variable - depends on Event, Event x 2 and Function x 2
 
 ### Close & Generate
 

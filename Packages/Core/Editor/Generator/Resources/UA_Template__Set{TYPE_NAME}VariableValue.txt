@@ -20,6 +20,7 @@ namespace UnityAtoms
         {TYPE_NAME}Constant,
         {TYPE_NAME}Reference,
         {TYPE_NAME}Event,
-        {TYPE_NAME}{TYPE_NAME}Event>
+        {TYPE_NAME}{TYPE_NAME}Event,
+        {TYPE_NAME}{TYPE_NAME}Function>
     { }
 }

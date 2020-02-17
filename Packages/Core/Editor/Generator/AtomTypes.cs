@@ -18,5 +18,6 @@ namespace UnityAtoms.Editor
         public static readonly AtomType UNITY_EVENT = new AtomType(type: "UnityEvent", displayName: "Unity Event");
         public static readonly AtomType UNITY_EVENT_X2 = new AtomType(type: "UnityEvent", displayName: "Unity Event x 2", typeOccurences: 2);
         public static readonly AtomType VARIABLE = new AtomType(type: "Variable");
+        public static readonly AtomType FUNCTION_X2 = new AtomType(type: "Function", displayName: "Function x 2", typeOccurences: 2);
     }
 }

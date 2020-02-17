@@ -13,6 +13,7 @@ namespace UnityAtoms
         IntConstant,
         IntReference,
         IntEvent,
-        IntIntEvent>
+        IntIntEvent,
+        IntIntFunction>
     { }
 }

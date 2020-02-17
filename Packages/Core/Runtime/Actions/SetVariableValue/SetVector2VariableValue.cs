@@ -13,6 +13,7 @@ namespace UnityAtoms
         Vector2Constant,
         Vector2Reference,
         Vector2Event,
-        Vector2Vector2Event>
+        Vector2Vector2Event,
+        Vector2Vector2Function>
     { }
 }

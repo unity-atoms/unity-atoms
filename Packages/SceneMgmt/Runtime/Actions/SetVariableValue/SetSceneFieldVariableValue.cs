@@ -14,6 +14,7 @@ namespace UnityAtoms.SceneMgmt
         SceneFieldConstant,
         SceneFieldReference,
         SceneFieldEvent,
-        SceneFieldSceneFieldEvent>
+        SceneFieldSceneFieldEvent,
+        SceneFieldSceneFieldFunction>
     { }
 }
