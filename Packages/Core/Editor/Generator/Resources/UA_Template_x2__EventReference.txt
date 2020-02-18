@@ -1,0 +1,23 @@
+using System;
+<%IF TYPE_HAS_NAMESPACE%>
+using {TYPE_NAMESPACE};
+<%ENDIF%>
+
+<%IF HAS_SUB_UA_NAMESPACE%>
+namespace UnityAtoms.{SUB_UA_NAMESPACE}
+<%ELSE%>
+namespace UnityAtoms
+<%ENDIF%>
+{
+    /// <summary>
+    /// Event x 2 Reference of type `{TYPE}`. Inherits from `AtomEventX2Reference&lt;{TYPE}, {TYPE_NAME}Variable, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Function, {TYPE_NAME}VariableInstancer&gt;`.
+    /// </summary>
+    [Serializable]
+    public sealed class {TYPE_NAME}{TYPE_NAME}EventReference : AtomEventX2Reference<
+        {TYPE},
+        {TYPE_NAME}Variable,
+        {TYPE_NAME}Event,
+        {TYPE_NAME}{TYPE_NAME}Event,
+        {TYPE_NAME}{TYPE_NAME}Function,
+        {TYPE_NAME}VariableInstancer> { }
+}

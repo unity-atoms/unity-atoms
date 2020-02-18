@@ -81,6 +81,9 @@ namespace UnityAtoms.Editor
                 AtomTypes.UNITY_EVENT_X2,
                 AtomTypes.VARIABLE,
                 AtomTypes.FUNCTION_X2,
+                AtomTypes.VARIABLE_INSTANCER,
+                AtomTypes.EVENT_REFERENCE,
+                AtomTypes.EVENT_X2_REFERENCE
             };
 
 

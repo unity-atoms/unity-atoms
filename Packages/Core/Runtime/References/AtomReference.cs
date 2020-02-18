@@ -4,58 +4,23 @@ using UnityEngine;
 namespace UnityAtoms
 {
     /// <summary>
-    /// None generic base class for `AtomReference&lt;T, V&gt;`.
+    /// A Reference lets you define a variable in your script where you then from the inspector can choose if it's going to be taking the value from a Constant, Variable, Value or a Variable Instancer.
     /// </summary>
-    public abstract class AtomReference
-    {
-        /// <summary>
-        /// Enum for how to use the Reference.
-        /// </summary>
-        public enum Usage
-        {
-            Value = 0,
-            Constant = 1,
-            Variable = 2,
-        }
-
-        /// <summary>
-        /// Should we use the provided value (via inspector), the Constant value or the Variable value?
-        /// </summary>
-        [SerializeField]
-        protected Usage _usage;
-    }
-
-    public abstract class AtomReference<T, V, C> : AtomReference
-        where V : AtomBaseVariable<T>
+    /// <typeparam name="T">The type of the variable.</typeparam>
+    /// <typeparam name="C">Constant of type T.</typeparam>
+    /// <typeparam name="V">Variable of type T.</typeparam>
+    /// <typeparam name="E1">Event of type T.</typeparam>
+    /// <typeparam name="E2">Event x 2 of type T.</typeparam>
+    /// <typeparam name="F">Function of type T => T.</typeparam>
+    /// <typeparam name="VI">Variable Instancer of type T.</typeparam>
+    public abstract class AtomReference<T, C, V, E1, E2, F, VI> : AtomReferenceBase
         where C : AtomBaseVariable<T>
+        where V : AtomVariable<T, E1, E2, F>
+        where E1 : AtomEvent<T>
+        where E2 : AtomEvent<T, T>
+        where F : AtomFunction<T, T>
+        where VI : AtomVariableInstancer<V, T, E1, E2, F>
     {
-        /// <summary>
-        /// Value used if `Usage` is set to `Value`.
-        /// </summary>
-        [SerializeField]
-        private T _value;
-
-        /// <summary>
-        /// Constant used if `Usage` is set to `Constant`.
-        /// </summary>
-        public C _constant;
-
-        /// <summary>
-        /// Variable used if `Usage` is set to `Variable`.
-        /// </summary>
-        public V _variable;
-
-        protected AtomReference()
-        {
-            _usage = AtomReference.Usage.Value;
-        }
-
-        protected AtomReference(T value) : this()
-        {
-            _usage = AtomReference.Usage.Value;
-            _value = value;
-        }
-
         /// <summary>
         /// Get or set the value for the Reference.
         /// </summary>
@@ -66,9 +31,10 @@ namespace UnityAtoms
             {
                 switch (_usage)
                 {
-                    case (AtomReference.Usage.Constant): return _constant.Value;
-                    case (AtomReference.Usage.Variable): return _variable.Value;
-                    case (AtomReference.Usage.Value):
+                    case (AtomReferenceBase.Usage.Constant): return _constant.Value;
+                    case (AtomReferenceBase.Usage.Variable): return _variable.Value;
+                    case (AtomReferenceBase.Usage.VariableInstancer): return _variableInstancer.Value;
+                    case (AtomReferenceBase.Usage.Value):
                     default:
                         return _value;
                 }
@@ -77,24 +43,64 @@ namespace UnityAtoms
             {
                 switch (_usage)
                 {
-                    case (AtomReference.Usage.Variable):
-                    {
-                        _variable.Value = value;
-                        break;
-                    }
-                    case (AtomReference.Usage.Value):
-                    {
-                        _value = value;
-                        break;
-                    }
-                    case (AtomReference.Usage.Constant):
+                    case (AtomReferenceBase.Usage.Variable):
+                        {
+                            _variable.Value = value;
+                            break;
+                        }
+                    case (AtomReferenceBase.Usage.Value):
+                        {
+                            _value = value;
+                            break;
+                        }
+                    case (AtomReferenceBase.Usage.VariableInstancer):
+                        {
+                            _variableInstancer.Value = value;
+                            break;
+                        }
+                    case (AtomReferenceBase.Usage.Constant):
                     default:
                         throw new NotSupportedException("Can't reassign constant value");
                 }
             }
         }
 
-        public static implicit operator T(AtomReference<T, V, C> reference)
+        /// <summary>
+        /// Value used if `Usage` is set to `Value`.
+        /// </summary>
+        [SerializeField]
+        private T _value;
+
+        /// <summary>
+        /// Constant used if `Usage` is set to `Constant`.
+        /// </summary>
+        [SerializeField]
+        private C _constant;
+
+        /// <summary>
+        /// Variable used if `Usage` is set to `Variable`.
+        /// </summary>
+        [SerializeField]
+        private V _variable;
+
+        /// <summary>
+        /// Variable Instancer used if `Usage` is set to `VariableInstancer`.
+        /// </summary>
+        [SerializeField]
+        private VI _variableInstancer;
+
+        protected AtomReference()
+        {
+            _usage = AtomReferenceBase.Usage.Value;
+        }
+
+        protected AtomReference(T value) : this()
+        {
+            _usage = AtomReferenceBase.Usage.Value;
+            _value = value;
+        }
+
+        public static implicit operator T(AtomReference<T, C, V, E1, E2, F, VI> reference)
         {
             return reference.Value;
         }

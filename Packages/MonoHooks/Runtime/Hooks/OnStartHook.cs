@@ -11,7 +11,7 @@ namespace UnityAtoms.MonoHooks
     {
         private void Start()
         {
-            OnHook(new Void());
+            OnHook();
         }
     }
 }

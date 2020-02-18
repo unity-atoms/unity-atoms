@@ -10,11 +10,15 @@ namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>
-    /// Reference of type `{TYPE}`. Inherits from `AtomReference&lt;{TYPE}, {TYPE_NAME}Variable, {TYPE_NAME}Constant&gt;`.
+    /// Reference of type `{TYPE}`. Inherits from `AtomReference&lt;{TYPE}, {TYPE_NAME}Constant, {TYPE_NAME}Variable, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Function, {TYPE_NAME}VariableInstancer&gt;`.
     /// </summary>
     [Serializable]
     public sealed class {TYPE_NAME}Reference : AtomReference<
         {TYPE},
+        {TYPE_NAME}Constant,
         {TYPE_NAME}Variable,
-        {TYPE_NAME}Constant> { }
+        {TYPE_NAME}Event,
+        {TYPE_NAME}{TYPE_NAME}Event,
+        {TYPE_NAME}{TYPE_NAME}Function,
+        {TYPE_NAME}VariableInstancer> { }
 }

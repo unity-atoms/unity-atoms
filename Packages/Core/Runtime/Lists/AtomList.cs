@@ -213,7 +213,7 @@ namespace UnityAtoms
                 throw new Exception("You must assign a Cleared event in order to observe when clearing the list.");
             }
 
-            return new ObservableEvent<Void>(Cleared.Register, Cleared.Unregister);
+            return new ObservableVoidEvent(Cleared.Register, Cleared.Unregister);
         }
 
         #endregion // Observable

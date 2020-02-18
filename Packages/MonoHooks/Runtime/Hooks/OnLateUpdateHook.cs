@@ -11,7 +11,7 @@ namespace UnityAtoms.MonoHooks
     {
         private void LateUpdate()
         {
-            OnHook(new Void());
+            OnHook();
         }
     }
 }

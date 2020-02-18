@@ -25,7 +25,7 @@ namespace UnityAtoms.MonoHooks
 
         private void OnClick()
         {
-            OnHook(new Void());
+            OnHook();
         }
     }
 }

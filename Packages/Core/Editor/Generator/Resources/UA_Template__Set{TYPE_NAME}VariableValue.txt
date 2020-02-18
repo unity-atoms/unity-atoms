@@ -10,7 +10,7 @@ namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>
-    /// Set variable value Action of type `{TYPE}`. Inherits from `SetVariableValue&lt;{TYPE}, {TYPE_NAME}Variable, {TYPE_NAME}Constant, {TYPE_NAME}Reference, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event&gt;`.
+    /// Set variable value Action of type `{TYPE}`. Inherits from `SetVariableValue&lt;{TYPE}, {TYPE_NAME}Variable, {TYPE_NAME}Constant, {TYPE_NAME}Reference, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}VariableInstancer&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/{TYPE_NAME}", fileName = "Set{TYPE_NAME}VariableValue")]
@@ -21,6 +21,7 @@ namespace UnityAtoms
         {TYPE_NAME}Reference,
         {TYPE_NAME}Event,
         {TYPE_NAME}{TYPE_NAME}Event,
-        {TYPE_NAME}{TYPE_NAME}Function>
+        {TYPE_NAME}{TYPE_NAME}Function,
+        {TYPE_NAME}VariableInstancer>
     { }
 }

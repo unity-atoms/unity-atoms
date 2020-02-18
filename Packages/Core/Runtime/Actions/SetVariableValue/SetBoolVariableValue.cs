@@ -3,7 +3,7 @@ using UnityEngine;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Set variable value Action of type `bool`. Inherits from `SetVariableValue&lt;bool, BoolVariable, BoolConstant, BoolReference, BoolEvent, BoolBoolEvent&gt;`.
+    /// Set variable value Action of type `bool`. Inherits from `SetVariableValue&lt;bool, BoolVariable, BoolConstant, BoolReference, BoolEvent, BoolBoolEvent, BoolVariableInstancer&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/Bool", fileName = "SetBoolVariableValue")]
@@ -14,6 +14,7 @@ namespace UnityAtoms
         BoolReference,
         BoolEvent,
         BoolBoolEvent,
-        BoolBoolFunction>
+        BoolBoolFunction,
+        BoolVariableInstancer>
     { }
 }

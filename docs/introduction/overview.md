@@ -32,7 +32,7 @@ Exactly the same as Variables, but can not be changed via script and therefore d
 
 ### References
 
-References can be toggled between `use as constant` or `use variable` via the Unity Inspector. When a reference is `used as constant` then it functions exactly like a regular serialized variable in a MonoBehaviour script. However, when it is set to `use variable` it functions exactly like a Variable.
+References are values that can be toggled between `Use Value`, `Use Constant`, `Use Variable` or `Use Variable Instancer` via the Unity Inspector. When a Reference is set to `Use Value` it functions exactly like a regular serialized variable in a MonoBehaviour script. However, when it is set to `Use Variable` or `Use Constant` it uses a Variable or a Constant. When it's set to `Use Variable Instancer` you can drag and drop a Variable Instancer of the correct type.
 
 ### Lists
 
@@ -42,9 +42,17 @@ A List is an array of values that is stored as a Scriptable Object. There is the
 -   An item is removed from the List.
 -   The List is cleared.
 
+### Variable Instancer
+
+This is a MonoBehaviour that takes a base Variable and makes an in memory copy of it `OnEnable`. This is particular useful when working with prefabs that is going to be instantiated at runtime. For example, when creating an enemy prefab you can use an `IntVariableInstancer` that creates an in memory copy of the enemy's health that you then can use in your scripts on the enemy prefab (using References).
+
 ## Events
 
 An event is a thing that happens in the game that others can listen / subscribe to. Events in Unity Atoms are also Scriptable Objects that lives outside of a specific scene. It is possible to raise an Event from the Unity Inspector for debug purposes.
+
+### Event References
+
+Event References are events that can be toggled between `Use Event`, `Use Variable` or `Use Variable Instancer` via the Unity Inspector. When an Event Reference is set to `Use Event` it functions exactly like a regular serialized Event in a MonoBehaviour script. When it is set to `Use Variable` it is going to use the Event associated with the Variable's Changed event. When it's set to `Use Variable Instancer` you can drag and drop a Variable Instancer of the correct type and it will use its associated Changed event.
 
 ## Listeners
 
@@ -52,12 +60,12 @@ A Listener listens / observes / subscribes to an event and raises / invokes zero
 
 ## Responses
 
-A responses is raised by a listener in response to an event. Responses can live both in the scene as [UnityEvents](https://docs.unity3d.com/ScriptReference/Events.UnityEvent.html) or outside the scene as a Scriptable Object in the shape of an Action.
+A Responses is raised by a Listener in Response to an event. Responses can live both in the scene as [UnityEvents](https://docs.unity3d.com/ScriptReference/Events.UnityEvent.html) or outside the scene as a Scriptable Object in the shape of an Action.
 
 ### Actions
 
 An Action in Unity Atoms is a C# function as a Scriptable Object. An Action can be used as a response in a Listener.
 
-### Game Functions
+### Functions
 
 A Function in Unity Atoms is basically the same as an Action, but while an Actions does not return something a Function does.
