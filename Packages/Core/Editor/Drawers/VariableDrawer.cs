@@ -14,29 +14,15 @@ namespace UnityAtoms.Editor
                 return;
             }
 
-            label = EditorGUI.BeginProperty(position, label, property);
-            position = EditorGUI.PrefixLabel(position, label);
-
             var inner = new SerializedObject(property.objectReferenceValue);
             var valueProp = inner.FindProperty("_value");
-            var width = GetPreviewSpace(valueProp.type);
-            Rect previewRect = new Rect(position);
-            previewRect.width = GetPreviewSpace(valueProp.type);
-            position.xMin = previewRect.xMax;
-
-            int indent = EditorGUI.indentLevel;
-            EditorGUI.indentLevel = 0;
-
-            EditorGUI.BeginDisabledGroup(true);
-            EditorGUI.PropertyField(previewRect, valueProp, GUIContent.none, false);
-            EditorGUI.EndDisabledGroup();
-
-            position.x = position.x + 6f;
-            position.width = position.width - 6f;
+            var width = GetPreviewSpace(valueProp.type) + (property.depth == 0 ? EditorGUIUtility.labelWidth : 0);
+            var restRect = IMGUIUtils.SnipRectH(position, width, out position, 6f);
             base.OnGUI(position, property, GUIContent.none);
 
-            EditorGUI.indentLevel = indent;
-            EditorGUI.EndProperty();
+            EditorGUI.BeginDisabledGroup(true);
+            EditorGUI.PropertyField(restRect, valueProp, label, false);
+            EditorGUI.EndDisabledGroup();
         }
 
         private float GetPreviewSpace(string type)
