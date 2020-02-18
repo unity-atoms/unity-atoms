@@ -10,9 +10,9 @@ namespace UnityAtoms
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Collider2D", fileName = "Collider2DVariable")]
     public sealed class Collider2DVariable : AtomVariable<Collider2D, Collider2DEvent, Collider2DCollider2DEvent, Collider2DCollider2DFunction>
     {
-        protected override bool AreEqual(Collider2D first, Collider2D second)
+        protected override bool ValueEquals(Collider2D other)
         {
-            return (first == null && second == null) || first != null && second != null && first == second;
+            return (_value == null && other == null) || _value != null && other != null && _value == other;
         }
     }
 }

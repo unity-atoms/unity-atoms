@@ -77,7 +77,7 @@ namespace UnityAtoms
         [SerializeField]
         private List<F> _preChangeTransformers = new List<F>();
 
-        protected abstract bool AreEqual(T first, T second);
+        protected abstract bool ValueEquals(T other);
 
         private void OnValidate()
         {
@@ -120,7 +120,7 @@ namespace UnityAtoms
         {
             var preProcessedNewValue = RunPreChangeTransformers(newValue);
 
-            if (!AreEqual(_value, preProcessedNewValue))
+            if (!ValueEquals(preProcessedNewValue))
             {
                 _oldValue = _value;
                 _value = preProcessedNewValue;
