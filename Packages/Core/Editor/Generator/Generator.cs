@@ -1,4 +1,4 @@
-#if UNITY_2019_1_OR_NEWER
+#if UNITY_2018_4_OR_NEWER
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -56,8 +56,9 @@ namespace UnityAtoms.Editor
 
             // Recursively search for template files. TODO: Is there a better way to find and load templates?
             var templateSearchPath = Runtime.IsUnityAtomsRepo ?
-                Directory.GetParent(baseWritePath).FullName : // "Packages"
+                Directory.GetParent(Application.dataPath).Parent.FullName : // "Packages"
                 Directory.GetParent(Application.dataPath).FullName;
+
             var templatePaths = Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
             var templateConditions = new List<string>();
             if (isEquatable) { templateConditions.Add("EQUATABLE"); }
