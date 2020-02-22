@@ -6,45 +6,28 @@ using UnityEngine.Serialization;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Generic base class for Listeners. Inherits from `AtomBaseListener` and implements `IAtomListener&lt;T&gt;`.
+    /// A listener of type `BaseAtomVariable`.
     /// </summary>
-    /// <typeparam name="T">The type that we are listening for.</typeparam>
-    /// <typeparam name="A">Acion of type T.</typeparam>
-    /// <typeparam name="V">Variable of type T.</typeparam>
-    /// <typeparam name="E1">Event of type T.</typeparam>
-    /// <typeparam name="E2">Event x 2 of type T.</typeparam>
-    /// <typeparam name="F">Function of type T => T.</typeparam>
-    /// <typeparam name="VI">Variable Instancer of type T.</typeparam>
-    /// <typeparam name="ER">Event Reference of type T.</typeparam>
-    /// <typeparam name="UER">UnityEvent of type T.</typeparam>
     [EditorIcon("atom-icon-orange")]
-    public abstract class AtomListener<T, A, V, E1, E2, F, VI, ER, UER> : AtomBaseListener, IAtomListener<T>
-        where A : AtomAction<T>
-        where V : AtomVariable<T, E1, E2, F>
-        where E1 : AtomEvent<T>
-        where E2 : AtomEvent<T, T>
-        where F : AtomFunction<T, T>
-        where VI : AtomVariableInstancer<V, T, E1, E2, F>
-        where ER : AtomEventReference<T, V, E1, E2, F, VI>
-        where UER : UnityEvent<T>
+    public class AtomBaseVariableListener : AtomBaseListener, IAtomListener<AtomBaseVariable>
     {
         /// <summary>
         /// The Event we are listening for as a property.
         /// </summary>
-        /// <value>The Event of type `E1`.</value>
-        public E1 Event { get => _eventReference.Event; set => _eventReference.Event = value; }
+        /// <value>The Event of type `AtomBaseVariableEvent`.</value>
+        public AtomBaseVariableEvent Event { get => _event; set => _event = value; }
 
         /// <summary>
         /// The Event that we are listening to.
         /// </summary>
         [SerializeField]
-        private ER _eventReference = null;
+        private AtomBaseVariableEvent _event = null;
 
         /// <summary>
         /// The Unity Event responses.
         /// NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
         /// </summary>
-        public UER _unityEventResponse = null;
+        public AtomBaseVariableUnityEvent _unityEventResponse = null;
 
         /// <summary>
         /// The Action responses;
@@ -52,7 +35,7 @@ namespace UnityAtoms
         /// <typeparam name="A">The Action type.</typeparam>
         /// <returns>A `List&lt;A&gt;` of Actions.</returns>
         [SerializeField]
-        private List<A> _actionResponses = new List<A>();
+        private List<AtomBaseVariableAction> _actionResponses = new List<AtomBaseVariableAction>();
 
         private void OnEnable()
         {
@@ -70,7 +53,7 @@ namespace UnityAtoms
         /// Handler for when the Event gets raised.
         /// </summary>
         /// <param name="item">The Event type.</param>
-        public void OnEventRaised(T item)
+        public void OnEventRaised(AtomBaseVariable item)
         {
             _unityEventResponse?.Invoke(item);
             for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
@@ -82,9 +65,10 @@ namespace UnityAtoms
         /// <summary>
         /// Helper to regiser as listener callback
         /// </summary>
-        public void DebugLog(T item)
+        public void DebugLog(AtomBaseVariable item)
         {
-            Debug.Log(item.ToString());
+            if (item != null)
+                Debug.Log(item.ToString());
         }
     }
 }

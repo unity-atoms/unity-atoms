@@ -3,10 +3,10 @@ using System;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Reference of type `float`. Inherits from `AtomReference&lt;float, FloatConstant, FloatVariable, FloatEvent, FloatFloatEvent, FloatFloatFunction, FloatVariableInstancer&gt;`.
+    /// Reference of type `float`. Inherits from `EquatableAtomReference&lt;float, FloatConstant, FloatVariable, FloatEvent, FloatFloatEvent, FloatFloatFunction, FloatVariableInstancer&gt;`.
     /// </summary>
     [Serializable]
-    public sealed class FloatReference : AtomReference<
+    public sealed class FloatReference : EquatableAtomReference<
         float,
         FloatConstant,
         FloatVariable,

@@ -13,7 +13,7 @@ namespace UnityAtoms
     /// <typeparam name="E2">Event x 2 of type T.</typeparam>
     /// <typeparam name="F">Function of type T => T.</typeparam>
     /// <typeparam name="VI">Variable Instancer of type T.</typeparam>
-    public abstract class AtomReference<T, C, V, E1, E2, F, VI> : AtomReferenceBase
+    public abstract class AtomReference<T, C, V, E1, E2, F, VI> : AtomReferenceBase, IEquatable<AtomReference<T, C, V, E1, E2, F, VI>>
         where C : AtomBaseVariable<T>
         where V : AtomVariable<T, E1, E2, F>
         where E1 : AtomEvent<T>
@@ -31,9 +31,9 @@ namespace UnityAtoms
             {
                 switch (_usage)
                 {
-                    case (AtomReferenceBase.Usage.Constant): return _constant.Value;
-                    case (AtomReferenceBase.Usage.Variable): return _variable.Value;
-                    case (AtomReferenceBase.Usage.VariableInstancer): return _variableInstancer.Value;
+                    case (AtomReferenceBase.Usage.Constant): return _constant == null ? default(T) : _constant.Value;
+                    case (AtomReferenceBase.Usage.Variable): return _variable == null ? default(T) : _variable.Value;
+                    case (AtomReferenceBase.Usage.VariableInstancer): return _variableInstancer == null ? default(T) : _variableInstancer.Value;
                     case (AtomReferenceBase.Usage.Value):
                     default:
                         return _value;
@@ -103,6 +103,21 @@ namespace UnityAtoms
         public static implicit operator T(AtomReference<T, C, V, E1, E2, F, VI> reference)
         {
             return reference.Value;
+        }
+
+        protected abstract bool ValueEquals(T other);
+
+        public bool Equals(AtomReference<T, C, V, E1, E2, F, VI> other)
+        {
+            if (other == null)
+                return false;
+
+            return ValueEquals(other.Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value == null ? 0 : Value.GetHashCode();
         }
     }
 }

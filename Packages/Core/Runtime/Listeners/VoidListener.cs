@@ -6,11 +6,11 @@ using UnityEngine.Serialization;
 namespace UnityAtoms
 {
     /// <summary>
-    /// The most basic Listener. Can use every type of AtomEvent but doesn't support its value. Inherits from `BaseAtomListener` and implements `IAtomListener`.
+    /// The most basic Listener. Can use every type of AtomEvent but doesn't support its value. Inherits from `AtomBaseListener` and implements `IAtomListener`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Void Listener")]
-    public sealed class VoidListener : BaseAtomListener, IAtomListener
+    public sealed class VoidListener : AtomBaseListener, IAtomListener
     {
         /// <summary>
         /// The Event that we are listening to.

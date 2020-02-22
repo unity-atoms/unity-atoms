@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Generic base class for X2 Listeners. Inherits from `BaseAtomListener` and implements `IAtomListener&lt;T&gt;`.
+    /// Generic base class for X2 Listeners. Inherits from `AtomBaseListener` and implements `IAtomListener&lt;T&gt;`.
     /// </summary>
     /// <typeparam name="T">The type that we are listening for.</typeparam>
     /// <typeparam name="A">Acion of type T.</typeparam>
@@ -18,7 +18,7 @@ namespace UnityAtoms
     /// <typeparam name="E2R">Event x 2 Reference of type T.</typeparam>
     /// <typeparam name="UER">UnityEvent of type T.</typeparam>
     [EditorIcon("atom-icon-orange")]
-    public abstract class AtomX2Listener<T, A, V, E1, E2, F, VI, E2R, UER> : BaseAtomListener, IAtomListener<T, T>
+    public abstract class AtomX2Listener<T, A, V, E1, E2, F, VI, E2R, UER> : AtomBaseListener, IAtomListener<T, T>
         where A : AtomAction<T, T>
         where V : AtomVariable<T, E1, E2, F>
         where E1 : AtomEvent<T>

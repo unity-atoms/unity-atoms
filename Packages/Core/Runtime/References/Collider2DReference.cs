@@ -14,5 +14,11 @@ namespace UnityAtoms
         Collider2DEvent,
         Collider2DCollider2DEvent,
         Collider2DCollider2DFunction,
-        Collider2DVariableInstancer> { }
+        Collider2DVariableInstancer>
+    {
+        protected override bool ValueEquals(Collider2D other)
+        {
+            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value == other;
+        }
+    }
 }

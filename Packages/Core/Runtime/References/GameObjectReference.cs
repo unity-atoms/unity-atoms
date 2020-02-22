@@ -14,5 +14,11 @@ namespace UnityAtoms
         GameObjectEvent,
         GameObjectGameObjectEvent,
         GameObjectGameObjectFunction,
-        GameObjectVariableInstancer> { }
+        GameObjectVariableInstancer>
+    {
+        protected override bool ValueEquals(GameObject other)
+        {
+            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value.GetInstanceID() == other.GetInstanceID();
+        }
+    }
 }
