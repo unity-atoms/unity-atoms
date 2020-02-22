@@ -38,7 +38,7 @@ namespace UnityAtoms
         {TYPE_NAME}{TYPE_NAME}Event,
         {TYPE_NAME}{TYPE_NAME}Function,
         {TYPE_NAME}VariableInstancer> 
-    { 
+    {
         protected override bool ValueEquals({TYPE} other)
         {
             throw new NotImplementedException();

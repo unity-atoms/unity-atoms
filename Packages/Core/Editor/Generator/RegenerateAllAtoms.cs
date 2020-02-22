@@ -72,7 +72,7 @@ namespace UnityAtoms.Editor
                 AtomTypes.CONSTANT,
                 AtomTypes.EVENT,
                 AtomTypes.EVENT_X2,
-                AtomTypes.LIST,
+                AtomTypes.VALUE_LIST,
                 AtomTypes.LISTENER,
                 AtomTypes.LISTENER_X2,
                 AtomTypes.REFERENCE,
