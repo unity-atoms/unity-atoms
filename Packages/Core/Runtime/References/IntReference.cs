@@ -13,5 +13,8 @@ namespace UnityAtoms
         IntEvent,
         IntIntEvent,
         IntIntFunction,
-        IntVariableInstancer> { }
+        IntVariableInstancer>, IEquatable<IntReference>
+    {
+        public bool Equals(IntReference other) { return base.Equals(other); }
+    }
 }

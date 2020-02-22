@@ -13,5 +13,8 @@ namespace UnityAtoms
         FloatEvent,
         FloatFloatEvent,
         FloatFloatFunction,
-        FloatVariableInstancer> { }
+        FloatVariableInstancer>, IEquatable<FloatReference>
+    {
+        public bool Equals(FloatReference other) { return base.Equals(other); }
+    }
 }

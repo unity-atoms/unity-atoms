@@ -14,5 +14,8 @@ namespace UnityAtoms.SceneMgmt
         SceneFieldEvent,
         SceneFieldSceneFieldEvent,
         SceneFieldSceneFieldFunction,
-        SceneFieldVariableInstancer> { }
+        SceneFieldVariableInstancer>, IEquatable<SceneFieldReference>
+    {
+        public bool Equals(SceneFieldReference other) { return base.Equals(other); }
+    }
 }

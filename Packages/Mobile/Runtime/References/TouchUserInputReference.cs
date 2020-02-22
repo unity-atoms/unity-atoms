@@ -14,5 +14,8 @@ namespace UnityAtoms.Mobile
         TouchUserInputEvent,
         TouchUserInputTouchUserInputEvent,
         TouchUserInputTouchUserInputFunction,
-        TouchUserInputVariableInstancer> { }
+        TouchUserInputVariableInstancer>, IEquatable<TouchUserInputReference>
+    {
+        public bool Equals(TouchUserInputReference other) { return base.Equals(other); }
+    }
 }

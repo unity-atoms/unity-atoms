@@ -13,5 +13,8 @@ namespace UnityAtoms
         BoolEvent,
         BoolBoolEvent,
         BoolBoolFunction,
-        BoolVariableInstancer> { }
+        BoolVariableInstancer>, IEquatable<BoolReference>
+    {
+        public bool Equals(BoolReference other) { return base.Equals(other); }
+    }
 }

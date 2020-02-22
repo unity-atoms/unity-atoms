@@ -14,5 +14,8 @@ namespace UnityAtoms
         ColorEvent,
         ColorColorEvent,
         ColorColorFunction,
-        ColorVariableInstancer> { }
+        ColorVariableInstancer>, IEquatable<ColorReference>
+    {
+        public bool Equals(ColorReference other) { return base.Equals(other); }
+    }
 }

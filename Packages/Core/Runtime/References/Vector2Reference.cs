@@ -14,5 +14,8 @@ namespace UnityAtoms
         Vector2Event,
         Vector2Vector2Event,
         Vector2Vector2Function,
-        Vector2VariableInstancer> { }
+        Vector2VariableInstancer>, IEquatable<Vector2Reference>
+    {
+        public bool Equals(Vector2Reference other) { return base.Equals(other); }
+    }
 }
