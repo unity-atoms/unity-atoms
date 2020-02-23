@@ -25,9 +25,9 @@ Event property drawer of type `SceneField`. Inherits from `AtomEventEditor<Scene
 
 ---
 
-## `SceneFieldListDrawer`
+## `SceneFieldSceneFieldEventEditor`
 
-List property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+Event property drawer of type `<SceneField, SceneField>`. Inherits from `AtomEventEditor<SceneField, SceneField, SceneFieldEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -52,5 +52,11 @@ Event x 2 property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneF
 ## `SceneFieldEventDrawer`
 
 Event property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SceneFieldValueListDrawer`
+
+Value List property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---

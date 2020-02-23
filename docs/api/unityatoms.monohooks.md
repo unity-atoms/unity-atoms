@@ -146,7 +146,7 @@ Listener
 
 ---
 
-#### `_listenerWithGameObject`
+#### `_gameObjectListener`
 
 Listener with GameObject reference
 
@@ -162,11 +162,23 @@ Mono Hook for [`Start`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.S
 
 Base class for all `MonoHook`s of type `Void`.
 
+### Variables
+
+#### `_event`
+
+The Event
+
 ---
 
-## `VoidGameObjectAction`
+#### `_eventWithGameObjectReference`
 
-Action x 2 of type `Void` and `GameObject`. Inherits from `AtomAction<Void, GameObject>`.
+Event including a GameObject reference.
+
+---
+
+#### `_selectGameObjectReference`
+
+Selector function for the Event `EventWithGameObjectReference`. Makes it possible to for example select the parent GameObject and pass that a long to the `EventWithGameObjectReference`.
 
 ---
 
@@ -179,17 +191,5 @@ Event x 2 of type `Collider` and `GameObject`. Inherits from `AtomEvent<Collider
 ## `Collider2DGameObjectEvent`
 
 Event x 2 of type `Collider2D` and `GameObject`. Inherits from `AtomEvent<Collider2D, GameObject>`.
-
----
-
-## `VoidGameObjectEvent`
-
-Event x 2 of type `Void` and `GameObject`. Inherits from `AtomEvent<Void, GameObject>`.
-
----
-
-## `VoidGameObjectListener`
-
-Listener x 2 of type `Void` and `GameObject`. Inherits from `AtomListener<Void, GameObject, VoidGameObjectAction, VoidGameObjectEvent, VoidGameObjectUnityEvent>`.
 
 ---

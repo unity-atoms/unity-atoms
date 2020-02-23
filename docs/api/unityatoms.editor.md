@@ -26,23 +26,6 @@ Called when new assets are imported, deleted or moved.
 
 ---
 
-## `AtomEventEditor<T,E>`
-
-#### Type Parameters
-
--   `T` - undefined
--   `E` - undefined
-
-Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
-
----
-
-## `AtomVariableEditor`
-
-Custom editor for Variables. Provides a better user workflow and indicates when which variables can be edited
-
----
-
 ## `RegenereateAllAtoms`
 
 Internal utility class to regenerate all Atoms. Reachable via top menu bar and `Tools/Unity Atoms/Regenerate All Atoms`.
@@ -226,7 +209,7 @@ Resolve file name based on input data.
 
 ##### Parameters
 
--   `templateVariables` - Template variables.
+-   `templateVariables` - Template variables. 
 -   `templateName` - Template name.
 -   `lastIndexOfDoubleUnderscore` - Last index of double underscore.
 -   `capitalizedType` - Capitalized type.
@@ -292,6 +275,12 @@ Internal static class holding predefined static `AtomType`s.
 
 ---
 
+## `AtomEventReferenceDrawer`
+
+A custom property drawer for Event References. Makes it possible to choose between an Event, Variable or a Variable Instancer.
+
+---
+
 ## `AtomDrawer<T>`
 
 #### Type Parameters
@@ -304,7 +293,7 @@ The base Unity Atoms property drawer. Makes it possible to create and add a new 
 
 ## `AtomReferenceDrawer`
 
-A custom property drawer for References. Makes it possible to choose between a Variable and a constant value (not a Atom Contant, but a regular value).
+A custom property drawer for References. Makes it possible to choose between a value, Variable, Constant or a Variable Instancer.
 
 ---
 
@@ -356,6 +345,12 @@ Variable Inspector of type `Vector3`. Inherits from `AtomVariableEditor`
 
 ---
 
+## `AtomVariableEditor`
+
+Custom editor for Variables. Provides a better user workflow and indicates when which variables can be edited
+
+---
+
 ## `FloatVariableEditor`
 
 Variable Inspector of type `float`. Inherits from `AtomVariableEditor`
@@ -371,6 +366,12 @@ Variable Inspector of type `Color`. Inherits from `AtomVariableEditor`
 ## `BoolEventEditor`
 
 Event property drawer of type `bool`. Inherits from `AtomEventEditor<bool, BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolBoolEventEditor`
+
+Event property drawer of type `<bool, bool>`. Inherits from `AtomEventEditor<bool, bool, BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -392,9 +393,50 @@ Event property drawer of type `Vector2`. Inherits from `AtomEventEditor<Vector2,
 
 ---
 
+## `AtomEventEditor<T,E>`
+
+#### Type Parameters
+
+-   `T` - The type of this event..
+-   `E` - Event of type T.
+
+Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
+
+---
+
+## `AtomEventEditor<T1,T2,E>`
+
+#### Type Parameters
+
+-   `T1` - The first type of this Event.
+-   `T2` - The second type of this Event.
+-   `E` - Event of type T1 and T2.
+
+Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
+
+---
+
 ## `IntEventEditor`
 
 Event property drawer of type `int`. Inherits from `AtomEventEditor<int, IntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3Vector3EventEditor`
+
+Event property drawer of type `<Vector3, Vector3>`. Inherits from `AtomEventEditor<Vector3, Vector3, Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectGameObjectEventEditor`
+
+Event property drawer of type `<GameObject, GameObject>`. Inherits from `AtomEventEditor<GameObject, GameObject, GameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatFloatEventEditor`
+
+Event property drawer of type `<float, float>`. Inherits from `AtomEventEditor<float, float, FloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -406,7 +448,25 @@ Event property drawer of type `Collider2D`. Inherits from `AtomEventEditor<Colli
 
 ## `VoidEventEditor`
 
-Event property drawer of type `Void`. Inherits from `AtomEventEditor<Void, VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+Event property drawer of type `Void`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `AtomBaseVariableEventEditor`
+
+Event property drawer of type `AtomBaseVariable`. Inherits from `AtomEventEditor<AtomBaseVariable, AtomBaseVariableEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Collider2DCollider2DEventEditor`
+
+Event property drawer of type `<Collider2D, Collider2D>`. Inherits from `AtomEventEditor<Collider2D, Collider2D, Collider2DEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderColliderEventEditor`
+
+Event property drawer of type `<Collider, Collider>`. Inherits from `AtomEventEditor<Collider, Collider, ColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -434,63 +494,27 @@ Event property drawer of type `Vector3`. Inherits from `AtomEventEditor<Vector3,
 
 ---
 
-## `ColorListDrawer`
+## `IntIntEventEditor`
 
-List property drawer of type `Color`. Inherits from `AtomDrawer<ColorList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `StringListDrawer`
-
-List property drawer of type `string`. Inherits from `AtomDrawer<StringList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+Event property drawer of type `<int, int>`. Inherits from `AtomEventEditor<int, int, IntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
-## `GameObjectListDrawer`
+## `ColorColorEventEditor`
 
-List property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `ColliderListDrawer`
-
-List property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+Event property drawer of type `<Color, Color>`. Inherits from `AtomEventEditor<Color, Color, ColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
-## `BoolListDrawer`
+## `Vector2Vector2EventEditor`
 
-List property drawer of type `bool`. Inherits from `AtomDrawer<BoolList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Collider2DListDrawer`
-
-List property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+Event property drawer of type `<Vector2, Vector2>`. Inherits from `AtomEventEditor<Vector2, Vector2, Vector2Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
-## `Vector3ListDrawer`
+## `StringStringEventEditor`
 
-List property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3List>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `IntListDrawer`
-
-List property drawer of type `int`. Inherits from `AtomDrawer<IntList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `FloatListDrawer`
-
-List property drawer of type `float`. Inherits from `AtomDrawer<FloatList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `Vector2ListDrawer`
-
-List property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2List>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+Event property drawer of type `<string, string>`. Inherits from `AtomEventEditor<string, string, StringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -554,6 +578,18 @@ Constant property drawer of type `bool`. Inherits from `AtomDrawer<BoolConstant>
 
 ---
 
+## `StringReferenceAtomBaseVariableDictionaryDrawer`
+
+SerializableDictionary property drawer for type <StringReference, AtomBaseVariable>. Inherits from `SerializableDictionaryDrawer<StringReference, AtomBaseVariable, StringReferenceAtomBaseVariableDictionary>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SerializableDictionaryDrawer`3`
+
+A custom property drawer for SerializableDictionary.
+
+---
+
 ## `ColorVariableDrawer`
 
 Variable property drawer of type `Color`. Inherits from `AtomDrawer<ColorVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -614,6 +650,12 @@ Variable property drawer of type `string`. Inherits from `AtomDrawer<StringVaria
 
 ---
 
+## `AtomBaseVariableListDrawer`
+
+A custom property drawer for AtomBaseVariableList.
+
+---
+
 ## `IntIntEventDrawer`
 
 Event x 2 property drawer of type `int`. Inherits from `AtomDrawer<IntIntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -665,6 +707,12 @@ Event property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObject
 ## `StringEventDrawer`
 
 Event property drawer of type `string`. Inherits from `AtomDrawer<StringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `AtomBaseVariableEventDrawer`
+
+Event property drawer of type `AtomBaseVariable`. Inherits from `AtomDrawer<AtomBaseVariableEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -737,5 +785,83 @@ Event property drawer of type `Color`. Inherits from `AtomDrawer<ColorEvent>`. O
 ## `BoolEventDrawer`
 
 Event property drawer of type `bool`. Inherits from `AtomDrawer<BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatValueListDrawer`
+
+Value List property drawer of type `float`. Inherits from `AtomDrawer<FloatValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolValueListDrawer`
+
+Value List property drawer of type `bool`. Inherits from `AtomDrawer<BoolValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntValueListDrawer`
+
+Value List property drawer of type `int`. Inherits from `AtomDrawer<IntValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorValueListDrawer`
+
+Value List property drawer of type `Color`. Inherits from `AtomDrawer<ColorValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringValueListDrawer`
+
+Value List property drawer of type `string`. Inherits from `AtomDrawer<StringValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3ValueListDrawer`
+
+Value List property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3ValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectValueListDrawer`
+
+Value List property drawer of type `GameObject`. Inherits from `AtomDrawer<GameObjectValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderValueListDrawer`
+
+Value List property drawer of type `Collider`. Inherits from `AtomDrawer<ColliderValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector2ValueListDrawer`
+
+Value List property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2ValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Collider2DValueListDrawer`
+
+Value List property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ClampBaseEditor`
+
+Base class for a custom editor for Clamp Functions.
+
+---
+
+## `ClampFloatEditor`
+
+Custom editor for ClampFloat.
+
+---
+
+## `ClampIntEditor`
+
+Custom editor for ClampInt.
 
 ---

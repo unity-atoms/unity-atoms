@@ -31,6 +31,23 @@ const run = async () => {
     });
   }
 
+  const assembliesFolder = path.join(
+    process.cwd(),
+    "Examples",
+    "Library",
+    "ScriptAssemblies"
+  );
+  const assemblies = fs
+    .readdirSync(assembliesFolder)
+    .filter(
+      file =>
+        file.endsWith(".dll") &&
+        !file.startsWith("MamboJamboStudios.UnityAtoms")
+    )
+    .map(csproj => `"${path.join(assembliesFolder, csproj)}"`);
+
+  dlls = dlls.concat(assemblies);
+
   // Compile code
   const apiXmlName = `api.xml`;
   const assemblyName = `Packages.dll`;
@@ -44,7 +61,9 @@ const run = async () => {
   )}" -t:library -out:"${path.join(
     process.cwd(),
     assemblyName
-  )}" -r:${dlls.join(",")} -define:UNITY_2018_4_OR_NEWER,UNITY_2019_1_OR_NEWER`;
+  )}" -r:${dlls.join(
+    ","
+  )} -define:UNITY_2018_4_OR_NEWER,UNITY_2019_1_OR_NEWER,UNITY_2019_2_OR_NEWER,UNITY_2019_3_OR_NEWER`;
   try {
     const compileStdout = child_process.execSync(cmd);
   } catch (e) {

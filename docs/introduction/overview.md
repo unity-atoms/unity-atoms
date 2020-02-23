@@ -34,7 +34,7 @@ Exactly the same as Variables, but can not be changed via script and therefore d
 
 References are values that can be toggled between `Use Value`, `Use Constant`, `Use Variable` or `Use Variable Instancer` via the Unity Inspector. When a Reference is set to `Use Value` it functions exactly like a regular serialized variable in a MonoBehaviour script. However, when it is set to `Use Variable` or `Use Constant` it uses a Variable or a Constant. When it's set to `Use Variable Instancer` you can drag and drop a Variable Instancer of the correct type.
 
-## Variable Instancer
+## Variable Instancers
 
 This is a MonoBehaviour that takes a base Variable and makes an in memory copy of it `OnEnable`. This is particular useful when working with prefabs that is going to be instantiated at runtime. For example, when creating an enemy prefab you can use an `IntVariableInstancer` that creates an in memory copy of the enemy's health that you then can use in your scripts on the enemy prefab (using References). You can also give it a reference to a List or a Collection. If that is done the instancer will add the in memory Variable on Start to the List / Collection and then remove it OnDestroy.
 
