@@ -8,9 +8,9 @@ namespace UnityAtoms
         where E2 : AtomEvent<T, T>
         where F : AtomFunction<T, T>
     {
-        protected override bool AreEqual(T t1, T t2)
+        protected override bool ValueEquals(T other)
         {
-            return (t1 == null && t2 == null) || (t1 != null && t1.Equals(t2));
+            return (_value == null && other == null) || (_value != null && _value.Equals(other));
         }
     }
 }
