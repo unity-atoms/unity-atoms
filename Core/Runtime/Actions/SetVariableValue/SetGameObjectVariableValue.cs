@@ -3,7 +3,7 @@ using UnityEngine;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Set variable value Action of type `GameObject`. Inherits from `SetVariableValue&lt;GameObject, GameObjectVariable, GameObjectConstant, GameObjectReference, GameObjectEvent, GameObjectGameObjectEvent&gt;`.
+    /// Set variable value Action of type `GameObject`. Inherits from `SetVariableValue&lt;GameObject, GameObjectVariable, GameObjectConstant, GameObjectReference, GameObjectEvent, GameObjectGameObjectEvent, GameObjectVariableInstancer&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/GameObject", fileName = "SetGameObjectVariableValue")]
@@ -14,6 +14,7 @@ namespace UnityAtoms
         GameObjectReference,
         GameObjectEvent,
         GameObjectGameObjectEvent,
-        GameObjectGameObjectFunction>
+        GameObjectGameObjectFunction,
+        GameObjectVariableInstancer>
     { }
 }

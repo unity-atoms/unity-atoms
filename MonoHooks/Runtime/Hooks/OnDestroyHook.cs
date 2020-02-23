@@ -11,7 +11,7 @@ namespace UnityAtoms.MonoHooks
     {
         private void OnDestroy()
         {
-            OnHook(new Void());
+            OnHook();
         }
     }
 }

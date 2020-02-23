@@ -4,27 +4,25 @@ using UnityEngine;
 namespace UnityAtoms.Editor
 {
     /// <summary>
-    /// A custom property drawer for References. Makes it possible to choose between a Variable and a constant value (not a Atom Contant, but a regular value).
+    /// A custom property drawer for References. Makes it possible to choose between a value, Variable, Constant or a Variable Instancer.
     /// </summary>
 
-    [CustomPropertyDrawer(typeof(AtomReference), true)]
+    [CustomPropertyDrawer(typeof(AtomReferenceBase), true)]
     public class AtomReferenceDrawer : PropertyDrawer
     {
         private static readonly string[] _popupOptions =
-            { "Use Value", "Use Constant", "Use Variable" };
+            { "Use Value", "Use Constant", "Use Variable", "Use Variable Instancer" };
         private static GUIStyle _popupStyle;
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            SerializedProperty _usage = property.FindPropertyRelative("_usage");
-            SerializedProperty _value = property.FindPropertyRelative("_value");
-            SerializedProperty _constant = property.FindPropertyRelative("_constant");
-            SerializedProperty _variable = property.FindPropertyRelative("_variable");
+            SerializedProperty usage = property.FindPropertyRelative("_usage");
+            SerializedProperty value = property.FindPropertyRelative("_value");
+            SerializedProperty constant = property.FindPropertyRelative("_constant");
+            SerializedProperty variable = property.FindPropertyRelative("_variable");
+            SerializedProperty variableInstancer = property.FindPropertyRelative("_variableInstancer");
 
-            var usage = (AtomReference.Usage)_usage.intValue;
-            var valueToUse = usage == AtomReference.Usage.Value ? _value : usage == AtomReference.Usage.Constant ? _constant : _variable;
-
-            return EditorGUI.GetPropertyHeight(valueToUse, label);
+            return EditorGUI.GetPropertyHeight(GetPropToUse(usage, value, constant, variable, variableInstancer), label);
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -41,10 +39,11 @@ namespace UnityAtoms.Editor
             EditorGUI.BeginChangeCheck();
 
             // Get properties
-            SerializedProperty _usage = property.FindPropertyRelative("_usage");
-            SerializedProperty _value = property.FindPropertyRelative("_value");
-            SerializedProperty _constant = property.FindPropertyRelative("_constant");
-            SerializedProperty _variable = property.FindPropertyRelative("_variable");
+            SerializedProperty usage = property.FindPropertyRelative("_usage");
+            SerializedProperty value = property.FindPropertyRelative("_value");
+            SerializedProperty constant = property.FindPropertyRelative("_constant");
+            SerializedProperty variable = property.FindPropertyRelative("_variable");
+            SerializedProperty variableInstancer = property.FindPropertyRelative("_variableInstancer");
 
             // Calculate rect for configuration button
             Rect buttonRect = new Rect(position);
@@ -55,13 +54,10 @@ namespace UnityAtoms.Editor
             // Store old indent level and set it to 0, the PrefixLabel takes care of it
             int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
-            _usage.intValue = EditorGUI.Popup(buttonRect, _usage.intValue, _popupOptions, _popupStyle);
-            var usage = (AtomReference.Usage)_usage.intValue;
-
-            var valueToUse = usage == AtomReference.Usage.Value ? _value : usage == AtomReference.Usage.Constant ? _constant : _variable;
+            usage.intValue = EditorGUI.Popup(buttonRect, usage.intValue, _popupOptions, _popupStyle);
 
             EditorGUI.PropertyField(position,
-                valueToUse,
+                GetPropToUse(usage, value, constant, variable, variableInstancer),
                 GUIContent.none);
 
             if (EditorGUI.EndChangeCheck())
@@ -71,7 +67,26 @@ namespace UnityAtoms.Editor
             EditorGUI.EndProperty();
         }
 
-
+        private SerializedProperty GetPropToUse(SerializedProperty usage, SerializedProperty value, SerializedProperty constant, SerializedProperty variable, SerializedProperty variableInstancer)
+        {
+            var usageIntVal = (AtomReferenceBase.Usage)usage.intValue;
+            if (usageIntVal == AtomReferenceBase.Usage.Constant)
+            {
+                return constant;
+            }
+            else if (usageIntVal == AtomReferenceBase.Usage.Variable)
+            {
+                return variable;
+            }
+            else if (usageIntVal == AtomReferenceBase.Usage.VariableInstancer)
+            {
+                return variableInstancer;
+            }
+            else  // if (usageIntVal == AtomReferenceBase.Usage.Value)
+            {
+                return value;
+            }
+        }
 
 
     }

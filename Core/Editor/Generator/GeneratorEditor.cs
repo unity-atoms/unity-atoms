@@ -44,7 +44,7 @@ namespace UnityAtoms.Editor
             AtomTypes.CONSTANT,
             AtomTypes.EVENT,
             AtomTypes.EVENT_X2,
-            AtomTypes.LIST,
+            AtomTypes.VALUE_LIST,
             AtomTypes.LISTENER,
             AtomTypes.LISTENER_X2,
             AtomTypes.REFERENCE,
@@ -52,18 +52,24 @@ namespace UnityAtoms.Editor
             AtomTypes.UNITY_EVENT,
             AtomTypes.UNITY_EVENT_X2,
             AtomTypes.VARIABLE,
-            AtomTypes.FUNCTION_X2
+            AtomTypes.FUNCTION_X2,
+            AtomTypes.VARIABLE_INSTANCER,
+            AtomTypes.EVENT_REFERENCE,
+            AtomTypes.EVENT_X2_REFERENCE
         };
         private Dictionary<AtomType, VisualElement> _typeVEDict = new Dictionary<AtomType, VisualElement>();
         private VisualElement _typesToGenerateInfoRow;
 
         private Dictionary<AtomType, List<AtomType>> _dependencies = new Dictionary<AtomType, List<AtomType>>() {
-            { AtomTypes.LIST, new List<AtomType>() { AtomTypes.EVENT } },
-            { AtomTypes.LISTENER, new List<AtomType>() { AtomTypes.ACTION, AtomTypes.EVENT, AtomTypes.UNITY_EVENT } },
-            { AtomTypes.LISTENER_X2, new List<AtomType>() { AtomTypes.ACTION_X2, AtomTypes.EVENT_X2, AtomTypes.UNITY_EVENT_X2 } },
-            { AtomTypes.REFERENCE, new List<AtomType>() { AtomTypes.VARIABLE } },
-            { AtomTypes.SET_VARIABLE_VALUE, new List<AtomType>() { AtomTypes.VARIABLE, AtomTypes.REFERENCE, AtomTypes.EVENT, AtomTypes.EVENT_X2 } },
-            { AtomTypes.VARIABLE, new List<AtomType>() { AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.FUNCTION_X2 } }
+            { AtomTypes.VALUE_LIST, new List<AtomType>() { AtomTypes.EVENT } },
+            { AtomTypes.LISTENER, new List<AtomType>() { AtomTypes.ACTION, AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.FUNCTION_X2, AtomTypes.VARIABLE_INSTANCER, AtomTypes.EVENT_REFERENCE, AtomTypes.UNITY_EVENT } },
+            { AtomTypes.LISTENER_X2, new List<AtomType>() { AtomTypes.ACTION_X2, AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.FUNCTION_X2, AtomTypes.VARIABLE_INSTANCER, AtomTypes.EVENT_X2_REFERENCE, AtomTypes.UNITY_EVENT_X2 } },
+            { AtomTypes.REFERENCE, new List<AtomType>() { AtomTypes.CONSTANT, AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.FUNCTION_X2, AtomTypes.VARIABLE_INSTANCER } },
+            { AtomTypes.SET_VARIABLE_VALUE, new List<AtomType>() { AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.FUNCTION_X2, AtomTypes.VARIABLE, AtomTypes.CONSTANT, AtomTypes.REFERENCE, AtomTypes.VARIABLE_INSTANCER } },
+            { AtomTypes.VARIABLE, new List<AtomType>() { AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.FUNCTION_X2 } },
+            { AtomTypes.VARIABLE_INSTANCER, new List<AtomType>() { AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.FUNCTION_X2 } },
+            { AtomTypes.EVENT_REFERENCE, new List<AtomType>() { AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.FUNCTION_X2, AtomTypes.VARIABLE_INSTANCER } },
+            { AtomTypes.EVENT_X2_REFERENCE, new List<AtomType>() { AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.EVENT_X2, AtomTypes.FUNCTION_X2, AtomTypes.VARIABLE_INSTANCER } }
         };
 
         /// <summary>
@@ -143,7 +149,7 @@ namespace UnityAtoms.Editor
                 AtomTypes.CONSTANT,
                 AtomTypes.EVENT,
                 AtomTypes.EVENT_X2,
-                AtomTypes.LIST,
+                AtomTypes.VALUE_LIST,
                 AtomTypes.LISTENER,
                 AtomTypes.LISTENER_X2,
                 AtomTypes.REFERENCE,
@@ -151,7 +157,10 @@ namespace UnityAtoms.Editor
                 AtomTypes.UNITY_EVENT,
                 AtomTypes.UNITY_EVENT_X2,
                 AtomTypes.VARIABLE,
-                AtomTypes.FUNCTION_X2
+                AtomTypes.FUNCTION_X2,
+                AtomTypes.VARIABLE_INSTANCER,
+                AtomTypes.EVENT_REFERENCE,
+                AtomTypes.EVENT_X2_REFERENCE
             };
             generator = generator == null ? new Generator() : generator;
 #if UNITY_2019_1_OR_NEWER
@@ -210,8 +219,8 @@ namespace UnityAtoms.Editor
             root.Add(_typeVEDict[AtomTypes.EVENT]);
             _typeVEDict.Add(AtomTypes.EVENT_X2, CreateAtomTypeToGenerateToggleRow(AtomTypes.EVENT_X2));
             root.Add(_typeVEDict[AtomTypes.EVENT_X2]);
-            _typeVEDict.Add(AtomTypes.LIST, CreateAtomTypeToGenerateToggleRow(AtomTypes.LIST));
-            root.Add(_typeVEDict[AtomTypes.LIST]);
+            _typeVEDict.Add(AtomTypes.VALUE_LIST, CreateAtomTypeToGenerateToggleRow(AtomTypes.VALUE_LIST));
+            root.Add(_typeVEDict[AtomTypes.VALUE_LIST]);
             _typeVEDict.Add(AtomTypes.LISTENER, CreateAtomTypeToGenerateToggleRow(AtomTypes.LISTENER));
             root.Add(_typeVEDict[AtomTypes.LISTENER]);
             _typeVEDict.Add(AtomTypes.LISTENER_X2, CreateAtomTypeToGenerateToggleRow(AtomTypes.LISTENER_X2));
@@ -228,6 +237,12 @@ namespace UnityAtoms.Editor
             root.Add(_typeVEDict[AtomTypes.VARIABLE]);
             _typeVEDict.Add(AtomTypes.FUNCTION_X2, CreateAtomTypeToGenerateToggleRow(AtomTypes.FUNCTION_X2));
             root.Add(_typeVEDict[AtomTypes.FUNCTION_X2]);
+            _typeVEDict.Add(AtomTypes.VARIABLE_INSTANCER, CreateAtomTypeToGenerateToggleRow(AtomTypes.VARIABLE_INSTANCER));
+            root.Add(_typeVEDict[AtomTypes.VARIABLE_INSTANCER]);
+            _typeVEDict.Add(AtomTypes.EVENT_REFERENCE, CreateAtomTypeToGenerateToggleRow(AtomTypes.EVENT_REFERENCE));
+            root.Add(_typeVEDict[AtomTypes.EVENT_REFERENCE]);
+            _typeVEDict.Add(AtomTypes.EVENT_X2_REFERENCE, CreateAtomTypeToGenerateToggleRow(AtomTypes.EVENT_X2_REFERENCE));
+            root.Add(_typeVEDict[AtomTypes.EVENT_X2_REFERENCE]);
 
             root.Add(CreateDivider());
 

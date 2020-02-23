@@ -12,7 +12,7 @@ namespace UnityAtoms.MonoHooks
     {
         public void OnPointerDown(PointerEventData eventData)
         {
-            OnHook(new Void());
+            OnHook();
         }
     }
 }

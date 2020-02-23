@@ -46,7 +46,7 @@ namespace UnityAtoms
         /// <typeparam name="E">The Event tyoe used for `removed` and `added` of type `AtomEvent&lt;T&gt;`.</typeparam>
         /// <returns>The List created.</returns>
         public static L CreateList<T, L, E>(E added = null, E removed = null, VoidEvent cleared = null)
-            where L : AtomList<T, E>
+            where L : AtomValueList<T, E>
             where E : AtomEvent<T>
         {
             var sol = ScriptableObject.CreateInstance<L>();

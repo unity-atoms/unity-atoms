@@ -8,11 +8,11 @@ namespace UnityAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/Void", fileName = "VoidEvent")]
-    public sealed class VoidEvent : AtomEvent<Void>
+    public sealed class VoidEvent : AtomEventBase
     {
         public void Raise()
         {
-            Raise(new Void());
+            RaiseNoValue();
         }
     }
 }
