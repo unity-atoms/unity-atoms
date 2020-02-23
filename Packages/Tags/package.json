@@ -1,8 +1,8 @@
 {
   "name": "com.mambojambostudios.unity-atoms-tags",
   "displayName": "Unity Atoms Tags",
-  "version": "2.1.1",
-  "unity": "2019.1",
+  "version": "2.2.0",
+  "unity": "2018.3",
   "description": "A replacement to Unity´s tags based on Unity Atoms.",
   "keywords": [
     "scriptable objects",

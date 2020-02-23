@@ -6,7 +6,14 @@
 💅 = Polish
 🚀 = New features
 
-# [Unreleased]
+# 2.2.0 (February 23, 2020)
+
+## 🐛 Bug fixes
+
+-   [#106](https://github.com/AdamRamberg/unity-atoms/pull/111) - Reactivate Generator function in Unity 2018.4. ([@fakegood](https://github.com/fakegood), [@AdamRamberg](https://github.com/AdamRamberg))
+-   [#109](https://github.com/AdamRamberg/unity-atoms/pull/108) - IsUnityAtomsRepo should never be settable. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#109](https://github.com/AdamRamberg/unity-atoms/pull/109) - Fix indentation bug in variable drawer. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#111](https://github.com/AdamRamberg/unity-atoms/pull/111) - Variables are now equal by reference instead of being equal by value. Should maybe been part of a major release because it is technically an API breaking changes, but considered a bug so instead bumping minior. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 # 2.1.1 (January 23, 2020)
 
