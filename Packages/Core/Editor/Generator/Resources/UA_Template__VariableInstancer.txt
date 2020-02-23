@@ -1,0 +1,16 @@
+<%IF TYPE_HAS_NAMESPACE%>
+using {TYPE_NAMESPACE};
+<%ENDIF%>
+
+<%IF HAS_SUB_UA_NAMESPACE%>
+namespace UnityAtoms.{SUB_UA_NAMESPACE}
+<%ELSE%>
+namespace UnityAtoms
+<%ENDIF%>
+{
+    /// <summary>
+    /// Variable Instancer of type `{TYPE}`. Inherits from `AtomVariableInstancer&lt;{TYPE_NAME}Variable, {TYPE}, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Function&gt;`.
+    /// </summary>
+    [EditorIcon("atom-icon-hotpink")]
+    public class {TYPE_NAME}VariableInstancer : AtomVariableInstancer<{TYPE_NAME}Variable, {TYPE}, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Function> { }
+}

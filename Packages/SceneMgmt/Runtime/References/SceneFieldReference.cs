@@ -4,11 +4,18 @@ using UnityAtoms.SceneMgmt;
 namespace UnityAtoms.SceneMgmt
 {
     /// <summary>
-    /// Reference of type `SceneField`. Inherits from `AtomReference&lt;SceneField, SceneFieldVariable, SceneFieldConstant&gt;`.
+    /// Reference of type `SceneField`. Inherits from `EquatableAtomReference&lt;SceneField, SceneFieldConstant, SceneFieldVariable, SceneFieldEvent, SceneFieldSceneFieldEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer&gt;`.
     /// </summary>
     [Serializable]
-    public sealed class SceneFieldReference : AtomReference<
+    public sealed class SceneFieldReference : EquatableAtomReference<
         SceneField,
+        SceneFieldConstant,
         SceneFieldVariable,
-        SceneFieldConstant> { }
+        SceneFieldEvent,
+        SceneFieldSceneFieldEvent,
+        SceneFieldSceneFieldFunction,
+        SceneFieldVariableInstancer>, IEquatable<SceneFieldReference>
+    {
+        public bool Equals(SceneFieldReference other) { return base.Equals(other); }
+    }
 }

@@ -18,6 +18,11 @@ namespace UnityAtoms
             public const string LOG_PREFIX = "UnityAtoms :: ";
         }
 
+        public static class ExecutionOrder
+        {
+            public const int VARIABLE_INSTANCER = -100;
+        }
+
         /// <summary>
         /// Determine if we are working the Unity Atoms source library / repo or not.
         /// </summary>

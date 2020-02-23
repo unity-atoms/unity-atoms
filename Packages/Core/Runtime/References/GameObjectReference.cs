@@ -4,11 +4,21 @@ using UnityEngine;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Reference of type `GameObject`. Inherits from `AtomReference&lt;GameObject, GameObjectVariable, GameObjectConstant&gt;`.
+    /// Reference of type `GameObject`. Inherits from `AtomReference&lt;GameObject, GameObjectConstant, GameObjectVariable, GameObjectEvent, GameObjectGameObjectEvent, GameObjectGameObjectFunction, GameObjectVariableInstancer&gt;`.
     /// </summary>
     [Serializable]
     public sealed class GameObjectReference : AtomReference<
         GameObject,
+        GameObjectConstant,
         GameObjectVariable,
-        GameObjectConstant> { }
+        GameObjectEvent,
+        GameObjectGameObjectEvent,
+        GameObjectGameObjectFunction,
+        GameObjectVariableInstancer>
+    {
+        protected override bool ValueEquals(GameObject other)
+        {
+            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value.GetInstanceID() == other.GetInstanceID();
+        }
+    }
 }

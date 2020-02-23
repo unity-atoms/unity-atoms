@@ -72,7 +72,7 @@ namespace UnityAtoms.Editor
                 AtomTypes.CONSTANT,
                 AtomTypes.EVENT,
                 AtomTypes.EVENT_X2,
-                AtomTypes.LIST,
+                AtomTypes.VALUE_LIST,
                 AtomTypes.LISTENER,
                 AtomTypes.LISTENER_X2,
                 AtomTypes.REFERENCE,
@@ -81,6 +81,9 @@ namespace UnityAtoms.Editor
                 AtomTypes.UNITY_EVENT_X2,
                 AtomTypes.VARIABLE,
                 AtomTypes.FUNCTION_X2,
+                AtomTypes.VARIABLE_INSTANCER,
+                AtomTypes.EVENT_REFERENCE,
+                AtomTypes.EVENT_X2_REFERENCE
             };
 
 
@@ -97,6 +100,14 @@ namespace UnityAtoms.Editor
                 new RegenerateItem(type: "string", baseWritePath: Path.Combine(path, "Core"), isEquatable: true, atomTypesToGenerate: ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: ""),
                 new RegenerateItem(type: "Vector2", baseWritePath: Path.Combine(path, "Core"), isEquatable: true, atomTypesToGenerate: ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: ""),
                 new RegenerateItem(type: "Vector3", baseWritePath: Path.Combine(path, "Core"), isEquatable: true, atomTypesToGenerate: ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: ""),
+                new RegenerateItem(
+                    type: "AtomBaseVariable",
+                    baseWritePath: Path.Combine(path, "Core"),
+                    isEquatable: false,
+                    atomTypesToGenerate: new List<AtomType>() { AtomTypes.EVENT, AtomTypes.ACTION, AtomTypes.UNITY_EVENT },
+                    typeNamespace: "",
+                    subUnityAtomsNamespace: ""
+                ),
                 new RegenerateItem(type: "TouchUserInput", baseWritePath: Path.Combine(path, "Mobile"), isEquatable: true, atomTypesToGenerate: ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.Mobile", subUnityAtomsNamespace: "Mobile"),
                 new RegenerateItem(type: "SceneField", baseWritePath: Path.Combine(path, "SceneMgmt"), isEquatable: true, atomTypesToGenerate: ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.SceneMgmt", subUnityAtomsNamespace: "SceneMgmt"),
             };

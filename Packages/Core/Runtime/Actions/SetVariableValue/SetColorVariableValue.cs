@@ -3,7 +3,7 @@ using UnityEngine;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Set variable value Action of type `Color`. Inherits from `SetVariableValue&lt;Color, ColorVariable, ColorConstant, ColorReference, ColorEvent, ColorColorEvent&gt;`.
+    /// Set variable value Action of type `Color`. Inherits from `SetVariableValue&lt;Color, ColorVariable, ColorConstant, ColorReference, ColorEvent, ColorColorEvent, ColorVariableInstancer&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/Color", fileName = "SetColorVariableValue")]
@@ -14,6 +14,7 @@ namespace UnityAtoms
         ColorReference,
         ColorEvent,
         ColorColorEvent,
-        ColorColorFunction>
+        ColorColorFunction,
+        ColorVariableInstancer>
     { }
 }
