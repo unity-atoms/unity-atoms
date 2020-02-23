@@ -1,7 +1,4 @@
 using System;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace UnityAtoms
 {
@@ -49,7 +46,7 @@ namespace UnityAtoms
         /// <returns>The value of type T if found, otherwise null.</returns>
         public T Get<T>(AtomBaseVariable<string> key) where T : AtomBaseVariable
         {
-            if (key == null) throw new ArgumentNullException("stringVariable");
+            if (key == null) throw new ArgumentNullException("key");
             return Get<T>(key.Value);
         }
 
@@ -70,10 +67,10 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="key">The key associated with the value.</param>
         /// <param name="value">The value to add.</param>
-        public void Add(AtomBaseVariable<string> keyVariable, AtomBaseVariable value)
+        public void Add(AtomBaseVariable<string> key, AtomBaseVariable value)
         {
-            if (keyVariable == null) throw new ArgumentNullException("keyVariable");
-            Add(keyVariable.Value, value);
+            if (key == null) throw new ArgumentNullException("key");
+            Add(key.Value, value);
         }
 
         /// <summary>
@@ -93,10 +90,10 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="key">The key that you want to remove.</param>
         /// <returns>True if it removed a value from the collection, otherwise false.</returns>
-        public bool Remove(AtomBaseVariable<string> keyVariable)
+        public bool Remove(AtomBaseVariable<string> key)
         {
-            if (keyVariable == null) throw new ArgumentNullException("keyVariable");
-            return Remove(keyVariable.Value);
+            if (key == null) throw new ArgumentNullException("key");
+            return Remove(key.Value);
         }
     }
 }

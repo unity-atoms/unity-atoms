@@ -1,31 +1,30 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityAtoms
 {
     /// <summary>
-    /// A Collection / Dictionary of Atom Variables (AtomBaseVariable).
+    /// A List of Atom Variables (AtomBaseVariable).
     /// </summary>
-    [CreateAssetMenu(menuName = "Unity Atoms/Collection", fileName = "Collection")]
-    [EditorIcon("atom-icon-kingsyellow")]
-    public class AtomCollection : AtomBaseVariable<StringReferenceAtomBaseVariableDictionary>
+    [CreateAssetMenu(menuName = "Unity Atoms/List", fileName = "List")]
+    [EditorIcon("atom-icon-lime")]
+    public class AtomList : AtomBaseVariable<AtomBaseVariableList>
     {
         /// <summary>
-        /// Event for when and item is added to the collection.
+        /// Event for when and item is added to the list.
         /// </summary>
         public AtomBaseVariableEvent Added { get => _added; set => _added = value; }
 
         /// <summary>
-        /// Event for when and item is removed from the collection.
+        /// Event for when and item is removed from the list.
         /// </summary>
         public AtomBaseVariableEvent Removed { get => _removed; set => _removed = value; }
 
         /// <summary>
-        /// Event for when the collection is cleared.
+        /// Event for when the list is cleared.
         /// </summary>
         public VoidEvent Cleared { get => _cleared; set => _cleared = value; }
+
 
         [SerializeField]
         private AtomBaseVariableEvent _added;
@@ -77,42 +76,42 @@ namespace UnityAtoms
 
         #region Observable
         /// <summary>
-        /// Make the add event into an `IObservable&lt;T&gt;`. Makes Collection's add Event compatible with for example UniRx.
+        /// Make the add event into an `IObservable&lt;T&gt;`. Makes List's add Event compatible with for example UniRx.
         /// </summary>
         /// <returns>The add Event as an `IObservable&lt;T&gt;`.</returns>
         public IObservable<AtomBaseVariable> ObserveAdd()
         {
             if (Added == null)
             {
-                throw new Exception("You must assign an Added event in order to observe when adding to the collection.");
+                throw new Exception("You must assign an Added event in order to observe when adding to the list.");
             }
 
             return new ObservableEvent<AtomBaseVariable>(Added.Register, Added.Unregister);
         }
 
         /// <summary>
-        /// Make the remove event into an `IObservable&lt;T&gt;`. Makes Collection's remove Event compatible with for example UniRx.
+        /// Make the remove event into an `IObservable&lt;T&gt;`. Makes List's remove Event compatible with for example UniRx.
         /// </summary>
         /// <returns>The remove Event as an `IObservable&lt;T&gt;`.</returns>
         public IObservable<AtomBaseVariable> ObserveRemove()
         {
             if (Removed == null)
             {
-                throw new Exception("You must assign a Removed event in order to observe when removing from the collection.");
+                throw new Exception("You must assign a Removed event in order to observe when removing from the list.");
             }
 
             return new ObservableEvent<AtomBaseVariable>(Removed.Register, Removed.Unregister);
         }
 
         /// <summary>
-        /// Make the clear event into an `IObservable&lt;Void&gt;`. Makes Collection's clear Event compatible with for example UniRx.
+        /// Make the clear event into an `IObservable&lt;Void&gt;`. Makes List's clear Event compatible with for example UniRx.
         /// </summary>
         /// <returns>The clear Event as an `IObservable&lt;Void&gt;`.</returns>
         public IObservable<Void> ObserveClear()
         {
             if (Cleared == null)
             {
-                throw new Exception("You must assign a Cleared event in order to observe when clearing the collection.");
+                throw new Exception("You must assign a Cleared event in order to observe when clearing the list.");
             }
 
             return new ObservableVoidEvent(Cleared.Register, Cleared.Unregister);

@@ -112,10 +112,7 @@ namespace UnityAtoms.Editor
                 var currentIndex = entry.index;
                 var isKeyValid = !duplicateKeyIndices.ArrayContainsInt(currentIndex);
 
-                var currentLinePosition = new Rect(linePosition);
-                currentLinePosition.y -= LINE_BOTTOM_MARGIN;
                 var keyPosition = IMGUIUtils.SnipRectH(linePosition, (linePosition.width - BUTTON_WIDTH - GUTTER * 2) / 2, out restRect, GUTTER);
-
                 if (!isKeyValid)
                 {
                     invalidKeyExists = true;

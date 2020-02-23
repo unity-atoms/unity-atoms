@@ -37,8 +37,6 @@ namespace UnityAtoms
         [SerializeField]
         private List<int> _duplicateKeyIndices = new List<int>();
 
-
-
         public void OnAfterDeserialize()
         {
             if (_serializedKeys != null && _serializedValues != null)

@@ -43,7 +43,7 @@ namespace UnityAtoms
         private List<T> list = new List<T>();
 
         /// <summary>
-        /// Add an item to tje list.
+        /// Add an item to the list.
         /// </summary>
         /// <param name="item">The item to add.</param>
         public void Add(T item)
@@ -59,10 +59,10 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Remove and item from the list.
+        /// Remove an item from the list.
         /// </summary>
         /// <param name="item">The item to remove.</param>
-        /// <returns>The removed item.</returns>
+        /// <returns>True if it was removed, otherwise false..</returns>
         public bool Remove(T item)
         {
             var removed = list.Remove(item);
@@ -175,42 +175,42 @@ namespace UnityAtoms
 
         #region Observable
         /// <summary>
-        /// Make the add event into an `IObservable&lt;T&gt;`. Makes List's add Event compatible with for example UniRx.
+        /// Make the add event into an `IObservable&lt;T&gt;`. Makes Value List's add Event compatible with for example UniRx.
         /// </summary>
         /// <returns>The add Event as an `IObservable&lt;T&gt;`.</returns>
         public IObservable<T> ObserveAdd()
         {
             if (Added == null)
             {
-                throw new Exception("You must assign an Added event in order to observe when adding to the list.");
+                throw new Exception("You must assign an Added event in order to observe when adding to the value list.");
             }
 
             return new ObservableEvent<T>(Added.Register, Added.Unregister);
         }
 
         /// <summary>
-        /// Make the remove event into an `IObservable&lt;T&gt;`. Makes List's remove Event compatible with for example UniRx.
+        /// Make the remove event into an `IObservable&lt;T&gt;`. Makes Value List's remove Event compatible with for example UniRx.
         /// </summary>
         /// <returns>The remove Event as an `IObservable&lt;T&gt;`.</returns>
         public IObservable<T> ObserveRemove()
         {
             if (Removed == null)
             {
-                throw new Exception("You must assign a Removed event in order to observe when removing from the list.");
+                throw new Exception("You must assign a Removed event in order to observe when removing from the value list.");
             }
 
             return new ObservableEvent<T>(Removed.Register, Removed.Unregister);
         }
 
         /// <summary>
-        /// Make the clear event into an `IObservable&lt;Void&gt;`. Makes List's clear Event compatible with for example UniRx.
+        /// Make the clear event into an `IObservable&lt;Void&gt;`. Makes Value List's clear Event compatible with for example UniRx.
         /// </summary>
         /// <returns>The clear Event as an `IObservable&lt;Void&gt;`.</returns>
         public IObservable<Void> ObserveClear()
         {
             if (Cleared == null)
             {
-                throw new Exception("You must assign a Cleared event in order to observe when clearing the list.");
+                throw new Exception("You must assign a Cleared event in order to observe when clearing the value list.");
             }
 
             return new ObservableVoidEvent(Cleared.Register, Cleared.Unregister);

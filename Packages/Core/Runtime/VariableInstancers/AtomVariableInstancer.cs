@@ -41,10 +41,16 @@ namespace UnityAtoms
         private V _base = null;
 
         /// <summary>
-        /// If assigned the in memory copy variable will be added to the collection on Start using get attached gameObject's instance id as key. The value will also be removed from the collection OnDestroy.
+        /// If assigned the in memory copy variable will be added to the collection on Start using the gameObject's instance id as key. The value will also be removed from the collection OnDestroy.
         /// </summary>
         [SerializeField]
         private AtomCollection _syncToCollection = null;
+
+        /// <summary>
+        /// If assigned the in memory copy variable will be added to the list on Start. The value will also be removed from the list OnDestroy.
+        /// </summary>
+        [SerializeField]
+        private AtomList _syncToList = null;
 
         private void OnEnable()
         {
@@ -70,6 +76,11 @@ namespace UnityAtoms
             {
                 _syncToCollection.Value.Add(GetInstanceID().ToString(), _inMemoryCopy);
             }
+
+            if (_syncToList != null)
+            {
+                _syncToList.Value.Add(_inMemoryCopy);
+            }
         }
 
         private void OnDestroy()
@@ -77,6 +88,11 @@ namespace UnityAtoms
             if (_syncToCollection != null)
             {
                 _syncToCollection.Value.Remove(GetInstanceID().ToString());
+            }
+
+            if (_syncToList != null)
+            {
+                _syncToList.Value.Remove(_inMemoryCopy);
             }
         }
     }
