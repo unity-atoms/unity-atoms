@@ -1,3 +1,4 @@
+using UnityEngine;
 <%IF TYPE_HAS_NAMESPACE%>
 using {TYPE_NAMESPACE};
 <%ENDIF%>
@@ -12,5 +13,6 @@ namespace UnityAtoms
     /// Variable Instancer of type `{TYPE}`. Inherits from `AtomVariableInstancer&lt;{TYPE_NAME}Variable, {TYPE}, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Function&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
+    [AddComponentMenu("Unity Atoms/Variable Instancers/{TYPE_NAME} Instancer")]
     public class {TYPE_NAME}VariableInstancer : AtomVariableInstancer<{TYPE_NAME}Variable, {TYPE}, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Function> { }
 }
