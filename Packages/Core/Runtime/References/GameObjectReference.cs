@@ -14,8 +14,11 @@ namespace UnityAtoms
         GameObjectEvent,
         GameObjectGameObjectEvent,
         GameObjectGameObjectFunction,
-        GameObjectVariableInstancer>
+        GameObjectVariableInstancer>, IEquatable<GameObjectReference>
     {
+        public GameObjectReference() : base() { }
+        public GameObjectReference(GameObject value) : base(value) { }
+        public bool Equals(GameObjectReference other) { return base.Equals(other); }
         protected override bool ValueEquals(GameObject other)
         {
             return (this.Value == null && other == null) || this.Value != null && other != null && this.Value.GetInstanceID() == other.GetInstanceID();

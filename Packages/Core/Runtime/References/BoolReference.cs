@@ -15,6 +15,8 @@ namespace UnityAtoms
         BoolBoolFunction,
         BoolVariableInstancer>, IEquatable<BoolReference>
     {
+        public BoolReference() : base() { }
+        public BoolReference(bool value) : base(value) { }
         public bool Equals(BoolReference other) { return base.Equals(other); }
     }
 }

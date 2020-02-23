@@ -15,6 +15,8 @@ namespace UnityAtoms
         FloatFloatFunction,
         FloatVariableInstancer>, IEquatable<FloatReference>
     {
+        public FloatReference() : base() { }
+        public FloatReference(float value) : base(value) { }
         public bool Equals(FloatReference other) { return base.Equals(other); }
     }
 }
