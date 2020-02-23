@@ -26,25 +26,17 @@ You can also add pre change transformers to a Variable. A pre change transformer
 
 Unity Atoms also offer some variations / additions to Variables such as Contants, References and Lists.
 
-### Constants
+## Constants
 
 Exactly the same as Variables, but can not be changed via script and therefore does not contain the change events that Variables does. The idea is to use Constants for for example tags instead of hard coding tags in your scripts.
 
-### References
+## References
 
 References are values that can be toggled between `Use Value`, `Use Constant`, `Use Variable` or `Use Variable Instancer` via the Unity Inspector. When a Reference is set to `Use Value` it functions exactly like a regular serialized variable in a MonoBehaviour script. However, when it is set to `Use Variable` or `Use Constant` it uses a Variable or a Constant. When it's set to `Use Variable Instancer` you can drag and drop a Variable Instancer of the correct type.
 
-### Lists
+## Variable Instancer
 
-A List is an array of values that is stored as a Scriptable Object. There is the possibility to add Events for when the following happens to the list:
-
--   An item is added to the List.
--   An item is removed from the List.
--   The List is cleared.
-
-### Variable Instancer
-
-This is a MonoBehaviour that takes a base Variable and makes an in memory copy of it `OnEnable`. This is particular useful when working with prefabs that is going to be instantiated at runtime. For example, when creating an enemy prefab you can use an `IntVariableInstancer` that creates an in memory copy of the enemy's health that you then can use in your scripts on the enemy prefab (using References).
+This is a MonoBehaviour that takes a base Variable and makes an in memory copy of it `OnEnable`. This is particular useful when working with prefabs that is going to be instantiated at runtime. For example, when creating an enemy prefab you can use an `IntVariableInstancer` that creates an in memory copy of the enemy's health that you then can use in your scripts on the enemy prefab (using References). You can also give it a reference to a List or a Collection. If that is done the instancer will add the in memory Variable on Start to the List / Collection and then remove it OnDestroy.
 
 ## Events
 
@@ -69,3 +61,23 @@ An Action in Unity Atoms is a C# function as a Scriptable Object. An Action can 
 ### Functions
 
 A Function in Unity Atoms is basically the same as an Action, but while an Actions does not return something a Function does.
+
+## Collections
+
+Collections stores multiple values. For all collections in Unity Atoms there is the possibility to add Events for when the following:
+
+-   For when an item is added.
+-   For when an item is removed.
+-   For when the collection is cleared.
+
+### Value Lists
+
+A Value List is an array of values that is stored as a Scriptable Object.
+
+### Lists
+
+A List is an array of Variables that is stored as a Scriptable Object. The Variables can be different types since it's using `AtomBaseVariable`.
+
+### Collections
+
+A collection is a set of Variables associated with a StringReference key and is stored as a Scriptable Object. The Variables can be different types since it's using `AtomBaseVariable`.

@@ -91,7 +91,7 @@ By default the Atoms that gets generated will be under the namespace `UnityAtoms
 
 This is a list of Atom types that you want to generate. Simply select the Atoms that you want to generate. Some Atoms depends on other Atoms. If you unselect an Atom that other Atoms depends on, then the Generator will unselect those depending Atoms. Below you find the dependency graph:
 
--   List - depends on Event
+-   Value List - depends on Event
 -   Listener - depends on Action, Variable, Event, Event x 2, Function x 2, Variable Instancer, Event Reference and Unity Event
 -   Listener x 2 - depends on Action x 2, Variable, Event, Event x 2, Function x 2, Variable Instancer, Event x 2 Reference and Unity Event x 2
 -   Reference - depends on Constant, Variable, Event, Event x 2, Function x 2 and Variable Instancer
