@@ -31,14 +31,14 @@ namespace UnityAtoms
         /// <summary>
         /// The Event we are listening for as a property.
         /// </summary>
-        /// <value>The Event of type `E2`.</value>
-        public E2 Event { get => _eventReference.Event; set => _eventReference.Event = value; }
+        /// <value>The Event Reference of type `E2R`.</value>
+        public E2R EventReference { get => _eventReference; set => _eventReference = value; }
 
         /// <summary>
-        /// The Event that we are listening to.
+        /// The Event Reference that we are listening to.
         /// </summary>
         [SerializeField]
-        private E2R _eventReference;
+        private E2R _eventReference = null;
 
         /// <summary>
         /// The Unity Event responses.
@@ -56,14 +56,14 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
-            if (_eventReference == null) return;
-            Event.RegisterListener(this);
+            if (EventReference.Event == null) return;
+            EventReference.Event.RegisterListener(this);
         }
 
         private void OnDisable()
         {
-            if (_eventReference == null) return;
-            Event.UnregisterListener(this);
+            if (EventReference.Event == null) return;
+            EventReference.Event.UnregisterListener(this);
         }
 
         /// <summary>
