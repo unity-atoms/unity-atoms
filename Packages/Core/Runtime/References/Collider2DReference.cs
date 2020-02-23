@@ -14,8 +14,11 @@ namespace UnityAtoms
         Collider2DEvent,
         Collider2DCollider2DEvent,
         Collider2DCollider2DFunction,
-        Collider2DVariableInstancer>
+        Collider2DVariableInstancer>, IEquatable<Collider2DReference>
     {
+        public Collider2DReference() : base() { }
+        public Collider2DReference(Collider2D value) : base(value) { }
+        public bool Equals(Collider2DReference other) { return base.Equals(other); }
         protected override bool ValueEquals(Collider2D other)
         {
             return (this.Value == null && other == null) || this.Value != null && other != null && this.Value == other;

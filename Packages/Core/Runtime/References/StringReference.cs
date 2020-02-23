@@ -15,6 +15,8 @@ namespace UnityAtoms
         StringStringFunction,
         StringVariableInstancer>, IEquatable<StringReference>
     {
+        public StringReference() : base() { }
+        public StringReference(string value) : base(value) { }
         public bool Equals(StringReference other) { return base.Equals(other); }
     }
 }

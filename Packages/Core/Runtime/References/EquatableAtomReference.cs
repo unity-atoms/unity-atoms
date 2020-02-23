@@ -10,6 +10,8 @@ namespace UnityAtoms
         where F : AtomFunction<T, T>
         where VI : AtomVariableInstancer<V, T, E1, E2, F>
     {
+        public EquatableAtomReference() : base() { }
+        public EquatableAtomReference(T value) : base(value) { }
         public bool Equals(EquatableAtomReference<T, C, V, E1, E2, F, VI> other) { return base.Equals(other); }
 
         protected override bool ValueEquals(T other)

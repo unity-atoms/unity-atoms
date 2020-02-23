@@ -23,6 +23,8 @@ namespace UnityAtoms
         {TYPE_NAME}{TYPE_NAME}Function,
         {TYPE_NAME}VariableInstancer>, IEquatable<{TYPE_NAME}Reference>
     {
+        public {TYPE_NAME}Reference() : base() { }
+        public {TYPE_NAME}Reference({TYPE} value) : base(value) { }
         public bool Equals({TYPE_NAME}Reference other) { return base.Equals(other); }
     }
 <%ELSE%>
@@ -37,8 +39,11 @@ namespace UnityAtoms
         {TYPE_NAME}Event,
         {TYPE_NAME}{TYPE_NAME}Event,
         {TYPE_NAME}{TYPE_NAME}Function,
-        {TYPE_NAME}VariableInstancer> 
+        {TYPE_NAME}VariableInstancer>, IEquatable<{TYPE_NAME}Reference>
     {
+        public {TYPE_NAME}Reference() : base() { }
+        public {TYPE_NAME}Reference({TYPE} value) : base(value) { }
+        public bool Equals({TYPE_NAME}Reference other) { return base.Equals(other); }
         protected override bool ValueEquals({TYPE} other)
         {
             throw new NotImplementedException();
