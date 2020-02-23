@@ -51,7 +51,7 @@ namespace UnityAtoms
         /// </summary>
         public E2 ChangedWithHistory;
 
-        protected abstract bool AreEqual(T first, T second);
+        protected abstract bool ValueEquals(T other);
 
         private void OnEnable()
         {
@@ -86,7 +86,7 @@ namespace UnityAtoms
         /// <returns>`true` if the value got changed, otherwise `false`.</returns>
         public bool SetValue(T newValue)
         {
-            if (!AreEqual(_value, newValue))
+            if (!ValueEquals(newValue))
             {
                 _oldValue = _value;
                 _value = newValue;

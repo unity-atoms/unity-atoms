@@ -64,7 +64,7 @@ public struct MyStruct : IEquatable<MyStruct>
 
 ```
 
-If your type does not implement [`IEquatable`](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1?view=netframework-4.8) you will need to manually implement the `AreEqual` method in the generated `AtomVariable`.
+If your type does not implement [`IEquatable`](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1?view=netframework-4.8) you will need to manually implement the `ValueEquals` method in the generated `AtomVariable`.
 
 ### Type namespace
 
