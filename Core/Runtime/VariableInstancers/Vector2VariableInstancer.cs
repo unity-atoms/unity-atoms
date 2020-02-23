@@ -6,5 +6,6 @@ namespace UnityAtoms
     /// Variable Instancer of type `Vector2`. Inherits from `AtomVariableInstancer&lt;Vector2Variable, Vector2, Vector2Event, Vector2Vector2Event, Vector2Vector2Function&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
+    [AddComponentMenu("Unity Atoms/Variable Instancers/Vector2 Instancer")]
     public class Vector2VariableInstancer : AtomVariableInstancer<Vector2Variable, Vector2, Vector2Event, Vector2Vector2Event, Vector2Vector2Function> { }
 }
