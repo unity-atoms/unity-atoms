@@ -16,6 +16,8 @@ namespace UnityAtoms.SceneMgmt
         SceneFieldSceneFieldFunction,
         SceneFieldVariableInstancer>, IEquatable<SceneFieldReference>
     {
+        public SceneFieldReference() : base() { }
+        public SceneFieldReference(SceneField value) : base(value) { }
         public bool Equals(SceneFieldReference other) { return base.Equals(other); }
     }
 }

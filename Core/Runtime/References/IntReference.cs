@@ -15,6 +15,8 @@ namespace UnityAtoms
         IntIntFunction,
         IntVariableInstancer>, IEquatable<IntReference>
     {
+        public IntReference() : base() { }
+        public IntReference(int value) : base(value) { }
         public bool Equals(IntReference other) { return base.Equals(other); }
     }
 }

@@ -16,6 +16,8 @@ namespace UnityAtoms
         Vector3Vector3Function,
         Vector3VariableInstancer>, IEquatable<Vector3Reference>
     {
+        public Vector3Reference() : base() { }
+        public Vector3Reference(Vector3 value) : base(value) { }
         public bool Equals(Vector3Reference other) { return base.Equals(other); }
     }
 }

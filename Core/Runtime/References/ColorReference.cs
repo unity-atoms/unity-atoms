@@ -16,6 +16,8 @@ namespace UnityAtoms
         ColorColorFunction,
         ColorVariableInstancer>, IEquatable<ColorReference>
     {
+        public ColorReference() : base() { }
+        public ColorReference(Color value) : base(value) { }
         public bool Equals(ColorReference other) { return base.Equals(other); }
     }
 }
