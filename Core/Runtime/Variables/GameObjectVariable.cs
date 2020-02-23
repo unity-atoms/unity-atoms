@@ -10,9 +10,9 @@ namespace UnityAtoms
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/GameObject", fileName = "GameObjectVariable")]
     public sealed class GameObjectVariable : AtomVariable<GameObject, GameObjectEvent, GameObjectGameObjectEvent, GameObjectGameObjectFunction>
     {
-        protected override bool AreEqual(GameObject first, GameObject second)
+        protected override bool ValueEquals(GameObject other)
         {
-            return (first == null && second == null) || first != null && second != null && first.GetInstanceID() == second.GetInstanceID();
+            return (_value == null && other == null) || _value != null && other != null && _value.GetInstanceID() == other.GetInstanceID();
         }
     }
 }
