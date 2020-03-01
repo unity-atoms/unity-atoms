@@ -17,14 +17,17 @@ namespace UnityAtoms
         /// <param name="changedWithHistory">Changed with history Event of type `E2`.</param>
         /// <param name="preChangeTransformers">List of pre change transformers of the type `List&lt;F&gt;`.</param>
         /// <typeparam name="T">The Variable value type.</typeparam>
+        /// <typeparam name="P">IPair of type `T`.</typeparam>
         /// <typeparam name="V">The Variable type AtomVariable&lt;T, E1, E2&gt;`.</typeparam>
         /// <typeparam name="E1">The type of the `changed` Event of type `AtomEvent&lt;T&gt;`.</typeparam>
         /// <typeparam name="E2">The type of the `changedWithHistory` Event of type `AtomEvent&lt;T, T&gt;`.</typeparam>
         /// <typeparam name="F">The type of the `preChangeTransformers` Functions of type `AtomFunction&lt;T, T&gt;`.</typeparam>
         /// <returns>The Variable created.</returns>
-        public static V CreateVariable<T, V, E1, E2, F>(T initialValue, E1 changed = null, E2 changedWithHistory = null, List<F> preChangeTransformers = null)
-            where V : AtomVariable<T, E1, E2, F>
-            where E1 : AtomEvent<T> where E2 : AtomEvent<T, T>
+        public static V CreateVariable<T, P, V, E1, E2, F>(T initialValue, E1 changed = null, E2 changedWithHistory = null, List<F> preChangeTransformers = null)
+            where P : unmanaged, IPair<T>
+            where V : AtomVariable<T, P, E1, E2, F>
+            where E1 : AtomEvent<T>
+            where E2 : AtomEvent<P>
             where F : AtomFunction<T, T>
         {
             var sov = ScriptableObject.CreateInstance<V>();
@@ -36,7 +39,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Create a List at runtime.
+        /// Create a Value List at runtime.
         /// </summary>
         /// <param name="added">Added Event of type `E`.</param>
         /// <param name="removed">Removed Event of type `E`.</param>
@@ -45,7 +48,7 @@ namespace UnityAtoms
         /// <typeparam name="L">The List type to create of type `AtomList&lt;T, E&gt;`.</typeparam>
         /// <typeparam name="E">The Event tyoe used for `removed` and `added` of type `AtomEvent&lt;T&gt;`.</typeparam>
         /// <returns>The List created.</returns>
-        public static L CreateList<T, L, E>(E added = null, E removed = null, VoidEvent cleared = null)
+        public static L CreateValueList<T, L, E>(E added = null, E removed = null, VoidEvent cleared = null)
             where L : AtomValueList<T, E>
             where E : AtomEvent<T>
         {

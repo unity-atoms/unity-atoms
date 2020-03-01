@@ -1,0 +1,26 @@
+using System;
+using UnityEngine;
+<%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
+<%IF HAS_SUB_UA_NAMESPACE%>
+namespace UnityAtoms.{SUB_UA_NAMESPACE}
+<%ELSE%>
+namespace UnityAtoms
+<%ENDIF%>
+{
+    /// <summary>
+    /// IPair of type `&lt;{VALUE_TYPE}&gt;`. Inherits from `IPair&lt;{VALUE_TYPE}&gt;`.
+    /// </summary>
+    [Serializable]
+    public struct {VALUE_TYPE_NAME}Pair : IPair<{VALUE_TYPE}>
+    {
+        public {VALUE_TYPE} Item1 { get => _item1; set => _item1 = value; }
+        public {VALUE_TYPE} Item2 { get => _item2; set => _item2 = value; }
+
+        [SerializeField]
+        private {VALUE_TYPE} _item1;
+        [SerializeField]
+        private {VALUE_TYPE} _item2;
+
+        public void Deconstruct(out {VALUE_TYPE} item1, out {VALUE_TYPE} item2) { item1 = Item1; item2 = Item2; }
+    }
+}

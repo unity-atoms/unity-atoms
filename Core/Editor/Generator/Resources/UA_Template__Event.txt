@@ -10,9 +10,9 @@ namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>
-    /// Event of type `{TYPE}`. Inherits from `AtomEvent&lt;{TYPE}&gt;`.
+    /// Event of type `{VALUE_TYPE}`. Inherits from `AtomEvent&lt;{VALUE_TYPE}&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
-    [CreateAssetMenu(menuName = "Unity Atoms/Events/{TYPE_NAME}", fileName = "{TYPE_NAME}Event")]
-    public sealed class {TYPE_NAME}Event : AtomEvent<{TYPE}> { }
+    [CreateAssetMenu(menuName = "Unity Atoms/Events/{VALUE_TYPE_NAME}", fileName = "{VALUE_TYPE_NAME}Event")]
+    public sealed class {VALUE_TYPE_NAME}Event : AtomEvent<{VALUE_TYPE}> { }
 }

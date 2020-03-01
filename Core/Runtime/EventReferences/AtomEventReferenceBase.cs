@@ -13,12 +13,13 @@ namespace UnityAtoms
         public enum Usage
         {
             Event = 0,
-            Variable = 1,
-            VariableInstancer = 2,
+            EventInstancer = 1,
+            Variable = 2,
+            VariableInstancer = 3,
         }
 
         /// <summary>
-        /// Descries how we use the Event Reference.
+        /// Describes how we use the Event Reference.
         /// </summary>
         [SerializeField]
         protected Usage _usage;

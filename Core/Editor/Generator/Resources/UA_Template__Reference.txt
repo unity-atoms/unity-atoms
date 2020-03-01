@@ -11,40 +11,42 @@ namespace UnityAtoms
 {
 <%IF EQUATABLE%>
     /// <summary>
-    /// Reference of type `{TYPE}`. Inherits from `EquatableAtomReference&lt;{TYPE}, {TYPE_NAME}Constant, {TYPE_NAME}Variable, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Function, {TYPE_NAME}VariableInstancer&gt;`.
+    /// Reference of type `{VALUE_TYPE}`. Inherits from `EquatableAtomReference&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Constant, {VALUE_TYPE_NAME}Variable, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function, {VALUE_TYPE_NAME}VariableInstancer&gt;`.
     /// </summary>
     [Serializable]
-    public sealed class {TYPE_NAME}Reference : EquatableAtomReference<
-        {TYPE},
-        {TYPE_NAME}Constant,
-        {TYPE_NAME}Variable,
-        {TYPE_NAME}Event,
-        {TYPE_NAME}{TYPE_NAME}Event,
-        {TYPE_NAME}{TYPE_NAME}Function,
-        {TYPE_NAME}VariableInstancer>, IEquatable<{TYPE_NAME}Reference>
+    public sealed class {VALUE_TYPE_NAME}Reference : EquatableAtomReference<
+        {VALUE_TYPE},
+        {VALUE_TYPE_NAME}Pair,
+        {VALUE_TYPE_NAME}Constant,
+        {VALUE_TYPE_NAME}Variable,
+        {VALUE_TYPE_NAME}Event,
+        {VALUE_TYPE_NAME}PairEvent,
+        {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function,
+        {VALUE_TYPE_NAME}VariableInstancer>, IEquatable<{VALUE_TYPE_NAME}Reference>
     {
-        public {TYPE_NAME}Reference() : base() { }
-        public {TYPE_NAME}Reference({TYPE} value) : base(value) { }
-        public bool Equals({TYPE_NAME}Reference other) { return base.Equals(other); }
+        public {VALUE_TYPE_NAME}Reference() : base() { }
+        public {VALUE_TYPE_NAME}Reference({VALUE_TYPE} value) : base(value) { }
+        public bool Equals({VALUE_TYPE_NAME}Reference other) { return base.Equals(other); }
     }
 <%ELSE%>
     /// <summary>
-    /// Reference of type `{TYPE}`. Inherits from `AtomReference&lt;{TYPE}, {TYPE_NAME}Constant, {TYPE_NAME}Variable, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Function, {TYPE_NAME}VariableInstancer&gt;`.
+    /// Reference of type `{VALUE_TYPE}`. Inherits from `AtomReference&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Constant, {VALUE_TYPE_NAME}Variable, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function, {VALUE_TYPE_NAME}VariableInstancer&gt;`.
     /// </summary>
     [Serializable]
-    public sealed class {TYPE_NAME}Reference : AtomReference<
-        {TYPE},
-        {TYPE_NAME}Constant,
-        {TYPE_NAME}Variable,
-        {TYPE_NAME}Event,
-        {TYPE_NAME}{TYPE_NAME}Event,
-        {TYPE_NAME}{TYPE_NAME}Function,
-        {TYPE_NAME}VariableInstancer>, IEquatable<{TYPE_NAME}Reference>
+    public sealed class {VALUE_TYPE_NAME}Reference : AtomReference<
+        {VALUE_TYPE},
+        {VALUE_TYPE_NAME}Pair,
+        {VALUE_TYPE_NAME}Constant,
+        {VALUE_TYPE_NAME}Variable,
+        {VALUE_TYPE_NAME}Event,
+        {VALUE_TYPE_NAME}PairEvent,
+        {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function,
+        {VALUE_TYPE_NAME}VariableInstancer>, IEquatable<{VALUE_TYPE_NAME}Reference>
     {
-        public {TYPE_NAME}Reference() : base() { }
-        public {TYPE_NAME}Reference({TYPE} value) : base(value) { }
-        public bool Equals({TYPE_NAME}Reference other) { return base.Equals(other); }
-        protected override bool ValueEquals({TYPE} other)
+        public {VALUE_TYPE_NAME}Reference() : base() { }
+        public {VALUE_TYPE_NAME}Reference({VALUE_TYPE} value) : base(value) { }
+        public bool Equals({VALUE_TYPE_NAME}Reference other) { return base.Equals(other); }
+        protected override bool ValueEquals({VALUE_TYPE} other)
         {
             throw new NotImplementedException();
         } 
