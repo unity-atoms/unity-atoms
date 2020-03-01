@@ -10,14 +10,14 @@ namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>
-    /// Event Reference of type `{TYPE}`. Inherits from `AtomEventReference&lt;{TYPE}, {TYPE_NAME}Variable, {TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Event, {TYPE_NAME}{TYPE_NAME}Function, {TYPE_NAME}VariableInstancer&gt;`.
+    /// Event Reference of type `{VALUE_TYPE}`. Inherits from `AtomEventReference&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME_NO_PAIR}Variable, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME_NO_PAIR}VariableInstancer, {VALUE_TYPE_NAME}EventInstancer&gt;`.
     /// </summary>
     [Serializable]
-    public sealed class {TYPE_NAME}EventReference : AtomEventReference<
-        {TYPE},
-        {TYPE_NAME}Variable,
-        {TYPE_NAME}Event,
-        {TYPE_NAME}{TYPE_NAME}Event,
-        {TYPE_NAME}{TYPE_NAME}Function,
-        {TYPE_NAME}VariableInstancer> { }
+    public sealed class {VALUE_TYPE_NAME}EventReference : AtomEventReference<
+        {VALUE_TYPE},
+        {VALUE_TYPE_NAME_NO_PAIR}Variable,
+        {VALUE_TYPE_NAME}Event,
+        {VALUE_TYPE_NAME_NO_PAIR}VariableInstancer,
+        {VALUE_TYPE_NAME}EventInstancer>, IGetEvent 
+    { }
 }

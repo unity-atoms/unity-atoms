@@ -9,8 +9,8 @@ namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>
-    /// Action of type `{TYPE}`. Inherits from `AtomAction&lt;{TYPE}&gt;`.
+    /// Action of type `{VALUE_TYPE}`. Inherits from `AtomAction&lt;{VALUE_TYPE}&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-purple")]
-    public abstract class {TYPE_NAME}Action : AtomAction<{TYPE}> { }
+    public abstract class {VALUE_TYPE_NAME}Action : AtomAction<{VALUE_TYPE}> { }
 }

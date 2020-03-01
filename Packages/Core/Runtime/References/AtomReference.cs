@@ -7,19 +7,21 @@ namespace UnityAtoms
     /// A Reference lets you define a variable in your script where you then from the inspector can choose if it's going to be taking the value from a Constant, Variable, Value or a Variable Instancer.
     /// </summary>
     /// <typeparam name="T">The type of the variable.</typeparam>
-    /// <typeparam name="C">Constant of type T.</typeparam>
-    /// <typeparam name="V">Variable of type T.</typeparam>
-    /// <typeparam name="E1">Event of type T.</typeparam>
-    /// <typeparam name="E2">Event x 2 of type T.</typeparam>
-    /// <typeparam name="F">Function of type T => T.</typeparam>
-    /// <typeparam name="VI">Variable Instancer of type T.</typeparam>
-    public abstract class AtomReference<T, C, V, E1, E2, F, VI> : AtomReferenceBase, IEquatable<AtomReference<T, C, V, E1, E2, F, VI>>
+    /// <typeparam name="P">IPair of type `T`.</typeparam>
+    /// <typeparam name="C">Constant of type `T`.</typeparam>
+    /// <typeparam name="V">Variable of type `T`.</typeparam>
+    /// <typeparam name="E1">Event of type `T`.</typeparam>
+    /// <typeparam name="E2">Event of type `IPair&lt;T&gt;`.</typeparam>
+    /// <typeparam name="F">Function of type `T => T`.</typeparam>
+    /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
+    public abstract class AtomReference<T, P, C, V, E1, E2, F, VI> : AtomReferenceBase, IEquatable<AtomReference<T, P, C, V, E1, E2, F, VI>>
+        where P : unmanaged, IPair<T>
         where C : AtomBaseVariable<T>
-        where V : AtomVariable<T, E1, E2, F>
+        where V : AtomVariable<T, P, E1, E2, F>
         where E1 : AtomEvent<T>
-        where E2 : AtomEvent<T, T>
+        where E2 : AtomEvent<P>
         where F : AtomFunction<T, T>
-        where VI : AtomVariableInstancer<V, T, E1, E2, F>
+        where VI : AtomVariableInstancer<V, P, T, E1, E2, F>
     {
         /// <summary>
         /// Get or set the value for the Reference.
@@ -100,14 +102,14 @@ namespace UnityAtoms
             _value = value;
         }
 
-        public static implicit operator T(AtomReference<T, C, V, E1, E2, F, VI> reference)
+        public static implicit operator T(AtomReference<T, P, C, V, E1, E2, F, VI> reference)
         {
             return reference.Value;
         }
 
         protected abstract bool ValueEquals(T other);
 
-        public bool Equals(AtomReference<T, C, V, E1, E2, F, VI> other)
+        public bool Equals(AtomReference<T, P, C, V, E1, E2, F, VI> other)
         {
             if (other == null)
                 return false;

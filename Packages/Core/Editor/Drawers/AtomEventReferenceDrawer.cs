@@ -10,17 +10,18 @@ namespace UnityAtoms.Editor
     public class AtomEventReferenceDrawer : PropertyDrawer
     {
         private static readonly string[] _popupOptions =
-            { "Use Event", "Use Variable", "Use Variable Instancer" };
+            { "Use Event", "Use Event Instancer", "Use Variable", "Use Variable Instancer" };
         private static GUIStyle _popupStyle;
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             SerializedProperty usage = property.FindPropertyRelative("_usage");
             SerializedProperty ev = property.FindPropertyRelative("_event");
+            SerializedProperty evInstancer = property.FindPropertyRelative("_eventInstancer");
             SerializedProperty variable = property.FindPropertyRelative("_variable");
             SerializedProperty variableInstancer = property.FindPropertyRelative("_variableInstancer");
 
-            return EditorGUI.GetPropertyHeight(GetPropToUse(usage, ev, variable, variableInstancer), label);
+            return EditorGUI.GetPropertyHeight(GetPropToUse(usage, ev, evInstancer, variable, variableInstancer), label);
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -39,6 +40,7 @@ namespace UnityAtoms.Editor
             // Get properties
             SerializedProperty usage = property.FindPropertyRelative("_usage");
             SerializedProperty ev = property.FindPropertyRelative("_event");
+            SerializedProperty evInstancer = property.FindPropertyRelative("_eventInstancer");
             SerializedProperty variable = property.FindPropertyRelative("_variable");
             SerializedProperty variableInstancer = property.FindPropertyRelative("_variableInstancer");
 
@@ -54,7 +56,7 @@ namespace UnityAtoms.Editor
             usage.intValue = EditorGUI.Popup(buttonRect, usage.intValue, _popupOptions, _popupStyle);
 
             EditorGUI.PropertyField(position,
-                GetPropToUse(usage, ev, variable, variableInstancer),
+                GetPropToUse(usage, ev, evInstancer, variable, variableInstancer),
                 GUIContent.none);
 
             if (EditorGUI.EndChangeCheck())
@@ -64,12 +66,16 @@ namespace UnityAtoms.Editor
             EditorGUI.EndProperty();
         }
 
-        private SerializedProperty GetPropToUse(SerializedProperty usage, SerializedProperty ev, SerializedProperty variable, SerializedProperty variableInstancer)
+        private SerializedProperty GetPropToUse(SerializedProperty usage, SerializedProperty ev, SerializedProperty evInstancer, SerializedProperty variable, SerializedProperty variableInstancer)
         {
             var usageIntVal = (AtomEventReferenceBase.Usage)usage.intValue;
             if (usageIntVal == AtomEventReferenceBase.Usage.Variable)
             {
                 return variable;
+            }
+            else if (usageIntVal == AtomEventReferenceBase.Usage.EventInstancer)
+            {
+                return evInstancer;
             }
             else if (usageIntVal == AtomEventReferenceBase.Usage.VariableInstancer)
             {
