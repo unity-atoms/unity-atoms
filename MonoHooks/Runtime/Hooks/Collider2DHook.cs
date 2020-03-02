@@ -10,21 +10,32 @@ namespace UnityAtoms.MonoHooks
     public abstract class Collider2DHook : MonoHook<
         Collider2DEvent,
         Collider2D,
+        Collider2DEventReference,
         GameObjectGameObjectFunction>
     {
         /// <summary>
         /// Event including a GameObject reference.
         /// </summary>
-        public Collider2DGameObjectEvent EventWithGameObjectReference { get => _eventWithGameObjectReference; set => _eventWithGameObjectReference = value; }
+        public Collider2DGameObjectEvent EventWithGameObject
+        {
+            get => _eventWithGameObjectReference != null ? _eventWithGameObjectReference.GetEvent<Collider2DGameObjectEvent>() : null;
+            set
+            {
+                if (_eventWithGameObjectReference != null)
+                {
+                    _eventWithGameObjectReference.SetEvent<Collider2DGameObjectEvent>(value);
+                }
+            }
+        }
 
         [SerializeField]
-        private Collider2DGameObjectEvent _eventWithGameObjectReference;
+        private Collider2DGameObjectEventReference _eventWithGameObjectReference;
 
         protected override void RaiseWithGameObject(Collider2D value, GameObject gameObject)
         {
-            if (EventWithGameObjectReference)
+            if (EventWithGameObject)
             {
-                EventWithGameObjectReference.Raise(new Collider2DGameObject() { Collider2D = value, GameObject = gameObject });
+                EventWithGameObject.Raise(new Collider2DGameObject() { Collider2D = value, GameObject = gameObject });
             }
         }
     }
