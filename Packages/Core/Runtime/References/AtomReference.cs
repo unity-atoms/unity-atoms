@@ -73,25 +73,25 @@ namespace UnityAtoms
         /// Value used if `Usage` is set to `Value`.
         /// </summary>
         [SerializeField]
-        private T _value;
+        private T _value = default(T);
 
         /// <summary>
         /// Constant used if `Usage` is set to `Constant`.
         /// </summary>
         [SerializeField]
-        private C _constant;
+        private C _constant = default(C);
 
         /// <summary>
         /// Variable used if `Usage` is set to `Variable`.
         /// </summary>
         [SerializeField]
-        private V _variable;
+        private V _variable = default(V);
 
         /// <summary>
         /// Variable Instancer used if `Usage` is set to `VariableInstancer`.
         /// </summary>
         [SerializeField]
-        private VI _variableInstancer;
+        private VI _variableInstancer = default(VI);
 
         protected AtomReference()
         {

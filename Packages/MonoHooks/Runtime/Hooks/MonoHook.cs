@@ -21,13 +21,13 @@ namespace UnityAtoms.MonoHooks
         public E Event { get => _eventReference.GetEvent<E>(); set => _eventReference.SetEvent<E>(value); }
 
         [SerializeField]
-        private ER _eventReference;
+        private ER _eventReference = default(ER);
 
         /// <summary>
         /// Selector function for the Event `EventWithGameObjectReference`. Makes it possible to for example select the parent GameObject and pass that a long to the `EventWithGameObjectReference`.
         /// </summary>
         [SerializeField]
-        protected F _selectGameObjectReference;
+        protected F _selectGameObjectReference = default(F);
 
         protected void OnHook(EV value)
         {

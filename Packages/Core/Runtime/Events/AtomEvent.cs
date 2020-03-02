@@ -44,7 +44,7 @@ namespace UnityAtoms
         /// </summary>
         [SerializeField]
         [Tooltip("Value that will be used when using the Raise button in the editor inspector.")]
-        private T _inspectorRaiseValue;
+        private T _inspectorRaiseValue = default(T);
 
         /// <summary>
         /// Raise the Event.
