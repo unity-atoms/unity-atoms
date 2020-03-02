@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c809a089b464a50a8620b8da884f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: {fileID: 0}
+  Health: {fileID: 11400000, guid: 50206c000343d496fa82bd362e3b3b2b, type: 2}
 --- !u!114 &854994185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,6 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tags:
+  - {fileID: 11400000, guid: 23f42a77324bd4158a00555f04f7824e, type: 2}
   - {fileID: 0}
 --- !u!1 &973978720
 GameObject:
@@ -844,9 +845,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bced320f87ec14de98a51ee9c0ebb03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UIStateVariable: {fileID: 0}
+  _UIStateVariable: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
   _visibleForStates:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 0f191ae005f2448dfb420563d3f089a7, type: 2}
 --- !u!1 &1067648696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,9 +1240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bced320f87ec14de98a51ee9c0ebb03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UIStateVariable: {fileID: 0}
+  _UIStateVariable: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
   _visibleForStates:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: cb8238ac7ef5d407fb31219fe114d2ae, type: 2}
 --- !u!1 &1459948897
 GameObject:
   m_ObjectHideFlags: 0
