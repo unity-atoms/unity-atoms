@@ -228,7 +228,7 @@ namespace UnityAtoms.Editor
         private VisualElement CreateAtomTypeToGenerateToggleRow(AtomType atomType)
         {
             var row = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
-            row.Add(new Label() { text = atomType.Name, style = { width = 180, marginRight = 8 } });
+            row.Add(new Label() { text = atomType.DisplayName, style = { width = 180, marginRight = 8 } });
             var toggle = new Toggle() { value = _atomTypesToGenerate.Contains(atomType) };
             toggle.RegisterCallback<ChangeEvent<bool>>(evt =>
             {

@@ -15,7 +15,9 @@
     "/Runtime",
     "/Runtime.meta",
     "/Editor",
-    "/Editor.meta"
+    "/Editor.meta",
+    "/Documentation",
+    "/Documentation.meta"
   ],
   "dependencies": {
     "com.mambojambostudios.unity-atoms-core": "4.0.0"
