@@ -9,6 +9,8 @@
 -   API
     -   [UnityAtoms](./api/unityatoms.md)
     -   [UnityAtoms.Editor](./api/unityatoms.editor.md)
+    -   [UnityAtoms.BaseAtoms](./api/unityatoms.baseatoms.md)
+    -   [UnityAtoms.BaseAtoms.Editor](./api/unityatoms.baseatoms.editor.md)
     -   [UnityAtoms.Mobile](./api/unityatoms.mobile.md)
     -   [UnityAtoms.Mobile.Editor](./api/unityatoms.mobile.editor.md)
     -   [UnityAtoms.MonoHooks](./api/unityatoms.monohooks.md)
@@ -16,6 +18,7 @@
     -   [UnityAtoms.SceneMgmt.Editor](./api/unityatoms.scenemgmt.editor.md)
     -   [UnityAtoms.Tags](./api/unityatoms.tags.md)
 -   Subpackages
+    -   [BaseAtoms](./subpackages/base-atoms.md)
     -   [Mobile](./subpackages/mobile.md)
     -   [MonoHooks](./subpackages/mono-hooks.md)
     -   [SceneMgmt](./subpackages/scene-mgmt.md)

@@ -89,6 +89,8 @@ const run = async () => {
   const NAMESPACES = [
     "UnityAtoms.",
     "UnityAtoms.Editor.",
+    "UnityAtoms.BaseAtoms.",
+    "UnityAtoms.BaseAtoms.Editor.",
     "UnityAtoms.Tags.",
     "UnityAtoms.Tags.Editor.",
     "UnityAtoms.Mobile.",

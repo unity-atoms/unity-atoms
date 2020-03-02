@@ -42,7 +42,7 @@ class Footer extends React.Component {
             <h5>Docs</h5>
             <a href={this.docUrl('introduction/quick-start')}>Quick Start</a>
             <a href={this.docUrl('api/actions')}>API</a>
-            <a href={this.docUrl('subpackages/mobile')}>Subpackages</a>
+            <a href={this.docUrl('subpackages/base-atoms')}>Subpackages</a>
           </div>
           <div>
             <h5>Community</h5>
@@ -51,7 +51,7 @@ class Footer extends React.Component {
               target="_blank"
               rel="noreferrer noopener"
             >
-            Discord
+              Discord
             </a>
             <a
               href="https://gitter.im/unity-atoms/community#"

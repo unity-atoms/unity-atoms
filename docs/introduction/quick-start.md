@@ -75,7 +75,7 @@ Add the following to your `manifest.json`:
 {
     "dependencies": {
         ...
-        "com.mambojambostudios.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git#canary",
+        "com.mambojambostudios.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git#master",
         ...
     }
 }

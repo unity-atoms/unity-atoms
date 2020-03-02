@@ -7,6 +7,18 @@ sidebar_label: UnityAtoms.SceneMgmt
 
 # Namespace - `UnityAtoms.SceneMgmt`
 
+## `SceneFieldPairEventReferenceListener`
+
+Event Reference Listener of type `SceneFieldPair`. Inherits from `AtomEventReferenceListener<SceneFieldPair, SceneFieldPairAction, SceneFieldPairEvent, SceneFieldPairEventReference, SceneFieldPairUnityEvent>`.
+
+---
+
+## `SceneFieldEventReferenceListener`
+
+Event Reference Listener of type `SceneField`. Inherits from `AtomEventReferenceListener<SceneField, SceneFieldAction, SceneFieldEvent, SceneFieldEventReference, SceneFieldUnityEvent>`.
+
+---
+
 ## `SceneField`
 
 Struct to hold data about a scene.
@@ -131,7 +143,19 @@ None equality operator.
 
 ## `SceneFieldReference`
 
-Reference of type `SceneField`. Inherits from `EquatableAtomReference<SceneField, SceneFieldConstant, SceneFieldVariable, SceneFieldEvent, SceneFieldSceneFieldEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer>`.
+Reference of type `SceneField`. Inherits from `EquatableAtomReference<SceneField, SceneFieldPair, SceneFieldConstant, SceneFieldVariable, SceneFieldEvent, SceneFieldPairEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer>`.
+
+---
+
+## `SceneFieldPair`
+
+IPair of type `<SceneField>`. Inherits from `IPair<SceneField>`.
+
+---
+
+## `SceneFieldPairUnityEvent`
+
+None generic Unity Event of type `SceneFieldPair`. Inherits from `UnityEvent<SceneFieldPair>`.
 
 ---
 
@@ -153,27 +177,45 @@ Constant of type `SceneField`. Inherits from `AtomBaseVariable<SceneField>`.
 
 ---
 
-## `SceneFieldEventReference`
+## `SceneFieldPairEventReference`
 
-Event Reference of type `SceneField`. Inherits from `AtomEventReference<SceneField, SceneFieldVariable, SceneFieldEvent, SceneFieldSceneFieldEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer>`.
+Event Reference of type `SceneFieldPair`. Inherits from `AtomEventReference<SceneFieldPair, SceneFieldVariable, SceneFieldPairEvent, SceneFieldVariableInstancer, SceneFieldPairEventInstancer>`.
 
 ---
 
-## `SceneFieldSceneFieldEventReference`
+## `SceneFieldEventReference`
 
-Event x 2 Reference of type `SceneField`. Inherits from `AtomEventX2Reference<SceneField, SceneFieldVariable, SceneFieldEvent, SceneFieldSceneFieldEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer>`.
+Event Reference of type `SceneField`. Inherits from `AtomEventReference<SceneField, SceneFieldVariable, SceneFieldEvent, SceneFieldVariableInstancer, SceneFieldEventInstancer>`.
 
 ---
 
 ## `SceneFieldVariableInstancer`
 
-Variable Instancer of type `SceneField`. Inherits from `AtomVariableInstancer<SceneFieldVariable, SceneField, SceneFieldEvent, SceneFieldSceneFieldEvent, SceneFieldSceneFieldFunction>`.
+Variable Instancer of type `SceneField`. Inherits from `AtomVariableInstancer<SceneFieldVariable, SceneFieldPair, SceneField, SceneFieldEvent, SceneFieldPairEvent, SceneFieldSceneFieldFunction>`.
+
+---
+
+## `SceneFieldEventInstancer`
+
+Event Instancer of type `SceneField`. Inherits from `AtomEventInstancer<SceneField, SceneFieldEvent>`.
+
+---
+
+## `SceneFieldPairEventInstancer`
+
+Event Instancer of type `SceneFieldPair`. Inherits from `AtomEventInstancer<SceneFieldPair, SceneFieldPairEvent>`.
 
 ---
 
 ## `SceneFieldVariable`
 
-Variable of type `SceneField`. Inherits from `EquatableAtomVariable<SceneField, SceneFieldEvent, SceneFieldSceneFieldEvent, SceneFieldSceneFieldFunction>`.
+Variable of type `SceneField`. Inherits from `EquatableAtomVariable<SceneField, SceneFieldPair, SceneFieldEvent, SceneFieldPairEvent, SceneFieldSceneFieldFunction>`.
+
+---
+
+## `SceneFieldPairAction`
+
+Action of type `SceneFieldPair`. Inherits from `AtomAction<SceneFieldPair>`.
 
 ---
 
@@ -186,12 +228,6 @@ Action to quit the application.
 #### `Do`
 
 Do quit the apllication.
-
----
-
-## `SceneFieldSceneFieldAction`
-
-Action x 2 of type `SceneField`. Inherits from `AtomAction<SceneField, SceneField>`.
 
 ---
 
@@ -225,27 +261,15 @@ Function x 2 of type `SceneField`. Inherits from `AtomFunction<SceneField, Scene
 
 ---
 
+## `SceneFieldPairEvent`
+
+Event of type `SceneFieldPair`. Inherits from `AtomEvent<SceneFieldPair>`.
+
+---
+
 ## `SceneFieldEvent`
 
 Event of type `SceneField`. Inherits from `AtomEvent<SceneField>`.
-
----
-
-## `SceneFieldSceneFieldEvent`
-
-Event x 2 of type `SceneField`. Inherits from `AtomEvent<SceneField, SceneField>`.
-
----
-
-## `SceneFieldListener`
-
-Listener of type `SceneField`. Inherits from `AtomListener<SceneField, SceneFieldAction, SceneFieldVariable, SceneFieldEvent, SceneFieldSceneFieldEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer, SceneFieldEventReference, SceneFieldUnityEvent>`.
-
----
-
-## `SceneFieldSceneFieldListener`
-
-Listener x 2 of type `SceneField`. Inherits from `AtomX2Listener<SceneField, SceneFieldSceneFieldAction, SceneFieldVariable, SceneFieldEvent, SceneFieldSceneFieldEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer, SceneFieldSceneFieldEventReference, SceneFieldSceneFieldUnityEvent>`.
 
 ---
 
@@ -257,6 +281,6 @@ Value List of type `SceneField`. Inherits from `AtomValueList<SceneField, SceneF
 
 ## `SetSceneFieldVariableValue`
 
-Set variable value Action of type `SceneField`. Inherits from `SetVariableValue<SceneField, SceneFieldVariable, SceneFieldConstant, SceneFieldReference, SceneFieldEvent, SceneFieldSceneFieldEvent, SceneFieldVariableInstancer>`.
+Set variable value Action of type `SceneField`. Inherits from `SetVariableValue<SceneField, SceneFieldPair, SceneFieldVariable, SceneFieldConstant, SceneFieldReference, SceneFieldEvent, SceneFieldPairEvent, SceneFieldVariableInstancer>`.
 
 ---
