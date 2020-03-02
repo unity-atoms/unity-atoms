@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Variable Inspector of type `float`. Inherits from `AtomVariableEditor`
     /// </summary>
     [CustomEditor(typeof(FloatVariable))]
-    public sealed class FloatVariableEditor : AtomVariableEditor { }
+    public sealed class FloatVariableEditor : AtomVariableEditor<float, FloatPair> { }
 }

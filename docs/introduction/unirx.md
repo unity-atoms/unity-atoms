@@ -44,6 +44,7 @@ using System;
 using UnityEngine;
 using Marvelous;
 using UniRx;
+using UnityAtoms.BaseAtoms;
 
 public class PlayerMoveUniRx : MonoBehaviour
 {

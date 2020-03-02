@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c77dae4473da4117a7549fe61281b7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 75feba4dec8d44f0fb83f34e749e4dc3, type: 3}
   m_Name: UIStateChanged
   m_EditorClassIdentifier: 
   _developerDescription: 
+  _replayBufferSize: 1
+  _inspectorRaiseValue: 

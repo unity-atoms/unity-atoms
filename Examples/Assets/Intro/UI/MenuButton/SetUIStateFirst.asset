@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834bc652bf79f4f398e34921054004b4, type: 3}
+  m_Script: {fileID: 11500000, guid: f796f0a47da0e421cb954ef7aa235812, type: 3}
   m_Name: SetUIStateFirst
   m_EditorClassIdentifier: 
   _developerDescription: 
@@ -19,3 +19,4 @@ MonoBehaviour:
     _value: 
     _constant: {fileID: 11400000, guid: cb8238ac7ef5d407fb31219fe114d2ae, type: 2}
     _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}

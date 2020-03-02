@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9cb8b44502442c5922e0735a6e0b60, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fdbbdbe4268c4d729a51bde5e681e8c, type: 3}
   m_Name: UIState
   m_EditorClassIdentifier: 
-  DeveloperDescription: 
-  _value: First
+  _developerDescription: 
+  _value: 
   _initialValue: First
-  _oldValue: Second
+  _oldValue: 
   Changed: {fileID: 11400000, guid: c69dea8a114f5426595035f762d6e93d, type: 2}
   ChangedWithHistory: {fileID: 0}
+  _preChangeTransformers: []

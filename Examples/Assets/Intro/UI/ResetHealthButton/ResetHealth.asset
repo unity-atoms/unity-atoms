@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ResetHealth
   m_EditorClassIdentifier: 
   _developerDescription: 
-  _variable: {fileID: 11400000, guid: 30c71ebe6587c4fe8b18d5279710b4dc, type: 2}
+  _variable: {fileID: 11400000, guid: 50206c000343d496fa82bd362e3b3b2b, type: 2}
