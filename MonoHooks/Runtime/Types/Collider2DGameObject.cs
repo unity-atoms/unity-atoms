@@ -53,8 +53,8 @@ namespace UnityAtoms.MonoHooks
         /// <summary>
         /// Equality operator
         /// </summary>
-        /// <param name="touch1">First `Collider2DGameObject`.</param>
-        /// <param name="touch2">Other `Collider2DGameObject`.</param>
+        /// <param name="first">First `Collider2DGameObject`.</param>
+        /// <param name="second">Other `Collider2DGameObject`.</param>
         /// <returns>`true` if equal, otherwise `false`.</returns>
         public static bool operator ==(Collider2DGameObject first, Collider2DGameObject second)
         {
@@ -64,8 +64,8 @@ namespace UnityAtoms.MonoHooks
         /// <summary>
         /// Inequality operator
         /// </summary>
-        /// <param name="touch1">First `Collider2DGameObject`.</param>
-        /// <param name="touch2">Other `Collider2DGameObject`.</param>
+        /// <param name="first">First `Collider2DGameObject`.</param>
+        /// <param name="second">Other `Collider2DGameObject`.</param>
         /// <returns>`true` if they are not equal, otherwise `false`.</returns>
         public static bool operator !=(Collider2DGameObject first, Collider2DGameObject second)
         {

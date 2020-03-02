@@ -1,4 +1,3 @@
-using UnityAtoms;
 namespace UnityAtoms
 {
     /// <summary>

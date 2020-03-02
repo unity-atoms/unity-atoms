@@ -14,14 +14,16 @@ namespace UnityAtoms
     /// <typeparam name="E2">Event of type `IPair&lt;T&gt;`.</typeparam>
     /// <typeparam name="F">Function of type `T => T`.</typeparam>
     /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
-    public abstract class AtomReference<T, P, C, V, E1, E2, F, VI> : AtomReferenceBase, IEquatable<AtomReference<T, P, C, V, E1, E2, F, VI>>
-        where P : unmanaged, IPair<T>
+    public abstract class AtomReference<T, P, C, V, E1, E2, F, VI, CO, L> : AtomReferenceBase, IEquatable<AtomReference<T, P, C, V, E1, E2, F, VI, CO, L>>
+        where P : struct, IPair<T>
         where C : AtomBaseVariable<T>
         where V : AtomVariable<T, P, E1, E2, F>
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<P>
         where F : AtomFunction<T, T>
-        where VI : AtomVariableInstancer<V, P, T, E1, E2, F>
+        where VI : AtomVariableInstancer<V, P, T, E1, E2, F, CO, L>
+        where CO : IGetValue<IAtomCollection>
+        where L : IGetValue<IAtomList>
     {
         /// <summary>
         /// Get or set the value for the Reference.
@@ -102,14 +104,14 @@ namespace UnityAtoms
             _value = value;
         }
 
-        public static implicit operator T(AtomReference<T, P, C, V, E1, E2, F, VI> reference)
+        public static implicit operator T(AtomReference<T, P, C, V, E1, E2, F, VI, CO, L> reference)
         {
             return reference.Value;
         }
 
         protected abstract bool ValueEquals(T other);
 
-        public bool Equals(AtomReference<T, P, C, V, E1, E2, F, VI> other)
+        public bool Equals(AtomReference<T, P, C, V, E1, E2, F, VI, CO, L> other)
         {
             if (other == null)
                 return false;

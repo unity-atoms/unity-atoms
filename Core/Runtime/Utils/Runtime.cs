@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UnityAtoms
+﻿namespace UnityAtoms
 {
     /// <summary>
     /// Internal constant and static readonly members for runtime usage.

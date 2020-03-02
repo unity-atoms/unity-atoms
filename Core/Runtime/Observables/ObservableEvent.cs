@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UnityAtoms
 {
-    internal class ObservableEvent<T> : IObservable<T>
+    public class ObservableEvent<T> : IObservable<T>
     {
         private Action<Action<T>> _unregister;
         private List<IObserver<T>> _observers = new List<IObserver<T>>();

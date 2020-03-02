@@ -1,13 +1,11 @@
 using System;
 using UnityEngine.Events;
-<%IF TYPE_HAS_NAMESPACE%>
-using {TYPE_NAMESPACE};
-<%ENDIF%>
+<%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
 
 <%IF HAS_SUB_UA_NAMESPACE%>
 namespace UnityAtoms.{SUB_UA_NAMESPACE}
 <%ELSE%>
-namespace UnityAtoms
+namespace UnityAtoms.BaseAtoms
 <%ENDIF%>
 {
     /// <summary>

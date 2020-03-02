@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UnityAtoms
 {
-    internal class ObservableVoidEvent : IObservable<Void>
+    public class ObservableVoidEvent : IObservable<Void>
     {
         private Action<Action> _unregister;
         private List<IObserver<Void>> _observers = new List<IObserver<Void>>();

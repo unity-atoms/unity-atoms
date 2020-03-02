@@ -1,16 +1,11 @@
-// generated file
 using UnityEditor;
-<%IF TYPE_HAS_NAMESPACE%>
-using {TYPE_NAMESPACE};
-<%ENDIF%>
-<%IF HAS_SUB_UA_NAMESPACE%>
 using UnityAtoms.Editor;
-<%ENDIF%>
+<%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
 
 <%IF HAS_SUB_UA_NAMESPACE%>
 namespace UnityAtoms.{SUB_UA_NAMESPACE}.Editor
 <%ELSE%>
-namespace UnityAtoms.Editor
+namespace UnityAtoms.BaseAtoms.Editor
 <%ENDIF%>
 {
     /// <summary>
