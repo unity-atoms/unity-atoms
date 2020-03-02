@@ -13,9 +13,9 @@ namespace UnityAtoms.BaseAtoms
         StringPair,
         string,
         StringEvent,
-        StringPairEvent, 
+        StringPairEvent,
         StringStringFunction,
         AtomCollection,
-        AtomList> 
+        AtomList>
     { }
 }
