@@ -29,7 +29,7 @@ namespace UnityAtoms.MonoHooks
         }
 
         [SerializeField]
-        private ColliderGameObjectEventReference _eventWithGameObjectReference;
+        private ColliderGameObjectEventReference _eventWithGameObjectReference = default(ColliderGameObjectEventReference);
 
         protected override void RaiseWithGameObject(Collider value, GameObject gameObject)
         {

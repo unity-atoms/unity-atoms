@@ -64,25 +64,25 @@ namespace UnityAtoms
         /// Event used if `Usage` is set to `Event`.
         /// </summary>
         [SerializeField]
-        private E _event;
+        private E _event = default(E);
 
         /// <summary>
         /// EventInstancer used if `Usage` is set to `EventInstancer`.
         /// </summary>
         [SerializeField]
-        private EI _eventInstancer;
+        private EI _eventInstancer = default(EI);
 
         /// <summary>
         /// Variable used if `Usage` is set to `Variable`.
         /// </summary>
         [SerializeField]
-        private V _variable;
+        private V _variable = default(V);
 
         /// <summary>
         /// Variable Instancer used if `Usage` is set to `VariableInstancer`.
         /// </summary>
         [SerializeField]
-        private VI _variableInstancer;
+        private VI _variableInstancer = default(VI);
 
         protected AtomEventReference()
         {

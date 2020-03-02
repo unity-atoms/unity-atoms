@@ -5,7 +5,7 @@ namespace UnityAtoms
 {
     public class ObservableVoidEvent : IObservable<Void>
     {
-        private Action<Action> _unregister;
+        private Action<Action> _unregister = default(Action<Action>);
         private List<IObserver<Void>> _observers = new List<IObserver<Void>>();
 
         public ObservableVoidEvent(Action<Action> register, Action<Action> unregister)
