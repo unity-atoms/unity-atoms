@@ -13,9 +13,9 @@ namespace UnityAtoms.BaseAtoms
         Vector3Pair,
         Vector3,
         Vector3Event,
-        Vector3PairEvent, 
+        Vector3PairEvent,
         Vector3Vector3Function,
         AtomCollection,
-        AtomList> 
+        AtomList>
     { }
 }

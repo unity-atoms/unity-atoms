@@ -14,9 +14,9 @@ namespace UnityAtoms.MonoHooks
         Collider2DGameObjectPair,
         Collider2DGameObject,
         Collider2DGameObjectEvent,
-        Collider2DGameObjectPairEvent, 
+        Collider2DGameObjectPairEvent,
         Collider2DGameObjectCollider2DGameObjectFunction,
         AtomCollection,
-        AtomList> 
+        AtomList>
     { }
 }

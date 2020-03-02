@@ -18,9 +18,9 @@ namespace UnityAtoms.BaseAtoms
         {VALUE_TYPE_NAME}Pair,
         {VALUE_TYPE},
         {VALUE_TYPE_NAME}Event,
-        {VALUE_TYPE_NAME}PairEvent, 
+        {VALUE_TYPE_NAME}PairEvent,
         {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function,
         AtomCollection,
-        AtomList> 
+        AtomList>
     { }
 }
