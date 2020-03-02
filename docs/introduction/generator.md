@@ -91,15 +91,20 @@ By default the Atoms that gets generated will be under the namespace `UnityAtoms
 
 This is a list of Atom types that you want to generate. Simply select the Atoms that you want to generate. Some Atoms depends on other Atoms. If you unselect an Atom that other Atoms depends on, then the Generator will unselect those depending Atoms. Below you find the dependency graph:
 
+-   Pair Action - depends on Pair
+-   Pair Event - depends on Pair
 -   Value List - depends on Event
--   Listener - depends on Action, Variable, Event, Event x 2, Function x 2, Variable Instancer, Event Reference and Unity Event
--   Listener x 2 - depends on Action x 2, Variable, Event, Event x 2, Function x 2, Variable Instancer, Event x 2 Reference and Unity Event x 2
--   Reference - depends on Constant, Variable, Event, Event x 2, Function x 2 and Variable Instancer
--   Set Variable Value - depends on Event, Event x 2, Function x 2, Variable, Constant, Reference, Variable Instancer
--   Variable - depends on Event, Event x 2 and Function x 2
--   Variable Instancer - depsends on Variable, Event, Event x 2, Function x 2
--   Event Reference - depends on Variable, Event, Event x 2, Function x 2, Variable Instancer
--   Event x 2 Reference - depends on Variable, Event, Event x 2, Function x 2, Variable Instancer
+-   Event Reference Listener - depends on Action, Variable, Event, Pair Event, Function x 2, Variable Instancer, Pair Event Reference and Unity Event and Pair.
+-   Pair Event Reference Listener - depends on Pair Action, Variable, Event, Pair Event, Function x 2, Variable Instancer, Event Reference and Pair Unity Event and Pair.
+-   Reference - depends on Constant, Variable, Event, Pair Event, Function x 2 and Variable Instancer and Pair.
+-   Event Reference - depends on Variable, Event, Pair Event, Function x 2, Variable Instancer and Pair.
+-   Pair Event Reference - depends on Variable, Event, Pair Event, Function x 2, Variable Instancer and Pair.
+-   Set Variable Value - depends on Event, Pair Event, Function x 2, Variable, Constant, Reference, Variable Instancer and Pair.
+-   Pair Unity Event - depends on Pair.
+-   Variable - depends on Event, Pair Event, Pair and Function x 2
+-   Variable Instancer - depsends on Variable, Event, Pair Event, Function x 2 and Pair.
+-   Event Instancer - depsends on Event.
+-   Pair Event Instancer - depsends on Event and Pair.
 
 ### Close & Generate
 

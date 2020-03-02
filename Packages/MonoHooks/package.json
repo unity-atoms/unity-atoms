@@ -14,6 +14,8 @@
     "/package.json.meta",
     "/Runtime",
     "/Runtime.meta",
+    "/Editor",
+    "/Editor.meta",
     "/Documentation",
     "/Documentation.meta"
   ],
