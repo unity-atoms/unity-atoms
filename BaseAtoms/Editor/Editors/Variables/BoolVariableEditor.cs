@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Variable Inspector of type `bool`. Inherits from `AtomVariableEditor`
     /// </summary>
     [CustomEditor(typeof(BoolVariable))]
-    public sealed class BoolVariableEditor : AtomVariableEditor { }
+    public sealed class BoolVariableEditor : AtomVariableEditor<bool, BoolPair> { }
 }

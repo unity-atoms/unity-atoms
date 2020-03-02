@@ -53,7 +53,7 @@ namespace UnityAtoms
         public virtual T Value { get { return _value; } set { throw new NotImplementedException(); } }
 
         [SerializeField]
-        protected T _value;
+        protected T _value = default(T);
 
         /// <summary>
         /// Determines equality between Variables.

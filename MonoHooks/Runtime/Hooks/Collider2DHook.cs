@@ -22,7 +22,10 @@ namespace UnityAtoms.MonoHooks
 
         protected override void RaiseWithGameObject(Collider2D value, GameObject gameObject)
         {
-            EventWithGameObjectReference.Raise(new Collider2DGameObject() { Collider2D = value, GameObject = gameObject });
+            if (EventWithGameObjectReference)
+            {
+                EventWithGameObjectReference.Raise(new Collider2DGameObject() { Collider2D = value, GameObject = gameObject });
+            }
         }
     }
 }

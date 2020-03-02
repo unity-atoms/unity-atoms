@@ -8,5 +8,5 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Variable Inspector of type `GameObject`. Inherits from `AtomVariableEditor`
     /// </summary>
     [CustomEditor(typeof(GameObjectVariable))]
-    public sealed class GameObjectVariableEditor : AtomVariableEditor { }
+    public sealed class GameObjectVariableEditor : AtomVariableEditor<GameObject, GameObjectPair> { }
 }

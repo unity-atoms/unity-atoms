@@ -8,7 +8,8 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// Custom editor for Variables. Provides a better user workflow and indicates when which variables can be edited
     /// </summary>
-    public abstract class AtomVariableEditor : UnityEditor.Editor
+    public abstract class AtomVariableEditor<T, P> : UnityEditor.Editor
+        where P : IPair<T>, new()
     {
         private bool _lockedInitialValue = true;
         public override void OnInspectorGUI()
@@ -65,7 +66,9 @@ namespace UnityAtoms.Editor
                 {
                     GUILayout.Space(2);
                     if (GUILayout.Button("Raise", GUILayout.Width(raiseButtonWidth), GUILayout.Height(EditorGUIUtility.singleLineHeight)))
+                    {
                         evt.GetType().GetMethod("Raise", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { atomTarget.BaseValue });
+                    }
                 }
 
             }
@@ -76,15 +79,13 @@ namespace UnityAtoms.Editor
                 var changedWithHistory = serializedObject.FindProperty("ChangedWithHistory").objectReferenceValue;
                 if (changedWithHistory != null && changedWithHistory is AtomEventBase evt && target is AtomBaseVariable atomTarget)
                 {
-                    object oldValue = serializedObject.FindProperty("_oldValue").GetGenericPropertyValue(atomTarget.BaseValue);
 
                     GUILayout.Space(2);
                     if (GUILayout.Button("Raise", GUILayout.Width(raiseButtonWidth), GUILayout.Height(EditorGUIUtility.singleLineHeight)))
                     {
-                        if (GUILayout.Button("Raise", GUILayout.Width(raiseButtonWidth), GUILayout.Height(EditorGUIUtility.singleLineHeight)))
-                            evt.GetType().GetMethod("Raise", BindingFlags.Public | BindingFlags.Instance)
-                                ?.Invoke(evt, new[] { atomTarget.BaseValue, oldValue });
-
+                        var oldValueProp = serializedObject.FindProperty("_oldValue");
+                        object oldValue = oldValueProp.GetPropertyValue();
+                        evt.GetType().GetMethod("Raise", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { (object)(new P() { Item1 = (T)atomTarget.BaseValue, Item2 = (T)oldValue }) });
                     }
                 }
 

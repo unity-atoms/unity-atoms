@@ -8,5 +8,5 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Variable Inspector of type `Color`. Inherits from `AtomVariableEditor`
     /// </summary>
     [CustomEditor(typeof(ColorVariable))]
-    public sealed class ColorVariableEditor : AtomVariableEditor { }
+    public sealed class ColorVariableEditor : AtomVariableEditor<Color, ColorPair> { }
 }

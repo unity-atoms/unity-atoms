@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Variable Inspector of type `int`. Inherits from `AtomVariableEditor`
     /// </summary>
     [CustomEditor(typeof(IntVariable))]
-    public sealed class IntVariableEditor : AtomVariableEditor { }
+    public sealed class IntVariableEditor : AtomVariableEditor<int, IntPair> { }
 }
