@@ -10,17 +10,18 @@ namespace UnityAtoms.MonoHooks
     /// <typeparam name="EV">Event value type</typeparam>
     /// <typeparam name="F">Function type `AtomFunction&lt;GameObject, GameObject&gt;`</typeparam>
     [EditorIcon("atom-icon-delicate")]
-    public abstract class MonoHook<E, EV, F> : MonoBehaviour
+    public abstract class MonoHook<E, EV, ER, F> : MonoBehaviour
         where E : AtomEvent<EV>
+        where ER : IGetEvent, ISetEvent
         where F : AtomFunction<GameObject, GameObject>
     {
         /// <summary>
         /// The Event
         /// </summary>
-        public E Event { get => _event; set => _event = value; }
+        public E Event { get => _eventReference.GetEvent<E>(); set => _eventReference.SetEvent<E>(value); }
 
         [SerializeField]
-        private E _event;
+        private ER _eventReference;
 
         /// <summary>
         /// Selector function for the Event `EventWithGameObjectReference`. Makes it possible to for example select the parent GameObject and pass that a long to the `EventWithGameObjectReference`.
