@@ -87,6 +87,11 @@ openupm add com.mambojambostudios.unity-atoms-ui
 
 The Unity Atoms docs are now published at **https://adamramberg.github.io/unity-atoms**.
 
+### Blog posts
+
+-   [Unity Atoms — Tiny modular pieces utilizing the power of Scriptable Objects](https://medium.com/@adamramberg/unity-atoms-tiny-modular-pieces-utilizing-the-power-of-scriptable-objects-e8add1b95201)
+-   [Announcing Unity Atoms v2](https://medium.com/@adamramberg/announcing-unity-atoms-v2-1719ef3e587e)
+
 ## How does it work?
 
 Read [this](https://medium.com/@adamramberg/unity-atoms-tiny-modular-pieces-utilizing-the-power-of-scriptable-objects-e8add1b95201) article on Medium for a great introduction to Unity Atoms.
