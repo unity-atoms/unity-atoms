@@ -14,7 +14,7 @@ namespace UnityAtoms
     /// <typeparam name="F">Function of type `FunctionEvent&lt;T, T&gt;`.</typeparam>
     [EditorIcon("atom-icon-lush")]
     public abstract class AtomVariable<T, P, E1, E2, F> : AtomBaseVariable<T>, IGetEvent, ISetEvent
-        where P : unmanaged, IPair<T>
+        where P : struct, IPair<T>
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<P>
         where F : AtomFunction<T, T>
@@ -127,13 +127,13 @@ namespace UnityAtoms
                 _oldValue = _value;
                 _value = preProcessedNewValue;
                 if (Changed != null) { Changed.Raise(_value); }
-                if (ChangedWithHistory != null) 
+                if (ChangedWithHistory != null)
                 {
                     // NOTE: Doing new P() here, even though it is cleaner, generates garbage.
-                    var pair = default(P); 
-                    pair.Item1 = _value; 
+                    var pair = default(P);
+                    pair.Item1 = _value;
                     pair.Item2 = _oldValue;
-                    ChangedWithHistory.Raise(pair); 
+                    ChangedWithHistory.Raise(pair);
                 }
                 return true;
             }

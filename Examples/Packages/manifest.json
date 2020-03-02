@@ -3,6 +3,7 @@
     "com.coffee.upm-git-extension": "https://github.com/mob-sakai/UpmGitExtension.git#0.9.1",
     "com.mambojambostudios.marvelous": "1.0.8",
     "com.mambojambostudios.unity-atoms-core": "file:../../Packages/Core",
+    "com.mambojambostudios.unity-atoms-base-atoms": "file:../../Packages/BaseAtoms",
     "com.mambojambostudios.unity-atoms-mobile": "file:../../Packages/Mobile",
     "com.mambojambostudios.unity-atoms-mono-hooks": "file:../../Packages/MonoHooks",
     "com.mambojambostudios.unity-atoms-scene-mgmt": "file:../../Packages/SceneMgmt",
@@ -36,6 +37,7 @@
   },
   "testables": [
     "com.mambojambostudios.unity-atoms-core",
+    "com.mambojambostudios.unity-atoms-base-atoms",
     "com.mambojambostudios.unity-atoms-mobile",
     "com.mambojambostudios.unity-atoms-scene-mgmt",
     "com.mambojambostudios.unity-atoms-tags",
@@ -45,9 +47,7 @@
     {
       "name": "NPM",
       "url": "https://registry.npmjs.org",
-      "scopes": [
-        "com.mambojambostudios.marvelous"
-      ]
+      "scopes": ["com.mambojambostudios.marvelous"]
     }
   ],
   "lock": {

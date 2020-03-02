@@ -17,12 +17,14 @@ namespace UnityAtoms
     /// <typeparam name="F">Function of type T => T</typeparam>
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomVariableInstancer<V, P, T, E1, E2, F> : MonoBehaviour, IGetEvent, ISetEvent
+    public abstract class AtomVariableInstancer<V, P, T, E1, E2, F, CO, L> : MonoBehaviour, IGetEvent, ISetEvent
         where V : AtomVariable<T, P, E1, E2, F>
-        where P : unmanaged, IPair<T>
+        where P : struct, IPair<T>
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<P>
         where F : AtomFunction<T, T>
+        where CO : IGetValue<IAtomCollection>
+        where L : IGetValue<IAtomList>
     {
         /// <summary>
         /// Getter for retrieving the in memory runtime variable.
@@ -44,17 +46,17 @@ namespace UnityAtoms
         [SerializeField]
         private V _base = null;
 
-        // /// <summary>
-        // /// If assigned the in memory copy variable will be added to the collection on Start using the gameObject's instance id as key. The value will also be removed from the collection OnDestroy.
-        // /// </summary>
-        // [SerializeField]
-        // private AtomCollection _syncToCollection = null;
+        /// <summary>
+        /// If assigned the in memory copy variable will be added to the collection on Start using the gameObject's instance id as key. The value will also be removed from the collection OnDestroy.
+        /// </summary>
+        [SerializeField]
+        private CO _syncToCollection = default(CO);
 
         /// <summary>
         /// If assigned the in memory copy variable will be added to the list on Start. The value will also be removed from the list OnDestroy.
         /// </summary>
         [SerializeField]
-        private AtomList _syncToList = null;
+        private L _syncToList = default(L);
 
         private void OnEnable()
         {
@@ -76,27 +78,27 @@ namespace UnityAtoms
         {
             // Adding to the collection on Start instead of OnEnable because of timing issues that otherwise occurs when listeners register themselves OnEnable. 
             // This is an issue when a Game Object has a Variable Instancer attached to it when the scene starts and at the same time their is an AtomBaseListener listening to the associated Added event to a Collection. 
-            // if (_syncToCollection != null)
-            // {
-            //     _syncToCollection.Value.Add(GetInstanceID().ToString(), _inMemoryCopy);
-            // }
+            if (_syncToCollection != null)
+            {
+                _syncToCollection.GetValue().Add(GetInstanceID().ToString(), _inMemoryCopy);
+            }
 
             if (_syncToList != null)
             {
-                _syncToList.Value.Add(_inMemoryCopy);
+                _syncToList.GetValue().Add(_inMemoryCopy);
             }
         }
 
         private void OnDestroy()
         {
-            // if (_syncToCollection != null)
-            // {
-            //     _syncToCollection.Value.Remove(GetInstanceID().ToString());
-            // }
+            if (_syncToCollection != null)
+            {
+                _syncToCollection.GetValue().Remove(GetInstanceID().ToString());
+            }
 
             if (_syncToList != null)
             {
-                _syncToList.Value.Remove(_inMemoryCopy);
+                _syncToList.GetValue().Remove(_inMemoryCopy);
             }
         }
 

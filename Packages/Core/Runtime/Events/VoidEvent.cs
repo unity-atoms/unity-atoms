@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityAtoms;
 
 namespace UnityAtoms
 {

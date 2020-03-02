@@ -2,9 +2,8 @@
     "name": "MamboJamboStudios.UnityAtomsTags.Runtime",
     "references": [
         "MamboJamboStudios.UnityAtomsCore.Runtime",
-        "MamboJamboStudios.UnityAtomsCore.Editor"
+        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
@@ -12,5 +11,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -26,7 +26,7 @@ namespace UnityAtoms.Editor
         static void Init()
         {
             var window = GetWindow<GeneratorEditor>(false, "Unity Atoms - Generator");
-            window.position = new Rect(Screen.width / 2, Screen.height / 2, 440, 400);
+            window.position = new Rect(Screen.width / 2, Screen.height / 2, 440, 540);
             window.Show();
         }
 
@@ -103,7 +103,7 @@ namespace UnityAtoms.Editor
         }
 
         private static string _baseWritePath = Runtime.IsUnityAtomsRepo
-            ? "../Packages/Core" : "Assets/Atoms";
+            ? "../Packages/BaseAtoms" : "Assets/Atoms";
 
         /// <summary>
         /// Called when editor is enabled.

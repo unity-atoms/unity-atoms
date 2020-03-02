@@ -1,6 +1,7 @@
 # ⚛️ Unity Atoms
 
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-core?label=core@openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-core/)
+[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-base-atoms?label=core@openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-base-atoms/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-mobile?label=mobile&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-mobile/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-mono-hooks?label=mono-hooks&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-mono-hooks/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-tags?label=tags&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-tags/)
@@ -41,6 +42,7 @@ Add the following to your `manifest.json`:
             "url": "https://registry.npmjs.org",
             "scopes": [
                 "com.mambojambostudios.unity-atoms-core",
+                "com.mambojambostudios.unity-atoms-base-atoms",
                 "com.mambojambostudios.unity-atoms-mobile",
                 "com.mambojambostudios.unity-atoms-mono-hooks",
                 "com.mambojambostudios.unity-atoms-tags",
@@ -51,18 +53,19 @@ Add the following to your `manifest.json`:
     ],
     "dependencies": {
         ...
-        "com.mambojambostudios.unity-atoms-core": "3.0.0",
-        "com.mambojambostudios.unity-atoms-mobile": "3.0.0",
-        "com.mambojambostudios.unity-atoms-mono-hooks": "3.0.0",
-        "com.mambojambostudios.unity-atoms-tags": "3.0.0",
-        "com.mambojambostudios.unity-atoms-scene-mgmt": "3.0.0",
-        "com.mambojambostudios.unity-atoms-ui": "3.0.0",
+        "com.mambojambostudios.unity-atoms-core": "4.0.0",
+        "com.mambojambostudios.unity-atoms-base-atoms": "4.0.0",
+        "com.mambojambostudios.unity-atoms-mobile": "4.0.0",
+        "com.mambojambostudios.unity-atoms-mono-hooks": "4.0.0",
+        "com.mambojambostudios.unity-atoms-tags": "4.0.0",
+        "com.mambojambostudios.unity-atoms-scene-mgmt": "4.0.0",
+        "com.mambojambostudios.unity-atoms-ui": "4.0.0",
         ...
     }
 }
 ```
 
-Note that the core package is mandatory while the others are optional. If you don't want a subpackage, simply remove it from your `dependencies`.
+Note that the core and base atoms packages are mandatory while the others are optional. If you don't want a subpackage, simply remove it from your `dependencies`.
 
 ### OpenUPM
 

@@ -1,12 +1,11 @@
 using System;
-<%IF TYPE_HAS_NAMESPACE%>
-using {TYPE_NAMESPACE};
-<%ENDIF%>
+using UnityAtoms.BaseAtoms;
+<%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
 
 <%IF HAS_SUB_UA_NAMESPACE%>
 namespace UnityAtoms.{SUB_UA_NAMESPACE}
 <%ELSE%>
-namespace UnityAtoms
+namespace UnityAtoms.BaseAtoms
 <%ENDIF%>
 {
 <%IF EQUATABLE%>
@@ -22,7 +21,9 @@ namespace UnityAtoms
         {VALUE_TYPE_NAME}Event,
         {VALUE_TYPE_NAME}PairEvent,
         {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function,
-        {VALUE_TYPE_NAME}VariableInstancer>, IEquatable<{VALUE_TYPE_NAME}Reference>
+        {VALUE_TYPE_NAME}VariableInstancer,
+        AtomCollection,
+        AtomList>, IEquatable<{VALUE_TYPE_NAME}Reference>
     {
         public {VALUE_TYPE_NAME}Reference() : base() { }
         public {VALUE_TYPE_NAME}Reference({VALUE_TYPE} value) : base(value) { }
@@ -41,7 +42,9 @@ namespace UnityAtoms
         {VALUE_TYPE_NAME}Event,
         {VALUE_TYPE_NAME}PairEvent,
         {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function,
-        {VALUE_TYPE_NAME}VariableInstancer>, IEquatable<{VALUE_TYPE_NAME}Reference>
+        {VALUE_TYPE_NAME}VariableInstancer,
+        AtomCollection,
+        AtomList>, IEquatable<{VALUE_TYPE_NAME}Reference>
     {
         public {VALUE_TYPE_NAME}Reference() : base() { }
         public {VALUE_TYPE_NAME}Reference({VALUE_TYPE} value) : base(value) { }

@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using UnityAtoms;
 
-namespace UnityAtoms
+namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
     /// The most basic Listener. Can use every type of AtomEvent but doesn't support its value. Inherits from `AtomBaseListener` and implements `IAtomListener`.

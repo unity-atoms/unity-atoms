@@ -24,7 +24,7 @@ namespace UnityAtoms
         /// <typeparam name="F">The type of the `preChangeTransformers` Functions of type `AtomFunction&lt;T, T&gt;`.</typeparam>
         /// <returns>The Variable created.</returns>
         public static V CreateVariable<T, P, V, E1, E2, F>(T initialValue, E1 changed = null, E2 changedWithHistory = null, List<F> preChangeTransformers = null)
-            where P : unmanaged, IPair<T>
+            where P : struct, IPair<T>
             where V : AtomVariable<T, P, E1, E2, F>
             where E1 : AtomEvent<T>
             where E2 : AtomEvent<P>

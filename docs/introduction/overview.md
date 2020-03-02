@@ -42,9 +42,13 @@ This is a MonoBehaviour that takes a base Variable and makes an in memory copy o
 
 An event is a thing that happens in the game that others can listen / subscribe to. Events in Unity Atoms are also Scriptable Objects that lives outside of a specific scene. It is possible to raise an Event from the Unity Inspector for debug purposes.
 
-### Event References
+## Event References
 
 Event References are events that can be toggled between `Use Event`, `Use Variable` or `Use Variable Instancer` via the Unity Inspector. When an Event Reference is set to `Use Event` it functions exactly like a regular serialized Event in a MonoBehaviour script. When it is set to `Use Variable` it is going to use the Event associated with the Variable's Changed event. When it's set to `Use Variable Instancer` you can drag and drop a Variable Instancer of the correct type and it will use its associated Changed event.
+
+## Event Instancers
+
+This is a MonoBehaviour that takes a base Event and makes an in memory copy of it `OnEnable`. This is particular useful when working with prefabs that is going to be instantiated at runtime, for example when working with Mono Hooks on your prefabs.
 
 ## Listeners
 

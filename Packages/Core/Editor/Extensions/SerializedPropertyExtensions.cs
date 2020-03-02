@@ -1,13 +1,11 @@
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
-    internal static class SerializedPropertyExtensions
+    public static class SerializedPropertyExtensions
     {
         /// <summary>
         /// Generic method that tries to retrieve a value from a SerializedProperty of a specfic type.

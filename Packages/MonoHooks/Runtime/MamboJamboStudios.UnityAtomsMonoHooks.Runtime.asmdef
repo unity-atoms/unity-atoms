@@ -1,14 +1,16 @@
 {
     "name": "MamboJamboStudios.UnityAtomsMonoHooks.Runtime",
     "references": [
-        "MamboJamboStudios.UnityAtomsCore.Runtime"
+        "MamboJamboStudios.UnityAtomsCore.Runtime",
+        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
