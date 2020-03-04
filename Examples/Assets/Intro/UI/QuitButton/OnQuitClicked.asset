@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a094dae4de443b4a887630b07c7bfe, type: 3}
+  m_Script: {fileID: 11500000, guid: 04d35e2eb934747da9d77a3af62bb8ca, type: 3}
   m_Name: OnQuitClicked
   m_EditorClassIdentifier: 
+  _developerDescription: 
+  _replayBufferSize: 1
