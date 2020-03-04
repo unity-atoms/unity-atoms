@@ -25,7 +25,7 @@ namespace UnityAtoms.BaseAtoms
         public bool Equals(Collider2DReference other) { return base.Equals(other); }
         protected override bool ValueEquals(Collider2D other)
         {
-            throw new NotImplementedException();
-        } 
+            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value == other;
+        }
     }
 }
