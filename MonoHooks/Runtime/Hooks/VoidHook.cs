@@ -13,7 +13,7 @@ namespace UnityAtoms.MonoHooks
         /// The Event
         /// </summary>
         [SerializeField]
-        protected AtomEventBase _event;
+        protected VoidEvent _event;
 
         /// <summary>
         /// Event including a GameObject reference.
