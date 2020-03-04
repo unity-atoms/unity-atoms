@@ -15,7 +15,7 @@ namespace UnityAtoms
         /// </summary>
         public event Action OnEventNoValue;
 
-        protected void RaiseNoValue()
+        public void Raise()
         {
             OnEventNoValue?.Invoke();
         }

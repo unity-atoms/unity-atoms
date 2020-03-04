@@ -204,7 +204,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Get event by type. Don't use directly! Used only so that we don't need two implementations of Event Instancer and Listeners (one for `T` and one for `IPair&lt;T&gt;`)
+        /// Get event by type. 
         /// </summary>
         /// <typeparam name="E"></typeparam>
         /// <returns>The event.</returns>
@@ -219,7 +219,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Set event by type. Don't use directly! Used only so that we don't need two implementations of Event Instancer and Listeners (one for `T` and one for `IPair&lt;T&gt;`)
+        /// Set event by type. 
         /// </summary>
         /// <param name="e">The new event value.</param>
         /// <typeparam name="E"></typeparam>

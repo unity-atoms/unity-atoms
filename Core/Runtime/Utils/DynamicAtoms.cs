@@ -43,12 +43,12 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="added">Added Event of type `E`.</param>
         /// <param name="removed">Removed Event of type `E`.</param>
-        /// <param name="cleared">Cleared Event of type `Void`.</param>
+        /// <param name="cleared">Cleared Event of type `AtomEventBase`.</param>
         /// <typeparam name="T">The list item type.</typeparam>
         /// <typeparam name="L">The List type to create of type `AtomList&lt;T, E&gt;`.</typeparam>
         /// <typeparam name="E">The Event tyoe used for `removed` and `added` of type `AtomEvent&lt;T&gt;`.</typeparam>
         /// <returns>The List created.</returns>
-        public static L CreateValueList<T, L, E>(E added = null, E removed = null, VoidEvent cleared = null)
+        public static L CreateValueList<T, L, E>(E added = null, E removed = null, AtomEventBase cleared = null)
             where L : AtomValueList<T, E>
             where E : AtomEvent<T>
         {

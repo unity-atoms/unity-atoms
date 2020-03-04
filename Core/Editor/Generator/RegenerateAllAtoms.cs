@@ -64,23 +64,31 @@ namespace UnityAtoms.Editor
 
             var itemsToRegenerate = new List<RegenerateItem>()
             {
-                new RegenerateItem(valueType: "bool", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: ""),
-                new RegenerateItem(valueType: "Collider2D", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: false, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: ""),
-                new RegenerateItem(valueType: "Collider", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: false, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: ""),
-                new RegenerateItem(valueType: "Color", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: ""),
-                new RegenerateItem(valueType: "float", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: ""),
-                new RegenerateItem(valueType: "GameObject", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: false, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: ""),
-                new RegenerateItem(valueType: "int", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: ""),
-                new RegenerateItem(valueType: "string", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: ""),
-                new RegenerateItem(valueType: "Vector2", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: ""),
-                new RegenerateItem(valueType: "Vector3", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: ""),
+                new RegenerateItem(
+                    valueType: "Void",
+                    baseWritePath: Path.Combine(path, "BaseAtoms"),
+                    isValueEquatable: false,
+                    atomTypesToGenerate: new List<AtomType>() { AtomTypes.EVENT, AtomTypes.ACTION, AtomTypes.UNITY_EVENT, AtomTypes.BASE_EVENT_REFERENCE, AtomTypes.EVENT_INSTANCER },
+                    typeNamespace: "",
+                    subUnityAtomsNamespace: "BaseAtoms"
+                ),
+                new RegenerateItem(valueType: "bool", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: "BaseAtoms"),
+                new RegenerateItem(valueType: "Collider2D", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: false, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
+                new RegenerateItem(valueType: "Collider", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: false, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
+                new RegenerateItem(valueType: "Color", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
+                new RegenerateItem(valueType: "float", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: "BaseAtoms"),
+                new RegenerateItem(valueType: "GameObject", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: false, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
+                new RegenerateItem(valueType: "int", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: "BaseAtoms"),
+                new RegenerateItem(valueType: "string", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: "BaseAtoms"),
+                new RegenerateItem(valueType: "Vector2", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
+                new RegenerateItem(valueType: "Vector3", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
                 new RegenerateItem(
                     valueType: "AtomBaseVariable",
                     baseWritePath: Path.Combine(path, "BaseAtoms"),
                     isValueEquatable: false,
                     atomTypesToGenerate: new List<AtomType>() { AtomTypes.EVENT, AtomTypes.ACTION, AtomTypes.UNITY_EVENT, AtomTypes.EVENT_LISTENER },
                     typeNamespace: "",
-                    subUnityAtomsNamespace: ""
+                    subUnityAtomsNamespace: "BaseAtoms"
                 ),
                 new RegenerateItem(valueType: "ColliderGameObject", baseWritePath: Path.Combine(path, "MonoHooks"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.MonoHooks", subUnityAtomsNamespace: "MonoHooks"),
                 new RegenerateItem(valueType: "Collider2DGameObject", baseWritePath: Path.Combine(path, "MonoHooks"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.MonoHooks", subUnityAtomsNamespace: "MonoHooks"),

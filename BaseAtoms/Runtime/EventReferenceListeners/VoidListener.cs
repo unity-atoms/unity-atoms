@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
-using UnityAtoms;
 
 namespace UnityAtoms.BaseAtoms
 {
@@ -17,12 +15,12 @@ namespace UnityAtoms.BaseAtoms
         /// The Event that we are listening to.
         /// </summary>
         [SerializeField]
-        private AtomEventBase _event = null;
+        private VoidEventReference _eventReference = null;
 
         /// <summary>
         /// The Event we are listening for as a property.
         /// </summary>
-        public AtomEventBase Event { get { return _event; } set { _event = value; } }
+        public VoidEvent Event { get { return _eventReference.Event; } set { _eventReference.Event = value; } }
 
         /// <summary>
         /// The Unity Event responses.

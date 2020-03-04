@@ -11,7 +11,7 @@ namespace UnityAtoms
     /// <typeparam name="E">Event of type `T`.</typeparam>
     /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
     /// <typeparam name="EI">Event Instancer of type `T`.</typeparam>
-    public abstract class AtomEventReference<T, V, E, VI, EI> : AtomEventReferenceBase, IGetEvent, ISetEvent
+    public abstract class AtomEventReference<T, V, E, VI, EI> : AtomBaseEventReference<T, E, EI>, IGetEvent, ISetEvent
         where V : IGetEvent, ISetEvent
         where E : AtomEvent<T>
         where VI : IGetEvent, ISetEvent
@@ -21,16 +21,16 @@ namespace UnityAtoms
         /// Get the event for the Event Reference.
         /// </summary>
         /// <value>The event of type `E`.</value>
-        public E Event
+        public override E Event
         {
             get
             {
                 switch (_usage)
                 {
-                    case (AtomEventReferenceBase.Usage.Variable): return _variable.GetEvent<E>();
-                    case (AtomEventReferenceBase.Usage.VariableInstancer): return _variableInstancer.GetEvent<E>();
-                    case (AtomEventReferenceBase.Usage.EventInstancer): return _eventInstancer.Event;
-                    case (AtomEventReferenceBase.Usage.Event):
+                    case (AtomEventReferenceUsage.VARIABLE): return _variable.GetEvent<E>();
+                    case (AtomEventReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer.GetEvent<E>();
+                    case (AtomEventReferenceUsage.EVENT_INSTANCER): return _eventInstancer.Event;
+                    case (AtomEventReferenceUsage.EVENT):
                     default:
                         return _event;
                 }
@@ -39,17 +39,17 @@ namespace UnityAtoms
             {
                 switch (_usage)
                 {
-                    case (AtomEventReferenceBase.Usage.Variable):
+                    case (AtomEventReferenceUsage.VARIABLE):
                         {
                             _variable.SetEvent<E>(value);
                             break;
                         }
-                    case (AtomEventReferenceBase.Usage.VariableInstancer):
+                    case (AtomEventReferenceUsage.VARIABLE_INSTANCER):
                         {
                             _variableInstancer.SetEvent<E>(value);
                             break;
                         }
-                    case (AtomEventReferenceBase.Usage.Event):
+                    case (AtomEventReferenceUsage.EVENT):
                         {
                             _event = value;
                             break;
@@ -59,18 +59,6 @@ namespace UnityAtoms
                 }
             }
         }
-
-        /// <summary>
-        /// Event used if `Usage` is set to `Event`.
-        /// </summary>
-        [SerializeField]
-        private E _event = default(E);
-
-        /// <summary>
-        /// EventInstancer used if `Usage` is set to `EventInstancer`.
-        /// </summary>
-        [SerializeField]
-        private EI _eventInstancer = default(EI);
 
         /// <summary>
         /// Variable used if `Usage` is set to `Variable`.
@@ -86,41 +74,12 @@ namespace UnityAtoms
 
         protected AtomEventReference()
         {
-            _usage = AtomEventReferenceBase.Usage.Event;
+            _usage = AtomEventReferenceUsage.EVENT;
         }
 
         public static implicit operator E(AtomEventReference<T, V, E, VI, EI> reference)
         {
             return reference.Event;
-        }
-
-        /// <summary>
-        /// Get event by type. Don't use directly! Used only so that we don't need two implementations of Event Instancer and Listeners (one for `T` and one for `IPair&lt;T&gt;`)
-        /// </summary>
-        /// <typeparam name="E"></typeparam>
-        /// <returns>The event.</returns>
-        public EO GetEvent<EO>() where EO : AtomEventBase
-        {
-            if (typeof(EO) == typeof(E))
-                return (Event as EO);
-
-            throw new Exception($"Event type {typeof(EO)} not supported! Use {typeof(E)}.");
-        }
-
-        /// <summary>
-        /// Set event by type. Don't use directly! Used only so that we don't need two implementations of Event Instancer and Listeners (one for `T` and one for `IPair&lt;T&gt;`)
-        /// </summary>
-        /// <param name="e">The new event value.</param>
-        /// <typeparam name="E"></typeparam>
-        public void SetEvent<EO>(EO e) where EO : AtomEventBase
-        {
-            if (typeof(EO) == typeof(E))
-            {
-                Event = (e as E);
-                return;
-            }
-
-            throw new Exception($"Event type {typeof(EO)} not supported! Use {typeof(E)}.");
         }
     }
 }

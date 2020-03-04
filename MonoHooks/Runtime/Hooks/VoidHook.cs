@@ -4,7 +4,7 @@ using UnityAtoms.BaseAtoms;
 namespace UnityAtoms.MonoHooks
 {
     /// <summary>
-    /// Base class for all `MonoHook`s of type `Void`.
+    /// Base class for all `MonoHook`s of type `AtomEventBase`.
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
     public abstract class VoidHook : MonoBehaviour
@@ -13,7 +13,7 @@ namespace UnityAtoms.MonoHooks
         /// The Event
         /// </summary>
         [SerializeField]
-        protected VoidEvent _event;
+        protected AtomEventBase _event;
 
         /// <summary>
         /// Event including a GameObject reference.

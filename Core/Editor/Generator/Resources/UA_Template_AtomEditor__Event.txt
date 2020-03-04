@@ -7,7 +7,7 @@ using UnityAtoms.Editor;
 <%IF HAS_SUB_UA_NAMESPACE%>
 namespace UnityAtoms.{SUB_UA_NAMESPACE}.Editor
 <%ELSE%>
-namespace UnityAtoms.BaseAtoms.Editor
+namespace UnityAtoms.Editor
 <%ENDIF%>
 {
     /// <summary>

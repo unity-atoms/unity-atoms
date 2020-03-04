@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.SceneMgmt
 {
