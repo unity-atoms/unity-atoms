@@ -25,7 +25,7 @@ namespace UnityAtoms.BaseAtoms
         public bool Equals(GameObjectReference other) { return base.Equals(other); }
         protected override bool ValueEquals(GameObject other)
         {
-            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value.GetInstanceID() == other.GetInstanceID();
-        }
+            throw new NotImplementedException();
+        } 
     }
 }

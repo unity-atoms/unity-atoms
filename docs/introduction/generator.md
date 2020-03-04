@@ -97,8 +97,8 @@ This is a list of Atom types that you want to generate. Simply select the Atoms 
 -   Event Reference Listener - depends on Action, Variable, Event, Pair Event, Function x 2, Variable Instancer, Pair Event Reference and Unity Event and Pair.
 -   Pair Event Reference Listener - depends on Pair Action, Variable, Event, Pair Event, Function x 2, Variable Instancer, Event Reference and Pair Unity Event and Pair.
 -   Reference - depends on Constant, Variable, Event, Pair Event, Function x 2 and Variable Instancer and Pair.
--   Event Reference - depends on Variable, Event, Pair Event, Function x 2, Variable Instancer and Pair.
--   Pair Event Reference - depends on Variable, Event, Pair Event, Function x 2, Variable Instancer and Pair.
+-   Event Reference - depends on Variable, Event, Pair Event, Function x 2, Variable Instancer, Event Instancer and Pair.
+-   Pair Event Reference - depends on Variable, Event, Pair Event, Function x 2, Variable Instancer, Pair Event Instancer and Pair.
 -   Set Variable Value - depends on Event, Pair Event, Function x 2, Variable, Constant, Reference, Variable Instancer and Pair.
 -   Pair Unity Event - depends on Pair.
 -   Variable - depends on Event, Pair Event, Pair and Function x 2

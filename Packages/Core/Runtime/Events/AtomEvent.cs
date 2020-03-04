@@ -9,7 +9,7 @@ namespace UnityAtoms
     /// </summary>
     /// <typeparam name="T">The type for this Event.</typeparam>
     [EditorIcon("atom-icon-cherry")]
-    public abstract class AtomEvent<T> : AtomEventBase
+    public class AtomEvent<T> : AtomEventBase
     {
         public T InspectorRaiseValue { get => _inspectorRaiseValue; }
 
@@ -52,7 +52,7 @@ namespace UnityAtoms
         /// <param name="item">The value associated with the Event.</param>
         public void Raise(T item)
         {
-            base.RaiseNoValue();
+            base.Raise();
             _onEvent?.Invoke(item);
             AddToReplayBuffer(item);
         }

@@ -5,7 +5,7 @@ using UnityAtoms.BaseAtoms;
 <%IF HAS_SUB_UA_NAMESPACE%>
 namespace UnityAtoms.{SUB_UA_NAMESPACE}
 <%ELSE%>
-namespace UnityAtoms.BaseAtoms
+namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>

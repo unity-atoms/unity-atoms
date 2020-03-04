@@ -6,10 +6,13 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// A custom property drawer for Event References. Makes it possible to choose between an Event, Variable or a Variable Instancer.
     /// </summary>
-    [CustomPropertyDrawer(typeof(AtomEventReferenceBase), true)]
+    [CustomPropertyDrawer(typeof(AtomBaseEventReference), true)]
     public class AtomEventReferenceDrawer : PropertyDrawer
     {
-        private static readonly string[] _popupOptions =
+        private static readonly string[] _popupOptionsOnlyEvents =
+            { "Use Event", "Use Event Instancer" };
+
+        private static readonly string[] _popupOptionsAll =
             { "Use Event", "Use Event Instancer", "Use Variable", "Use Variable Instancer" };
         private static GUIStyle _popupStyle;
 
@@ -53,7 +56,7 @@ namespace UnityAtoms.Editor
             // Store old indent level and set it to 0, the PrefixLabel takes care of it
             int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
-            usage.intValue = EditorGUI.Popup(buttonRect, usage.intValue, _popupOptions, _popupStyle);
+            usage.intValue = EditorGUI.Popup(buttonRect, usage.intValue, variable == null ? _popupOptionsOnlyEvents : _popupOptionsAll, _popupStyle);
 
             EditorGUI.PropertyField(position,
                 GetPropToUse(usage, ev, evInstancer, variable, variableInstancer),
@@ -68,16 +71,16 @@ namespace UnityAtoms.Editor
 
         private SerializedProperty GetPropToUse(SerializedProperty usage, SerializedProperty ev, SerializedProperty evInstancer, SerializedProperty variable, SerializedProperty variableInstancer)
         {
-            var usageIntVal = (AtomEventReferenceBase.Usage)usage.intValue;
-            if (usageIntVal == AtomEventReferenceBase.Usage.Variable)
+            var usageIntVal = usage.intValue;
+            if (usageIntVal == AtomEventReferenceUsage.VARIABLE)
             {
                 return variable;
             }
-            else if (usageIntVal == AtomEventReferenceBase.Usage.EventInstancer)
+            else if (usageIntVal == AtomEventReferenceUsage.EVENT_INSTANCER)
             {
                 return evInstancer;
             }
-            else if (usageIntVal == AtomEventReferenceBase.Usage.VariableInstancer)
+            else if (usageIntVal == AtomEventReferenceUsage.VARIABLE_INSTANCER)
             {
                 return variableInstancer;
             }

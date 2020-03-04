@@ -59,6 +59,10 @@ namespace UnityAtoms.Editor
             displayName: "Reference",
             templateName: "UA_Template__Reference.txt"
         );
+        public static readonly AtomType BASE_EVENT_REFERENCE = new AtomType(
+            displayName: "Base Event Reference",
+            templateName: "UA_Template__BaseEventReference.txt"
+        );
         public static readonly AtomType EVENT_REFERENCE = new AtomType(
             displayName: "Event Reference",
             templateName: "UA_Template__EventReference.txt"
@@ -153,11 +157,13 @@ namespace UnityAtoms.Editor
             { AtomTypes.REFERENCE, new List<AtomType>() {
                 AtomTypes.CONSTANT, AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.PAIR_EVENT, AtomTypes.FUNCTION_T_T, AtomTypes.VARIABLE_INSTANCER, AtomTypes.PAIR }
             },
+            { AtomTypes.BASE_EVENT_REFERENCE, new List<AtomType>() {AtomTypes.EVENT, AtomTypes.EVENT_INSTANCER }
+            },
             { AtomTypes.EVENT_REFERENCE, new List<AtomType>() { AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.PAIR_EVENT,
-                AtomTypes.FUNCTION_T_T, AtomTypes.VARIABLE_INSTANCER, AtomTypes.PAIR }
+                AtomTypes.FUNCTION_T_T, AtomTypes.VARIABLE_INSTANCER, AtomTypes.EVENT_INSTANCER, AtomTypes.PAIR }
             },
             { AtomTypes.PAIR_EVENT_REFERENCE, new List<AtomType>() { AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.PAIR_EVENT,
-                AtomTypes.FUNCTION_T_T, AtomTypes.VARIABLE_INSTANCER, AtomTypes.PAIR }
+                AtomTypes.FUNCTION_T_T, AtomTypes.VARIABLE_INSTANCER, AtomTypes.PAIR_EVENT_INSTANCER, AtomTypes.PAIR }
             },
             { AtomTypes.SET_VARIABLE_VALUE, new List<AtomType>() {
                 AtomTypes.EVENT, AtomTypes.PAIR_EVENT, AtomTypes.FUNCTION_T_T, AtomTypes.VARIABLE, AtomTypes.CONSTANT,

@@ -66,36 +66,4 @@ namespace UnityAtoms.Editor
             return hash;
         }
     }
-
-    internal struct AtomTypeOld : IEquatable<AtomTypeOld>
-    {
-        public string Atom { get; set; }
-        public string DisplayName;
-        public int TypeOccurences;
-
-        public AtomTypeOld(string atom, string displayName = null, int typeOccurences = 1)
-        {
-            this.Atom = atom;
-            this.DisplayName = displayName == null ? atom : displayName;
-            this.TypeOccurences = typeOccurences;
-        }
-
-        public bool Equals(AtomTypeOld other)
-        {
-            return this.Atom == other.Atom && this.TypeOccurences == other.TypeOccurences;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return Equals((AtomTypeOld)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            var hash = 17;
-            hash = hash * 23 + this.Atom.GetHashCode();
-            hash = hash * 23 + this.TypeOccurences.GetHashCode();
-            return hash;
-        }
-    }
 }

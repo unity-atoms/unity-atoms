@@ -14,7 +14,7 @@ namespace UnityAtoms
     /// <typeparam name="E2">An Event x 2 of type `T`.</typeparam>
     /// <typeparam name="F">A Function x 2 of type `T`.</typeparam>
     /// <typeparam name="VI">A Variable Instancer of type `T`.</typeparam>
-    public abstract class SetVariableValue<T, P, V, C, R, E1, E2, F, VI, CO, L> : VoidAction
+    public abstract class SetVariableValue<T, P, V, C, R, E1, E2, F, VI, CO, L> : AtomAction
         where P : struct, IPair<T>
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<P>

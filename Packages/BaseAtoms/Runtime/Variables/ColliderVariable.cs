@@ -12,7 +12,7 @@ namespace UnityAtoms.BaseAtoms
     {
         protected override bool ValueEquals(Collider other)
         {
-            return (_value == null && other == null) || _value != null && other != null && _value == other;
+            throw new NotImplementedException();
         }
     }
 }
