@@ -5,7 +5,7 @@ using UnityEngine;
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// Reference of type `Vector3`. Inherits from `EquatableAtomReference&lt;Vector3, Vector3Pair, Vector3Constant, Vector3Variable, Vector3Event, Vector3PairEvent, Vector3Vector3Function, Vector3VariableInstancer&gt;`.
+    /// Reference of type `Vector3`. Inherits from `EquatableAtomReference&lt;Vector3, Vector3Pair, Vector3Constant, Vector3Variable, Vector3Event, Vector3PairEvent, Vector3Vector3Function, Vector3VariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class Vector3Reference : EquatableAtomReference<

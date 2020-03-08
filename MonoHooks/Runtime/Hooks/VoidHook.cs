@@ -31,7 +31,7 @@ namespace UnityAtoms.MonoHooks
         {
             if (_event != null)
             {
-                _event.Raise(new Void());
+                _event.Raise();
             }
             if (_eventWithGameObjectReference != null)
             {

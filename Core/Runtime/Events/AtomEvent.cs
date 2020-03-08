@@ -21,7 +21,7 @@ namespace UnityAtoms
         public List<T> ReplayBuffer { get => _replayBuffer.ToList(); }
 
         [SerializeField]
-        private event Action<T> _onEvent;
+        protected event Action<T> _onEvent;
 
         /// <summary>
         /// The event replays the specified number of old values to new subscribers. Works like a ReplaySubject in Rx. 
@@ -113,7 +113,7 @@ namespace UnityAtoms
         }
         #endregion // Observable
 
-        private void AddToReplayBuffer(T item)
+        protected void AddToReplayBuffer(T item)
         {
             if (_replayBufferSize > 0)
             {

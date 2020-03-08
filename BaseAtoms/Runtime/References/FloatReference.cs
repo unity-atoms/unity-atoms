@@ -4,7 +4,7 @@ using UnityAtoms.BaseAtoms;
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// Reference of type `float`. Inherits from `EquatableAtomReference&lt;float, FloatPair, FloatConstant, FloatVariable, FloatEvent, FloatPairEvent, FloatFloatFunction, FloatVariableInstancer&gt;`.
+    /// Reference of type `float`. Inherits from `EquatableAtomReference&lt;float, FloatPair, FloatConstant, FloatVariable, FloatEvent, FloatPairEvent, FloatFloatFunction, FloatVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class FloatReference : EquatableAtomReference<

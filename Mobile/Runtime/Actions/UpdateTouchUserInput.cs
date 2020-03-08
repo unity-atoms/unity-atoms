@@ -7,7 +7,7 @@ namespace UnityAtoms.Mobile
     /// Updates the `TouchUserInputVariable` on every Update tick. Meant to be called every Update.
     /// </summary>
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/UpdateTouchUserInput", fileName = "UpdateTouchUserInputVariable")]
-    public sealed class UpdateTouchUserInput : VoidAction
+    public sealed class UpdateTouchUserInput : AtomAction
     {
         /// <summary>
         /// The `TouchUserInputVariable` to update.

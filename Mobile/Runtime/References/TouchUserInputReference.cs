@@ -5,7 +5,7 @@ using UnityAtoms.Mobile;
 namespace UnityAtoms.Mobile
 {
     /// <summary>
-    /// Reference of type `TouchUserInput`. Inherits from `EquatableAtomReference&lt;TouchUserInput, TouchUserInputPair, TouchUserInputConstant, TouchUserInputVariable, TouchUserInputEvent, TouchUserInputPairEvent, TouchUserInputTouchUserInputFunction, TouchUserInputVariableInstancer&gt;`.
+    /// Reference of type `TouchUserInput`. Inherits from `EquatableAtomReference&lt;TouchUserInput, TouchUserInputPair, TouchUserInputConstant, TouchUserInputVariable, TouchUserInputEvent, TouchUserInputPairEvent, TouchUserInputTouchUserInputFunction, TouchUserInputVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class TouchUserInputReference : EquatableAtomReference<

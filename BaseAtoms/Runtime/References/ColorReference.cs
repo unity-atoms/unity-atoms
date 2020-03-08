@@ -5,7 +5,7 @@ using UnityEngine;
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// Reference of type `Color`. Inherits from `EquatableAtomReference&lt;Color, ColorPair, ColorConstant, ColorVariable, ColorEvent, ColorPairEvent, ColorColorFunction, ColorVariableInstancer&gt;`.
+    /// Reference of type `Color`. Inherits from `EquatableAtomReference&lt;Color, ColorPair, ColorConstant, ColorVariable, ColorEvent, ColorPairEvent, ColorColorFunction, ColorVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class ColorReference : EquatableAtomReference<

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// Reference of type `GameObject`. Inherits from `AtomReference&lt;GameObject, GameObjectPair, GameObjectConstant, GameObjectVariable, GameObjectEvent, GameObjectPairEvent, GameObjectGameObjectFunction, GameObjectVariableInstancer&gt;`.
+    /// Reference of type `GameObject`. Inherits from `AtomReference&lt;GameObject, GameObjectPair, GameObjectConstant, GameObjectVariable, GameObjectEvent, GameObjectPairEvent, GameObjectGameObjectFunction, GameObjectVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class GameObjectReference : AtomReference<

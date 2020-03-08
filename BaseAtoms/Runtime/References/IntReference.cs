@@ -4,7 +4,7 @@ using UnityAtoms.BaseAtoms;
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// Reference of type `int`. Inherits from `EquatableAtomReference&lt;int, IntPair, IntConstant, IntVariable, IntEvent, IntPairEvent, IntIntFunction, IntVariableInstancer&gt;`.
+    /// Reference of type `int`. Inherits from `EquatableAtomReference&lt;int, IntPair, IntConstant, IntVariable, IntEvent, IntPairEvent, IntIntFunction, IntVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class IntReference : EquatableAtomReference<

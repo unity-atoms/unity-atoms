@@ -5,7 +5,7 @@ using UnityEngine;
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// Reference of type `Collider`. Inherits from `AtomReference&lt;Collider, ColliderPair, ColliderConstant, ColliderVariable, ColliderEvent, ColliderPairEvent, ColliderColliderFunction, ColliderVariableInstancer&gt;`.
+    /// Reference of type `Collider`. Inherits from `AtomReference&lt;Collider, ColliderPair, ColliderConstant, ColliderVariable, ColliderEvent, ColliderPairEvent, ColliderColliderFunction, ColliderVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class ColliderReference : AtomReference<
