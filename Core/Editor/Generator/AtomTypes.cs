@@ -40,6 +40,11 @@ namespace UnityAtoms.Editor
             templateName: "UA_Template__ValueList.txt",
             drawerTemplateName: "UA_Template_AtomDrawer__ValueList.txt"
         );
+        // BASE_EVENT_REFERENCE_LISTENER is only used in thoses cases where a Variable does not make sense, eg. Void.
+        public static readonly AtomType BASE_EVENT_REFERENCE_LISTENER = new AtomType(
+            displayName: "Base Event Reference Listener",
+            templateName: "UA_Template__BaseEventReferenceListener.txt"
+        );
         public static readonly AtomType EVENT_REFERENCE_LISTENER = new AtomType(
             displayName: "Event Reference Listener",
             templateName: "UA_Template__EventReferenceListener.txt"
@@ -59,6 +64,7 @@ namespace UnityAtoms.Editor
             displayName: "Reference",
             templateName: "UA_Template__Reference.txt"
         );
+        // BASE_EVENT_REFERENCE is only used in thoses cases where a Variable does not make sense, eg. Void.
         public static readonly AtomType BASE_EVENT_REFERENCE = new AtomType(
             displayName: "Base Event Reference",
             templateName: "UA_Template__BaseEventReference.txt"
@@ -146,6 +152,7 @@ namespace UnityAtoms.Editor
             { AtomTypes.PAIR_ACTION, new List<AtomType>() { AtomTypes.PAIR } },
             { AtomTypes.PAIR_EVENT, new List<AtomType>() { AtomTypes.PAIR } },
             { AtomTypes.VALUE_LIST, new List<AtomType>() { AtomTypes.EVENT } },
+            { AtomTypes.BASE_EVENT_REFERENCE_LISTENER, new List<AtomType>() { AtomTypes.ACTION, AtomTypes.EVENT, AtomTypes.BASE_EVENT_REFERENCE, AtomTypes.UNITY_EVENT } },
             { AtomTypes.EVENT_REFERENCE_LISTENER, new List<AtomType>() {
                 AtomTypes.ACTION, AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.PAIR_EVENT, AtomTypes.FUNCTION_T_T,
                 AtomTypes.VARIABLE_INSTANCER, AtomTypes.PAIR_EVENT_REFERENCE, AtomTypes.UNITY_EVENT, AtomTypes.PAIR }

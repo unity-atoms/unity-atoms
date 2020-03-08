@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference of type `Void`. Inherits from `AtomBaseEventReference&lt;Void, VoidEvent, VoidEventInstancer&gt;`.
     /// </summary>
     [Serializable]
-    public sealed class VoidEventReference : AtomBaseEventReference<
+    public sealed class VoidBaseEventReference : AtomBaseEventReference<
         Void,
         VoidEvent,
         VoidEventInstancer>, IGetEvent

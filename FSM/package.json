@@ -1,0 +1,24 @@
+{
+  "name": "com.mambojambostudios.unity-atoms-fsm",
+  "displayName": "Unity Atoms FSM",
+  "version": "4.0.0",
+  "unity": "2018.3",
+  "description": "Simple FSM using Unity Atoms.",
+  "keywords": [
+    "scriptable objects",
+    "unity"
+  ],
+  "category": "Unity",
+  "files": [
+    "/package.json",
+    "/package.json.meta",
+    "/Runtime",
+    "/Runtime.meta",
+    "/Documentation",
+    "/Documentation.meta"
+  ],
+  "dependencies": {
+    "com.mambojambostudios.unity-atoms-core": "4.0.0",
+    "com.mambojambostudios.unity-atoms-base-atoms": "4.0.0"
+  }
+}

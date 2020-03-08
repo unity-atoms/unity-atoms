@@ -23,7 +23,7 @@ namespace UnityAtoms
         /// The Variable value as a property.
         /// </summary>
         /// <returns>Get or set the Variable's value.</returns>
-        public override T Value { get { return _value; } set { SetValue(value); } }
+        public override T Value { get => _value; set => SetValue(value); }
 
         /// <summary>
         /// The inital value of the Variable.
@@ -35,13 +35,13 @@ namespace UnityAtoms
         /// The inital Variable value as a property.
         /// </summary>
         /// <returns>Get the Variable's initial value.</returns>
-        public T InitialValue { get { return _initialValue; } }
+        public T InitialValue { get => _initialValue; }
 
         /// <summary>
         /// The value the Variable had before its value got changed last time.
         /// </summary>
         /// <value>Get the Variable's old value.</value>
-        public T OldValue { get { return _oldValue; } }
+        public T OldValue { get => _oldValue; }
 
         [SerializeField]
         private T _oldValue;
