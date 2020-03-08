@@ -38,13 +38,13 @@ namespace UnityAtoms
 
         [SerializeField]
         [ReadOnly]
-        private V _inMemoryCopy;
+        protected V _inMemoryCopy;
 
         /// <summary>
         /// The variable that the in memory copy will be based on when created at runtime.
         /// </summary>
         [SerializeField]
-        private V _base = null;
+        protected V _base = null;
 
         /// <summary>
         /// If assigned the in memory copy variable will be added to the collection on Start using the gameObject's instance id as key. The value will also be removed from the collection OnDestroy.
@@ -57,6 +57,11 @@ namespace UnityAtoms
         /// </summary>
         [SerializeField]
         private L _syncToList = default(L);
+
+        /// <summary>
+        /// Override to add implementation specific setup on `OnEnable`.
+        /// </summary>
+        protected virtual void ImplSpecificSetup() { }
 
         private void OnEnable()
         {
@@ -72,6 +77,8 @@ namespace UnityAtoms
             {
                 _inMemoryCopy.ChangedWithHistory = Instantiate(_base.ChangedWithHistory);
             }
+
+            ImplSpecificSetup();
         }
 
         void Start()
