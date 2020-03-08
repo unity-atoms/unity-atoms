@@ -8,10 +8,7 @@ namespace UnityAtoms
     /// </summary>
     /// <typeparam name="T">The type that we are listening for.</typeparam>
     /// <typeparam name="A">Acion of type `T`.</typeparam>
-    /// <typeparam name="V">Variable of type `T`.</typeparam>
     /// <typeparam name="E">Event of type `T`.</typeparam>
-    /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
-    /// <typeparam name="EI">Event Instancer of type `T`.</typeparam>
     /// <typeparam name="ER">Event Reference of type `T`.</typeparam>
     /// <typeparam name="UER">UnityEvent of type `T`.</typeparam>
     [EditorIcon("atom-icon-orange")]

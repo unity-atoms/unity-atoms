@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: FiniteStateMachine
+  m_EditorClassIdentifier: MamboJamboStudios.UnityAtomsFSM.Runtime:UnityAtoms.FSM:FiniteStateMachine
+  _developerDescription: 
+  _value: 
+  _initialValue: 
+  _oldValue: 
+  Changed: {fileID: 0}
+  ChangedWithHistory: {fileID: 0}
+  _preChangeTransformers: []
+  _enteredState: {fileID: 0}
+  _exitedState: {fileID: 0}
+  _initialState:
+    _usage: 0
+    _value: 
+    _constant: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
+  _transitions: []

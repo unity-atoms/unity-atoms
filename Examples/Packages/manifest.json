@@ -3,6 +3,7 @@
     "com.mambojambostudios.marvelous": "1.0.8",
     "com.mambojambostudios.unity-atoms-base-atoms": "file:../../Packages/BaseAtoms",
     "com.mambojambostudios.unity-atoms-core": "file:../../Packages/Core",
+    "com.mambojambostudios.unity-atoms-fsm": "file:../../Packages/FSM",
     "com.mambojambostudios.unity-atoms-mobile": "file:../../Packages/Mobile",
     "com.mambojambostudios.unity-atoms-mono-hooks": "file:../../Packages/MonoHooks",
     "com.mambojambostudios.unity-atoms-scene-mgmt": "file:../../Packages/SceneMgmt",

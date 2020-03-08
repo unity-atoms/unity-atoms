@@ -15,13 +15,12 @@ public class DecreaseHealth : MonoBehaviour
     private List<StringConstant> _tags;
 
     [SerializeField]
-    private VoidEventReference _didCollide;
+    private VoidBaseEventReference _didCollide;
 
     void Start()
     {
         Assert.IsNotNull(_decreaseBy);
         Assert.IsNotNull(_tags);
-        Assert.IsNotNull(_didCollide);
     }
 
     public void Do(Collider2D collider)
@@ -30,6 +29,10 @@ public class DecreaseHealth : MonoBehaviour
         {
             collider.GetComponent<UnitHealth>().Health -= _decreaseBy;
         }
-        _didCollide.Event.Raise();
+
+        if (_didCollide != null && _didCollide.Event != null)
+        {
+            _didCollide.Event.Raise();
+        }
     }
 }

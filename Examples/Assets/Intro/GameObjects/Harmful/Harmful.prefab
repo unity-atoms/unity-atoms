@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4469886331617117075}
   - component: {fileID: 6817695843196285249}
   - component: {fileID: 8791131526705612255}
+  - component: {fileID: 1041281918}
   m_Layer: 0
   m_Name: Harmful
   m_TagString: Untagged
@@ -122,9 +123,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b2ba18c3f8e4b409ccb9db0bcd4ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: ae9405f95b96f4b88bee16d433034a52, type: 2}
+  _eventReference:
+    _usage: 0
+    _event: {fileID: 11400000, guid: ae9405f95b96f4b88bee16d433034a52, type: 2}
+    _eventInstancer: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
   _selectGameObjectReference: {fileID: 0}
-  _eventWithGameObjectReference: {fileID: 0}
+  _eventWithGameObjectReference:
+    _usage: 0
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
   _triggerOnEnter: 1
   _triggerOnExit: 0
   _triggerOnStay: 0
@@ -143,12 +154,46 @@ MonoBehaviour:
   _developerDescription: 
   _unityEventResponse:
     m_PersistentCalls:
-      m_Calls: []
-  _actionResponses:
-  - {fileID: 11400000, guid: 310af909517714e69887a197f337882c, type: 2}
+      m_Calls:
+      - m_Target: {fileID: 1041281918}
+        m_MethodName: Do
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _actionResponses: []
   _eventReference:
     _usage: 0
     _event: {fileID: 11400000, guid: ae9405f95b96f4b88bee16d433034a52, type: 2}
     _eventInstancer: {fileID: 0}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
+--- !u!114 &1041281918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817695843196285254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb8227755d4543bba34358ca3a9ab6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _decreaseBy:
+    _usage: 0
+    _value: 10
+    _constant: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
+  _tags:
+  - {fileID: 11400000, guid: 23f42a77324bd4158a00555f04f7824e, type: 2}
+  _didCollide:
+    _usage: 0
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 0}

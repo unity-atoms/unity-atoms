@@ -68,7 +68,7 @@ namespace UnityAtoms.Editor
                     valueType: "Void",
                     baseWritePath: Path.Combine(path, "BaseAtoms"),
                     isValueEquatable: false,
-                    atomTypesToGenerate: new List<AtomType>() { AtomTypes.EVENT, AtomTypes.ACTION, AtomTypes.UNITY_EVENT, AtomTypes.BASE_EVENT_REFERENCE, AtomTypes.EVENT_INSTANCER },
+                    atomTypesToGenerate: new List<AtomType>() { AtomTypes.EVENT, AtomTypes.ACTION, AtomTypes.UNITY_EVENT, AtomTypes.BASE_EVENT_REFERENCE, AtomTypes.EVENT_INSTANCER, AtomTypes.BASE_EVENT_REFERENCE_LISTENER },
                     typeNamespace: "",
                     subUnityAtomsNamespace: "BaseAtoms"
                 ),
