@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference Listener of type `BoolPair`. Inherits from `AtomEventReferenceListener&lt;BoolPair, BoolPairAction, BoolPairEvent, BoolPairEventReference, BoolPairUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Event Reference Listeners/BoolPair Event Reference Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/BoolPair Event Reference Listener")]
     public sealed class BoolPairEventReferenceListener : AtomEventReferenceListener<
         BoolPair,
         BoolPairAction,

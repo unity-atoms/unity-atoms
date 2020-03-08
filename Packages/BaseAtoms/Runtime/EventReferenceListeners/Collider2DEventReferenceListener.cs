@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference Listener of type `Collider2D`. Inherits from `AtomEventReferenceListener&lt;Collider2D, Collider2DAction, Collider2DEvent, Collider2DEventReference, Collider2DUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Event Reference Listeners/Collider2D Event Reference Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/Collider2D Event Reference Listener")]
     public sealed class Collider2DEventReferenceListener : AtomEventReferenceListener<
         Collider2D,
         Collider2DAction,

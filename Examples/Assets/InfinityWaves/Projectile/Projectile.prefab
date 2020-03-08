@@ -137,14 +137,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2729875676815699808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de371559b78e4c8db4620a0638fa0bc, type: 3}
+  m_Script: {fileID: 11500000, guid: d2458933140c54c9db0aec7a69c1b617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _developerDescription: Listens for if the projectile did collide.
-  _eventReference:
-    _usage: 1
-    _event: {fileID: 0}
-    _eventInstancer: {fileID: 1294875925}
+  _developerDescription: 
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls:
@@ -160,6 +156,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _actionResponses: []
+  _eventReference:
+    _usage: 1
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 1294875925}
 --- !u!114 &1294875918
 MonoBehaviour:
   m_ObjectHideFlags: 0

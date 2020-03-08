@@ -7,7 +7,7 @@ namespace UnityAtoms.MonoHooks
     /// Event Reference Listener of type `Collider2DGameObject`. Inherits from `AtomEventReferenceListener&lt;Collider2DGameObject, Collider2DGameObjectAction, Collider2DGameObjectEvent, Collider2DGameObjectEventReference, Collider2DGameObjectUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Event Reference Listeners/Collider2DGameObject Event Reference Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/Collider2DGameObject Event Reference Listener")]
     public sealed class Collider2DGameObjectEventReferenceListener : AtomEventReferenceListener<
         Collider2DGameObject,
         Collider2DGameObjectAction,

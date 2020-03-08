@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: FiniteStateMachine
+  m_Name: EnemyStateMachine
   m_EditorClassIdentifier: MamboJamboStudios.UnityAtomsFSM.Runtime:UnityAtoms.FSM:FiniteStateMachine
   _developerDescription: 
   _value: 
@@ -19,12 +19,32 @@ MonoBehaviour:
   Changed: {fileID: 0}
   ChangedWithHistory: {fileID: 0}
   _preChangeTransformers: []
-  _enteredState: {fileID: 0}
-  _exitedState: {fileID: 0}
   _initialState:
     _usage: 0
     _value: 
     _constant: {fileID: 0}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
-  _transitions: []
+  _transitionStarted: {fileID: 0}
+  _completeCurrentTransition: {fileID: 0}
+  _transitions:
+  - _fromState:
+      _usage: 0
+      _value: 
+      _constant: {fileID: 0}
+      _variable: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    _toState:
+      _usage: 0
+      _value: 
+      _constant: {fileID: 0}
+      _variable: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    _command:
+      _usage: 0
+      _value: 
+      _constant: {fileID: 0}
+      _variable: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    _testCondition: {fileID: 0}
+    _completeTransitionOnEvent: 0

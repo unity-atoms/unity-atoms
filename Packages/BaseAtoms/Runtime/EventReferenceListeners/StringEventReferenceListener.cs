@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference Listener of type `string`. Inherits from `AtomEventReferenceListener&lt;string, StringAction, StringEvent, StringEventReference, StringUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Event Reference Listeners/String Event Reference Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/String Event Reference Listener")]
     public sealed class StringEventReferenceListener : AtomEventReferenceListener<
         string,
         StringAction,
