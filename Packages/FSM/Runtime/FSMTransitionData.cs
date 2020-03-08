@@ -2,7 +2,7 @@ using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.FSM
 {
-    public struct TransitionData
+    public struct FSMTransitionData
     {
         public string FromState { get; set; }
         public string ToState { get; set; }

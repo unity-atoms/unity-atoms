@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.FSM
@@ -10,13 +8,14 @@ namespace UnityAtoms.FSM
     public class FiniteStateMachine : StringVariable
     {
         public override string Value { get => _value; set => Dispatch(value); }
+        public StringReference InitialState { get => _initialState; }
+        public FSMTransitionDataEvent TransitionStarted { get => _transitionStarted; set => _transitionStarted = value; }
+        public BoolEvent CompleteCurrentTransition { get => _completeCurrentTransition; set => _completeCurrentTransition = value; }
 
         /// <summary>
         /// Gets a boolean value indicating if the state machine is currently transitioning.
         /// </summary>
         public bool IsTransitioning { get => _currentTransition != null; }
-
-        public BoolEvent CompleteCurrentTransition { get => _completeCurrentTransition; }
 
         public bool IsAtEndState
         {
@@ -38,7 +37,7 @@ namespace UnityAtoms.FSM
         private StringReference _initialState = default(StringReference);
 
         [SerializeField]
-        private TransitionEvent _transitionStarted = default(TransitionEvent);
+        private FSMTransitionDataEvent _transitionStarted = default(FSMTransitionDataEvent);
 
         [SerializeField]
         private BoolEvent _completeCurrentTransition = default(BoolEvent);
@@ -89,7 +88,7 @@ namespace UnityAtoms.FSM
                     if (_transitionStarted != null)
                     {
                         _transitionStarted.Raise(
-                            new TransitionData()
+                            new FSMTransitionData()
                             {
                                 FromState = transition.FromState,
                                 ToState = transition.ToState,

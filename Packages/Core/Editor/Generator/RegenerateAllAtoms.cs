@@ -94,6 +94,14 @@ namespace UnityAtoms.Editor
                 new RegenerateItem(valueType: "Collider2DGameObject", baseWritePath: Path.Combine(path, "MonoHooks"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.MonoHooks", subUnityAtomsNamespace: "MonoHooks"),
                 new RegenerateItem(valueType: "TouchUserInput", baseWritePath: Path.Combine(path, "Mobile"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.Mobile", subUnityAtomsNamespace: "Mobile"),
                 new RegenerateItem(valueType: "SceneField", baseWritePath: Path.Combine(path, "SceneMgmt"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.SceneMgmt", subUnityAtomsNamespace: "SceneMgmt"),
+                new RegenerateItem(
+                    valueType: "FSMTransitionData",
+                    baseWritePath: Path.Combine(path, "FSM"),
+                    isValueEquatable: false,
+                    atomTypesToGenerate: new List<AtomType>() { AtomTypes.EVENT, AtomTypes.ACTION, AtomTypes.UNITY_EVENT, AtomTypes.BASE_EVENT_REFERENCE, AtomTypes.EVENT_INSTANCER, AtomTypes.BASE_EVENT_REFERENCE_LISTENER },
+                    typeNamespace: "",
+                    subUnityAtomsNamespace: "FSM"
+                ),
             };
 
 

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,12 @@ namespace UnityAtoms
     public class AtomEvent<T> : AtomEventBase
     {
         public T InspectorRaiseValue { get => _inspectorRaiseValue; }
+
+        /// <summary>
+        /// Retrieve Replay Buffer as a List. This call will allocate memory so use sparsely.
+        /// </summary>
+        /// <returns></returns>
+        public List<T> ReplayBuffer { get => _replayBuffer.ToList(); }
 
         [SerializeField]
         private event Action<T> _onEvent;
@@ -64,7 +71,7 @@ namespace UnityAtoms
         public void Register(Action<T> action)
         {
             _onEvent += action;
-            ReplayBuffer(action);
+            ReplayBufferToSubscriber(action);
         }
 
         /// <summary>
@@ -83,7 +90,7 @@ namespace UnityAtoms
         public void RegisterListener(IAtomListener<T> listener)
         {
             _onEvent += listener.OnEventRaised;
-            ReplayBuffer(listener.OnEventRaised);
+            ReplayBufferToSubscriber(listener.OnEventRaised);
         }
 
         /// <summary>
@@ -115,7 +122,7 @@ namespace UnityAtoms
             }
         }
 
-        private void ReplayBuffer(Action<T> action)
+        private void ReplayBufferToSubscriber(Action<T> action)
         {
             if (_replayBufferSize > 0 && _replayBuffer.Count > 0)
             {
