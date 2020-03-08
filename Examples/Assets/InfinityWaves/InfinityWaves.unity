@@ -314,6 +314,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _actionResponses: []
+  _actionResponsesNoValue: []
   _eventReference:
     _usage: 0
     _event: {fileID: 11400000, guid: fb1508338b66f42099fceb52aa22cf4c, type: 2}
@@ -708,16 +709,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1025272938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de371559b78e4c8db4620a0638fa0bc, type: 3}
+  m_Script: {fileID: 11500000, guid: d2458933140c54c9db0aec7a69c1b617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _developerDescription: 
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   _actionResponses:
   - {fileID: 11400000, guid: 1ec7260c4832945c8b7bc4bb1cd57ff2, type: 2}
+  _actionResponsesNoValue: []
   _eventReference:
     _usage: 0
     _event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
@@ -1102,16 +1103,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1128657630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de371559b78e4c8db4620a0638fa0bc, type: 3}
+  m_Script: {fileID: 11500000, guid: d2458933140c54c9db0aec7a69c1b617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _developerDescription: 
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
-  _actionResponses:
-  - {fileID: 0}
+  _actionResponses: []
+  _actionResponsesNoValue:
+  - {fileID: 11400000, guid: ffb54297f78ca406286c62b7a33578df, type: 2}
   _eventReference:
     _usage: 0
     _event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
@@ -1512,16 +1513,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1522469495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de371559b78e4c8db4620a0638fa0bc, type: 3}
+  m_Script: {fileID: 11500000, guid: d2458933140c54c9db0aec7a69c1b617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _developerDescription: 
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
-  _actionResponses:
-  - {fileID: 0}
+  _actionResponses: []
+  _actionResponsesNoValue:
+  - {fileID: 11400000, guid: 23bac2fbe8e7545e78e859bde7d6573c, type: 2}
   _eventReference:
     _usage: 0
     _event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
@@ -1576,16 +1577,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1613897678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de371559b78e4c8db4620a0638fa0bc, type: 3}
+  m_Script: {fileID: 11500000, guid: d2458933140c54c9db0aec7a69c1b617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _developerDescription: 
   _unityEventResponse:
     m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  _actionResponses:
-  - {fileID: 11400000, guid: 2a78a712f17364d78a94a0fc47933b55, type: 2}
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 50206c000343d496fa82bd362e3b3b2b, type: 2}
+        m_MethodName: Reset
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _actionResponses: []
+  _actionResponsesNoValue: []
   _eventReference:
     _usage: 0
     _event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
@@ -1772,7 +1783,9 @@ GameObject:
   - component: {fileID: 1740680902}
   - component: {fileID: 1740680901}
   - component: {fileID: 1740680900}
+  - component: {fileID: 1740680905}
   - component: {fileID: 1740680899}
+  - component: {fileID: 1740680904}
   - component: {fileID: 1740680903}
   m_Layer: 0
   m_Name: Enemy
@@ -1895,7 +1908,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1740680898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b1f3e9859654aad82f818298ac113e, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cf9e86ff89e64f7fb046969f9297b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tagToTarget:
@@ -1904,19 +1917,50 @@ MonoBehaviour:
     _constant: {fileID: 11400000, guid: 23f42a77324bd4158a00555f04f7824e, type: 2}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
-  _currentState:
-    _usage: 0
-    _value: 
-    _constant: {fileID: 0}
-    _variable: {fileID: 0}
-    _variableInstancer: {fileID: 0}
   _shotRange:
     _usage: 0
     _value: 5
     _constant: {fileID: 0}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
-  _target: {fileID: 0}
+  _enemtStateMachine: {fileID: 11400000, guid: 574b826f5842e400eb4cb44d63b60077, type: 2}
+--- !u!114 &1740680904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740680898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4e34526588e4d4c9d51113df626342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inMemoryCopy: {fileID: 0}
+  _base: {fileID: 11400000, guid: 574b826f5842e400eb4cb44d63b60077, type: 2}
+  _syncToCollection: {fileID: 0}
+  _syncToList: {fileID: 0}
+--- !u!50 &1740680905
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740680898}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &7203441229205008813
 PrefabInstance:
   m_ObjectHideFlags: 0

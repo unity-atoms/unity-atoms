@@ -9,20 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a56d454e768904df09296076c1aaea26, type: 3}
   m_Name: EnemyStateMachine
-  m_EditorClassIdentifier: MamboJamboStudios.UnityAtomsFSM.Runtime:UnityAtoms.FSM:FiniteStateMachine
+  m_EditorClassIdentifier: 
   _developerDescription: 
-  _value: 
-  _initialValue: 
-  _oldValue: 
+  _value: CHASING
+  _initialValue: CHASING
+  _oldValue: CHASING
   Changed: {fileID: 0}
   ChangedWithHistory: {fileID: 0}
   _preChangeTransformers: []
   _initialState:
     _usage: 0
-    _value: 
-    _constant: {fileID: 0}
+    _value: CHASING
+    _constant: {fileID: 11400000, guid: cb8238ac7ef5d407fb31219fe114d2ae, type: 2}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
   _transitionStarted: {fileID: 0}
@@ -30,19 +30,39 @@ MonoBehaviour:
   _transitions:
   - _fromState:
       _usage: 0
-      _value: 
+      _value: ATTACKING
       _constant: {fileID: 0}
       _variable: {fileID: 0}
       _variableInstancer: {fileID: 0}
     _toState:
       _usage: 0
-      _value: 
+      _value: CHASING
       _constant: {fileID: 0}
       _variable: {fileID: 0}
       _variableInstancer: {fileID: 0}
     _command:
       _usage: 0
-      _value: 
+      _value: CHASE
+      _constant: {fileID: 0}
+      _variable: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    _testCondition: {fileID: 0}
+    _completeTransitionOnEvent: 0
+  - _fromState:
+      _usage: 0
+      _value: CHASING
+      _constant: {fileID: 0}
+      _variable: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    _toState:
+      _usage: 0
+      _value: ATTACKING
+      _constant: {fileID: 0}
+      _variable: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    _command:
+      _usage: 0
+      _value: ATTACK
       _constant: {fileID: 0}
       _variable: {fileID: 0}
       _variableInstancer: {fileID: 0}

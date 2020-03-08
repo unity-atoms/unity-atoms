@@ -35,7 +35,7 @@ namespace UnityAtoms
         /// The inital Variable value as a property.
         /// </summary>
         /// <returns>Get the Variable's initial value.</returns>
-        public T InitialValue { get => _initialValue; }
+        public virtual T InitialValue { get => _initialValue; }
 
         /// <summary>
         /// The value the Variable had before its value got changed last time.
@@ -83,14 +83,14 @@ namespace UnityAtoms
 
         private void OnValidate()
         {
-            _initialValue = RunPreChangeTransformers(_initialValue);
+            _initialValue = RunPreChangeTransformers(InitialValue);
             _value = RunPreChangeTransformers(_value);
         }
 
         private void OnEnable()
         {
-            _oldValue = _initialValue;
-            _value = _initialValue;
+            _oldValue = InitialValue;
+            _value = InitialValue;
 
             if (Changed == null) return;
             Changed.Raise(Value);
@@ -105,11 +105,11 @@ namespace UnityAtoms
             if (!shouldTriggerEvents)
             {
                 _oldValue = _value;
-                _value = _initialValue;
+                _value = InitialValue;
             }
             else
             {
-                SetValue(_initialValue);
+                SetValue(InitialValue);
             }
         }
 

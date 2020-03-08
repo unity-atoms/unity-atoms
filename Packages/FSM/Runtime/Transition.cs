@@ -27,7 +27,7 @@ namespace UnityAtoms.FSM
         private BoolVariable _testCondition;
 
         [SerializeField]
-        private bool _completeTransitionOnEvent;
+        private bool _raiseEventToCompleteTransition;
 
         private FiniteStateMachine _fsmReference;
 
@@ -41,11 +41,11 @@ namespace UnityAtoms.FSM
         {
             _fsmReference = fsm;
 
-            if (_completeTransitionOnEvent)
+            if (_raiseEventToCompleteTransition)
             {
                 if (_fsmReference.CompleteCurrentTransition == null)
                 {
-                    Debug.LogWarning("Complete Current Transition Event on State Machine needs to pe specified when using Complete Transition On Event for a transition. Ignoring and completing transition immediatly.");
+                    Debug.LogWarning("Complete Current Transition on State Machine needs to pe specified when using Raise Event To Complete Transition. Ignoring and completing transition immediatly.");
                 }
                 else
                 {
