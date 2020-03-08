@@ -11,7 +11,7 @@ namespace UnityAtoms
     /// Event Reference of type `{VALUE_TYPE}`. Inherits from `AtomBaseEventReference&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}EventInstancer&gt;`.
     /// </summary>
     [Serializable]
-    public sealed class {VALUE_TYPE_NAME}EventReference : AtomBaseEventReference<
+    public sealed class {VALUE_TYPE_NAME}BaseEventReference : AtomBaseEventReference<
         {VALUE_TYPE},
         {VALUE_TYPE_NAME}Event,
         {VALUE_TYPE_NAME}EventInstancer>, IGetEvent

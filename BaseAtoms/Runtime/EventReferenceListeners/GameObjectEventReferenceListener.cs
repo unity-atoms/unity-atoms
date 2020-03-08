@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference Listener of type `GameObject`. Inherits from `AtomEventReferenceListener&lt;GameObject, GameObjectAction, GameObjectEvent, GameObjectEventReference, GameObjectUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Event Reference Listeners/GameObject Event Reference Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/GameObject Event Reference Listener")]
     public sealed class GameObjectEventReferenceListener : AtomEventReferenceListener<
         GameObject,
         GameObjectAction,

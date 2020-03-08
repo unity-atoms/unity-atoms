@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference Listener of type `GameObjectPair`. Inherits from `AtomEventReferenceListener&lt;GameObjectPair, GameObjectPairAction, GameObjectPairEvent, GameObjectPairEventReference, GameObjectPairUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Event Reference Listeners/GameObjectPair Event Reference Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/GameObjectPair Event Reference Listener")]
     public sealed class GameObjectPairEventReferenceListener : AtomEventReferenceListener<
         GameObjectPair,
         GameObjectPairAction,

@@ -7,7 +7,7 @@ namespace UnityAtoms.SceneMgmt
     /// Event Reference Listener of type `SceneField`. Inherits from `AtomEventReferenceListener&lt;SceneField, SceneFieldAction, SceneFieldEvent, SceneFieldEventReference, SceneFieldUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Event Reference Listeners/SceneField Event Reference Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/SceneField Event Reference Listener")]
     public sealed class SceneFieldEventReferenceListener : AtomEventReferenceListener<
         SceneField,
         SceneFieldAction,

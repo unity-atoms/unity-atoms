@@ -14,7 +14,7 @@ namespace UnityAtoms.MonoHooks
         /// Listener
         /// </summary>
         [SerializeField]
-        private VoidListener _listener = null;
+        private VoidBaseEventReferenceListener _listener = null;
 
         /// <summary>
         /// Listener with GameObject reference

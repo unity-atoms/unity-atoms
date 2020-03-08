@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference Listener of type `int`. Inherits from `AtomEventReferenceListener&lt;int, IntAction, IntEvent, IntEventReference, IntUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Event Reference Listeners/Int Event Reference Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/Int Event Reference Listener")]
     public sealed class IntEventReferenceListener : AtomEventReferenceListener<
         int,
         IntAction,

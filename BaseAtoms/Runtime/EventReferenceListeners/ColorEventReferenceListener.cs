@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference Listener of type `Color`. Inherits from `AtomEventReferenceListener&lt;Color, ColorAction, ColorEvent, ColorEventReference, ColorUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Event Reference Listeners/Color Event Reference Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/Color Event Reference Listener")]
     public sealed class ColorEventReferenceListener : AtomEventReferenceListener<
         Color,
         ColorAction,

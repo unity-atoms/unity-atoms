@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference Listener of type `ColliderPair`. Inherits from `AtomEventReferenceListener&lt;ColliderPair, ColliderPairAction, ColliderPairEvent, ColliderPairEventReference, ColliderPairUnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
-    [AddComponentMenu("Unity Atoms/Event Reference Listeners/ColliderPair Event Reference Listener")]
+    [AddComponentMenu("Unity Atoms/Listeners/ColliderPair Event Reference Listener")]
     public sealed class ColliderPairEventReferenceListener : AtomEventReferenceListener<
         ColliderPair,
         ColliderPairAction,
