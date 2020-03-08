@@ -25,8 +25,7 @@ namespace UnityAtoms
     /// <typeparam name="E">Event of type `T`.</typeparam>
     /// <typeparam name="UER">UnityEvent of type `T`.</typeparam>
     [EditorIcon("atom-icon-orange")]
-    public abstract class AtomBaseListener<T, A, E, UER> : AtomBaseListener, IAtomListener<T>
-        where A : AtomAction<T>
+    public abstract class AtomBaseListener<T, E, UER> : AtomBaseListener, IAtomListener<T>
         where E : AtomEvent<T>
         where UER : UnityEvent<T>
     {
@@ -48,15 +47,7 @@ namespace UnityAtoms
         /// <typeparam name="A">The Action type.</typeparam>
         /// <returns>A `List&lt;A&gt;` of Actions.</returns>
         [SerializeField]
-        private List<A> _actionResponses = new List<A>();
-
-        /// <summary>
-        /// Action response with no value.
-        /// </summary>
-        /// <typeparam name="AtomAction">Base action type.</typeparam>
-        /// <returns>A `List&lt;AtomAction&gt;` of Actions.</returns>
-        [SerializeField]
-        private List<AtomAction> _actionResponsesNoValue = new List<AtomAction>();
+        private List<AtomAction> _actionResponses = new List<AtomAction>();
 
         private void OnEnable()
         {
@@ -79,11 +70,16 @@ namespace UnityAtoms
             _unityEventResponse?.Invoke(item);
             for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
             {
-                _actionResponses[i].Do(item);
-            }
-            for (int i = 0; _actionResponsesNoValue != null && i < _actionResponsesNoValue.Count; ++i)
-            {
-                _actionResponsesNoValue[i].Do();
+                var action = _actionResponses[i];
+                var actionWithParam = action as AtomAction<T>;
+                if (actionWithParam != null)
+                {
+                    actionWithParam.Do(item);
+                }
+                else
+                {
+                    action.Do();
+                }
             }
         }
 

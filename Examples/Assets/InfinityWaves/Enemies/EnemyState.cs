@@ -12,31 +12,31 @@ public class EnemyState : MonoBehaviour
     private FloatReference _shotRange = new FloatReference(5f);
 
     [SerializeField]
-    private FiniteStateMachine _enemtStateMachine;
+    private FiniteStateMachineReference _enemyStateMachineRef;
 
     private Transform _target;
 
     void Start()
     {
         _target = AtomTags.FindByTag(_tagToTarget.Value).transform;
-        _enemtStateMachine.Begin();
+        _enemyStateMachineRef.Machine.Begin();
     }
 
     void Update()
     {
         var inRange = _shotRange.Value >= Vector3.Distance(_target.position, transform.position);
-        if (_enemtStateMachine.Value != "ATTACKING" && inRange)
+        if (_enemyStateMachineRef.Machine.Value != "ATTACKING" && inRange)
         {
-            _enemtStateMachine.Dispatch("ATTACK");
+            _enemyStateMachineRef.Machine.Dispatch("ATTACK");
         }
-        else if (_enemtStateMachine.Value != "CHASING" && !inRange)
+        else if (_enemyStateMachineRef.Machine.Value != "CHASING" && !inRange)
         {
-            _enemtStateMachine.Dispatch("CHASE");
+            _enemyStateMachineRef.Machine.Dispatch("CHASE");
         }
 
 
         var direction = _target.position - transform.position;
-        if (_enemtStateMachine.Value == "CHASING")
+        if (_enemyStateMachineRef.Machine.Value == "CHASING")
         {
             GetComponent<Rigidbody2D>().velocity = direction.normalized * 5f;
         }

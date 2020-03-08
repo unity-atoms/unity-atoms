@@ -10,7 +10,7 @@ namespace UnityAtoms
 {
 <%IF EQUATABLE%>
     /// <summary>
-    /// Reference of type `{VALUE_TYPE}`. Inherits from `EquatableAtomReference&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Constant, {VALUE_TYPE_NAME}Variable, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function, {VALUE_TYPE_NAME}VariableInstancer&gt;`.
+    /// Reference of type `{VALUE_TYPE}`. Inherits from `EquatableAtomReference&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Constant, {VALUE_TYPE_NAME}Variable, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function, {VALUE_TYPE_NAME}VariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class {VALUE_TYPE_NAME}Reference : EquatableAtomReference<
@@ -31,7 +31,7 @@ namespace UnityAtoms
     }
 <%ELSE%>
     /// <summary>
-    /// Reference of type `{VALUE_TYPE}`. Inherits from `AtomReference&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Constant, {VALUE_TYPE_NAME}Variable, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function, {VALUE_TYPE_NAME}VariableInstancer&gt;`.
+    /// Reference of type `{VALUE_TYPE}`. Inherits from `AtomReference&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Constant, {VALUE_TYPE_NAME}Variable, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function, {VALUE_TYPE_NAME}VariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class {VALUE_TYPE_NAME}Reference : AtomReference<

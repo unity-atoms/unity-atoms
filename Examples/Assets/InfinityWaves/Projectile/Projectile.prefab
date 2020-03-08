@@ -156,6 +156,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _actionResponses: []
+  _actionResponsesNoValue: []
   _eventReference:
     _usage: 1
     _event: {fileID: 0}
@@ -188,6 +189,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _actionResponses: []
+  _actionResponsesNoValue: []
   _eventReference:
     _usage: 1
     _event: {fileID: 0}

@@ -313,8 +313,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _actionResponses: []
-  _actionResponsesNoValue: []
+  _actionResponses:
+  - {fileID: 11400000, guid: 58f78c691d84e44cd84c884aadacf21a, type: 2}
+  - {fileID: 11400000, guid: 310af909517714e69887a197f337882c, type: 2}
   _eventReference:
     _usage: 0
     _event: {fileID: 11400000, guid: fb1508338b66f42099fceb52aa22cf4c, type: 2}
@@ -718,7 +719,6 @@ MonoBehaviour:
       m_Calls: []
   _actionResponses:
   - {fileID: 11400000, guid: 1ec7260c4832945c8b7bc4bb1cd57ff2, type: 2}
-  _actionResponsesNoValue: []
   _eventReference:
     _usage: 0
     _event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
@@ -1110,8 +1110,7 @@ MonoBehaviour:
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
-  _actionResponses: []
-  _actionResponsesNoValue:
+  _actionResponses:
   - {fileID: 11400000, guid: ffb54297f78ca406286c62b7a33578df, type: 2}
   _eventReference:
     _usage: 0
@@ -1520,8 +1519,7 @@ MonoBehaviour:
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
-  _actionResponses: []
-  _actionResponsesNoValue:
+  _actionResponses:
   - {fileID: 11400000, guid: 23bac2fbe8e7545e78e859bde7d6573c, type: 2}
   _eventReference:
     _usage: 0
@@ -1596,7 +1594,6 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   _actionResponses: []
-  _actionResponsesNoValue: []
   _eventReference:
     _usage: 0
     _event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
@@ -1785,8 +1782,8 @@ GameObject:
   - component: {fileID: 1740680900}
   - component: {fileID: 1740680905}
   - component: {fileID: 1740680899}
-  - component: {fileID: 1740680904}
   - component: {fileID: 1740680903}
+  - component: {fileID: 1740680904}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1923,7 +1920,10 @@ MonoBehaviour:
     _constant: {fileID: 0}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
-  _enemtStateMachine: {fileID: 11400000, guid: 574b826f5842e400eb4cb44d63b60077, type: 2}
+  _enemyStateMachineRef:
+    _usage: 1
+    _machine: {fileID: 0}
+    _machineInstancer: {fileID: 1740680904}
 --- !u!114 &1740680904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1933,7 +1933,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1740680898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4e34526588e4d4c9d51113df626342, type: 3}
+  m_Script: {fileID: 11500000, guid: f4c23750724dd48beb6147120ab31180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _inMemoryCopy: {fileID: 0}
