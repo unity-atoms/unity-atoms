@@ -152,13 +152,13 @@ namespace UnityAtoms.Editor
             { AtomTypes.PAIR_ACTION, new List<AtomType>() { AtomTypes.PAIR } },
             { AtomTypes.PAIR_EVENT, new List<AtomType>() { AtomTypes.PAIR } },
             { AtomTypes.VALUE_LIST, new List<AtomType>() { AtomTypes.EVENT } },
-            { AtomTypes.BASE_EVENT_REFERENCE_LISTENER, new List<AtomType>() { AtomTypes.ACTION, AtomTypes.EVENT, AtomTypes.BASE_EVENT_REFERENCE, AtomTypes.UNITY_EVENT } },
+            { AtomTypes.BASE_EVENT_REFERENCE_LISTENER, new List<AtomType>() { AtomTypes.EVENT, AtomTypes.BASE_EVENT_REFERENCE, AtomTypes.UNITY_EVENT } },
             { AtomTypes.EVENT_REFERENCE_LISTENER, new List<AtomType>() {
-                AtomTypes.ACTION, AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.PAIR_EVENT, AtomTypes.FUNCTION_T_T,
+                AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.PAIR_EVENT, AtomTypes.FUNCTION_T_T,
                 AtomTypes.VARIABLE_INSTANCER, AtomTypes.PAIR_EVENT_REFERENCE, AtomTypes.UNITY_EVENT, AtomTypes.PAIR }
             },
             { AtomTypes.PAIR_EVENT_REFERENCE_LISTENER, new List<AtomType>() {
-                AtomTypes.PAIR_ACTION, AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.PAIR_EVENT, AtomTypes.FUNCTION_T_T,
+                AtomTypes.VARIABLE, AtomTypes.EVENT, AtomTypes.PAIR_EVENT, AtomTypes.FUNCTION_T_T,
                 AtomTypes.VARIABLE_INSTANCER, AtomTypes.EVENT_REFERENCE, AtomTypes.PAIR_UNITY_EVENT, AtomTypes.PAIR }
             },
             { AtomTypes.REFERENCE, new List<AtomType>() {

@@ -8,13 +8,12 @@ namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>
-    /// Event Listener of type `{VALUE_TYPE}`. Inherits from `AtomEventListener&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Action, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}UnityEvent&gt;`.
+    /// Event Listener of type `{VALUE_TYPE}`. Inherits from `AtomEventListener&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}UnityEvent&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/{VALUE_TYPE_NAME} Event Listener")]
     public sealed class {VALUE_TYPE_NAME}EventListener : AtomEventListener<
         {VALUE_TYPE},
-        {VALUE_TYPE_NAME}Action,
         {VALUE_TYPE_NAME}Event,
         {VALUE_TYPE_NAME}UnityEvent>
     { }

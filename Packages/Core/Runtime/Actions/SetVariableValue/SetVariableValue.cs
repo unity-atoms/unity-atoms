@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Base class for all SetVariableValue Actions. Inherits from `VoidAction`.
+    /// Base class for all SetVariableValue Actions. Inherits from `AtomAction`.
     /// </summary>
     /// <typeparam name="T">The type of the Variable to set.</typeparam>
     /// <typeparam name="P">A IPair of type T.</typeparam>

@@ -21,7 +21,6 @@ namespace UnityAtoms
     /// Generic base class for Listeners. Inherits from `AtomBaseListener` and implements `IAtomListener&lt;T&gt;`.
     /// </summary>
     /// <typeparam name="T">The type that we are listening for.</typeparam>
-    /// <typeparam name="A">Acion of type `T`.</typeparam>
     /// <typeparam name="E">Event of type `T`.</typeparam>
     /// <typeparam name="UER">UnityEvent of type `T`.</typeparam>
     [EditorIcon("atom-icon-orange")]

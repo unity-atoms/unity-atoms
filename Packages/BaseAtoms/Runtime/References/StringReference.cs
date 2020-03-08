@@ -4,7 +4,7 @@ using UnityAtoms.BaseAtoms;
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// Reference of type `string`. Inherits from `EquatableAtomReference&lt;string, StringPair, StringConstant, StringVariable, StringEvent, StringPairEvent, StringStringFunction, StringVariableInstancer&gt;`.
+    /// Reference of type `string`. Inherits from `EquatableAtomReference&lt;string, StringPair, StringConstant, StringVariable, StringEvent, StringPairEvent, StringStringFunction, StringVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class StringReference : EquatableAtomReference<
