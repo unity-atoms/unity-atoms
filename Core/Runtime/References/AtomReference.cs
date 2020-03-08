@@ -14,7 +14,7 @@ namespace UnityAtoms
     /// <typeparam name="E2">Event of type `IPair&lt;T&gt;`.</typeparam>
     /// <typeparam name="F">Function of type `T => T`.</typeparam>
     /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
-    public abstract class AtomReference<T, P, C, V, E1, E2, F, VI, CO, L> : AtomReferenceBase, IEquatable<AtomReference<T, P, C, V, E1, E2, F, VI, CO, L>>
+    public abstract class AtomReference<T, P, C, V, E1, E2, F, VI, CO, L> : AtomBaseReference, IEquatable<AtomReference<T, P, C, V, E1, E2, F, VI, CO, L>>
         where P : struct, IPair<T>
         where C : AtomBaseVariable<T>
         where V : AtomVariable<T, P, E1, E2, F>
@@ -35,10 +35,10 @@ namespace UnityAtoms
             {
                 switch (_usage)
                 {
-                    case (AtomReferenceBase.Usage.Constant): return _constant == null ? default(T) : _constant.Value;
-                    case (AtomReferenceBase.Usage.Variable): return _variable == null ? default(T) : _variable.Value;
-                    case (AtomReferenceBase.Usage.VariableInstancer): return _variableInstancer == null ? default(T) : _variableInstancer.Value;
-                    case (AtomReferenceBase.Usage.Value):
+                    case (AtomReferenceUsage.CONSTANT): return _constant == null ? default(T) : _constant.Value;
+                    case (AtomReferenceUsage.VARIABLE): return _variable == null ? default(T) : _variable.Value;
+                    case (AtomReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null ? default(T) : _variableInstancer.Value;
+                    case (AtomReferenceUsage.VALUE):
                     default:
                         return _value;
                 }
@@ -47,22 +47,22 @@ namespace UnityAtoms
             {
                 switch (_usage)
                 {
-                    case (AtomReferenceBase.Usage.Variable):
+                    case (AtomReferenceUsage.VARIABLE):
                         {
                             _variable.Value = value;
                             break;
                         }
-                    case (AtomReferenceBase.Usage.Value):
+                    case (AtomReferenceUsage.VALUE):
                         {
                             _value = value;
                             break;
                         }
-                    case (AtomReferenceBase.Usage.VariableInstancer):
+                    case (AtomReferenceUsage.VARIABLE_INSTANCER):
                         {
                             _variableInstancer.Value = value;
                             break;
                         }
-                    case (AtomReferenceBase.Usage.Constant):
+                    case (AtomReferenceUsage.CONSTANT):
                     default:
                         throw new NotSupportedException("Can't reassign constant value");
                 }
@@ -95,12 +95,12 @@ namespace UnityAtoms
 
         protected AtomReference()
         {
-            _usage = AtomReferenceBase.Usage.Value;
+            _usage = AtomReferenceUsage.VALUE;
         }
 
         protected AtomReference(T value) : this()
         {
-            _usage = AtomReferenceBase.Usage.Value;
+            _usage = AtomReferenceUsage.VALUE;
             _value = value;
         }
 

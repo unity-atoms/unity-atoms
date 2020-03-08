@@ -4,5 +4,11 @@ namespace UnityAtoms.BaseAtoms
     /// Action of type `Void`. Inherits from `AtomAction&lt;Void&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-purple")]
-    public abstract class VoidAction : AtomAction<Void> { }
+    public abstract class VoidAction : AtomAction<Void>
+    {
+        public override void Do(Void _)
+        {
+            Do();
+        }
+    }
 }

@@ -4,8 +4,8 @@ using UnityAtoms.BaseAtoms;
 namespace UnityAtoms.FSM
 {
     [EditorIcon("atom-icon-hotpink")]
-    [AddComponentMenu("Unity Atoms/FSM/FSM Instancer")]
-    public class FSMInstancer : AtomVariableInstancer<
+    [AddComponentMenu("Unity Atoms/FSM/Finite State Machine Instancer")]
+    public class FiniteStateMachineInstancer : AtomVariableInstancer<
         FiniteStateMachine,
         StringPair,
         string,
