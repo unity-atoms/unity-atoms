@@ -4,13 +4,15 @@ using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.FSM
 {
-    [CreateAssetMenu(menuName = "Unity Atoms/FSM/Machine", fileName = "Machine")]
+    [EditorIcon("atom-icon-delicate")]
+    [CreateAssetMenu(menuName = "Unity Atoms/FSM/Finite State Machine", fileName = "FiniteStateMachine")]
     public class FiniteStateMachine : StringVariable
     {
         public override string Value { get => _value; set => Dispatch(value); }
         public StringReference InitialState { get => _initialState; }
         public FSMTransitionDataEvent TransitionStarted { get => _transitionStarted; set => _transitionStarted = value; }
         public BoolEvent CompleteCurrentTransition { get => _completeCurrentTransition; set => _completeCurrentTransition = value; }
+        public override string InitialValue { get => _initialState.Value; }
 
         /// <summary>
         /// Gets a boolean value indicating if the state machine is currently transitioning.
@@ -52,12 +54,15 @@ namespace UnityAtoms.FSM
 
         public void Begin()
         {
+            _currentTransition = null;
             if (!_resetOnNextTransitionCompleted && !IsTransitioning)
             {
+                _resetOnNextTransitionCompleted = false;
                 base.Reset(false);
             }
             else
             {
+                Debug.Log("Asdf");
                 _resetOnNextTransitionCompleted = true;
             }
         }
@@ -104,15 +109,17 @@ namespace UnityAtoms.FSM
 
         public void EndCurrentTransition()
         {
-            _currentTransition = null;
             if (_resetOnNextTransitionCompleted)
             {
+                _resetOnNextTransitionCompleted = false;
                 Begin();
                 return;
             }
 
             _isUpdatingState = true;
+            Debug.Log("Updating to " + _currentTransition.ToState);
             base.Value = _currentTransition.ToState;
+            _currentTransition = null;
             _isUpdatingState = false;
         }
 
@@ -123,10 +130,10 @@ namespace UnityAtoms.FSM
             for (var i = 0; i < _transitions.Count; ++i)
             {
                 var transition = _transitions[i];
+                // Debug.Log($"Command {command} - From State {transition.FromState}. Current State {Value}.");
                 if (command == transition.Command && Value == transition.FromState)
                 {
-                    ret = transition;
-                    break;
+                    return transition;
                 }
             }
 

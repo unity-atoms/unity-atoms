@@ -50,6 +50,14 @@ namespace UnityAtoms
         [SerializeField]
         private List<A> _actionResponses = new List<A>();
 
+        /// <summary>
+        /// Action response with no value.
+        /// </summary>
+        /// <typeparam name="AtomAction">Base action type.</typeparam>
+        /// <returns>A `List&lt;AtomAction&gt;` of Actions.</returns>
+        [SerializeField]
+        private List<AtomAction> _actionResponsesNoValue = new List<AtomAction>();
+
         private void OnEnable()
         {
             if (Event == null) return;
@@ -72,6 +80,10 @@ namespace UnityAtoms
             for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
             {
                 _actionResponses[i].Do(item);
+            }
+            for (int i = 0; _actionResponsesNoValue != null && i < _actionResponsesNoValue.Count; ++i)
+            {
+                _actionResponsesNoValue[i].Do();
             }
         }
 
