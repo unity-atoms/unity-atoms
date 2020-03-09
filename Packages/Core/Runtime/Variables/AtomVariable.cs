@@ -35,7 +35,7 @@ namespace UnityAtoms
         /// The inital Variable value as a property.
         /// </summary>
         /// <returns>Get the Variable's initial value.</returns>
-        public virtual T InitialValue { get => _initialValue; }
+        public virtual T InitialValue { get => _initialValue; set => _initialValue = value; }
 
         /// <summary>
         /// The value the Variable had before its value got changed last time.
@@ -44,7 +44,7 @@ namespace UnityAtoms
         public T OldValue { get => _oldValue; }
 
         [SerializeField]
-        private T _oldValue;
+        protected T _oldValue;
 
         /// <summary>
         /// Changed Event triggered when the Variable value gets changed.
@@ -83,7 +83,7 @@ namespace UnityAtoms
 
         private void OnValidate()
         {
-            _initialValue = RunPreChangeTransformers(InitialValue);
+            InitialValue = RunPreChangeTransformers(InitialValue);
             _value = RunPreChangeTransformers(_value);
         }
 

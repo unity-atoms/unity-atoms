@@ -84,6 +84,14 @@ namespace UnityAtoms
         }
 
         /// <summary>
+        /// Unregister all handlers that were registered using the `Register` method.
+        /// </summary>
+        public void UnregisterAll()
+        {
+            _onEvent = null;
+        }
+
+        /// <summary>
         /// Register a Listener that in turn trigger all its associated handlers when the Event triggers.
         /// </summary>
         /// <param name="listener">The Listener to register.</param>

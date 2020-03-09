@@ -13,20 +13,41 @@ MonoBehaviour:
   m_Name: EnemyStateMachine
   m_EditorClassIdentifier: 
   _developerDescription: 
-  _value: CHASING
+  _value: IDLE
   _initialValue: CHASING
-  _oldValue: CHASING
+  _oldValue: IDLE
   Changed: {fileID: 0}
   ChangedWithHistory: {fileID: 0}
   _preChangeTransformers: []
-  _initialState:
-    _usage: 0
-    _value: CHASING
-    _constant: {fileID: 11400000, guid: cb8238ac7ef5d407fb31219fe114d2ae, type: 2}
-    _variable: {fileID: 0}
-    _variableInstancer: {fileID: 0}
   _transitionStarted: {fileID: 0}
   _completeCurrentTransition: {fileID: 0}
+  _states:
+  - _id:
+      _usage: 0
+      _value: CHASING
+      _constant: {fileID: 0}
+      _variable: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    _duration:
+      _usage: 0
+      _value: 0
+      _constant: {fileID: 0}
+      _variable: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    _subMachine: {fileID: 0}
+  - _id:
+      _usage: 0
+      _value: ATTACKING
+      _constant: {fileID: 0}
+      _variable: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    _duration:
+      _usage: 0
+      _value: 2
+      _constant: {fileID: 0}
+      _variable: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    _subMachine: {fileID: 0}
   _transitions:
   - _fromState:
       _usage: 0
@@ -47,7 +68,7 @@ MonoBehaviour:
       _variable: {fileID: 0}
       _variableInstancer: {fileID: 0}
     _testCondition: {fileID: 0}
-    _completeTransitionOnEvent: 0
+    _raiseEventToCompleteTransition: 0
   - _fromState:
       _usage: 0
       _value: CHASING
@@ -67,4 +88,4 @@ MonoBehaviour:
       _variable: {fileID: 0}
       _variableInstancer: {fileID: 0}
     _testCondition: {fileID: 0}
-    _completeTransitionOnEvent: 0
+    _raiseEventToCompleteTransition: 0

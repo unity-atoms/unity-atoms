@@ -1784,6 +1784,8 @@ GameObject:
   - component: {fileID: 1740680899}
   - component: {fileID: 1740680903}
   - component: {fileID: 1740680904}
+  - component: {fileID: 1740680906}
+  - component: {fileID: 1740680907}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1920,7 +1922,13 @@ MonoBehaviour:
     _constant: {fileID: 0}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
-  _enemyStateMachineRef:
+  _moveSpeedMultiplier:
+    _usage: 0
+    _value: 2
+    _constant: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
+  _enemyMovement:
     _usage: 1
     _machine: {fileID: 0}
     _machineInstancer: {fileID: 1740680904}
@@ -1961,6 +1969,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1740680906
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740680898}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8870090dbd674420ba589d684f371af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1740680907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740680898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d7e87282ce6479184ce08bf6dbe121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7203441229205008813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2028,5 +2067,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Harmful
       objectReference: {fileID: 0}
+    - target: {fileID: 8791131526705612255, guid: 01e7046886cdb499a99f4bed284db6a1,
+        type: 3}
+      propertyPath: _actionResponses.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791131526705612255, guid: 01e7046886cdb499a99f4bed284db6a1,
+        type: 3}
+      propertyPath: _actionResponses.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 23bac2fbe8e7545e78e859bde7d6573c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01e7046886cdb499a99f4bed284db6a1, type: 3}
