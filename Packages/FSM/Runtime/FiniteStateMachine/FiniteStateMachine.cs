@@ -60,6 +60,12 @@ namespace UnityAtoms.FSM
 
         private void Awake()
         {
+            if (CompleteCurrentTransition != null && CompleteCurrentTransition.ReplayBufferSize > 0)
+            {
+                Debug.LogWarning("The Complete Current Transition event had a replay buffer size great than 0, which would cause unwanted behaviour. Setting it to 0 in order to avoid unexpected behaviour.");
+                CompleteCurrentTransition.ReplayBufferSize = 0;
+            }
+
             FiniteStateMachineMonoHook.GetInstance(createIfNotExist: true).OnUpdate -= OnUpdate;
             FiniteStateMachineMonoHook.GetInstance().OnUpdate += OnUpdate;
 

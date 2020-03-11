@@ -20,6 +20,8 @@ namespace UnityAtoms
         /// <returns></returns>
         public List<T> ReplayBuffer { get => _replayBuffer.ToList(); }
 
+        public int ReplayBufferSize { get => _replayBufferSize; set => _replayBufferSize = value; }
+
         [SerializeField]
         protected event Action<T> _onEvent;
 

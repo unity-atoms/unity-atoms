@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75feba4dec8d44f0fb83f34e749e4dc3, type: 3}
-  m_Name: EnemyStateChanged
+  m_Name: EnemyStateChangedBase
   m_EditorClassIdentifier: 
   _developerDescription: 
-  _replayBufferSize: 1
+  _replayBufferSize: 0
   _inspectorRaiseValue: 
