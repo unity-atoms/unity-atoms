@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: EnemyStateMachine
   m_EditorClassIdentifier: 
   _developerDescription: 
-  _value: IDLE
+  _value: CHASING
   _initialValue: CHASING
-  _oldValue: IDLE
-  Changed: {fileID: 0}
+  _oldValue: CHASING
+  Changed: {fileID: 11400000, guid: da1401f0da9c44ed98d933c0f6b86d10, type: 2}
   ChangedWithHistory: {fileID: 0}
   _preChangeTransformers: []
   _transitionStarted: {fileID: 0}
@@ -28,7 +28,7 @@ MonoBehaviour:
       _constant: {fileID: 0}
       _variable: {fileID: 0}
       _variableInstancer: {fileID: 0}
-    _duration:
+    _cooldown:
       _usage: 0
       _value: 0
       _constant: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
       _constant: {fileID: 0}
       _variable: {fileID: 0}
       _variableInstancer: {fileID: 0}
-    _duration:
+    _cooldown:
       _usage: 0
       _value: 2
       _constant: {fileID: 0}

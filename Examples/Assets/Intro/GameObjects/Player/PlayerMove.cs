@@ -12,11 +12,8 @@ namespace UnityAtoms.Examples
         {
             _horizontal = Input.GetAxis("Horizontal");
             _vertical = Input.GetAxis("Vertical");
-        }
 
-        private void FixedUpdate()
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(_horizontal, _vertical) * 5f;
+            GetComponent<Rigidbody2D>().Move(new Vector2(_horizontal, _vertical), 5f, Time.deltaTime);
         }
     }
 }

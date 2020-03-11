@@ -118,7 +118,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e73905c499d7b4660a64b7a956ebd018, type: 3}
-  m_Color: {r: 0.9339623, g: 0.53306335, b: 0.8997125, a: 1}
+  m_Color: {r: 0.9824066, g: 1, b: 0.8915094, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -156,7 +156,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _actionResponses: []
-  _actionResponsesNoValue: []
   _eventReference:
     _usage: 1
     _event: {fileID: 0}
@@ -189,7 +188,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _actionResponses: []
-  _actionResponsesNoValue: []
   _eventReference:
     _usage: 1
     _event: {fileID: 0}
@@ -309,13 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed:
     _usage: 0
-    _value: 4
-    _constant: {fileID: 0}
-    _variable: {fileID: 0}
-    _variableInstancer: {fileID: 0}
-  _direction:
-    _usage: 0
-    _value: {x: 1, y: 0}
+    _value: 5
     _constant: {fileID: 0}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}

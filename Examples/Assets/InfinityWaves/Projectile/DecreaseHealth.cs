@@ -8,6 +8,8 @@ using UnityAtoms.Tags;
 
 public class DecreaseHealth : MonoBehaviour
 {
+    public List<StringConstant> TagsAffected { get => _tags; }
+
     [SerializeField]
     private IntReference _decreaseBy;
 

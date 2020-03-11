@@ -11,9 +11,6 @@ public class MoveInDirection : MonoBehaviour
     [SerializeField]
     private FloatReference _speed;
 
-    [SerializeField]
-    private Vector2Reference _direction;
-
     private Rigidbody2D rb;
 
     void Start()
@@ -24,6 +21,6 @@ public class MoveInDirection : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = _direction.Value.normalized * _speed.Value;
+        rb.velocity = transform.right * _speed.Value;
     }
 }

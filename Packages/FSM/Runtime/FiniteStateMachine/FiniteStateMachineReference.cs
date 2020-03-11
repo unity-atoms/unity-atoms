@@ -7,8 +7,8 @@ namespace UnityAtoms.FSM
 
     public class FiniteStateMachineReferenceUsage
     {
-        public const int MACHINE = 0;
-        public const int MACHINE_INSTANCER = 1;
+        public const int FSM = 0;
+        public const int FSM_INSTANCER = 1;
     }
 
     /// <summary>
@@ -27,24 +27,25 @@ namespace UnityAtoms.FSM
             {
                 switch (_usage)
                 {
-                    case (FiniteStateMachineReferenceUsage.MACHINE_INSTANCER): return _machineInstancer == null ? default(FiniteStateMachine) : _machineInstancer.Variable;
-                    case (FiniteStateMachineReferenceUsage.MACHINE):
+                    case (FiniteStateMachineReferenceUsage.FSM_INSTANCER):
+                        return _fsmInstancer == null ? default(FiniteStateMachine) : (FiniteStateMachine)_fsmInstancer.Variable;
+                    case (FiniteStateMachineReferenceUsage.FSM):
                     default:
-                        return _machine;
+                        return _fsm;
                 }
             }
         }
 
         /// <summary>
-        /// Variable used if `Usage` is set to `Variable`.
+        /// Variable used if `Usage` is set to `FSM`.
         /// </summary>
         [SerializeField]
-        private FiniteStateMachine _machine = default(FiniteStateMachine);
+        private FiniteStateMachine _fsm = default(FiniteStateMachine);
 
         /// <summary>
-        /// Variable Instancer used if `Usage` is set to `VariableInstancer`.
+        /// Variable Instancer used if `Usage` is set to `FSM_INSTANCER`.
         /// </summary>
         [SerializeField]
-        private FiniteStateMachineInstancer _machineInstancer = default(FiniteStateMachineInstancer);
+        private FiniteStateMachineInstancer _fsmInstancer = default(FiniteStateMachineInstancer);
     }
 }

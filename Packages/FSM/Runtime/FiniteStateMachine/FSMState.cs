@@ -5,20 +5,20 @@ using UnityAtoms.BaseAtoms;
 namespace UnityAtoms.FSM
 {
     [Serializable]
-    public struct FSMState
+    public class FSMState
     {
         public string Id { get => _id.Value; }
         public FiniteStateMachine SubMachine { get => _subMachine; }
         public float Timer { get; set; }
-        public float Duration { get => _duration.Value; }
+        public float Cooldown { get => _cooldown.Value; }
 
         [SerializeField]
-        private StringReference _id;
+        private StringReference _id = default(StringReference);
 
         [SerializeField]
-        private FloatReference _duration;
+        private FloatReference _cooldown = new FloatReference(0f);
 
         [SerializeField]
-        private FiniteStateMachine _subMachine;
+        private FiniteStateMachine _subMachine = default(FiniteStateMachine);
     }
 }

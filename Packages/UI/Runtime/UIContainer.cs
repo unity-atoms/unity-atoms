@@ -16,17 +16,17 @@ namespace UnityAtoms.UI
         /// Variable that we listens to.
         /// </summary>
         [SerializeField]
-        private StringVariable _UIStateVariable = null;
+        private StringVariable _currentUIState = null;
 
         /// <summary>
         /// A list of states that this `UIContainer` will be visible for.
         /// </summary>
         [SerializeField]
-        private List<StringConstant> _visibleForStates = null;
+        private List<StringReference> _visibleForStates = null;
 
         private void Start()
         {
-            StateNameChanged(_UIStateVariable.Value);
+            StateNameChanged(_currentUIState.Value);
         }
 
         /// <summary>
@@ -56,17 +56,17 @@ namespace UnityAtoms.UI
 
         private void Awake()
         {
-            if (_UIStateVariable.Changed != null)
+            if (_currentUIState.Changed != null)
             {
-                _UIStateVariable.Changed.RegisterListener(this);
+                _currentUIState.Changed.RegisterListener(this);
             }
         }
 
         private void OnDestroy()
         {
-            if (_UIStateVariable.Changed != null)
+            if (_currentUIState.Changed != null)
             {
-                _UIStateVariable.Changed.UnregisterListener(this);
+                _currentUIState.Changed.UnregisterListener(this);
             }
         }
     }

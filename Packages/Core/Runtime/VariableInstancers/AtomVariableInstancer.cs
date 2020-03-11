@@ -36,9 +36,11 @@ namespace UnityAtoms
         /// </summary>
         public T Value { get => _inMemoryCopy.Value; set => _inMemoryCopy.Value = value; }
 
+        public virtual V Base { get => _base; }
+
         [SerializeField]
         [ReadOnly]
-        protected V _inMemoryCopy;
+        protected V _inMemoryCopy = default(V);
 
         /// <summary>
         /// The variable that the in memory copy will be based on when created at runtime.
@@ -65,17 +67,17 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
-            Assert.IsNotNull(_base);
-            _inMemoryCopy = Instantiate(_base);
+            Assert.IsNotNull(Base);
+            _inMemoryCopy = Instantiate(Base);
 
-            if (_base.Changed != null)
+            if (Base.Changed != null)
             {
-                _inMemoryCopy.Changed = Instantiate(_base.Changed);
+                _inMemoryCopy.Changed = Instantiate(Base.Changed);
             }
 
-            if (_base.ChangedWithHistory != null)
+            if (Base.ChangedWithHistory != null)
             {
-                _inMemoryCopy.ChangedWithHistory = Instantiate(_base.ChangedWithHistory);
+                _inMemoryCopy.ChangedWithHistory = Instantiate(Base.ChangedWithHistory);
             }
 
             ImplSpecificSetup();
