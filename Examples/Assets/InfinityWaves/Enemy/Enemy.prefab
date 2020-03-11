@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 2421445419809145569}
   - component: {fileID: 4909826835678234752}
   - component: {fileID: -2978108162882953924}
+  - component: {fileID: 1740680909}
+  - component: {fileID: 1740680910}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -182,8 +184,8 @@ MonoBehaviour:
     _variableInstancer: {fileID: 0}
   _enemyState:
     _usage: 1
-    _machine: {fileID: 0}
-    _machineInstancer: {fileID: 2421445419809145570}
+    _fsm: {fileID: 0}
+    _fsmInstancer: {fileID: 2421445419809145570}
 --- !u!114 &2421445419809145570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,22 +215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d7e87282ce6479184ce08bf6dbe121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tagToTarget:
-    _usage: 1
-    _value: 
-    _constant: {fileID: 11400000, guid: 23f42a77324bd4158a00555f04f7824e, type: 2}
-    _variable: {fileID: 0}
-    _variableInstancer: {fileID: 0}
-  _shootingRange:
-    _usage: 0
-    _value: 5
-    _constant: {fileID: 0}
-    _variable: {fileID: 0}
-    _variableInstancer: {fileID: 0}
   _enemyState:
     _usage: 1
-    _machine: {fileID: 0}
-    _machineInstancer: {fileID: 2421445419809145570}
+    _fsm: {fileID: 0}
+    _fsmInstancer: {fileID: 2421445419809145570}
   _projectile: {fileID: 2729875676815699808, guid: e06c7b1d6f150401bbea0ac60adf80b1,
     type: 3}
 --- !u!114 &4909826835678234752
@@ -265,3 +255,55 @@ MonoBehaviour:
   _base: {fileID: 11400000, guid: 16bf069429937474390ce1ed7d17a8bf, type: 2}
   _syncToCollection: {fileID: 0}
   _syncToList: {fileID: 11400000, guid: a92988507b22a4bad8e15483d6e1695f, type: 2}
+--- !u!114 &1740680909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421445419809145576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a57cc968d2764ec0bc2de2bd308d451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delay:
+    _usage: 0
+    _value: -1
+    _constant: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
+--- !u!114 &1740680910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421445419809145576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050ff37b5550f4b7e9bdf8b985aff484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _developerDescription: 
+  _unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740680909}
+        m_MethodName: DestroyImmediate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _actionResponses: []
+  _eventReference:
+    _usage: 3
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: -2978108162882953924}
