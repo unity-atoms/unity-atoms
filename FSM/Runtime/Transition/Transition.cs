@@ -30,16 +30,21 @@ namespace UnityAtoms.FSM
         private bool _raiseEventToCompleteTransition;
 
         private FiniteStateMachine _fsmReference;
+        private Action _onComplete;
 
 
         private void Complete()
         {
-            _fsmReference.EndCurrentTransition();
+            _onComplete();
+
+            _fsmReference = null;
+            _onComplete = null;
         }
 
-        public void Begin(FiniteStateMachine fsm)
+        public void Begin(FiniteStateMachine fsm, Action onComplete)
         {
             _fsmReference = fsm;
+            _onComplete = onComplete;
 
             if (_raiseEventToCompleteTransition)
             {

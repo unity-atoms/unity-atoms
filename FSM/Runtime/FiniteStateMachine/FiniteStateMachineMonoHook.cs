@@ -3,22 +3,24 @@ using UnityEngine;
 
 namespace UnityAtoms.FSM
 {
-    public class FiniteStateMachineUpdateHook : MonoBehaviour
+    public class FiniteStateMachineMonoHook : MonoBehaviour
     {
-        public static FiniteStateMachineUpdateHook GetInstance(bool createIfNotExist = false)
+        public static FiniteStateMachineMonoHook GetInstance(bool createIfNotExist = false)
         {
             if (_instance == null && createIfNotExist)
             {
                 GameObject go = new GameObject("FiniteStateMachineUpdateHook");
-                _instance = go.AddComponent<FiniteStateMachineUpdateHook>();
+                _instance = go.AddComponent<FiniteStateMachineMonoHook>();
             }
 
             return _instance;
         }
 
+        public event Action OnStart;
         public event Action<float> OnUpdate;
+        public event Action<float> OnFixedUpdate;
 
-        private static FiniteStateMachineUpdateHook _instance;
+        private static FiniteStateMachineMonoHook _instance;
 
         private void Awake()
         {
@@ -32,11 +34,27 @@ namespace UnityAtoms.FSM
             DontDestroyOnLoad(gameObject);
         }
 
+        private void Start()
+        {
+            if (OnStart != null)
+            {
+                OnStart.Invoke();
+            }
+        }
+
         private void Update()
         {
             if (OnUpdate != null)
             {
                 OnUpdate.Invoke(Time.deltaTime);
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (OnFixedUpdate != null)
+            {
+                OnFixedUpdate.Invoke(Time.deltaTime);
             }
         }
     }

@@ -100,7 +100,7 @@ namespace UnityAtoms
         /// Reset the Variable to its `_initalValue`.
         /// </summary>
         /// <param name="shouldTriggerEvents">Set to `true` if Events should be triggered on reset, otherwise `false`.</param>
-        public override sealed void Reset(bool shouldTriggerEvents = false)
+        public override void Reset(bool shouldTriggerEvents = false)
         {
             if (!shouldTriggerEvents)
             {
