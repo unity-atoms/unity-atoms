@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityAtoms.Editor;
@@ -9,8 +7,9 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// <summary>
     /// A custom property drawer for AtomBaseVariableList. 
     /// </summary>
+    [CustomPropertyDrawer(typeof(AtomListAttribute))]
     [CustomPropertyDrawer(typeof(AtomBaseVariableList))]
-    public class AtomBaseVariableListDrawer : PropertyDrawer
+    public class AtomListDrawer : PropertyDrawer
     {
         static int INDEX_LABEL_WIDTH = 16;
         static int BUTTON_WIDTH = 24;
@@ -24,8 +23,10 @@ namespace UnityAtoms.BaseAtoms.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
+            AtomListAttribute atomListAttr = attribute as AtomListAttribute;
+
             var propertyHeight = EditorGUIUtility.singleLineHeight + LINE_BOTTOM_MARGIN + DRAWER_MARGIN * 2f;
-            var listProperty = property.FindPropertyRelative(SERIALIZED_LIST_PROPNAME);
+            var listProperty = property.FindPropertyRelative(atomListAttr != null && !string.IsNullOrWhiteSpace(atomListAttr.ChildPropName) ? atomListAttr.ChildPropName : SERIALIZED_LIST_PROPNAME);
 
             var length = listProperty.arraySize;
             for (var i = 0; i < length; ++i)
@@ -40,6 +41,8 @@ namespace UnityAtoms.BaseAtoms.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            AtomListAttribute atomListAttr = attribute as AtomListAttribute;
+
             label = EditorGUI.BeginProperty(position, label, property);
             var proColor = new Color(83f / 255f, 83f / 255f, 83f / 255f);
             var basicColor = new Color(174f / 255f, 174f / 255f, 174f / 255f);
@@ -49,7 +52,7 @@ namespace UnityAtoms.BaseAtoms.Editor
             EditorGUI.indentLevel = 0;
             EditorGUI.BeginChangeCheck();
 
-            var listArrayProperty = property.FindPropertyRelative(SERIALIZED_LIST_PROPNAME);
+            var listArrayProperty = property.FindPropertyRelative(atomListAttr != null && !string.IsNullOrWhiteSpace(atomListAttr.ChildPropName) ? atomListAttr.ChildPropName : SERIALIZED_LIST_PROPNAME);
 
             var restRect = new Rect();
             var initialPosition = new Rect(position);
@@ -59,7 +62,7 @@ namespace UnityAtoms.BaseAtoms.Editor
 
             var labelPosition = IMGUIUtils.SnipRectH(initialPosition, initialPosition.width - BUTTON_WIDTH, out restRect);
             labelPosition.height = EditorGUIUtility.singleLineHeight + LINE_BOTTOM_MARGIN;
-            EditorGUI.PrefixLabel(initialPosition, new GUIContent(LIST_LABEL_NAME));
+            EditorGUI.PrefixLabel(initialPosition, new GUIContent(atomListAttr != null ? (atomListAttr.Label ?? label.text) : LIST_LABEL_NAME));
 
             var addButtonPosition = IMGUIUtils.SnipRectH(restRect, restRect.width, out restRect);
             addButtonPosition.height = EditorGUIUtility.singleLineHeight;
@@ -83,7 +86,7 @@ namespace UnityAtoms.BaseAtoms.Editor
                 EditorGUI.PrefixLabel(indexLabelPos, new GUIContent(i.ToString()));
 
                 var itemPos = IMGUIUtils.SnipRectH(restRect, linePosition.width - BUTTON_WIDTH - INDEX_LABEL_WIDTH - GUTTER * 2, out restRect, GUTTER);
-                EditorGUI.PropertyField(itemPos, itemProp, GUIContent.none, false);
+                EditorGUI.PropertyField(itemPos, itemProp, GUIContent.none, atomListAttr != null ? atomListAttr.IncludeChildrenForItems : false);
 
                 var removeButtonPosition = new Rect(restRect);
                 removeButtonPosition.height = EditorGUIUtility.singleLineHeight;
@@ -93,7 +96,7 @@ namespace UnityAtoms.BaseAtoms.Editor
                     indexToDelete = i;
                 }
 
-                linePosition.y += EditorGUIUtility.singleLineHeight + LINE_BOTTOM_MARGIN;
+                linePosition.y += EditorGUI.GetPropertyHeight(itemProp) + LINE_BOTTOM_MARGIN;
             }
 
             if (insertIndex != -1)
@@ -101,6 +104,8 @@ namespace UnityAtoms.BaseAtoms.Editor
                 if (listArrayProperty != null)
                 {
                     listArrayProperty.InsertArrayElementAtIndex(insertIndex);
+                    var newProp = listArrayProperty.GetArrayElementAtIndex(insertIndex);
+                    newProp.isExpanded = true;
                 }
             }
 

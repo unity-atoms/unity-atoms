@@ -22,70 +22,72 @@ MonoBehaviour:
   _transitionStarted: {fileID: 0}
   _completeCurrentTransition: {fileID: 0}
   _states:
-  - _id:
-      _usage: 0
-      _value: CHASING
-      _constant: {fileID: 0}
-      _variable: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    _cooldown:
-      _usage: 0
-      _value: 0
-      _constant: {fileID: 0}
-      _variable: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    _subMachine: {fileID: 0}
-  - _id:
-      _usage: 0
-      _value: ATTACKING
-      _constant: {fileID: 0}
-      _variable: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    _cooldown:
-      _usage: 0
-      _value: 2
-      _constant: {fileID: 0}
-      _variable: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    _subMachine: {fileID: 0}
+    _list:
+    - _id:
+        _usage: 0
+        _value: CHASING
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _cooldown:
+        _usage: 0
+        _value: 0
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _subMachine: {fileID: 0}
+    - _id:
+        _usage: 0
+        _value: ATTACKING
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _cooldown:
+        _usage: 0
+        _value: 2
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _subMachine: {fileID: 0}
   _transitions:
-  - _fromState:
-      _usage: 0
-      _value: ATTACKING
-      _constant: {fileID: 0}
-      _variable: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    _toState:
-      _usage: 0
-      _value: CHASING
-      _constant: {fileID: 0}
-      _variable: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    _command:
-      _usage: 0
-      _value: CHASE
-      _constant: {fileID: 0}
-      _variable: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    _testCondition: {fileID: 0}
-    _raiseEventToCompleteTransition: 0
-  - _fromState:
-      _usage: 0
-      _value: CHASING
-      _constant: {fileID: 0}
-      _variable: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    _toState:
-      _usage: 0
-      _value: ATTACKING
-      _constant: {fileID: 0}
-      _variable: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    _command:
-      _usage: 0
-      _value: ATTACK
-      _constant: {fileID: 0}
-      _variable: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    _testCondition: {fileID: 0}
-    _raiseEventToCompleteTransition: 0
+    _list:
+    - _fromState:
+        _usage: 0
+        _value: CHASING
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _toState:
+        _usage: 0
+        _value: ATTACKING
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _command:
+        _usage: 0
+        _value: ATTACK
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _testCondition: {fileID: 0}
+      _raiseEventToCompleteTransition: 0
+    - _fromState:
+        _usage: 0
+        _value: ATTACKING
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _toState:
+        _usage: 0
+        _value: CHASING
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _command:
+        _usage: 0
+        _value: CHASE
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _testCondition: {fileID: 0}
+      _raiseEventToCompleteTransition: 0

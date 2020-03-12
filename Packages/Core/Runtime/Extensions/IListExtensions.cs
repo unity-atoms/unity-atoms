@@ -16,6 +16,12 @@ namespace UnityAtoms
             return default(T);
         }
 
+        public static bool Exists<T>(this IList<T> list, Func<T, bool> func)
+        {
+            var first = list.First<T>(func);
+            return first != null ? true : false;
+        }
+
         public static GameObject GetOrInstantiate(this IList<GameObject> list, UnityEngine.Object prefab, Vector3 position, Quaternion quaternion, Func<GameObject, bool> condition)
         {
             var component = list.First(condition);
