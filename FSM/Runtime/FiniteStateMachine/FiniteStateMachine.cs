@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityAtoms.BaseAtoms;
+using UnityAtoms;
 
 namespace UnityAtoms.FSM
 {
@@ -18,19 +18,18 @@ namespace UnityAtoms.FSM
             get
             {
                 var state = GetState(_value);
-                return state.SubMachine != null ? state.SubMachine.Value : _value;
+                return state != null && state.SubMachine != null ? state.SubMachine.Value : _value;
             }
             set => Dispatch(value);
         }
         public FSMTransitionDataEvent TransitionStarted { get => _transitionStarted; set => _transitionStarted = value; }
         public BoolEvent CompleteCurrentTransition { get => _completeCurrentTransition; set => _completeCurrentTransition = value; }
-        public override string InitialValue { get => _states != null && _states.Count > 0 ? _states[0].Id : ""; }
+        public override string InitialValue { get => _states?.List != null && _states.List.Count > 0 ? _states.List[0].Id : ""; }
 
         /// <summary>
         /// Gets a boolean value indicating if the state machine is currently transitioning.
         /// </summary>
         public bool IsTransitioning { get => _currentTransition != null; }
-
 
         [SerializeField]
         private FSMTransitionDataEvent _transitionStarted = default(FSMTransitionDataEvent);
@@ -39,10 +38,12 @@ namespace UnityAtoms.FSM
         private BoolEvent _completeCurrentTransition = default(BoolEvent);
 
         [SerializeField]
-        private List<FSMState> _states;
+        [AtomList]
+        private FSMStateListWrapper _states;
 
         [SerializeField]
-        private List<Transition> _transitions;
+        [AtomList]
+        private TransitionListWrapper _transitions;
 
         private bool _isUpdatingState = false;
         private Transition _currentTransition = null;
@@ -165,12 +166,12 @@ namespace UnityAtoms.FSM
 
         public override void Reset(bool shouldTriggerEvents = false)
         {
-            // TODO: Validate transitions and states
+            Validate();
 
             // Set all timers to the same as the cooldown
-            for (var i = 0; i < _states.Count; ++i)
+            for (var i = 0; i < _states.List.Count; ++i)
             {
-                _states[i].Timer = _states[i].Cooldown;
+                _states.List[i].Timer = _states.List[i].Cooldown;
             }
 
             if (!_resetOnNextTransitionCompleted && !IsTransitioning)
@@ -238,6 +239,24 @@ namespace UnityAtoms.FSM
 
         protected override bool ValueEquals(string other) => false; // Always trigger events even if changing to the same state as previous
 
+
+
+        private void Validate()
+        {
+            for (var i = 0; i < _transitions.List.Count; ++i)
+            {
+                var transition = _transitions.List[i];
+                if (!_states.List.Exists((s) => s.Id == transition.FromState))
+                {
+                    Debug.LogError($"Transition with From State {transition.FromState} can't be found in the defined states.");
+                }
+                if (!_states.List.Exists((s) => s.Id == transition.ToState))
+                {
+                    Debug.LogError($"Transition with To State {transition.ToState} can't be found in the defined states.");
+                }
+            }
+        }
+
         private void EndCurrentTransition()
         {
             if (_resetOnNextTransitionCompleted)
@@ -268,11 +287,11 @@ namespace UnityAtoms.FSM
 
         private void ResetAllSubMachines()
         {
-            for (var i = 0; i < _states.Count; ++i)
+            for (var i = 0; i < _states.List.Count; ++i)
             {
-                if (_states[i].SubMachine != null)
+                if (_states.List[i].SubMachine != null)
                 {
-                    _states[i].SubMachine.Reset();
+                    _states.List[i].SubMachine.Reset();
                 }
             }
         }
@@ -286,9 +305,9 @@ namespace UnityAtoms.FSM
         {
             // Update timers and call OnStateCooldown handlers if applicable
             var currentValue = Value;
-            for (var i = 0; i < _states.Count; ++i)
+            for (var i = 0; i < _states.List.Count; ++i)
             {
-                var state = _states[i];
+                var state = _states.List[i];
                 if (state.Cooldown > 0f)
                 {
                     var isCurrent = state.Id == currentValue;
@@ -336,9 +355,9 @@ namespace UnityAtoms.FSM
         {
             Transition ret = null;
 
-            for (var i = 0; i < _transitions.Count; ++i)
+            for (var i = 0; i < _transitions.List.Count; ++i)
             {
-                var transition = _transitions[i];
+                var transition = _transitions.List[i];
                 if (command == transition.Command && _currentFlatValue == transition.FromState)
                 {
                     return transition;
@@ -350,15 +369,15 @@ namespace UnityAtoms.FSM
 
         private FSMState GetState(string id)
         {
-            for (var i = 0; i < _states.Count; ++i)
+            for (var i = 0; i < _states.List.Count; ++i)
             {
-                if (_states[i].Id == id)
+                if (_states.List[i].Id == id)
                 {
-                    return _states[i];
+                    return _states.List[i];
                 }
             }
 
-            throw new System.Exception($"State with id {id} could not be found.");
+            return null;
         }
     }
 }

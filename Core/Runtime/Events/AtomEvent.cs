@@ -67,6 +67,12 @@ namespace UnityAtoms
         }
 
         /// <summary>
+        /// Used in editor scipts since Raise is ambigious when using reflection to get method.
+        /// </summary>
+        /// <param name="item"></param>
+        public void RaiseEditor(T item) => Raise(item);
+
+        /// <summary>
         /// Register handler to be called when the Event triggers.
         /// </summary>
         /// <param name="action">The handler.</param>
