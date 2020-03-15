@@ -31,7 +31,6 @@ namespace UnityAtoms.FSM
             }
 
             _instance = this;
-            DontDestroyOnLoad(gameObject);
         }
 
         private void Start()

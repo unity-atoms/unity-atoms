@@ -103,10 +103,13 @@ namespace UnityAtoms
         /// Register a Listener that in turn trigger all its associated handlers when the Event triggers.
         /// </summary>
         /// <param name="listener">The Listener to register.</param>
-        public void RegisterListener(IAtomListener<T> listener)
+        public void RegisterListener(IAtomListener<T> listener, bool replayEventsBuffer = true)
         {
             _onEvent += listener.OnEventRaised;
-            ReplayBufferToSubscriber(listener.OnEventRaised);
+            if (replayEventsBuffer)
+            {
+                ReplayBufferToSubscriber(listener.OnEventRaised);
+            }
         }
 
         /// <summary>

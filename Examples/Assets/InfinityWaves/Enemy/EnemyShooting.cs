@@ -21,7 +21,6 @@ public class EnemyShooting : MonoBehaviour
         {
             if (target)
             {
-                Debug.Log(target.gameObject.name);
                 var spawnPos = transform.position + transform.right;
                 Instantiate(_projectile, spawnPos, transform.rotation);
             }
