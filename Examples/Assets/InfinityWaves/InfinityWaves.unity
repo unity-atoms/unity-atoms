@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd63f3a800fe74586b3a87357d763173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _event: {fileID: 0}
+  _event: {fileID: 11400000, guid: b512e6d2a87f440c5883fe3546438a16, type: 2}
   _eventWithGameObjectReference: {fileID: 0}
   _selectGameObjectReference: {fileID: 0}
 --- !u!114 &754865917
@@ -603,6 +603,8 @@ GameObject:
   - component: {fileID: 854994186}
   - component: {fileID: 854994187}
   - component: {fileID: 854994188}
+  - component: {fileID: 854994189}
+  - component: {fileID: 854994190}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -766,7 +768,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tags:
   - {fileID: 11400000, guid: 23f42a77324bd4158a00555f04f7824e, type: 2}
-  - {fileID: 0}
 --- !u!114 &854994186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,7 +808,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854994178}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 050ff37b5550f4b7e9bdf8b985aff484, type: 3}
   m_Name: 
@@ -815,7 +816,29 @@ MonoBehaviour:
   _developerDescription: 
   _unityEventResponse:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 854994189}
+        m_MethodName: DispatchGameOverIfDead
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SetGameOver
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 854994187}
+        m_MethodName: DestroyIfZeroOfBelow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _actionResponses: []
   _eventReference:
     _usage: 0
@@ -823,6 +846,36 @@ MonoBehaviour:
     _eventInstancer: {fileID: 0}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
+--- !u!114 &854994189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854994178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578b39322c0ba4e3fb1c53fbaf8ea6df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameStateRef:
+    _usage: 0
+    _fsm: {fileID: 11400000, guid: 42e941e460d424571aa897b211cee70e, type: 2}
+    _fsmInstancer: {fileID: 0}
+--- !u!114 &854994190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854994178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96934656608554bbdb024f928c94a23b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variables:
+  - {fileID: 11400000, guid: 50206c000343d496fa82bd362e3b3b2b, type: 2}
 --- !u!1 &1067648696
 GameObject:
   m_ObjectHideFlags: 0

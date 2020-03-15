@@ -20,16 +20,18 @@ public class EnemyMovement : MonoBehaviour
 
     void Awake()
     {
-        var target = AtomTags.FindByTag(_tagToTarget.Value).transform;
+        Transform target = null;
+        AtomTags.OnInitialization(() => target = AtomTags.FindByTag(_tagToTarget.Value).transform);
         var body = GetComponent<Rigidbody2D>();
 
-        _enemyState.Machine.OnUpdate((deltaTime, value) => body.Move((target.position - transform.position), value == "CHASING" ? 2f : 0f, deltaTime), gameObject);
-        _enemyState.Machine.DispatchWhen(command: "ATTACK", (value) => value == "CHASING" && (_shootingRange.Value >= Vector3.Distance(target.position, transform.position)), gameObject);
-        _enemyState.Machine.DispatchWhen(command: "CHASE", (value) => value == "ATTACKING" && (_shootingRange.Value < Vector3.Distance(target.position, transform.position)), gameObject);
+        _enemyState.Machine.OnUpdate((deltaTime, value) =>
+        {
+            if (target)
+            {
+                body.Move((target.position - transform.position), value == "CHASING" ? 2f : 0f, deltaTime);
+            }
+        }, gameObject);
+        _enemyState.Machine.DispatchWhen(command: "ATTACK", (value) => target != null && value == "CHASING" && (_shootingRange.Value >= Vector3.Distance(target.position, transform.position)), gameObject);
+        _enemyState.Machine.DispatchWhen(command: "CHASE", (value) => target != null && value == "ATTACKING" && (_shootingRange.Value < Vector3.Distance(target.position, transform.position)), gameObject);
     }
-
-    // void Start()
-    // {
-    //     _enemyState.Machine.Begin();
-    // }
 }

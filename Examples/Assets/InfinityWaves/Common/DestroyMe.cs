@@ -16,8 +16,13 @@ public class DestroyMe : MonoBehaviour
         }
     }
 
-    public void DestroyImmediate()
+    public void DestroyImmediate() => Destroy(gameObject);
+
+    public void DestroyIfZeroOfBelow(int value)
     {
-        Destroy(gameObject);
+        if (value <= 0)
+        {
+            DestroyImmediate();
+        }
     }
 }

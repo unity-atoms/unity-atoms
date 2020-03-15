@@ -215,6 +215,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d7e87282ce6479184ce08bf6dbe121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tagToTarget:
+    _usage: 1
+    _value: 
+    _constant: {fileID: 11400000, guid: 23f42a77324bd4158a00555f04f7824e, type: 2}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
   _enemyState:
     _usage: 1
     _fsm: {fileID: 0}
@@ -290,8 +296,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1740680909}
-        m_MethodName: DestroyImmediate
-        m_Mode: 1
+        m_MethodName: DestroyIfZeroOfBelow
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
