@@ -27,6 +27,8 @@ public class DecreaseHealth : MonoBehaviour
 
     public void Do(Collider2D collider)
     {
+        if (collider == null) return;
+
         if (collider.gameObject.HasAnyTag(_tags))
         {
             collider.GetComponent<UnitHealth>().Health -= _decreaseBy;

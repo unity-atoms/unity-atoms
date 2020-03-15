@@ -13,7 +13,7 @@ namespace UnityAtoms
         {
             for (var i = 0; i < _variables.Count; ++i)
             {
-                _variables[i].Reset();
+                _variables[i].Reset(true);
             }
         }
     }
