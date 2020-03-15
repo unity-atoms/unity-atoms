@@ -117,7 +117,7 @@ namespace UnityAtoms.FSM
             extendedHandler = (deltaTime, state) =>
             {
                 // Unregister created handler if original handler doesn't or if the GameObject has been destroyed
-                if (handler == null || gameObject == null || !gameObject.scene.IsValid())
+                if (handler == null || gameObject == null)
                 {
                     _onUpdate -= extendedHandler;
                     return;
@@ -135,7 +135,7 @@ namespace UnityAtoms.FSM
             extendedHandler = (deltaTime, state) =>
             {
                 // Unregister created handler if original handler doesn't or if the GameObject has been destroyed
-                if (handler == null || gameObject == null || !gameObject.scene.IsValid())
+                if (handler == null || gameObject == null)
                 {
                     _onFixedUpdate -= extendedHandler;
                     return;
@@ -152,8 +152,8 @@ namespace UnityAtoms.FSM
             Action<string> extendedHandler = null;
             extendedHandler = (value) =>
             {
-                // Unregister created handler if original handler doesn't or if the GameObject has been destroyed
-                if (func == null || gameObject == null || !gameObject.scene.IsValid())
+                // Unregister created handler if original handler doesn't exists or if the GameObject has been destroyed
+                if (func == null || gameObject == null)
                 {
                     _dispatchWhen -= extendedHandler;
                     return;
@@ -173,7 +173,7 @@ namespace UnityAtoms.FSM
             extendedHandler = (value) =>
             {
                 // Unregister created handler if original handler doesn't or if the GameObject has been destroyed
-                if (handler == null || gameObject == null || !gameObject.scene.IsValid())
+                if (handler == null || gameObject == null)
                 {
                     _onStateCooldown -= extendedHandler;
                     return;
