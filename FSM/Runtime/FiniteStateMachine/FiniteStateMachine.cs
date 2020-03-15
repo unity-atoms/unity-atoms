@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityAtoms.BaseAtoms;
 using UnityAtoms;
 
@@ -59,7 +61,7 @@ namespace UnityAtoms.FSM
         /// </summary>
         private string _currentFlatValue;
 
-        private void Awake()
+        private void OnEnable()
         {
             if (CompleteCurrentTransition != null && CompleteCurrentTransition.ReplayBufferSize > 0)
             {
@@ -67,11 +69,33 @@ namespace UnityAtoms.FSM
                 CompleteCurrentTransition.ReplayBufferSize = 0;
             }
 
-            FiniteStateMachineMonoHook.GetInstance(createIfNotExist: true).OnUpdate -= OnUpdate;
-            FiniteStateMachineMonoHook.GetInstance().OnUpdate += OnUpdate;
+            _isUpdatingState = false;
+            _currentTransition = null;
+            _resetOnNextTransitionCompleted = false;
+            _triggerEventsOnNextReset = false;
 
-            FiniteStateMachineMonoHook.GetInstance().OnStart -= OnStart;
-            FiniteStateMachineMonoHook.GetInstance().OnStart += OnStart;
+            // Make sure application is playing
+            if (Application.isPlaying)
+            {
+                FiniteStateMachineMonoHook.GetInstance(createIfNotExist: true).OnUpdate -= OnUpdate;
+                FiniteStateMachineMonoHook.GetInstance().OnUpdate += OnUpdate;
+
+                FiniteStateMachineMonoHook.GetInstance().OnStart -= OnStart;
+                FiniteStateMachineMonoHook.GetInstance().OnStart += OnStart;
+            }
+            else
+            {
+                UnityAction<Scene, LoadSceneMode> handler = null;
+                handler = (scene, mode) =>
+                {
+                    SceneManager.sceneLoaded -= handler;
+                    FiniteStateMachineMonoHook.GetInstance(createIfNotExist: true).OnUpdate -= OnUpdate;
+                    FiniteStateMachineMonoHook.GetInstance().OnUpdate += OnUpdate;
+                    Reset();
+                };
+
+                SceneManager.sceneLoaded += handler;
+            }
         }
 
         private void OnDisable()
@@ -230,10 +254,7 @@ namespace UnityAtoms.FSM
             {
                 // State doesn't exist in this FSM, propagate down to all sub FSMs.
                 var state = GetState(_currentFlatValue);
-                if (state.SubMachine != null)
-                {
-                    state.SubMachine.Dispatch(command);
-                }
+                state?.SubMachine?.Dispatch(command);
             }
         }
 

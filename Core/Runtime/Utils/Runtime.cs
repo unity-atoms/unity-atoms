@@ -18,6 +18,7 @@
 
         public static class ExecutionOrder
         {
+            public const int VARIABLE_RESETTER = -200;
             public const int VARIABLE_INSTANCER = -100;
         }
 
