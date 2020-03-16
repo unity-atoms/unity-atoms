@@ -15,6 +15,8 @@ namespace UnityAtoms
     /// </summary>
     public abstract class AtomBaseReference
     {
+        public int Usage { get => _usage; set => _usage = value; }
+
         /// <summary>
         /// Describes how we use the Reference and where the value comes from.
         /// </summary>
