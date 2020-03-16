@@ -8,11 +8,22 @@ namespace UnityAtoms.Examples
     public class HealthBar : MonoBehaviour
     {
         [SerializeField]
-        private IntConstant _maxHealth = null;
+        private IntReference _initialHealth = null;
+
+        [SerializeField]
+        private Image _image;
+
+        void Awake()
+        {
+            if (_image == null)
+            {
+                _image = GetComponent<Image>();
+            }
+        }
 
         public void HealthChanged(int health)
         {
-            GetComponent<Image>().fillAmount = 1.0f * health / _maxHealth.Value;
+            _image.fillAmount = 1.0f * health / _initialHealth.Value;
         }
     }
 }

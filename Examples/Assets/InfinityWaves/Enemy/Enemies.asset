@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecd0f51e6cdda4338b8adc4542076829, type: 3}
+  m_Script: {fileID: 11500000, guid: ba615354262bb46d7add759502baf53f, type: 3}
   m_Name: Enemies
   m_EditorClassIdentifier: 
-  _developerDescription: List of enemies spawned at runtime.
-  _value:
-    _serializedList: []
-  _added: {fileID: 11400000, guid: e940aaaaaca2e4ccfa65f3159e6cf8ec, type: 2}
-  _removed: {fileID: 11400000, guid: 955d19fc5a0a9412a8e3444652119b2d, type: 2}
-  _cleared: {fileID: 0}
+  _developerDescription: 
+  Cleared: {fileID: 0}
+  Added: {fileID: 0}
+  Removed: {fileID: 0}
+  list: []
