@@ -7,7 +7,7 @@ namespace UnityAtoms
     /// <summary>
     /// A Variable Instancer is a MonoBehaviour that takes a variable as a base and creates an in memory copy of it OnEnable.
     /// This is handy when you want to use atoms for prefabs that are instantiated at runtime. Use together with AtomCollection to
-    /// react accordingly when a prefab with an assoicated atom is added or deleted to the scene.
+    /// react accordingly when a prefab with an associated atom is added or deleted to the scene.
     /// </summary>
     /// <typeparam name="V">Variable of type T.</typeparam>
     /// <typeparam name="T">The value type.</typeparam>
