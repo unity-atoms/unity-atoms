@@ -20,6 +20,9 @@ GameObject:
   - component: {fileID: -2978108162882953924}
   - component: {fileID: 1740680909}
   - component: {fileID: 1740680910}
+  - component: {fileID: 1637442682690422268}
+  - component: {fileID: 4095674729113015293}
+  - component: {fileID: 5231109137669188302}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -200,8 +203,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inMemoryCopy: {fileID: 0}
   _base: {fileID: 11400000, guid: 574b826f5842e400eb4cb44d63b60077, type: 2}
-  _syncToCollection: {fileID: 0}
-  _syncToList: {fileID: 0}
+  _syncToCollection:
+    _usage: 0
+    _collection: {fileID: 0}
+    _instancer: {fileID: 0}
+  _syncToCollectionKey: 
+  _syncToList:
+    _usage: 0
+    _list: {fileID: 0}
+    _instancer: {fileID: 0}
   _fsmBase: {fileID: 11400000, guid: 574b826f5842e400eb4cb44d63b60077, type: 2}
 --- !u!114 &2421445419809145569
 MonoBehaviour:
@@ -259,8 +269,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inMemoryCopy: {fileID: 0}
   _base: {fileID: 11400000, guid: 16bf069429937474390ce1ed7d17a8bf, type: 2}
-  _syncToCollection: {fileID: 0}
-  _syncToList: {fileID: 11400000, guid: a92988507b22a4bad8e15483d6e1695f, type: 2}
+  _syncToCollection:
+    _usage: 1
+    _collection: {fileID: 0}
+    _instancer: {fileID: 5231109137669188302}
+  _syncToCollectionKey: Health
+  _syncToList:
+    _usage: 1
+    _list: {fileID: 0}
+    _instancer: {fileID: 0}
 --- !u!114 &1740680909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,9 +324,68 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _actionResponses: []
+  _replayEventBufferOnRegister: 1
   _eventReference:
     _usage: 3
     _event: {fileID: 0}
     _eventInstancer: {fileID: 0}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: -2978108162882953924}
+--- !u!114 &1637442682690422268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421445419809145576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f62ec04b1ce42df86b032e75c14ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inMemoryCopy: {fileID: 0}
+  _base: {fileID: 11400000, guid: f133550ba7db7498c84c4b53cc471932, type: 2}
+  _syncToCollection:
+    _usage: 1
+    _collection: {fileID: 0}
+    _instancer: {fileID: 5231109137669188302}
+  _syncToCollectionKey: Position
+  _syncToList:
+    _usage: 1
+    _list: {fileID: 0}
+    _instancer: {fileID: 0}
+--- !u!114 &4095674729113015293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421445419809145576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a208484d52a9148f2b664132607d7deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reference:
+    _usage: 3
+    _value: {x: 0, y: 0, z: 0}
+    _constant: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 1637442682690422268}
+--- !u!114 &5231109137669188302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421445419809145576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7eabd19e224f4a32801be9dfc6aa226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inMemoryCopy: {fileID: 0}
+  _base: {fileID: 11400000, guid: 2c1c7dbe7b14d458892c7621ea08daa5, type: 2}
+  _syncToCollection: {fileID: 0}
+  _syncToCollectionKey: 
+  _syncToList: {fileID: 11400000, guid: 17112074d7b52489893e5dce0c45df02, type: 2}

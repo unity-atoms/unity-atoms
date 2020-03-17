@@ -17,7 +17,7 @@ namespace UnityAtoms
     /// <typeparam name="F">Function of type T => T</typeparam>
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomVariableInstancer<V, P, T, E1, E2, F, CO, L> : MonoBehaviour, IGetEvent, ISetEvent
+    public abstract class AtomVariableInstancer<V, P, T, E1, E2, F, CO, L> : AtomBaseVariableInstancer<T, V, CO, L>, IGetEvent, ISetEvent
         where V : AtomVariable<T, P, E1, E2, F>
         where P : struct, IPair<T>
         where E1 : AtomEvent<T>
@@ -27,49 +27,10 @@ namespace UnityAtoms
         where L : IGetValue<IAtomList>
     {
         /// <summary>
-        /// Getter for retrieving the in memory runtime variable.
-        /// </summary>
-        public V Variable { get => _inMemoryCopy; }
-
-        /// <summary>
-        /// Getter for retrieving the value of the in memory runtime variable.
-        /// </summary>
-        public T Value { get => _inMemoryCopy.Value; set => _inMemoryCopy.Value = value; }
-
-        public virtual V Base { get => _base; }
-
-        [SerializeField]
-        [ReadOnly]
-        protected V _inMemoryCopy = default(V);
-
-        /// <summary>
-        /// The variable that the in memory copy will be based on when created at runtime.
-        /// </summary>
-        [SerializeField]
-        protected V _base = null;
-
-        /// <summary>
-        /// If assigned the in memory copy variable will be added to the collection on Start using the gameObject's instance id as key. The value will also be removed from the collection OnDestroy.
-        /// </summary>
-        [SerializeField]
-        private CO _syncToCollection = default(CO);
-
-        /// <summary>
-        /// If assigned the in memory copy variable will be added to the list on Start. The value will also be removed from the list OnDestroy.
-        /// </summary>
-        [SerializeField]
-        private L _syncToList = default(L);
-
-        /// <summary>
         /// Override to add implementation specific setup on `OnEnable`.
         /// </summary>
-        protected virtual void ImplSpecificSetup() { }
-
-        private void OnEnable()
+        protected override void ImplSpecificSetup()
         {
-            Assert.IsNotNull(Base);
-            _inMemoryCopy = Instantiate(Base);
-
             if (Base.Changed != null)
             {
                 _inMemoryCopy.Changed = Instantiate(Base.Changed);
@@ -78,36 +39,6 @@ namespace UnityAtoms
             if (Base.ChangedWithHistory != null)
             {
                 _inMemoryCopy.ChangedWithHistory = Instantiate(Base.ChangedWithHistory);
-            }
-
-            ImplSpecificSetup();
-        }
-
-        void Start()
-        {
-            // Adding to the collection on Start instead of OnEnable because of timing issues that otherwise occurs when listeners register themselves OnEnable. 
-            // This is an issue when a Game Object has a Variable Instancer attached to it when the scene starts and at the same time their is an AtomBaseListener listening to the associated Added event to a Collection. 
-            if (_syncToCollection != null)
-            {
-                _syncToCollection.GetValue().Add(GetInstanceID().ToString(), _inMemoryCopy);
-            }
-
-            if (_syncToList != null)
-            {
-                _syncToList.GetValue().Add(_inMemoryCopy);
-            }
-        }
-
-        private void OnDestroy()
-        {
-            if (_syncToCollection != null)
-            {
-                _syncToCollection.GetValue().Remove(GetInstanceID().ToString());
-            }
-
-            if (_syncToList != null)
-            {
-                _syncToList.GetValue().Remove(_inMemoryCopy);
             }
         }
 

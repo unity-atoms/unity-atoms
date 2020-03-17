@@ -16,8 +16,8 @@ namespace UnityAtoms.BaseAtoms
         StringPairEvent,
         StringStringFunction,
         StringVariableInstancer,
-        AtomCollection,
-        AtomList>, IEquatable<StringReference>
+        AtomCollectionReference,
+        AtomListReference>, IEquatable<StringReference>
     {
         public StringReference() : base() { }
         public StringReference(string value) : base(value) { }

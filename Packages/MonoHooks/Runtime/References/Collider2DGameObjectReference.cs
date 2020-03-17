@@ -17,8 +17,8 @@ namespace UnityAtoms.MonoHooks
         Collider2DGameObjectPairEvent,
         Collider2DGameObjectCollider2DGameObjectFunction,
         Collider2DGameObjectVariableInstancer,
-        AtomCollection,
-        AtomList>, IEquatable<Collider2DGameObjectReference>
+        AtomCollectionReference,
+        AtomListReference>, IEquatable<Collider2DGameObjectReference>
     {
         public Collider2DGameObjectReference() : base() { }
         public Collider2DGameObjectReference(Collider2DGameObject value) : base(value) { }

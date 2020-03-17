@@ -9,7 +9,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [CreateAssetMenu(menuName = "Unity Atoms/List", fileName = "List")]
     [EditorIcon("atom-icon-lime")]
-    public class AtomList : AtomBaseVariable<AtomBaseVariableList>, IGetValue<IAtomList>
+    public class AtomList : AtomBaseVariable<AtomBaseVariableList>, IGetValue<IAtomList>, IWithCollectionEvents
     {
         /// <summary>
         /// Get value as an `IAtomList`. Needed in order to inject Lists into the Variable Instancer class.

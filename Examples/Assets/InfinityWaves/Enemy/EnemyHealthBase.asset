@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnemyHealthBase
   m_EditorClassIdentifier: 
   _developerDescription: 
+  _id: Health
   _value: 20
   _initialValue: 20
   _oldValue: 20

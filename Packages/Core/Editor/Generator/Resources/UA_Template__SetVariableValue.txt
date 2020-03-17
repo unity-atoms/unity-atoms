@@ -23,7 +23,7 @@ namespace UnityAtoms
         {VALUE_TYPE_NAME}PairEvent,
         {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function,
         {VALUE_TYPE_NAME}VariableInstancer,
-        AtomCollection,
-        AtomList>
+        AtomCollectionReference,
+        AtomListReference>
     { }
 }

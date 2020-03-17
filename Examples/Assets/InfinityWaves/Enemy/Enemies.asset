@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba615354262bb46d7add759502baf53f, type: 3}
+  m_Script: {fileID: 11500000, guid: ecd0f51e6cdda4338b8adc4542076829, type: 3}
   m_Name: Enemies
   m_EditorClassIdentifier: 
   _developerDescription: 
-  Cleared: {fileID: 0}
-  Added: {fileID: 0}
-  Removed: {fileID: 0}
-  list: []
+  _value:
+    _serializedList: []
+  _added: {fileID: 11400000, guid: 1f43d5301a4b244c6873d8cf5e465083, type: 2}
+  _removed: {fileID: 11400000, guid: bbead2c649eb14ada9e9672807bbd0b2, type: 2}
+  _cleared: {fileID: 0}

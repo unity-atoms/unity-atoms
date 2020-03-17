@@ -7,6 +7,8 @@ namespace UnityAtoms.Examples
     [AddComponentMenu("Unity Atoms/Examples/HealthBar")]
     public class HealthBar : MonoBehaviour
     {
+        public IntReference InitialHealth { get => _initialHealth; }
+
         [SerializeField]
         private IntReference _initialHealth = null;
 
@@ -21,9 +23,6 @@ namespace UnityAtoms.Examples
             }
         }
 
-        public void HealthChanged(int health)
-        {
-            _image.fillAmount = 1.0f * health / _initialHealth.Value;
-        }
+        public void HealthChanged(int health) => _image.fillAmount = 1.0f * health / _initialHealth.Value;
     }
 }

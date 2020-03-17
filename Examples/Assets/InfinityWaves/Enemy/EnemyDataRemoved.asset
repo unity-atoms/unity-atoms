@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a2b6c04f1da42f0ba0b469ec86f689, type: 3}
-  m_Name: EnemyHealthRemoved
+  m_Name: EnemyDataRemoved
   m_EditorClassIdentifier: 
   _developerDescription: 
-  _replayBufferSize: 1
+  _replayBufferSize: 2
   _inspectorRaiseValue: {fileID: 0}

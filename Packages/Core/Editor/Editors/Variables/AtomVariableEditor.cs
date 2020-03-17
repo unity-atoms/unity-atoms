@@ -20,6 +20,8 @@ namespace UnityAtoms.Editor
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
             EditorGUILayout.Space();
 
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_id"));
+
             EditorGUILayout.BeginHorizontal();
             EditorGUI.BeginDisabledGroup(_lockedInitialValue && EditorApplication.isPlayingOrWillChangePlaymode);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_initialValue"), true);

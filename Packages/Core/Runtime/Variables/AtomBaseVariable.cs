@@ -9,11 +9,16 @@ namespace UnityAtoms
     [EditorIcon("atom-icon-teal")]
     public abstract class AtomBaseVariable : BaseAtom
     {
+        public String Id { get => _id; set => _id = value; }
+
         /// <summary>
         /// The Variable value as an `object`.abstract Beware of boxing! 🥊
         /// </summary>
         /// <value>The Variable value as an `object`.</value>
         public abstract object BaseValue { get; set; }
+
+        [SerializeField]
+        private String _id = default;
 
         /// <summary>
         /// Abstract method that could be implemented to reset the Variable value.

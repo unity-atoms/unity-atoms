@@ -15,7 +15,7 @@ namespace UnityAtoms.BaseAtoms
         ColliderEvent,
         ColliderPairEvent,
         ColliderColliderFunction,
-        AtomCollection,
-        AtomList>
+        AtomCollectionReference,
+        AtomListReference>
     { }
 }

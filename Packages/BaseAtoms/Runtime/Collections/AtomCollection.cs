@@ -9,7 +9,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [CreateAssetMenu(menuName = "Unity Atoms/Collection", fileName = "Collection")]
     [EditorIcon("atom-icon-kingsyellow")]
-    public class AtomCollection : AtomBaseVariable<StringReferenceAtomBaseVariableDictionary>, IGetValue<IAtomCollection>
+    public class AtomCollection : AtomBaseVariable<StringReferenceAtomBaseVariableDictionary>, IGetValue<IAtomCollection>, IWithCollectionEvents
     {
         /// <summary>
         /// Get value as an `IAtomCollection`. Needed in order to inject Collection into the Variable Instancer class.

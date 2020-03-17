@@ -19,7 +19,7 @@ namespace UnityAtoms.Mobile
         TouchUserInputPairEvent,
         TouchUserInputTouchUserInputFunction,
         TouchUserInputVariableInstancer,
-        AtomCollection,
-        AtomList>
+        AtomCollectionReference,
+        AtomListReference>
     { }
 }
