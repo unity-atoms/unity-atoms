@@ -15,7 +15,7 @@ namespace UnityAtoms.BaseAtoms
         GameObjectEvent,
         GameObjectPairEvent,
         GameObjectGameObjectFunction,
-        AtomCollection,
-        AtomList>
+        AtomCollectionReference,
+        AtomListReference>
     { }
 }

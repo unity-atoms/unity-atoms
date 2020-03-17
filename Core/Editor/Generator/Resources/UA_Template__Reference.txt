@@ -22,8 +22,8 @@ namespace UnityAtoms
         {VALUE_TYPE_NAME}PairEvent,
         {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function,
         {VALUE_TYPE_NAME}VariableInstancer,
-        AtomCollection,
-        AtomList>, IEquatable<{VALUE_TYPE_NAME}Reference>
+        AtomCollectionReference,
+        AtomListReference>, IEquatable<{VALUE_TYPE_NAME}Reference>
     {
         public {VALUE_TYPE_NAME}Reference() : base() { }
         public {VALUE_TYPE_NAME}Reference({VALUE_TYPE} value) : base(value) { }
@@ -43,8 +43,8 @@ namespace UnityAtoms
         {VALUE_TYPE_NAME}PairEvent,
         {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function,
         {VALUE_TYPE_NAME}VariableInstancer,
-        AtomCollection,
-        AtomList>, IEquatable<{VALUE_TYPE_NAME}Reference>
+        AtomCollectionReference,
+        AtomListReference>, IEquatable<{VALUE_TYPE_NAME}Reference>
     {
         public {VALUE_TYPE_NAME}Reference() : base() { }
         public {VALUE_TYPE_NAME}Reference({VALUE_TYPE} value) : base(value) { }

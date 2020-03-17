@@ -15,7 +15,7 @@ namespace UnityAtoms.BaseAtoms
         BoolEvent,
         BoolPairEvent,
         BoolBoolFunction,
-        AtomCollection,
-        AtomList>
+        AtomCollectionReference,
+        AtomListReference>
     { }
 }

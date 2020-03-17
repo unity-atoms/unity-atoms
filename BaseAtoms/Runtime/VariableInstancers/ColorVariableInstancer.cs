@@ -15,7 +15,7 @@ namespace UnityAtoms.BaseAtoms
         ColorEvent,
         ColorPairEvent,
         ColorColorFunction,
-        AtomCollection,
-        AtomList>
+        AtomCollectionReference,
+        AtomListReference>
     { }
 }

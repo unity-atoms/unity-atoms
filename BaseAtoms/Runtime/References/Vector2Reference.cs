@@ -17,8 +17,8 @@ namespace UnityAtoms.BaseAtoms
         Vector2PairEvent,
         Vector2Vector2Function,
         Vector2VariableInstancer,
-        AtomCollection,
-        AtomList>, IEquatable<Vector2Reference>
+        AtomCollectionReference,
+        AtomListReference>, IEquatable<Vector2Reference>
     {
         public Vector2Reference() : base() { }
         public Vector2Reference(Vector2 value) : base(value) { }

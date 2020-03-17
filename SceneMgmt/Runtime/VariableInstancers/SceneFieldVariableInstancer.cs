@@ -16,7 +16,7 @@ namespace UnityAtoms.SceneMgmt
         SceneFieldEvent,
         SceneFieldPairEvent,
         SceneFieldSceneFieldFunction,
-        AtomCollection,
-        AtomList>
+        AtomCollectionReference,
+        AtomListReference>
     { }
 }

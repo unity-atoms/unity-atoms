@@ -20,6 +20,8 @@ namespace UnityAtoms.FSM.Editor
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
             EditorGUILayout.Space();
 
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_id"));
+
             EditorGUI.BeginDisabledGroup(true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_initialValue"), true);
             EditorGUI.EndDisabledGroup();

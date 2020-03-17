@@ -18,7 +18,7 @@ namespace UnityAtoms.BaseAtoms
         Vector2PairEvent,
         Vector2Vector2Function,
         Vector2VariableInstancer,
-        AtomCollection,
-        AtomList>
+        AtomCollectionReference,
+        AtomListReference>
     { }
 }
