@@ -5,6 +5,7 @@ namespace UnityAtoms
 {
     [AddComponentMenu("Unity Atoms/Variable Resetter")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_RESETTER)]
+    [EditorIcon("atom-icon-delicate")]
     public class VariableResetter : MonoBehaviour
     {
         public List<AtomBaseVariable> _variables = new List<AtomBaseVariable>();

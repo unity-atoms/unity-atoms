@@ -2,6 +2,7 @@ using System;
 
 namespace UnityAtoms
 {
+    [EditorIcon("atom-icon-lush")]
     public abstract class EquatableAtomVariable<T, P, E1, E2, F> : AtomVariable<T, P, E1, E2, F>
         where T : IEquatable<T>
         where P : struct, IPair<T>
