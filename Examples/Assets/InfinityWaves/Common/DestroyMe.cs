@@ -2,27 +2,30 @@
 using UnityEngine.Assertions;
 using UnityAtoms.BaseAtoms;
 
-public class DestroyMe : MonoBehaviour
+namespace UnityAtoms.Examples
 {
-    [SerializeField]
-    FloatReference _delay = new FloatReference(-1f);
-
-    void Start()
+    public class DestroyMe : MonoBehaviour
     {
-        Assert.IsNotNull(_delay);
-        if (_delay.Value >= 0f)
+        [SerializeField]
+        FloatReference _delay = new FloatReference(-1f);
+
+        void Start()
         {
-            Destroy(gameObject, _delay.Value);
+            Assert.IsNotNull(_delay);
+            if (_delay.Value >= 0f)
+            {
+                Destroy(gameObject, _delay.Value);
+            }
         }
-    }
 
-    public void DestroyImmediate() => Destroy(gameObject);
+        public void DestroyImmediate() => Destroy(gameObject);
 
-    public void DestroyIfZeroOfBelow(int value)
-    {
-        if (value <= 0)
+        public void DestroyIfZeroOfBelow(int value)
         {
-            DestroyImmediate();
+            if (value <= 0)
+            {
+                DestroyImmediate();
+            }
         }
     }
 }

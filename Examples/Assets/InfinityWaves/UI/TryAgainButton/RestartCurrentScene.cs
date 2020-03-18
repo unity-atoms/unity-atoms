@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RestartCurrentScene : MonoBehaviour
+namespace UnityAtoms.Examples
 {
-    public void Do() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    public class RestartCurrentScene : MonoBehaviour
+    {
+        public void Do() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using UnityAtoms.FSM;
 
-public class GameStateDispatcher : MonoBehaviour
+namespace UnityAtoms.Examples
 {
-    [SerializeField]
-    private FiniteStateMachineReference _gameStateRef;
-
-    public void DispatchGameOverIfDead(int health)
+    public class GameStateDispatcher : MonoBehaviour
     {
-        if (health <= 0)
+        [SerializeField]
+        private FiniteStateMachineReference _gameStateRef;
+
+        public void DispatchGameOverIfDead(int health)
         {
-            _gameStateRef.Machine.Dispatch("SetGameOver");
+            if (health <= 0)
+            {
+                _gameStateRef.Machine.Dispatch("SetGameOver");
+            }
         }
     }
 }

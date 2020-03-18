@@ -1,42 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityAtoms.BaseAtoms;
-using UnityAtoms;
 using UnityAtoms.Tags;
 
-public class DecreaseHealth : MonoBehaviour
+namespace UnityAtoms.Examples
 {
-    public List<StringConstant> TagsAffected { get => _tags; }
-
-    [SerializeField]
-    private IntReference _decreaseBy;
-
-    [SerializeField]
-    private List<StringConstant> _tags;
-
-    [SerializeField]
-    private VoidBaseEventReference _didCollide;
-
-    void Start()
+    public class DecreaseHealth : MonoBehaviour
     {
-        Assert.IsNotNull(_decreaseBy);
-        Assert.IsNotNull(_tags);
-    }
+        public List<StringConstant> TagsAffected { get => _tags; }
 
-    public void Do(Collider2D collider)
-    {
-        if (collider == null) return;
+        [SerializeField]
+        private IntReference _decreaseBy;
 
-        if (collider.gameObject.HasAnyTag(_tags))
+        [SerializeField]
+        private List<StringConstant> _tags;
+
+        [SerializeField]
+        private VoidBaseEventReference _didCollide;
+
+        void Start()
         {
-            collider.GetComponent<UnitHealth>().Health -= _decreaseBy;
+            Assert.IsNotNull(_decreaseBy);
+            Assert.IsNotNull(_tags);
         }
 
-        if (_didCollide != null && _didCollide.Event != null)
+        public void Do(Collider2D collider)
         {
-            _didCollide.Event.Raise();
+            if (collider == null) return;
+
+            if (collider.gameObject.HasAnyTag(_tags))
+            {
+                collider.GetComponent<UnitHealth>().Health -= _decreaseBy;
+            }
+
+            if (_didCollide != null && _didCollide.Event != null)
+            {
+                _didCollide.Event.Raise();
+            }
         }
     }
 }

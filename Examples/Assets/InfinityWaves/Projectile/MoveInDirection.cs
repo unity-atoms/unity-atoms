@@ -1,26 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityAtoms.BaseAtoms;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class MoveInDirection : MonoBehaviour
+namespace UnityAtoms.Examples
 {
-    public float Speed { set => _speed.Value = value; }
-
-    [SerializeField]
-    private FloatReference _speed;
-
-    private Rigidbody2D rb;
-
-    void Start()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class MoveInDirection : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.isKinematic = true;
-    }
+        public float Speed { set => _speed.Value = value; }
 
-    void Update()
-    {
-        rb.velocity = transform.right * _speed.Value;
+        [SerializeField]
+        private FloatReference _speed;
+
+        private Rigidbody2D rb;
+
+        void Start()
+        {
+            rb = GetComponent<Rigidbody2D>();
+            rb.isKinematic = true;
+        }
+
+        void Update()
+        {
+            rb.velocity = transform.right * _speed.Value;
+        }
     }
 }
