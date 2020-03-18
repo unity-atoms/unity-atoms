@@ -3,35 +3,42 @@ using UnityAtoms.BaseAtoms;
 using UnityAtoms.Tags;
 using UnityAtoms.FSM;
 
-public class EnemyMovement : MonoBehaviour
+namespace UnityAtoms.Examples
 {
-    [SerializeField]
-    private StringReference _tagToTarget;
-
-    [SerializeField]
-    private FloatReference _shootingRange = new FloatReference(5f);
-
-    [SerializeField]
-    private FloatReference _moveSpeedMultiplier = new FloatReference(2f);
-
-    [SerializeField]
-    private FiniteStateMachineReference _enemyState;
-
-
-    void Awake()
+    public class EnemyMovement : MonoBehaviour
     {
-        Transform target = null;
-        AtomTags.OnInitialization(() => target = AtomTags.FindByTag(_tagToTarget.Value).transform);
-        var body = GetComponent<Rigidbody2D>();
+        [SerializeField]
+        private StringReference _tagToTarget;
 
-        _enemyState.Machine.OnUpdate((deltaTime, value) =>
+        [SerializeField]
+        private FloatReference _shootingRange = new FloatReference(5f);
+
+        [SerializeField]
+        private FloatReference _moveSpeedMultiplier = new FloatReference(2f);
+
+        [SerializeField]
+        private FiniteStateMachineReference _enemyState;
+
+
+        void Awake()
         {
-            if (target)
+            Transform target = null;
+            AtomTags.OnInitialization(() => target = AtomTags.FindByTag(_tagToTarget.Value).transform);
+            var body = GetComponent<Rigidbody2D>();
+
+            _enemyState.Machine.OnUpdate((deltaTime, value) =>
             {
-                body.Move((target.position - transform.position), value == "CHASING" ? 2f : 0f, deltaTime);
-            }
-        }, gameObject);
-        _enemyState.Machine.DispatchWhen(command: "ATTACK", (value) => target != null && value == "CHASING" && (_shootingRange.Value >= Vector3.Distance(target.position, transform.position)), gameObject);
-        _enemyState.Machine.DispatchWhen(command: "CHASE", (value) => target != null && value == "ATTACKING" && (_shootingRange.Value < Vector3.Distance(target.position, transform.position)), gameObject);
+                if (target)
+                {
+                    body.Move((target.position - transform.position), value == "CHASING" ? 2f : 0f, deltaTime);
+                }
+                else
+                {
+                    body.Move(Vector2.zero, 0f, deltaTime);
+                }
+            }, gameObject);
+            _enemyState.Machine.DispatchWhen(command: "ATTACK", (value) => target != null && value == "CHASING" && (_shootingRange.Value >= Vector3.Distance(target.position, transform.position)), gameObject);
+            _enemyState.Machine.DispatchWhen(command: "CHASE", (value) => target != null && value == "ATTACKING" && (_shootingRange.Value < Vector3.Distance(target.position, transform.position)), gameObject);
+        }
     }
 }

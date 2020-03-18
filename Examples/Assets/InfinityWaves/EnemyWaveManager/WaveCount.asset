@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf8a67b68db3d4650908f8cf6adeda60, type: 3}
-  m_Name: Health
+  m_Name: WaveCount
   m_EditorClassIdentifier: 
   _developerDescription: 
   _id: 
-  _value: 10
-  _initialValue: 100
-  _oldValue: 20
-  Changed: {fileID: 11400000, guid: fb1508338b66f42099fceb52aa22cf4c, type: 2}
+  _value: 0
+  _initialValue: 0
+  _oldValue: 0
+  Changed: {fileID: 11400000, guid: 2b556070e50ea4f83b41ead9f8583bc5, type: 2}
   ChangedWithHistory: {fileID: 0}
   _preChangeTransformers: []

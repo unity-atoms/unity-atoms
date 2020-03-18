@@ -30,6 +30,8 @@ namespace UnityAtoms.Examples
             var healthBar = Instantiate(_healthBarPrefab).GetComponent<HealthBar>();
             healthBar.transform.SetParent(transform);
 
+            IntVariable health = default;
+            Vector3Variable position = default;
             Action<Vector3> positionChangedHandler = default;
             Action<AtomBaseVariable> varAddedHandler = (AtomBaseVariable baseVar) =>
             {
@@ -37,11 +39,13 @@ namespace UnityAtoms.Examples
                 {
                     case "Health":
                         var healthVar = (IntVariable)baseVar;
+                        health = healthVar;
                         healthBar.InitialHealth.Value = healthVar.InitialValue;
                         healthVar.Changed.Register(healthBar.HealthChanged);
                         break;
                     case "Position":
                         var positionVar = (Vector3Variable)baseVar;
+                        position = positionVar;
                         positionChangedHandler = (pos) =>
                         {
                             Vector2 viewportPos = Camera.main.WorldToViewportPoint(pos);
@@ -85,8 +89,18 @@ namespace UnityAtoms.Examples
 
                     if (healthBar != null && healthBar.gameObject != null)
                     {
+                        if (health != null)
+                        {
+                            health.Changed.Unregister(healthBar.HealthChanged);
+                        }
+                        else if (position != null)
+                        {
+                            position.Changed.Unregister(positionChangedHandler);
+                        }
+
                         Destroy(healthBar.gameObject);
                     }
+
                 }
             };
             _enemies.Removed.Register(enemyDataRemovedHandler);

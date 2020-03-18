@@ -73,6 +73,7 @@ namespace UnityAtoms.FSM
             _currentTransition = null;
             _resetOnNextTransitionCompleted = false;
             _triggerEventsOnNextReset = false;
+            _currentFlatValue = Value;
 
             // Make sure application is playing
             if (Application.isPlaying)

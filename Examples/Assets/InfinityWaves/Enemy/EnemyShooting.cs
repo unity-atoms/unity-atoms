@@ -3,27 +3,30 @@ using UnityAtoms.FSM;
 using UnityEngine;
 using UnityAtoms.Tags;
 
-public class EnemyShooting : MonoBehaviour
+namespace UnityAtoms.Examples
 {
-    [SerializeField]
-    private StringReference _tagToTarget;
-    [SerializeField]
-    private FiniteStateMachineReference _enemyState;
-    [SerializeField]
-    private GameObject _projectile;
-
-    void Awake()
+    public class EnemyShooting : MonoBehaviour
     {
-        Transform target = null;
-        AtomTags.OnInitialization(() => target = AtomTags.FindByTag(_tagToTarget.Value).transform);
+        [SerializeField]
+        private StringReference _tagToTarget;
+        [SerializeField]
+        private FiniteStateMachineReference _enemyState;
+        [SerializeField]
+        private GameObject _projectile;
 
-        _enemyState.Machine.OnStateCooldown("ATTACKING", (value) =>
+        void Awake()
         {
-            if (target)
+            Transform target = null;
+            AtomTags.OnInitialization(() => target = AtomTags.FindByTag(_tagToTarget.Value).transform);
+
+            _enemyState.Machine.OnStateCooldown("ATTACKING", (value) =>
             {
-                var spawnPos = transform.position + transform.right;
-                Instantiate(_projectile, spawnPos, transform.rotation);
-            }
-        }, gameObject);
+                if (target)
+                {
+                    var spawnPos = transform.position + transform.right;
+                    Instantiate(_projectile, spawnPos, transform.rotation);
+                }
+            }, gameObject);
+        }
     }
 }

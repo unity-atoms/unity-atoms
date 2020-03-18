@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EnemyRemoved
   m_EditorClassIdentifier: 
   _developerDescription: 
-  _replayBufferSize: 1
+  _replayBufferSize: 0
   _inspectorRaiseValue: {fileID: 0}
