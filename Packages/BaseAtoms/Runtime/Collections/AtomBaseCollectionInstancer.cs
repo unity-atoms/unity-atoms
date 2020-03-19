@@ -5,7 +5,7 @@ namespace UnityAtoms.BaseAtoms
 {
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomBaseCollectionInstancer<T, V> : AtomBaseVariableInstancer<T, V, AtomCollection, AtomList>
+    public abstract class AtomBaseCollectionInstancer<T, V> : AtomBaseVariableInstancer<T, V>
         where V : AtomBaseVariable<T>, IWithCollectionEvents
     {
         /// <summary>

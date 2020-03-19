@@ -16,9 +16,7 @@ namespace UnityAtoms.Mobile
         TouchUserInputEvent,
         TouchUserInputPairEvent,
         TouchUserInputTouchUserInputFunction,
-        TouchUserInputVariableInstancer,
-        AtomCollectionReference,
-        AtomListReference>, IEquatable<TouchUserInputReference>
+        TouchUserInputVariableInstancer>, IEquatable<TouchUserInputReference>
     {
         public TouchUserInputReference() : base() { }
         public TouchUserInputReference(TouchUserInput value) : base(value) { }

@@ -15,9 +15,7 @@ namespace UnityAtoms.BaseAtoms
         FloatEvent,
         FloatPairEvent,
         FloatFloatFunction,
-        FloatVariableInstancer,
-        AtomCollectionReference,
-        AtomListReference>, IEquatable<FloatReference>
+        FloatVariableInstancer>, IEquatable<FloatReference>
     {
         public FloatReference() : base() { }
         public FloatReference(float value) : base(value) { }

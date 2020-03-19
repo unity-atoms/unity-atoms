@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 3219820094781281706}
   - component: {fileID: 3464795203355677658}
   - component: {fileID: 9113883788723746504}
+  - component: {fileID: 880247903186001704}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -207,15 +208,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inMemoryCopy: {fileID: 0}
   _base: {fileID: 11400000, guid: 574b826f5842e400eb4cb44d63b60077, type: 2}
-  _syncToCollection:
-    _usage: 0
-    _collection: {fileID: 0}
-    _instancer: {fileID: 0}
-  _syncToCollectionKey: 
-  _syncToList:
-    _usage: 0
-    _list: {fileID: 0}
-    _instancer: {fileID: 0}
   _fsmBase: {fileID: 11400000, guid: 574b826f5842e400eb4cb44d63b60077, type: 2}
 --- !u!114 &2421445419809145569
 MonoBehaviour:
@@ -273,15 +265,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inMemoryCopy: {fileID: 0}
   _base: {fileID: 11400000, guid: 16bf069429937474390ce1ed7d17a8bf, type: 2}
-  _syncToCollection:
-    _usage: 1
-    _collection: {fileID: 0}
-    _instancer: {fileID: 0}
-  _syncToCollectionKey: 
-  _syncToList:
-    _usage: 1
-    _list: {fileID: 0}
-    _instancer: {fileID: 0}
 --- !u!114 &1740680909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,15 +332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inMemoryCopy: {fileID: 0}
   _base: {fileID: 11400000, guid: f133550ba7db7498c84c4b53cc471932, type: 2}
-  _syncToCollection:
-    _usage: 1
-    _collection: {fileID: 0}
-    _instancer: {fileID: 0}
-  _syncToCollectionKey: 
-  _syncToList:
-    _usage: 1
-    _list: {fileID: 0}
-    _instancer: {fileID: 0}
 --- !u!114 &4095674729113015293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,9 +364,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inMemoryCopy: {fileID: 0}
   _base: {fileID: 11400000, guid: 2c1c7dbe7b14d458892c7621ea08daa5, type: 2}
-  _syncToCollection: {fileID: 0}
-  _syncToCollectionKey: 
-  _syncToList: {fileID: 11400000, guid: 17112074d7b52489893e5dce0c45df02, type: 2}
 --- !u!114 &3219820094781281706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,4 +420,26 @@ MonoBehaviour:
   _syncToList:
     _usage: 0
     _list: {fileID: 0}
+    _instancer: {fileID: 0}
+--- !u!114 &880247903186001704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421445419809145576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2427dbe3ca2954cd59e5f66911cda701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variableInstancer: {fileID: 5231109137669188302}
+  _syncToCollection:
+    _usage: 0
+    _collection: {fileID: 0}
+    _instancer: {fileID: 0}
+  _syncToCollectionKey: 
+  _syncToList:
+    _usage: 0
+    _list: {fileID: 11400000, guid: 17112074d7b52489893e5dce0c45df02, type: 2}
     _instancer: {fileID: 0}

@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// <summary>
     /// A Collection / Dictionary of Atom Variables (AtomBaseVariable).
     /// </summary>
-    [CreateAssetMenu(menuName = "Unity Atoms/Collection", fileName = "Collection")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Collections/Collection", fileName = "Collection")]
     [EditorIcon("atom-icon-kingsyellow")]
     public class AtomCollection : AtomBaseVariable<StringReferenceAtomBaseVariableDictionary>, IGetValue<IAtomCollection>, IWithCollectionEvents
     {

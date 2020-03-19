@@ -14,8 +14,6 @@ namespace UnityAtoms.BaseAtoms
         Collider2D,
         Collider2DEvent,
         Collider2DPairEvent,
-        Collider2DCollider2DFunction,
-        AtomCollectionReference,
-        AtomListReference>
+        Collider2DCollider2DFunction>
     { }
 }
