@@ -255,7 +255,7 @@ MonoBehaviour:
     _constant: {fileID: 11400000, guid: 41aa2296cd68a4b718a8fd1bd8ad5a95, type: 2}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
-  _image: {fileID: 0}
+  _image: {fileID: 145633449}
 --- !u!114 &145633449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +321,6 @@ MonoBehaviour:
         m_CallState: 2
   _actionResponses:
   - {fileID: 11400000, guid: 58f78c691d84e44cd84c884aadacf21a, type: 2}
-  - {fileID: 11400000, guid: 310af909517714e69887a197f337882c, type: 2}
   _replayEventBufferOnRegister: 1
   _eventReference:
     _usage: 0

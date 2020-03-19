@@ -73,9 +73,10 @@ namespace UnityAtoms
             for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
             {
                 var action = _actionResponses[i];
-                var actionWithParam = action as AtomAction<T>;
 
-                if (actionWithParam != null)
+                if (action == null) continue;
+
+                if (action is AtomAction<T> actionWithParam)
                 {
                     actionWithParam.Do(item);
                 }
