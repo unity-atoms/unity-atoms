@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// <summary>
     /// Adds a GameObject to a GameObject Value List on OnEnable and removes it on OnDestroy.
     /// </summary>
-    [AddComponentMenu("Unity Atoms/Sync GameObject To List")]
+    [AddComponentMenu("Unity Atoms/MonoBehaviour Helpers/Sync GameObject To List")]
     [EditorIcon("atom-icon-delicate")]
     public class SyncGameObjectToList : MonoBehaviour
     {

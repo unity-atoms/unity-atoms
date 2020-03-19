@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
-    [AddComponentMenu("Unity Atoms/Variable Resetter")]
+    [AddComponentMenu("Unity Atoms/MonoBehaviour Helpers/Variable Resetter")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_RESETTER)]
     [EditorIcon("atom-icon-delicate")]
     public class VariableResetter : MonoBehaviour
