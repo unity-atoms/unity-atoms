@@ -56,7 +56,8 @@ namespace UnityAtoms.Editor
                     }
                     catch (InvalidOperationException)
                     {
-                        var value = serializedObject.FindProperty("_value").GetGenericPropertyValue(atomTarget.BaseValue);
+                        // Deep clone the base value using JsonUtility. Otherwise oldValue and initialValue will all change when changing value.
+                        var value = serializedObject.FindProperty("_value").GetGenericPropertyValue(JsonUtility.FromJson<T>(JsonUtility.ToJson(atomTarget.BaseValue)));
                         atomTarget.BaseValue = value;
                     }
                     valueWasUpdated = true;
@@ -104,7 +105,6 @@ namespace UnityAtoms.Editor
             }
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_preChangeTransformers"), true);
-
 
             if (!valueWasUpdated)
             {
