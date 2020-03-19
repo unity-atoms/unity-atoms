@@ -42,7 +42,17 @@ namespace UnityAtoms.Editor
                     try
                     {
                         var value = serializedObject.FindProperty("_value").GetPropertyValue();
-                        atomTarget.BaseValue = value;
+
+                        // Doubles are for some reason deserialized to floats. The BaseValue assignment below will fail if we don't cast it to float and then to double before assignment (since the assigment itself will otherwise do a cast from object to double which will crash).
+                        if (typeof(T) == typeof(double))
+                        {
+                            atomTarget.BaseValue = (double)(float)value;
+                        }
+                        else
+                        {
+                            atomTarget.BaseValue = value;
+                        }
+
                     }
                     catch (InvalidOperationException)
                     {
