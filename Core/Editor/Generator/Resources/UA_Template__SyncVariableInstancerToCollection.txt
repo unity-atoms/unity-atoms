@@ -9,7 +9,7 @@ namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>
-    /// Adds Variable Instancer's Variable of type {TYPE} to a Collection or List on OnEnable and removes it on OnDestroy. 
+    /// Adds Variable Instancer's Variable of type {VALUE_TYPE} to a Collection or List on OnEnable and removes it on OnDestroy. 
     /// </summary>
     [AddComponentMenu("Unity Atoms/Sync Variable Instancer to Collection/Sync {VALUE_TYPE_NAME} Variable Instancer to Collection")]
     [EditorIcon("atom-icon-delicate")]
