@@ -50,6 +50,8 @@ namespace UnityAtoms.Editor
 
             foreach (KeyValuePair<AtomType, List<AtomType>> entry in AtomTypes.DEPENDENCY_GRAPH)
             {
+                if (!_typeVEDict.ContainsKey(entry.Key)) continue;
+
                 if (entry.Value.All((atom) => _atomTypesToGenerate.Contains(atom)))
                 {
                     _typeVEDict[entry.Key].SetEnabled(true);
@@ -70,6 +72,8 @@ namespace UnityAtoms.Editor
 
             foreach (KeyValuePair<AtomType, List<AtomType>> entry in AtomTypes.DEPENDENCY_GRAPH)
             {
+                if (!_typeVEDict.ContainsKey(entry.Key)) continue;
+
                 if (_atomTypesToGenerate.Contains(entry.Key) && entry.Value.Any((atom) => !_atomTypesToGenerate.Contains(atom)))
                 {
                     _typeVEDict[entry.Key].SetEnabled(false);
@@ -228,7 +232,7 @@ namespace UnityAtoms.Editor
         private VisualElement CreateAtomTypeToGenerateToggleRow(AtomType atomType)
         {
             var row = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
-            row.Add(new Label() { text = atomType.DisplayName, style = { width = 180, marginRight = 8 } });
+            row.Add(new Label() { text = atomType.DisplayName, style = { width = 220, marginRight = 8 } });
             var toggle = new Toggle() { value = _atomTypesToGenerate.Contains(atomType) };
             toggle.RegisterCallback<ChangeEvent<bool>>(evt =>
             {
