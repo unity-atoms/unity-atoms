@@ -26,12 +26,6 @@ namespace UnityAtoms
         public override T Value { get => _value; set => SetValue(value); }
 
         /// <summary>
-        /// The inital value of the Variable.
-        /// </summary>
-        [SerializeField]
-        private T _initialValue = default(T);
-
-        /// <summary>
         /// The inital Variable value as a property.
         /// </summary>
         /// <returns>Get the Variable's initial value.</returns>
@@ -43,9 +37,6 @@ namespace UnityAtoms
         /// <value>Get the Variable's old value.</value>
         public T OldValue { get => _oldValue; }
 
-        [SerializeField]
-        protected T _oldValue;
-
         /// <summary>
         /// Changed Event triggered when the Variable value gets changed.
         /// </summary>
@@ -55,6 +46,15 @@ namespace UnityAtoms
         /// Changed with history Event triggered when the Variable value gets changed.
         /// </summary>
         public E2 ChangedWithHistory;
+
+        [SerializeField]
+        private T _oldValue;
+
+        /// <summary>
+        /// The inital value of the Variable.
+        /// </summary>
+        [SerializeField]
+        private T _initialValue = default(T);
 
         /// <summary>
         /// When setting the value of a Variable the new value will be piped through all the pre change transformers, which allows you to create custom logic and restriction on for example what values can be set for this Variable.
