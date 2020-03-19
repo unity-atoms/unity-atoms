@@ -17,8 +17,6 @@ namespace UnityAtoms.BaseAtoms
         FloatEvent,
         FloatPairEvent,
         FloatFloatFunction,
-        FloatVariableInstancer,
-        AtomCollectionReference,
-        AtomListReference>
+        FloatVariableInstancer>
     { }
 }

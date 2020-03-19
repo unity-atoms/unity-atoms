@@ -18,8 +18,6 @@ namespace UnityAtoms.MonoHooks
         Collider2DGameObjectEvent,
         Collider2DGameObjectPairEvent,
         Collider2DGameObjectCollider2DGameObjectFunction,
-        Collider2DGameObjectVariableInstancer,
-        AtomCollectionReference,
-        AtomListReference>
+        Collider2DGameObjectVariableInstancer>
     { }
 }

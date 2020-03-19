@@ -14,17 +14,15 @@ namespace UnityAtoms
     /// <typeparam name="E2">An Event x 2 of type `T`.</typeparam>
     /// <typeparam name="F">A Function x 2 of type `T`.</typeparam>
     /// <typeparam name="VI">A Variable Instancer of type `T`.</typeparam>
-    public abstract class SetVariableValue<T, P, V, C, R, E1, E2, F, VI, CO, L> : AtomAction
+    public abstract class SetVariableValue<T, P, V, C, R, E1, E2, F, VI> : AtomAction
         where P : struct, IPair<T>
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<P>
         where F : AtomFunction<T, T>
         where V : AtomVariable<T, P, E1, E2, F>
         where C : AtomBaseVariable<T>
-        where R : AtomReference<T, P, C, V, E1, E2, F, VI, CO, L>
-        where VI : AtomVariableInstancer<V, P, T, E1, E2, F, CO, L>
-        where CO : IGetValue<IAtomCollection>
-        where L : IGetValue<IAtomList>
+        where R : AtomReference<T, P, C, V, E1, E2, F, VI>
+        where VI : AtomVariableInstancer<V, P, T, E1, E2, F>
     {
         /// <summary>
         /// The Variable to set.

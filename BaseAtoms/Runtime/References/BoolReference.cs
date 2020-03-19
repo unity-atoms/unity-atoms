@@ -15,9 +15,7 @@ namespace UnityAtoms.BaseAtoms
         BoolEvent,
         BoolPairEvent,
         BoolBoolFunction,
-        BoolVariableInstancer,
-        AtomCollectionReference,
-        AtomListReference>, IEquatable<BoolReference>
+        BoolVariableInstancer>, IEquatable<BoolReference>
     {
         public BoolReference() : base() { }
         public BoolReference(bool value) : base(value) { }

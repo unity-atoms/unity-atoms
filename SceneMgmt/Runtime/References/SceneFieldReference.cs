@@ -16,9 +16,7 @@ namespace UnityAtoms.SceneMgmt
         SceneFieldEvent,
         SceneFieldPairEvent,
         SceneFieldSceneFieldFunction,
-        SceneFieldVariableInstancer,
-        AtomCollectionReference,
-        AtomListReference>, IEquatable<SceneFieldReference>
+        SceneFieldVariableInstancer>, IEquatable<SceneFieldReference>
     {
         public SceneFieldReference() : base() { }
         public SceneFieldReference(SceneField value) : base(value) { }

@@ -18,8 +18,6 @@ namespace UnityAtoms.SceneMgmt
         SceneFieldEvent,
         SceneFieldPairEvent,
         SceneFieldSceneFieldFunction,
-        SceneFieldVariableInstancer,
-        AtomCollectionReference,
-        AtomListReference>
+        SceneFieldVariableInstancer>
     { }
 }

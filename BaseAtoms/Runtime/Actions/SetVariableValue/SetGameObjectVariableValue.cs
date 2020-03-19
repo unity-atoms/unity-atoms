@@ -17,8 +17,6 @@ namespace UnityAtoms.BaseAtoms
         GameObjectEvent,
         GameObjectPairEvent,
         GameObjectGameObjectFunction,
-        GameObjectVariableInstancer,
-        AtomCollectionReference,
-        AtomListReference>
+        GameObjectVariableInstancer>
     { }
 }

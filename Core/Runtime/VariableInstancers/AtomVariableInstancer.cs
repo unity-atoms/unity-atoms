@@ -17,14 +17,12 @@ namespace UnityAtoms
     /// <typeparam name="F">Function of type T => T</typeparam>
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomVariableInstancer<V, P, T, E1, E2, F, CO, L> : AtomBaseVariableInstancer<T, V, CO, L>, IGetEvent, ISetEvent
+    public abstract class AtomVariableInstancer<V, P, T, E1, E2, F> : AtomBaseVariableInstancer<T, V>, IGetEvent, ISetEvent
         where V : AtomVariable<T, P, E1, E2, F>
         where P : struct, IPair<T>
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<P>
         where F : AtomFunction<T, T>
-        where CO : IGetValue<IAtomCollection>
-        where L : IGetValue<IAtomList>
     {
         /// <summary>
         /// Override to add implementation specific setup on `OnEnable`.
