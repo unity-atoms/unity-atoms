@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 4095674729113015293}
   - component: {fileID: 5231109137669188302}
   - component: {fileID: 3219820094781281706}
+  - component: {fileID: 3464795203355677658}
+  - component: {fileID: 9113883788723746504}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -274,8 +276,8 @@ MonoBehaviour:
   _syncToCollection:
     _usage: 1
     _collection: {fileID: 0}
-    _instancer: {fileID: 5231109137669188302}
-  _syncToCollectionKey: Health
+    _instancer: {fileID: 0}
+  _syncToCollectionKey: 
   _syncToList:
     _usage: 1
     _list: {fileID: 0}
@@ -350,8 +352,8 @@ MonoBehaviour:
   _syncToCollection:
     _usage: 1
     _collection: {fileID: 0}
-    _instancer: {fileID: 5231109137669188302}
-  _syncToCollectionKey: Position
+    _instancer: {fileID: 0}
+  _syncToCollectionKey: 
   _syncToList:
     _usage: 1
     _list: {fileID: 0}
@@ -404,3 +406,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _list: {fileID: 11400000, guid: 118b16031adba41c2921b637788fa016, type: 2}
+--- !u!114 &3464795203355677658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421445419809145576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fa545dc2b5d4429a502d265e32b9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variableInstancer: {fileID: -2978108162882953924}
+  _syncToCollection:
+    _usage: 1
+    _collection: {fileID: 0}
+    _instancer: {fileID: 5231109137669188302}
+  _syncToCollectionKey: Health
+  _syncToList:
+    _usage: 0
+    _list: {fileID: 0}
+    _instancer: {fileID: 0}
+--- !u!114 &9113883788723746504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421445419809145576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fe1eb9a37bc421e9d54b82844bbf9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variableInstancer: {fileID: 1637442682690422268}
+  _syncToCollection:
+    _usage: 1
+    _collection: {fileID: 0}
+    _instancer: {fileID: 5231109137669188302}
+  _syncToCollectionKey: Position
+  _syncToList:
+    _usage: 0
+    _list: {fileID: 0}
+    _instancer: {fileID: 0}
