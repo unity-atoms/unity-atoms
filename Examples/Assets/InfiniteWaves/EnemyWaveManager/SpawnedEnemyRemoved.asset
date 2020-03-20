@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09747f8c6d9954e4a81c09bb7f6e44a6, type: 3}
   m_Name: SpawnedEnemyRemoved
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Raised when an Enemy is removed from the Spawned Enemies
+    list.
   _replayBufferSize: 1
   _inspectorRaiseValue: {fileID: 0}

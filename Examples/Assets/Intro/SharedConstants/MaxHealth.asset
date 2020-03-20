@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad76d497767c34ecf88c7aa597da29c0, type: 3}
   m_Name: MaxHealth
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: The player's maximum amount of health.
+  _id: 
   _value: 100

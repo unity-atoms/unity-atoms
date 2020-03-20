@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fe6f8275613408d9adc4435b52bf4f, type: 3}
   m_Name: TagEnemy
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Tag for identifying an Enemy.
+  _id: 
   _value: Enemy

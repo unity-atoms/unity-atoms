@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fce12a4beec24778830e555cb6e5ca3, type: 3}
   m_Name: EnemyHealthChangedBase
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Raised when Enemy health is changed. This is a base Event
+    used for creating in memory copies.
   _replayBufferSize: 1
   _inspectorRaiseValue: 0

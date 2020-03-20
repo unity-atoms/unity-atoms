@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd09b740ed5a4ae0be92b4b95bead40, type: 3}
   m_Name: QuitApplication
   m_EditorClassIdentifier: 
+  _developerDescription: VoidAction that quits the application.

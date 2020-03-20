@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a2b6c04f1da42f0ba0b469ec86f689, type: 3}
   m_Name: EnemyAdded
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Raised when an Enemy is added to Enemies list.
   _replayBufferSize: 0
   _inspectorRaiseValue: {fileID: 0}

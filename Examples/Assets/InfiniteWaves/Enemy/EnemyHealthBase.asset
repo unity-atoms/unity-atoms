@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8a67b68db3d4650908f8cf6adeda60, type: 3}
   m_Name: EnemyHealthBase
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: This is a base Variable used for creating in memory copies
+    of Enemy health.
   _id: Health
   _value: 20
-  _initialValue: 20
-  _oldValue: 20
   Changed: {fileID: 11400000, guid: d481ae3b5fe854cd187b0e79017e8d1e, type: 2}
   ChangedWithHistory: {fileID: 0}
+  _oldValue: 20
+  _initialValue: 20
   _preChangeTransformers: []

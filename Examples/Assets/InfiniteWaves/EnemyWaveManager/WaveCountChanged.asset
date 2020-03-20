@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fce12a4beec24778830e555cb6e5ca3, type: 3}
   m_Name: WaveCountChanged
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Raised when the wave count changes.
   _replayBufferSize: 1
   _inspectorRaiseValue: 0

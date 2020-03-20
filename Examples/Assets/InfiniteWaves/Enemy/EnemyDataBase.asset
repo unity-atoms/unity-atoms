@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f905a459d97c84162be2fdcd2bc3a39a, type: 3}
   m_Name: EnemyDataBase
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: A Collection of Enemy data. This is a base Collection that
+    will be used as a base in an Instancer.
+  _id: 
   _value:
     _serializedKeys: []
     _serializedValues: []

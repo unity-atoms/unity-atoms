@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 708376110c05a4e20b0ce756930c3bb0, type: 3}
   m_Name: EnemyShootingRange
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Shooting range of an enemy, meaning the min distance from
+    the Player the Enemy has to be in order to attack.
+  _id: 
   _value: 5

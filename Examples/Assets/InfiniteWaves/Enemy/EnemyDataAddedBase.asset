@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a2b6c04f1da42f0ba0b469ec86f689, type: 3}
-  m_Name: EnemyDataRemoved
+  m_Name: EnemyDataAddedBase
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Raised when Enemy data is added to an Enemy Data Collection.
+    This is a base Event that will be used as a base in an Instancer.
   _replayBufferSize: 2
   _inspectorRaiseValue: {fileID: 0}

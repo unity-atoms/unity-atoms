@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8a67b68db3d4650908f8cf6adeda60, type: 3}
   m_Name: WaveCount
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Keeps track of the enemy wave count.
   _id: 
   _value: 0
-  _initialValue: 0
-  _oldValue: 0
   Changed: {fileID: 11400000, guid: 2b556070e50ea4f83b41ead9f8583bc5, type: 2}
   ChangedWithHistory: {fileID: 0}
+  _oldValue: 0
+  _initialValue: 0
   _preChangeTransformers: []

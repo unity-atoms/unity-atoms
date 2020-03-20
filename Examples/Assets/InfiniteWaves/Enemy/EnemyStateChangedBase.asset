@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75feba4dec8d44f0fb83f34e749e4dc3, type: 3}
   m_Name: EnemyStateChangedBase
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Event raised when Enemy state is changed. This is a base
+    Event used for creating in memory copies.
   _replayBufferSize: 0
   _inspectorRaiseValue: 

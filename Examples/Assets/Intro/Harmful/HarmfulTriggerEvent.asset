@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9712fe83f4a3a4887a58910aeb195c64, type: 3}
   m_Name: HarmfulTriggerEvent
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Raised on On Trigger Enter 2D.
   _replayBufferSize: 1
   _inspectorRaiseValue: {fileID: 0}

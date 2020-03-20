@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75feba4dec8d44f0fb83f34e749e4dc3, type: 3}
   m_Name: UIStateChanged
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Raised when UI State is changed.
   _replayBufferSize: 1
   _inspectorRaiseValue: 

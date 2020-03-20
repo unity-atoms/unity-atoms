@@ -4,6 +4,9 @@ using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// A healthbar component that sets the fill amount of its associated UI Image accordingly.
+    /// </summary>
     [AddComponentMenu("Unity Atoms/Examples/HealthBar")]
     public class HealthBar : MonoBehaviour
     {

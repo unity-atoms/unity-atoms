@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f796f0a47da0e421cb954ef7aa235812, type: 3}
   m_Name: SetUIStateSecond
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Sets the UI State to "Second".
   _variable: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
   _value:
     _usage: 1

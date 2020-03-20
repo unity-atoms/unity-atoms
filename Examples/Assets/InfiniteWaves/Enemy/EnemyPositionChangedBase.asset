@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19800e64279c44e1ae4529ee6a2d780, type: 3}
   m_Name: EnemyPositionChangedBase
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Raised when Enemy position is changed. This is a base Event
+    used for creating in memory copies.
   _replayBufferSize: 1
   _inspectorRaiseValue: {x: 0, y: 0, z: 0}

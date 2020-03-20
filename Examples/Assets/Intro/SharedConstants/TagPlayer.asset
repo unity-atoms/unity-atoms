@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fe6f8275613408d9adc4435b52bf4f, type: 3}
   m_Name: TagPlayer
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Tag to identify the player.
+  _id: 
   _value: Player

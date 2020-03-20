@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d35e2eb934747da9d77a3af62bb8ca, type: 3}
   m_Name: OnResumeClicked
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Raised when the resume button is clicked.
   _replayBufferSize: 1

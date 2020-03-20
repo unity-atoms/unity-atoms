@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d35e2eb934747da9d77a3af62bb8ca, type: 3}
   m_Name: ProjectileDidCollideBase
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: Raised when a projectile do collide. This is a base Event
+    used for creating in memory copies.
   _replayBufferSize: 1

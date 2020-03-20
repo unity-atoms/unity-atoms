@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd0f51e6cdda4338b8adc4542076829, type: 3}
   m_Name: Enemies
   m_EditorClassIdentifier: 
-  _developerDescription: 
+  _developerDescription: A list of Enemy data that will be added to this list whenever
+    a new Enemy is instantiated.
+  _id: 
   _value:
     _serializedList: []
   _added: {fileID: 11400000, guid: 1f43d5301a4b244c6873d8cf5e465083, type: 2}
