@@ -3,6 +3,9 @@ using UnityAtoms.FSM;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Dispatches commands to the FSM.
+    /// </summary>
     public class GameStateDispatcher : MonoBehaviour
     {
         [SerializeField]

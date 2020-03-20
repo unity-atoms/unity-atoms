@@ -4,6 +4,9 @@ using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Script intending to destroy the GameObject it's attached to.
+    /// </summary>
     public class DestroyMe : MonoBehaviour
     {
         [SerializeField]

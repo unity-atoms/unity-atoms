@@ -3,6 +3,9 @@ using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Sets a constant velocity on the attached Rigidbody 2D.
+    /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class MoveInDirection : MonoBehaviour
     {

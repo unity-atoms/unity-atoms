@@ -5,6 +5,9 @@ using UnityAtoms.Tags;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Scipt that listens to the state of the enemy and shoots towards the Player if it's in the correct state.
+    /// </summary>
     public class EnemyShooting : MonoBehaviour
     {
         [SerializeField]

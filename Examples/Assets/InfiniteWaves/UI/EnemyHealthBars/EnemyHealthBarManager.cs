@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Listens to spawned and dead enemies and create and manage healthbars accordingly.
+    /// </summary>
     public class EnemyHealthBarManager : MonoBehaviour
     {
         [SerializeField]

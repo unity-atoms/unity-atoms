@@ -5,6 +5,9 @@ using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Simple healthbar script using UniRx.
+    /// </summary>
     public class HealthBarUniRx : MonoBehaviour
     {
         [SerializeField]

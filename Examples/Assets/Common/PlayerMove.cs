@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Simple move script for the Player.
+    /// </summary>
     [AddComponentMenu("Unity Atoms/Examples/PlayerMove")]
     public class PlayerMove : MonoBehaviour
     {

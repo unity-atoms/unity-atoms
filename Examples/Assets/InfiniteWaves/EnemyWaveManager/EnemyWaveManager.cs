@@ -5,6 +5,9 @@ using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Manager responsible of spawning enmeies and keep track of which enemy wave we are currently facing.
+    /// </summary>
     public class EnemyWaveManager : MonoBehaviour
     {
         [SerializeField]

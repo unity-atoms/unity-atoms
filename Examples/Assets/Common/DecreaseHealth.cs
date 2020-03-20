@@ -6,6 +6,9 @@ using UnityAtoms.Tags;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Script to decrease a Unit's health.
+    /// </summary>
     public class DecreaseHealth : MonoBehaviour
     {
         public List<StringConstant> TagsAffected { get => _tags; }

@@ -5,6 +5,9 @@ using UnityAtoms.FSM;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Moves the Enemy based on the state of the enemy.
+    /// </summary>
     public class EnemyMovement : MonoBehaviour
     {
         [SerializeField]

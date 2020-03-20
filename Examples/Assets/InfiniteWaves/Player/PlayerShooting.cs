@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace UnityAtoms.Examples
 {
+    /// <summary>
+    /// Simple shooting scipt for the player using the arrow keys.
+    /// </summary>
     public class PlayerShooting : MonoBehaviour
     {
         [SerializeField]
