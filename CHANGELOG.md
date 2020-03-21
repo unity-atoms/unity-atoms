@@ -6,7 +6,27 @@
 💅 = Polish
 🚀 = New features
 
-# [Unreleased]
+# 4.0.0 (March 21, 2020)
+
+## 🐛 Bug fixes
+
+-   Fixed a bug where it was not possible to change Variable value of Atoms of class type. ([@AdamRamberg](https://github.com/AdamRamberg))
+
+## Documentation
+
+-   General improvements to the documentation. ([@AdamRamberg](https://github.com/AdamRamberg))
+
+## 🏠 Internal
+
+-   💥 Changed With History Event is now an `AtomEvent<IPair<T>>` instead of an `AtomEvent<T, T>`. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   Sync to Collection / List is now moved from Variable Instancers to it's own script. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   New example scene: InfiniteWaves.
+
+## 🚀 New features
+
+-   New package - FSM 🎉 ([@AdamRamberg](https://github.com/AdamRamberg))
+-   Added Collection and List Instancers. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   Added an `OnInitialization` function to `AtomTags`. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 # 3.0.0 (February 24, 2020)
 

@@ -1,7 +1,8 @@
 # ⚛️ Unity Atoms
 
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-core?label=core@openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-core/)
-[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-base-atoms?label=core@openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-base-atoms/)
+[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-base-atoms?label=base-atoms@openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-base-atoms/)
+[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-fsm?label=fsm@openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-fsm/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-mobile?label=mobile&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-mobile/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-mono-hooks?label=mono-hooks&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-mono-hooks/)
 [![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-tags?label=tags&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-tags/)
@@ -43,6 +44,7 @@ Add the following to your `manifest.json`:
             "scopes": [
                 "com.mambojambostudios.unity-atoms-core",
                 "com.mambojambostudios.unity-atoms-base-atoms",
+                "com.mambojambostudios.unity-atoms-fsm",
                 "com.mambojambostudios.unity-atoms-mobile",
                 "com.mambojambostudios.unity-atoms-mono-hooks",
                 "com.mambojambostudios.unity-atoms-tags",
@@ -55,6 +57,7 @@ Add the following to your `manifest.json`:
         ...
         "com.mambojambostudios.unity-atoms-core": "4.0.0",
         "com.mambojambostudios.unity-atoms-base-atoms": "4.0.0",
+        "com.mambojambostudios.unity-atoms-fsm": "4.0.0",
         "com.mambojambostudios.unity-atoms-mobile": "4.0.0",
         "com.mambojambostudios.unity-atoms-mono-hooks": "4.0.0",
         "com.mambojambostudios.unity-atoms-tags": "4.0.0",
@@ -74,8 +77,10 @@ The package is available on the [openupm registry](https://openupm.com). It's re
 ```
 # required
 openupm add com.mambojambostudios.unity-atoms-core
+openupm add com.mambojambostudios.unity-atoms-base-atoms
 
 # optional
+openupm add com.mambojambostudios.unity-atoms-fsm
 openupm add com.mambojambostudios.unity-atoms-mobile
 openupm add com.mambojambostudios.unity-atoms-mono-hooks
 openupm add com.mambojambostudios.unity-atoms-tags

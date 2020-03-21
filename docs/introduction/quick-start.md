@@ -24,6 +24,7 @@ Add the following to your `manifest.json`:
             "scopes": [
                 "com.mambojambostudios.unity-atoms-core",
                 "com.mambojambostudios.unity-atoms-base-atoms",
+                "com.mambojambostudios.unity-atoms-fsm",
                 "com.mambojambostudios.unity-atoms-mobile",
                 "com.mambojambostudios.unity-atoms-mono-hooks",
                 "com.mambojambostudios.unity-atoms-tags",
@@ -36,6 +37,7 @@ Add the following to your `manifest.json`:
         ...
         "com.mambojambostudios.unity-atoms-core": "4.0.0",
         "com.mambojambostudios.unity-atoms-base-atoms": "4.0.0",
+        "com.mambojambostudios.unity-atoms-fsm": "4.0.0",
         "com.mambojambostudios.unity-atoms-mobile": "4.0.0",
         "com.mambojambostudios.unity-atoms-mono-hooks": "4.0.0",
         "com.mambojambostudios.unity-atoms-tags": "4.0.0",
@@ -58,6 +60,7 @@ openupm add com.mambojambostudios.unity-atoms-core
 openupm add com.mambojambostudios.unity-atoms-base-atoms
 
 # optional
+openupm add com.mambojambostudios.unity-atoms-fsm
 openupm add com.mambojambostudios.unity-atoms-mobile
 openupm add com.mambojambostudios.unity-atoms-mono-hooks
 openupm add com.mambojambostudios.unity-atoms-tags

@@ -151,7 +151,7 @@ Calls the handler on every FixedUpdate.
 
 #### `DispatchWhen(System.String,System.Func{System.String,System.Boolean},UnityEngine.GameObject)`
 
-Define a command that is going to automatically be dispatched when the condition provided is met.
+Defines a command that is going to automatically be dispatched when the condition provided is met.
 
 ---
 
@@ -169,7 +169,7 @@ Called on every state cooldown.
 
 #### `Reset(System.Boolean)`
 
-Reset
+Reset the state machine
 
 ##### Parameters
 
