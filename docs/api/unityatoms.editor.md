@@ -213,11 +213,23 @@ A copy of `content`, but without duplicate namespaces.
 
 Internal static class holding predefined static `AtomType`s.
 
+### Variables
+
+#### `ALL_ATOM_TYPES`
+
+Containes all common atom types that are usually generated for a type.
+
+---
+
+#### `DEPENDENCY_GRAPH`
+
+Graph explaining all the dependencies between Atoms.
+
 ---
 
 ## `AtomEventReferenceDrawer`
 
-A custom property drawer for Event References. Makes it possible to choose between an Event, Variable or a Variable Instancer.
+A custom property drawer for Event References. Makes it possible to choose between an Event, Event Instancer, Variable or a Variable Instancer.
 
 ---
 
@@ -233,13 +245,25 @@ The base Unity Atoms property drawer. Makes it possible to create and add a new 
 
 ## `AtomReferenceDrawer`
 
-A custom property drawer for References. Makes it possible to choose between a value, Variable, Constant or a Variable Instancer.
+A custom property drawer for References. Makes it possible to choose between a Value, Variable, Constant or a Variable Instancer.
+
+---
+
+## `AtomBaseReferenceDrawer`
+
+A custom property drawer for References (Events and regular). Makes it possible to reference a resources (Variable or Event) through multiple options.
 
 ---
 
 ## `ReadOnlyDrawer`
 
 Make property read only by using the abbtribute `[ReadOnly]`. Solution taken from: https://answers.unity.com/questions/489942/how-to-make-a-readonly-property-in-inspector.html
+
+---
+
+## `AtomListAttributeDrawer`
+
+A custom property drawer for properties using the `AtomList` attribute.
 
 ---
 
@@ -257,11 +281,5 @@ Custom editor for Variables. Provides a better user workflow and indicates when 
 -   `E` - Event of type T.
 
 Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
-
----
-
-## `VoidEventDrawer`
-
-Event property drawer of type `Void`. Inherits from `AtomDrawer<VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---

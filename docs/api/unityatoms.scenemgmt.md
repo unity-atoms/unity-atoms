@@ -9,13 +9,13 @@ sidebar_label: UnityAtoms.SceneMgmt
 
 ## `SceneFieldPairEventReferenceListener`
 
-Event Reference Listener of type `SceneFieldPair`. Inherits from `AtomEventReferenceListener<SceneFieldPair, SceneFieldPairAction, SceneFieldPairEvent, SceneFieldPairEventReference, SceneFieldPairUnityEvent>`.
+Event Reference Listener of type `SceneFieldPair`. Inherits from `AtomEventReferenceListener<SceneFieldPair, SceneFieldPairEvent, SceneFieldPairEventReference, SceneFieldPairUnityEvent>`.
 
 ---
 
 ## `SceneFieldEventReferenceListener`
 
-Event Reference Listener of type `SceneField`. Inherits from `AtomEventReferenceListener<SceneField, SceneFieldAction, SceneFieldEvent, SceneFieldEventReference, SceneFieldUnityEvent>`.
+Event Reference Listener of type `SceneField`. Inherits from `AtomEventReferenceListener<SceneField, SceneFieldEvent, SceneFieldEventReference, SceneFieldUnityEvent>`.
 
 ---
 
@@ -143,7 +143,7 @@ None equality operator.
 
 ## `SceneFieldReference`
 
-Reference of type `SceneField`. Inherits from `EquatableAtomReference<SceneField, SceneFieldPair, SceneFieldConstant, SceneFieldVariable, SceneFieldEvent, SceneFieldPairEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer>`.
+Reference of type `SceneField`. Inherits from `EquatableAtomReference<SceneField, SceneFieldPair, SceneFieldConstant, SceneFieldVariable, SceneFieldEvent, SceneFieldPairEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
@@ -258,6 +258,12 @@ Action of type `SceneField`. Inherits from `AtomAction<SceneField>`.
 ## `SceneFieldSceneFieldFunction`
 
 Function x 2 of type `SceneField`. Inherits from `AtomFunction<SceneField, SceneField>`.
+
+---
+
+## `SyncSceneFieldVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type SceneField to a Collection or List on OnEnable and removes it on OnDestroy.
 
 ---
 

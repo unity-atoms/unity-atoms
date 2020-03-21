@@ -13,7 +13,7 @@ A MonoBehaviour that you can add to a `CanvasGroup` and makes it transition base
 
 ### Variables
 
-#### `_UIStateVariable`
+#### `_currentUIState`
 
 Variable that we listens to.
 

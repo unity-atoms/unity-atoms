@@ -9,37 +9,37 @@ sidebar_label: UnityAtoms.MonoHooks
 
 ## `Collider2DGameObjectEventReferenceListener`
 
-Event Reference Listener of type `Collider2DGameObject`. Inherits from `AtomEventReferenceListener<Collider2DGameObject, Collider2DGameObjectAction, Collider2DGameObjectEvent, Collider2DGameObjectEventReference, Collider2DGameObjectUnityEvent>`.
+Event Reference Listener of type `Collider2DGameObject`. Inherits from `AtomEventReferenceListener<Collider2DGameObject, Collider2DGameObjectEvent, Collider2DGameObjectEventReference, Collider2DGameObjectUnityEvent>`.
 
 ---
 
 ## `ColliderGameObjectEventReferenceListener`
 
-Event Reference Listener of type `ColliderGameObject`. Inherits from `AtomEventReferenceListener<ColliderGameObject, ColliderGameObjectAction, ColliderGameObjectEvent, ColliderGameObjectEventReference, ColliderGameObjectUnityEvent>`.
+Event Reference Listener of type `ColliderGameObject`. Inherits from `AtomEventReferenceListener<ColliderGameObject, ColliderGameObjectEvent, ColliderGameObjectEventReference, ColliderGameObjectUnityEvent>`.
 
 ---
 
 ## `Collider2DGameObjectPairEventReferenceListener`
 
-Event Reference Listener of type `Collider2DGameObjectPair`. Inherits from `AtomEventReferenceListener<Collider2DGameObjectPair, Collider2DGameObjectPairAction, Collider2DGameObjectPairEvent, Collider2DGameObjectPairEventReference, Collider2DGameObjectPairUnityEvent>`.
+Event Reference Listener of type `Collider2DGameObjectPair`. Inherits from `AtomEventReferenceListener<Collider2DGameObjectPair, Collider2DGameObjectPairEvent, Collider2DGameObjectPairEventReference, Collider2DGameObjectPairUnityEvent>`.
 
 ---
 
 ## `ColliderGameObjectPairEventReferenceListener`
 
-Event Reference Listener of type `ColliderGameObjectPair`. Inherits from `AtomEventReferenceListener<ColliderGameObjectPair, ColliderGameObjectPairAction, ColliderGameObjectPairEvent, ColliderGameObjectPairEventReference, ColliderGameObjectPairUnityEvent>`.
+Event Reference Listener of type `ColliderGameObjectPair`. Inherits from `AtomEventReferenceListener<ColliderGameObjectPair, ColliderGameObjectPairEvent, ColliderGameObjectPairEventReference, ColliderGameObjectPairUnityEvent>`.
 
 ---
 
 ## `ColliderGameObjectReference`
 
-Reference of type `ColliderGameObject`. Inherits from `EquatableAtomReference<ColliderGameObject, ColliderGameObjectPair, ColliderGameObjectConstant, ColliderGameObjectVariable, ColliderGameObjectEvent, ColliderGameObjectPairEvent, ColliderGameObjectColliderGameObjectFunction, ColliderGameObjectVariableInstancer>`.
+Reference of type `ColliderGameObject`. Inherits from `EquatableAtomReference<ColliderGameObject, ColliderGameObjectPair, ColliderGameObjectConstant, ColliderGameObjectVariable, ColliderGameObjectEvent, ColliderGameObjectPairEvent, ColliderGameObjectColliderGameObjectFunction, ColliderGameObjectVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
 ## `Collider2DGameObjectReference`
 
-Reference of type `Collider2DGameObject`. Inherits from `EquatableAtomReference<Collider2DGameObject, Collider2DGameObjectPair, Collider2DGameObjectConstant, Collider2DGameObjectVariable, Collider2DGameObjectEvent, Collider2DGameObjectPairEvent, Collider2DGameObjectCollider2DGameObjectFunction, Collider2DGameObjectVariableInstancer>`.
+Reference of type `Collider2DGameObject`. Inherits from `EquatableAtomReference<Collider2DGameObject, Collider2DGameObjectPair, Collider2DGameObjectConstant, Collider2DGameObjectVariable, Collider2DGameObjectEvent, Collider2DGameObjectPairEvent, Collider2DGameObjectCollider2DGameObjectFunction, Collider2DGameObjectVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
@@ -321,7 +321,7 @@ Mono Hook for [`Start`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.S
 
 ## `VoidHook`
 
-Base class for all `MonoHook`s of type `Void`.
+Base class for all `MonoHook`s of type `AtomEventBase`.
 
 ### Variables
 
@@ -367,15 +367,27 @@ Action of type `ColliderGameObject`. Inherits from `AtomAction<ColliderGameObjec
 
 ---
 
+## `Collider2DGameObjectCollider2DGameObjectFunction`
+
+Function x 2 of type `Collider2DGameObject`. Inherits from `AtomFunction<Collider2DGameObject, Collider2DGameObject>`.
+
+---
+
 ## `ColliderGameObjectColliderGameObjectFunction`
 
 Function x 2 of type `ColliderGameObject`. Inherits from `AtomFunction<ColliderGameObject, ColliderGameObject>`.
 
 ---
 
-## `Collider2DGameObjectCollider2DGameObjectFunction`
+## `SyncCollider2DGameObjectVariableInstancerToCollection`
 
-Function x 2 of type `Collider2DGameObject`. Inherits from `AtomFunction<Collider2DGameObject, Collider2DGameObject>`.
+Adds Variable Instancer's Variable of type Collider2DGameObject to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncColliderGameObjectVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type ColliderGameObject to a Collection or List on OnEnable and removes it on OnDestroy.
 
 ---
 

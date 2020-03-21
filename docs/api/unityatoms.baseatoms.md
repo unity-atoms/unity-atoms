@@ -7,225 +7,189 @@ sidebar_label: UnityAtoms.BaseAtoms
 
 # Namespace - `UnityAtoms.BaseAtoms`
 
-## `VoidListener`
-
-The most basic Listener. Can use every type of AtomEvent but doesn't support its value. Inherits from `AtomBaseListener` and implements `IAtomListener`.
-
-### Variables
-
-#### `_event`
-
-The Event that we are listening to.
-
----
-
-#### `_unityEventResponse`
-
-The Unity Event responses. NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
-
----
-
-#### `_actionResponses`
-
-The Action responses;
-
-### Properties
-
-#### `Event`
-
-The Event we are listening for as a property.
-
-### Methods
-
-#### `OnEventRaised`
-
-Handler for when the Event gets raised.
-
----
-
 ## `AtomBaseVariableEventListener`
 
-Event Listener of type `AtomBaseVariable`. Inherits from `AtomEventListener<AtomBaseVariable, AtomBaseVariableAction, AtomBaseVariableEvent, AtomBaseVariableUnityEvent>`.
+Event Listener of type `AtomBaseVariable`. Inherits from `AtomEventListener<AtomBaseVariable, AtomBaseVariableEvent, AtomBaseVariableUnityEvent>`.
 
 ---
 
 ## `BoolPairEventReferenceListener`
 
-Event Reference Listener of type `BoolPair`. Inherits from `AtomEventReferenceListener<BoolPair, BoolPairAction, BoolPairEvent, BoolPairEventReference, BoolPairUnityEvent>`.
+Event Reference Listener of type `BoolPair`. Inherits from `AtomEventReferenceListener<BoolPair, BoolPairEvent, BoolPairEventReference, BoolPairUnityEvent>`.
 
 ---
 
 ## `Collider2DPairEventReferenceListener`
 
-Event Reference Listener of type `Collider2DPair`. Inherits from `AtomEventReferenceListener<Collider2DPair, Collider2DPairAction, Collider2DPairEvent, Collider2DPairEventReference, Collider2DPairUnityEvent>`.
+Event Reference Listener of type `Collider2DPair`. Inherits from `AtomEventReferenceListener<Collider2DPair, Collider2DPairEvent, Collider2DPairEventReference, Collider2DPairUnityEvent>`.
 
 ---
 
 ## `IntEventReferenceListener`
 
-Event Reference Listener of type `int`. Inherits from `AtomEventReferenceListener<int, IntAction, IntEvent, IntEventReference, IntUnityEvent>`.
+Event Reference Listener of type `int`. Inherits from `AtomEventReferenceListener<int, IntEvent, IntEventReference, IntUnityEvent>`.
 
 ---
 
 ## `ColliderEventReferenceListener`
 
-Event Reference Listener of type `Collider`. Inherits from `AtomEventReferenceListener<Collider, ColliderAction, ColliderEvent, ColliderEventReference, ColliderUnityEvent>`.
+Event Reference Listener of type `Collider`. Inherits from `AtomEventReferenceListener<Collider, ColliderEvent, ColliderEventReference, ColliderUnityEvent>`.
 
 ---
 
 ## `IntPairEventReferenceListener`
 
-Event Reference Listener of type `IntPair`. Inherits from `AtomEventReferenceListener<IntPair, IntPairAction, IntPairEvent, IntPairEventReference, IntPairUnityEvent>`.
+Event Reference Listener of type `IntPair`. Inherits from `AtomEventReferenceListener<IntPair, IntPairEvent, IntPairEventReference, IntPairUnityEvent>`.
 
 ---
 
 ## `Vector3PairEventReferenceListener`
 
-Event Reference Listener of type `Vector3Pair`. Inherits from `AtomEventReferenceListener<Vector3Pair, Vector3PairAction, Vector3PairEvent, Vector3PairEventReference, Vector3PairUnityEvent>`.
+Event Reference Listener of type `Vector3Pair`. Inherits from `AtomEventReferenceListener<Vector3Pair, Vector3PairEvent, Vector3PairEventReference, Vector3PairUnityEvent>`.
 
 ---
 
 ## `BoolEventReferenceListener`
 
-Event Reference Listener of type `bool`. Inherits from `AtomEventReferenceListener<bool, BoolAction, BoolEvent, BoolEventReference, BoolUnityEvent>`.
+Event Reference Listener of type `bool`. Inherits from `AtomEventReferenceListener<bool, BoolEvent, BoolEventReference, BoolUnityEvent>`.
 
 ---
 
 ## `Collider2DEventReferenceListener`
 
-Event Reference Listener of type `Collider2D`. Inherits from `AtomEventReferenceListener<Collider2D, Collider2DAction, Collider2DEvent, Collider2DEventReference, Collider2DUnityEvent>`.
+Event Reference Listener of type `Collider2D`. Inherits from `AtomEventReferenceListener<Collider2D, Collider2DEvent, Collider2DEventReference, Collider2DUnityEvent>`.
 
 ---
 
 ## `Vector2PairEventReferenceListener`
 
-Event Reference Listener of type `Vector2Pair`. Inherits from `AtomEventReferenceListener<Vector2Pair, Vector2PairAction, Vector2PairEvent, Vector2PairEventReference, Vector2PairUnityEvent>`.
+Event Reference Listener of type `Vector2Pair`. Inherits from `AtomEventReferenceListener<Vector2Pair, Vector2PairEvent, Vector2PairEventReference, Vector2PairUnityEvent>`.
 
 ---
 
 ## `StringPairEventReferenceListener`
 
-Event Reference Listener of type `StringPair`. Inherits from `AtomEventReferenceListener<StringPair, StringPairAction, StringPairEvent, StringPairEventReference, StringPairUnityEvent>`.
+Event Reference Listener of type `StringPair`. Inherits from `AtomEventReferenceListener<StringPair, StringPairEvent, StringPairEventReference, StringPairUnityEvent>`.
 
 ---
 
 ## `ColorEventReferenceListener`
 
-Event Reference Listener of type `Color`. Inherits from `AtomEventReferenceListener<Color, ColorAction, ColorEvent, ColorEventReference, ColorUnityEvent>`.
+Event Reference Listener of type `Color`. Inherits from `AtomEventReferenceListener<Color, ColorEvent, ColorEventReference, ColorUnityEvent>`.
 
 ---
 
 ## `Vector2EventReferenceListener`
 
-Event Reference Listener of type `Vector2`. Inherits from `AtomEventReferenceListener<Vector2, Vector2Action, Vector2Event, Vector2EventReference, Vector2UnityEvent>`.
+Event Reference Listener of type `Vector2`. Inherits from `AtomEventReferenceListener<Vector2, Vector2Event, Vector2EventReference, Vector2UnityEvent>`.
 
 ---
 
 ## `FloatEventReferenceListener`
 
-Event Reference Listener of type `float`. Inherits from `AtomEventReferenceListener<float, FloatAction, FloatEvent, FloatEventReference, FloatUnityEvent>`.
+Event Reference Listener of type `float`. Inherits from `AtomEventReferenceListener<float, FloatEvent, FloatEventReference, FloatUnityEvent>`.
 
 ---
 
 ## `Vector3EventReferenceListener`
 
-Event Reference Listener of type `Vector3`. Inherits from `AtomEventReferenceListener<Vector3, Vector3Action, Vector3Event, Vector3EventReference, Vector3UnityEvent>`.
+Event Reference Listener of type `Vector3`. Inherits from `AtomEventReferenceListener<Vector3, Vector3Event, Vector3EventReference, Vector3UnityEvent>`.
 
 ---
 
 ## `GameObjectEventReferenceListener`
 
-Event Reference Listener of type `GameObject`. Inherits from `AtomEventReferenceListener<GameObject, GameObjectAction, GameObjectEvent, GameObjectEventReference, GameObjectUnityEvent>`.
+Event Reference Listener of type `GameObject`. Inherits from `AtomEventReferenceListener<GameObject, GameObjectEvent, GameObjectEventReference, GameObjectUnityEvent>`.
 
 ---
 
 ## `FloatPairEventReferenceListener`
 
-Event Reference Listener of type `FloatPair`. Inherits from `AtomEventReferenceListener<FloatPair, FloatPairAction, FloatPairEvent, FloatPairEventReference, FloatPairUnityEvent>`.
+Event Reference Listener of type `FloatPair`. Inherits from `AtomEventReferenceListener<FloatPair, FloatPairEvent, FloatPairEventReference, FloatPairUnityEvent>`.
 
 ---
 
 ## `ColliderPairEventReferenceListener`
 
-Event Reference Listener of type `ColliderPair`. Inherits from `AtomEventReferenceListener<ColliderPair, ColliderPairAction, ColliderPairEvent, ColliderPairEventReference, ColliderPairUnityEvent>`.
+Event Reference Listener of type `ColliderPair`. Inherits from `AtomEventReferenceListener<ColliderPair, ColliderPairEvent, ColliderPairEventReference, ColliderPairUnityEvent>`.
 
 ---
 
 ## `ColorPairEventReferenceListener`
 
-Event Reference Listener of type `ColorPair`. Inherits from `AtomEventReferenceListener<ColorPair, ColorPairAction, ColorPairEvent, ColorPairEventReference, ColorPairUnityEvent>`.
+Event Reference Listener of type `ColorPair`. Inherits from `AtomEventReferenceListener<ColorPair, ColorPairEvent, ColorPairEventReference, ColorPairUnityEvent>`.
 
 ---
 
 ## `StringEventReferenceListener`
 
-Event Reference Listener of type `string`. Inherits from `AtomEventReferenceListener<string, StringAction, StringEvent, StringEventReference, StringUnityEvent>`.
+Event Reference Listener of type `string`. Inherits from `AtomEventReferenceListener<string, StringEvent, StringEventReference, StringUnityEvent>`.
 
 ---
 
 ## `GameObjectPairEventReferenceListener`
 
-Event Reference Listener of type `GameObjectPair`. Inherits from `AtomEventReferenceListener<GameObjectPair, GameObjectPairAction, GameObjectPairEvent, GameObjectPairEventReference, GameObjectPairUnityEvent>`.
+Event Reference Listener of type `GameObjectPair`. Inherits from `AtomEventReferenceListener<GameObjectPair, GameObjectPairEvent, GameObjectPairEventReference, GameObjectPairUnityEvent>`.
 
 ---
 
 ## `FloatReference`
 
-Reference of type `float`. Inherits from `EquatableAtomReference<float, FloatPair, FloatConstant, FloatVariable, FloatEvent, FloatPairEvent, FloatFloatFunction, FloatVariableInstancer>`.
+Reference of type `float`. Inherits from `EquatableAtomReference<float, FloatPair, FloatConstant, FloatVariable, FloatEvent, FloatPairEvent, FloatFloatFunction, FloatVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
 ## `Vector2Reference`
 
-Reference of type `Vector2`. Inherits from `EquatableAtomReference<Vector2, Vector2Pair, Vector2Constant, Vector2Variable, Vector2Event, Vector2PairEvent, Vector2Vector2Function, Vector2VariableInstancer>`.
+Reference of type `Vector2`. Inherits from `EquatableAtomReference<Vector2, Vector2Pair, Vector2Constant, Vector2Variable, Vector2Event, Vector2PairEvent, Vector2Vector2Function, Vector2VariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
 ## `BoolReference`
 
-Reference of type `bool`. Inherits from `EquatableAtomReference<bool, BoolPair, BoolConstant, BoolVariable, BoolEvent, BoolPairEvent, BoolBoolFunction, BoolVariableInstancer>`.
+Reference of type `bool`. Inherits from `EquatableAtomReference<bool, BoolPair, BoolConstant, BoolVariable, BoolEvent, BoolPairEvent, BoolBoolFunction, BoolVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
 ## `ColorReference`
 
-Reference of type `Color`. Inherits from `EquatableAtomReference<Color, ColorPair, ColorConstant, ColorVariable, ColorEvent, ColorPairEvent, ColorColorFunction, ColorVariableInstancer>`.
+Reference of type `Color`. Inherits from `EquatableAtomReference<Color, ColorPair, ColorConstant, ColorVariable, ColorEvent, ColorPairEvent, ColorColorFunction, ColorVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
 ## `ColliderReference`
 
-Reference of type `Collider`. Inherits from `AtomReference<Collider, ColliderPair, ColliderConstant, ColliderVariable, ColliderEvent, ColliderPairEvent, ColliderColliderFunction, ColliderVariableInstancer>`.
+Reference of type `Collider`. Inherits from `AtomReference<Collider, ColliderPair, ColliderConstant, ColliderVariable, ColliderEvent, ColliderPairEvent, ColliderColliderFunction, ColliderVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
 ## `IntReference`
 
-Reference of type `int`. Inherits from `EquatableAtomReference<int, IntPair, IntConstant, IntVariable, IntEvent, IntPairEvent, IntIntFunction, IntVariableInstancer>`.
+Reference of type `int`. Inherits from `EquatableAtomReference<int, IntPair, IntConstant, IntVariable, IntEvent, IntPairEvent, IntIntFunction, IntVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
 ## `Collider2DReference`
 
-Reference of type `Collider2D`. Inherits from `AtomReference<Collider2D, Collider2DPair, Collider2DConstant, Collider2DVariable, Collider2DEvent, Collider2DPairEvent, Collider2DCollider2DFunction, Collider2DVariableInstancer>`.
+Reference of type `Collider2D`. Inherits from `AtomReference<Collider2D, Collider2DPair, Collider2DConstant, Collider2DVariable, Collider2DEvent, Collider2DPairEvent, Collider2DCollider2DFunction, Collider2DVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
 ## `GameObjectReference`
 
-Reference of type `GameObject`. Inherits from `AtomReference<GameObject, GameObjectPair, GameObjectConstant, GameObjectVariable, GameObjectEvent, GameObjectPairEvent, GameObjectGameObjectFunction, GameObjectVariableInstancer>`.
+Reference of type `GameObject`. Inherits from `AtomReference<GameObject, GameObjectPair, GameObjectConstant, GameObjectVariable, GameObjectEvent, GameObjectPairEvent, GameObjectGameObjectFunction, GameObjectVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
 ## `Vector3Reference`
 
-Reference of type `Vector3`. Inherits from `EquatableAtomReference<Vector3, Vector3Pair, Vector3Constant, Vector3Variable, Vector3Event, Vector3PairEvent, Vector3Vector3Function, Vector3VariableInstancer>`.
+Reference of type `Vector3`. Inherits from `EquatableAtomReference<Vector3, Vector3Pair, Vector3Constant, Vector3Variable, Vector3Event, Vector3PairEvent, Vector3Vector3Function, Vector3VariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
 ## `StringReference`
 
-Reference of type `string`. Inherits from `EquatableAtomReference<string, StringPair, StringConstant, StringVariable, StringEvent, StringPairEvent, StringStringFunction, StringVariableInstancer>`.
+Reference of type `string`. Inherits from `EquatableAtomReference<string, StringPair, StringConstant, StringVariable, StringEvent, StringPairEvent, StringStringFunction, StringVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
@@ -328,6 +292,12 @@ None generic Unity Event of type `Collider`. Inherits from `UnityEvent<Collider>
 ## `BoolUnityEvent`
 
 None generic Unity Event of type `bool`. Inherits from `UnityEvent<bool>`.
+
+---
+
+## `VoidUnityEvent`
+
+None generic Unity Event of type `Void`. Inherits from `UnityEvent<Void>`.
 
 ---
 
@@ -655,6 +625,12 @@ Variable Instancer of type `string`. Inherits from `AtomVariableInstancer<String
 
 ---
 
+## `VoidBaseEventReference`
+
+Event Reference of type `Void`. Inherits from `AtomBaseEventReference<Void, VoidEvent, VoidEventInstancer>`.
+
+---
+
 ## `Vector3EventInstancer`
 
 Event Instancer of type `Vector3`. Inherits from `AtomEventInstancer<Vector3, Vector3Event>`.
@@ -676,6 +652,12 @@ Event Instancer of type `Vector3Pair`. Inherits from `AtomEventInstancer<Vector3
 ## `GameObjectPairEventInstancer`
 
 Event Instancer of type `GameObjectPair`. Inherits from `AtomEventInstancer<GameObjectPair, GameObjectPairEvent>`.
+
+---
+
+## `VoidEventInstancer`
+
+Event Instancer of type `Void`. Inherits from `AtomEventInstancer<Void, VoidEvent>`.
 
 ---
 
@@ -1221,51 +1203,9 @@ Action of type `Collider2D`. Inherits from `AtomAction<Collider2D>`.
 
 ---
 
-## `Collider2DCollider2DFunction`
-
-Function x 2 of type `Collider2D`. Inherits from `AtomFunction<Collider2D, Collider2D>`.
-
----
-
-## `GameObjectGameObjectFunction`
-
-Function x 2 of type `GameObject`. Inherits from `AtomFunction<GameObject, GameObject>`.
-
----
-
 ## `FloatFloatFunction`
 
 Function x 2 of type `float`. Inherits from `AtomFunction<float, float>`.
-
----
-
-## `StringStringFunction`
-
-Function x 2 of type `string`. Inherits from `AtomFunction<string, string>`.
-
----
-
-## `IntIntFunction`
-
-Function x 2 of type `int`. Inherits from `AtomFunction<int, int>`.
-
----
-
-## `ColliderColliderFunction`
-
-Function x 2 of type `Collider`. Inherits from `AtomFunction<Collider, Collider>`.
-
----
-
-## `Vector2Vector2Function`
-
-Function x 2 of type `Vector2`. Inherits from `AtomFunction<Vector2, Vector2>`.
-
----
-
-## `BoolBoolFunction`
-
-Function x 2 of type `bool`. Inherits from `AtomFunction<bool, bool>`.
 
 ---
 
@@ -1275,9 +1215,111 @@ Function x 2 of type `Vector3`. Inherits from `AtomFunction<Vector3, Vector3>`.
 
 ---
 
+## `IntIntFunction`
+
+Function x 2 of type `int`. Inherits from `AtomFunction<int, int>`.
+
+---
+
+## `BoolBoolFunction`
+
+Function x 2 of type `bool`. Inherits from `AtomFunction<bool, bool>`.
+
+---
+
+## `Collider2DCollider2DFunction`
+
+Function x 2 of type `Collider2D`. Inherits from `AtomFunction<Collider2D, Collider2D>`.
+
+---
+
+## `Vector2Vector2Function`
+
+Function x 2 of type `Vector2`. Inherits from `AtomFunction<Vector2, Vector2>`.
+
+---
+
+## `GameObjectGameObjectFunction`
+
+Function x 2 of type `GameObject`. Inherits from `AtomFunction<GameObject, GameObject>`.
+
+---
+
+## `StringStringFunction`
+
+Function x 2 of type `string`. Inherits from `AtomFunction<string, string>`.
+
+---
+
 ## `ColorColorFunction`
 
 Function x 2 of type `Color`. Inherits from `AtomFunction<Color, Color>`.
+
+---
+
+## `ColliderColliderFunction`
+
+Function x 2 of type `Collider`. Inherits from `AtomFunction<Collider, Collider>`.
+
+---
+
+## `SyncCollider2DVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type Collider2D to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncGameObjectVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type GameObject to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncColliderVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type Collider to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncVector2VariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type Vector2 to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncBoolVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type bool to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncVector3VariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type Vector3 to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncFloatVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type float to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncStringVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type string to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncColorVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type Color to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncIntVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type int to a Collection or List on OnEnable and removes it on OnDestroy.
 
 ---
 
@@ -1377,6 +1419,12 @@ Event of type `Color`. Inherits from `AtomEvent<Color>`.
 
 ---
 
+## `VoidEvent`
+
+Event of type `Void`. Inherits from `AtomEvent<Void>`.
+
+---
+
 ## `Vector2Event`
 
 Event of type `Vector2`. Inherits from `AtomEvent<Vector2>`.
@@ -1404,6 +1452,18 @@ Event of type `Collider2D`. Inherits from `AtomEvent<Collider2D>`.
 ## `IntEvent`
 
 Event of type `int`. Inherits from `AtomEvent<int>`.
+
+---
+
+## `VoidBaseEventReferenceListener`
+
+Event Reference Listener of type `Void`. Inherits from `AtomEventReferenceListener<Void, VoidEvent, VoidBaseEventReference, VoidUnityEvent>`.
+
+---
+
+## `AtomListInstancer`
+
+AtomList Instancer that creates an in memory copy of a List at runtime.
 
 ---
 
@@ -1516,6 +1576,75 @@ Needed in order to keep track of duplicate keys in the dictionary.
 
 ---
 
+## `AtomCollectionReferenceUsage`
+
+Different types of usages for an Atom Collection Reference.
+
+---
+
+## `AtomCollectionReference`
+
+Reference of type `AtomCollection`. Inherits from `AtomBaseReference`.
+
+### Variables
+
+#### `_collection`
+
+Variable used if `Usage` is set to `COLLECTION`.
+
+---
+
+#### `_instancer`
+
+Variable Instancer used if `Usage` is set to `COLLECTION_INSTANCER`.
+
+### Properties
+
+#### `Collection`
+
+Get the value for the Reference.
+
+### Methods
+
+#### `GetValue`
+
+Get value as an `IAtomCollection`. Needed in order to inject Collection References into the Variable Instancer class.
+
+##### Returns
+
+The value as an `IAtomList`.
+
+---
+
+## `SyncListInstancerToCollection`
+
+Adds Variable Instancer's List to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncCollectionInstancerToCollection`
+
+Adds Variable Instancer's Collection to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `AtomBaseCollectionInstancer<T,V>`
+
+#### Type Parameters
+
+-   `T` - undefined
+-   `V` - undefined
+
+Creates an in memory copy of a Collection using a base.
+
+### Methods
+
+#### `ImplSpecificSetup`
+
+Creates in memory copies of the Added, Removed and Cleared Events on OnEnable.
+
+---
+
 ## `AtomList`
 
 A List of Atom Variables (AtomBaseVariable).
@@ -1580,9 +1709,61 @@ The clear Event as an `IObservable<Void>`.
 
 ---
 
+## `AtomCollectionInstancer`
+
+AtomCollection Instancer that creates an in memory copy of a Collection at runtime.
+
+---
+
+## `AtomListReferenceUsage`
+
+Different types of usages for an Atom List Reference.
+
+---
+
+## `AtomListReference`
+
+Reference of type `AtomList`. Inherits from `AtomBaseReference`.
+
+### Variables
+
+#### `_list`
+
+Variable used if `Usage` is set to `LIST`.
+
+---
+
+#### `_instancer`
+
+Variable Instancer used if `Usage` is set to `LIST_INSTANCER`.
+
+### Properties
+
+#### `List`
+
+Get the value for the Reference.
+
+### Methods
+
+#### `GetValue`
+
+Get value as an `IAtomList`. Needed in order to inject List References into the Variable Instancer class.
+
+##### Returns
+
+The value as an `IAtomList`.
+
+---
+
+## `IWithCollectionEvents`
+
+Interface for all Atom Collections.
+
+---
+
 ## `AtomCollection`
 
-A Collection / Dictionary of Atom Variables (AtomBaseVariable).
+A Collection / Dictionary of Atom Variables (`AtomBaseVariable`).
 
 ### Properties
 
@@ -1647,6 +1828,24 @@ The clear Event as an `IObservable<Void>`.
 ## `AtomBaseVariableList`
 
 A List of type AtomBaseVariable. Used by AtomList.
+
+### Properties
+
+#### `Added`
+
+Get or set the Added Action.
+
+---
+
+#### `Removed`
+
+Get or set the Removed Action.
+
+---
+
+#### `Cleared`
+
+Get or set the Cleared Action.
 
 ### Methods
 
@@ -1733,7 +1932,43 @@ Insert item at index.
 
 #### `Clear`
 
-Ckear list.
+Clear list.
+
+---
+
+## `SyncVariableInstancerToCollection`3`
+
+Adds a Variable from a Variable Instancer to a Collection or List on OnEnable and removes it on OnDestroy.
+
+### Variables
+
+#### `_variableInstancer`
+
+The Variable Instancer whose Variable will get synced to the List and / or Collection defined.
+
+---
+
+#### `_syncToCollection`
+
+If assigned the Variable from the Variable Instancer will be added to the Collection on Start using `_syncToCollectionKey` as key or if not specified it uses the gameObject's instance id as key. The value will also be removed from the collection OnDestroy.
+
+---
+
+#### `_syncToCollectionKey`
+
+If this string is not null or white space and if a Collection to sync to is defined, this is the key that will used when adding the Variable to the Collection. If not defined the key defaults to this GameObject's instance id.
+
+---
+
+#### `_syncToList`
+
+If assigned the Variable from the Variable Instancer will be added to the list on Start. The value will also be removed from the list OnDestroy.
+
+---
+
+## `SyncGameObjectToList`
+
+Adds a GameObject to a GameObject Value List on OnEnable and removes it on OnDestroy.
 
 ---
 

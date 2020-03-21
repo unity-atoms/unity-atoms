@@ -9,13 +9,13 @@ sidebar_label: UnityAtoms.Mobile
 
 ## `TouchUserInputPairEventReferenceListener`
 
-Event Reference Listener of type `TouchUserInputPair`. Inherits from `AtomEventReferenceListener<TouchUserInputPair, TouchUserInputPairAction, TouchUserInputPairEvent, TouchUserInputPairEventReference, TouchUserInputPairUnityEvent>`.
+Event Reference Listener of type `TouchUserInputPair`. Inherits from `AtomEventReferenceListener<TouchUserInputPair, TouchUserInputPairEvent, TouchUserInputPairEventReference, TouchUserInputPairUnityEvent>`.
 
 ---
 
 ## `TouchUserInputEventReferenceListener`
 
-Event Reference Listener of type `TouchUserInput`. Inherits from `AtomEventReferenceListener<TouchUserInput, TouchUserInputAction, TouchUserInputEvent, TouchUserInputEventReference, TouchUserInputUnityEvent>`.
+Event Reference Listener of type `TouchUserInput`. Inherits from `AtomEventReferenceListener<TouchUserInput, TouchUserInputEvent, TouchUserInputEventReference, TouchUserInputUnityEvent>`.
 
 ---
 
@@ -156,7 +156,7 @@ Enum for different touch user input states.
 
 ## `TouchUserInputReference`
 
-Reference of type `TouchUserInput`. Inherits from `EquatableAtomReference<TouchUserInput, TouchUserInputPair, TouchUserInputConstant, TouchUserInputVariable, TouchUserInputEvent, TouchUserInputPairEvent, TouchUserInputTouchUserInputFunction, TouchUserInputVariableInstancer>`.
+Reference of type `TouchUserInput`. Inherits from `EquatableAtomReference<TouchUserInput, TouchUserInputPair, TouchUserInputConstant, TouchUserInputVariable, TouchUserInputEvent, TouchUserInputPairEvent, TouchUserInputTouchUserInputFunction, TouchUserInputVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
@@ -259,6 +259,12 @@ Action of type `TouchUserInput`. Inherits from `AtomAction<TouchUserInput>`.
 ## `TouchUserInputTouchUserInputFunction`
 
 Function x 2 of type `TouchUserInput`. Inherits from `AtomFunction<TouchUserInput, TouchUserInput>`.
+
+---
+
+## `SyncTouchUserInputVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type TouchUserInput to a Collection or List on OnEnable and removes it on OnDestroy.
 
 ---
 

@@ -7,12 +7,6 @@ sidebar_label: UnityAtoms.BaseAtoms.Editor
 
 # Namespace - `UnityAtoms.BaseAtoms.Editor`
 
-## `VoidEventEditor`
-
-Event property drawer of type `Void`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
 ## `StringVariableEditor`
 
 Variable Inspector of type `string`. Inherits from `AtomVariableEditor`
@@ -142,6 +136,12 @@ Event property drawer of type `Vector2Pair`. Inherits from `AtomEventEditor<Vect
 ## `Collider2DPairEventEditor`
 
 Event property drawer of type `Collider2DPair`. Inherits from `AtomEventEditor<Collider2DPair, Collider2DPairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `VoidEventEditor`
+
+Event property drawer of type `Void`. Inherits from `AtomEventEditor<Void, VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -385,6 +385,12 @@ Event property drawer of type `Collider2DPair`. Inherits from `AtomDrawer<Collid
 
 ---
 
+## `VoidEventDrawer`
+
+Event property drawer of type `Void`. Inherits from `AtomDrawer<VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `Collider2DEventDrawer`
 
 Event property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -445,9 +451,9 @@ Event property drawer of type `ColorPair`. Inherits from `AtomDrawer<ColorPairEv
 
 ---
 
-## `AtomBaseVariableListDrawer`
+## `AtomListReferenceDrawer`
 
-A custom property drawer for AtomBaseVariableList.
+A custom property drawer for AtomListReference. Makes it possible to choose between a List or a List Instancer.
 
 ---
 
@@ -457,9 +463,21 @@ SerializableDictionary property drawer for type <StringReference, AtomBaseVariab
 
 ---
 
+## `AtomCollectionReferenceDrawer`
+
+A custom property drawer for AtomCollectionReference. Makes it possible to choose between a Collection or a Collection Instancer.
+
+---
+
 ## `SerializableDictionaryDrawer`3`
 
 A custom property drawer for SerializableDictionary.
+
+---
+
+## `AtomListDrawer`
+
+A custom property drawer for AtomBaseVariableList.
 
 ---
 

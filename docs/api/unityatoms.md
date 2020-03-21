@@ -13,30 +13,30 @@ Dummy module class used for representing nothing in for example empty Events, eg
 
 ---
 
-## `AtomEventInstancer<T,E>`
+## `EquatableAtomReference<T,P,C,V,E1,E2,F,VI>`
 
 #### Type Parameters
 
--   `T` - The value type.
--   `E` - Event of type T.
+-   `T` - The type of the variable.
+-   `P` - IPair of type `T`.
+-   `C` - Constant of type `T`.
+-   `V` - Variable of type `T`.
+-   `E1` - Event of type `T`.
+-   `E2` - Event of type `IPair<T>`.
+-   `F` - Function of type `T => T`.
+-   `VI` - Variable Instancer of type `T`.
 
-An Event Instancer is a MonoBehaviour that takes an Event as a base and creates an in memory copy of it OnEnable. This is handy when you want to use Events for prefabs that are instantiated at runtime.
-
-### Variables
-
-#### `_base`
-
-The Event that the in memory copy will be based on when created at runtime.
-
-### Properties
-
-#### `Event`
-
-Getter for retrieving the in memory runtime Event.
+Atom Reference that where the value is implementing `IEquatable`.
 
 ---
 
-## `AtomReferenceBase`
+## `AtomReferenceUsage`
+
+Different Reference usages.
+
+---
+
+## `AtomBaseReference`
 
 None generic base class for `AtomReference<T, C, V, E1, E2, F, VI>`.
 
@@ -44,17 +44,11 @@ None generic base class for `AtomReference<T, C, V, E1, E2, F, VI>`.
 
 #### `_usage`
 
-Descries how we use the Reference and where the value comes from.
+Describes how we use the Reference and where the value comes from.
 
 ---
 
-## `AtomReferenceBase.Usage`
-
-Enum for how to use the Reference.
-
----
-
-## `AtomReference<T,P,C,V,E1,E2,F,VI>0`
+## `AtomReference<T,P,C,V,E1,E2,F,VI>`
 
 #### Type Parameters
 
@@ -101,14 +95,30 @@ Get or set the value for the Reference.
 
 ---
 
-## `AtomEventReference<T,V,E,VI,EI>`
+## `AtomEventReferenceUsage`
+
+Different types of Event Reference usages.
+
+---
+
+## `AtomBaseEventReference`
+
+Base class for Event References.
+
+### Variables
+
+#### `_usage`
+
+Describes how we use the Event Reference.
+
+---
+
+## `AtomBaseEventReference<T,E,EI>`
 
 #### Type Parameters
 
 -   `T` - The type of the event.
--   `V` - Variable of type `T`.
 -   `E` - Event of type `T`.
--   `VI` - Variable Instancer of type `T`.
 -   `EI` - Event Instancer of type `T`.
 
 An Event Reference lets you define an event in your script where you then from the inspector can choose if it's going to use the Event from an Event, Event Instancer, Variable or a Variable Instancer.
@@ -125,7 +135,55 @@ Event used if `Usage` is set to `Event`.
 
 EventInstancer used if `Usage` is set to `EventInstancer`.
 
+### Properties
+
+#### `Event`
+
+Get the event for the Event Reference.
+
+### Methods
+
+#### `GetEvent<E>`
+
+Get event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Returns
+
+The event.
+
 ---
+
+#### `SetEvent<E>(e)`
+
+Set event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Parameters
+
+-   `e` - The new event value.
+
+---
+
+## `AtomEventReference<T,V,E,VI,EI>`
+
+#### Type Parameters
+
+-   `T` - The type of the event.
+-   `V` - Variable of type `T`.
+-   `E` - Event of type `T`.
+-   `VI` - Variable Instancer of type `T`.
+-   `EI` - Event Instancer of type `T`.
+
+An Event Reference lets you define an event in your script where you then from the inspector can choose if it's going to use the Event from an Event, Event Instancer, Variable or a Variable Instancer.
+
+### Variables
 
 #### `_variable`
 
@@ -141,13 +199,44 @@ Variable Instancer used if `Usage` is set to `VariableInstancer`.
 
 #### `Event`
 
-Get the event for the Event Reference.
+Get or set the Event used by the Event Reference.
+
+---
+
+## `AtomListWrapper<T>`
+
+#### Type Parameters
+
+-   `T` - Type used in list.
+
+Needed in order to create a property drawer for a List / Array. See this for more info: https://answers.unity.com/questions/605875/custompropertydrawer-for-array-types-in-43.html
+
+---
+
+## `AtomVariableInstancer<V,P,T,E1,E2,F>`
+
+#### Type Parameters
+
+-   `V` - Variable of type T.
+-   `P` - IPair of type `T`.
+-   `T` - The value type.
+-   `E1` - Event of type T.
+-   `E2` - Event x 2 of type T.
+-   `F` - Function of type T => T
+
+A Variable Instancer is a MonoBehaviour that takes a variable as a base and creates an in memory copy of it OnEnable. This is handy when you want to use atoms for prefabs that are instantiated at runtime. Use together with AtomCollection to react accordingly when a prefab with an assoicated atom is added or deleted to the scene.
 
 ### Methods
 
+#### `ImplSpecificSetup`
+
+Override to add implementation specific setup on `OnEnable`.
+
+---
+
 #### `GetEvent<E>`
 
-Get event by type. Don't use directly! Used only so that we don't need two implementations of Event Instancer and Listeners (one for `T` and one for `IPair<T>`)
+Get event by type.
 
 #### Type Parameters
 
@@ -161,7 +250,7 @@ The event.
 
 #### `SetEvent<E>(e)`
 
-Set event by type. Don't use directly! Used only so that we don't need two implementations of Event Instancer and Listeners (one for `T` and one for `IPair<T>`)
+Set event by type.
 
 #### Type Parameters
 
@@ -173,25 +262,7 @@ Set event by type. Don't use directly! Used only so that we don't need two imple
 
 ---
 
-## `AtomEventReferenceBase`
-
-None generic base class for `AtomEventReference<...>`.
-
-### Variables
-
-#### `_usage`
-
-Describes how we use the Event Reference.
-
----
-
-## `AtomEventReferenceBase.Usage`
-
-Enum for how to use the Event Reference.
-
----
-
-## `AtomVariableInstancer<V,P,T,E1,E2,F>`
+## `AtomBaseVariableInstancer<V,P,T,E1,E2,F>`
 
 #### Type Parameters
 
@@ -210,18 +281,6 @@ A Variable Instancer is a MonoBehaviour that takes a variable as a base and crea
 
 The variable that the in memory copy will be based on when created at runtime.
 
----
-
-#### `_syncToCollection`
-
-If assigned the in memory copy variable will be added to the collection on Start using the gameObject's instance id as key. The value will also be removed from the collection OnDestroy.
-
----
-
-#### `_syncToList`
-
-If assigned the in memory copy variable will be added to the list on Start. The value will also be removed from the list OnDestroy.
-
 ### Properties
 
 #### `Variable`
@@ -236,31 +295,9 @@ Getter for retrieving the value of the in memory runtime variable.
 
 ### Methods
 
-#### `GetEvent<E>`
+#### `ImplSpecificSetup`
 
-Get event by type. Don't use directly! Used only so that we don't need two implementations of Event Instancer and Listeners (one for `T` and one for `IPair<T>`)
-
-#### Type Parameters
-
--   `E` - undefined
-
-##### Returns
-
-The event.
-
----
-
-#### `SetEvent<E>(e)`
-
-Set event by type. Don't use directly! Used only so that we don't need two implementations of Event Instancer and Listeners (one for `T` and one for `IPair<T>`)
-
-#### Type Parameters
-
--   `E` - undefined
-
-##### Parameters
-
--   `e` - The new event value.
+Override to add implementation specific setup on `OnEnable`.
 
 ---
 
@@ -288,291 +325,9 @@ Prefix that should be pre-pended to all Debug.Logs made from UnityAtoms to help 
 
 ---
 
-## `DynamicAtoms`
+## `Runtime.ExecutionOrder`
 
-Static helper class for when creating Atoms a runtime (yes it is indeed possible 🤯).
-
-### Methods
-
-#### `CreateVariable<T,P,V,E1,E2,F>(initialValue,changed,changedWithHistory,preChangeTransformers)`
-
-Create a Variable at runtime.
-
-#### Type Parameters
-
--   `T` - The Variable value type.
--   `P` - IPair of type `T`.
--   `V` - The Variable type AtomVariable<T, E1, E2>`.
--   `E1` - The type of the `changed` Event of type `AtomEvent<T>`.
--   `E2` - The type of the `changedWithHistory` Event of type `AtomEvent<T, T>`.
--   `F` - The type of the `preChangeTransformers` Functions of type `AtomFunction<T, T>`.
-
-##### Parameters
-
--   `initialValue` - Inital value of the Variable created.
--   `changed` - Changed Event of type `E1`.
--   `changedWithHistory` - Changed with history Event of type `E2`.
--   `preChangeTransformers` - List of pre change transformers of the type `List<F>`.
-
-##### Returns
-
-The Variable created.
-
----
-
-#### `CreateValueList<T,L,E>(added,removed,cleared)`
-
-Create a Value List at runtime.
-
-#### Type Parameters
-
--   `T` - The list item type.
--   `L` - The List type to create of type `AtomList<T, E>`.
--   `E` - The Event tyoe used for `removed` and `added` of type `AtomEvent<T>`.
-
-##### Parameters
-
--   `added` - Added Event of type `E`.
--   `removed` - Removed Event of type `E`.
--   `cleared` - Cleared Event of type `Void`.
-
-##### Returns
-
-The List created.
-
----
-
-#### `CreateAction<A,T1>(action)`
-
-Create an Action at runtime.
-
-#### Type Parameters
-
--   `A` - The Action created of type `AtomAction<T>`.
--   `T1` - The type of the first parameter of the Action.
-
-##### Parameters
-
--   `action` - The action.
-
-##### Returns
-
-The Action created
-
----
-
-#### `CreateAction<A,T1,T2>(action)`
-
-Create an Action at runtime.
-
-#### Type Parameters
-
--   `A` - The Action created of type `AtomAction<T1, T2>`.
--   `T1` - The type of the first parameter of the Action.
--   `T2` - The type of the second parameter of the Action.
-
-##### Parameters
-
--   `action` - The action.
-
-##### Returns
-
-The Action created
-
----
-
-#### `CreateAction<A,T1,T2,T3>(action)`
-
-Create an Action at runtime.
-
-#### Type Parameters
-
--   `A` - The Action created of type `AtomAction<T1, T2, T3>`.
--   `T1` - The type of the first parameter of the Action.
--   `T2` - The type of the second parameter of the Action.
--   `T3` - The type of the third parameter of the Action.
-
-##### Parameters
-
--   `action` - The action.
-
-##### Returns
-
-The Action created
-
----
-
-#### `CreateAction<A,T1,T2,T3,T4>(action)`
-
-Create an Action at runtime.
-
-#### Type Parameters
-
--   `A` - The Action created of type `AtomAction<T1, T2, T3, T4>`.
--   `T1` - The type of the first parameter of the Action.
--   `T2` - The type of the second parameter of the Action.
--   `T3` - The type of the third parameter of the Action.
--   `T4` - The type of the fourth parameter of the Action.
-
-##### Parameters
-
--   `action` - The action.
-
-##### Returns
-
-The Action created
-
----
-
-#### `CreateAction<A,T1,T2,T3,T4,T5>(action)`
-
-Create an Action at runtime.
-
-#### Type Parameters
-
--   `A` - The Action created of type `AtomAction<T1, T2, T3, T4, T5>`.
--   `T1` - The type of the first parameter of the Action.
--   `T2` - The type of the second parameter of the Action.
--   `T3` - The type of the third parameter of the Action.
--   `T4` - The type of the fourth parameter of the Action.
--   `T5` - The type of the fifth parameter of the Action.
-
-##### Parameters
-
--   `action` - The action.
-
-##### Returns
-
-The Action created
-
----
-
-#### `CreateFunction<F,R>(func)`
-
-Create a Function at runtime.
-
-#### Type Parameters
-
--   `F` - The Function created of type `AtomFunction<R>`.
--   `R` - The return type.
-
-##### Parameters
-
--   `func` - The function.
-
-##### Returns
-
-The Function crated.
-
----
-
-#### `CreateFunction<F,R,T1>(func)`
-
-Create a Function at runtime.
-
-#### Type Parameters
-
--   `F` - The Function created of type `AtomFunction<R, T1>`.
--   `R` - The return type.
--   `T1` - The type of the first parameter of the Function.
-
-##### Parameters
-
--   `func` - The function.
-
-##### Returns
-
-The Function crated.
-
----
-
-#### `CreateFunction<F,R,T1,T2>(func)`
-
-Create a Function at runtime.
-
-#### Type Parameters
-
--   `F` - The Function created of type `AtomFunction<R, T1, T2>`.
--   `R` - The return type.
--   `T1` - The type of the first parameter of the Function.
--   `T2` - The type of the second parameter of the Function.
-
-##### Parameters
-
--   `func` - The function.
-
-##### Returns
-
-The Function crated.
-
----
-
-#### `CreateFunction<F,R,T1,T2,T3>(func)`
-
-Create a Function at runtime.
-
-#### Type Parameters
-
--   `F` - The Function created of type `AtomFunction<R, T1, T2, T3>`.
--   `R` - The return type.
--   `T1` - The type of the first parameter of the Function.
--   `T2` - The type of the second parameter of the Function.
--   `T3` - The type of the third parameter of the Function.
-
-##### Parameters
-
--   `func` - The function.
-
-##### Returns
-
-The Function crated.
-
----
-
-#### `CreateFunction<F,R,T1,T2,T3,T4>(func)`
-
-Create a Function at runtime.
-
-#### Type Parameters
-
--   `F` - The Function created of type `AtomFunction<R, T1, T2, T3, T4>`.
--   `R` - The return type.
--   `T1` - The type of the first parameter of the Function.
--   `T2` - The type of the second parameter of the Function.
--   `T3` - The type of the third parameter of the Function.
--   `T4` - The type of the fourth parameter of the Function.
-
-##### Parameters
-
--   `func` - The function.
-
-##### Returns
-
-The Function crated.
-
----
-
-#### `CreateFunction<F,R,T1,T2,T3,T4,T5>(func)`
-
-Create a Function at runtime.
-
-#### Type Parameters
-
--   `F` - The Function created of type `AtomFunction<R, T1, T2, T3, T4, T5>`.
--   `R` - The return type.
--   `T1` - The type of the first parameter of the Function.
--   `T2` - The type of the second parameter of the Function.
--   `T3` - The type of the third parameter of the Function.
--   `T4` - The type of the fourth parameter of the Function.
--   `T5` - The type of the fifth parameter of the Function.
-
-##### Parameters
-
--   `func` - The function.
-
-##### Returns
-
-The Function crated.
+Constants for defining DefaultExecutionOrder.
 
 ---
 
@@ -585,6 +340,57 @@ Specify a texture name from your assets which you want to be assigned as an icon
 ## `ReadOnlyAttribute`
 
 Use to make a field read only in the Unity inspector. Solution taken from here: https://answers.unity.com/questions/489942/how-to-make-a-readonly-property-in-inspector.html
+
+---
+
+## `AtomEventInstancer<T,E>`
+
+#### Type Parameters
+
+-   `T` - The value type.
+-   `E` - Event of type T.
+
+An Event Instancer is a MonoBehaviour that takes an Event as a base and creates an in memory copy of it on OnEnable. This is handy when you want to use Events for prefabs that are instantiated at runtime.
+
+### Variables
+
+#### `_base`
+
+The Event that the in memory copy will be based on when created at runtime.
+
+### Properties
+
+#### `Event`
+
+Getter for retrieving the in memory runtime Event.
+
+### Methods
+
+#### `GetEvent<E>`
+
+Get event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Returns
+
+The event.
+
+---
+
+#### `SetEvent<E>(e)`
+
+Set event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Parameters
+
+-   `e` - The new event value.
 
 ---
 
@@ -662,12 +468,6 @@ Generic base class for Variables. Inherits from `AtomBaseVariable<T>`.
 
 ### Variables
 
-#### `_initialValue`
-
-The inital value of the Variable.
-
----
-
 #### `Changed`
 
 Changed Event triggered when the Variable value gets changed.
@@ -677,6 +477,12 @@ Changed Event triggered when the Variable value gets changed.
 #### `ChangedWithHistory`
 
 Changed with history Event triggered when the Variable value gets changed.
+
+---
+
+#### `_initialValue`
+
+The inital value of the Variable.
 
 ### Properties
 
@@ -764,7 +570,7 @@ The Variable's change Event as an `IObservable<T, T>`.
 
 #### `GetEvent<E>`
 
-Get event by type. Don't use directly! Used only so that we don't need two implementations of Event Instancer and Listeners (one for `T` and one for `IPair<T>`)
+Get event by type.
 
 #### Type Parameters
 
@@ -778,7 +584,7 @@ The event.
 
 #### `SetEvent<E>(e)`
 
-Set event by type. Don't use directly! Used only so that we don't need two implementations of Event Instancer and Listeners (one for `T` and one for `IPair<T>`)
+Set event by type.
 
 #### Type Parameters
 
@@ -790,15 +596,23 @@ Set event by type. Don't use directly! Used only so that we don't need two imple
 
 ---
 
+## `EquatableAtomVariable<T,P,E1,E2,F>`
+
+#### Type Parameters
+
+-   `T` - The Variable type.
+-   `P` - Pair of type T.
+-   `E1` - Event of type T.
+-   `E2` - Pair event of type T.
+-   `F` - Function of type T and T.
+
+Atom Variable base class for types that are implementing `IEquatable<T>`.
+
+---
+
 ## `AtomAction`
 
 Base abstract class for Actions. Inherits from `BaseAtom`.
-
-### Variables
-
-#### `ActionNoValue`
-
-The actual Action.
 
 ### Methods
 
@@ -816,12 +630,6 @@ Perform the Action.
 
 Generic abstract base class for Actions. Inherits from `AtomAction`.
 
-### Variables
-
-#### `Action`
-
-The actual Action.
-
 ### Methods
 
 #### `Do(t1)`
@@ -831,146 +639,6 @@ Perform the Action.
 ##### Parameters
 
 -   `t1` - The first parameter.
-
----
-
-## `AtomAction<T1,T2>`
-
-#### Type Parameters
-
--   `T1` - The first type for this Action.
--   `T2` - The second type for this Action.
-
-Generic abstract base class for Actions. Inherits from `AtomAction`.
-
-### Variables
-
-#### `Action`
-
-The actual Action.
-
-### Methods
-
-#### `Do(t1,t2)`
-
-Perform the Action.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
-
----
-
-## `AtomAction<T1,T2,T3>`
-
-#### Type Parameters
-
--   `T1` - The first type for this Action.
--   `T2` - The second type for this Action.
--   `T3` - The third type for this Action.
-
-Generic abstract base class for Actions. Inherits from `AtomAction`.
-
-### Variables
-
-#### `Action`
-
-The actual Action.
-
-### Methods
-
-#### `Do(t1,t2,t3)`
-
-Perform the Action.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
--   `t3` - The third parameter.
-
----
-
-## `AtomAction<T1,T2,T3,T4>`
-
-#### Type Parameters
-
--   `T1` - The first type for this Action.
--   `T2` - The second type for this Action.
--   `T3` - The third type for this Action.
--   `T4` - The fourth type for this Action.
-
-Generic abstract base class for Actions. Inherits from `AtomAction`.
-
-### Variables
-
-#### `Action`
-
-The actual Action.
-
-### Methods
-
-#### `Do(t1,t2,t3,t4)`
-
-Perform the Action.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
--   `t3` - The third parameter.
--   `t4` - The fourth parameter.
-
----
-
-## `AtomAction<T1,T2,T3,T4,T5>`
-
-#### Type Parameters
-
--   `T1` - The first type for this Action.
--   `T2` - The second type for this Action.
--   `T3` - The third type for this Action.
--   `T4` - The fourth type for this Action.
--   `T5` - The fifth type for this Action.
-
-Generic abstract base class for Actions. Inherits from `AtomAction`.
-
-### Variables
-
-#### `Action`
-
-The actual Action.
-
-### Methods
-
-#### `Do(t1,t2,t3,t4,t5)`
-
-Perform the Action.
-
-##### Parameters
-
--   `t1` - The first parameter.
--   `t2` - The second parameter.
--   `t3` - The third parameter.
--   `t4` - The fourth parameter.
--   `t5` - The fifth parameter.
-
----
-
-## `VoidAction`
-
-Action of type `Void`. Inherits from `AtomAction<Void>`.
-
-### Methods
-
-#### `Do(UnityAtoms.Void)`
-
-Do the Action.
-
-##### Parameters
-
--   `_` - Dummy Void parameter.
 
 ---
 
@@ -1325,6 +993,12 @@ The event replays the specified number of old values to new subscribers. Works l
 
 Used when raising values from the inspector for debugging purposes.
 
+### Properties
+
+#### `ReplayBuffer`
+
+Retrieve Replay Buffer as a List. This call will allocate memory so use sparsely.
+
 ### Methods
 
 #### `Raise(item)`
@@ -1334,6 +1008,16 @@ Raise the Event.
 ##### Parameters
 
 -   `item` - The value associated with the Event.
+
+---
+
+#### `RaiseEditor(item)`
+
+Used in editor scipts since Raise is ambigious when using reflection to get method.
+
+##### Parameters
+
+-   `item` - undefined
 
 ---
 
@@ -1354,6 +1038,12 @@ Unregister handler that was registered using the `Register` method.
 ##### Parameters
 
 -   `action` - The handler.
+
+---
+
+#### `UnregisterAll`
+
+Unregister all handlers that were registered using the `Register` method.
 
 ---
 
@@ -1387,32 +1077,16 @@ The Event as an `IObservable<T>`.
 
 ---
 
-## `AtomBaseVariableEvent`
-
-Event of type `AtomBaseVariable`. Inherits from `AtomEvent<AtomBaseVariable>`.
-
----
-
-## `VoidEvent`
-
-Event of type `Void`. Inherits from `AtomEvent<Void>`.
-
----
-
-## `AtomEventReferenceListener<T,A,V,E,VI,EI,ER,UER>`
+## `AtomEventReferenceListener<T,E,ER,UER>`
 
 #### Type Parameters
 
 -   `T` - The type that we are listening for.
--   `A` - Acion of type `T`.
--   `V` - Variable of type `T`.
 -   `E` - Event of type `T`.
--   `VI` - Variable Instancer of type `T`.
--   `EI` - Event Instancer of type `T`.
 -   `ER` - Event Reference of type `T`.
 -   `UER` - UnityEvent of type `T`.
 
-Generic base class for Listeners using Event Reference. Inherits from `AtomListener<T, A, E, UER>` and implements `IAtomListener<T>`.
+Generic base class for Listeners using Event Reference. Inherits from `AtomListener<T, E, UER>` and implements `IAtomListener<T>`.
 
 ### Variables
 
@@ -1440,12 +1114,11 @@ A description of the Listener made for documentation purposes.
 
 ---
 
-## `AtomBaseListener<T,A,E,UER>`
+## `AtomBaseListener<T,E,UER>`
 
 #### Type Parameters
 
 -   `T` - The type that we are listening for.
--   `A` - Acion of type `T`.
 -   `E` - Event of type `T`.
 -   `UER` - UnityEvent of type `T`.
 
@@ -1487,16 +1160,15 @@ Helper to regiser as listener callback
 
 ---
 
-## `AtomEventListener<T,A,E,UER>`
+## `AtomEventListener<T,E,UER>`
 
 #### Type Parameters
 
 -   `T` - The type that we are listening for.
--   `A` - Acion of type `T`.
 -   `E` - Event of type `T`.
 -   `UER` - UnityEvent of type `T`.
 
-Generic base class for Listeners using Event. Inherits from `AtomListener<T, A, E, UER>` and implements `IAtomListener<T>`.
+Generic base class for Listeners using Event. Inherits from `AtomListener<T, E, UER>` and implements `IAtomListener<T>`.
 
 ### Variables
 
@@ -1509,6 +1181,12 @@ The Event that we are listening to.
 #### `Event`
 
 The Event we are listening for as a property.
+
+---
+
+## `VariableResetter`
+
+Resets all the Variables in the list on OnEnable. Note that this will cause Events on the Variables to be triggered.
 
 ---
 
@@ -1733,6 +1411,54 @@ Clear the list.
 
 ---
 
+## `IPair`1`
+
+Interface defining a generic `IPair<T>`.
+
+---
+
+## `IIsValid`
+
+Interface defining an `IsValid` method.
+
+---
+
+## `ISetEvent`
+
+Interface for setting an event.
+
+---
+
+## `IGetEvent`
+
+Interface for getting an event.
+
+---
+
+## `IAtomCollection`
+
+Interface for Atom Collections.
+
+---
+
+## `IVariable`1`
+
+Interface for retrieving a Variable.
+
+---
+
+## `IGetValue`1`
+
+Interface for getting a value.
+
+---
+
+## `IAtomList`
+
+Interface for Atom Lists.
+
+---
+
 ## `IMGUIUtils`
 
 Utility methods for IMGUI.
@@ -1853,20 +1579,21 @@ A capitalized version of the string provided.
 
 ---
 
-## `SetVariableValue<T,P,C,R,E1,E2,F,VI>1`
+## `SetVariableValue<T,P,V,C,R,E1,E2,F,VI>`
 
 #### Type Parameters
 
 -   `T` - The type of the Variable to set.
 -   `P` - A IPair of type T.
--   `C` - A Constant class of type `T` to set.
+-   `V` - A Variable class of type `T` to set.
+-   `C` - A Constant class of type `T`.
 -   `R` - A Reference of type `T`.
 -   `E1` - An Event of type `T`.
 -   `E2` - An Event x 2 of type `T`.
 -   `F` - A Function x 2 of type `T`.
 -   `VI` - A Variable Instancer of type `T`.
 
-Base class for all SetVariableValue Actions. Inherits from `VoidAction`.
+Base class for all SetVariableValue Actions. Inherits from `AtomAction`.
 
 ### Variables
 
@@ -1878,7 +1605,7 @@ The Variable to set.
 
 #### `_value`
 
-The value to set.
+The value to use.
 
 ### Methods
 

@@ -91,6 +91,8 @@ const run = async () => {
     "UnityAtoms.Editor.",
     "UnityAtoms.BaseAtoms.",
     "UnityAtoms.BaseAtoms.Editor.",
+    "UnityAtoms.FSM.",
+    "UnityAtoms.FSM.Editor.",
     "UnityAtoms.Tags.",
     "UnityAtoms.Tags.Editor.",
     "UnityAtoms.Mobile.",
