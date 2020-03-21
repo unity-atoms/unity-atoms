@@ -16,6 +16,9 @@
             public const string LOG_PREFIX = "UnityAtoms :: ";
         }
 
+        /// <summary>
+        /// Constants for defining DefaultExecutionOrder.
+        /// </summary>
         public static class ExecutionOrder
         {
             public const int VARIABLE_RESETTER = -200;
