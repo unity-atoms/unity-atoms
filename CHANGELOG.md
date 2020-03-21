@@ -21,12 +21,14 @@
 -   💥 Changed With History Event is now an `AtomEvent<IPair<T>>` instead of an `AtomEvent<T, T>`. ([@AdamRamberg](https://github.com/AdamRamberg))
 -   Sync to Collection / List is now moved from Variable Instancers to it's own script. ([@AdamRamberg](https://github.com/AdamRamberg))
 -   New example scene: InfiniteWaves.
+-   New package - Base Atoms. This is a mandatory package to use together with Core. However, breaking out the implementations from the Core makes the library easier to maintain. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 ## 🚀 New features
 
 -   New package - FSM 🎉 ([@AdamRamberg](https://github.com/AdamRamberg))
 -   Added Collection and List Instancers. ([@AdamRamberg](https://github.com/AdamRamberg))
 -   Added an `OnInitialization` function to `AtomTags`. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   New script for resetting Variables called `VariableResetter`. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 # 3.0.0 (February 24, 2020)
 
