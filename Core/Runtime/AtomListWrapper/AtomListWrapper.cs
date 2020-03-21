@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnityAtoms.BaseAtoms
+namespace UnityAtoms
 {
     /// <summary>
     /// Needed in order to create a property drawer for a List / Array. See this for more info: https://answers.unity.com/questions/605875/custompropertydrawer-for-array-types-in-43.html

@@ -1,5 +1,4 @@
 using System;
-using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.FSM
 {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnityAtoms.BaseAtoms
+namespace UnityAtoms
 {
     public class AtomListAttribute : PropertyAttribute
     {
