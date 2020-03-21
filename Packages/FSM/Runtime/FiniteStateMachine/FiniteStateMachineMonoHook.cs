@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace UnityAtoms.FSM
 {
+    /// <summary>
+    /// Needed By FiniteStateMachine in order to gain access to some of the Unity life cycle methods.
+    /// </summary>
     public class FiniteStateMachineMonoHook : MonoBehaviour
     {
         public static FiniteStateMachineMonoHook GetInstance(bool createIfNotExist = false)

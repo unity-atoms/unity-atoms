@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Different types of Event Reference usages.
+    /// </summary>
     public class AtomEventReferenceUsage
     {
         public const int EVENT = 0;
@@ -11,6 +14,9 @@ namespace UnityAtoms
         public const int VARIABLE_INSTANCER = 3;
     }
 
+    /// <summary>
+    /// Base class for Event References.
+    /// </summary>
     public abstract class AtomBaseEventReference
     {
         /// <summary>

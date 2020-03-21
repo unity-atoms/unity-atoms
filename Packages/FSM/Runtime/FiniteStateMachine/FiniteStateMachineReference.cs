@@ -4,7 +4,9 @@ using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.FSM
 {
-
+    /// <summary>
+    /// Different usages of the FSM reference.
+    /// </summary>
     public class FiniteStateMachineReferenceUsage
     {
         public const int FSM = 0;

@@ -129,6 +129,9 @@ namespace UnityAtoms.Editor
             templateName: "UA_Template__Pair.txt"
         );
 
+        /// <summary>
+        /// Containes all common atom types that are usually generated for a type.
+        /// </summary>
         public static readonly List<AtomType> ALL_ATOM_TYPES = new List<AtomType>()
         {
             AtomTypes.ACTION,
@@ -154,6 +157,9 @@ namespace UnityAtoms.Editor
             AtomTypes.PAIR
         };
 
+        /// <summary>
+        /// Graph explaining all the dependencies between Atoms.
+        /// </summary>
         public static readonly Dictionary<AtomType, List<AtomType>> DEPENDENCY_GRAPH = new Dictionary<AtomType, List<AtomType>>()
         {
             { AtomTypes.PAIR_ACTION, new List<AtomType>() { AtomTypes.PAIR } },

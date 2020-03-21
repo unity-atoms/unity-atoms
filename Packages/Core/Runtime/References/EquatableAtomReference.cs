@@ -2,6 +2,17 @@ using System;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Atom Reference that where the value is implementing `IEquatable`.
+    /// </summary>
+    /// <typeparam name="T">The type of the variable.</typeparam>
+    /// <typeparam name="P">IPair of type `T`.</typeparam>
+    /// <typeparam name="C">Constant of type `T`.</typeparam>
+    /// <typeparam name="V">Variable of type `T`.</typeparam>
+    /// <typeparam name="E1">Event of type `T`.</typeparam>
+    /// <typeparam name="E2">Event of type `IPair&lt;T&gt;`.</typeparam>
+    /// <typeparam name="F">Function of type `T => T`.</typeparam>
+    /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
     public abstract class EquatableAtomReference<T, P, C, V, E1, E2, F, VI> : AtomReference<T, P, C, V, E1, E2, F, VI>, IEquatable<EquatableAtomReference<T, P, C, V, E1, E2, F, VI>>
         where P : struct, IPair<T>
         where C : AtomBaseVariable<T>

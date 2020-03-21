@@ -7,6 +7,10 @@ using UnityAtoms;
 
 namespace UnityAtoms.FSM
 {
+    /// <summary>
+    /// This is an implementation of an FSM in Unity Atoms. It is build using a set of states and a set of transitions. A set can only change through dispatching commands defined by the transitions.
+    /// See the website docs for more info on usage.
+    /// </summary>
     [EditorIcon("atom-icon-delicate")]
     [CreateAssetMenu(menuName = "Unity Atoms/FSM/Finite State Machine", fileName = "FiniteStateMachine")]
     public class FiniteStateMachine : StringVariable
