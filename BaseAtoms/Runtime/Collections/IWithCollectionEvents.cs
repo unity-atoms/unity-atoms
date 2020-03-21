@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// Interface for all Atom Collection.
+    /// Interface for all Atom Collections.
     /// </summary>
     public interface IWithCollectionEvents
     {

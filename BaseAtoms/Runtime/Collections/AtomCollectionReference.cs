@@ -3,7 +3,9 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-
+    /// <summary>
+    /// Different types of usages for an Atom Collection Reference.
+    /// </summary>
     public class AtomCollectionReferenceUsage
     {
         public const int COLLECTION = 0;
