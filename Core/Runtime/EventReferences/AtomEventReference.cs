@@ -18,7 +18,7 @@ namespace UnityAtoms
         where EI : AtomEventInstancer<T, E>
     {
         /// <summary>
-        /// Get the event for the Event Reference.
+        /// Get or set the Event used by the Event Reference.
         /// </summary>
         /// <value>The event of type `E`.</value>
         public override E Event

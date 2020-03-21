@@ -3,6 +3,9 @@ using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.FSM
 {
+    /// <summary>
+    /// Takes a base FSM and creates an in memory copy of it on OnEnable. Removes the FSM on OnDestroy.
+    /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/FSM/Finite State Machine Instancer")]
     public class FiniteStateMachineInstancer : StringVariableInstancer

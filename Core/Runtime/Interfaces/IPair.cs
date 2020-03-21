@@ -1,8 +1,8 @@
-/// <summary>
-/// Interface defining a generic `IPair&lt;T&gt;`.
-/// </summary>
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Interface defining a generic `IPair&lt;T&gt;`.
+    /// </summary>
     public interface IPair<T>
     {
         T Item1 { get; set; }

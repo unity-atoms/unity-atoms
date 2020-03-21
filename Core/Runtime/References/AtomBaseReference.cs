@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Different Reference usages.
+    /// </summary>
     public class AtomReferenceUsage
     {
         public const int VALUE = 0;

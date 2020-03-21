@@ -3,6 +3,9 @@ using System;
 
 namespace UnityAtoms.FSM
 {
+    /// <summary>
+    /// Different Event Reference usages.
+    /// </summary>
     public class FSMTransitionDataBaseEventReferenceUsage
     {
         public const int FSM = 2;

@@ -4,6 +4,9 @@ using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.FSM
 {
+    /// <summary>
+    /// Class representing a state in the FSM.
+    /// </summary>
     [Serializable]
     public class FSMState
     {
