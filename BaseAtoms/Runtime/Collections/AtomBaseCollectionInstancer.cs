@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
+    /// <summary>
+    /// Creates an in memory copy of a Collection using a base.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="V"></typeparam>
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
     public abstract class AtomBaseCollectionInstancer<T, V> : AtomBaseVariableInstancer<T, V>

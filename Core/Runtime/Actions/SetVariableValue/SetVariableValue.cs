@@ -8,7 +8,8 @@ namespace UnityAtoms
     /// </summary>
     /// <typeparam name="T">The type of the Variable to set.</typeparam>
     /// <typeparam name="P">A IPair of type T.</typeparam>
-    /// <typeparam name="C">A Constant class of type `T` to set.</typeparam>
+    /// <typeparam name="V">A Variable class of type `T` to set.</typeparam>
+    /// <typeparam name="C">A Constant class of type `T`.</typeparam>
     /// <typeparam name="R">A Reference of type `T`.</typeparam>
     /// <typeparam name="E1">An Event of type `T`.</typeparam>
     /// <typeparam name="E2">An Event x 2 of type `T`.</typeparam>
@@ -31,7 +32,7 @@ namespace UnityAtoms
         private V _variable = null;
 
         /// <summary>
-        /// The value to set.
+        /// The value to use.
         /// </summary>
         [SerializeField]
         private R _value = null;

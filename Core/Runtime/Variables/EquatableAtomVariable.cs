@@ -2,6 +2,14 @@ using System;
 
 namespace UnityAtoms
 {
+    /// <summary>
+    /// Atom Variable base class for types that are implementing `IEquatable&lt;T&gt;`.
+    /// </summary>
+    /// <typeparam name="T">The Variable type.</typeparam>
+    /// <typeparam name="P">Pair of type T.</typeparam>
+    /// <typeparam name="E1">Event of type T.</typeparam>
+    /// <typeparam name="E2">Pair event of type T.</typeparam>
+    /// <typeparam name="F">Function of type T and T.</typeparam>
     [EditorIcon("atom-icon-lush")]
     public abstract class EquatableAtomVariable<T, P, E1, E2, F> : AtomVariable<T, P, E1, E2, F>
         where T : IEquatable<T>
