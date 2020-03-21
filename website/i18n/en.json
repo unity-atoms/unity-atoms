@@ -17,6 +17,14 @@
         "title": "UnityAtoms.Editor",
         "sidebar_label": "UnityAtoms.Editor"
       },
+      "api/unityatoms.fsm.editor": {
+        "title": "UnityAtoms.FSM.Editor",
+        "sidebar_label": "UnityAtoms.FSM.Editor"
+      },
+      "api/unityatoms.fsm": {
+        "title": "UnityAtoms.FSM",
+        "sidebar_label": "UnityAtoms.FSM"
+      },
       "api/unityatoms": {
         "title": "UnityAtoms",
         "sidebar_label": "UnityAtoms"
@@ -53,6 +61,10 @@
         "title": "UnityAtoms.UI",
         "sidebar_label": "UnityAtoms.UI"
       },
+      "introduction/advanced-example": {
+        "title": "Advanced example",
+        "sidebar_label": "Advanced example"
+      },
       "introduction/basic-tutorial": {
         "title": "Basic tutorial",
         "sidebar_label": "Basic tutorial"
@@ -79,6 +91,10 @@
       "subpackages/base-atoms": {
         "title": "Base Atoms",
         "sidebar_label": "Base Atoms"
+      },
+      "subpackages/fsm": {
+        "title": "FSM",
+        "sidebar_label": "FSM"
       },
       "subpackages/mobile": {
         "title": "Mobile",
