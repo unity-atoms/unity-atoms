@@ -1,7 +1,6 @@
-// generated file
 using UnityEditor;
-using UnityAtoms.Mobile;
 using UnityAtoms.Editor;
+using UnityAtoms.Mobile;
 
 namespace UnityAtoms.Mobile.Editor
 {
@@ -9,7 +8,5 @@ namespace UnityAtoms.Mobile.Editor
     /// Variable Inspector of type `TouchUserInput`. Inherits from `AtomVariableEditor`
     /// </summary>
     [CustomEditor(typeof(TouchUserInputVariable))]
-    public sealed class TouchUserInputVariableEditor : AtomVariableEditor
-    {
-    }
+    public sealed class TouchUserInputVariableEditor : AtomVariableEditor<TouchUserInput, TouchUserInputPair> { }
 }

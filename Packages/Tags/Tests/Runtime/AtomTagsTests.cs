@@ -6,7 +6,7 @@ using System.Reflection;
 using NUnit.Framework;
 using Unity.Profiling;
 using UnityEngine.TestTools;
-using UnityAtoms;
+using UnityAtoms.BaseAtoms;
 using UnityAtoms.Tags;
 using UnityEngine;
 using UnityEngine.TestTools.Constraints;

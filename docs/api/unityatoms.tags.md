@@ -136,37 +136,7 @@ Check if the tag provided is associated with this `GameObject`.
 
 ---
 
-#### `HasTag(UnityEngine.GameObject,UnityAtoms.StringConstant)`
-
-Check if the tag provided is associated with this `GameObject`.
-
-##### Parameters
-
--   `go` - This `GameObject`
--   `tag` - The tag to search for.
-
-##### Returns
-
-`true` if the tag exists, otherwise `false`.
-
----
-
 #### `HasAnyTag(UnityEngine.GameObject,System.Collections.Generic.List{System.String})`
-
-Check if any of the tags provided are associated with this `GameObject`.
-
-##### Parameters
-
--   `go` - This `GameObject`
--   `tags` - The tags to search for.
-
-##### Returns
-
-`true` if any of the tags exist, otherwise `false`.
-
----
-
-#### `HasAnyTag(UnityEngine.GameObject,System.Collections.Generic.List{UnityAtoms.StringConstant})`
 
 Check if any of the tags provided are associated with this `GameObject`.
 
@@ -204,16 +174,6 @@ Check if the tag provided is associated with this `GameObject`.
 ##### Returns
 
 `true` if the tag exists, otherwise `false`.
-
----
-
-#### `AddTag(UnityAtoms.StringConstant)`
-
-Add a tag to this `GameObject`.
-
-##### Parameters
-
--   `tag` - The tag to add as a `StringContant`.
 
 ---
 

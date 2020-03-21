@@ -1,0 +1,16 @@
+{
+    "name": "MamboJamboStudios.UnityAtomsFSM.Runtime",
+    "references": [
+        "MamboJamboStudios.UnityAtomsCore.Runtime",
+        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Generic base class for Lists. Inherits from `BaseAtomList` and `IList&lt;T&gt;`.
+    /// Generic base class for Value Lists. Inherits from `BaseAtomList` and `IList&lt;T&gt;`.
     /// </summary>
     /// <typeparam name="T">The list item type.</typeparam>
     /// <typeparam name="E">Event of type `AtomEvent&lt;T&gt;`.</typeparam>

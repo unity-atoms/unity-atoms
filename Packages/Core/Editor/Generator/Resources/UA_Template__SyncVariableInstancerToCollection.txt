@@ -1,0 +1,17 @@
+using UnityEngine;
+using UnityAtoms.BaseAtoms;
+<%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
+
+<%IF HAS_SUB_UA_NAMESPACE%>
+namespace UnityAtoms.{SUB_UA_NAMESPACE}
+<%ELSE%>
+namespace UnityAtoms
+<%ENDIF%>
+{
+    /// <summary>
+    /// Adds Variable Instancer's Variable of type {VALUE_TYPE} to a Collection or List on OnEnable and removes it on OnDestroy. 
+    /// </summary>
+    [AddComponentMenu("Unity Atoms/Sync Variable Instancer to Collection/Sync {VALUE_TYPE_NAME} Variable Instancer to Collection")]
+    [EditorIcon("atom-icon-delicate")]
+    public class Sync{VALUE_TYPE_NAME}VariableInstancerToCollection : SyncVariableInstancerToCollection<{VALUE_TYPE}, {VALUE_TYPE_NAME}Variable, {VALUE_TYPE_NAME}VariableInstancer> { }
+}

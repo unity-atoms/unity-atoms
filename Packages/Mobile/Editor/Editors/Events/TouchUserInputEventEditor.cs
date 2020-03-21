@@ -1,8 +1,8 @@
 #if UNITY_2019_1_OR_NEWER
 using UnityEditor;
 using UnityEngine.UIElements;
-using UnityAtoms.Mobile;
 using UnityAtoms.Editor;
+using UnityAtoms.Mobile;
 
 namespace UnityAtoms.Mobile.Editor
 {

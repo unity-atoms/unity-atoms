@@ -1,86 +1,44 @@
 using UnityEditor;
-using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
     /// <summary>
-    /// A custom property drawer for Event References. Makes it possible to choose between an Event, Variable or a Variable Instancer.
+    /// A custom property drawer for Event References. Makes it possible to choose between an Event, Event Instancer, Variable or a Variable Instancer.
     /// </summary>
-    [CustomPropertyDrawer(typeof(AtomEventReferenceBase), true)]
-    public class AtomEventReferenceDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(AtomBaseEventReference), true)]
+    public class AtomEventReferenceDrawer : AtomBaseReferenceDrawer
     {
-        private static readonly string[] _popupOptions =
-            { "Use Event", "Use Variable", "Use Variable Instancer" };
-        private static GUIStyle _popupStyle;
-
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        protected class UsageEvent : UsageData
         {
-            SerializedProperty usage = property.FindPropertyRelative("_usage");
-            SerializedProperty ev = property.FindPropertyRelative("_event");
-            SerializedProperty variable = property.FindPropertyRelative("_variable");
-            SerializedProperty variableInstancer = property.FindPropertyRelative("_variableInstancer");
-
-            return EditorGUI.GetPropertyHeight(GetPropToUse(usage, ev, variable, variableInstancer), label);
+            public override int Value { get => AtomEventReferenceUsage.EVENT; }
+            public override string PropertyName { get => "_event"; }
+            public override string DisplayName { get => "Use Event"; }
         }
 
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        protected class UsageEventInstancer : UsageData
         {
-            if (_popupStyle == null)
-            {
-                _popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
-                _popupStyle.imagePosition = ImagePosition.ImageOnly;
-            }
-
-            label = EditorGUI.BeginProperty(position, label, property);
-            position = EditorGUI.PrefixLabel(position, label);
-
-            EditorGUI.BeginChangeCheck();
-
-            // Get properties
-            SerializedProperty usage = property.FindPropertyRelative("_usage");
-            SerializedProperty ev = property.FindPropertyRelative("_event");
-            SerializedProperty variable = property.FindPropertyRelative("_variable");
-            SerializedProperty variableInstancer = property.FindPropertyRelative("_variableInstancer");
-
-            // Calculate rect for configuration button
-            Rect buttonRect = new Rect(position);
-            buttonRect.yMin += _popupStyle.margin.top;
-            buttonRect.width = _popupStyle.fixedWidth + _popupStyle.margin.right;
-            position.xMin = buttonRect.xMax;
-
-            // Store old indent level and set it to 0, the PrefixLabel takes care of it
-            int indent = EditorGUI.indentLevel;
-            EditorGUI.indentLevel = 0;
-            usage.intValue = EditorGUI.Popup(buttonRect, usage.intValue, _popupOptions, _popupStyle);
-
-            EditorGUI.PropertyField(position,
-                GetPropToUse(usage, ev, variable, variableInstancer),
-                GUIContent.none);
-
-            if (EditorGUI.EndChangeCheck())
-                property.serializedObject.ApplyModifiedProperties();
-
-            EditorGUI.indentLevel = indent;
-            EditorGUI.EndProperty();
+            public override int Value { get => AtomEventReferenceUsage.EVENT_INSTANCER; }
+            public override string PropertyName { get => "_eventInstancer"; }
+            public override string DisplayName { get => "Use Event Instancer"; }
         }
 
-        private SerializedProperty GetPropToUse(SerializedProperty usage, SerializedProperty ev, SerializedProperty variable, SerializedProperty variableInstancer)
+        protected class UsageVariable : UsageData
         {
-            var usageIntVal = (AtomEventReferenceBase.Usage)usage.intValue;
-            if (usageIntVal == AtomEventReferenceBase.Usage.Variable)
-            {
-                return variable;
-            }
-            else if (usageIntVal == AtomEventReferenceBase.Usage.VariableInstancer)
-            {
-                return variableInstancer;
-            }
-            else  // if (usageIntVal == AtomEventReferenceBase.Usage.Event)
-            {
-                return ev;
-            }
+            public override int Value { get => AtomReferenceUsage.VARIABLE; }
+            public override string PropertyName { get => "_variable"; }
+            public override string DisplayName { get => "Use Variable"; }
         }
 
+        protected class UsageVariableInstancer : UsageData
+        {
+            public override int Value { get => AtomReferenceUsage.VARIABLE_INSTANCER; }
+            public override string PropertyName { get => "_variableInstancer"; }
+            public override string DisplayName { get => "Use Variable Instancer"; }
+        }
 
+        private readonly UsageData[] _usagesOnlyEvents = new UsageData[2] { new UsageEvent(), new UsageEventInstancer() };
+        private readonly UsageData[] _usages = new UsageData[4] { new UsageEvent(), new UsageEventInstancer(), new UsageVariable(), new UsageVariableInstancer() };
+
+        protected override UsageData[] GetUsages(SerializedProperty prop = null) => prop.FindPropertyRelative("_variable") != null ? _usages : _usagesOnlyEvents;
     }
 }

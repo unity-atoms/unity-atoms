@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56d454e768904df09296076c1aaea26, type: 3}
+  m_Name: GameStateMachine
+  m_EditorClassIdentifier: 
+  _developerDescription: Simple FSM keeping track of the main game state.
+  _id: 
+  _value: GameOver
+  Changed: {fileID: 11400000, guid: 3979f8535cda044809f98bde2acbadcd, type: 2}
+  ChangedWithHistory: {fileID: 0}
+  _oldValue: InGame
+  _initialValue: InGame
+  _preChangeTransformers: []
+  _transitionStarted: {fileID: 0}
+  _completeCurrentTransition: {fileID: 0}
+  _states:
+    _list:
+    - _id:
+        _usage: 0
+        _value: InGame
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _cooldown:
+        _usage: 0
+        _value: 0
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _subMachine: {fileID: 0}
+    - _id:
+        _usage: 0
+        _value: GameOver
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _cooldown:
+        _usage: 0
+        _value: 0
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _subMachine: {fileID: 0}
+  _transitions:
+    _list:
+    - _fromState:
+        _usage: 0
+        _value: InGame
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _toState:
+        _usage: 0
+        _value: GameOver
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _command:
+        _usage: 0
+        _value: SetGameOver
+        _constant: {fileID: 0}
+        _variable: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      _testCondition: {fileID: 0}
+      _raiseEventToCompleteTransition: 0

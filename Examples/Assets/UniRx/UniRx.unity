@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -247,8 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9d93e69065440c2b752b81e4dbacd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: {fileID: 11400000, guid: 41aa2296cd68a4b718a8fd1bd8ad5a95, type: 2}
-  _health: {fileID: 11400000, guid: 30c71ebe6587c4fe8b18d5279710b4dc, type: 2}
+  _health: {fileID: 11400000, guid: 50206c000343d496fa82bd362e3b3b2b, type: 2}
 --- !u!114 &145633449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,7 +366,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854994178
 GameObject:
@@ -381,8 +381,8 @@ GameObject:
   - component: {fileID: 854994183}
   - component: {fileID: 854994182}
   - component: {fileID: 854994179}
-  - component: {fileID: 854994184}
   - component: {fileID: 854994185}
+  - component: {fileID: 854994184}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -416,7 +416,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &854994181
 SpriteRenderer:
@@ -432,6 +432,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -523,10 +524,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 854994178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c809a089b464a50a8620b8da884f31, type: 3}
+  m_Script: {fileID: 11500000, guid: 521fccafae8ab41e8b91a6aebdf2a1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: {fileID: 11400000, guid: 30c71ebe6587c4fe8b18d5279710b4dc, type: 2}
+  _health:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 50206c000343d496fa82bd362e3b3b2b, type: 2}
+    _variableInstancer: {fileID: 0}
 --- !u!114 &854994185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,8 +637,8 @@ GameObject:
   - component: {fileID: 1025272944}
   - component: {fileID: 1025272943}
   - component: {fileID: 1025272942}
-  - component: {fileID: 1025272940}
   - component: {fileID: 1025272941}
+  - component: {fileID: 1025272940}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -669,16 +675,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1025272938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
+  m_Script: {fileID: 11500000, guid: d2458933140c54c9db0aec7a69c1b617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _developerDescription: 
-  _event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
   _actionResponses:
   - {fileID: 11400000, guid: 1ec7260c4832945c8b7bc4bb1cd57ff2, type: 2}
+  _replayEventBufferOnRegister: 1
+  _eventReference:
+    _usage: 0
+    _event: {fileID: 11400000, guid: da495ab8344c04faaa60b210efd9e317, type: 2}
+    _eventInstancer: {fileID: 0}
 --- !u!114 &1025272941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,9 +856,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bced320f87ec14de98a51ee9c0ebb03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UIStateVariable: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
+  _currentUIState: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
   _visibleForStates:
-  - {fileID: 11400000, guid: 0f191ae005f2448dfb420563d3f089a7, type: 2}
+  - _usage: 1
+    _value: 
+    _constant: {fileID: 11400000, guid: 0f191ae005f2448dfb420563d3f089a7, type: 2}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
 --- !u!1 &1067648696
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,7 +927,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1128657630
 GameObject:
@@ -1059,16 +1073,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1128657630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
+  m_Script: {fileID: 11500000, guid: d2458933140c54c9db0aec7a69c1b617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _developerDescription: 
-  _event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
   _actionResponses:
   - {fileID: 11400000, guid: ffb54297f78ca406286c62b7a33578df, type: 2}
+  _replayEventBufferOnRegister: 1
+  _eventReference:
+    _usage: 0
+    _event: {fileID: 11400000, guid: d5f344a0d70af41f9a7288e5572f0234, type: 2}
+    _eventInstancer: {fileID: 0}
 --- !u!1 &1244410470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,13 +1180,44 @@ RectTransform:
   - {fileID: 1399228591}
   - {fileID: 1055906073}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1351447217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1111135183548040, guid: f4cdf4b23d0154814b9975c71d15466b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1322628080651166342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1351447218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351447217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050ff37b5550f4b7e9bdf8b985aff484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _developerDescription: 
+  _unityEventResponse:
+    m_PersistentCalls:
+      m_Calls: []
+  _actionResponses:
+  - {fileID: 11400000, guid: 58f78c691d84e44cd84c884aadacf21a, type: 2}
+  _replayEventBufferOnRegister: 1
+  _eventReference:
+    _usage: 0
+    _event: {fileID: 11400000, guid: fb1508338b66f42099fceb52aa22cf4c, type: 2}
+    _eventInstancer: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
 --- !u!1 &1399228590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,9 +1290,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bced320f87ec14de98a51ee9c0ebb03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UIStateVariable: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
+  _currentUIState: {fileID: 11400000, guid: ca4bd447b40154988be601bad9c84506, type: 2}
   _visibleForStates:
-  - {fileID: 11400000, guid: cb8238ac7ef5d407fb31219fe114d2ae, type: 2}
+  - _usage: 1
+    _value: 
+    _constant: {fileID: 11400000, guid: cb8238ac7ef5d407fb31219fe114d2ae, type: 2}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
 --- !u!1 &1459948897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,8 +1386,8 @@ GameObject:
   - component: {fileID: 1522469500}
   - component: {fileID: 1522469499}
   - component: {fileID: 1522469498}
-  - component: {fileID: 1522469501}
   - component: {fileID: 1522469497}
+  - component: {fileID: 1522469501}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1465,16 +1518,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1522469495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
+  m_Script: {fileID: 11500000, guid: d2458933140c54c9db0aec7a69c1b617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _developerDescription: 
-  _event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []
   _actionResponses:
   - {fileID: 11400000, guid: 23bac2fbe8e7545e78e859bde7d6573c, type: 2}
+  _replayEventBufferOnRegister: 1
+  _eventReference:
+    _usage: 0
+    _event: {fileID: 11400000, guid: b6434f074450b40fbb398ffe95df8fbb, type: 2}
+    _eventInstancer: {fileID: 0}
 --- !u!1 &1613897678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,8 +1544,8 @@ GameObject:
   - component: {fileID: 1613897684}
   - component: {fileID: 1613897683}
   - component: {fileID: 1613897682}
-  - component: {fileID: 1613897680}
   - component: {fileID: 1613897681}
+  - component: {fileID: 1613897680}
   m_Layer: 5
   m_Name: ResetHealthButton
   m_TagString: Untagged
@@ -1525,16 +1582,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1613897678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267251ce805f8403d971ed00a6d58cf6, type: 3}
+  m_Script: {fileID: 11500000, guid: d2458933140c54c9db0aec7a69c1b617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _developerDescription: 
-  _event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
   _unityEventResponse:
     m_PersistentCalls:
-      m_Calls: []
-  _actionResponses:
-  - {fileID: 11400000, guid: 2a78a712f17364d78a94a0fc47933b55, type: 2}
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 50206c000343d496fa82bd362e3b3b2b, type: 2}
+        m_MethodName: Reset
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _actionResponses: []
+  _replayEventBufferOnRegister: 1
+  _eventReference:
+    _usage: 0
+    _event: {fileID: 11400000, guid: b9a2b51edbbb543bd87d8b8a1275f3b7, type: 2}
+    _eventInstancer: {fileID: 0}
 --- !u!114 &1613897681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,7 +1863,8 @@ PrefabInstance:
       propertyPath: _unityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114212381404589792, guid: f4cdf4b23d0154814b9975c71d15466b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f4cdf4b23d0154814b9975c71d15466b, type: 3}
 --- !u!1001 &4425509693841326314
 PrefabInstance:
@@ -1855,30 +1927,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 5c0f015f6258d41f0bfefbfe014169cf,
         type: 2}
+    - target: {fileID: 6817695843196285249, guid: 01e7046886cdb499a99f4bed284db6a1,
+        type: 3}
+      propertyPath: _eventReference._event
+      value: 
+      objectReference: {fileID: 11400000, guid: ae9405f95b96f4b88bee16d433034a52,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 5067224520480043162, guid: 01e7046886cdb499a99f4bed284db6a1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 01e7046886cdb499a99f4bed284db6a1, type: 3}
---- !u!1 &4425509693841326315 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1776152155576434, guid: 01e7046886cdb499a99f4bed284db6a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 4425509693841326314}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4425509693841326316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4425509693841326315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b2ba18c3f8e4b409ccb9db0bcd4ce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5c0f015f6258d41f0bfefbfe014169cf, type: 2}
-  EventWithGameObjectReference: {fileID: 0}
-  _selectGameObjectReference: {fileID: 0}
-  _triggerOnEnter: 1
-  _triggerOnExit: 0
-  _triggerOnStay: 0

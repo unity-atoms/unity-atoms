@@ -19,9 +19,9 @@ Event property drawer of type `TouchUserInput`. Inherits from `AtomEventEditor<T
 
 ---
 
-## `TouchUserInputTouchUserInputEventEditor`
+## `TouchUserInputPairEventEditor`
 
-Event property drawer of type `<TouchUserInput, TouchUserInput>`. Inherits from `AtomEventEditor<TouchUserInput, TouchUserInput, TouchUserInputEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+Event property drawer of type `TouchUserInputPair`. Inherits from `AtomEventEditor<TouchUserInputPair, TouchUserInputPairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -37,9 +37,9 @@ Variable property drawer of type `TouchUserInput`. Inherits from `AtomDrawer<Tou
 
 ---
 
-## `TouchUserInputTouchUserInputEventDrawer`
+## `TouchUserInputPairEventDrawer`
 
-Event x 2 property drawer of type `TouchUserInput`. Inherits from `AtomDrawer<TouchUserInputTouchUserInputEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+Event property drawer of type `TouchUserInputPair`. Inherits from `AtomDrawer<TouchUserInputPairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 

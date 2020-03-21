@@ -8,7 +8,8 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// Custom editor for Variables. Provides a better user workflow and indicates when which variables can be edited
     /// </summary>
-    public abstract class AtomVariableEditor : UnityEditor.Editor
+    public abstract class AtomVariableEditor<T, P> : UnityEditor.Editor
+        where P : IPair<T>, new()
     {
         private bool _lockedInitialValue = true;
         public override void OnInspectorGUI()
@@ -18,6 +19,8 @@ namespace UnityAtoms.Editor
             bool valueWasUpdated = false;
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
             EditorGUILayout.Space();
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_id"));
 
             EditorGUILayout.BeginHorizontal();
             EditorGUI.BeginDisabledGroup(_lockedInitialValue && EditorApplication.isPlayingOrWillChangePlaymode);
@@ -39,11 +42,22 @@ namespace UnityAtoms.Editor
                     try
                     {
                         var value = serializedObject.FindProperty("_value").GetPropertyValue();
-                        atomTarget.BaseValue = value;
+
+                        // Doubles are for some reason deserialized to floats. The BaseValue assignment below will fail if we don't cast it to float and then to double before assignment (since the assigment itself will otherwise do a cast from object to double which will crash).
+                        if (typeof(T) == typeof(double))
+                        {
+                            atomTarget.BaseValue = (double)(float)value;
+                        }
+                        else
+                        {
+                            atomTarget.BaseValue = value;
+                        }
+
                     }
                     catch (InvalidOperationException)
                     {
-                        var value = serializedObject.FindProperty("_value").GetGenericPropertyValue(atomTarget.BaseValue);
+                        // Deep clone the base value using JsonUtility. Otherwise oldValue and initialValue will all change when changing value.
+                        var value = serializedObject.FindProperty("_value").GetGenericPropertyValue(JsonUtility.FromJson<T>(JsonUtility.ToJson(atomTarget.BaseValue)));
                         atomTarget.BaseValue = value;
                     }
                     valueWasUpdated = true;
@@ -65,7 +79,9 @@ namespace UnityAtoms.Editor
                 {
                     GUILayout.Space(2);
                     if (GUILayout.Button("Raise", GUILayout.Width(raiseButtonWidth), GUILayout.Height(EditorGUIUtility.singleLineHeight)))
-                        evt.GetType().GetMethod("Raise", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { atomTarget.BaseValue });
+                    {
+                        evt.GetType().GetMethod("RaiseEditor", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { atomTarget.BaseValue });
+                    }
                 }
 
             }
@@ -76,22 +92,19 @@ namespace UnityAtoms.Editor
                 var changedWithHistory = serializedObject.FindProperty("ChangedWithHistory").objectReferenceValue;
                 if (changedWithHistory != null && changedWithHistory is AtomEventBase evt && target is AtomBaseVariable atomTarget)
                 {
-                    object oldValue = serializedObject.FindProperty("_oldValue").GetGenericPropertyValue(atomTarget.BaseValue);
 
                     GUILayout.Space(2);
                     if (GUILayout.Button("Raise", GUILayout.Width(raiseButtonWidth), GUILayout.Height(EditorGUIUtility.singleLineHeight)))
                     {
-                        if (GUILayout.Button("Raise", GUILayout.Width(raiseButtonWidth), GUILayout.Height(EditorGUIUtility.singleLineHeight)))
-                            evt.GetType().GetMethod("Raise", BindingFlags.Public | BindingFlags.Instance)
-                                ?.Invoke(evt, new[] { atomTarget.BaseValue, oldValue });
-
+                        var oldValueProp = serializedObject.FindProperty("_oldValue");
+                        object oldValue = oldValueProp.GetPropertyValue();
+                        evt.GetType().GetMethod("RaiseEditor", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { (object)(new P() { Item1 = (T)atomTarget.BaseValue, Item2 = (T)oldValue }) });
                     }
                 }
 
             }
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_preChangeTransformers"), true);
-
 
             if (!valueWasUpdated)
             {

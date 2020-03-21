@@ -8,41 +8,34 @@ namespace UnityAtoms
     /// Generic base class for Variables. Inherits from `AtomBaseVariable&lt;T&gt;`.
     /// </summary>
     /// <typeparam name="T">The Variable value type.</typeparam>
+    /// <typeparam name="P">IPair of type `T`.</typeparam>
     /// <typeparam name="E1">Event of type `AtomEvent&lt;T&gt;`.</typeparam>
     /// <typeparam name="E2">Event of type `AtomEvent&lt;T, T&gt;`.</typeparam>
     /// <typeparam name="F">Function of type `FunctionEvent&lt;T, T&gt;`.</typeparam>
     [EditorIcon("atom-icon-lush")]
-    public abstract class AtomVariable<T, E1, E2, F> : AtomBaseVariable<T>
+    public abstract class AtomVariable<T, P, E1, E2, F> : AtomBaseVariable<T>, IGetEvent, ISetEvent
+        where P : struct, IPair<T>
         where E1 : AtomEvent<T>
-        where E2 : AtomEvent<T, T>
+        where E2 : AtomEvent<P>
         where F : AtomFunction<T, T>
     {
         /// <summary>
         /// The Variable value as a property.
         /// </summary>
         /// <returns>Get or set the Variable's value.</returns>
-        public override T Value { get { return _value; } set { SetValue(value); } }
-
-        /// <summary>
-        /// The inital value of the Variable.
-        /// </summary>
-        [SerializeField]
-        private T _initialValue = default(T);
+        public override T Value { get => _value; set => SetValue(value); }
 
         /// <summary>
         /// The inital Variable value as a property.
         /// </summary>
         /// <returns>Get the Variable's initial value.</returns>
-        public T InitialValue { get { return _initialValue; } }
+        public virtual T InitialValue { get => _initialValue; set => _initialValue = value; }
 
         /// <summary>
         /// The value the Variable had before its value got changed last time.
         /// </summary>
         /// <value>Get the Variable's old value.</value>
-        public T OldValue { get { return _oldValue; } }
-
-        [SerializeField]
-        private T _oldValue;
+        public T OldValue { get => _oldValue; }
 
         /// <summary>
         /// Changed Event triggered when the Variable value gets changed.
@@ -53,6 +46,15 @@ namespace UnityAtoms
         /// Changed with history Event triggered when the Variable value gets changed.
         /// </summary>
         public E2 ChangedWithHistory;
+
+        [SerializeField]
+        private T _oldValue;
+
+        /// <summary>
+        /// The inital value of the Variable.
+        /// </summary>
+        [SerializeField]
+        private T _initialValue = default(T);
 
         /// <summary>
         /// When setting the value of a Variable the new value will be piped through all the pre change transformers, which allows you to create custom logic and restriction on for example what values can be set for this Variable.
@@ -81,14 +83,14 @@ namespace UnityAtoms
 
         private void OnValidate()
         {
-            _initialValue = RunPreChangeTransformers(_initialValue);
+            InitialValue = RunPreChangeTransformers(InitialValue);
             _value = RunPreChangeTransformers(_value);
         }
 
         private void OnEnable()
         {
-            _oldValue = _initialValue;
-            _value = _initialValue;
+            _oldValue = InitialValue;
+            _value = InitialValue;
 
             if (Changed == null) return;
             Changed.Raise(Value);
@@ -98,16 +100,16 @@ namespace UnityAtoms
         /// Reset the Variable to its `_initalValue`.
         /// </summary>
         /// <param name="shouldTriggerEvents">Set to `true` if Events should be triggered on reset, otherwise `false`.</param>
-        public override sealed void Reset(bool shouldTriggerEvents = false)
+        public override void Reset(bool shouldTriggerEvents = false)
         {
             if (!shouldTriggerEvents)
             {
                 _oldValue = _value;
-                _value = _initialValue;
+                _value = InitialValue;
             }
             else
             {
-                SetValue(_initialValue);
+                SetValue(InitialValue);
             }
         }
 
@@ -125,7 +127,14 @@ namespace UnityAtoms
                 _oldValue = _value;
                 _value = preProcessedNewValue;
                 if (Changed != null) { Changed.Raise(_value); }
-                if (ChangedWithHistory != null) { ChangedWithHistory.Raise(_value, _oldValue); }
+                if (ChangedWithHistory != null)
+                {
+                    // NOTE: Doing new P() here, even though it is cleaner, generates garbage.
+                    var pair = default(P);
+                    pair.Item1 = _value;
+                    pair.Item2 = _oldValue;
+                    ChangedWithHistory.Raise(pair);
+                }
                 return true;
             }
 
@@ -137,7 +146,7 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="variable">The value to set provided from another Variable.</param>
         /// <returns>`true` if the value got changed, otherwise `false`.</returns>
-        public bool SetValue(AtomVariable<T, E1, E2, F> variable)
+        public bool SetValue(AtomVariable<T, P, E1, E2, F> variable)
         {
             return SetValue(variable.Value);
         }
@@ -162,18 +171,14 @@ namespace UnityAtoms
         /// Turn the Variable's change with history Event into an `IObservable&lt;T, T&gt;`. Makes the Variable's change with history Event compatible with for example UniRx.
         /// </summary>
         /// <returns>The Variable's change Event as an `IObservable&lt;T, T&gt;`.</returns>
-        public IObservable<ValueTuple<T, T>> ObserveChangeWithHistory()
+        public IObservable<P> ObserveChangeWithHistory()
         {
             if (ChangedWithHistory == null)
             {
                 throw new Exception("You must assign a ChangedWithHistory event in order to observe variable changes.");
             }
 
-            return new ObservableEvent<T, T, ValueTuple<T, T>>(
-                register: ChangedWithHistory.Register,
-                unregister: ChangedWithHistory.Unregister,
-                createCombinedModel: (n, o) => new ValueTuple<T, T>(n, o)
-            );
+            return new ObservableEvent<P>(ChangedWithHistory.Register, ChangedWithHistory.Unregister);
         }
         #endregion // Observable
 
@@ -196,6 +201,42 @@ namespace UnityAtoms
 
 
             return preProcessedValue;
+        }
+
+        /// <summary>
+        /// Get event by type. 
+        /// </summary>
+        /// <typeparam name="E"></typeparam>
+        /// <returns>The event.</returns>
+        public E GetEvent<E>() where E : AtomEventBase
+        {
+            if (typeof(E) == typeof(E1))
+                return (Changed as E);
+            if (typeof(E) == typeof(E2))
+                return (ChangedWithHistory as E);
+
+            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
+        }
+
+        /// <summary>
+        /// Set event by type. 
+        /// </summary>
+        /// <param name="e">The new event value.</param>
+        /// <typeparam name="E"></typeparam>
+        public void SetEvent<E>(E e) where E : AtomEventBase
+        {
+            if (typeof(E) == typeof(E1))
+            {
+                Changed = (e as E1);
+                return;
+            }
+            if (typeof(E) == typeof(E2))
+            {
+                ChangedWithHistory = (e as E2);
+                return;
+            }
+
+            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
         }
     }
 }

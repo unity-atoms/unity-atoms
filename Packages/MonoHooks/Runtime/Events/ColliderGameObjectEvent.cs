@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityAtoms.MonoHooks;
 
 namespace UnityAtoms.MonoHooks
 {
     /// <summary>
-    /// Event x 2 of type `Collider` and `GameObject`. Inherits from `AtomEvent&lt;Collider, GameObject&gt;`.
+    /// Event of type `ColliderGameObject`. Inherits from `AtomEvent&lt;ColliderGameObject&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
-    [CreateAssetMenu(menuName = "Unity Atoms/Events/Collider - GameObject", fileName = "ColliderGameObjectEvent")]
-    public sealed class ColliderGameObjectEvent : AtomEvent<Collider, GameObject> { }
+    [CreateAssetMenu(menuName = "Unity Atoms/Events/ColliderGameObject", fileName = "ColliderGameObjectEvent")]
+    public sealed class ColliderGameObjectEvent : AtomEvent<ColliderGameObject> { }
 }

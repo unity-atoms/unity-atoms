@@ -161,7 +161,7 @@ The `HealthBar.cs` script is now only responsible for what happens when our play
 The `HealthChanged` function created above is actually a Response of type `UnityEvent`. However, in Unity Atoms there is also the possibility to create Responses as Scriptable Objects called Actions. An Action is a function as a Scriptable Object that does not return a value. As a side note there are also Functions in Unity Atoms, which are exactly like Actions, but does return a value. To demonstrate the concept of an Action as a Response lets create an Action called `HealthLogger.cs` that gives some love to the console and logs the player’s health whenever it changes:
 
 ```cs
-[CreateAssetMenu(menuName = "Unity Atoms/Examples//Health Logger")]
+[CreateAssetMenu(menuName = "Unity Atoms/Examples/Health Logger")]
 public class HealthLogger : IntAction
 {
     public override void Do(int health)

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UnityAtoms
+﻿namespace UnityAtoms
 {
     /// <summary>
     /// Internal constant and static readonly members for runtime usage.
@@ -18,8 +16,12 @@ namespace UnityAtoms
             public const string LOG_PREFIX = "UnityAtoms :: ";
         }
 
+        /// <summary>
+        /// Constants for defining DefaultExecutionOrder.
+        /// </summary>
         public static class ExecutionOrder
         {
+            public const int VARIABLE_RESETTER = -200;
             public const int VARIABLE_INSTANCER = -100;
         }
 

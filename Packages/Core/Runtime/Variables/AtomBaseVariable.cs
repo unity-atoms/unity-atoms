@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
@@ -11,11 +9,16 @@ namespace UnityAtoms
     [EditorIcon("atom-icon-teal")]
     public abstract class AtomBaseVariable : BaseAtom
     {
+        public String Id { get => _id; set => _id = value; }
+
         /// <summary>
         /// The Variable value as an `object`.abstract Beware of boxing! 🥊
         /// </summary>
         /// <value>The Variable value as an `object`.</value>
         public abstract object BaseValue { get; set; }
+
+        [SerializeField]
+        private String _id = default;
 
         /// <summary>
         /// Abstract method that could be implemented to reset the Variable value.
@@ -53,7 +56,7 @@ namespace UnityAtoms
         public virtual T Value { get { return _value; } set { throw new NotImplementedException(); } }
 
         [SerializeField]
-        protected T _value;
+        protected T _value = default(T);
 
         /// <summary>
         /// Determines equality between Variables.

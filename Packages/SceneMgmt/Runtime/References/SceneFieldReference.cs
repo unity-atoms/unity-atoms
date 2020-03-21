@@ -1,18 +1,20 @@
 using System;
+using UnityAtoms.BaseAtoms;
 using UnityAtoms.SceneMgmt;
 
 namespace UnityAtoms.SceneMgmt
 {
     /// <summary>
-    /// Reference of type `SceneField`. Inherits from `EquatableAtomReference&lt;SceneField, SceneFieldConstant, SceneFieldVariable, SceneFieldEvent, SceneFieldSceneFieldEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer&gt;`.
+    /// Reference of type `SceneField`. Inherits from `EquatableAtomReference&lt;SceneField, SceneFieldPair, SceneFieldConstant, SceneFieldVariable, SceneFieldEvent, SceneFieldPairEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
     public sealed class SceneFieldReference : EquatableAtomReference<
         SceneField,
+        SceneFieldPair,
         SceneFieldConstant,
         SceneFieldVariable,
         SceneFieldEvent,
-        SceneFieldSceneFieldEvent,
+        SceneFieldPairEvent,
         SceneFieldSceneFieldFunction,
         SceneFieldVariableInstancer>, IEquatable<SceneFieldReference>
     {

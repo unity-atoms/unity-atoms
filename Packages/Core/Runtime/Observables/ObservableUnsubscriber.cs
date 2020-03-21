@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UnityAtoms
 {
-    internal class ObservableUnsubscriber<T> : IDisposable
+    public class ObservableUnsubscriber<T> : IDisposable
     {
         private List<IObserver<T>> _observers;
         private IObserver<T> _observer;

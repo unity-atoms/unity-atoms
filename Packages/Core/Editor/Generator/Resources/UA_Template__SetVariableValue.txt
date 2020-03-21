@@ -1,0 +1,27 @@
+using UnityEngine;
+using UnityAtoms.BaseAtoms;
+<%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
+
+<%IF HAS_SUB_UA_NAMESPACE%>
+namespace UnityAtoms.{SUB_UA_NAMESPACE}
+<%ELSE%>
+namespace UnityAtoms
+<%ENDIF%>
+{
+    /// <summary>
+    /// Set variable value Action of type `{VALUE_TYPE}`. Inherits from `SetVariableValue&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Variable, {VALUE_TYPE_NAME}Constant, {VALUE_TYPE_NAME}Reference, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}VariableInstancer&gt;`.
+    /// </summary>
+    [EditorIcon("atom-icon-purple")]
+    [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/{VALUE_TYPE_NAME}", fileName = "Set{VALUE_TYPE_NAME}VariableValue")]
+    public sealed class Set{VALUE_TYPE_NAME}VariableValue : SetVariableValue<
+        {VALUE_TYPE},
+        {VALUE_TYPE_NAME}Pair,
+        {VALUE_TYPE_NAME}Variable,
+        {VALUE_TYPE_NAME}Constant,
+        {VALUE_TYPE_NAME}Reference,
+        {VALUE_TYPE_NAME}Event,
+        {VALUE_TYPE_NAME}PairEvent,
+        {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function,
+        {VALUE_TYPE_NAME}VariableInstancer>
+    { }
+}

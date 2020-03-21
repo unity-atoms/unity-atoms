@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.MonoHooks
 {
@@ -14,13 +14,13 @@ namespace UnityAtoms.MonoHooks
         /// Listener
         /// </summary>
         [SerializeField]
-        private VoidListener _listener = null;
+        private VoidBaseEventReferenceListener _listener = null;
 
         /// <summary>
         /// Listener with GameObject reference
         /// </summary>
         [SerializeField]
-        private GameObjectListener _gameObjectListener = null;
+        private GameObjectEventReferenceListener _gameObjectListener = null;
 
         private void Awake()
         {

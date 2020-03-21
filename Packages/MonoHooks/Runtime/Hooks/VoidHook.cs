@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.MonoHooks
 {
     /// <summary>
-    /// Base class for all `MonoHook`s of type `Void`.
+    /// Base class for all `MonoHook`s of type `AtomEventBase`.
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
     public abstract class VoidHook : MonoBehaviour

@@ -1,99 +1,79 @@
+using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace UnityAtoms
 {
-
     /// <summary>
     /// A Variable Instancer is a MonoBehaviour that takes a variable as a base and creates an in memory copy of it OnEnable.
     /// This is handy when you want to use atoms for prefabs that are instantiated at runtime. Use together with AtomCollection to
     /// react accordingly when a prefab with an associated atom is added or deleted to the scene.
     /// </summary>
     /// <typeparam name="V">Variable of type T.</typeparam>
+    /// <typeparam name="P">IPair of type `T`.</typeparam>
     /// <typeparam name="T">The value type.</typeparam>
     /// <typeparam name="E1">Event of type T.</typeparam>
     /// <typeparam name="E2">Event x 2 of type T.</typeparam>
     /// <typeparam name="F">Function of type T => T</typeparam>
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomVariableInstancer<V, T, E1, E2, F> : MonoBehaviour
-        where V : AtomVariable<T, E1, E2, F>
+    public abstract class AtomVariableInstancer<V, P, T, E1, E2, F> : AtomBaseVariableInstancer<T, V>, IGetEvent, ISetEvent
+        where V : AtomVariable<T, P, E1, E2, F>
+        where P : struct, IPair<T>
         where E1 : AtomEvent<T>
-        where E2 : AtomEvent<T, T>
+        where E2 : AtomEvent<P>
         where F : AtomFunction<T, T>
     {
         /// <summary>
-        /// Getter for retrieving the in memory runtime variable.
+        /// Override to add implementation specific setup on `OnEnable`.
         /// </summary>
-        public V Variable { get => _inMemoryCopy; }
-
-        /// <summary>
-        /// Getter for retrieving the value of the in memory runtime variable.
-        /// </summary>
-        public T Value { get => _inMemoryCopy.Value; set => _inMemoryCopy.Value = value; }
-
-        private V _inMemoryCopy;
-
-        /// <summary>
-        /// The variable that the in memory copy will be based on when created at runtime.
-        /// </summary>
-        [SerializeField]
-        private V _base = null;
-
-        /// <summary>
-        /// If assigned the in memory copy variable will be added to the collection on Start using the gameObject's instance id as key. The value will also be removed from the collection OnDestroy.
-        /// </summary>
-        [SerializeField]
-        private AtomCollection _syncToCollection = null;
-
-        /// <summary>
-        /// If assigned the in memory copy variable will be added to the list on Start. The value will also be removed from the list OnDestroy.
-        /// </summary>
-        [SerializeField]
-        private AtomList _syncToList = null;
-
-        private void OnEnable()
+        protected override void ImplSpecificSetup()
         {
-            Assert.IsNotNull(_base);
-            _inMemoryCopy = Instantiate(_base);
-
-            if (_base.Changed != null)
+            if (Base.Changed != null)
             {
-                _inMemoryCopy.Changed = Instantiate(_base.Changed);
+                _inMemoryCopy.Changed = Instantiate(Base.Changed);
             }
 
-            if (_base.ChangedWithHistory != null)
+            if (Base.ChangedWithHistory != null)
             {
-                _inMemoryCopy.ChangedWithHistory = Instantiate(_base.ChangedWithHistory);
+                _inMemoryCopy.ChangedWithHistory = Instantiate(Base.ChangedWithHistory);
             }
         }
 
-        void Start()
+        /// <summary>
+        /// Get event by type. 
+        /// </summary>
+        /// <typeparam name="E"></typeparam>
+        /// <returns>The event.</returns>
+        public E GetEvent<E>() where E : AtomEventBase
         {
-            // Adding to the collection on Start instead of OnEnable because of timing issues that otherwise occurs when listeners register themselves OnEnable. 
-            // This is an issue when a Game Object has a Variable Instancer attached to it when the scene starts and at the same time their is an AtomBaseListener listening to the associated Added event to a Collection. 
-            if (_syncToCollection != null)
-            {
-                _syncToCollection.Value.Add(GetInstanceID().ToString(), _inMemoryCopy);
-            }
+            if (typeof(E) == typeof(E1))
+                return (_inMemoryCopy.Changed as E);
+            if (typeof(E) == typeof(E2))
+                return (_inMemoryCopy.ChangedWithHistory as E);
 
-            if (_syncToList != null)
-            {
-                _syncToList.Value.Add(_inMemoryCopy);
-            }
+            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
         }
 
-        private void OnDestroy()
+        /// <summary>
+        /// Set event by type. 
+        /// </summary>
+        /// <param name="e">The new event value.</param>
+        /// <typeparam name="E"></typeparam>
+        public void SetEvent<E>(E e) where E : AtomEventBase
         {
-            if (_syncToCollection != null)
+            if (typeof(E) == typeof(E1))
             {
-                _syncToCollection.Value.Remove(GetInstanceID().ToString());
+                _inMemoryCopy.Changed = (e as E1);
+                return;
+            }
+            if (typeof(E) == typeof(E2))
+            {
+                _inMemoryCopy.ChangedWithHistory = (e as E2);
+                return;
             }
 
-            if (_syncToList != null)
-            {
-                _syncToList.Value.Remove(_inMemoryCopy);
-            }
+            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
         }
     }
 }

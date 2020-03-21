@@ -3,9 +3,10 @@
     "references": [
         "MamboJamboStudios.UnityAtomsCore.Editor",
         "MamboJamboStudios.UnityAtomsSceneMgmt.Runtime",
-        "MamboJamboStudios.UnityAtomsCore.Runtime"
+        "MamboJamboStudios.UnityAtomsCore.Runtime",
+        "MamboJamboStudios.UnityAtomsBaseAtoms.Editor",
+        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [
         "Editor"
     ],
@@ -15,5 +16,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }

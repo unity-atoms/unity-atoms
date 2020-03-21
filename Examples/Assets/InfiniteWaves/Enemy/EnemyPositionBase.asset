@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f868f8b3380b47a38cf0b95f42c134b, type: 3}
+  m_Name: EnemyPositionBase
+  m_EditorClassIdentifier: 
+  _developerDescription: This is a base Variable used for creating in memory copies
+    of Enemy position.
+  _id: Position
+  _value: {x: 0, y: 0, z: 0}
+  Changed: {fileID: 11400000, guid: d422efc48be6541469a4a6467ad76cd7, type: 2}
+  ChangedWithHistory: {fileID: 0}
+  _oldValue: {x: 0, y: 0, z: 0}
+  _initialValue: {x: 0, y: 0, z: 0}
+  _preChangeTransformers: []
