@@ -6,6 +6,12 @@
 💅 = Polish
 🚀 = New features
 
+# 4.0.1 (March 21, 2020)
+
+## 🐛 Bug fixes
+
+-   Include Editor folder for FSM package.
+
 # 4.0.0 (March 21, 2020)
 
 ## 🐛 Bug fixes
