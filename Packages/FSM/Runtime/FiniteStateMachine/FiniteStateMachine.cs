@@ -9,7 +9,6 @@ namespace UnityAtoms.FSM
 {
     /// <summary>
     /// This is an implementation of an FSM in Unity Atoms. It is build using a set of states and a set of transitions. A set can only change through dispatching commands defined by the transitions.
-    /// See the website docs for more info on usage.
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
     [CreateAssetMenu(menuName = "Unity Atoms/FSM/Finite State Machine", fileName = "FiniteStateMachine")]
@@ -116,6 +115,11 @@ namespace UnityAtoms.FSM
             _onStateCooldown = null;
         }
 
+        /// <summary>
+        /// Calls the handler on every Update.
+        /// </summary>
+        /// <param name="handler">The handler to called.</param>
+        /// <param name="gameObject">The gameObject where this handler is setup.</param>
         public void OnUpdate(Action<float, string> handler, GameObject gameObject)
         {
             Action<float, string> extendedHandler = null;
@@ -134,6 +138,11 @@ namespace UnityAtoms.FSM
             _onUpdate += extendedHandler;
         }
 
+        /// <summary>
+        /// Calls the handler on every FixedUpdate.
+        /// </summary>
+        /// <param name="handler">The handler to called.</param>
+        /// <param name="gameObject">The gameObject where this hook is setup.</param>
         public void OnFixedUpdate(Action<float, string> handler, GameObject gameObject)
         {
             Action<float, string> extendedHandler = null;
@@ -152,6 +161,9 @@ namespace UnityAtoms.FSM
             _onFixedUpdate += extendedHandler;
         }
 
+        /// <summary>
+        /// Define a command that is going to automatically be dispatched when the condition provided is met.
+        /// </summary>
         public void DispatchWhen(string command, Func<string, bool> func, GameObject gameObject)
         {
             Action<string> extendedHandler = null;
@@ -172,6 +184,12 @@ namespace UnityAtoms.FSM
             _dispatchWhen += extendedHandler;
         }
 
+        /// <summary>
+        /// Called on every state cooldown.
+        /// </summary>
+        /// <param name="state">The state where we want to do something on the cool down.</param>
+        /// <param name="handler">Handler to be called on cooldown.</param>
+        /// <param name="gameObject">The gameObject where this hook is setup.</param>
         public void OnStateCooldown(string state, Action<string> handler, GameObject gameObject)
         {
             Action<string> extendedHandler = null;
@@ -193,6 +211,10 @@ namespace UnityAtoms.FSM
             _onStateCooldown += extendedHandler;
         }
 
+        /// <summary>
+        /// Reset 
+        /// </summary>
+        /// <param name="shouldTriggerEvents">Should we trigger Change Events.</param>
         public override void Reset(bool shouldTriggerEvents = false)
         {
             Validate();
@@ -264,8 +286,6 @@ namespace UnityAtoms.FSM
         }
 
         protected override bool ValueEquals(string other) => false; // Always trigger events even if changing to the same state as previous
-
-
 
         private void Validate()
         {
