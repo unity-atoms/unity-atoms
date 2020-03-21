@@ -162,7 +162,7 @@ namespace UnityAtoms.FSM
         }
 
         /// <summary>
-        /// Define a command that is going to automatically be dispatched when the condition provided is met.
+        /// Defines a command that is going to automatically be dispatched when the condition provided is met.
         /// </summary>
         public void DispatchWhen(string command, Func<string, bool> func, GameObject gameObject)
         {
@@ -212,7 +212,7 @@ namespace UnityAtoms.FSM
         }
 
         /// <summary>
-        /// Reset 
+        /// Reset the state machine
         /// </summary>
         /// <param name="shouldTriggerEvents">Should we trigger Change Events.</param>
         public override void Reset(bool shouldTriggerEvents = false)
