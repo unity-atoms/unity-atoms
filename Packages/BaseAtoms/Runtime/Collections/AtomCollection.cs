@@ -5,7 +5,7 @@ using UnityAtoms;
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// A Collection / Dictionary of Atom Variables (AtomBaseVariable).
+    /// A Collection / Dictionary of Atom Variables (`AtomBaseVariable`).
     /// </summary>
     [CreateAssetMenu(menuName = "Unity Atoms/Collections/Collection", fileName = "Collection")]
     [EditorIcon("atom-icon-kingsyellow")]
@@ -59,27 +59,6 @@ namespace UnityAtoms.BaseAtoms
             Value.Cleared -= PropogateCleared;
         }
 
-        void PropogateAdded(AtomBaseVariable baseVariable)
-        {
-            if (_added == null) return;
-
-            _added.Raise(baseVariable);
-        }
-
-        void PropogateRemoved(AtomBaseVariable baseVariable)
-        {
-            if (_removed == null) return;
-
-            _removed.Raise(baseVariable);
-        }
-
-        void PropogateCleared()
-        {
-            if (_cleared == null) return;
-
-            _cleared.Raise();
-        }
-
         #region Observable
         /// <summary>
         /// Make the add event into an `IObservable&lt;T&gt;`. Makes Collection's add Event compatible with for example UniRx.
@@ -124,5 +103,26 @@ namespace UnityAtoms.BaseAtoms
         }
 
         #endregion // Observable
+
+        void PropogateAdded(AtomBaseVariable baseVariable)
+        {
+            if (_added == null) return;
+
+            _added.Raise(baseVariable);
+        }
+
+        void PropogateRemoved(AtomBaseVariable baseVariable)
+        {
+            if (_removed == null) return;
+
+            _removed.Raise(baseVariable);
+        }
+
+        void PropogateCleared()
+        {
+            if (_cleared == null) return;
+
+            _cleared.Raise();
+        }
     }
 }

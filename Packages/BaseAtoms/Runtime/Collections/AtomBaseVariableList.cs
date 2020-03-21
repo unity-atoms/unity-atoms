@@ -10,8 +10,19 @@ namespace UnityAtoms.BaseAtoms
     [Serializable]
     public class AtomBaseVariableList : List<AtomBaseVariable>, ISerializationCallbackReceiver, IAtomList
     {
+        /// <summary>
+        /// Get or set the Added Action.
+        /// </summary>
         public Action<AtomBaseVariable> Added { get => _added; set => _added = value; }
+
+        /// <summary>
+        /// Get or set the Removed Action.
+        /// </summary>
         public Action<AtomBaseVariable> Removed { get => _removed; set => _removed = value; }
+
+        /// <summary>
+        /// Get or set the Cleared Action.
+        /// </summary>
         public Action Cleared { get => _cleared; set => _cleared = value; }
 
         private event Action<AtomBaseVariable> _added;
@@ -115,7 +126,7 @@ namespace UnityAtoms.BaseAtoms
         }
 
         /// <summary>
-        /// Ckear list.
+        /// Clear list.
         /// </summary>
         public new void Clear()
         {

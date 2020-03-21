@@ -3,7 +3,9 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-
+    /// <summary>
+    /// Different types of usages for an Atom List Reference.
+    /// </summary>
     public class AtomListReferenceUsage
     {
         public const int LIST = 0;

@@ -107,7 +107,8 @@ namespace UnityAtoms.Editor
         public static readonly AtomType FUNCTION_T_T = new AtomType(
             displayName: "Function (T) => T",
             name: "Function",
-            templateName: "UA_Template__FunctionTT.txt"
+            templateName: "UA_Template__FunctionTT.txt",
+            relativeFileNameAndPath: Path.Combine(Runtime.IsUnityAtomsRepo ? "Runtime" : "", "Functions", $"{{VALUE_TYPE_NAME}}{{VALUE_TYPE_NAME}}Function.cs")
         );
         public static readonly AtomType VARIABLE_INSTANCER = new AtomType(
             displayName: "Variable Instancer",

@@ -14,7 +14,7 @@ namespace UnityAtoms.BaseAtoms
         where V : AtomBaseVariable<T>, IWithCollectionEvents
     {
         /// <summary>
-        /// Override to add implementation specific setup on `OnEnable`.
+        /// Creates in memory copies of the Added, Removed and Cleared Events on OnEnable.
         /// </summary>
         protected override void ImplSpecificSetup()
         {
