@@ -12,6 +12,6 @@ namespace UnityAtoms
         public List<T> List { get => _list; }
 
         [SerializeField]
-        private List<T> _list;
+        private List<T> _list = default;
     }
 }
