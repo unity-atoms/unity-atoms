@@ -11,7 +11,6 @@
 ## 🐛 Bug fixes
 
 -   Added missing assembly definition. ([@AdamRamberg](https://github.com/AdamRamberg))
-
 -   Added missing meta. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 # 4.0.1 (March 21, 2020)
@@ -43,6 +42,7 @@
 -   Added Collection and List Instancers. ([@AdamRamberg](https://github.com/AdamRamberg))
 -   Added an `OnInitialization` function to `AtomTags`. ([@AdamRamberg](https://github.com/AdamRamberg))
 -   New script for resetting Variables called `VariableResetter`. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   Added property id to Variables. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 # 3.0.0 (February 24, 2020)
 
