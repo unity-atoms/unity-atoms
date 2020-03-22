@@ -15,19 +15,19 @@ namespace UnityAtoms.FSM
         public string Command { get => _command.Value; }
 
         [SerializeField]
-        private StringReference _fromState;
+        private StringReference _fromState = default;
 
         [SerializeField]
-        private StringReference _toState;
+        private StringReference _toState = default;
 
         [SerializeField]
-        private StringReference _command;
+        private StringReference _command = default;
 
         [SerializeField]
-        private BoolVariable _testCondition;
+        private BoolVariable _testCondition = default;
 
         [SerializeField]
-        private bool _raiseEventToCompleteTransition;
+        private bool _raiseEventToCompleteTransition = default;
 
         private FiniteStateMachine _fsmReference;
         private Action _onComplete;
