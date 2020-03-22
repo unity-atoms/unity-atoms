@@ -1,7 +1,7 @@
 {
   "name": "com.mambojambostudios.unity-atoms-ui",
   "displayName": "Unity Atoms UI",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "unity": "2018.3",
   "description": "UI system using Unity Atoms.",
   "keywords": [
@@ -18,7 +18,7 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "4.0.1",
-    "com.mambojambostudios.unity-atoms-base-atoms": "4.0.1"
+    "com.mambojambostudios.unity-atoms-core": "4.0.2",
+    "com.mambojambostudios.unity-atoms-base-atoms": "4.0.2"
   }
 }

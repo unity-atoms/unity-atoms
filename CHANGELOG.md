@@ -6,11 +6,19 @@
 💅 = Polish
 🚀 = New features
 
+# 4.0.2 (March 21, 2020)
+
+## 🐛 Bug fixes
+
+-   Added missing assembly definition. ([@AdamRamberg](https://github.com/AdamRamberg))
+
+-   Added missing meta. ([@AdamRamberg](https://github.com/AdamRamberg))
+
 # 4.0.1 (March 21, 2020)
 
 ## 🐛 Bug fixes
 
--   Include Editor folder for FSM package.
+-   Include Editor folder for FSM package. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 # 4.0.0 (March 21, 2020)
 
