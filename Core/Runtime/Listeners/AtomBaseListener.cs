@@ -88,7 +88,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Helper to regiser as listener callback
+        /// Helper to register as listener callback
         /// </summary>
         public void DebugLog(T item)
         {

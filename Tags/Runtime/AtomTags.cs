@@ -92,7 +92,7 @@ namespace UnityAtoms.Tags
 
         private void OnEnable()
         {
-            if (!IsInitalized(gameObject))
+            if (!IsInitialized(gameObject))
             {
                 TaggedGameObjects.Clear();
                 TagInstances.Clear();
@@ -136,7 +136,7 @@ namespace UnityAtoms.Tags
         public static void OnInitialization(Action handler)
         {
             var atomTags = GameObject.FindObjectOfType<AtomTags>();
-            if (atomTags != null && !IsInitalized(atomTags.gameObject))
+            if (atomTags != null && !IsInitialized(atomTags.gameObject))
             {
                 _onInitialization += handler;
             }
@@ -254,6 +254,6 @@ namespace UnityAtoms.Tags
             return tags.Tags;
         }
 
-        private static bool IsInitalized(GameObject go) => TagInstances.ContainsKey(go);
+        private static bool IsInitialized(GameObject go) => TagInstances.ContainsKey(go);
     }
 }
