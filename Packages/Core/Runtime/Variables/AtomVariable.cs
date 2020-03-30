@@ -26,7 +26,7 @@ namespace UnityAtoms
         public override T Value { get => _value; set => SetValue(value); }
 
         /// <summary>
-        /// The inital Variable value as a property.
+        /// The initial value as a property.
         /// </summary>
         /// <returns>Get the Variable's initial value.</returns>
         public virtual T InitialValue { get => _initialValue; set => _initialValue = value; }
@@ -97,7 +97,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Reset the Variable to its `_initalValue`.
+        /// Reset the Variable to its `_initialValue`.
         /// </summary>
         /// <param name="shouldTriggerEvents">Set to `true` if Events should be triggered on reset, otherwise `false`.</param>
         public override void Reset(bool shouldTriggerEvents = false)
@@ -204,7 +204,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Get event by type. 
+        /// Get event by type.
         /// </summary>
         /// <typeparam name="E"></typeparam>
         /// <returns>The event.</returns>
@@ -219,7 +219,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Set event by type. 
+        /// Set event by type.
         /// </summary>
         /// <param name="e">The new event value.</param>
         /// <typeparam name="E"></typeparam>
