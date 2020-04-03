@@ -10,6 +10,12 @@
 
 # 4.1.0 (April 3, 2020)
 
+## 💅 Polish
+
+-   [#120](https://github.com/AdamRamberg/unity-atoms/pull/120) Fix typos ([@Enderlook](https://github.com/Enderlook))
+
+## 🚀 New features
+
 -   [#123](https://github.com/AdamRamberg/unity-atoms/pull/123) Add Event Refs for Collections and Lists. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 # 4.0.2 (March 21, 2020)
