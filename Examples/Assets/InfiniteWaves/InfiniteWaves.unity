@@ -1037,7 +1037,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 854994187}
-        m_MethodName: DestroyIfZeroOfBelow
+        m_MethodName: DestroyIfZeroOrBelow
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
