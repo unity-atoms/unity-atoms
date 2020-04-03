@@ -765,6 +765,10 @@ MonoBehaviour:
     _usage: 0
     _event: {fileID: 11400000, guid: b512e6d2a87f440c5883fe3546438a16, type: 2}
     _eventInstancer: {fileID: 0}
+    _collection: {fileID: 0}
+    _list: {fileID: 0}
+    _collectionInstancer: {fileID: 0}
+    _listInstancer: {fileID: 0}
 --- !u!114 &754865916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,7 +1475,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1299539878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78396a243a52473ea10f585128d364a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8189547b41a4313a0844752c4e715a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _developerDescription: 
@@ -1491,7 +1495,14 @@ MonoBehaviour:
         m_CallState: 2
   _actionResponses: []
   _replayEventBufferOnRegister: 1
-  _event: {fileID: 11400000, guid: 1f43d5301a4b244c6873d8cf5e465083, type: 2}
+  _eventReference:
+    _usage: 0
+    _event: {fileID: 11400000, guid: 1f43d5301a4b244c6873d8cf5e465083, type: 2}
+    _eventInstancer: {fileID: 0}
+    _collection: {fileID: 0}
+    _list: {fileID: 0}
+    _collectionInstancer: {fileID: 0}
+    _listInstancer: {fileID: 0}
 --- !u!114 &1299539884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1765,6 +1776,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyWaveManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788459492122731499, guid: 2506bc32201bf46ff94ddb453c913fc0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1788459492122731500, guid: 2506bc32201bf46ff94ddb453c913fc0,
         type: 3}

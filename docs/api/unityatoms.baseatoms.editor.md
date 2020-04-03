@@ -199,6 +199,18 @@ Event property drawer of type `StringPair`. Inherits from `AtomEventEditor<Strin
 
 ---
 
+## `AtomBaseVariableBaseEventReferenceDrawer`
+
+A custom property drawer for AtomBaseVariable BaseEventReferences. Makes it possible to choose between an Event, Event Instancer, Collection Added, Collection Removed, List Added, List Removed, Collection Instancer Added, Collection Instancer Removed, List Instancer Added or List Instancer Removed.
+
+---
+
+## `VoidBaseEventReferenceDrawer`
+
+A custom property drawer for Void BaseEventReferences. Makes it possible to choose between an Event, Event Instancer, Collection Cleared, List Cleared, Collection Instancer Cleared or List Instancer Cleared.
+
+---
+
 ## `Collider2DConstantDrawer`
 
 Constant property drawer of type `Collider2D`. Inherits from `AtomDrawer<Collider2DConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.

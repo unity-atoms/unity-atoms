@@ -7,12 +7,6 @@ sidebar_label: UnityAtoms.BaseAtoms
 
 # Namespace - `UnityAtoms.BaseAtoms`
 
-## `AtomBaseVariableEventListener`
-
-Event Listener of type `AtomBaseVariable`. Inherits from `AtomEventListener<AtomBaseVariable, AtomBaseVariableEvent, AtomBaseVariableUnityEvent>`.
-
----
-
 ## `BoolPairEventReferenceListener`
 
 Event Reference Listener of type `BoolPair`. Inherits from `AtomEventReferenceListener<BoolPair, BoolPairEvent, BoolPairEventReference, BoolPairUnityEvent>`.
@@ -625,9 +619,81 @@ Variable Instancer of type `string`. Inherits from `AtomVariableInstancer<String
 
 ---
 
+## `AtomBaseVariableEventReferenceUsage`
+
+Different types of Event Reference usages.
+
+---
+
+## `AtomBaseVariableBaseEventReference`
+
+Event Reference of type `AtomBaseVariable`. Inherits from `AtomBaseEventReference<AtomBaseVariable, AtomBaseVariableEvent, AtomBaseVariableEventInstancer>`.
+
+### Variables
+
+#### `_collection`
+
+Collection used if `Usage` is set to `COLLECTION_ADDED_EVENT` or `COLLECTION_REMOVED_EVENT`.
+
+---
+
+#### `_list`
+
+List used if `Usage` is set to `LIST_ADDED_EVENT` or `LIST_REMOVED_EVENT`.
+
+---
+
+#### `_collectionInstancer`
+
+Collection Instancer used if `Usage` is set to `COLLECTION_INSTANCER_ADDED_EVENT` or `COLLECTION_INSTANCER_REMOVED_EVENT`.
+
+---
+
+#### `_listInstancer`
+
+List Instancer used if `Usage` is set to `LIST_INSTANCER_ADDED_EVENT` or `LIST_INSTANCER_REMOVED_EVENT`.
+
+### Properties
+
+#### `Event`
+
+Get or set the Event used by the Event Reference.
+
+---
+
 ## `VoidBaseEventReference`
 
 Event Reference of type `Void`. Inherits from `AtomBaseEventReference<Void, VoidEvent, VoidEventInstancer>`.
+
+### Variables
+
+#### `_collection`
+
+Collection used if `Usage` is set to `COLLECTION_CLEARED_EVENT`.
+
+---
+
+#### `_list`
+
+List used if `Usage` is set to `LIST_CLEARED_EVENT`.
+
+---
+
+#### `_collectionInstancer`
+
+Collection Instancer used if `Usage` is set to `COLLECTION_INSTANCER_CLEARED_EVENT`.
+
+---
+
+#### `_listInstancer`
+
+List Instancer used if `Usage` is set to `LIST_INSTANCER_CLEARED_EVENT`.
+
+### Properties
+
+#### `Event`
+
+Get or set the Event used by the Event Reference.
 
 ---
 
@@ -658,6 +724,12 @@ Event Instancer of type `GameObjectPair`. Inherits from `AtomEventInstancer<Game
 ## `VoidEventInstancer`
 
 Event Instancer of type `Void`. Inherits from `AtomEventInstancer<Void, VoidEvent>`.
+
+---
+
+## `AtomBaseVariableEventInstancer`
+
+Event Instancer of type `AtomBaseVariable`. Inherits from `AtomEventInstancer<AtomBaseVariable, AtomBaseVariableEvent>`.
 
 ---
 
@@ -1452,6 +1524,12 @@ Event of type `Collider2D`. Inherits from `AtomEvent<Collider2D>`.
 ## `IntEvent`
 
 Event of type `int`. Inherits from `AtomEvent<int>`.
+
+---
+
+## `AtomBaseVariableBaseEventReferenceListener`
+
+Event Reference Listener of type `AtomBaseVariable`. Inherits from `AtomEventReferenceListener<AtomBaseVariable, AtomBaseVariableEvent, AtomBaseVariableBaseEventReference, AtomBaseVariableUnityEvent>`.
 
 ---
 
