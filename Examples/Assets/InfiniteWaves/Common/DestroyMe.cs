@@ -23,7 +23,7 @@ namespace UnityAtoms.Examples
 
         public void DestroyImmediate() => Destroy(gameObject);
 
-        public void DestroyIfZeroOfBelow(int value)
+        public void DestroyIfZeroOrBelow(int value)
         {
             if (value <= 0)
             {
