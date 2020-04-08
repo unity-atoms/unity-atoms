@@ -7,6 +7,7 @@
 🚀 = New features
 
 # [Unreleased]
+-   [#125](https://github.com/AdamRamberg/unity-atoms/issues/125) Add booleans to decide if Changed and/or ChangedWithHistory Events are triggered on AtomVariable OnEnable ([@iruizmar](https://github.com/iruizmar))
 
 # 4.1.0 (April 3, 2020)
 
