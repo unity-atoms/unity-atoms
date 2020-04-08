@@ -12,6 +12,7 @@ namespace UnityAtoms.Editor
         where P : IPair<T>, new()
     {
         private bool _lockedInitialValue = true;
+        private bool _onEnableTriggerSectionVisible = true;
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -105,6 +106,15 @@ namespace UnityAtoms.Editor
             }
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_preChangeTransformers"), true);
+
+
+            _onEnableTriggerSectionVisible = EditorGUILayout.Foldout(_onEnableTriggerSectionVisible, "Trigger Event on OnEnable trigger");
+            if (_onEnableTriggerSectionVisible)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("TriggerChangedOnOnEnable"), new GUIContent("Changed"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("TriggerChangedWithHistoryOnOnEnable"), new GUIContent("ChangedWithHistory"));
+            }
+
 
             if (!valueWasUpdated)
             {
