@@ -107,14 +107,12 @@ namespace UnityAtoms.Editor
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_preChangeTransformers"), true);
 
-
-            _onEnableTriggerSectionVisible = EditorGUILayout.Foldout(_onEnableTriggerSectionVisible, "Trigger Event on OnEnable trigger");
+            _onEnableTriggerSectionVisible = EditorGUILayout.Foldout(_onEnableTriggerSectionVisible, "Trigger Event on OnEnable");
             if (_onEnableTriggerSectionVisible)
             {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("TriggerChangedOnOnEnable"), new GUIContent("Changed"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("TriggerChangedWithHistoryOnOnEnable"), new GUIContent("ChangedWithHistory"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("_triggerChangedOnOnEnable"), new GUIContent("Changed"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("_triggerChangedWithHistoryOnOnEnable"), new GUIContent("ChangedWithHistory"));
             }
-
 
             if (!valueWasUpdated)
             {
