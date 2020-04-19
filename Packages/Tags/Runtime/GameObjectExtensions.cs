@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityAtoms;
+using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.Tags
 {

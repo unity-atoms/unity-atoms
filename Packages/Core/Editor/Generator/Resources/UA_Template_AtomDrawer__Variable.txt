@@ -1,8 +1,6 @@
 #if UNITY_2019_1_OR_NEWER
 using UnityEditor;
-<%IF HAS_SUB_UA_NAMESPACE%>
 using UnityAtoms.Editor;
-<%ENDIF%>
 
 <%IF HAS_SUB_UA_NAMESPACE%>
 namespace UnityAtoms.{SUB_UA_NAMESPACE}.Editor
@@ -11,9 +9,9 @@ namespace UnityAtoms.Editor
 <%ENDIF%>
 {
     /// <summary>
-    /// Variable property drawer of type `{TYPE}`. Inherits from `AtomDrawer&lt;{TYPE_NAME}Variable&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
+    /// Variable property drawer of type `{VALUE_TYPE}`. Inherits from `AtomDrawer&lt;{VALUE_TYPE_NAME}Variable&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
-    [CustomPropertyDrawer(typeof({TYPE_NAME}Variable))]
-    public class {TYPE_NAME}VariableDrawer : VariableDrawer<{TYPE_NAME}Variable> { }
+    [CustomPropertyDrawer(typeof({VALUE_TYPE_NAME}Variable))]
+    public class {VALUE_TYPE_NAME}VariableDrawer : VariableDrawer<{VALUE_TYPE_NAME}Variable> { }
 }
 #endif

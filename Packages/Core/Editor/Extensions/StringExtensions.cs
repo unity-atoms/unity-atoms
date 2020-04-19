@@ -28,5 +28,20 @@ namespace UnityAtoms
         /// <returns>The string repeated X amount of times.</returns>
         public static string Repeat(this string str, int times)
             => times == 1 ? str : new StringBuilder(str.Length * times).Insert(0, str, times).ToString();
+
+        /// <summary>
+        /// Capitalize the provided string.
+        /// </summary>
+        /// <param name="str">The string to capitalize.</param>
+        /// <returns>A capitalized version of the string provided.</returns>
+        public static string Capitalize(this string str)
+        {
+            if (string.IsNullOrEmpty(str))
+                return string.Empty;
+
+            char[] a = str.ToCharArray();
+            a[0] = char.ToUpper(a[0]);
+            return new string(a);
+        }
     }
 }

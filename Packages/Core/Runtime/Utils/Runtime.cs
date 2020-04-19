@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UnityAtoms
+﻿namespace UnityAtoms
 {
     /// <summary>
     /// Internal constant and static readonly members for runtime usage.
@@ -18,9 +16,14 @@ namespace UnityAtoms
             public const string LOG_PREFIX = "UnityAtoms :: ";
         }
 
-#if UNITY_EDITOR
-        private static bool? _isUnityAtomsRepo = false;
-#endif
+        /// <summary>
+        /// Constants for defining DefaultExecutionOrder.
+        /// </summary>
+        public static class ExecutionOrder
+        {
+            public const int VARIABLE_RESETTER = -200;
+            public const int VARIABLE_INSTANCER = -100;
+        }
 
         /// <summary>
         /// Determine if we are working the Unity Atoms source library / repo or not.
@@ -28,13 +31,7 @@ namespace UnityAtoms
         /// <returns>`true` if we are working in the Unity Atoms source library / repo, otherwise `false`.</returns>
         public static bool IsUnityAtomsRepo
         {
-            #if !UNITY_EDITOR
             get => System.Environment.CurrentDirectory.Contains("unity-atoms/Examples");
-#else
-            get => (_isUnityAtomsRepo = (_isUnityAtomsRepo ?? System.Environment.CurrentDirectory.Contains("unity-atoms/Examples"))).Value;
-            set => _isUnityAtomsRepo = value;
-#endif
-
         }
     }
 }

@@ -1,7 +1,7 @@
 {
   "name": "com.mambojambostudios.unity-atoms",
   "displayName": "Unity Atoms",
-  "version": "2.0.0",
+  "version": "4.1.0",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
@@ -9,7 +9,7 @@
     "type": "git",
     "url": "git+https://github.com/AdamRamberg/unity-atoms.git"
   },
-  "unity": "2019.1",
+  "unity": "2018.3",
   "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
   "keywords": [
     "scriptable objects",
@@ -17,8 +17,10 @@
   ],
   "category": "Unity",
   "scripts": {
-    "publish:all": "npm run publish:core && npm run publish:mobile && npm run publish:scene && npm run publish:tags && npm run publish:ui && npm run publish:mono",
+    "publish:all": "npm run publish:core && npm run publish:mobile && npm run publish:scene && npm run publish:tags && npm run publish:ui && npm run publish:mono && npm run publish:base && npm run publish:fsm",
     "publish:core": "npm publish ./Packages/Core",
+    "publish:fsm": "npm publish ./Packages/FSM",
+    "publish:base": "npm publish ./Packages/BaseAtoms",
     "publish:mobile": "npm publish ./Packages/Mobile",
     "publish:scene": "npm publish ./Packages/SceneMgmt",
     "publish:tags": "npm publish ./Packages/Tags",

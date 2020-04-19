@@ -64,7 +64,7 @@ public struct MyStruct : IEquatable<MyStruct>
 
 ```
 
-If your type does not implement [`IEquatable`](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1?view=netframework-4.8) you will need to manually implement the `AreEqual` method in the generated `AtomVariable`.
+If your type does not implement [`IEquatable`](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1?view=netframework-4.8) you will need to manually implement the `ValueEquals` method in the generated `AtomVariable`.
 
 ### Type namespace
 
@@ -91,12 +91,20 @@ By default the Atoms that gets generated will be under the namespace `UnityAtoms
 
 This is a list of Atom types that you want to generate. Simply select the Atoms that you want to generate. Some Atoms depends on other Atoms. If you unselect an Atom that other Atoms depends on, then the Generator will unselect those depending Atoms. Below you find the dependency graph:
 
--   List - depends on Event
--   Listener - depends on Action, Event and Unity Event
--   Listener x 2 - depends on Action x 2, Event x 2 and Unity Event x 2
--   Reference - depends on Variable
--   Set Variable Value - depends on Variable, Reference, Event and Event x 2
--   Variable - depends on Event and Event x 2
+-   Pair Action - depends on Pair
+-   Pair Event - depends on Pair
+-   Value List - depends on Event
+-   Event Reference Listener - depends on Action, Variable, Event, Pair Event, Function x 2, Variable Instancer, Pair Event Reference and Unity Event and Pair.
+-   Pair Event Reference Listener - depends on Pair Action, Variable, Event, Pair Event, Function x 2, Variable Instancer, Event Reference and Pair Unity Event and Pair.
+-   Reference - depends on Constant, Variable, Event, Pair Event, Function x 2 and Variable Instancer and Pair.
+-   Event Reference - depends on Variable, Event, Pair Event, Function x 2, Variable Instancer, Event Instancer and Pair.
+-   Pair Event Reference - depends on Variable, Event, Pair Event, Function x 2, Variable Instancer, Pair Event Instancer and Pair.
+-   Set Variable Value - depends on Event, Pair Event, Function x 2, Variable, Constant, Reference, Variable Instancer and Pair.
+-   Pair Unity Event - depends on Pair.
+-   Variable - depends on Event, Pair Event, Pair and Function x 2
+-   Variable Instancer - depsends on Variable, Event, Pair Event, Function x 2 and Pair.
+-   Event Instancer - depsends on Event.
+-   Pair Event Instancer - depsends on Event and Pair.
 
 ### Close & Generate
 

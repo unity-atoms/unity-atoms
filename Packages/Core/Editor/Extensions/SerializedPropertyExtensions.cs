@@ -1,15 +1,19 @@
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
-    internal static class SerializedPropertyExtensions
+    public static class SerializedPropertyExtensions
     {
-
+        /// <summary>
+        /// Generic method that tries to retrieve a value from a SerializedProperty of a specfic type.
+        /// </summary>
+        /// <param name="property">The SerializedProperty.</param>
+        /// <param name="managedObjectOut">Managed object.</param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>The value of type T.</returns>
         public static T GetGenericPropertyValue<T>(this SerializedProperty property, T managedObjectOut)
         {
             object box = managedObjectOut;
@@ -27,16 +31,21 @@ namespace UnityAtoms.Editor
             return (T)box;
         }
 
+        /// <summary>
+        /// Get property value from SerializedProperty.
+        /// </summary>
+        /// <param name="property">The SerializedProperty.</param>
+        /// <returns>The value as an object.</returns>
         public static object GetPropertyValue(this SerializedProperty property)
         {
             if (property == null) throw new ArgumentNullException(nameof(property));
-            switch(property.propertyType)
+            switch (property.propertyType)
             {
                 case SerializedPropertyType.ObjectReference: return property.objectReferenceValue;
                 case SerializedPropertyType.ArraySize: return property.arraySize;
                 case SerializedPropertyType.Integer: return property.intValue;
                 case SerializedPropertyType.Boolean: return property.boolValue;
-                case SerializedPropertyType.Float:  return property.floatValue;
+                case SerializedPropertyType.Float: return property.floatValue;
                 case SerializedPropertyType.String: return property.stringValue;
                 case SerializedPropertyType.Color: return property.colorValue;
                 case SerializedPropertyType.LayerMask: return (LayerMask)property.intValue;
@@ -56,7 +65,6 @@ namespace UnityAtoms.Editor
                 case SerializedPropertyType.FixedBufferSize: return property.fixedBufferSize;
                 case SerializedPropertyType.ExposedReference: return property.exposedReferenceValue;
                 case SerializedPropertyType.Generic:
-                    throw new InvalidOperationException($"Cant handle {property.propertyType} types. for property {property.name}");
                 case SerializedPropertyType.Gradient:
                     throw new InvalidOperationException($"Cant handle {property.propertyType} types. for property {property.name}");
                 default:
@@ -64,5 +72,54 @@ namespace UnityAtoms.Editor
             }
         }
 
+        /// <summary>
+        /// Determine if a SerializedProperty array contains an int value.
+        /// </summary>
+        /// <param name="property">The SerializedProperty.</param>
+        /// <param name="value">The value to check if it exists.</param>
+        /// <returns>True if the int exists in the array, otherwise false.</returns>
+        public static bool ArrayContainsInt(this SerializedProperty property, int value)
+        {
+            if (!property.isArray)
+            {
+                throw new ArgumentException("property is not an array");
+            }
+
+            for (int i = 0; i < property.arraySize; ++i)
+            {
+                var intVal = property.GetArrayElementAtIndex(i).intValue;
+                if (intVal.Equals(value)) return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Helper method to remove an element from a SerializedProperty array. Needed because of quirks using DeleteArrayElementAtIndex.
+        /// </summary>
+        /// <param name="property">The SerializedProperty.</param>
+        /// <param name="index">The index to delete from array.</param>
+        public static void RemoveArrayElement(this SerializedProperty property, int index)
+        {
+            if (!property.isArray)
+            {
+                throw new ArgumentException("property is not an array");
+            }
+
+            // For some reason you need to set objectReferenceValue to null in order to delete an array element from an array.
+            var itemProp = property.GetArrayElementAtIndex(index);
+            if (itemProp.propertyType == SerializedPropertyType.ObjectReference && itemProp.objectReferenceValue != null)
+                itemProp.objectReferenceValue = null;
+
+            // For some reason it is not possible to delete last element in array with DeleteArrayElementAtIndex.
+            if (index == property.arraySize - 1)
+            {
+                property.arraySize--;
+            }
+            else
+            {
+                property.DeleteArrayElementAtIndex(index);
+            }
+        }
     }
 }

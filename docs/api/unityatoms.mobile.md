@@ -7,81 +7,15 @@ sidebar_label: UnityAtoms.Mobile
 
 # Namespace - `UnityAtoms.Mobile`
 
-## `TouchUserInputAction`
+## `TouchUserInputPairEventReferenceListener`
 
-Action of type `TouchUserInput`. Inherits from `AtomAction<TouchUserInput>`.
-
----
-
-## `TouchUserInputTouchUserInputAction`
-
-Action x 2 of type `TouchUserInput`. Inherits from `AtomAction<TouchUserInput, TouchUserInput>`.
+Event Reference Listener of type `TouchUserInputPair`. Inherits from `AtomEventReferenceListener<TouchUserInputPair, TouchUserInputPairEvent, TouchUserInputPairEventReference, TouchUserInputPairUnityEvent>`.
 
 ---
 
-## `UpdateTouchUserInput`
+## `TouchUserInputEventReferenceListener`
 
-Updates the `TouchUserInputVariable` on every Update tick. Meant to be called every Update.
-
-### Variables
-
-#### `TouchUserInputVariable`
-
-The `TouchUserInputVariable` to update.
-
-### Methods
-
-#### `Do`
-
-Update the `TouchUserInputVariable`.abstract Call this on every Update tick.
-
----
-
-## `SetTouchUserInputVariableValue`
-
-Set variable value Action of type `TouchUserInput`. Inherits from `SetVariableValue<TouchUserInput, TouchUserInputVariable, TouchUserInputConstant, TouchUserInputReference, TouchUserInputEvent, TouchUserInputTouchUserInputEvent>`.
-
----
-
-## `TouchUserInputConstant`
-
-Constant of type `TouchUserInput`. Inherits from `AtomBaseVariable<TouchUserInput>`.
-
----
-
-## `TouchUserInputEvent`
-
-Event of type `TouchUserInput`. Inherits from `AtomEvent<TouchUserInput>`.
-
----
-
-## `TouchUserInputTouchUserInputEvent`
-
-Event x 2 of type `TouchUserInput`. Inherits from `AtomEvent<TouchUserInput, TouchUserInput>`.
-
----
-
-## `TouchUserInputListener`
-
-Listener of type `TouchUserInput`. Inherits from `AtomListener<TouchUserInput, TouchUserInputAction, TouchUserInputEvent, TouchUserInputUnityEvent>`.
-
----
-
-## `TouchUserInputTouchUserInputListener`
-
-Listener x 2 of type `TouchUserInput`. Inherits from `AtomListener<TouchUserInput, TouchUserInput, TouchUserInputTouchUserInputAction, TouchUserInputTouchUserInputEvent, TouchUserInputTouchUserInputUnityEvent>`.
-
----
-
-## `TouchUserInputList`
-
-List of type `TouchUserInput`. Inherits from `AtomList<TouchUserInput, TouchUserInputEvent>`.
-
----
-
-## `TouchUserInputReference`
-
-Reference of type `TouchUserInput`. Inherits from `AtomReference<TouchUserInput, TouchUserInputVariable, TouchUserInputConstant>`.
+Event Reference Listener of type `TouchUserInput`. Inherits from `AtomEventReferenceListener<TouchUserInput, TouchUserInputEvent, TouchUserInputEventReference, TouchUserInputUnityEvent>`.
 
 ---
 
@@ -220,9 +154,21 @@ Enum for different touch user input states.
 
 ---
 
-## `TouchUserInputTouchUserInputUnityEvent`
+## `TouchUserInputReference`
 
-None generic Unity Event x 2 of type `TouchUserInput`. Inherits from `UnityEvent<TouchUserInput, TouchUserInput>`.
+Reference of type `TouchUserInput`. Inherits from `EquatableAtomReference<TouchUserInput, TouchUserInputPair, TouchUserInputConstant, TouchUserInputVariable, TouchUserInputEvent, TouchUserInputPairEvent, TouchUserInputTouchUserInputFunction, TouchUserInputVariableInstancer, AtomCollection, AtomList>`.
+
+---
+
+## `TouchUserInputPair`
+
+IPair of type `<TouchUserInput>`. Inherits from `IPair<TouchUserInput>`.
+
+---
+
+## `TouchUserInputPairUnityEvent`
+
+None generic Unity Event of type `TouchUserInputPair`. Inherits from `UnityEvent<TouchUserInputPair>`.
 
 ---
 
@@ -232,8 +178,116 @@ None generic Unity Event of type `TouchUserInput`. Inherits from `UnityEvent<Tou
 
 ---
 
+## `TouchUserInputTouchUserInputUnityEvent`
+
+None generic Unity Event x 2 of type `TouchUserInput`. Inherits from `UnityEvent<TouchUserInput, TouchUserInput>`.
+
+---
+
+## `TouchUserInputConstant`
+
+Constant of type `TouchUserInput`. Inherits from `AtomBaseVariable<TouchUserInput>`.
+
+---
+
+## `TouchUserInputEventReference`
+
+Event Reference of type `TouchUserInput`. Inherits from `AtomEventReference<TouchUserInput, TouchUserInputVariable, TouchUserInputEvent, TouchUserInputVariableInstancer, TouchUserInputEventInstancer>`.
+
+---
+
+## `TouchUserInputPairEventReference`
+
+Event Reference of type `TouchUserInputPair`. Inherits from `AtomEventReference<TouchUserInputPair, TouchUserInputVariable, TouchUserInputPairEvent, TouchUserInputVariableInstancer, TouchUserInputPairEventInstancer>`.
+
+---
+
+## `TouchUserInputVariableInstancer`
+
+Variable Instancer of type `TouchUserInput`. Inherits from `AtomVariableInstancer<TouchUserInputVariable, TouchUserInputPair, TouchUserInput, TouchUserInputEvent, TouchUserInputPairEvent, TouchUserInputTouchUserInputFunction>`.
+
+---
+
+## `TouchUserInputPairEventInstancer`
+
+Event Instancer of type `TouchUserInputPair`. Inherits from `AtomEventInstancer<TouchUserInputPair, TouchUserInputPairEvent>`.
+
+---
+
+## `TouchUserInputEventInstancer`
+
+Event Instancer of type `TouchUserInput`. Inherits from `AtomEventInstancer<TouchUserInput, TouchUserInputEvent>`.
+
+---
+
 ## `TouchUserInputVariable`
 
-Variable of type `TouchUserInput`. Inherits from `EquatableAtomVariable<TouchUserInput, TouchUserInputEvent, TouchUserInputTouchUserInputEvent>`.
+Variable of type `TouchUserInput`. Inherits from `EquatableAtomVariable<TouchUserInput, TouchUserInputPair, TouchUserInputEvent, TouchUserInputPairEvent, TouchUserInputTouchUserInputFunction>`.
+
+---
+
+## `TouchUserInputPairAction`
+
+Action of type `TouchUserInputPair`. Inherits from `AtomAction<TouchUserInputPair>`.
+
+---
+
+## `UpdateTouchUserInput`
+
+Updates the `TouchUserInputVariable` on every Update tick. Meant to be called every Update.
+
+### Variables
+
+#### `TouchUserInputVariable`
+
+The `TouchUserInputVariable` to update.
+
+### Methods
+
+#### `Do`
+
+Update the `TouchUserInputVariable`.abstract Call this on every Update tick.
+
+---
+
+## `TouchUserInputAction`
+
+Action of type `TouchUserInput`. Inherits from `AtomAction<TouchUserInput>`.
+
+---
+
+## `TouchUserInputTouchUserInputFunction`
+
+Function x 2 of type `TouchUserInput`. Inherits from `AtomFunction<TouchUserInput, TouchUserInput>`.
+
+---
+
+## `SyncTouchUserInputVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type TouchUserInput to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `TouchUserInputPairEvent`
+
+Event of type `TouchUserInputPair`. Inherits from `AtomEvent<TouchUserInputPair>`.
+
+---
+
+## `TouchUserInputEvent`
+
+Event of type `TouchUserInput`. Inherits from `AtomEvent<TouchUserInput>`.
+
+---
+
+## `TouchUserInputValueList`
+
+Value List of type `TouchUserInput`. Inherits from `AtomValueList<TouchUserInput, TouchUserInputEvent>`.
+
+---
+
+## `SetTouchUserInputVariableValue`
+
+Set variable value Action of type `TouchUserInput`. Inherits from `SetVariableValue<TouchUserInput, TouchUserInputPair, TouchUserInputVariable, TouchUserInputConstant, TouchUserInputReference, TouchUserInputEvent, TouchUserInputPairEvent, TouchUserInputVariableInstancer>`.
 
 ---

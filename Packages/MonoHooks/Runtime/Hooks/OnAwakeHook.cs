@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.MonoHooks
 {
@@ -14,27 +14,27 @@ namespace UnityAtoms.MonoHooks
         /// Listener
         /// </summary>
         [SerializeField]
-        private VoidListener _listener = null;
+        private VoidBaseEventReferenceListener _listener = null;
 
         /// <summary>
         /// Listener with GameObject reference
         /// </summary>
         [SerializeField]
-        private VoidGameObjectListener _listenerWithGameObject = null;
+        private GameObjectEventReferenceListener _gameObjectListener = null;
 
         private void Awake()
         {
             // This is needed because it's not certain that OnEnable on all scripts are called before Awake on all scripts
-            if (Event != null && _listener != null)
+            if (_event != null && _listener != null)
             {
-                Event.RegisterListener(_listener);
+                _event.RegisterListener(_listener);
             }
-            if (EventWithGameObjectReference != null && _listenerWithGameObject != null)
+            if (_eventWithGameObjectReference != null && _gameObjectListener != null)
             {
-                EventWithGameObjectReference.RegisterListener(_listenerWithGameObject);
+                _eventWithGameObjectReference.RegisterListener(_gameObjectListener);
             }
 
-            OnHook(new Void());
+            OnHook();
         }
     }
 }

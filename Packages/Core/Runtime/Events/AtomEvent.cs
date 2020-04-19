@@ -1,87 +1,59 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityAtoms
 {
     /// <summary>
-    /// None generic base class for Events. Inherits from `BaseAtom` and `ISerializationCallbackReceiver`.
+    /// Generic base class for Events. Inherits from `AtomEventBase`.
     /// </summary>
+    /// <typeparam name="T">The type for this Event.</typeparam>
     [EditorIcon("atom-icon-cherry")]
-    public abstract class AtomEvent : BaseAtom, ISerializationCallbackReceiver
+    public class AtomEvent<T> : AtomEventBase
     {
-        /// <summary>
-        /// Event without value.
-        /// </summary>
-        public event Action OnEventNoValue;
-        protected void RaiseNoValue()
-        {
-            OnEventNoValue?.Invoke();
-        }
+        public T InspectorRaiseValue { get => _inspectorRaiseValue; }
 
         /// <summary>
-        /// Register handler to be called when the Event triggers.
+        /// Retrieve Replay Buffer as a List. This call will allocate memory so use sparsely.
         /// </summary>
-        /// <param name="del">The handler.</param>
-        public void Register(Action del)
-        {
-            OnEventNoValue += del;
-        }
+        /// <returns></returns>
+        public List<T> ReplayBuffer { get => _replayBuffer.ToList(); }
+
+        public int ReplayBufferSize { get => _replayBufferSize; set => _replayBufferSize = value; }
+
+        [SerializeField]
+        protected event Action<T> _onEvent;
 
         /// <summary>
-        /// Unregister handler that was registered using the `Register` method.
+        /// The event replays the specified number of old values to new subscribers. Works like a ReplaySubject in Rx. 
         /// </summary>
-        /// <param name="del">The handler.</param>
-        public void Unregister(Action del)
-        {
-            OnEventNoValue -= del;
-        }
+        [SerializeField]
+        [Range(0, 10)]
+        [Tooltip("The number of old values (between 0-10) being replayed when someone subscribes to this Event.")]
+        private int _replayBufferSize = 1;
 
-        /// <summary>
-        /// Register a Listener that in turn trigger all its associated handlers when the Event triggers.
-        /// </summary>
-        /// <param name="listener">The Listener to register.</param>
-        public void RegisterListener(IAtomListener listener)
-        {
-            OnEventNoValue += listener.OnEventRaised;
-        }
+        private Queue<T> _replayBuffer = new Queue<T>();
 
-        /// <summary>
-        /// Unregister a listener that was registered using the `RegisterListener` method.
-        /// </summary>
-        /// <param name="listener">The Listener to unregister.</param>
-        public void UnregisterListener(IAtomListener listener)
-        {
-            OnEventNoValue -= listener.OnEventRaised;
-        }
-
-        public void OnBeforeSerialize() { }
-
-        public virtual void OnAfterDeserialize()
+        private void OnDisable()
         {
             // Clear all delegates when exiting play mode
-            if (OnEventNoValue != null)
+            if (_onEvent != null)
             {
-                foreach (var d in OnEventNoValue.GetInvocationList())
+                var invocationList = _onEvent.GetInvocationList();
+                foreach (var d in invocationList)
                 {
-                    OnEventNoValue -= (Action)d;
+                    _onEvent -= (Action<T>)d;
                 }
             }
         }
 
-    }
-
-    /// <summary>
-    /// Generic base class for Events. Inherits from `AtomEvent`.
-    /// </summary>
-    /// <typeparam name="T">The type for this Event.</typeparam>
-    [EditorIcon("atom-icon-cherry")]
-    public abstract class AtomEvent<T> : AtomEvent
-    {
         /// <summary>
-        /// Actual event.
+        /// Used when raising values from the inspector for debugging purposes.
         /// </summary>
-        public event Action<T> OnEvent;
+        [SerializeField]
+        [Tooltip("Value that will be used when using the Raise button in the editor inspector.")]
+        private T _inspectorRaiseValue = default(T);
 
         /// <summary>
         /// Raise the Event.
@@ -89,35 +61,55 @@ namespace UnityAtoms
         /// <param name="item">The value associated with the Event.</param>
         public void Raise(T item)
         {
-            base.RaiseNoValue();
-            OnEvent?.Invoke(item);
+            base.Raise();
+            _onEvent?.Invoke(item);
+            AddToReplayBuffer(item);
         }
+
+        /// <summary>
+        /// Used in editor scipts since Raise is ambigious when using reflection to get method.
+        /// </summary>
+        /// <param name="item"></param>
+        public void RaiseEditor(T item) => Raise(item);
 
         /// <summary>
         /// Register handler to be called when the Event triggers.
         /// </summary>
-        /// <param name="del">The handler.</param>
-        public void Register(Action<T> del)
+        /// <param name="action">The handler.</param>
+        public void Register(Action<T> action)
         {
-            OnEvent += del;
+            _onEvent += action;
+            ReplayBufferToSubscriber(action);
         }
 
         /// <summary>
         /// Unregister handler that was registered using the `Register` method.
         /// </summary>
-        /// <param name="del">The handler.</param>
-        public void Unregister(Action<T> del)
+        /// <param name="action">The handler.</param>
+        public void Unregister(Action<T> action)
         {
-            OnEvent -= del;
+            _onEvent -= action;
+        }
+
+        /// <summary>
+        /// Unregister all handlers that were registered using the `Register` method.
+        /// </summary>
+        public void UnregisterAll()
+        {
+            _onEvent = null;
         }
 
         /// <summary>
         /// Register a Listener that in turn trigger all its associated handlers when the Event triggers.
         /// </summary>
         /// <param name="listener">The Listener to register.</param>
-        public void RegisterListener(IAtomListener<T> listener)
+        public void RegisterListener(IAtomListener<T> listener, bool replayEventsBuffer = true)
         {
-            OnEvent += listener.OnEventRaised;
+            _onEvent += listener.OnEventRaised;
+            if (replayEventsBuffer)
+            {
+                ReplayBufferToSubscriber(listener.OnEventRaised);
+            }
         }
 
         /// <summary>
@@ -126,7 +118,7 @@ namespace UnityAtoms
         /// <param name="listener">The Listener to unregister.</param>
         public void UnregisterListener(IAtomListener<T> listener)
         {
-            OnEvent -= listener.OnEventRaised;
+            _onEvent -= listener.OnEventRaised;
         }
 
         #region Observable
@@ -140,103 +132,32 @@ namespace UnityAtoms
         }
         #endregion // Observable
 
-        public override void OnAfterDeserialize()
+        protected void AddToReplayBuffer(T item)
         {
-            base.OnAfterDeserialize();
-            // Clear all delegates when exiting play mode
-            if (OnEvent != null)
+            if (_replayBufferSize > 0)
             {
-                foreach (var d in OnEvent.GetInvocationList())
-                {
-                    OnEvent -= (Action<T>)d;
-                }
+                while (_replayBuffer.Count >= _replayBufferSize) { _replayBuffer.Dequeue(); }
+                _replayBuffer.Enqueue(item);
             }
         }
-    }
 
-    /// <summary>
-    /// Generic base class for Events. Inherits from `AtomEvent`.
-    /// </summary>
-    /// <typeparam name="T1">The first type for this Event.</typeparam>
-    /// <typeparam name="T2">The second type for this Event.</typeparam>
-    [EditorIcon("atom-icon-cherry")]
-    public abstract class AtomEvent<T1, T2> : AtomEvent
-    {
-        /// <summary>
-        /// Actual event.
-        /// </summary>
-        public event Action<T1, T2> OnEvent;
-
-        /// <summary>
-        /// Raise the Event.
-        /// </summary>
-        /// <param name="item1">The first value associated with the Event.</param>
-        /// <param name="item2">The second value associated with the Event.</param>
-        public void Raise(T1 item1, T2 item2)
+        private void ReplayBufferToSubscriber(Action<T> action)
         {
-            base.RaiseNoValue();
-            OnEvent?.Invoke(item1, item2);
-        }
-
-        /// <summary>
-        /// Register handler to be called when the Event triggers.
-        /// </summary>
-        /// <param name="del">The handler.</param>
-        public void Register(Action<T1, T2> del)
-        {
-            OnEvent += del;
-        }
-
-        /// <summary>
-        /// Unregister handler that was registered using the `Register` method.
-        /// </summary>
-        /// <param name="del">The handler.</param>
-        public void Unregister(Action<T1, T2> del)
-        {
-            OnEvent -= del;
-        }
-
-        /// <summary>
-        /// Register a Listener that in turn trigger all its associated handlers when the Event triggers.
-        /// </summary>
-        /// <param name="listener">The Listener to register.</param>
-        public void RegisterListener(IAtomListener<T1, T2> listener)
-        {
-            OnEvent += listener.OnEventRaised;
-        }
-
-        /// <summary>
-        /// Unregister a listener that was registered using the `RegisterListener` method.
-        /// </summary>
-        /// <param name="listener">The Listener to unregister.</param>
-        public void UnregisterListener(IAtomListener<T1, T2> listener)
-        {
-            OnEvent -= listener.OnEventRaised;
-        }
-
-        #region Observable
-
-        /// <summary>
-        /// Turn the Event into an `IObservable&lt;M&gt;`. Makes Events compatible with for example UniRx.
-        /// </summary>
-        /// <param name="resultSelector">Takes `T1` and `T2` and returns a new type of type `M`.abstract Most of the time this is going to be combination of T1 and T2, eg. `ValueTuple&lt;T1, T2&gt;`</param>
-        /// <typeparam name="M">The result selector type.</typeparam>
-        /// <returns>The Event as an `IObservable&lt;M&gt;`.</returns>
-        public IObservable<M> Observe<M>(Func<T1, T2, M> resultSelector)
-        {
-            return new ObservableEvent<T1, T2, M>(Register, Unregister, resultSelector);
-        }
-        #endregion // Observable
-
-        public override void OnAfterDeserialize()
-        {
-            base.OnAfterDeserialize();
-            // Clear all delegates when exiting play mode
-            if (OnEvent != null)
-                foreach (var d in OnEvent.GetInvocationList())
+            if (_replayBufferSize > 0 && _replayBuffer.Count > 0)
+            {
+                var enumerator = _replayBuffer.GetEnumerator();
+                try
                 {
-                    OnEvent -= (Action<T1, T2>)d;
+                    while (enumerator.MoveNext())
+                    {
+                        action(enumerator.Current);
+                    }
                 }
+                finally
+                {
+                    enumerator.Dispose();
+                }
+            }
         }
     }
 }

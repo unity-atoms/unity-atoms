@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f905a459d97c84162be2fdcd2bc3a39a, type: 3}
+  m_Name: EnemyDataBase
+  m_EditorClassIdentifier: 
+  _developerDescription: A Collection of Enemy data. This is a base Collection that
+    will be used as a base in an Instancer.
+  _id: 
+  _value:
+    _serializedKeys: []
+    _serializedValues: []
+    _duplicateKeyIndices: 
+  _added: {fileID: 11400000, guid: e940aaaaaca2e4ccfa65f3159e6cf8ec, type: 2}
+  _removed: {fileID: 11400000, guid: 955d19fc5a0a9412a8e3444652119b2d, type: 2}
+  _cleared: {fileID: 0}

@@ -1,7 +1,6 @@
-// generated file
 using UnityEditor;
-using UnityAtoms.SceneMgmt;
 using UnityAtoms.Editor;
+using UnityAtoms.SceneMgmt;
 
 namespace UnityAtoms.SceneMgmt.Editor
 {
@@ -9,7 +8,5 @@ namespace UnityAtoms.SceneMgmt.Editor
     /// Variable Inspector of type `SceneField`. Inherits from `AtomVariableEditor`
     /// </summary>
     [CustomEditor(typeof(SceneFieldVariable))]
-    public sealed class SceneFieldVariableEditor : AtomVariableEditor
-    {
-    }
+    public sealed class SceneFieldVariableEditor : AtomVariableEditor<SceneField, SceneFieldPair> { }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UnityAtoms
 {
-    internal abstract class BaseObservable<T> : IObservable<T>
+    public abstract class BaseObservable<T> : IObservable<T>
     {
         protected List<IObserver<T>> _observers = new List<IObserver<T>>();
 

@@ -7,195 +7,6 @@ sidebar_label: UnityAtoms.Tags
 
 # Namespace - `UnityAtoms.Tags`
 
-## `AtomTags`
-
-A MonoBehaviour that adds tags the Unity Atoms way to a GameObject.
-
-### Properties
-
-#### `Tags`
-
-Get the tags associated with this GameObject as `StringConstants` in a `ReadOnlyList<T>`.
-
-### Methods
-
-#### `HasTag(System.String)`
-
-Check if the tag provided is associated with this `GameObject`.
-
-##### Parameters
-
--   `tag` - undefined
-
-##### Returns
-
-`true` if the tag exists, otherwise `false`.
-
----
-
-#### `AddTag(UnityAtoms.StringConstant)`
-
-Add a tag to this `GameObject`.
-
-##### Parameters
-
--   `tag` - The tag to add as a `StringContant`.
-
----
-
-#### `RemoveTag(System.String)`
-
-Remove a tag from this `GameObject`.
-
-##### Parameters
-
--   `tag` - The tag to remove as a `string`
-
----
-
-#### `FindByTag(System.String)`
-
-Find first `GameObject` that has the tag provided.
-
-##### Parameters
-
--   `tag` - The tag that the `GameObject` that you search for will have.
-
-##### Returns
-
-The first `GameObject` with the provided tag found. If no `GameObject`is found, it returns `null`.
-
----
-
-#### `FindAllByTag(System.String)`
-
-Find all `GameObject`s that have the tag provided.
-
-##### Parameters
-
--   `tag` - The tag that the `GameObject`s that you search for will have.
-
-##### Returns
-
-An array of `GameObject`s with the provided tag. If not found it returns `null`.
-
----
-
-#### `FindAllByTagNoAlloc(System.String,System.Collections.Generic.List{UnityEngine.GameObject})`
-
-Find all `GameObject`s that have the tag provided. Mutates the output `List<GameObject>` and adds the `GameObject`s found to it.
-
-##### Parameters
-
--   `tag` - The tag that the `GameObject`s that you search for will have.
--   `output` - A `List<GameObject>` that this method will clear and add the `GameObject`s found to.
-
----
-
-#### `GetTagsForGameObject(UnityEngine.GameObject)`
-
-A faster alternative to `gameObject.GetComponen<UATags>()`.
-
-##### Returns
-
-Returns the `UATags` component. Returns `null` if the `GameObject` does not have a `UATags` component or if the `GameObject` is disabled.
-
----
-
-#### `GetTags(UnityEngine.GameObject)`
-
-Retrieves all tags for a given `GameObject`. A faster alternative to `gameObject.GetComponen<UATags>().Tags`.
-
-##### Parameters
-
--   `go` - The `GameObject` to check for tags.
-
-##### Returns
-
-A `ReadOnlyList<T>` of tags stored as `StringContant`s. Returns `null` if the `GameObject` does not have any tags or if the `GameObject` is disabled.
-
----
-
-## `GameObjectExtensions`
-
-`GameObject` extensions related to tags in Unity Atoms.
-
-### Methods
-
-#### `GetTags(UnityEngine.GameObject)`
-
-Retrieves all tags for a given `GameObject`. A faster alternative to `gameObject.GetComponen<UATags>().Tags`.
-
-##### Parameters
-
--   `go` - This `GameObject`
-
-##### Returns
-
-A `ReadOnlyList<T>` of tags stored as `StringContant`s. Returns `null` if the `GameObject` does not have any tags or if the `GameObject` is disabled.
-
----
-
-#### `HasTag(UnityEngine.GameObject,System.String)`
-
-Check if the tag provided is associated with this `GameObject`.
-
-##### Parameters
-
--   `go` - This `GameObject`
--   `tag` - The tag to search for.
-
-##### Returns
-
-`true` if the tag exists, otherwise `false`.
-
----
-
-#### `HasTag(UnityEngine.GameObject,UnityAtoms.StringConstant)`
-
-Check if the tag provided is associated with this `GameObject`.
-
-##### Parameters
-
--   `go` - This `GameObject`
--   `tag` - The tag to search for.
-
-##### Returns
-
-`true` if the tag exists, otherwise `false`.
-
----
-
-#### `HasAnyTag(UnityEngine.GameObject,System.Collections.Generic.List{System.String})`
-
-Check if any of the tags provided are associated with this `GameObject`.
-
-##### Parameters
-
--   `go` - This `GameObject`
--   `tags` - The tags to search for.
-
-##### Returns
-
-`true` if any of the tags exist, otherwise `false`.
-
----
-
-#### `HasAnyTag(UnityEngine.GameObject,System.Collections.Generic.List{UnityAtoms.StringConstant})`
-
-Check if any of the tags provided are associated with this `GameObject`.
-
-##### Parameters
-
--   `go` - This `GameObject`
--   `tags` - The tags to search for.
-
-##### Returns
-
-`true` if any of the tags exist, otherwise `false`.
-
----
-
 ## `ReadOnlyList<T>`
 
 #### Type Parameters
@@ -287,5 +98,154 @@ Copies all the elements of the current one-dimensional array to the specified on
 
 -   `array` - The one-dimensional array that is the destination of the elements copied from the current array.
 -   `arrayIndex` - A 32-bit integer that represents the index in array at which copying begins.
+
+---
+
+## `GameObjectExtensions`
+
+`GameObject` extensions related to tags in Unity Atoms.
+
+### Methods
+
+#### `GetTags(UnityEngine.GameObject)`
+
+Retrieves all tags for a given `GameObject`. A faster alternative to `gameObject.GetComponen<UATags>().Tags`.
+
+##### Parameters
+
+-   `go` - This `GameObject`
+
+##### Returns
+
+A `ReadOnlyList<T>` of tags stored as `StringContant`s. Returns `null` if the `GameObject` does not have any tags or if the `GameObject` is disabled.
+
+---
+
+#### `HasTag(UnityEngine.GameObject,System.String)`
+
+Check if the tag provided is associated with this `GameObject`.
+
+##### Parameters
+
+-   `go` - This `GameObject`
+-   `tag` - The tag to search for.
+
+##### Returns
+
+`true` if the tag exists, otherwise `false`.
+
+---
+
+#### `HasAnyTag(UnityEngine.GameObject,System.Collections.Generic.List{System.String})`
+
+Check if any of the tags provided are associated with this `GameObject`.
+
+##### Parameters
+
+-   `go` - This `GameObject`
+-   `tags` - The tags to search for.
+
+##### Returns
+
+`true` if any of the tags exist, otherwise `false`.
+
+---
+
+## `AtomTags`
+
+A MonoBehaviour that adds tags the Unity Atoms way to a GameObject.
+
+### Properties
+
+#### `Tags`
+
+Get the tags associated with this GameObject as `StringConstants` in a `ReadOnlyList<T>`.
+
+### Methods
+
+#### `HasTag(System.String)`
+
+Check if the tag provided is associated with this `GameObject`.
+
+##### Parameters
+
+-   `tag` - undefined
+
+##### Returns
+
+`true` if the tag exists, otherwise `false`.
+
+---
+
+#### `RemoveTag(System.String)`
+
+Remove a tag from this `GameObject`.
+
+##### Parameters
+
+-   `tag` - The tag to remove as a `string`
+
+---
+
+#### `FindByTag(System.String)`
+
+Find first `GameObject` that has the tag provided.
+
+##### Parameters
+
+-   `tag` - The tag that the `GameObject` that you search for will have.
+
+##### Returns
+
+The first `GameObject` with the provided tag found. If no `GameObject`is found, it returns `null`.
+
+---
+
+#### `FindAllByTag(System.String)`
+
+Find all `GameObject`s that have the tag provided.
+
+##### Parameters
+
+-   `tag` - The tag that the `GameObject`s that you search for will have.
+
+##### Returns
+
+An array of `GameObject`s with the provided tag. If not found it returns `null`.
+
+---
+
+#### `FindAllByTagNoAlloc(System.String,System.Collections.Generic.List{UnityEngine.GameObject})`
+
+Find all `GameObject`s that have the tag provided. Mutates the output `List<GameObject>` and adds the `GameObject`s found to it.
+
+##### Parameters
+
+-   `tag` - The tag that the `GameObject`s that you search for will have.
+-   `output` - A `List<GameObject>` that this method will clear and add the `GameObject`s found to.
+
+---
+
+#### `GetTagsForGameObject(UnityEngine.GameObject)`
+
+A faster alternative to `gameObject.GetComponen<UATags>()`.
+
+##### Returns
+
+Returns the `UATags` component. Returns `null` if the `GameObject` does not have a `UATags` component or if the `GameObject` is disabled.
+
+---
+
+#### `GetTags(UnityEngine.GameObject)`
+
+Retrieves all tags for a given `GameObject`. A faster alternative to `gameObject.GetComponen<UATags>().Tags`.
+
+##### Parameters
+
+-   `go` - The `GameObject` to check for tags.
+
+##### Returns
+
+A `ReadOnlyList<T>` of tags stored as `StringContant`s. Returns `null` if the `GameObject` does not have any tags or if the `GameObject` is disabled.
 
 ---

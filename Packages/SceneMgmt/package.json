@@ -1,8 +1,8 @@
 {
   "name": "com.mambojambostudios.unity-atoms-scene-mgmt",
   "displayName": "Unity Atoms Scene Mgmt",
-  "version": "2.0.0",
-  "unity": "2019.1",
+  "version": "4.1.0",
+  "unity": "2018.3",
   "description": "Unity Atoms to manage your scenes.",
   "keywords": [
     "scriptable objects",
@@ -20,6 +20,7 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "2.0.0"
+    "com.mambojambostudios.unity-atoms-core": "4.1.0",
+    "com.mambojambostudios.unity-atoms-base-atoms": "4.1.0"
   }
 }

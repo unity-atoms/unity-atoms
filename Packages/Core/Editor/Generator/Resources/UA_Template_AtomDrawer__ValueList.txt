@@ -1,0 +1,17 @@
+#if UNITY_2019_1_OR_NEWER
+using UnityEditor;
+using UnityAtoms.Editor;
+
+<%IF HAS_SUB_UA_NAMESPACE%>
+namespace UnityAtoms.{SUB_UA_NAMESPACE}.Editor
+<%ELSE%>
+namespace UnityAtoms.Editor
+<%ENDIF%>
+{
+    /// <summary>
+    /// Value List property drawer of type `{VALUE_TYPE}`. Inherits from `AtomDrawer&lt;{VALUE_TYPE_NAME}ValueList&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
+    /// </summary>
+    [CustomPropertyDrawer(typeof({VALUE_TYPE_NAME}ValueList))]
+    public class {VALUE_TYPE_NAME}ValueListDrawer : AtomDrawer<{VALUE_TYPE_NAME}ValueList> { }
+}
+#endif

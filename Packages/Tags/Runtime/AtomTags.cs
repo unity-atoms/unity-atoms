@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.Tags
 {
@@ -18,7 +20,21 @@ namespace UnityAtoms.Tags
         /// Get the tags associated with this GameObject as `StringConstants` in a `ReadOnlyList&lt;T&gt;`.
         /// </summary>
         /// <value>The tags associated with this GameObject as `StringConstants` in a `ReadOnlyList&lt;T&gt;`.</value>
-        public ReadOnlyList<StringConstant> Tags { get; private set; }
+        public ReadOnlyList<StringConstant> Tags
+        {
+            get
+            {
+                if (_readOnlyTags == null || _readOnlyTags.Count != _sortedTags.Values.Count)
+                {
+                    _readOnlyTags = new ReadOnlyList<StringConstant>(_sortedTags.Values);
+                }
+
+                return _readOnlyTags;
+            }
+            private set => _readOnlyTags = value;
+        }
+
+        private ReadOnlyList<StringConstant> _readOnlyTags;
 
         [SerializeField]
         private List<StringConstant> _tags = new List<StringConstant>();
@@ -30,7 +46,7 @@ namespace UnityAtoms.Tags
 
         private static readonly Dictionary<GameObject, AtomTags> TagInstances
             = new Dictionary<GameObject, AtomTags>();
-
+        private static Action _onInitialization;
 
         #region Serialization
 
@@ -74,21 +90,32 @@ namespace UnityAtoms.Tags
 
         #region Lifecycles
 
-        private void Awake()
-        {
-            Tags = new ReadOnlyList<StringConstant>(_sortedTags.Values);
-        }
-
         private void OnEnable()
         {
-            if (!TagInstances.ContainsKey(gameObject)) TagInstances.Add(gameObject, this);
-            for (var i = 0; i < Tags.Count; i++)
+            if (!IsInitialized(gameObject))
             {
-                var stringConstant = Tags[i];
-                if (stringConstant == null) continue;
-                var tag = stringConstant.Value;
-                if (!TaggedGameObjects.ContainsKey(tag)) TaggedGameObjects.Add(tag, new List<GameObject>());
-                TaggedGameObjects[tag].Add(gameObject);
+                TaggedGameObjects.Clear();
+                TagInstances.Clear();
+                var _atomTagsInScene = GameObject.FindObjectsOfType<AtomTags>();
+
+                for (var i = 0; i < _atomTagsInScene.Length; ++i)
+                {
+                    var atomTags = _atomTagsInScene[i];
+                    var tagCount = atomTags.Tags.Count;
+                    var go = _atomTagsInScene[i].gameObject;
+                    if (!TagInstances.ContainsKey(go)) TagInstances.Add(go, atomTags);
+                    for (var y = 0; y < tagCount; ++y)
+                    {
+                        var stringConstant = atomTags.Tags[y];
+                        if (stringConstant == null) continue;
+                        var tag = stringConstant.Value;
+                        if (!TaggedGameObjects.ContainsKey(tag)) TaggedGameObjects.Add(tag, new List<GameObject>());
+                        TaggedGameObjects[tag].Add(go);
+                    }
+                }
+
+                _onInitialization?.Invoke();
+                _onInitialization = null;
             }
         }
 
@@ -105,6 +132,19 @@ namespace UnityAtoms.Tags
         }
 
         #endregion
+
+        public static void OnInitialization(Action handler)
+        {
+            var atomTags = GameObject.FindObjectOfType<AtomTags>();
+            if (atomTags != null && !IsInitialized(atomTags.gameObject))
+            {
+                _onInitialization += handler;
+            }
+            else
+            {
+                handler();
+            }
+        }
 
         /// <summary>
         /// Check if the tag provided is associated with this `GameObject`.
@@ -141,7 +181,7 @@ namespace UnityAtoms.Tags
         public void RemoveTag(string tag)
         {
             if (tag == null) return;
-            if (_sortedTags.ContainsKey(tag)) return;
+            if (!_sortedTags.ContainsKey(tag)) return;
             _sortedTags.Remove(tag);
 
             Tags = new ReadOnlyList<StringConstant>(_sortedTags.Values);
@@ -213,5 +253,7 @@ namespace UnityAtoms.Tags
             var tags = TagInstances[go];
             return tags.Tags;
         }
+
+        private static bool IsInitialized(GameObject go) => TagInstances.ContainsKey(go);
     }
 }

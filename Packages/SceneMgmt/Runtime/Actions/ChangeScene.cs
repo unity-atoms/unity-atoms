@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
+using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.SceneMgmt
 {
@@ -9,7 +9,7 @@ namespace UnityAtoms.SceneMgmt
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Scene Management/Change Scene")]
-    public sealed class ChangeScene : VoidAction
+    public sealed class ChangeScene : AtomAction
     {
         /// <summary>
         /// Scene to change to.

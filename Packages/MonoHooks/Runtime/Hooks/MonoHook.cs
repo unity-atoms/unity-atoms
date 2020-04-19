@@ -6,30 +6,28 @@ namespace UnityAtoms.MonoHooks
     /// <summary>
     /// Generic base class for all Mono Hooks.
     /// </summary>
-    /// <typeparam name="E1">Event of type `AtomEvent&lt;EV&gt;`</typeparam>
-    /// <typeparam name="E2">Event of type `AtomEvent&lt;EV, GameObject&gt;`</typeparam>
+    /// <typeparam name="E">Event of type `AtomEvent&lt;EV&gt;`</typeparam>
     /// <typeparam name="EV">Event value type</typeparam>
     /// <typeparam name="F">Function type `AtomFunction&lt;GameObject, GameObject&gt;`</typeparam>
     [EditorIcon("atom-icon-delicate")]
-    public abstract class MonoHook<E1, E2, EV, F> : MonoBehaviour
-        where E1 : AtomEvent<EV> where E2 : AtomEvent<EV, GameObject>
+    public abstract class MonoHook<E, EV, ER, F> : MonoBehaviour
+        where E : AtomEvent<EV>
+        where ER : IGetEvent, ISetEvent
         where F : AtomFunction<GameObject, GameObject>
     {
         /// <summary>
         /// The Event
         /// </summary>
-        public E1 Event;
+        public E Event { get => _eventReference.GetEvent<E>(); set => _eventReference.SetEvent<E>(value); }
 
-        /// <summary>
-        /// Event including a GameObject reference.
-        /// </summary>
-        public E2 EventWithGameObjectReference;
+        [SerializeField]
+        private ER _eventReference = default(ER);
 
         /// <summary>
         /// Selector function for the Event `EventWithGameObjectReference`. Makes it possible to for example select the parent GameObject and pass that a long to the `EventWithGameObjectReference`.
         /// </summary>
         [SerializeField]
-        protected F _selectGameObjectReference;
+        protected F _selectGameObjectReference = default(F);
 
         protected void OnHook(EV value)
         {
@@ -37,10 +35,9 @@ namespace UnityAtoms.MonoHooks
             {
                 Event.Raise(value);
             }
-            if (EventWithGameObjectReference != null)
-            {
-                EventWithGameObjectReference.Raise(value, _selectGameObjectReference != null ? _selectGameObjectReference.Call(gameObject) : gameObject);
-            }
+            RaiseWithGameObject(value, _selectGameObjectReference != null ? _selectGameObjectReference.Call(gameObject) : gameObject);
         }
+
+        protected abstract void RaiseWithGameObject(EV value, GameObject gameObject);
     }
 }

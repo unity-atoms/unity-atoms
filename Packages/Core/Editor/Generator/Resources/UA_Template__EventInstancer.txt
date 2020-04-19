@@ -1,0 +1,16 @@
+using UnityEngine;
+<%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
+
+<%IF HAS_SUB_UA_NAMESPACE%>
+namespace UnityAtoms.{SUB_UA_NAMESPACE}
+<%ELSE%>
+namespace UnityAtoms
+<%ENDIF%>
+{
+    /// <summary>
+    /// Event Instancer of type `{VALUE_TYPE}`. Inherits from `AtomEventInstancer&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Event&gt;`.
+    /// </summary>
+    [EditorIcon("atom-icon-sign-blue")]
+    [AddComponentMenu("Unity Atoms/Event Instancers/{VALUE_TYPE_NAME} Event Instancer")]
+    public class {VALUE_TYPE_NAME}EventInstancer : AtomEventInstancer<{VALUE_TYPE}, {VALUE_TYPE_NAME}Event> { }
+}

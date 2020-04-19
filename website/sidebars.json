@@ -10,6 +10,10 @@
     "API Reference": [
       "api/unityatoms",
       "api/unityatoms.editor",
+      "api/unityatoms.baseatoms",
+      "api/unityatoms.baseatoms.editor",
+      "api/unityatoms.fsm",
+      "api/unityatoms.fsm.editor",
       "api/unityatoms.mobile",
       "api/unityatoms.mobile.editor",
       "api/unityatoms.monohooks",
@@ -19,6 +23,8 @@
       "api/unityatoms.ui"
     ],
     "Subpackages": [
+      "subpackages/base-atoms",
+      "subpackages/fsm",
       "subpackages/mobile",
       "subpackages/mono-hooks",
       "subpackages/scene-mgmt",

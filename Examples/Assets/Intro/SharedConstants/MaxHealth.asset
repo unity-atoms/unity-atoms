@@ -4,12 +4,14 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be00aa7c2423344849366e0e0b258204, type: 3}
+  m_Script: {fileID: 11500000, guid: ad76d497767c34ecf88c7aa597da29c0, type: 3}
   m_Name: MaxHealth
   m_EditorClassIdentifier: 
-  DeveloperDescription: 
-  value: 100
+  _developerDescription: The player's maximum amount of health.
+  _id: 
+  _value: 100

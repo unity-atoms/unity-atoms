@@ -1,8 +1,8 @@
 {
   "name": "com.mambojambostudios.unity-atoms-core",
   "displayName": "Unity Atoms Core",
-  "version": "2.0.0",
-  "unity": "2019.1",
+  "version": "4.1.0",
+  "unity": "2018.3",
   "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
   "keywords": [
     "scriptable objects",

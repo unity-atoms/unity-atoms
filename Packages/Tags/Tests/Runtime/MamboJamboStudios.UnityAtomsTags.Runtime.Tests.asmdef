@@ -2,17 +2,22 @@
     "name": "MamboJamboStudios.UnityAtomsTags.Runtime.Tests",
     "references": [
         "MamboJamboStudios.UnityAtomsTags.Runtime",
-        "MamboJamboStudios.UnityAtomsCore.Runtime"
-    ],
-    "optionalUnityReferences": [
-        "TestAssemblies"
+        "MamboJamboStudios.UnityAtomsCore.Runtime",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": []
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

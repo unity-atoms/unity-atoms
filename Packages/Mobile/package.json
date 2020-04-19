@@ -1,8 +1,8 @@
 {
   "name": "com.mambojambostudios.unity-atoms-mobile",
   "displayName": "Unity Atoms Mobile",
-  "version": "2.0.0",
-  "unity": "2019.1",
+  "version": "4.1.0",
+  "unity": "2018.3",
   "description": "Unity Atoms for your mobile project.",
   "keywords": [
     "scriptable objects",
@@ -15,9 +15,11 @@
     "/Runtime",
     "/Runtime.meta",
     "/Editor",
-    "/Editor.meta"
+    "/Editor.meta",
+    "/Documentation",
+    "/Documentation.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "2.0.0"
+    "com.mambojambostudios.unity-atoms-core": "4.1.0"
   }
 }

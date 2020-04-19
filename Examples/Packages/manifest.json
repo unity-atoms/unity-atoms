@@ -1,15 +1,23 @@
 {
   "dependencies": {
-    "com.coffee.upm-git-extension": "https://github.com/mob-sakai/UpmGitExtension.git#0.9.1",
     "com.mambojambostudios.marvelous": "1.0.8",
+    "com.mambojambostudios.unity-atoms-base-atoms": "file:../../Packages/BaseAtoms",
     "com.mambojambostudios.unity-atoms-core": "file:../../Packages/Core",
+    "com.mambojambostudios.unity-atoms-fsm": "file:../../Packages/FSM",
     "com.mambojambostudios.unity-atoms-mobile": "file:../../Packages/Mobile",
+    "com.mambojambostudios.unity-atoms-mono-hooks": "file:../../Packages/MonoHooks",
     "com.mambojambostudios.unity-atoms-scene-mgmt": "file:../../Packages/SceneMgmt",
     "com.mambojambostudios.unity-atoms-tags": "file:../../Packages/Tags",
     "com.mambojambostudios.unity-atoms-ui": "file:../../Packages/UI",
-    "com.mambojambostudios.unity-atoms-mono-hooks": "file:../../Packages/MonoHooks",
     "com.neuecc.unirx": "https://github.com/starikcetin/UniRx.git#7.1.0-upm",
-    "com.unity.package-manager-ui": "2.1.2",
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.2d.tilemap": "1.0.0",
+    "com.unity.ext.nunit": "1.0.0",
+    "com.unity.ide.rider": "1.1.4",
+    "com.unity.ide.vscode": "1.1.3",
+    "com.unity.test-framework": "1.1.11",
+    "com.unity.ugui": "1.0.0",
+    "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",
     "com.unity.modules.audio": "1.0.0",
@@ -29,6 +37,7 @@
   },
   "testables": [
     "com.mambojambostudios.unity-atoms-core",
+    "com.mambojambostudios.unity-atoms-base-atoms",
     "com.mambojambostudios.unity-atoms-mobile",
     "com.mambojambostudios.unity-atoms-scene-mgmt",
     "com.mambojambostudios.unity-atoms-tags",
@@ -42,13 +51,9 @@
     }
   ],
   "lock": {
-    "com.coffee.upm-git-extension": {
-      "hash": "79fa88282ae1233e4841d87fd256b80f13cd8b62",
-      "revision": "0.9.1"
-    },
     "com.neuecc.unirx": {
-      "hash": "f93af89f2aafeccfc7aff9dee2cecc6d60ede06b",
-      "revision": "7.1.0-upm"
+      "revision": "7.1.0-upm",
+      "hash": "f93af89f2aafeccfc7aff9dee2cecc6d60ede06b"
     }
   }
 }
