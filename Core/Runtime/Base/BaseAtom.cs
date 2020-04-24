@@ -11,7 +11,7 @@ namespace UnityAtoms
         /// A description of the Atom made for documentation purposes.
         /// </summary>
         [SerializeField]
-        [Multiline]
+        [TextArea(3, 6)]
         private string _developerDescription;
     }
 }

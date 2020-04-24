@@ -13,7 +13,7 @@ namespace UnityAtoms
         /// A description of the Listener made for documentation purposes.
         /// </summary>
         [SerializeField]
-        [Multiline]
+        [TextArea(3, 6)]
         private string _developerDescription;
     }
 
