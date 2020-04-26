@@ -47,6 +47,18 @@ namespace UnityAtoms
         /// </summary>
         public E2 ChangedWithHistory;
 
+        /// <summary>
+        /// Whether Changed Event should be triggered on OnEnable or not
+        /// </summary>
+        [SerializeField]
+        private bool _triggerChangedOnOnEnable = default;
+
+        /// <summary>
+        /// Whether ChangedWithHistory Event should be triggered on OnEnable or not
+        /// </summary>
+        [SerializeField]
+        private bool _triggerChangedWithHistoryOnOnEnable = default;
+
         [SerializeField]
         private T _oldValue;
 
@@ -92,8 +104,17 @@ namespace UnityAtoms
             _oldValue = InitialValue;
             _value = InitialValue;
 
-            if (Changed == null) return;
-            Changed.Raise(Value);
+            if (Changed != null && _triggerChangedOnOnEnable)
+            {
+                Changed.Raise(Value);
+            }
+            if (ChangedWithHistory != null && _triggerChangedWithHistoryOnOnEnable)
+            {
+                var pair = default(P);
+                pair.Item1 = _value;
+                pair.Item2 = _oldValue;
+                ChangedWithHistory.Raise(pair);
+            }
         }
 
         /// <summary>
