@@ -8,6 +8,14 @@
 
 # [Unreleased]
 
+## 🏠 Internal
+
+-   Upgraded Example project to Unity version 2019.3.10f1. ([@AdamRamberg](https://github.com/AdamRamberg))
+
+## 💅 Polish
+
+-   [#128](https://github.com/AdamRamberg/unity-atoms/pull/128) Developer Description changed from Multiline to TextArea attribute ([@IceTrooper](https://github.com/IceTrooper))
+
 # 4.1.0 (April 3, 2020)
 
 ## 💅 Polish
