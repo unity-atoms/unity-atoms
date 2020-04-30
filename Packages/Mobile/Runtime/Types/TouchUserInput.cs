@@ -81,7 +81,7 @@ namespace UnityAtoms.Mobile
         /// <returns>`true` if equal, otherwise `false`.</returns>
         public bool Equals(TouchUserInput other)
         {
-            return this.InputState == other.InputState && this.InputWorldPos == other.InputWorldPos && this.InputWorldPosLastFrame == other.InputWorldPosLastFrame && this.InputPosLastDown == other.InputPosLastDown;
+            return this.InputState == other.InputState && this.InputPos == other.InputPos && this.InputPosLastFrame == other.InputPosLastFrame && this.InputPosLastDown == other.InputPosLastDown;
         }
 
         /// <summary>
