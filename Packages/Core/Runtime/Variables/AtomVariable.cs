@@ -204,18 +204,21 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Get event by type.
+        /// Get event by type (allowing inheritance).
         /// </summary>
         /// <typeparam name="E"></typeparam>
-        /// <returns>The event.</returns>
+        /// <returns>Changed - If Changed (or ChangedWithHistory) are of type E
+        /// ChangedWithHistory - If not Changed but ChangedWithHistory is of type E
+        /// <exception cref="NotSupportedException">if none of the events are of type E</exception>
+        /// </returns>
         public E GetEvent<E>() where E : AtomEventBase
         {
-            if (typeof(E) == typeof(E1))
-                return (Changed as E);
-            if (typeof(E) == typeof(E2))
-                return (ChangedWithHistory as E);
+            if (Changed is E evt1)
+                return evt1;
+            if (ChangedWithHistory is E evt2)
+                return evt2;
 
-            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
+            throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
         }
 
         /// <summary>
