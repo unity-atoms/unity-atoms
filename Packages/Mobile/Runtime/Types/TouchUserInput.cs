@@ -52,12 +52,12 @@ namespace UnityAtoms.Mobile
         /// <param name="position">Initial input position.</param>
         /// <param name="positionLastFrame">Initial input position last frame.</param>
         /// <param name="positionLastDown">Initial input position last time the user pressed down.</param>
-        public TouchUserInput(State touchState, Vector2 position, Vector2 positionLastFrame, Vector2 positionLastDown) : this()
+        public TouchUserInput(State touchState, Vector2 position, Vector2 positionLastFrame, Vector2 positionLastDown)
         {
-            TouchState = touchState;
-            Position = position;
-            PositionLastFrame = positionLastFrame;
-            PositionLastDown = positionLastDown;
+            this.touchState = touchState;
+            this.position = position;
+            this.positionLastFrame = positionLastFrame;
+            this.positionLastDown = positionLastDown;
         }
 
         /// <summary>
