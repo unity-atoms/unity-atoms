@@ -8,6 +8,11 @@
 
 # [Unreleased]
 
+## 🐛 Bug fixes
+
+-   [#145](https://github.com/AdamRamberg/unity-atoms/pull/145) Removed duplicate check before adding an item to the list ([@mnarimani](https://github.com/mnarimani))
+-   [#147](https://github.com/AdamRamberg/unity-atoms/pull/147) Fix code generation bug ([@AdamRamberg](https://github.com/AdamRamberg))
+
 ## 🏠 Internal
 
 -   Upgraded Example project to Unity version 2019.3.10f1. ([@AdamRamberg](https://github.com/AdamRamberg))
@@ -15,6 +20,7 @@
 ## 💅 Polish
 
 -   [#128](https://github.com/AdamRamberg/unity-atoms/pull/128) Developer Description changed from Multiline to TextArea attribute ([@IceTrooper](https://github.com/IceTrooper))
+-   [#140](https://github.com/AdamRamberg/unity-atoms/pull/140) Changes in GetEvent implementation to allow inheritance ([@soraphis](https://github.com/soraphis))
 
 ## 🚀 New features
 
