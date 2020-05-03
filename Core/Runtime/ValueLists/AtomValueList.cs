@@ -48,13 +48,10 @@ namespace UnityAtoms
         /// <param name="item">The item to add.</param>
         public void Add(T item)
         {
-            if (!list.Contains(item))
+            list.Add(item);
+            if (null != Added)
             {
-                list.Add(item);
-                if (null != Added)
-                {
-                    Added.Raise(item);
-                }
+                Added.Raise(item);
             }
         }
 
