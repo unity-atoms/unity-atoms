@@ -114,7 +114,6 @@ namespace UnityAtoms.Editor
         /// </summary>
         private void OnEnable()
         {
-            var _atomTypesToGenerate = new List<AtomType>(AtomTypes.ALL_ATOM_TYPES);
 #if UNITY_2019_1_OR_NEWER
             var root = this.rootVisualElement;
 #elif UNITY_2018_4_OR_NEWER
