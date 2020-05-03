@@ -159,5 +159,13 @@ namespace UnityAtoms
                 }
             }
         }
+
+#if UNITY_EDITOR && ODIN_INSPECTOR
+        [Sirenix.OdinInspector.Button(Name = "Raise")]
+        private void OdinRaiseButton()
+        {
+            RaiseEditor(InspectorRaiseValue);
+        }
+#endif
     }
 }
