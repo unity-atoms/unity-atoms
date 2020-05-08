@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
+    using Editor = UnityEditor.Editor;
+
     /// <summary>
     /// A custom property drawer for References (Events and regular). Makes it possible to reference a resources (Variable or Event) through multiple options.
     /// </summary>
@@ -35,7 +37,15 @@ namespace UnityAtoms.Editor
                 }
             }
 
-            return EditorGUI.GetPropertyHeight(property.FindPropertyRelative(usageData.PropertyName), label);
+            float propertyHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative(usageData.PropertyName), label);
+
+            // ----- Proposal 2 ----- //
+            // if (usageIntVal == 0)
+            // {
+            //     propertyHeight += EditorGUIUtility.singleLineHeight;
+            // }
+
+            return propertyHeight;
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -45,6 +55,8 @@ namespace UnityAtoms.Editor
                 _popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
                 _popupStyle.imagePosition = ImagePosition.ImageOnly;
             }
+
+            Rect originalPosition = new Rect(position);
 
             label = EditorGUI.BeginProperty(position, label, property);
             position = EditorGUI.PrefixLabel(position, label);
@@ -72,11 +84,54 @@ namespace UnityAtoms.Editor
             int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
             var newUsagePopupIndex = EditorGUI.Popup(buttonRect, usagePopupIndex, GetPopupOptions(property), _popupStyle);
-            usage.intValue = GetUsages(property)[newUsagePopupIndex].Value;
 
-            EditorGUI.PropertyField(position,
-                property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
-                GUIContent.none);
+            int usageType = GetUsages(property)[newUsagePopupIndex].Value;
+            usage.intValue = usageType;
+
+            if (usageType == 0)
+            {
+                // ----- Proposal 1 ----- //
+                // EditorGUI.PropertyField(originalPosition,
+                //     property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
+                //     GUIContent.none, true);
+
+                // ----- Proposal 1 extra ----- //
+                SerializedProperty valueProperty =
+                    property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName);
+                if (valueProperty.hasChildren)
+                {
+                    EditorGUI.PropertyField(originalPosition,
+                        property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
+                        GUIContent.none, true);
+                }
+                else
+                {
+                    // Can be refactored
+                    EditorGUI.PropertyField(position,
+                        property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
+                        GUIContent.none);
+                }
+
+                // ----- Proposal 2 ----- //
+                // EditorGUI.indentLevel = 1;
+                // originalPosition.y += EditorGUIUtility.singleLineHeight;
+                // EditorGUI.PropertyField(originalPosition,
+                //     property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
+                //     new GUIContent("Value"), true);
+
+                // ----- Proposal 2 extra ----- //
+                // EditorGUI.indentLevel = 0;
+                // GUI.enabled = false;
+                // position.height = EditorGUIUtility.singleLineHeight;
+                // EditorGUI.TextField(position, "Value used");
+                // GUI.enabled = true;
+            }
+            else
+            {
+                EditorGUI.PropertyField(position,
+                    property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
+                    GUIContent.none);
+            }
 
             if (EditorGUI.EndChangeCheck())
                 property.serializedObject.ApplyModifiedProperties();
