@@ -26,6 +26,7 @@ The path where the generated Atoms will be written to. The path is relative to y
 This is the name of the type that you want to generate. Lets say you want to create your own struct and generate Atoms for it:
 
 ```cs
+[Serializable]
 public struct MyStruct
 {
     public int Number;
@@ -42,6 +43,7 @@ Is the type provided in the above field implementing [`IEquatable`](https://docs
 ```cs
 using System;
 
+[Serializable]
 public struct MyStruct : IEquatable<MyStruct>
 {
     public int Number;
@@ -73,6 +75,7 @@ Enter the namespace of the type that you have provided. If for example `MyStruct
 ```cs
 namespace MyNamespace
 {
+    [Serializable]
     public struct MyStruct : IEquatable<MyStruct>
     {
         // ...
