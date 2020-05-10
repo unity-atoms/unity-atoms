@@ -37,15 +37,7 @@ namespace UnityAtoms.Editor
                 }
             }
 
-            float propertyHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative(usageData.PropertyName), label);
-
-            // ----- Proposal 2 ----- //
-            // if (usageIntVal == 0)
-            // {
-            //     propertyHeight += EditorGUIUtility.singleLineHeight;
-            // }
-
-            return propertyHeight;
+            return EditorGUI.GetPropertyHeight(property.FindPropertyRelative(usageData.PropertyName), label);
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -88,43 +80,14 @@ namespace UnityAtoms.Editor
             int usageType = GetUsages(property)[newUsagePopupIndex].Value;
             usage.intValue = usageType;
 
-            if (usageType == 0)
-            {
-                // ----- Proposal 1 ----- //
-                // EditorGUI.PropertyField(originalPosition,
-                //     property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
-                //     GUIContent.none, true);
+            SerializedProperty valueProperty =
+                property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName);
 
-                // ----- Proposal 1 extra ----- //
-                SerializedProperty valueProperty =
-                    property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName);
-                if (valueProperty.hasChildren)
-                {
-                    EditorGUI.PropertyField(originalPosition,
+            if (usageType == 0 && valueProperty.hasChildren)
+            {
+                EditorGUI.PropertyField(originalPosition,
                         property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
                         GUIContent.none, true);
-                }
-                else
-                {
-                    // Can be refactored
-                    EditorGUI.PropertyField(position,
-                        property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
-                        GUIContent.none);
-                }
-
-                // ----- Proposal 2 ----- //
-                // EditorGUI.indentLevel = 1;
-                // originalPosition.y += EditorGUIUtility.singleLineHeight;
-                // EditorGUI.PropertyField(originalPosition,
-                //     property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
-                //     new GUIContent("Value"), true);
-
-                // ----- Proposal 2 extra ----- //
-                // EditorGUI.indentLevel = 0;
-                // GUI.enabled = false;
-                // position.height = EditorGUIUtility.singleLineHeight;
-                // EditorGUI.TextField(position, "Value used");
-                // GUI.enabled = true;
             }
             else
             {
