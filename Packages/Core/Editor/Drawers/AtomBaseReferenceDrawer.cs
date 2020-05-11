@@ -46,6 +46,8 @@ namespace UnityAtoms.Editor
                 _popupStyle.imagePosition = ImagePosition.ImageOnly;
             }
 
+            Rect originalPosition = new Rect(position);
+
             label = EditorGUI.BeginProperty(position, label, property);
             position = EditorGUI.PrefixLabel(position, label);
 
@@ -72,11 +74,25 @@ namespace UnityAtoms.Editor
             int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
             var newUsagePopupIndex = EditorGUI.Popup(buttonRect, usagePopupIndex, GetPopupOptions(property), _popupStyle);
-            usage.intValue = GetUsages(property)[newUsagePopupIndex].Value;
 
-            EditorGUI.PropertyField(position,
-                property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
-                GUIContent.none);
+            int usageType = GetUsages(property)[newUsagePopupIndex].Value;
+            usage.intValue = usageType;
+
+            SerializedProperty valueProperty =
+                property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName);
+
+            if (usageType == 0 && valueProperty.hasChildren)
+            {
+                EditorGUI.PropertyField(originalPosition,
+                        property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
+                        GUIContent.none, true);
+            }
+            else
+            {
+                EditorGUI.PropertyField(position,
+                    property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
+                    GUIContent.none);
+            }
 
             if (EditorGUI.EndChangeCheck())
                 property.serializedObject.ApplyModifiedProperties();
