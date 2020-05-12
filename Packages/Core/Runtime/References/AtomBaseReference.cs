@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace UnityAtoms
@@ -11,6 +12,19 @@ namespace UnityAtoms
         public const int CONSTANT = 1;
         public const int VARIABLE = 2;
         public const int VARIABLE_INSTANCER = 3;
+
+        public static string DisplayName(int value)
+        {
+            switch (value)
+            {
+                case (VALUE): return "Value";
+                case (CONSTANT): return "Constant";
+                case (VARIABLE): return "Variable";
+                case (VARIABLE_INSTANCER): return "Variable Instancer";
+                default:
+                    throw new Exception($"Value '{value}' is not valid! Valid values are: 0, 1, 2 or 3. ");
+            }
+        }
     }
 
     /// <summary>

@@ -14,7 +14,7 @@ namespace UnityAtoms
     /// <typeparam name="E2">Event of type `IPair&lt;T&gt;`.</typeparam>
     /// <typeparam name="F">Function of type `T => T`.</typeparam>
     /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
-    public abstract class AtomReference<T, P, C, V, E1, E2, F, VI> : AtomBaseReference, IEquatable<AtomReference<T, P, C, V, E1, E2, F, VI>>
+    public abstract class AtomReference<T, P, C, V, E1, E2, F, VI> : AtomBaseReference, IEquatable<AtomReference<T, P, C, V, E1, E2, F, VI>>, IGetEvent, ISetEvent
         where P : struct, IPair<T>
         where C : AtomBaseVariable<T>
         where V : AtomVariable<T, P, E1, E2, F>
@@ -120,6 +120,56 @@ namespace UnityAtoms
         public override int GetHashCode()
         {
             return Value == null ? 0 : Value.GetHashCode();
+        }
+
+        /// <summary>
+        /// Get event by type. 
+        /// </summary>
+        /// <typeparam name="E"></typeparam>
+        /// <returns>The event.</returns>
+        public E GetEvent<E>() where E : AtomEventBase
+        {
+            switch (_usage)
+            {
+                case (AtomReferenceUsage.VARIABLE):
+                    {
+                        return _variable.GetEvent<E>();
+                    }
+                case (AtomReferenceUsage.VARIABLE_INSTANCER):
+                    {
+                        return _variableInstancer.GetEvent<E>();
+                    }
+                case (AtomReferenceUsage.VALUE):
+                case (AtomReferenceUsage.CONSTANT):
+                default:
+                    throw new Exception($"Can't retrieve Event when usages is set to '{AtomReferenceUsage.DisplayName(_usage)}'! Usage needs to be set to '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE)}' or '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE_INSTANCER)}'.");
+            }
+        }
+
+        /// <summary>
+        /// Set event by type.
+        /// </summary>
+        /// <param name="e">The new event value.</param>
+        /// <typeparam name="E"></typeparam>
+        public void SetEvent<E>(E e) where E : AtomEventBase
+        {
+            switch (_usage)
+            {
+                case (AtomReferenceUsage.VARIABLE):
+                    {
+                        _variable.SetEvent<E>(e);
+                        return;
+                    }
+                case (AtomReferenceUsage.VARIABLE_INSTANCER):
+                    {
+                        _variableInstancer.SetEvent<E>(e);
+                        return;
+                    }
+                case (AtomReferenceUsage.VALUE):
+                case (AtomReferenceUsage.CONSTANT):
+                default:
+                    throw new Exception($"Can't set Event when usages is set to '{AtomReferenceUsage.DisplayName(_usage)}'! Usage needs to be set to '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE)}' or '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE_INSTANCER)}'.");
+            }
         }
     }
 }
