@@ -139,14 +139,20 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="newValue">The new value to set.</param>
         /// <returns>`true` if the value got changed, otherwise `false`.</returns>
-        public bool SetValue(T newValue)
+        public bool SetValue(T newValue, bool forceEvent = false)
         {
             var preProcessedNewValue = RunPreChangeTransformers(newValue);
+            var changeValue = !ValueEquals(preProcessedNewValue);
+            var triggerEvents = changeValue || forceEvent;
 
-            if (!ValueEquals(preProcessedNewValue))
+            if (changeValue)
             {
                 _oldValue = _value;
                 _value = preProcessedNewValue;
+            }
+
+            if (triggerEvents)
+            {
                 if (Changed != null) { Changed.Raise(_value); }
                 if (ChangedWithHistory != null)
                 {
@@ -156,10 +162,9 @@ namespace UnityAtoms
                     pair.Item2 = _oldValue;
                     ChangedWithHistory.Raise(pair);
                 }
-                return true;
             }
 
-            return false;
+            return changeValue;
         }
 
         /// <summary>
