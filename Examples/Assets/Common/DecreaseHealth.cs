@@ -14,7 +14,7 @@ namespace UnityAtoms.Examples
         public List<StringConstant> TagsAffected { get => _tags; }
 
         [SerializeField]
-        private IntReference _decreaseBy;
+        private AtomReference<int> _decreaseBy;
 
         [SerializeField]
         private List<StringConstant> _tags;

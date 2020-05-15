@@ -20,7 +20,7 @@ namespace UnityAtoms.Examples
         private GameObjectValueList _spawnedEnemies;
 
         [SerializeField]
-        private IntReference _waveCount = new IntReference(0);
+        private AtomReference<int> _waveCount = new AtomReference<int>(0);
 
         void Awake()
         {

@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/Vector2Pair Event Instancer")]
-    public class Vector2PairEventInstancer : AtomEventInstancer<Vector2Pair, Vector2PairEvent> { }
+    public class Vector2PairEventInstancer : AtomEventInstancer<Pair<Vector2>> { }
 }

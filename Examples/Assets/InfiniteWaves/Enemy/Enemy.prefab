@@ -63,6 +63,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -321,6 +322,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1740680909}
+        m_TargetAssemblyTypeName: 
         m_MethodName: DestroyIfZeroOrBelow
         m_Mode: 0
         m_Arguments:

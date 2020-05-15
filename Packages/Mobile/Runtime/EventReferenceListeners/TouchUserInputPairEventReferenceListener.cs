@@ -8,10 +8,5 @@ namespace UnityAtoms.Mobile
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/TouchUserInputPair Event Reference Listener")]
-    public sealed class TouchUserInputPairEventReferenceListener : AtomEventReferenceListener<
-        TouchUserInputPair,
-        TouchUserInputPairEvent,
-        TouchUserInputPairEventReference,
-        TouchUserInputPairUnityEvent>
-    { }
+    public sealed class TouchUserInputPairEventReferenceListener : AtomEventReferenceListener<Pair<TouchUserInput>> { }
 }

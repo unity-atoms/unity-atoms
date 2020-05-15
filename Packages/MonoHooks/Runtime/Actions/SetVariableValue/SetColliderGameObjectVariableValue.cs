@@ -9,15 +9,5 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/ColliderGameObject", fileName = "SetColliderGameObjectVariableValue")]
-    public sealed class SetColliderGameObjectVariableValue : SetVariableValue<
-        ColliderGameObject,
-        ColliderGameObjectPair,
-        ColliderGameObjectVariable,
-        ColliderGameObjectConstant,
-        ColliderGameObjectReference,
-        ColliderGameObjectEvent,
-        ColliderGameObjectPairEvent,
-        ColliderGameObjectColliderGameObjectFunction,
-        ColliderGameObjectVariableInstancer>
-    { }
+    public sealed class SetColliderGameObjectVariableValue : SetVariableValue<ColliderGameObject> { }
 }

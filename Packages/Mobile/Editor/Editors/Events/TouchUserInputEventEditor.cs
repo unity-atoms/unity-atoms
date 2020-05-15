@@ -10,6 +10,6 @@ namespace UnityAtoms.Mobile.Editor
     /// Event property drawer of type `TouchUserInput`. Inherits from `AtomEventEditor&lt;TouchUserInput, TouchUserInputEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomEditor(typeof(TouchUserInputEvent))]
-    public sealed class TouchUserInputEventEditor : AtomEventEditor<TouchUserInput, TouchUserInputEvent> { }
+    public sealed class TouchUserInputEventEditor : AtomEventEditor<TouchUserInput> { }
 }
 #endif

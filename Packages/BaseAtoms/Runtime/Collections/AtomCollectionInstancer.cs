@@ -9,5 +9,5 @@ namespace UnityAtoms.BaseAtoms
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
     [AddComponentMenu("Unity Atoms/Collections/Collection Instancer")]
-    public sealed class AtomCollectionInstancer : AtomBaseCollectionInstancer<StringReferenceAtomBaseVariableDictionary, AtomCollection> { }
+    public sealed class AtomCollectionInstancer : AtomBaseCollectionInstancer<StringReferenceAtomBaseVariableDictionary> { }
 }

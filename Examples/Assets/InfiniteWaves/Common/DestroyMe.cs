@@ -10,7 +10,7 @@ namespace UnityAtoms.Examples
     public class DestroyMe : MonoBehaviour
     {
         [SerializeField]
-        FloatReference _delay = new FloatReference(-1f);
+        AtomReference<float> _delay = new AtomReference<float>(-1f);
 
         void Start()
         {

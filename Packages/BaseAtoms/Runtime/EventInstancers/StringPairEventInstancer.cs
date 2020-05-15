@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/StringPair Event Instancer")]
-    public class StringPairEventInstancer : AtomEventInstancer<StringPair, StringPairEvent> { }
+    public class StringPairEventInstancer : AtomEventInstancer<Pair<string>> { }
 }

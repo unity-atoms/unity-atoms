@@ -8,9 +8,9 @@ namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>
-    /// Event Instancer of type `{VALUE_TYPE}`. Inherits from `AtomEventInstancer&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Event&gt;`.
+    /// Event Instancer of type `{VALUE_TYPE}`. Inherits from `AtomEventInstancer&lt;{VALUE_TYPE}&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/{VALUE_TYPE_NAME} Event Instancer")]
-    public class {VALUE_TYPE_NAME}EventInstancer : AtomEventInstancer<{VALUE_TYPE}, {VALUE_TYPE_NAME}Event> { }
+    public class {VALUE_TYPE_NAME}EventInstancer : AtomEventInstancer<{VALUE_TYPE}> { }
 }

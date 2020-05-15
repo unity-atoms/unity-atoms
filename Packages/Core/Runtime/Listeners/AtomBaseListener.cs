@@ -21,24 +21,20 @@ namespace UnityAtoms
     /// Generic base class for Listeners. Inherits from `AtomBaseListener` and implements `IAtomListener&lt;T&gt;`.
     /// </summary>
     /// <typeparam name="T">The type that we are listening for.</typeparam>
-    /// <typeparam name="E">Event of type `T`.</typeparam>
-    /// <typeparam name="UER">UnityEvent of type `T`.</typeparam>
     [EditorIcon("atom-icon-orange")]
-    public abstract class AtomBaseListener<T, E, UER> : AtomBaseListener, IAtomListener<T>
-        where E : AtomEvent<T>
-        where UER : UnityEvent<T>
+    public abstract class AtomBaseListener<T> : AtomBaseListener, IAtomListener<T>
     {
         /// <summary>
         /// The Event we are listening for as a property.
         /// </summary>
         /// <value>The Event of type `E`.</value>
-        public abstract E Event { get; set; }
+        public abstract AtomEvent<T> Event { get; set; }
 
         /// <summary>
         /// The Unity Event responses.
         /// NOTE: This variable is public due to this bug: https://issuetracker.unity3d.com/issues/events-generated-by-the-player-input-component-do-not-have-callbackcontext-set-as-their-parameter-type. Will be changed back to private when fixed (this could happen in a none major update).
         /// </summary>
-        public UER _unityEventResponse = null;
+        public UnityEvent<T> _unityEventResponse = null;
 
         /// <summary>
         /// The Action responses;

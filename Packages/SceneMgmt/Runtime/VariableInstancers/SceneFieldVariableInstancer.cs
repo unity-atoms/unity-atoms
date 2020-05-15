@@ -9,12 +9,5 @@ namespace UnityAtoms.SceneMgmt
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/SceneField Variable Instancer")]
-    public class SceneFieldVariableInstancer : AtomVariableInstancer<
-        SceneFieldVariable,
-        SceneFieldPair,
-        SceneField,
-        SceneFieldEvent,
-        SceneFieldPairEvent,
-        SceneFieldSceneFieldFunction>
-    { }
+    public class SceneFieldVariableInstancer : AtomVariableInstancer<SceneField> { }
 }

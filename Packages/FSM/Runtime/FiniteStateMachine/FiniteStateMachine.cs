@@ -95,7 +95,7 @@ namespace UnityAtoms.FSM
                     SceneManager.sceneLoaded -= handler;
                     FiniteStateMachineMonoHook.GetInstance(createIfNotExist: true).OnUpdate -= OnUpdate;
                     FiniteStateMachineMonoHook.GetInstance().OnUpdate += OnUpdate;
-                    Reset();
+                    ResetValue();
                 };
 
                 SceneManager.sceneLoaded += handler;
@@ -215,7 +215,7 @@ namespace UnityAtoms.FSM
         /// Reset the state machine
         /// </summary>
         /// <param name="shouldTriggerEvents">Should we trigger Change Events.</param>
-        public override void Reset(bool shouldTriggerEvents = false)
+        public override void ResetValue(bool shouldTriggerEvents = false)
         {
             Validate();
 
@@ -229,7 +229,7 @@ namespace UnityAtoms.FSM
             {
                 _resetOnNextTransitionCompleted = false;
                 ResetAllSubMachines();
-                base.Reset(shouldTriggerEvents);
+                base.ResetValue(shouldTriggerEvents);
                 _currentFlatValue = _value;
             }
             else
@@ -308,7 +308,7 @@ namespace UnityAtoms.FSM
             if (_resetOnNextTransitionCompleted)
             {
                 _resetOnNextTransitionCompleted = false;
-                Reset(_triggerEventsOnNextReset);
+                ResetValue(_triggerEventsOnNextReset);
                 return;
             }
 
@@ -318,7 +318,7 @@ namespace UnityAtoms.FSM
             if (toState.SubMachine != null)
             {
                 // Reset sub machines in to state
-                toState.SubMachine.Reset();
+                toState.SubMachine.ResetValue();
                 base.Value = toState.SubMachine.Value;
             }
             else
@@ -337,14 +337,14 @@ namespace UnityAtoms.FSM
             {
                 if (_states.List[i].SubMachine != null)
                 {
-                    _states.List[i].SubMachine.Reset();
+                    _states.List[i].SubMachine.ResetValue();
                 }
             }
         }
 
         private void OnStart()
         {
-            Reset();
+            ResetValue();
         }
 
         private void OnUpdate(float deltaTime)

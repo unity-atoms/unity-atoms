@@ -11,7 +11,7 @@ namespace UnityAtoms.Examples
     public class EnemyShooting : MonoBehaviour
     {
         [SerializeField]
-        private StringReference _tagToTarget;
+        private AtomReference<string> _tagToTarget;
         [SerializeField]
         private FiniteStateMachineReference _enemyState;
         [SerializeField]

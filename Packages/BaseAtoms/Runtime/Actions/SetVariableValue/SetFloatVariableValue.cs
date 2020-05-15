@@ -8,15 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/Float", fileName = "SetFloatVariableValue")]
-    public sealed class SetFloatVariableValue : SetVariableValue<
-        float,
-        FloatPair,
-        FloatVariable,
-        FloatConstant,
-        FloatReference,
-        FloatEvent,
-        FloatPairEvent,
-        FloatFloatFunction,
-        FloatVariableInstancer>
-    { }
+    public sealed class SetFloatVariableValue : SetVariableValue<float> { }
 }

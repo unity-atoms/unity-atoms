@@ -9,6 +9,6 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Event property drawer of type `FloatPair`. Inherits from `AtomEventEditor&lt;FloatPair, FloatPairEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomEditor(typeof(FloatPairEvent))]
-    public sealed class FloatPairEventEditor : AtomEventEditor<FloatPair, FloatPairEvent> { }
+    public sealed class FloatPairEventEditor : AtomEventEditor<Pair<float>> { }
 }
 #endif

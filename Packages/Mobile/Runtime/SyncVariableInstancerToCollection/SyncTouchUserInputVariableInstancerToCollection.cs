@@ -9,5 +9,5 @@ namespace UnityAtoms.Mobile
     /// </summary>
     [AddComponentMenu("Unity Atoms/Sync Variable Instancer to Collection/Sync TouchUserInput Variable Instancer to Collection")]
     [EditorIcon("atom-icon-delicate")]
-    public class SyncTouchUserInputVariableInstancerToCollection : SyncVariableInstancerToCollection<TouchUserInput, TouchUserInputVariable, TouchUserInputVariableInstancer> { }
+    public class SyncTouchUserInputVariableInstancerToCollection : SyncVariableInstancerToCollection<TouchUserInput> { }
 }

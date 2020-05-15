@@ -8,17 +8,17 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sand")]
     [CreateAssetMenu(menuName = "Unity Atoms/Functions/Transformers/Clamp Int (int => int)", fileName = "ClampInt")]
-    public class ClampInt : IntIntFunction, IIsValid
+    public class ClampInt : AtomFunction<int, int>, IIsValid
     {
         /// <summary>
         /// The minimum value.
         /// </summary>
-        public IntReference Min;
+        public AtomReference<int> Min;
 
         /// <summary>
         /// The maximum value.
         /// </summary>
-        public IntReference Max;
+        public AtomReference<int> Max;
 
         public override int Call(int value)
         {

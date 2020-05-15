@@ -7,21 +7,8 @@ namespace UnityAtoms
     /// A Reference lets you define a variable in your script where you then from the inspector can choose if it's going to be taking the value from a Constant, Variable, Value or a Variable Instancer.
     /// </summary>
     /// <typeparam name="T">The type of the variable.</typeparam>
-    /// <typeparam name="P">IPair of type `T`.</typeparam>
-    /// <typeparam name="C">Constant of type `T`.</typeparam>
-    /// <typeparam name="V">Variable of type `T`.</typeparam>
-    /// <typeparam name="E1">Event of type `T`.</typeparam>
-    /// <typeparam name="E2">Event of type `IPair&lt;T&gt;`.</typeparam>
-    /// <typeparam name="F">Function of type `T => T`.</typeparam>
-    /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
-    public abstract class AtomReference<T, P, C, V, E1, E2, F, VI> : AtomBaseReference, IEquatable<AtomReference<T, P, C, V, E1, E2, F, VI>>, IGetEvent, ISetEvent
-        where P : struct, IPair<T>
-        where C : AtomBaseVariable<T>
-        where V : AtomVariable<T, P, E1, E2, F>
-        where E1 : AtomEvent<T>
-        where E2 : AtomEvent<P>
-        where F : AtomFunction<T, T>
-        where VI : AtomVariableInstancer<V, P, T, E1, E2, F>
+    [Serializable]
+    public class AtomReference<T> : AtomBaseReference, IEquatable<AtomReference<T>>, IGetEvent, ISetEvent
     {
         /// <summary>
         /// Get or set the value for the Reference.
@@ -77,39 +64,37 @@ namespace UnityAtoms
         /// Constant used if `Usage` is set to `Constant`.
         /// </summary>
         [SerializeField]
-        private C _constant = default(C);
+        private AtomBaseVariable<T> _constant = default(AtomBaseVariable<T>);
 
         /// <summary>
         /// Variable used if `Usage` is set to `Variable`.
         /// </summary>
         [SerializeField]
-        private V _variable = default(V);
+        private AtomVariable<T> _variable = default(AtomVariable<T>);
 
         /// <summary>
         /// Variable Instancer used if `Usage` is set to `VariableInstancer`.
         /// </summary>
         [SerializeField]
-        private VI _variableInstancer = default(VI);
+        private AtomVariableInstancer<T> _variableInstancer = default(AtomVariableInstancer<T>);
 
-        protected AtomReference()
+        public AtomReference()
         {
             _usage = AtomReferenceUsage.VALUE;
         }
 
-        protected AtomReference(T value) : this()
+        public AtomReference(T value) : this()
         {
             _usage = AtomReferenceUsage.VALUE;
             _value = value;
         }
 
-        public static implicit operator T(AtomReference<T, P, C, V, E1, E2, F, VI> reference)
+        public static implicit operator T(AtomReference<T> reference)
         {
             return reference.Value;
         }
 
-        protected abstract bool ValueEquals(T other);
-
-        public bool Equals(AtomReference<T, P, C, V, E1, E2, F, VI> other)
+        public bool Equals(AtomReference<T> other)
         {
             if (other == null)
                 return false;
@@ -170,6 +155,11 @@ namespace UnityAtoms
                 default:
                     throw new Exception($"Can't set Event when usages is set to '{AtomReferenceUsage.DisplayName(_usage)}'! Usage needs to be set to '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE)}' or '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE_INSTANCER)}'.");
             }
+        }
+
+        private bool ValueEquals(T other)
+        {
+            return (Value == null && other == null) || (Value != null && Value.Equals(other));
         }
     }
 }

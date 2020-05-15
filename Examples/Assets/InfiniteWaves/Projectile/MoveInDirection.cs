@@ -12,7 +12,7 @@ namespace UnityAtoms.Examples
         public float Speed { set => _speed.Value = value; }
 
         [SerializeField]
-        private FloatReference _speed;
+        private AtomReference<float> _speed;
 
         private Rigidbody2D rb;
 

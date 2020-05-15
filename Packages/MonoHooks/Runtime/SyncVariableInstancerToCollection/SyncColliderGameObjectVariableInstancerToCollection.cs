@@ -9,5 +9,5 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [AddComponentMenu("Unity Atoms/Sync Variable Instancer to Collection/Sync ColliderGameObject Variable Instancer to Collection")]
     [EditorIcon("atom-icon-delicate")]
-    public class SyncColliderGameObjectVariableInstancerToCollection : SyncVariableInstancerToCollection<ColliderGameObject, ColliderGameObjectVariable, ColliderGameObjectVariableInstancer> { }
+    public class SyncColliderGameObjectVariableInstancerToCollection : SyncVariableInstancerToCollection<ColliderGameObject> { }
 }

@@ -12,7 +12,7 @@ namespace UnityAtoms
         public String Id { get => _id; set => _id = value; }
 
         /// <summary>
-        /// The Variable value as an `object`.abstract Beware of boxing! 🥊
+        /// The Variable value as an `object`. Beware of boxing! 🥊
         /// </summary>
         /// <value>The Variable value as an `object`.</value>
         public abstract object BaseValue { get; set; }
@@ -23,7 +23,7 @@ namespace UnityAtoms
         /// <summary>
         /// Abstract method that could be implemented to reset the Variable value.
         /// </summary>
-        public abstract void Reset(bool shouldTriggerEvents = false);
+        public abstract void ResetValue(bool shouldTriggerEvents = false);
     }
 
     /// <summary>
@@ -39,21 +39,15 @@ namespace UnityAtoms
         /// <value>The Variable value as an `object`.</value>
         public override object BaseValue
         {
-            get
-            {
-                return _value;
-            }
-            set
-            {
-                Value = (T)value;
-            }
+            get => _value;
+            set => Value = (T)value;
         }
 
         /// <summary>
         /// The Variable value as a property.
         /// </summary>
         /// <returns>Get or set the Variable value.</returns>
-        public virtual T Value { get { return _value; } set { throw new NotImplementedException(); } }
+        public virtual T Value { get => _value; set => throw new Exception(); }
 
         [SerializeField]
         protected T _value = default(T);
@@ -63,17 +57,12 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="other">The other Variable to compare.</param>
         /// <returns>`true` if they are equal, otherwise `false`.</returns>
-        public bool Equals(AtomBaseVariable<T> other)
-        {
-            return other == this;
-        }
+        public bool Equals(AtomBaseVariable<T> other) => other == this;
+
 
         /// <summary>
-        /// Not implemented.abstract Throws Exception
+        /// Not implemented. Throws Exception
         /// </summary>
-        public override void Reset(bool shouldTriggerEvents = false)
-        {
-            throw new NotImplementedException();
-        }
+        public override void ResetValue(bool shouldTriggerEvents = false) => throw new Exception();
     }
 }

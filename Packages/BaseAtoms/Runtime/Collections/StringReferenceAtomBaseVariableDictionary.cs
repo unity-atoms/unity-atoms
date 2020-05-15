@@ -6,7 +6,7 @@ namespace UnityAtoms.BaseAtoms
     /// A SerializableDictionary of type StringReference and AtomBaseVariable. Used by AtomCollection.
     /// </summary>
     [Serializable]
-    public class StringReferenceAtomBaseVariableDictionary : SerializableDictionary<StringReference, AtomBaseVariable>, IAtomCollection
+    public class StringReferenceAtomBaseVariableDictionary : SerializableDictionary<AtomReference<string>, AtomBaseVariable>, IAtomCollection
     {
         /// <summary>
         /// Generic getter.
@@ -57,7 +57,7 @@ namespace UnityAtoms.BaseAtoms
         /// <param name="value">The value to add.</param>
         public void Add(string key, AtomBaseVariable value)
         {
-            var strRef = new StringReference();
+            var strRef = new AtomReference<string>();
             strRef.Value = key;
             base.Add(strRef, value);
         }
@@ -80,7 +80,7 @@ namespace UnityAtoms.BaseAtoms
         /// <returns>True if it removed a value from the collection, otherwise false.</returns>
         public bool Remove(string key)
         {
-            var strRef = new StringReference();
+            var strRef = new AtomReference<string>();
             strRef.Value = key;
             return base.Remove(strRef);
         }

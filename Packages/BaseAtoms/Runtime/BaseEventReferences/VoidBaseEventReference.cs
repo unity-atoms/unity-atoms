@@ -17,16 +17,13 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference of type `Void`. Inherits from `AtomBaseEventReference&lt;Void, VoidEvent, VoidEventInstancer&gt;`.
     /// </summary>
     [Serializable]
-    public sealed class VoidBaseEventReference : AtomBaseEventReference<
-        Void,
-        VoidEvent,
-        VoidEventInstancer>, IGetEvent
+    public sealed class VoidBaseEventReference : AtomBaseEventReference<Void>
     {
         /// <summary>
         /// Get or set the Event used by the Event Reference.
         /// </summary>
         /// <value>The event of type `E`.</value>
-        public override VoidEvent Event
+        public override AtomEvent<Void> Event
         {
             get
             {
@@ -48,27 +45,27 @@ namespace UnityAtoms.BaseAtoms
                 {
                     case (VoidBaseEventReferenceUsage.COLLECTION_CLEARED_EVENT):
                         {
-                            _collection.Cleared = value;
+                            _collection.Cleared = (VoidEvent)value;
                             break;
                         }
                     case (VoidBaseEventReferenceUsage.LIST_CLEARED_EVENT):
                         {
-                            _list.Cleared = value;
+                            _list.Cleared = (VoidEvent)value;
                             break;
                         }
                     case (VoidBaseEventReferenceUsage.COLLECTION_INSTANCER_CLEARED_EVENT):
                         {
-                            _collectionInstancer.Cleared = value;
+                            _collectionInstancer.Cleared = (VoidEvent)value;
                             break;
                         }
                     case (VoidBaseEventReferenceUsage.LIST_INSTANCER_CLEARED_EVENT):
                         {
-                            _listInstancer.Cleared = value;
+                            _listInstancer.Cleared = (VoidEvent)value;
                             break;
                         }
                     case (VoidBaseEventReferenceUsage.EVENT):
                         {
-                            _event = value;
+                            _event = (VoidEvent)value;
                             break;
                         }
                     default:

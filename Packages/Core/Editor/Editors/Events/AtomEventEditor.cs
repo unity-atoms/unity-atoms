@@ -8,9 +8,7 @@ namespace UnityAtoms.Editor
     /// Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
     /// </summary>
     /// <typeparam name="T">The type of this event..</typeparam>
-    /// <typeparam name="E">Event of type T.</typeparam>
-    public abstract class AtomEventEditor<T, E> : UnityEditor.Editor
-        where E : AtomEvent<T>
+    public abstract class AtomEventEditor<T> : UnityEditor.Editor
     {
         public override VisualElement CreateInspectorGUI()
         {
@@ -23,7 +21,7 @@ namespace UnityAtoms.Editor
             runtimeWrapper.SetEnabled(Application.isPlaying);
             runtimeWrapper.Add(new Button(() =>
             {
-                E e = target as E;
+                AtomEvent<T> e = target as AtomEvent<T>;
                 e.Raise(e.InspectorRaiseValue);
             })
             {

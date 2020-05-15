@@ -8,12 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/Vector2 Variable Instancer")]
-    public class Vector2VariableInstancer : AtomVariableInstancer<
-        Vector2Variable,
-        Vector2Pair,
-        Vector2,
-        Vector2Event,
-        Vector2PairEvent,
-        Vector2Vector2Function>
-    { }
+    public class Vector2VariableInstancer : AtomVariableInstancer<Vector2> { }
 }

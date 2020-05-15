@@ -10,6 +10,6 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Event property drawer of type `Collider2DPair`. Inherits from `AtomEventEditor&lt;Collider2DPair, Collider2DPairEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomEditor(typeof(Collider2DPairEvent))]
-    public sealed class Collider2DPairEventEditor : AtomEventEditor<Collider2DPair, Collider2DPairEvent> { }
+    public sealed class Collider2DPairEventEditor : AtomEventEditor<Pair<Collider2D>> { }
 }
 #endif

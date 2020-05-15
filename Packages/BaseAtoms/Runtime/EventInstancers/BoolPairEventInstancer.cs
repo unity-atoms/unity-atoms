@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/BoolPair Event Instancer")]
-    public class BoolPairEventInstancer : AtomEventInstancer<BoolPair, BoolPairEvent> { }
+    public class BoolPairEventInstancer : AtomEventInstancer<Pair<bool>> { }
 }

@@ -8,15 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/Int", fileName = "SetIntVariableValue")]
-    public sealed class SetIntVariableValue : SetVariableValue<
-        int,
-        IntPair,
-        IntVariable,
-        IntConstant,
-        IntReference,
-        IntEvent,
-        IntPairEvent,
-        IntIntFunction,
-        IntVariableInstancer>
-    { }
+    public sealed class SetIntVariableValue : SetVariableValue<int> { }
 }

@@ -8,16 +8,8 @@ namespace UnityAtoms
     /// Generic base class for Variables. Inherits from `AtomBaseVariable&lt;T&gt;`.
     /// </summary>
     /// <typeparam name="T">The Variable value type.</typeparam>
-    /// <typeparam name="P">IPair of type `T`.</typeparam>
-    /// <typeparam name="E1">Event of type `AtomEvent&lt;T&gt;`.</typeparam>
-    /// <typeparam name="E2">Event of type `AtomEvent&lt;T, T&gt;`.</typeparam>
-    /// <typeparam name="F">Function of type `FunctionEvent&lt;T, T&gt;`.</typeparam>
     [EditorIcon("atom-icon-lush")]
-    public abstract class AtomVariable<T, P, E1, E2, F> : AtomBaseVariable<T>, IGetEvent, ISetEvent
-        where P : struct, IPair<T>
-        where E1 : AtomEvent<T>
-        where E2 : AtomEvent<P>
-        where F : AtomFunction<T, T>
+    public abstract class AtomVariable<T> : AtomBaseVariable<T>, IGetEvent, ISetEvent
     {
         /// <summary>
         /// The Variable value as a property.
@@ -40,12 +32,12 @@ namespace UnityAtoms
         /// <summary>
         /// Changed Event triggered when the Variable value gets changed.
         /// </summary>
-        public E1 Changed;
+        public AtomEvent<T> Changed;
 
         /// <summary>
         /// Changed with history Event triggered when the Variable value gets changed.
         /// </summary>
-        public E2 ChangedWithHistory;
+        public AtomEvent<Pair<T>> ChangedWithHistory;
 
         /// <summary>
         /// Whether Changed Event should be triggered on OnEnable or not
@@ -72,7 +64,7 @@ namespace UnityAtoms
         /// When setting the value of a Variable the new value will be piped through all the pre change transformers, which allows you to create custom logic and restriction on for example what values can be set for this Variable.
         /// </summary>
         /// <value>Get the list of pre change transformers.</value>
-        public List<F> PreChangeTransformers
+        public List<AtomFunction<T, T>> PreChangeTransformers
         {
             get => _preChangeTransformers;
             set
@@ -89,7 +81,7 @@ namespace UnityAtoms
         }
 
         [SerializeField]
-        private List<F> _preChangeTransformers = new List<F>();
+        private List<AtomFunction<T, T>> _preChangeTransformers = new List<AtomFunction<T, T>>();
 
         protected abstract bool ValueEquals(T other);
 
@@ -110,7 +102,7 @@ namespace UnityAtoms
             }
             if (ChangedWithHistory != null && _triggerChangedWithHistoryOnOnEnable)
             {
-                var pair = default(P);
+                var pair = default(Pair<T>);
                 pair.Item1 = _value;
                 pair.Item2 = _oldValue;
                 ChangedWithHistory.Raise(pair);
@@ -118,10 +110,10 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Reset the Variable to its `_initialValue`.
+        /// Reset the Variable's Value to its `_initialValue`.
         /// </summary>
         /// <param name="shouldTriggerEvents">Set to `true` if Events should be triggered on reset, otherwise `false`.</param>
-        public override void Reset(bool shouldTriggerEvents = false)
+        public override void ResetValue(bool shouldTriggerEvents = false)
         {
             if (!shouldTriggerEvents)
             {
@@ -157,7 +149,7 @@ namespace UnityAtoms
                 if (ChangedWithHistory != null)
                 {
                     // NOTE: Doing new P() here, even though it is cleaner, generates garbage.
-                    var pair = default(P);
+                    var pair = default(Pair<T>);
                     pair.Item1 = _value;
                     pair.Item2 = _oldValue;
                     ChangedWithHistory.Raise(pair);
@@ -172,7 +164,7 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="variable">The value to set provided from another Variable.</param>
         /// <returns>`true` if the value got changed, otherwise `false`.</returns>
-        public bool SetValue(AtomVariable<T, P, E1, E2, F> variable)
+        public bool SetValue(AtomVariable<T> variable)
         {
             return SetValue(variable.Value);
         }
@@ -197,14 +189,14 @@ namespace UnityAtoms
         /// Turn the Variable's change with history Event into an `IObservable&lt;T, T&gt;`. Makes the Variable's change with history Event compatible with for example UniRx.
         /// </summary>
         /// <returns>The Variable's change Event as an `IObservable&lt;T, T&gt;`.</returns>
-        public IObservable<P> ObserveChangeWithHistory()
+        public IObservable<Pair<T>> ObserveChangeWithHistory()
         {
             if (ChangedWithHistory == null)
             {
                 throw new Exception("You must assign a ChangedWithHistory event in order to observe variable changes.");
             }
 
-            return new ObservableEvent<P>(ChangedWithHistory.Register, ChangedWithHistory.Unregister);
+            return new ObservableEvent<Pair<T>>(ChangedWithHistory.Register, ChangedWithHistory.Unregister);
         }
         #endregion // Observable
 
@@ -239,12 +231,16 @@ namespace UnityAtoms
         /// </returns>
         public E GetEvent<E>() where E : AtomEventBase
         {
-            if (Changed is E evt1)
-                return evt1;
-            if (ChangedWithHistory is E evt2)
-                return evt2;
+            if (typeof(E).IsSameOrSubclass(typeof(AtomEvent<T>)))
+            {
+                return (Changed as E);
+            }
+            if (typeof(E).IsSameOrSubclass(typeof(AtomEvent<Pair<T>>)))
+            {
+                return (ChangedWithHistory as E);
+            }
 
-            throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
+            throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(AtomEvent<T>)} or {typeof(AtomEvent<Pair<T>>)}.");
         }
 
         /// <summary>
@@ -254,18 +250,18 @@ namespace UnityAtoms
         /// <typeparam name="E"></typeparam>
         public void SetEvent<E>(E e) where E : AtomEventBase
         {
-            if (typeof(E) == typeof(E1))
+            if (typeof(E).IsSameOrSubclass(typeof(AtomEvent<T>)))
             {
-                Changed = (e as E1);
+                Changed = (e as AtomEvent<T>);
                 return;
             }
-            if (typeof(E) == typeof(E2))
+            if (typeof(E).IsSameOrSubclass(typeof(AtomEvent<Pair<T>>)))
             {
-                ChangedWithHistory = (e as E2);
+                ChangedWithHistory = (e as AtomEvent<Pair<T>>);
                 return;
             }
 
-            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
+            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(AtomEvent<T>)} or {typeof(AtomEvent<Pair<T>>)}.");
         }
     }
 }

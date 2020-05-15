@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.Examples
 {
@@ -7,7 +6,7 @@ namespace UnityAtoms.Examples
     /// An IntAction that Debug.Logs the value it recieves.
     /// </summary>
     [CreateAssetMenu(menuName = "Unity Atoms/Examples/Intro/Health Logger")]
-    public sealed class HealthLogger : IntAction
+    public sealed class HealthLogger : AtomAction<int>
     {
         public override void Do(int health)
         {

@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Int", fileName = "IntVariable")]
-    public sealed class IntVariable : EquatableAtomVariable<int, IntPair, IntEvent, IntPairEvent, IntIntFunction>
+    public sealed class IntVariable : EquatableAtomVariable<int>
     {
         /// <summary>
         /// Add value to Variable.

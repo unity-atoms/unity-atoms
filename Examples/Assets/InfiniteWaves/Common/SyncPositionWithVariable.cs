@@ -9,7 +9,7 @@ namespace UnityAtoms.Examples
     public class SyncPositionWithVariable : MonoBehaviour
     {
         [SerializeField]
-        private Vector3Reference _reference;
+        private AtomReference<Vector3> _reference;
 
         void LateUpdate()
         {

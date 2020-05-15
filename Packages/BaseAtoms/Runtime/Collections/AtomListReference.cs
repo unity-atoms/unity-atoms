@@ -35,7 +35,7 @@ namespace UnityAtoms.BaseAtoms
                 switch (_usage)
                 {
                     case (AtomListReferenceUsage.LIST_INSTANCER):
-                        return _instancer == null ? default(AtomList) : _instancer.Variable;
+                        return _instancer == null ? default(AtomList) : (AtomList)_instancer.Variable;
                     case (AtomListReferenceUsage.LIST):
                     default:
                         return _list;

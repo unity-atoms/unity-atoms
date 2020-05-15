@@ -8,5 +8,5 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Variable Inspector of type `Vector3`. Inherits from `AtomVariableEditor`
     /// </summary>
     [CustomEditor(typeof(Vector3Variable))]
-    public sealed class Vector3VariableEditor : AtomVariableEditor<Vector3, Vector3Pair> { }
+    public sealed class Vector3VariableEditor : AtomVariableEditor<Vector3> { }
 }

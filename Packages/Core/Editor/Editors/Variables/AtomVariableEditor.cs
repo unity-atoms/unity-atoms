@@ -8,8 +8,7 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// Custom editor for Variables. Provides a better user workflow and indicates when which variables can be edited
     /// </summary>
-    public abstract class AtomVariableEditor<T, P> : UnityEditor.Editor
-        where P : IPair<T>, new()
+    public abstract class AtomVariableEditor<T> : UnityEditor.Editor
     {
         private bool _lockedInitialValue = true;
         private bool _onEnableTriggerSectionVisible = true;
@@ -99,7 +98,7 @@ namespace UnityAtoms.Editor
                     {
                         var oldValueProp = serializedObject.FindProperty("_oldValue");
                         object oldValue = oldValueProp.GetPropertyValue();
-                        evt.GetType().GetMethod("RaiseEditor", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { (object)(new P() { Item1 = (T)atomTarget.BaseValue, Item2 = (T)oldValue }) });
+                        evt.GetType().GetMethod("RaiseEditor", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { (object)(new Pair<T>() { Item1 = (T)atomTarget.BaseValue, Item2 = (T)oldValue }) });
                     }
                 }
 

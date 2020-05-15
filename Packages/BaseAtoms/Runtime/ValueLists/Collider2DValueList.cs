@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-piglet")]
     [CreateAssetMenu(menuName = "Unity Atoms/Value Lists/Collider2D", fileName = "Collider2DValueList")]
-    public sealed class Collider2DValueList : AtomValueList<Collider2D, Collider2DEvent> { }
+    public sealed class Collider2DValueList : AtomValueList<Collider2D> { }
 }

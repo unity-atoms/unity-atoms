@@ -22,7 +22,7 @@ namespace UnityAtoms.UI
         /// A list of states that this `UIContainer` will be visible for.
         /// </summary>
         [SerializeField]
-        private List<StringReference> _visibleForStates = null;
+        private List<AtomReference<string>> _visibleForStates = null;
 
         private void Start()
         {

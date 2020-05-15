@@ -10,7 +10,7 @@ namespace UnityAtoms.FSM
     [AddComponentMenu("Unity Atoms/FSM/Finite State Machine Instancer")]
     public class FiniteStateMachineInstancer : StringVariableInstancer
     {
-        public override StringVariable Base { get => (StringVariable)_fsmBase; }
+        public override AtomBaseVariable<string> Base { get => (StringVariable)_fsmBase; }
 
         /// <summary>
         /// The variable that the in memory copy will be based on when created at runtime.

@@ -9,7 +9,7 @@ sidebar_label: Quick start
 
 ## Installation
 
-_Prerequisite: Since Unity Atoms is using the Unity Package Manager (UPM) you need to use Unity version 2018.3 >=_
+_Prerequisite: Since Unity Atoms is using the Unity Package Manager (UPM) you need to use Unity version 2020.1 >=_
 
 ### NPM
 

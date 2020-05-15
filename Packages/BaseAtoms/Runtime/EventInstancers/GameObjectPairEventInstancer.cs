@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/GameObjectPair Event Instancer")]
-    public class GameObjectPairEventInstancer : AtomEventInstancer<GameObjectPair, GameObjectPairEvent> { }
+    public class GameObjectPairEventInstancer : AtomEventInstancer<Pair<GameObject>> { }
 }

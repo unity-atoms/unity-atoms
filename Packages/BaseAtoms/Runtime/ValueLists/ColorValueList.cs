@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-piglet")]
     [CreateAssetMenu(menuName = "Unity Atoms/Value Lists/Color", fileName = "ColorValueList")]
-    public sealed class ColorValueList : AtomValueList<Color, ColorEvent> { }
+    public sealed class ColorValueList : AtomValueList<Color> { }
 }

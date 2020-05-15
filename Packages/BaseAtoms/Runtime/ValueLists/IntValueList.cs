@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-piglet")]
     [CreateAssetMenu(menuName = "Unity Atoms/Value Lists/Int", fileName = "IntValueList")]
-    public sealed class IntValueList : AtomValueList<int, IntEvent> { }
+    public sealed class IntValueList : AtomValueList<int> { }
 }

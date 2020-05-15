@@ -9,6 +9,6 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Event property drawer of type `IntPair`. Inherits from `AtomEventEditor&lt;IntPair, IntPairEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomEditor(typeof(IntPairEvent))]
-    public sealed class IntPairEventEditor : AtomEventEditor<IntPair, IntPairEvent> { }
+    public sealed class IntPairEventEditor : AtomEventEditor<Pair<int>> { }
 }
 #endif

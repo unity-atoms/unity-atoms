@@ -9,12 +9,5 @@ namespace UnityAtoms.Mobile
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/TouchUserInput Variable Instancer")]
-    public class TouchUserInputVariableInstancer : AtomVariableInstancer<
-        TouchUserInputVariable,
-        TouchUserInputPair,
-        TouchUserInput,
-        TouchUserInputEvent,
-        TouchUserInputPairEvent,
-        TouchUserInputTouchUserInputFunction>
-    { }
+    public class TouchUserInputVariableInstancer : AtomVariableInstancer<TouchUserInput> { }
 }

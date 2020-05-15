@@ -8,7 +8,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Collider2D", fileName = "Collider2DVariable")]
-    public sealed class Collider2DVariable : AtomVariable<Collider2D, Collider2DPair, Collider2DEvent, Collider2DPairEvent, Collider2DCollider2DFunction>
+    public sealed class Collider2DVariable : AtomVariable<Collider2D>
     {
         protected override bool ValueEquals(Collider2D other)
         {

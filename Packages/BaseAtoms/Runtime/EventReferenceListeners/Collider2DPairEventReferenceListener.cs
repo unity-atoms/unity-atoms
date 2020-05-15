@@ -7,10 +7,6 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Collider2DPair Event Reference Listener")]
-    public sealed class Collider2DPairEventReferenceListener : AtomEventReferenceListener<
-        Collider2DPair,
-        Collider2DPairEvent,
-        Collider2DPairEventReference,
-        Collider2DPairUnityEvent>
+    public sealed class Collider2DPairEventReferenceListener : AtomEventReferenceListener<Pair<Collider2D>>
     { }
 }

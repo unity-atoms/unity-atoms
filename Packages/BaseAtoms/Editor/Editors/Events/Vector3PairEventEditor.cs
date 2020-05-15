@@ -10,6 +10,6 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Event property drawer of type `Vector3Pair`. Inherits from `AtomEventEditor&lt;Vector3Pair, Vector3PairEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomEditor(typeof(Vector3PairEvent))]
-    public sealed class Vector3PairEventEditor : AtomEventEditor<Vector3Pair, Vector3PairEvent> { }
+    public sealed class Vector3PairEventEditor : AtomEventEditor<Pair<Vector3>> { }
 }
 #endif

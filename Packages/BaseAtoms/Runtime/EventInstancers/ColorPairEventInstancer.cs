@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/ColorPair Event Instancer")]
-    public class ColorPairEventInstancer : AtomEventInstancer<ColorPair, ColorPairEvent> { }
+    public class ColorPairEventInstancer : AtomEventInstancer<Pair<Color>> { }
 }

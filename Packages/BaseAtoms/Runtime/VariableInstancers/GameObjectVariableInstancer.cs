@@ -8,12 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/GameObject Variable Instancer")]
-    public class GameObjectVariableInstancer : AtomVariableInstancer<
-        GameObjectVariable,
-        GameObjectPair,
-        GameObject,
-        GameObjectEvent,
-        GameObjectPairEvent,
-        GameObjectGameObjectFunction>
-    { }
+    public class GameObjectVariableInstancer : AtomVariableInstancer<GameObject> { }
 }

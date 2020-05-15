@@ -8,12 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/Float Variable Instancer")]
-    public class FloatVariableInstancer : AtomVariableInstancer<
-        FloatVariable,
-        FloatPair,
-        float,
-        FloatEvent,
-        FloatPairEvent,
-        FloatFloatFunction>
-    { }
+    public class FloatVariableInstancer : AtomVariableInstancer<float> { }
 }

@@ -11,13 +11,13 @@ namespace UnityAtoms.Examples
     public class EnemyMovement : MonoBehaviour
     {
         [SerializeField]
-        private StringReference _tagToTarget;
+        private AtomReference<string> _tagToTarget;
 
         [SerializeField]
-        private FloatReference _shootingRange = new FloatReference(5f);
+        private AtomReference<float> _shootingRange = new AtomReference<float>(5f);
 
         [SerializeField]
-        private FloatReference _moveSpeedMultiplier = new FloatReference(2f);
+        private AtomReference<float> _moveSpeedMultiplier = new AtomReference<float>(2f);
 
         [SerializeField]
         private FiniteStateMachineReference _enemyState;

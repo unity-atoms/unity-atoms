@@ -9,6 +9,6 @@ namespace UnityAtoms.FSM.Editor
     /// Event property drawer of type `FSMTransitionData`. Inherits from `AtomEventEditor&lt;FSMTransitionData, FSMTransitionDataEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomEditor(typeof(FSMTransitionDataEvent))]
-    public sealed class FSMTransitionDataEventEditor : AtomEventEditor<FSMTransitionData, FSMTransitionDataEvent> { }
+    public sealed class FSMTransitionDataEventEditor : AtomEventEditor<FSMTransitionData> { }
 }
 #endif

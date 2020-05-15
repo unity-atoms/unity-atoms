@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.Examples
 {
@@ -10,10 +9,10 @@ namespace UnityAtoms.Examples
     [AddComponentMenu("Unity Atoms/Examples/HealthBar")]
     public class HealthBar : MonoBehaviour
     {
-        public IntReference InitialHealth { get => _initialHealth; }
+        public AtomReference<int> InitialHealth { get => _initialHealth; }
 
         [SerializeField]
-        private IntReference _initialHealth = null;
+        private AtomReference<int> _initialHealth = null;
 
         [SerializeField]
         private Image _image;

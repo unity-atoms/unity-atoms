@@ -8,12 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/Collider Variable Instancer")]
-    public class ColliderVariableInstancer : AtomVariableInstancer<
-        ColliderVariable,
-        ColliderPair,
-        Collider,
-        ColliderEvent,
-        ColliderPairEvent,
-        ColliderColliderFunction>
-    { }
+    public class ColliderVariableInstancer : AtomVariableInstancer<Collider> { }
 }

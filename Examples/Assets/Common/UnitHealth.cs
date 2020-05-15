@@ -12,6 +12,6 @@ namespace UnityAtoms.Examples
 
 
         [SerializeField]
-        private IntReference _health;
+        private AtomReference<int> _health;
     }
 }
