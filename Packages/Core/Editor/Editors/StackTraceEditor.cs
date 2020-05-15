@@ -32,7 +32,7 @@ namespace UnityAtoms.Editor
                 element.style.flexDirection = FlexDirection.Row;
                 element.style.justifyContent = Justify.SpaceBetween;
                 element.style.alignItems = Align.Center;
-                element.style.backgroundColor = GetDarkerColor();
+                element.style.backgroundColor = GetHeaderColor();
                 element.style.paddingLeft = 4;
                 element.style.paddingRight = 4;
                 element.style.paddingTop = 2;
@@ -80,7 +80,7 @@ namespace UnityAtoms.Editor
                 element.style.flexDirection = FlexDirection.Row;
                 element.style.justifyContent = Justify.FlexStart;
                 element.style.alignItems = Align.Center;
-                element.style.backgroundColor = GetDarkerColor();
+                element.style.backgroundColor = GetHeaderColor();
                 element.style.paddingLeft = 4;
                 element.style.paddingRight = 4;
                 element.style.paddingTop = 6;
@@ -98,7 +98,7 @@ namespace UnityAtoms.Editor
             {
                 scrollView.style.maxHeight = 100;
                 scrollView.style.height = 100;
-                scrollView.style.backgroundColor = GetLighterColor();
+                scrollView.style.backgroundColor = GetBodyColor();
                 scrollView.showVertical = true;
                 scrollView.style.display = selectedStackTraceId != -1 ? DisplayStyle.Flex : DisplayStyle.None;
             });
@@ -117,7 +117,7 @@ namespace UnityAtoms.Editor
             {
                 scrollView.style.maxHeight = 100;
                 scrollView.style.height = 100;
-                scrollView.style.backgroundColor = GetLighterColor();
+                scrollView.style.backgroundColor = GetBodyColor();
                 scrollView.showVertical = true;
             });
             var stackTracesOverviewRowContainer = GetOrCreate<VisualElement>(stackTracesOverview, "STACK_TRACES_OVERVIEW_ROW_CONTAINER");
@@ -168,14 +168,14 @@ namespace UnityAtoms.Editor
             return element;
         }
 
-        private static Color GetDarkerColor()
+        private static Color GetHeaderColor()
         {
             var proColor = new Color(44f / 255f, 44f / 255f, 44f / 255f);
             var basicColor = new Color(154f / 255f, 154f / 255f, 154f / 255f);
             return EditorGUIUtility.isProSkin ? proColor : basicColor;
         }
 
-        private static Color GetLighterColor()
+        private static Color GetBodyColor()
         {
             var proColor = new Color(83f / 255f, 83f / 255f, 83f / 255f);
             var basicColor = new Color(174f / 255f, 174f / 255f, 174f / 255f);
