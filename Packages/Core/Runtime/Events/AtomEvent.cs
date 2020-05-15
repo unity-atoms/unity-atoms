@@ -61,6 +61,13 @@ namespace UnityAtoms
         /// <param name="item">The value associated with the Event.</param>
         public void Raise(T item)
         {
+#if UNITY_EDITOR
+            if (AtomPreferences.IsDebugModeEnabled)
+            {
+                StackTraces.AddStackTrace(GetInstanceID(), StackTraceEntry.Create(item));
+            }
+#endif
+
             base.Raise();
             _onEvent?.Invoke(item);
             AddToReplayBuffer(item);

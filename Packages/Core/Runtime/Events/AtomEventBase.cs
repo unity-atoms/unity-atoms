@@ -15,8 +15,15 @@ namespace UnityAtoms
         /// </summary>
         public event Action OnEventNoValue;
 
+
         public virtual void Raise()
         {
+#if UNITY_EDITOR
+            if (AtomPreferences.IsDebugModeEnabled)
+            {
+                StackTraces.AddStackTrace(GetInstanceID(), StackTraceEntry.Create());
+            }
+#endif
             OnEventNoValue?.Invoke();
         }
 

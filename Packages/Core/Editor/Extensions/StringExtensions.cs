@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using System.Text;
 
 namespace UnityAtoms
@@ -43,5 +43,7 @@ namespace UnityAtoms
             a[0] = char.ToUpper(a[0]);
             return new string(a);
         }
+
+        public static string GetFirstLine(this string str) => str.Split(new[] { '\r', '\n' }).FirstOrDefault();
     }
 }
