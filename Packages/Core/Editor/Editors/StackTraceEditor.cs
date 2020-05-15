@@ -50,8 +50,8 @@ namespace UnityAtoms.Editor
                 button.text = "Clear";
                 button.clicked += () =>
                 {
-                    StackTraces.ClearStackTraces(instanceId);
                     SetSelectedStackTraceId(instanceId, -1);
+                    StackTraces.ClearStackTraces(instanceId);
                 };
             });
 
