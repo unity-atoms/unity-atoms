@@ -103,9 +103,20 @@ namespace UnityAtoms.Editor
                 scrollView.style.display = selectedStackTraceId != -1 ? DisplayStyle.Flex : DisplayStyle.None;
             });
 
-            var details = GetOrCreate<Label>(stackTracesDetails, "DETAILS", (field) =>
+            var details = GetOrCreate<TextField>(stackTracesDetails, "DETAILS", (field) =>
             {
-                field.text = selectedStackTraceId != -1 ? stackTraces[selectedStackTraceId] : "";
+                field.isReadOnly = true;
+                field.multiline = true;
+                field.value = selectedStackTraceId != -1 ? stackTraces[selectedStackTraceId] : "";
+                field.value = selectedStackTraceId != -1 ? stackTraces[selectedStackTraceId] : "";
+                field.style.borderLeftWidth = 0;
+                field.style.borderRightWidth = 0;
+                field.style.borderTopWidth = 0;
+                field.style.borderBottomWidth = 0;
+                field.style.marginLeft = 1;
+                field.style.marginRight = 1;
+                field.style.marginTop = 1;
+                field.style.marginBottom = 1;
             });
         }
 

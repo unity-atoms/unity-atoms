@@ -5,7 +5,7 @@ namespace UnityAtoms
 {
     public class StackTraceEntry : IEquatable<StackTraceEntry>
     {
-        private readonly int _id;
+        private readonly Guid _id;
         private readonly int _frameCount;
         private readonly string _stackTrace;
         private readonly object _value;
@@ -13,7 +13,7 @@ namespace UnityAtoms
 
         private StackTraceEntry(string stackTrace)
         {
-            _id = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
+            _id = Guid.NewGuid();
             _stackTrace = stackTrace;
 
             if (Application.isPlaying)
@@ -25,7 +25,7 @@ namespace UnityAtoms
         {
             _value = value;
             _constructedWithValue = true;
-            _id = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
+            _id = Guid.NewGuid();
             _stackTrace = stackTrace;
 
             if (Application.isPlaying)
@@ -34,20 +34,14 @@ namespace UnityAtoms
             }
         }
 
-        public static StackTraceEntry Create(object obj)
-        {
-            return new StackTraceEntry(Environment.StackTrace, obj);
-        }
+        public static StackTraceEntry Create(object obj) => new StackTraceEntry(Environment.StackTrace, obj);
 
-        public static StackTraceEntry Create()
-        {
-            return new StackTraceEntry(Environment.StackTrace);
-        }
+        public static StackTraceEntry Create() => new StackTraceEntry(Environment.StackTrace);
+
 
         public override bool Equals(object obj)
         {
-            if (obj == null)
-                return false;
+            if (obj == null) return false;
 
             if (obj is StackTraceEntry)
             {
@@ -57,24 +51,16 @@ namespace UnityAtoms
             return false;
         }
 
-        public bool Equals(StackTraceEntry other)
-        {
-            return other._id == this._id;
-        }
+        public bool Equals(StackTraceEntry other) => other._id == _id;
 
-        public override int GetHashCode()
-        {
-            return _id;
-        }
+        public override int GetHashCode() => _id.GetHashCode();
+
 
         public override string ToString() =>
             _constructedWithValue ?
                 $"{_frameCount}   [{(_value == null ? "null" : _value.ToString())}] {_stackTrace}" :
                 $"{_frameCount} {_stackTrace}";
 
-        public static implicit operator string(StackTraceEntry trace)
-        {
-            return trace.ToString();
-        }
+        public static implicit operator string(StackTraceEntry trace) => trace.ToString();
     }
 }
