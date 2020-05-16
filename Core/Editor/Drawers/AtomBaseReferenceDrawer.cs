@@ -53,17 +53,6 @@ namespace UnityAtoms.Editor
 
             EditorGUI.BeginChangeCheck();
 
-            var usage = property.FindPropertyRelative("_usage");
-            int usagePopupIndex = 0;
-            for (var i = 0; i < GetUsages(property).Length; ++i)
-            {
-                if (GetUsages(property)[i].Value == usage.intValue)
-                {
-                    usagePopupIndex = i;
-                    break;
-                }
-            }
-
             // Calculate rect for configuration button
             Rect buttonRect = new Rect(position);
             buttonRect.yMin += _popupStyle.margin.top;
@@ -73,25 +62,22 @@ namespace UnityAtoms.Editor
             // Store old indent level and set it to 0, the PrefixLabel takes care of it
             int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
-            var newUsagePopupIndex = EditorGUI.Popup(buttonRect, usagePopupIndex, GetPopupOptions(property), _popupStyle);
 
-            int usageType = GetUsages(property)[newUsagePopupIndex].Value;
-            usage.intValue = usageType;
+            var currentUsage = property.FindPropertyRelative("_usage");
+            var newUsageValue = EditorGUI.Popup(buttonRect, currentUsage.intValue, GetPopupOptions(property), _popupStyle);
+            currentUsage.intValue = newUsageValue;
 
-            SerializedProperty valueProperty =
-                property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName);
 
-            if (usageType == 0 && valueProperty.hasChildren)
+            var usageTypePropertyName = GetUsages(property)[newUsageValue].PropertyName;
+            var usageTypeProperty = property.FindPropertyRelative(usageTypePropertyName);
+
+            if (usageTypePropertyName == "_value" && usageTypeProperty.hasVisibleChildren)
             {
-                EditorGUI.PropertyField(originalPosition,
-                        property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
-                        GUIContent.none, true);
+                EditorGUI.PropertyField(originalPosition, usageTypeProperty, GUIContent.none, true);
             }
             else
             {
-                EditorGUI.PropertyField(position,
-                    property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
-                    GUIContent.none);
+                EditorGUI.PropertyField(position, usageTypeProperty, GUIContent.none);
             }
 
             if (EditorGUI.EndChangeCheck())
