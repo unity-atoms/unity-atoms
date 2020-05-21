@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Collider Event Reference Listener")]
-    public sealed class ColliderEventReferenceListener : AtomEventReferenceListener<Collider> { }
+    public sealed class ColliderEventReferenceListener : AtomListener<Collider> { }
 }

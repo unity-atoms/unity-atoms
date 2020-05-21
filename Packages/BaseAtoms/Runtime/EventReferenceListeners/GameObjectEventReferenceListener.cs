@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/GameObject Event Reference Listener")]
-    public sealed class GameObjectEventReferenceListener : AtomEventReferenceListener<GameObject> { }
+    public sealed class GameObjectEventReferenceListener : AtomListener<GameObject> { }
 }

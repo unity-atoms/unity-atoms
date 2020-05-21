@@ -43,9 +43,9 @@ namespace UnityAtoms
                 switch (_usage)
                 {
                     case (AtomEventReferenceUsage.EVENT_INSTANCER): return _eventInstancer.Event;
-                    case (AtomEventReferenceUsage.EVENT):
+                    case (AtomEventReferenceUsage.EVENT): return _event;
                     default:
-                        return _event;
+                        throw new NotSupportedException($"Event not possible to retrieve for usage {_usage}.");
                 }
             }
             set
@@ -53,10 +53,11 @@ namespace UnityAtoms
                 switch (_usage)
                 {
                     case (AtomEventReferenceUsage.EVENT):
-                        {
-                            _event = value;
-                            break;
-                        }
+                        _event = value;
+                        break;
+                    case (AtomEventReferenceUsage.EVENT_INSTANCER):
+                        _eventInstancer.Event = value;
+                        break;
                     default:
                         throw new NotSupportedException($"Event not reassignable for usage {_usage}.");
                 }

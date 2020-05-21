@@ -22,10 +22,7 @@ namespace UnityAtoms
                 {
                     case (AtomEventReferenceUsage.VARIABLE): return _variable.GetEvent<AtomEvent<T>>();
                     case (AtomEventReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer.GetEvent<AtomEvent<T>>();
-                    case (AtomEventReferenceUsage.EVENT_INSTANCER): return _eventInstancer.Event;
-                    case (AtomEventReferenceUsage.EVENT):
-                    default:
-                        return _event;
+                    default: return base.Event;
                 }
             }
             set
@@ -33,22 +30,14 @@ namespace UnityAtoms
                 switch (_usage)
                 {
                     case (AtomEventReferenceUsage.VARIABLE):
-                        {
-                            _variable.SetEvent(value);
-                            break;
-                        }
+                        _variable.SetEvent(value);
+                        break;
                     case (AtomEventReferenceUsage.VARIABLE_INSTANCER):
-                        {
-                            _variableInstancer.SetEvent(value);
-                            break;
-                        }
-                    case (AtomEventReferenceUsage.EVENT):
-                        {
-                            _event = value;
-                            break;
-                        }
+                        _variableInstancer.SetEvent(value);
+                        break;
                     default:
-                        throw new NotSupportedException($"Event not reassignable for usage {_usage}.");
+                        base.Event = value;
+                        break;
                 }
             }
         }
@@ -64,15 +53,5 @@ namespace UnityAtoms
         /// </summary>
         [SerializeField]
         private AtomVariableInstancer<T> _variableInstancer = default(AtomVariableInstancer<T>);
-
-        protected AtomEventReference()
-        {
-            _usage = AtomEventReferenceUsage.EVENT;
-        }
-
-        public static implicit operator AtomEvent<T>(AtomEventReference<T> reference)
-        {
-            return reference.Event;
-        }
     }
 }

@@ -47,7 +47,7 @@ namespace UnityAtoms
         /// The Variable value as a property.
         /// </summary>
         /// <returns>Get or set the Variable value.</returns>
-        public virtual T Value { get => _value; set => throw new Exception(); }
+        public virtual T Value { get => _value; set => throw new NotSupportedException($"Not supported to set value of an AtomBaseVariable<{typeof(T)}>. Did you forget to cast it to AtomVariable<{typeof(T)}> before calling this method?"); }
 
         [SerializeField]
         protected T _value = default(T);
@@ -63,6 +63,6 @@ namespace UnityAtoms
         /// <summary>
         /// Not implemented. Throws Exception
         /// </summary>
-        public override void ResetValue(bool shouldTriggerEvents = false) => throw new Exception();
+        public override void ResetValue(bool shouldTriggerEvents = false) => throw new NotSupportedException($"Not supported to reset value of an AtomBaseVariable<{typeof(T)}>. Did you forget to cast it to AtomVariable<{typeof(T)}> before calling this method?");
     }
 }

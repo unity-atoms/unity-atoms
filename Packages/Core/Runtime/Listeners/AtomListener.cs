@@ -5,30 +5,30 @@ using UnityEngine.Events;
 namespace UnityAtoms
 {
     /// <summary>
-    /// None generic base class for all Listeners.
+    /// Generic base class for Listeners using Event Reference. Inherits from `AtomListener&lt;T&gt;` and implements `IAtomListener&lt;T&gt;`.
     /// </summary>
-    public abstract class AtomBaseListener : MonoBehaviour
+    /// <typeparam name="T">The type that we are listening for.</typeparam>
+    [EditorIcon("atom-icon-orange")]
+    public abstract class AtomListener<T> : MonoBehaviour, IAtomListener<T>
     {
+        /// <summary>
+        /// The Event we are listening for as a property.
+        /// </summary>
+        /// <value>The Event Reference of type `ER`.</value>
+        public AtomEvent<T> Event { get => _eventReference.Event; set => _eventReference.Event = value; }
+
         /// <summary>
         /// A description of the Listener made for documentation purposes.
         /// </summary>
         [SerializeField]
         [TextArea(3, 6)]
         private string _developerDescription;
-    }
 
-    /// <summary>
-    /// Generic base class for Listeners. Inherits from `AtomBaseListener` and implements `IAtomListener&lt;T&gt;`.
-    /// </summary>
-    /// <typeparam name="T">The type that we are listening for.</typeparam>
-    [EditorIcon("atom-icon-orange")]
-    public abstract class AtomBaseListener<T> : AtomBaseListener, IAtomListener<T>
-    {
         /// <summary>
-        /// The Event we are listening for as a property.
+        /// The Event Reference that we are listening to.
         /// </summary>
-        /// <value>The Event of type `E`.</value>
-        public abstract AtomEvent<T> Event { get; set; }
+        [SerializeField]
+        private AtomEventReference<T> _eventReference = default(AtomEventReference<T>);
 
         /// <summary>
         /// The Unity Event responses.

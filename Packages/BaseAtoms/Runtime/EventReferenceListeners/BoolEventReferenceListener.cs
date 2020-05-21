@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Bool Event Reference Listener")]
-    public sealed class BoolEventReferenceListener : AtomEventReferenceListener<bool> { }
+    public sealed class BoolEventReferenceListener : AtomListener<bool> { }
 }

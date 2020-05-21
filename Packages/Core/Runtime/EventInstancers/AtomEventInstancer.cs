@@ -15,9 +15,9 @@ namespace UnityAtoms
     public abstract class AtomEventInstancer<T> : MonoBehaviour
     {
         /// <summary>
-        /// Getter for retrieving the in memory runtime Event.
+        /// Get or set the in memory runtime Event.
         /// </summary>
-        public AtomEvent<T> Event { get => _inMemoryCopy; }
+        public AtomEvent<T> Event { get => _inMemoryCopy; set => _inMemoryCopy = value; }
 
         [SerializeField]
         [ReadOnly]

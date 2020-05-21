@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/ColorPair Event Reference Listener")]
-    public sealed class ColorPairEventReferenceListener : AtomEventReferenceListener<Pair<Color>> { }
+    public sealed class ColorPairEventReferenceListener : AtomListener<Pair<Color>> { }
 }

@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Vector2Pair Event Reference Listener")]
-    public sealed class Vector2PairEventReferenceListener : AtomEventReferenceListener<Pair<Vector2>> { }
+    public sealed class Vector2PairEventReferenceListener : AtomListener<Pair<Vector2>> { }
 }

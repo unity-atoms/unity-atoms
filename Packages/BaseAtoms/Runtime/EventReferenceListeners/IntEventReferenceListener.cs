@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Int Event Reference Listener")]
-    public sealed class IntEventReferenceListener : AtomEventReferenceListener<int> { }
+    public sealed class IntEventReferenceListener : AtomListener<int> { }
 }

@@ -8,5 +8,5 @@ namespace UnityAtoms.SceneMgmt
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/SceneField Event Reference Listener")]
-    public sealed class SceneFieldEventReferenceListener : AtomEventReferenceListener<SceneField> { }
+    public sealed class SceneFieldEventReferenceListener : AtomListener<SceneField> { }
 }

@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Float Event Reference Listener")]
-    public sealed class FloatEventReferenceListener : AtomEventReferenceListener<float> { }
+    public sealed class FloatEventReferenceListener : AtomListener<float> { }
 }

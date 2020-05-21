@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/IntPair Event Reference Listener")]
-    public sealed class IntPairEventReferenceListener : AtomEventReferenceListener<Pair<int>> { }
+    public sealed class IntPairEventReferenceListener : AtomListener<Pair<int>> { }
 }

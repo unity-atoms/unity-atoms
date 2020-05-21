@@ -49,7 +49,7 @@ namespace UnityAtoms
                         }
                     case (AtomReferenceUsage.CONSTANT):
                     default:
-                        throw new NotSupportedException("Can't reassign constant value");
+                        throw new NotSupportedException("Can't reassign constant value.");
                 }
             }
         }

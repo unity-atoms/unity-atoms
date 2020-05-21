@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Void Base Event Reference Listener")]
-    public sealed class VoidBaseEventReferenceListener : AtomEventReferenceListener<Void> { }
+    public sealed class VoidBaseEventReferenceListener : AtomListener<Void> { }
 }

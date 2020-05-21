@@ -8,5 +8,5 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Collider2DGameObjectPair Event Reference Listener")]
-    public sealed class Collider2DGameObjectPairEventReferenceListener : AtomEventReferenceListener<Pair<Collider2DGameObject>> { }
+    public sealed class Collider2DGameObjectPairEventReferenceListener : AtomListener<Pair<Collider2DGameObject>> { }
 }
