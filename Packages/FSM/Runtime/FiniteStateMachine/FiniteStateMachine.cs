@@ -84,6 +84,9 @@ namespace UnityAtoms.FSM
                 FiniteStateMachineMonoHook.GetInstance(createIfNotExist: true).OnUpdate -= OnUpdate;
                 FiniteStateMachineMonoHook.GetInstance().OnUpdate += OnUpdate;
 
+                FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate -= OnFixedUpdate;
+                FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate += OnFixedUpdate;
+
                 FiniteStateMachineMonoHook.GetInstance().OnStart -= OnStart;
                 FiniteStateMachineMonoHook.GetInstance().OnStart += OnStart;
             }
@@ -95,6 +98,10 @@ namespace UnityAtoms.FSM
                     SceneManager.sceneLoaded -= handler;
                     FiniteStateMachineMonoHook.GetInstance(createIfNotExist: true).OnUpdate -= OnUpdate;
                     FiniteStateMachineMonoHook.GetInstance().OnUpdate += OnUpdate;
+
+                    FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate -= OnFixedUpdate;
+                    FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate += OnFixedUpdate;
+
                     Reset();
                 };
 
@@ -107,6 +114,7 @@ namespace UnityAtoms.FSM
             if (FiniteStateMachineMonoHook.GetInstance() != null)
             {
                 FiniteStateMachineMonoHook.GetInstance().OnUpdate -= OnUpdate;
+                FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate -= OnFixedUpdate;
                 FiniteStateMachineMonoHook.GetInstance().OnStart -= OnStart;
             }
             _onUpdate = null;
