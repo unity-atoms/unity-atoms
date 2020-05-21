@@ -44,6 +44,10 @@ namespace UnityAtoms
             return new string(a);
         }
 
-        public static string GetFirstLine(this string str) => str.Split(new[] { '\r', '\n' }).FirstOrDefault();
+        public static string GetFirstLine(this string str)
+        {
+            var indexFirstNewLineChar = str.IndexOfAny(new char[] { '\r', '\n' });
+            return indexFirstNewLineChar == -1 ? str : str.Substring(0, indexFirstNewLineChar);
+        }
     }
 }

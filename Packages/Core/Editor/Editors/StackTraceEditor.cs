@@ -107,8 +107,7 @@ namespace UnityAtoms.Editor
             {
                 field.isReadOnly = true;
                 field.multiline = true;
-                field.value = selectedStackTraceId != -1 ? stackTraces[selectedStackTraceId] : "";
-                field.value = selectedStackTraceId != -1 ? stackTraces[selectedStackTraceId] : "";
+                field.value = selectedStackTraceId != -1 ? stackTraces[selectedStackTraceId].ToString() : "";
                 field.style.borderLeftWidth = 0;
                 field.style.borderRightWidth = 0;
                 field.style.borderTopWidth = 0;

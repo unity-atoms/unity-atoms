@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using UnityEngine;
 
 namespace UnityAtoms
@@ -34,24 +35,14 @@ namespace UnityAtoms
             }
         }
 
-        public static StackTraceEntry Create(object obj) => new StackTraceEntry(Environment.StackTrace, obj);
+        public static StackTraceEntry Create(object obj, int skipFrames = 0) => new StackTraceEntry(new StackTrace(skipFrames).ToString(), obj);
 
-        public static StackTraceEntry Create() => new StackTraceEntry(Environment.StackTrace);
+        public static StackTraceEntry Create(int skipFrames = 0) => new StackTraceEntry(new StackTrace(skipFrames).ToString());
 
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
+        public override bool Equals(object obj) => Equals(obj as StackTraceEntry);
 
-            if (obj is StackTraceEntry)
-            {
-                return Equals(obj as StackTraceEntry);
-            }
-
-            return false;
-        }
-
-        public bool Equals(StackTraceEntry other) => other._id == _id;
+        public bool Equals(StackTraceEntry other) => other?._id == _id;
 
         public override int GetHashCode() => _id.GetHashCode();
 
@@ -60,7 +51,5 @@ namespace UnityAtoms
             _constructedWithValue ?
                 $"{_frameCount}   [{(_value == null ? "null" : _value.ToString())}] {_stackTrace}" :
                 $"{_frameCount} {_stackTrace}";
-
-        public static implicit operator string(StackTraceEntry trace) => trace.ToString();
     }
 }
