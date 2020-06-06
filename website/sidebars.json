@@ -5,7 +5,9 @@
       "introduction/overview",
       "introduction/basic-tutorial",
       "introduction/generator",
-      "introduction/unirx"
+      "introduction/unirx",
+      "introduction/advanced-example",
+      "introduction/preferences"
     ],
     "API Reference": [
       "api/unityatoms",

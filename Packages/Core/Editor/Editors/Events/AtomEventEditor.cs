@@ -19,17 +19,20 @@ namespace UnityAtoms.Editor
             IMGUIContainer defaultInspector = new IMGUIContainer(() => DrawDefaultInspector());
             root.Add(defaultInspector);
 
+            E atomEvent = target as E;
+
             var runtimeWrapper = new VisualElement();
             runtimeWrapper.SetEnabled(Application.isPlaying);
             runtimeWrapper.Add(new Button(() =>
             {
-                E e = target as E;
-                e.Raise(e.InspectorRaiseValue);
+                atomEvent.Raise(atomEvent.InspectorRaiseValue);
             })
             {
                 text = "Raise"
             });
             root.Add(runtimeWrapper);
+
+            StackTraceEditor.RenderStackTrace(root, atomEvent.GetInstanceID());
 
             return root;
         }

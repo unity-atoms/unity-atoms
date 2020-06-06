@@ -7,6 +7,7 @@
     -   [Usage with UniRX](./introduction/unirx.md)
     -   [Level up using the Generator](./introduction/generator.md)
     -   [Advanced example](./introduction/advanced-example.md)
+    -   [Preferences](./introduction/preferences.md)
 -   API
     -   [UnityAtoms](./api/unityatoms.md)
     -   [UnityAtoms.Editor](./api/unityatoms.editor.md)

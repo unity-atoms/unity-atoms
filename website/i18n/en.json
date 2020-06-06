@@ -77,6 +77,10 @@
         "title": "Overview and philosopy",
         "sidebar_label": "Overview and philosopy"
       },
+      "introduction/preferences": {
+        "title": "Preferences",
+        "sidebar_label": "Preferences"
+      },
       "introduction/quick-start": {
         "title": "Quick start",
         "sidebar_label": "Quick start"
