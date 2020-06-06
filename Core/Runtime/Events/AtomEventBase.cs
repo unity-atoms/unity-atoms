@@ -15,8 +15,10 @@ namespace UnityAtoms
         /// </summary>
         public event Action OnEventNoValue;
 
+
         public virtual void Raise()
         {
+            StackTraces.AddStackTrace(GetInstanceID(), StackTraceEntry.Create());
             OnEventNoValue?.Invoke();
         }
 
