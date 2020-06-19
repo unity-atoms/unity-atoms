@@ -17,6 +17,7 @@
 -   [#155](https://github.com/AdamRamberg/unity-atoms/pull/155) Fixing drawer for generated reference of complex struct type ([@bguyl](https://github.com/bguyl)
 -   Fix bug where usage popup sometimes were hidden. ([@AdamRamberg](https://github.com/AdamRamberg))
 -   [#160](https://github.com/AdamRamberg/unity-atoms/issues/160) Hook up OnFixedUpdate handler. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#164](https://github.com/AdamRamberg/unity-atoms/issues/164) Does not work in Unity 2018.3 ([@AdamRamberg](https://github.com/AdamRamberg))
 
 ## 📝 Documentation
 
