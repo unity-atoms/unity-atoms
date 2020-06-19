@@ -1,11 +1,11 @@
 {
     "name": "MamboJamboStudios.UnityAtomsMonoHooks.Editor",
     "references": [
-        "GUID:14165214884ae4a619bfb290f28194a7",
-        "GUID:87264ae76e36244ae9adf5b5fbf7ca19",
-        "GUID:29492541a59d04a81b47a7f225e8a22d",
-        "GUID:598750ec792e4472396f5fbc092caa65",
-        "GUID:39d90d64ded314c27a72b2586cd86439"
+        "MamboJamboStudios.UnityAtomsCore.Runtime",
+        "MamboJamboStudios.UnityAtomsCore.Editor",
+        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime",
+        "MamboJamboStudios.UnityAtomsBaseAtoms.Editor",
+        "MamboJamboStudios.UnityAtomsMonoHooks.Runtime"
     ],
     "includePlatforms": [
         "Editor"

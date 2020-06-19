@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+#if UNITY_2019_1_OR_NEWER
 using UnityEngine.UIElements;
+#endif
 
 namespace UnityAtoms
 {

@@ -8,14 +8,24 @@
 
 # [Unreleased]
 
+# 4.2.0 (June 20, 2020)
+
 ## 🐛 Bug fixes
 
 -   [#145](https://github.com/AdamRamberg/unity-atoms/pull/145) Removed duplicate check before adding an item to the list ([@mnarimani](https://github.com/mnarimani))
 -   [#147](https://github.com/AdamRamberg/unity-atoms/pull/147) Fix code generation bug ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#155](https://github.com/AdamRamberg/unity-atoms/pull/155) Fixing drawer for generated reference of complex struct type ([@bguyl](https://github.com/bguyl)
+-   Fix bug where usage popup sometimes were hidden. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#160](https://github.com/AdamRamberg/unity-atoms/issues/160) Hook up OnFixedUpdate handler. ([@AdamRamberg](https://github.com/AdamRamberg))
+
+## 📝 Documentation
+
+-   [#152](https://github.com/AdamRamberg/unity-atoms/pull/152) Add the [Serializable] attribute in the doc ([@bguyl](https://github.com/bguyl)
 
 ## 🏠 Internal
 
--   Upgraded Example project to Unity version 2019.3.10f1. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   Upgraded Example project to Unity version 2019.3.15f1. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   Add GetParent / GetValue extenstions for SerializedProperty. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 ## 💅 Polish
 
@@ -25,6 +35,8 @@
 ## 🚀 New features
 
 -   [#125](https://github.com/AdamRamberg/unity-atoms/issues/125) Add booleans to decide if Changed and/or ChangedWithHistory Events are triggered on AtomVariable OnEnable ([@iruizmar](https://github.com/iruizmar))
+-   [#157](https://github.com/AdamRamberg/unity-atoms/pull/157) Added forceEvent parameter for SetValue function on AtomVariable ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#159](https://github.com/AdamRamberg/unity-atoms/pull/159) Debug events by displaying stack traces for events. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 # 4.1.0 (April 3, 2020)
 
