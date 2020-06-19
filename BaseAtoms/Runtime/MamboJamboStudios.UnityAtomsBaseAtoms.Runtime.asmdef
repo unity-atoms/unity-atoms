@@ -1,8 +1,8 @@
 {
     "name": "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime",
     "references": [
-        "GUID:87264ae76e36244ae9adf5b5fbf7ca19",
-        "GUID:14165214884ae4a619bfb290f28194a7"
+        "MamboJamboStudios.UnityAtomsCore.Editor",
+        "MamboJamboStudios.UnityAtomsCore.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
