@@ -1,4 +1,4 @@
-#if UNITY_2018_4_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 namespace UnityAtoms.Editor
 {
     /// <summary>
-    /// The base Unity Atoms property drawer. Makes it possible to create and add a new Atom via Unity's inspector. Only availble in `UNITY_2018_4_OR_NEWER`.
+    /// The base Unity Atoms property drawer. Makes it possible to create and add a new Atom via Unity's inspector. Only availble in `UNITY_2018_3_OR_NEWER`.
     /// </summary>
     /// <typeparam name="T">The type of Atom the property drawer should apply to.</typeparam>
     public abstract class AtomDrawer<T> : PropertyDrawer where T : ScriptableObject
