@@ -32,7 +32,9 @@ namespace UnityAtoms.Editor
             });
             root.Add(runtimeWrapper);
 
+#if !UNITY_ATOMS_GENERATE_DOCS
             StackTraceEditor.RenderStackTrace(root, atomEvent.GetInstanceID());
+#endif
 
             return root;
         }

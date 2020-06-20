@@ -18,7 +18,9 @@ namespace UnityAtoms
 
         public virtual void Raise()
         {
+#if !UNITY_ATOMS_GENERATE_DOCS
             StackTraces.AddStackTrace(GetInstanceID(), StackTraceEntry.Create());
+#endif
             OnEventNoValue?.Invoke();
         }
 

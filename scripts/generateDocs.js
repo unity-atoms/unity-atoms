@@ -39,14 +39,37 @@ const run = async () => {
   );
   const assemblies = fs
     .readdirSync(assembliesFolder)
-    .filter(
-      (file) =>
-        file.endsWith(".dll") &&
-        !file.startsWith("MamboJamboStudios.UnityAtoms")
-    )
+    .filter((file) => file.endsWith(".dll"))
     .map((csproj) => `"${path.join(assembliesFolder, csproj)}"`);
 
-  dlls = dlls.concat(assemblies);
+  const dllsFromPackageCache = [];
+  const packageCacheFolder = path.join(
+    process.cwd(),
+    "Examples",
+    "Library",
+    "PackageCache"
+  );
+  const packageCache = fs.readdirSync(packageCacheFolder);
+  const nunitFrameworkFolder = packageCache.find((folder) =>
+    folder.includes("com.unity.ext.nunit")
+  );
+
+  if (nunitFrameworkFolder) {
+    dllsFromPackageCache.push(
+      path.join(
+        packageCacheFolder,
+        nunitFrameworkFolder,
+        "net35",
+        "unity-custom",
+        "nunit.framework.dll"
+      )
+    );
+  }
+
+  dlls = dlls
+    .concat(assemblies)
+    .concat(dllsFromPackageCache)
+    .filter((dll) => !dll.includes("UnityAtoms"));
 
   // Compile code
   const apiXmlName = `api.xml`;
@@ -63,7 +86,7 @@ const run = async () => {
     assemblyName
   )}" -r:${dlls.join(
     ","
-  )} -define:UNITY_2018_3_OR_NEWER,UNITY_2018_4_OR_NEWER,UNITY_2019_1_OR_NEWER,UNITY_2019_2_OR_NEWER,UNITY_2019_3_OR_NEWER`;
+  )} -define:UNITY_ATOMS_GENERATE_DOCS,UNITY_2018_3_OR_NEWER,UNITY_2018_4_OR_NEWER,UNITY_2019_1_OR_NEWER,UNITY_2019_2_OR_NEWER,UNITY_2019_3_OR_NEWER`;
   try {
     const compileStdout = child_process.execSync(cmd);
   } catch (e) {
@@ -326,7 +349,11 @@ const run = async () => {
           method.summary
         )}${printTypeParams(method.typeparams)}${printParameters(
           method.params
-        )}${printReturns(method.returns)}${printExamples(method.examples)}`;
+        )}${printReturns(
+          typeof method.returns === "string"
+            ? method.returns
+            : JSON.stringify(method.returns)
+        )}${printExamples(method.examples)}`;
       })
       .join("---\n\n")}`;
   };

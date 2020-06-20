@@ -1,10 +1,11 @@
-#if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER && !UNITY_ATOMS_GENERATE_DOCS
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
+using UnityAtoms;
 
 namespace UnityAtoms.Editor
 {
