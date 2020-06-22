@@ -8,6 +8,13 @@
 
 # [Unreleased]
 
+# 4.2.1 (June 22, 2020)
+
+## 🐛 Bug fixes
+
+-   Fixed clear button handler for StackTraces. ([@AdamRamberg](https://github.com/AdamRamberg)
+-   Fixed and rearranged StackTraces compiler flags. ([@AdamRamberg](https://github.com/AdamRamberg)
+
 # 4.2.0 (June 20, 2020)
 
 ## 🐛 Bug fixes
