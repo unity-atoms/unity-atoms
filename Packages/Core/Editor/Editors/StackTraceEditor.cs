@@ -49,7 +49,7 @@ namespace UnityAtoms.Editor
             var clearButton = GetOrCreate<Button>(header, "CLEAR_BUTTON", (button) =>
             {
                 button.text = "Clear";
-                button.clicked += () =>
+                button.clickable.clicked += () =>
                 {
                     SetSelectedStackTraceId(instanceId, -1);
                     StackTraces.ClearStackTraces(instanceId);
