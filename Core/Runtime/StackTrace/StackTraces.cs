@@ -9,7 +9,6 @@ namespace UnityAtoms
     {
         private static Dictionary<int, ObservableCollection<StackTraceEntry>> _stackTracesById = new Dictionary<int, ObservableCollection<StackTraceEntry>>();
 
-        [Conditional("UNITY_EDITOR")]
         public static void AddStackTrace(int id, StackTraceEntry stackTrace)
         {
             if (AtomPreferences.IsDebugModeEnabled)
