@@ -1,8 +1,10 @@
 using System;
 using UnityAtoms.BaseAtoms;
 
+
 namespace UnityAtoms.BaseAtoms
 {
+
     /// <summary>
     /// Reference of type `bool`. Inherits from `EquatableAtomReference&lt;bool, BoolPair, BoolConstant, BoolVariable, BoolEvent, BoolPairEvent, BoolBoolFunction, BoolVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>

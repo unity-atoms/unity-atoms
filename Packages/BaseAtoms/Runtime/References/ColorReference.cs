@@ -2,8 +2,10 @@ using System;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
+
 namespace UnityAtoms.BaseAtoms
 {
+
     /// <summary>
     /// Reference of type `Color`. Inherits from `EquatableAtomReference&lt;Color, ColorPair, ColorConstant, ColorVariable, ColorEvent, ColorPairEvent, ColorColorFunction, ColorVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>

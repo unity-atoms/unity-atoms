@@ -1,8 +1,10 @@
-using System;
 using UnityEngine;
+using System;
+
 
 namespace UnityAtoms.BaseAtoms
 {
+
     /// <summary>
     /// Variable of type `GameObject`. Inherits from `AtomVariable&lt;GameObject, GameObjectPair, GameObjectEvent, GameObjectPairEvent, GameObjectGameObjectFunction&gt;`.
     /// </summary>

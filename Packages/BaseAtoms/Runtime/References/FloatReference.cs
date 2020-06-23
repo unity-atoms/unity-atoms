@@ -1,8 +1,10 @@
 using System;
 using UnityAtoms.BaseAtoms;
 
+
 namespace UnityAtoms.BaseAtoms
 {
+
     /// <summary>
     /// Reference of type `float`. Inherits from `EquatableAtomReference&lt;float, FloatPair, FloatConstant, FloatVariable, FloatEvent, FloatPairEvent, FloatFloatFunction, FloatVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityAtoms.MonoHooks;
+
 namespace UnityAtoms.MonoHooks
 {
     /// <summary>

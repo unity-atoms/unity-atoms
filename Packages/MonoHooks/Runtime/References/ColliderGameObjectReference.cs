@@ -2,8 +2,10 @@ using System;
 using UnityAtoms.BaseAtoms;
 using UnityAtoms.MonoHooks;
 
+
 namespace UnityAtoms.MonoHooks
 {
+
     /// <summary>
     /// Reference of type `ColliderGameObject`. Inherits from `EquatableAtomReference&lt;ColliderGameObject, ColliderGameObjectPair, ColliderGameObjectConstant, ColliderGameObjectVariable, ColliderGameObjectEvent, ColliderGameObjectPairEvent, ColliderGameObjectColliderGameObjectFunction, ColliderGameObjectVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>

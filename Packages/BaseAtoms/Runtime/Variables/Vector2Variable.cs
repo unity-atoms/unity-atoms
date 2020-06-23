@@ -1,7 +1,9 @@
 using UnityEngine;
 
+
 namespace UnityAtoms.BaseAtoms
 {
+
     /// <summary>
     /// Variable of type `Vector2`. Inherits from `EquatableAtomVariable&lt;Vector2, Vector2Pair, Vector2Event, Vector2PairEvent, Vector2Vector2Function&gt;`.
     /// </summary>

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>

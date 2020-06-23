@@ -1,8 +1,10 @@
-using System;
 using UnityEngine;
+using System;
+
 
 namespace UnityAtoms.BaseAtoms
 {
+
     /// <summary>
     /// Variable of type `Collider`. Inherits from `AtomVariable&lt;Collider, ColliderPair, ColliderEvent, ColliderPairEvent, ColliderColliderFunction&gt;`.
     /// </summary>
@@ -12,7 +14,7 @@ namespace UnityAtoms.BaseAtoms
     {
         protected override bool ValueEquals(Collider other)
         {
-            return (_value == null && other == null) || _value != null && other != null && _value == other;
+            throw new NotImplementedException();
         }
     }
 }

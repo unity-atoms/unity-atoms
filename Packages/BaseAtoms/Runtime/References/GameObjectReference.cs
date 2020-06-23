@@ -2,8 +2,10 @@ using System;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
+
 namespace UnityAtoms.BaseAtoms
 {
+
     /// <summary>
     /// Reference of type `GameObject`. Inherits from `AtomReference&lt;GameObject, GameObjectPair, GameObjectConstant, GameObjectVariable, GameObjectEvent, GameObjectPairEvent, GameObjectGameObjectFunction, GameObjectVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
@@ -23,7 +25,7 @@ namespace UnityAtoms.BaseAtoms
         public bool Equals(GameObjectReference other) { return base.Equals(other); }
         protected override bool ValueEquals(GameObject other)
         {
-            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value.GetInstanceID() == other.GetInstanceID();
-        }
+            throw new NotImplementedException();
+        } 
     }
 }
