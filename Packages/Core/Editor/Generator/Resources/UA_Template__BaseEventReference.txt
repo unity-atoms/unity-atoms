@@ -137,7 +137,8 @@ namespace UnityAtoms
             /// </summary>
             [SerializeField]
             private AtomListInstancer _listInstancer = default(AtomListInstancer);
+            <%ENDIF%>
         }
-        <%ENDIF%>
+
     }
 }
