@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
@@ -16,6 +17,7 @@ namespace UnityAtoms.Editor
         /// <returns>A new template string resolved and based on the provided `template`.</returns>
         public static string ResolveConditionals(string template, List<string> trueConditions)
         {
+            Debug.LogError("PRE: " + template);
             var templateCopy = String.Copy(template);
 
             var indexIfOpened = templateCopy.LastIndexOf("<%IF ", StringComparison.Ordinal);
@@ -33,6 +35,7 @@ namespace UnityAtoms.Editor
             var indexOfNextLineAfterEndIf = templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal) + 1;
 
             var indexOfNextElse = templateCopy.IndexOf("<%ELSE%>", indexIfClosed, StringComparison.Ordinal);
+            if (indexOfNextElse >= indexOfNextEndIf) indexOfNextElse = -1;
 
             var endThenBlock = indexOfNextElse != -1 ? indexOfNextElse : indexOfNextEndIf;
 
@@ -49,7 +52,7 @@ namespace UnityAtoms.Editor
             resolved = resolved.Trim('\n');
             templateCopy = templateCopy.Remove(indexIfOpened, indexOfNextLineAfterEndIf - indexIfOpened);
             templateCopy = templateCopy.Insert(indexIfOpened, string.IsNullOrEmpty(resolved) ? "" : $"{resolved}\n");
-
+            Debug.LogError("POST: " + templateCopy);
             return ResolveConditionals(templateCopy, trueConditions);
         }
 
