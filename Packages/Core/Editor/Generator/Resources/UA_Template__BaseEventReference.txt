@@ -1,4 +1,5 @@
 using System;
+<%IF TYPE_IS_ATOMBASEVARIABLE%>using UnityEngine;<%ENDIF%>
 <%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
 
 <%IF HAS_SUB_UA_NAMESPACE%>
@@ -25,6 +26,27 @@ namespace UnityAtoms
         public const int LIST_INSTANCER_REMOVED_EVENT = 9;
     }
 <%ENDIF%>
+<%IF TYPE_IS_VOID%>
+    public class VoidBaseEventReferenceUsage
+    {
+        public const int EVENT = 0;
+        public const int EVENT_INSTANCER = 1;
+        public const int COLLECTION_CLEARED_EVENT = 2;
+        public const int LIST_CLEARED_EVENT = 3;
+        public const int COLLECTION_INSTANCER_CLEARED_EVENT = 4;
+        public const int LIST_INSTANCER_CLEARED_EVENT = 5;
+    }
+<%ENDIF%>
+<%IF TYPE_IS_FSMTRANSITIONDATA%>
+    /// <summary>
+    /// Different Event Reference usages.
+    /// </summary>
+    public class FSMTransitionDataBaseEventReferenceUsage
+    {
+        public const int FSM = 2;
+        public const int FSM_INSTANCER = 3;
+    }
+<%ENDIF%>
     /// <summary>
     /// Event Reference of type `{VALUE_TYPE}`. Inherits from `AtomBaseEventReference&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}EventInstancer&gt;`.
     /// </summary>
@@ -35,7 +57,7 @@ namespace UnityAtoms
         {VALUE_TYPE_NAME}EventInstancer>, IGetEvent
     {
     <%IF TYPE_IS_ATOMBASEVARIABLE%>
-    /// <summary>
+            /// <summary>
             /// Get or set the Event used by the Event Reference.
             /// </summary>
             /// <value>The event of type `E`.</value>
@@ -137,8 +159,6 @@ namespace UnityAtoms
             /// </summary>
             [SerializeField]
             private AtomListInstancer _listInstancer = default(AtomListInstancer);
-            <%ENDIF%>
-        }
-
+     <%ENDIF%>
     }
 }
