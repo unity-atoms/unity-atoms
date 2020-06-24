@@ -17,7 +17,6 @@ namespace UnityAtoms.Editor
         /// <returns>A new template string resolved and based on the provided `template`.</returns>
         public static string ResolveConditionals(string template, List<string> trueConditions)
         {
-            Debug.LogError("PRE: " + template);
             var templateCopy = String.Copy(template);
 
             var indexIfOpened = templateCopy.LastIndexOf("<%IF ", StringComparison.Ordinal);
@@ -52,7 +51,6 @@ namespace UnityAtoms.Editor
             resolved = resolved.Trim('\n');
             templateCopy = templateCopy.Remove(indexIfOpened, indexOfNextCharAfterEndIf - indexIfOpened);
             templateCopy = templateCopy.Insert(indexIfOpened, string.IsNullOrEmpty(resolved) ? "" : $"{resolved}\n");
-            Debug.LogError("POST: " + templateCopy);
             return ResolveConditionals(templateCopy, trueConditions);
         }
 
