@@ -22,9 +22,10 @@ namespace UnityAtoms.Editor
             return Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
         }
 
-        public static List<string> CreateTemplateConditions(bool isValueTypeEquatable, string valueTypeNamespace, string subUnityAtomsNamespace)
+        public static List<string> CreateTemplateConditions(bool isValueTypeEquatable, string valueTypeNamespace, string subUnityAtomsNamespace, string valueType)
         {
             var templateConditions = new List<string>();
+            templateConditions.Add("TYPE_IS_" + valueType.ToUpper());
             if (isValueTypeEquatable) { templateConditions.Add("EQUATABLE"); }
             if (!string.IsNullOrEmpty(valueTypeNamespace)) { templateConditions.Add("TYPE_HAS_NAMESPACE"); }
             if (!string.IsNullOrEmpty(subUnityAtomsNamespace)) { templateConditions.Add("HAS_SUB_UA_NAMESPACE"); }

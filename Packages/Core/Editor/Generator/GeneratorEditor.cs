@@ -189,7 +189,7 @@ namespace UnityAtoms.Editor
             var button2 = new Button(() =>
             {
                 var templates = Generator.GetTemplatePaths();
-                var templateConditions = Generator.CreateTemplateConditions(_isValueTypeEquatable, _valueTypeNamespace, _subUnityAtomsNamespace);
+                var templateConditions = Generator.CreateTemplateConditions(_isValueTypeEquatable, _valueTypeNamespace, _subUnityAtomsNamespace, _valueType);
                 var templateVariables = Generator.CreateTemplateVariablesMap(_valueType, _valueTypeNamespace, _subUnityAtomsNamespace);
                 var capitalizedValueType = _valueType.Capitalize();
 
