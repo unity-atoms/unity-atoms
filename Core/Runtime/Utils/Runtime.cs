@@ -1,4 +1,6 @@
-﻿namespace UnityAtoms
+﻿using System.IO;
+
+namespace UnityAtoms
 {
     /// <summary>
     /// Internal constant and static readonly members for runtime usage.
@@ -31,7 +33,7 @@
         /// <returns>`true` if we are working in the Unity Atoms source library / repo, otherwise `false`.</returns>
         public static bool IsUnityAtomsRepo
         {
-            get => System.Environment.CurrentDirectory.Contains("unity-atoms/Examples");
+            get => System.Environment.CurrentDirectory.Contains(Path.Combine("unity-atoms","Examples"));
         }
     }
 }
