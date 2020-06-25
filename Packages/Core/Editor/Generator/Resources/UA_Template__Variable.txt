@@ -12,8 +12,6 @@ namespace UnityAtoms
     /// <summary>
     /// Variable of type `{VALUE_TYPE}`. Inherits from `EquatableAtomVariable&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function&gt;`.
     /// </summary>
-
-
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/{VALUE_TYPE_NAME}", fileName = "{VALUE_TYPE_NAME}Variable")]
     public <%IF !TYPE_IS_STRING%>sealed<%ENDIF%> class {VALUE_TYPE_NAME}Variable : EquatableAtomVariable<{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function>
