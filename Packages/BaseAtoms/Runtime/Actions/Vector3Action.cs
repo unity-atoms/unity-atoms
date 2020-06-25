@@ -1,8 +1,6 @@
-
 using UnityEngine;
-
-
 namespace UnityAtoms.BaseAtoms
+    
 {
     /// <summary>
     /// Action of type `Vector3`. Inherits from `AtomAction&lt;Vector3&gt;`.

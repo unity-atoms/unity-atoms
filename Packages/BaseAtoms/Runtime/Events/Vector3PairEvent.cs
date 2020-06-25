@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
@@ -8,5 +7,6 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/Vector3Pair", fileName = "Vector3PairEvent")]
-    public sealed class Vector3PairEvent : AtomEvent<Vector3Pair> { }
+    public sealed class Vector3PairEvent : AtomEvent<Vector3Pair> {
+             }
 }

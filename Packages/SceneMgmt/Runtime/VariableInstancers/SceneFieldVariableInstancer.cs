@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using UnityAtoms.SceneMgmt;
 
-
 namespace UnityAtoms.SceneMgmt
 {
     /// <summary>

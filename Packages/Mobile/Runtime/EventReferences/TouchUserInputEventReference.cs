@@ -1,7 +1,6 @@
 using System;
 using UnityAtoms.Mobile;
 
-
 namespace UnityAtoms.Mobile
 {
     /// <summary>

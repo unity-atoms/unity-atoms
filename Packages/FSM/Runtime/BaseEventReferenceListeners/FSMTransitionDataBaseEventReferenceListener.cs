@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 namespace UnityAtoms.FSM
 {
     /// <summary>

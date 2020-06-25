@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
@@ -8,5 +7,6 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/Collider2DPair", fileName = "Collider2DPairEvent")]
-    public sealed class Collider2DPairEvent : AtomEvent<Collider2DPair> { }
+    public sealed class Collider2DPairEvent : AtomEvent<Collider2DPair> {
+             }
 }

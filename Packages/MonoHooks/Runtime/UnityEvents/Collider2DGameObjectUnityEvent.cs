@@ -2,7 +2,6 @@ using System;
 using UnityEngine.Events;
 using UnityAtoms.MonoHooks;
 
-
 namespace UnityAtoms.MonoHooks
 {
     /// <summary>

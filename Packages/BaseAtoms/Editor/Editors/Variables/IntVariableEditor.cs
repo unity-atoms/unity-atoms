@@ -1,7 +1,6 @@
 using UnityEditor;
 using UnityAtoms.Editor;
 
-
 namespace UnityAtoms.BaseAtoms.Editor
 {
     /// <summary>

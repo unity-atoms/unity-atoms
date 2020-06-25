@@ -1,10 +1,7 @@
 using System;
 using UnityAtoms.BaseAtoms;
-
-
 namespace UnityAtoms.BaseAtoms
 {
-
     /// <summary>
     /// Reference of type `string`. Inherits from `EquatableAtomReference&lt;string, StringPair, StringConstant, StringVariable, StringEvent, StringPairEvent, StringStringFunction, StringVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
@@ -22,5 +19,5 @@ namespace UnityAtoms.BaseAtoms
         public StringReference() : base() { }
         public StringReference(string value) : base(value) { }
         public bool Equals(StringReference other) { return base.Equals(other); }
-    }
+            }
 }

@@ -114,8 +114,11 @@ namespace UnityAtoms.Editor
 
                 // Adjust content
                 var content = Templating.ResolveVariables(templateVariables: templateVariables, toResolve: template);
+                Debug.Log("PRE:" + content );
                 content = Templating.ResolveConditionals(template: content, trueConditions: templateConditions);
+                Debug.Log("POST:" + content );
                 content = RemoveDuplicateNamespaces(template: content);
+                Debug.Log("DEDUPE:" + content );
 
                 // Write to file
                 File.WriteAllText(filePath, content);
@@ -155,8 +158,12 @@ namespace UnityAtoms.Editor
             {
                 if (kvp.Value > 1)
                 {
-                    var usingStr = $"using {kvp.Key};\n";
-                    contentCopy = contentCopy.Remove(contentCopy.IndexOf(usingStr), usingStr.Length);
+                    Debug.Log("REMOVE:");
+                    var usingStr = $"using {kvp.Key};";
+                    Debug.Log("'"+usingStr+"'");
+                    Debug.Log(contentCopy.IndexOf(usingStr));
+                    Debug.Log("From:\n" + contentCopy);
+                    contentCopy = contentCopy.Remove(contentCopy.IndexOf(usingStr), usingStr.Length+1);
                 }
             }
 

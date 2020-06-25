@@ -1,5 +1,5 @@
-
 namespace UnityAtoms.BaseAtoms
+    
 {
     /// <summary>
     /// Action of type `FloatPair`. Inherits from `AtomAction&lt;FloatPair&gt;`.

@@ -1,11 +1,8 @@
 using System;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
-
-
 namespace UnityAtoms.BaseAtoms
 {
-
     /// <summary>
     /// Reference of type `Collider2D`. Inherits from `AtomReference&lt;Collider2D, Collider2DPair, Collider2DConstant, Collider2DVariable, Collider2DEvent, Collider2DPairEvent, Collider2DCollider2DFunction, Collider2DVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
@@ -25,7 +22,8 @@ namespace UnityAtoms.BaseAtoms
         public bool Equals(Collider2DReference other) { return base.Equals(other); }
         protected override bool ValueEquals(Collider2D other)
         {
-            throw new NotImplementedException();
-        } 
+                        return (this.Value == null && other == null) || this.Value != null && other != null && this.Value == other;
+            
+        }
     }
 }

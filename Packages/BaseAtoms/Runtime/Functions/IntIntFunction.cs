@@ -1,4 +1,3 @@
-
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>

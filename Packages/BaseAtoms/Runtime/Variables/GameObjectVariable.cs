@@ -1,10 +1,8 @@
-using UnityEngine;
 using System;
-
+using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-
     /// <summary>
     /// Variable of type `GameObject`. Inherits from `AtomVariable&lt;GameObject, GameObjectPair, GameObjectEvent, GameObjectPairEvent, GameObjectGameObjectFunction&gt;`.
     /// </summary>
@@ -14,7 +12,8 @@ namespace UnityAtoms.BaseAtoms
     {
         protected override bool ValueEquals(GameObject other)
         {
-            return (_value == null && other == null) || _value != null && other != null && _value.GetInstanceID() == other.GetInstanceID();
+                    return (_value == null && other == null) || _value != null && other != null && _value.GetInstanceID() == other.GetInstanceID();
+        
         }
     }
 }

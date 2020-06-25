@@ -4,7 +4,6 @@ using UnityEngine.UIElements;
 using UnityAtoms.Editor;
 using UnityAtoms.MonoHooks;
 
-
 namespace UnityAtoms.MonoHooks.Editor
 {
     /// <summary>

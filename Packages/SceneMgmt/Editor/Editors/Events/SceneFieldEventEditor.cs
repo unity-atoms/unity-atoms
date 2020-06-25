@@ -4,7 +4,6 @@ using UnityEngine.UIElements;
 using UnityAtoms.Editor;
 using UnityAtoms.SceneMgmt;
 
-
 namespace UnityAtoms.SceneMgmt.Editor
 {
     /// <summary>

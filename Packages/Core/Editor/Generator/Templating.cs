@@ -18,6 +18,7 @@ namespace UnityAtoms.Editor
         public static string ResolveConditionals(string template, List<string> trueConditions)
         {
             var templateCopy = String.Copy(template);
+            templateCopy = templateCopy.Replace("\r\n", "\n");
 
             var indexIfOpened = templateCopy.LastIndexOf("<%IF ", StringComparison.Ordinal);
             if (indexIfOpened == -1) return templateCopy; // No IF blocks left and nothing else to resolve. Return template.
@@ -32,6 +33,14 @@ namespace UnityAtoms.Editor
             var indexOfNextEndIf = templateCopy.IndexOf("<%ENDIF%>", indexIfClosed, StringComparison.Ordinal);
             if (indexOfNextEndIf == -1) throw new Exception("No closing <%ENDIF%> for condition.");
             var indexOfNextCharAfterEndIf = indexOfNextEndIf + "<%ENDIF%>".Length; // templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal) + 1;
+            var indexOfLFAfterEndIf =
+                templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal);
+            var inline = true;
+            if (indexOfLFAfterEndIf == indexOfNextCharAfterEndIf)
+            {
+                indexOfNextCharAfterEndIf = indexOfLFAfterEndIf + 1;
+                inline = false;
+            }
 
             var indexOfNextElse = templateCopy.IndexOf("<%ELSE%>", indexIfClosed, StringComparison.Ordinal);
             if (indexOfNextElse >= indexOfNextEndIf) indexOfNextElse = -1;
@@ -50,7 +59,7 @@ namespace UnityAtoms.Editor
 
             resolved = resolved.Trim('\n');
             templateCopy = templateCopy.Remove(indexIfOpened, indexOfNextCharAfterEndIf - indexIfOpened);
-            templateCopy = templateCopy.Insert(indexIfOpened, string.IsNullOrEmpty(resolved) ? "" : $"{resolved}\n");
+            templateCopy = templateCopy.Insert(indexIfOpened, string.IsNullOrEmpty(resolved) ? "" : $"{resolved}" + (inline ? "" : "\n"));
             return ResolveConditionals(templateCopy, trueConditions);
         }
 

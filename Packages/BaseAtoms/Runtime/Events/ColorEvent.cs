@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
@@ -8,5 +7,6 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/Color", fileName = "ColorEvent")]
-    public sealed class ColorEvent : AtomEvent<Color> { }
+    public sealed class ColorEvent : AtomEvent<Color> {
+             }
 }

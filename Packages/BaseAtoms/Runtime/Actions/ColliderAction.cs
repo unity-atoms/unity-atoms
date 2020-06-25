@@ -1,8 +1,6 @@
-
 using UnityEngine;
-
-
 namespace UnityAtoms.BaseAtoms
+    
 {
     /// <summary>
     /// Action of type `Collider`. Inherits from `AtomAction&lt;Collider&gt;`.

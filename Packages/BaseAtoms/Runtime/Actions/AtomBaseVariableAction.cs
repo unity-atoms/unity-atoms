@@ -1,5 +1,5 @@
-
 namespace UnityAtoms.BaseAtoms
+    
 {
     /// <summary>
     /// Action of type `AtomBaseVariable`. Inherits from `AtomAction&lt;AtomBaseVariable&gt;`.

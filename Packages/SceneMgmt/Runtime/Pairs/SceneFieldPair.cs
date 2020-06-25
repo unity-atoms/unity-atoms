@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityAtoms.SceneMgmt;
-
 namespace UnityAtoms.SceneMgmt
 {
     /// <summary>

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using UnityAtoms.Mobile;
 
-
 namespace UnityAtoms.Mobile
 {
     /// <summary>

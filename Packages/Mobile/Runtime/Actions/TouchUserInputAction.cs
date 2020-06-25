@@ -1,8 +1,6 @@
-
 using UnityAtoms.Mobile;
-
-
 namespace UnityAtoms.Mobile
+    
 {
     /// <summary>
     /// Action of type `TouchUserInput`. Inherits from `AtomAction&lt;TouchUserInput&gt;`.
