@@ -103,10 +103,14 @@ namespace UnityAtoms
     {
         protected override bool ValueEquals({VALUE_TYPE} other)
         {
+<%IF IS_COLLIDER%>
+            return (_value == null && other == null) || _value != null && other != null && _value == other;
+<%ELSE%>
 <%IF TYPE_IS_GAMEOBJECT%>
             return (_value == null && other == null) || _value != null && other != null && _value.GetInstanceID() == other.GetInstanceID();
 <%ELSE%>
             throw new NotImplementedException();
+<%ENDIF%>
 <%ENDIF%>
         }
     }
