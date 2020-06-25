@@ -4,9 +4,6 @@ using {TYPE_NAMESPACE};
 <%ENDIF%>
 <%IF HAS_SUB_UA_NAMESPACE%>
 namespace UnityAtoms.{SUB_UA_NAMESPACE}
-    <%IF TYPE_IS_COLOR%>
-    // Color comment
-    <%ENDIF%>
 <%ELSE%>
 namespace UnityAtoms
 <%ENDIF%>
