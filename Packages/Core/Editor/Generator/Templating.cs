@@ -57,7 +57,8 @@ namespace UnityAtoms.Editor
                 resolved = templateCopy.Substring(indexOfNextElse + 8, indexOfNextEndIf - (indexOfNextElse + 8));
             }
 
-            resolved = resolved.Trim();
+            resolved = resolved.TrimEnd();
+            resolved = resolved.TrimStart('\n');
             templateCopy = templateCopy.Remove(indexIfOpened, indexOfNextCharAfterEndIf - indexIfOpened);
             templateCopy = templateCopy.Insert(indexIfOpened, string.IsNullOrEmpty(resolved) ? "" : $"{resolved}" + (inline ? "" : "\n"));
             return ResolveConditionals(templateCopy, trueConditions);

@@ -11,7 +11,7 @@ namespace UnityAtoms
 <%ENDIF%>
 {
 <%IF TYPE_IS_ATOMBASEVARIABLE%>
-/// <summary>
+    /// <summary>
     /// Different types of Event Reference usages.
     /// </summary>
     public class AtomBaseVariableEventReferenceUsage
@@ -58,53 +58,53 @@ namespace UnityAtoms
         {VALUE_TYPE_NAME}Event,
         {VALUE_TYPE_NAME}EventInstancer>, IGetEvent
     {
-    <%IF TYPE_IS_FSMTRANSITIONDATA%>
-    /// <summary>
-            /// Get the value for the Reference.
-            /// </summary>
-            /// <value>The value of type `FiniteStateMachine`.</value>
-            public override FSMTransitionDataEvent Event
+<%IF TYPE_IS_FSMTRANSITIONDATA%>
+        /// <summary>
+        /// Get the value for the Reference.
+        /// </summary>
+        /// <value>The value of type `FiniteStateMachine`.</value>
+        public override FSMTransitionDataEvent Event
+        {
+            get
             {
-                get
+                switch (_usage)
                 {
-                    switch (_usage)
-                    {
-                        case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER): return ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted;
-                        case (FSMTransitionDataBaseEventReferenceUsage.FSM): return _fsm.TransitionStarted;
-                        default:
-                            return base.Event;
-                    }
-                }
-                set
-                {
-                    switch (_usage)
-                    {
-                        case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER):
-                            ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted = value;
-                            break;
-                        case (FSMTransitionDataBaseEventReferenceUsage.FSM):
-                            _fsm.TransitionStarted = value;
-                            break;
-                        default:
-                            base.Event = value;
-                            break;
-                    }
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER): return ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted;
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM): return _fsm.TransitionStarted;
+                    default:
+                        return base.Event;
                 }
             }
+            set
+            {
+                switch (_usage)
+                {
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER):
+                        ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted = value;
+                        break;
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM):
+                        _fsm.TransitionStarted = value;
+                        break;
+                    default:
+                        base.Event = value;
+                        break;
+                }
+            }
+        }
 
-            /// <summary>
-            /// Takes event from this FiniteStateMachine if `Usage` is set to `FSM`.
-            /// </summary>
-            [SerializeField]
-            private FiniteStateMachine _fsm = default(FiniteStateMachine);
+        /// <summary>
+        /// Takes event from this FiniteStateMachine if `Usage` is set to `FSM`.
+        /// </summary>
+        [SerializeField]
+        private FiniteStateMachine _fsm = default(FiniteStateMachine);
 
-            /// <summary>
-            /// Takes event from this FiniteStateMachineInstancer if `Usage` is set to `FSM Instancer`.
-            /// </summary>
-            [SerializeField]
-            private FiniteStateMachineInstancer _fsmInstancer = default(FiniteStateMachineInstancer);
-    <%ENDIF%>
-    <%IF TYPE_IS_ATOMBASEVARIABLE%>
+        /// <summary>
+        /// Takes event from this FiniteStateMachineInstancer if `Usage` is set to `FSM Instancer`.
+        /// </summary>
+        [SerializeField]
+        private FiniteStateMachineInstancer _fsmInstancer = default(FiniteStateMachineInstancer);
+<%ENDIF%>
+<%IF TYPE_IS_ATOMBASEVARIABLE%>
             /// <summary>
             /// Get or set the Event used by the Event Reference.
             /// </summary>
@@ -207,9 +207,9 @@ namespace UnityAtoms
             /// </summary>
             [SerializeField]
             private AtomListInstancer _listInstancer = default(AtomListInstancer);
-     <%ENDIF%>
-     <%IF TYPE_IS_VOID%>
-    /// <summary>
+<%ENDIF%>
+<%IF TYPE_IS_VOID%>
+            /// <summary>
             /// Get or set the Event used by the Event Reference.
             /// </summary>
             /// <value>The event of type `E`.</value>
@@ -287,6 +287,6 @@ namespace UnityAtoms
             /// </summary>
             [SerializeField]
             private AtomListInstancer _listInstancer = default(AtomListInstancer);
-     <%ENDIF%>
+<%ENDIF%>
     }
 }

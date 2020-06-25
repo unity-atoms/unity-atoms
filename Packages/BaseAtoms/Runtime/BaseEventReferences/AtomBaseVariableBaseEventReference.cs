@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-/// <summary>
+    /// <summary>
     /// Different types of Event Reference usages.
     /// </summary>
     public class AtomBaseVariableEventReferenceUsage
@@ -28,7 +28,7 @@ namespace UnityAtoms.BaseAtoms
         AtomBaseVariableEvent,
         AtomBaseVariableEventInstancer>, IGetEvent
     {
-        /// <summary>
+            /// <summary>
             /// Get or set the Event used by the Event Reference.
             /// </summary>
             /// <value>The event of type `E`.</value>
@@ -130,5 +130,5 @@ namespace UnityAtoms.BaseAtoms
             /// </summary>
             [SerializeField]
             private AtomListInstancer _listInstancer = default(AtomListInstancer);
-         }
+    }
 }

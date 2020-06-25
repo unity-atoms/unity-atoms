@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms.FSM
 {
-/// <summary>
+    /// <summary>
     /// Different Event Reference usages.
     /// </summary>
     public class FSMTransitionDataBaseEventReferenceUsage
@@ -20,49 +20,49 @@ namespace UnityAtoms.FSM
         FSMTransitionDataEvent,
         FSMTransitionDataEventInstancer>, IGetEvent
     {
-    /// <summary>
-            /// Get the value for the Reference.
-            /// </summary>
-            /// <value>The value of type `FiniteStateMachine`.</value>
-            public override FSMTransitionDataEvent Event
+        /// <summary>
+        /// Get the value for the Reference.
+        /// </summary>
+        /// <value>The value of type `FiniteStateMachine`.</value>
+        public override FSMTransitionDataEvent Event
+        {
+            get
             {
-                get
+                switch (_usage)
                 {
-                    switch (_usage)
-                    {
-                        case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER): return ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted;
-                        case (FSMTransitionDataBaseEventReferenceUsage.FSM): return _fsm.TransitionStarted;
-                        default:
-                            return base.Event;
-                    }
-                }
-                set
-                {
-                    switch (_usage)
-                    {
-                        case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER):
-                            ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted = value;
-                            break;
-                        case (FSMTransitionDataBaseEventReferenceUsage.FSM):
-                            _fsm.TransitionStarted = value;
-                            break;
-                        default:
-                            base.Event = value;
-                            break;
-                    }
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER): return ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted;
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM): return _fsm.TransitionStarted;
+                    default:
+                        return base.Event;
                 }
             }
+            set
+            {
+                switch (_usage)
+                {
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER):
+                        ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted = value;
+                        break;
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM):
+                        _fsm.TransitionStarted = value;
+                        break;
+                    default:
+                        base.Event = value;
+                        break;
+                }
+            }
+        }
 
-            /// <summary>
-            /// Takes event from this FiniteStateMachine if `Usage` is set to `FSM`.
-            /// </summary>
-            [SerializeField]
-            private FiniteStateMachine _fsm = default(FiniteStateMachine);
+        /// <summary>
+        /// Takes event from this FiniteStateMachine if `Usage` is set to `FSM`.
+        /// </summary>
+        [SerializeField]
+        private FiniteStateMachine _fsm = default(FiniteStateMachine);
 
-            /// <summary>
-            /// Takes event from this FiniteStateMachineInstancer if `Usage` is set to `FSM Instancer`.
-            /// </summary>
-            [SerializeField]
-            private FiniteStateMachineInstancer _fsmInstancer = default(FiniteStateMachineInstancer);
-             }
+        /// <summary>
+        /// Takes event from this FiniteStateMachineInstancer if `Usage` is set to `FSM Instancer`.
+        /// </summary>
+        [SerializeField]
+        private FiniteStateMachineInstancer _fsmInstancer = default(FiniteStateMachineInstancer);
+    }
 }

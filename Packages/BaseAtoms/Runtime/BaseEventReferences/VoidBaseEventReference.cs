@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-public class VoidBaseEventReferenceUsage
+    public class VoidBaseEventReferenceUsage
     {
         public const int EVENT = 0;
         public const int EVENT_INSTANCER = 1;
@@ -21,7 +21,7 @@ public class VoidBaseEventReferenceUsage
         VoidEvent,
         VoidEventInstancer>, IGetEvent
     {
-             /// <summary>
+            /// <summary>
             /// Get or set the Event used by the Event Reference.
             /// </summary>
             /// <value>The event of type `E`.</value>

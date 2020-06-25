@@ -27,7 +27,7 @@ namespace UnityAtoms
         public {VALUE_TYPE_NAME}Reference() : base() { }
         public {VALUE_TYPE_NAME}Reference({VALUE_TYPE} value) : base(value) { }
         public bool Equals({VALUE_TYPE_NAME}Reference other) { return base.Equals(other); }
-        <%IF TYPE_IS_COLOR%>
+<%IF TYPE_IS_COLOR%>
         /// <summary>
         /// Set Alpha of Color by value.
         /// </summary>
@@ -39,7 +39,7 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="variable">New alpha Variable value.</param>
         public void SetAlpha(AtomBaseVariable<float> variable) => SetAlpha(variable.Value);
-        <%ENDIF%>
+<%ENDIF%>
     }
 <%ELSE%>
     /// <summary>
@@ -61,11 +61,15 @@ namespace UnityAtoms
         public bool Equals({VALUE_TYPE_NAME}Reference other) { return base.Equals(other); }
         protected override bool ValueEquals({VALUE_TYPE} other)
         {
-            <%IF IS_COLLIDER%>
+<%IF IS_COLLIDER%>
             return (this.Value == null && other == null) || this.Value != null && other != null && this.Value == other;
-            <%ELSE%>
+<%ELSE%>
+<%IF TYPE_IS_GAMEOBJECT%>
+            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value.GetInstanceID() == other.GetInstanceID();
+<%ELSE%>
             throw new NotImplementedException();
-            <%ENDIF%>
+<%ENDIF%>
+<%ENDIF%>
         }
     }
 <%ENDIF%>

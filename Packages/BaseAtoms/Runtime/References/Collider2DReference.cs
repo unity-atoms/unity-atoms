@@ -3,7 +3,7 @@ using UnityAtoms.BaseAtoms;
 using UnityEngine;
 namespace UnityAtoms.BaseAtoms
 {
-/// <summary>
+    /// <summary>
     /// Reference of type `Collider2D`. Inherits from `AtomReference&lt;Collider2D, Collider2DPair, Collider2DConstant, Collider2DVariable, Collider2DEvent, Collider2DPairEvent, Collider2DCollider2DFunction, Collider2DVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
