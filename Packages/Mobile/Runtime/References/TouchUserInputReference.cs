@@ -3,7 +3,7 @@ using UnityAtoms.BaseAtoms;
 using UnityAtoms.Mobile;
 namespace UnityAtoms.Mobile
 {
-    /// <summary>
+/// <summary>
     /// Reference of type `TouchUserInput`. Inherits from `EquatableAtomReference&lt;TouchUserInput, TouchUserInputPair, TouchUserInputConstant, TouchUserInputVariable, TouchUserInputEvent, TouchUserInputPairEvent, TouchUserInputTouchUserInputFunction, TouchUserInputVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]

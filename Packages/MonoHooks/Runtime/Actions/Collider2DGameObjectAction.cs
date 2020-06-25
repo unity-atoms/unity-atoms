@@ -1,6 +1,5 @@
 using UnityAtoms.MonoHooks;
 namespace UnityAtoms.MonoHooks
-    
 {
     /// <summary>
     /// Action of type `Collider2DGameObject`. Inherits from `AtomAction&lt;Collider2DGameObject&gt;`.

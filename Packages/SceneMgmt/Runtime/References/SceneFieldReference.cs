@@ -3,7 +3,7 @@ using UnityAtoms.BaseAtoms;
 using UnityAtoms.SceneMgmt;
 namespace UnityAtoms.SceneMgmt
 {
-    /// <summary>
+/// <summary>
     /// Reference of type `SceneField`. Inherits from `EquatableAtomReference&lt;SceneField, SceneFieldPair, SceneFieldConstant, SceneFieldVariable, SceneFieldEvent, SceneFieldPairEvent, SceneFieldSceneFieldFunction, SceneFieldVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]

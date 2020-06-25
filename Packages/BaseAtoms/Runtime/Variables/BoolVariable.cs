@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-    /// <summary>
+/// <summary>
     /// Variable of type `bool`. Inherits from `EquatableAtomVariable&lt;bool, BoolPair, BoolEvent, BoolPairEvent, BoolBoolFunction&gt;`.
     /// </summary>
 

@@ -1,5 +1,4 @@
 namespace UnityAtoms.BaseAtoms
-    
 {
     /// <summary>
     /// Action of type `int`. Inherits from `AtomAction&lt;int&gt;`.

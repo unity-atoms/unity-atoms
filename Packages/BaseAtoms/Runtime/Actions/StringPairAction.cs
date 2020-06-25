@@ -1,5 +1,4 @@
 namespace UnityAtoms.BaseAtoms
-    
 {
     /// <summary>
     /// Action of type `StringPair`. Inherits from `AtomAction&lt;StringPair&gt;`.

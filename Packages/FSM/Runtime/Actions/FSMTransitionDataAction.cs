@@ -1,5 +1,4 @@
 namespace UnityAtoms.FSM
-    
 {
     /// <summary>
     /// Action of type `FSMTransitionData`. Inherits from `AtomAction&lt;FSMTransitionData&gt;`.

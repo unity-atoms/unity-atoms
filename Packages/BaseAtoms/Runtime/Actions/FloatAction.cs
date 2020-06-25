@@ -1,5 +1,4 @@
 namespace UnityAtoms.BaseAtoms
-    
 {
     /// <summary>
     /// Action of type `float`. Inherits from `AtomAction&lt;float&gt;`.

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-    /// <summary>
+/// <summary>
     /// Variable of type `Collider2D`. Inherits from `AtomVariable&lt;Collider2D, Collider2DPair, Collider2DEvent, Collider2DPairEvent, Collider2DCollider2DFunction&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-lush")]
@@ -12,8 +12,7 @@ namespace UnityAtoms.BaseAtoms
     {
         protected override bool ValueEquals(Collider2D other)
         {
-                    throw new NotImplementedException();
-        
+        throw new NotImplementedException();
         }
     }
 }

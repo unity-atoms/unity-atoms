@@ -3,7 +3,7 @@ using UnityAtoms.Mobile;
 
 namespace UnityAtoms.Mobile
 {
-    /// <summary>
+/// <summary>
     /// Variable of type `TouchUserInput`. Inherits from `EquatableAtomVariable&lt;TouchUserInput, TouchUserInputPair, TouchUserInputEvent, TouchUserInputPairEvent, TouchUserInputTouchUserInputFunction&gt;`.
     /// </summary>
 

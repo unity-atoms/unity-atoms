@@ -32,7 +32,7 @@ namespace UnityAtoms.Editor
 
             var indexOfNextEndIf = templateCopy.IndexOf("<%ENDIF%>", indexIfClosed, StringComparison.Ordinal);
             if (indexOfNextEndIf == -1) throw new Exception("No closing <%ENDIF%> for condition.");
-            var indexOfNextCharAfterEndIf = indexOfNextEndIf + "<%ENDIF%>".Length; // templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal) + 1;
+            var indexOfNextCharAfterEndIf = indexOfNextEndIf + "<%ENDIF%>".Length;
             var indexOfLFAfterEndIf =
                 templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal);
             var inline = true;
@@ -57,7 +57,7 @@ namespace UnityAtoms.Editor
                 resolved = templateCopy.Substring(indexOfNextElse + 8, indexOfNextEndIf - (indexOfNextElse + 8));
             }
 
-            resolved = resolved.Trim('\n');
+            resolved = resolved.Trim();
             templateCopy = templateCopy.Remove(indexIfOpened, indexOfNextCharAfterEndIf - indexIfOpened);
             templateCopy = templateCopy.Insert(indexIfOpened, string.IsNullOrEmpty(resolved) ? "" : $"{resolved}" + (inline ? "" : "\n"));
             return ResolveConditionals(templateCopy, trueConditions);

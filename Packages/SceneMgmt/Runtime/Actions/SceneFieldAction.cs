@@ -1,6 +1,5 @@
 using UnityAtoms.SceneMgmt;
 namespace UnityAtoms.SceneMgmt
-    
 {
     /// <summary>
     /// Action of type `SceneField`. Inherits from `AtomAction&lt;SceneField&gt;`.

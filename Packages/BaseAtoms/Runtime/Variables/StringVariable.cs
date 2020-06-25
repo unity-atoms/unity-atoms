@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-    /// <summary>
+/// <summary>
     /// Variable of type `string`. Inherits from `EquatableAtomVariable&lt;string, StringPair, StringEvent, StringPairEvent, StringStringFunction&gt;`.
     /// </summary>
 

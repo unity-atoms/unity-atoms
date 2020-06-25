@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-    /// <summary>
+/// <summary>
     /// Variable of type `int`. Inherits from `EquatableAtomVariable&lt;int, IntPair, IntEvent, IntPairEvent, IntIntFunction&gt;`.
     /// </summary>
 
@@ -10,7 +10,7 @@ namespace UnityAtoms.BaseAtoms
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Int", fileName = "IntVariable")]
     public sealed class IntVariable : EquatableAtomVariable<int, IntPair, IntEvent, IntPairEvent, IntIntFunction> {
-            /// <summary>
+    /// <summary>
             /// Add value to Variable.
             /// </summary>
             /// <param name="value">Value to add.</param>
@@ -57,6 +57,5 @@ namespace UnityAtoms.BaseAtoms
             /// </summary>
             /// <param name="variable">Variable value to divide by.</param>
             public void DivideBy(AtomBaseVariable<int> variable) => DivideBy(variable.Value);
-       
            }
 }

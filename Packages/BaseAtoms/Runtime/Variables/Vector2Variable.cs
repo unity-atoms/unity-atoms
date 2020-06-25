@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-    /// <summary>
+/// <summary>
     /// Variable of type `Vector2`. Inherits from `EquatableAtomVariable&lt;Vector2, Vector2Pair, Vector2Event, Vector2PairEvent, Vector2Vector2Function&gt;`.
     /// </summary>
 
@@ -10,7 +10,7 @@ namespace UnityAtoms.BaseAtoms
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Vector2", fileName = "Vector2Variable")]
     public sealed class Vector2Variable : EquatableAtomVariable<Vector2, Vector2Pair, Vector2Event, Vector2PairEvent, Vector2Vector2Function> {
-                          /// <summary>
+           /// <summary>
                /// Multiply variable by value.
                /// </summary>
                /// <param name="value">Value to multiple by.</param>
@@ -33,6 +33,5 @@ namespace UnityAtoms.BaseAtoms
                /// </summary>
                /// <param name="variable">Variable value to divide by.</param>
                public void DivideBy(AtomBaseVariable<float> variable) => DivideBy(variable.Value);
-       
     }
 }

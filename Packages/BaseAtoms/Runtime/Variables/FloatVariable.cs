@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-    /// <summary>
+/// <summary>
     /// Variable of type `float`. Inherits from `EquatableAtomVariable&lt;float, FloatPair, FloatEvent, FloatPairEvent, FloatFloatFunction&gt;`.
     /// </summary>
 
@@ -10,7 +10,7 @@ namespace UnityAtoms.BaseAtoms
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Float", fileName = "FloatVariable")]
     public sealed class FloatVariable : EquatableAtomVariable<float, FloatPair, FloatEvent, FloatPairEvent, FloatFloatFunction> {
-            /// <summary>
+    /// <summary>
             /// Add value to Variable.
             /// </summary>
             /// <param name="value">Value to add.</param>
@@ -57,6 +57,5 @@ namespace UnityAtoms.BaseAtoms
             /// </summary>
             /// <param name="variable">Variable value to divide by.</param>
             public void DivideBy(AtomBaseVariable<float> variable) => DivideBy(variable.Value);
-       
            }
 }

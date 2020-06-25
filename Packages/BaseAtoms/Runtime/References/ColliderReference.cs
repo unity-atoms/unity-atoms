@@ -3,7 +3,7 @@ using UnityAtoms.BaseAtoms;
 using UnityEngine;
 namespace UnityAtoms.BaseAtoms
 {
-    /// <summary>
+/// <summary>
     /// Reference of type `Collider`. Inherits from `AtomReference&lt;Collider, ColliderPair, ColliderConstant, ColliderVariable, ColliderEvent, ColliderPairEvent, ColliderColliderFunction, ColliderVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]
@@ -22,8 +22,7 @@ namespace UnityAtoms.BaseAtoms
         public bool Equals(ColliderReference other) { return base.Equals(other); }
         protected override bool ValueEquals(Collider other)
         {
-                        return (this.Value == null && other == null) || this.Value != null && other != null && this.Value == other;
-            
+            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value == other;
         }
     }
 }

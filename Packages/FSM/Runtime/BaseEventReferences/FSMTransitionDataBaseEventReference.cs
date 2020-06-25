@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityAtoms.FSM
 {
-    /// <summary>
+/// <summary>
     /// Different Event Reference usages.
     /// </summary>
     public class FSMTransitionDataBaseEventReferenceUsage
@@ -20,7 +20,7 @@ namespace UnityAtoms.FSM
         FSMTransitionDataEvent,
         FSMTransitionDataEventInstancer>, IGetEvent
     {
-        /// <summary>
+    /// <summary>
             /// Get the value for the Reference.
             /// </summary>
             /// <value>The value of type `FiniteStateMachine`.</value>
@@ -64,6 +64,5 @@ namespace UnityAtoms.FSM
             /// </summary>
             [SerializeField]
             private FiniteStateMachineInstancer _fsmInstancer = default(FiniteStateMachineInstancer);
-    
              }
 }

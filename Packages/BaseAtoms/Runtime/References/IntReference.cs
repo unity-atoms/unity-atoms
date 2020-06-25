@@ -2,7 +2,7 @@ using System;
 using UnityAtoms.BaseAtoms;
 namespace UnityAtoms.BaseAtoms
 {
-    /// <summary>
+/// <summary>
     /// Reference of type `int`. Inherits from `EquatableAtomReference&lt;int, IntPair, IntConstant, IntVariable, IntEvent, IntPairEvent, IntIntFunction, IntVariableInstancer, AtomCollection, AtomList&gt;`.
     /// </summary>
     [Serializable]

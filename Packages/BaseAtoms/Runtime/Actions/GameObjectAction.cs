@@ -1,6 +1,5 @@
 using UnityEngine;
 namespace UnityAtoms.BaseAtoms
-    
 {
     /// <summary>
     /// Action of type `GameObject`. Inherits from `AtomAction&lt;GameObject&gt;`.

@@ -1,6 +1,5 @@
 using UnityEngine;
 namespace UnityAtoms.BaseAtoms
-    
 {
     /// <summary>
     /// Action of type `Collider2DPair`. Inherits from `AtomAction&lt;Collider2DPair&gt;`.

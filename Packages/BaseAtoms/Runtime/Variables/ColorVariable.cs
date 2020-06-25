@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
-    /// <summary>
+/// <summary>
     /// Variable of type `Color`. Inherits from `EquatableAtomVariable&lt;Color, ColorPair, ColorEvent, ColorPairEvent, ColorColorFunction&gt;`.
     /// </summary>
 

@@ -1,7 +1,6 @@
 using UnityEngine;
 namespace UnityAtoms.BaseAtoms
-        // Color comment
-    
+    // Color comment
 {
     /// <summary>
     /// Action of type `ColorPair`. Inherits from `AtomAction&lt;ColorPair&gt;`.

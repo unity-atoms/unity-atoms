@@ -1,5 +1,4 @@
 namespace UnityAtoms.BaseAtoms
-    
 {
     /// <summary>
     /// Action of type `bool`. Inherits from `AtomAction&lt;bool&gt;`.
