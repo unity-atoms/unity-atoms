@@ -18,6 +18,19 @@ namespace UnityAtoms
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/{VALUE_TYPE_NAME}", fileName = "{VALUE_TYPE_NAME}Variable")]
     public <%IF !TYPE_IS_STRING%>sealed<%ENDIF%> class {VALUE_TYPE_NAME}Variable : EquatableAtomVariable<{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function>
     {
+<%IF TYPE_IS_COLOR%>
+        /// <summary>
+        /// Set Alpha of Color by value.
+        /// </summary>
+        /// <param name="value">New alpha value.</param>
+        public void SetAlpha(float value) => Value = new Color(Value.r, Value.g, Value.b, value);
+
+        /// <summary>
+        /// Set Alpha of Color by Variable value.
+        /// </summary>
+        /// <param name="variable">New alpha Variable value.</param>
+        public void SetAlpha(AtomBaseVariable<float> variable) => SetAlpha(variable.Value);
+<%ENDIF%>
 <%IF IS_NUMERIC%>
         /// <summary>
         /// Add value to Variable.
