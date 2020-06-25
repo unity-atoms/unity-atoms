@@ -7,6 +7,5 @@ namespace UnityAtoms.FSM
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/FSMTransitionData", fileName = "FSMTransitionDataEvent")]
-    public sealed class FSMTransitionDataEvent : AtomEvent<FSMTransitionData> {
-             }
+    public sealed class FSMTransitionDataEvent : AtomEvent<FSMTransitionData> { }
 }

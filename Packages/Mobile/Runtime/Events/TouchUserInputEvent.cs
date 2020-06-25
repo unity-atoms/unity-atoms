@@ -8,6 +8,5 @@ namespace UnityAtoms.Mobile
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/TouchUserInput", fileName = "TouchUserInputEvent")]
-    public sealed class TouchUserInputEvent : AtomEvent<TouchUserInput> {
-             }
+    public sealed class TouchUserInputEvent : AtomEvent<TouchUserInput> { }
 }
