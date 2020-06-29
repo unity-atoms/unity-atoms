@@ -33,8 +33,14 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
-            Assert.IsNotNull(_base);
-            _inMemoryCopy = Instantiate(_base);
+            if (_base == null)
+            {
+                _inMemoryCopy = ScriptableObject.CreateInstance<E>();
+            }
+            else
+            {
+                _inMemoryCopy = Instantiate(_base);
+            }
         }
 
         /// <summary>
@@ -58,6 +64,23 @@ namespace UnityAtoms
         public void SetEvent<EO>(EO e) where EO : AtomEventBase
         {
             throw new Exception($"Event type not reassignable!");
+        }
+
+        /// <summary>
+        /// Raises the instanced Event.
+        /// </summary>
+        public void Raise()
+        {
+            Event.Raise();
+        }
+
+        /// <summary>
+        /// Raises the instanced Event.
+        /// </summary>
+        /// <param name="item">The value associated with the Event.</param>
+        public void Raise(T item)
+        {
+            Event.Raise(item);
         }
     }
 }
