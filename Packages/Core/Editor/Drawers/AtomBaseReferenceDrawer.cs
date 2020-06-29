@@ -74,7 +74,7 @@ namespace UnityAtoms.Editor
 
             var valueFieldHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative(usageTypePropertyName), label);
 
-            if (usageTypePropertyName == "_value" && valueFieldHeight > EditorGUIUtility.singleLineHeight)
+            if (usageTypePropertyName == "_value" && valueFieldHeight > EditorGUIUtility.singleLineHeight+2)
             {
                 EditorGUI.PropertyField(originalPosition, usageTypeProperty, GUIContent.none, true);
             }
