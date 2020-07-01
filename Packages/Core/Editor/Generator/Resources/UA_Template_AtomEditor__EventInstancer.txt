@@ -1,0 +1,19 @@
+#if UNITY_2019_1_OR_NEWER
+using UnityEditor;
+using UnityEngine.UIElements;
+using UnityAtoms.Editor;
+<%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
+
+<%IF HAS_SUB_UA_NAMESPACE%>
+namespace UnityAtoms.{SUB_UA_NAMESPACE}.Editor
+<%ELSE%>
+namespace UnityAtoms.Editor
+<%ENDIF%>
+{
+    /// <summary>
+    /// Event property drawer of type `{VALUE_TYPE}`. Inherits from `AtomEventInstancerEditor&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Event&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
+    /// </summary>
+    [CustomEditor(typeof({VALUE_TYPE_NAME}Event))]
+    public sealed class {VALUE_TYPE_NAME}EventInstancerEditor : AtomEventInstancerEditor<{VALUE_TYPE}, {VALUE_TYPE_NAME}Event> { }
+}
+#endif
