@@ -71,7 +71,10 @@ namespace UnityAtoms.Editor
             var usageTypePropertyName = GetUsages(property)[newUsageValue].PropertyName;
             var usageTypeProperty = property.FindPropertyRelative(usageTypePropertyName);
 
-            if (usageTypePropertyName == "_value" && usageTypeProperty.hasVisibleChildren)
+
+            var valueFieldHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative(usageTypePropertyName), label);
+
+            if (usageTypePropertyName == "_value" && valueFieldHeight > EditorGUIUtility.singleLineHeight+2)
             {
                 EditorGUI.PropertyField(originalPosition, usageTypeProperty, GUIContent.none, true);
             }
