@@ -117,7 +117,8 @@ namespace UnityAtoms.Editor
         );
         public static readonly AtomType EVENT_INSTANCER = new AtomType(
             displayName: "Event Instancer",
-            templateName: "UA_Template__EventInstancer.txt"
+            templateName: "UA_Template__EventInstancer.txt",
+            editorTemplateName: "UA_Template__AtomEditor_EventInstancer.txt"
         );
         public static readonly AtomType PAIR_EVENT_INSTANCER = new AtomType(
             displayName: "Pair Event Instancer",

@@ -16,6 +16,8 @@ namespace UnityAtoms
     public abstract class AtomEventInstancer<T, E> : MonoBehaviour, IGetEvent, ISetEvent
         where E : AtomEvent<T>
     {
+        public T InspectorRaiseValue { get => _inspectorRaiseValue; }
+
         /// <summary>
         /// Getter for retrieving the in memory runtime Event.
         /// </summary>
@@ -31,10 +33,23 @@ namespace UnityAtoms
         [SerializeField]
         private E _base = null;
 
+        /// <summary>
+        /// Used when raising values from the inspector for debugging purposes.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Value that will be used when using the Raise button in the editor inspector.")]
+        private T _inspectorRaiseValue = default(T);
+
         private void OnEnable()
         {
-            Assert.IsNotNull(_base);
-            _inMemoryCopy = Instantiate(_base);
+            if (_base == null)
+            {
+                _inMemoryCopy = ScriptableObject.CreateInstance<E>();
+            }
+            else
+            {
+                _inMemoryCopy = Instantiate(_base);
+            }
         }
 
         /// <summary>
@@ -58,6 +73,23 @@ namespace UnityAtoms
         public void SetEvent<EO>(EO e) where EO : AtomEventBase
         {
             throw new Exception($"Event type not reassignable!");
+        }
+
+        /// <summary>
+        /// Raises the instanced Event.
+        /// </summary>
+        public void Raise()
+        {
+            Event.Raise();
+        }
+
+        /// <summary>
+        /// Raises the instanced Event.
+        /// </summary>
+        /// <param name="item">The value associated with the Event.</param>
+        public void Raise(T item)
+        {
+            Event.Raise(item);
         }
     }
 }
