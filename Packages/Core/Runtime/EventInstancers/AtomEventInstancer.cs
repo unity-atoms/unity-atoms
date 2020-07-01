@@ -16,6 +16,8 @@ namespace UnityAtoms
     public abstract class AtomEventInstancer<T, E> : MonoBehaviour, IGetEvent, ISetEvent
         where E : AtomEvent<T>
     {
+        public T InspectorRaiseValue { get => _inspectorRaiseValue; }
+
         /// <summary>
         /// Getter for retrieving the in memory runtime Event.
         /// </summary>
@@ -30,6 +32,13 @@ namespace UnityAtoms
         /// </summary>
         [SerializeField]
         private E _base = null;
+
+        /// <summary>
+        /// Used when raising values from the inspector for debugging purposes.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Value that will be used when using the Raise button in the editor inspector.")]
+        private T _inspectorRaiseValue = default(T);
 
         private void OnEnable()
         {
