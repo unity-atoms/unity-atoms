@@ -40,7 +40,23 @@ namespace UnityAtoms
         /// <summary>
         /// Changed Event triggered when the Variable value gets changed.
         /// </summary>
-        public E1 Changed;
+        [SerializeField]
+        private E1 _changed;
+        public E1 Changed
+        {
+            get
+            {
+                if (_changed == null)
+                {
+                    _changed = ScriptableObject.CreateInstance<E1>();
+                }
+                return _changed;
+            }
+            set
+            {
+                _changed = value;
+            }
+        }
 
         /// <summary>
         /// Changed with history Event triggered when the Variable value gets changed.
@@ -104,11 +120,21 @@ namespace UnityAtoms
             _oldValue = InitialValue;
             _value = InitialValue;
 
-            if (Changed != null && _triggerChangedOnOnEnable)
+            if (Changed == null)
+            {
+                Changed = ScriptableObject.CreateInstance<E1>();
+            }
+
+            if (ChangedWithHistory == null)
+            {
+                ChangedWithHistory = ScriptableObject.CreateInstance<E2>();
+            }
+
+            if (_triggerChangedOnOnEnable)
             {
                 Changed.Raise(Value);
             }
-            if (ChangedWithHistory != null && _triggerChangedWithHistoryOnOnEnable)
+            if (_triggerChangedWithHistoryOnOnEnable)
             {
                 var pair = default(P);
                 pair.Item1 = _value;
