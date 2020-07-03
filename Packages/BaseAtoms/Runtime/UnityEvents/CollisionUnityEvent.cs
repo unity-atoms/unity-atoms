@@ -1,8 +1,8 @@
 using System;
-using UnityEngine.Events;
 using UnityEngine;
+using UnityEngine.Events;
 
-namespace UnityAtoms.BaseAtom
+namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
     /// None generic Unity Event of type `Collision`. Inherits from `UnityEvent&lt;Collision&gt;`.

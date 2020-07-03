@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-namespace UnityAtoms.BaseAtom
+namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
     /// IPair of type `&lt;Collision&gt;`. Inherits from `IPair&lt;Collision&gt;`.
@@ -16,6 +16,6 @@ namespace UnityAtoms.BaseAtom
         [SerializeField]
         private Collision _item2;
 
-        public void Deconstruct(out Collision item1, out Collision item2) { item1 = Item1; item2 = Item2; }
+        public void Deconstruct (out Collision item1, out Collision item2) { item1 = Item1; item2 = Item2; }
     }
 }
