@@ -13,15 +13,15 @@ const run = async () => {
   const unityProjFolder = path.join(process.cwd(), "Examples");
   const csprojPaths = fs
     .readdirSync(unityProjFolder)
-    .filter(file => file.endsWith(".csproj"))
-    .map(csproj => path.join(process.cwd(), "Examples", csproj));
+    .filter((file) => file.endsWith(".csproj"))
+    .map((csproj) => path.join(process.cwd(), "Examples", csproj));
 
   for (let i = 0; i < csprojPaths.length; ++i) {
     const csprojFile = fs.readFileSync(csprojPaths[i]);
     const csprojXml = await parser.parseStringPromise(csprojFile);
-    csprojXml.Project.ItemGroup.forEach(itemGroup => {
+    csprojXml.Project.ItemGroup.forEach((itemGroup) => {
       if (itemGroup.Reference) {
-        itemGroup.Reference.forEach(ref => {
+        itemGroup.Reference.forEach((ref) => {
           const dllPath = `"${ref.HintPath}"`;
           if (!dlls.includes(dllPath)) {
             dlls.push(dllPath);
@@ -39,14 +39,37 @@ const run = async () => {
   );
   const assemblies = fs
     .readdirSync(assembliesFolder)
-    .filter(
-      file =>
-        file.endsWith(".dll") &&
-        !file.startsWith("MamboJamboStudios.UnityAtoms")
-    )
-    .map(csproj => `"${path.join(assembliesFolder, csproj)}"`);
+    .filter((file) => file.endsWith(".dll"))
+    .map((csproj) => `"${path.join(assembliesFolder, csproj)}"`);
 
-  dlls = dlls.concat(assemblies);
+  const dllsFromPackageCache = [];
+  const packageCacheFolder = path.join(
+    process.cwd(),
+    "Examples",
+    "Library",
+    "PackageCache"
+  );
+  const packageCache = fs.readdirSync(packageCacheFolder);
+  const nunitFrameworkFolder = packageCache.find((folder) =>
+    folder.includes("com.unity.ext.nunit")
+  );
+
+  if (nunitFrameworkFolder) {
+    dllsFromPackageCache.push(
+      path.join(
+        packageCacheFolder,
+        nunitFrameworkFolder,
+        "net35",
+        "unity-custom",
+        "nunit.framework.dll"
+      )
+    );
+  }
+
+  dlls = dlls
+    .concat(assemblies)
+    .concat(dllsFromPackageCache)
+    .filter((dll) => !dll.includes("UnityAtoms"));
 
   // Compile code
   const apiXmlName = `api.xml`;
@@ -63,7 +86,7 @@ const run = async () => {
     assemblyName
   )}" -r:${dlls.join(
     ","
-  )} -define:UNITY_2018_4_OR_NEWER,UNITY_2019_1_OR_NEWER,UNITY_2019_2_OR_NEWER,UNITY_2019_3_OR_NEWER`;
+  )} -define:UNITY_ATOMS_GENERATE_DOCS,UNITY_2018_3_OR_NEWER,UNITY_2018_4_OR_NEWER,UNITY_2019_1_OR_NEWER,UNITY_2019_2_OR_NEWER,UNITY_2019_3_OR_NEWER`;
   try {
     const compileStdout = child_process.execSync(cmd);
   } catch (e) {
@@ -102,18 +125,18 @@ const run = async () => {
     "UnityAtoms.SceneMgmt.",
     "UnityAtoms.SceneMgmt.Editor.",
     "UnityAtoms.MonoHooks.",
-    "UnityAtoms.MonoHooks.Editor."
+    "UnityAtoms.MonoHooks.Editor.",
   ];
 
-  const getNamespace = name => {
-    const matches = NAMESPACES.filter(ns => name.includes(ns));
+  const getNamespace = (name) => {
+    const matches = NAMESPACES.filter((ns) => name.includes(ns));
     const namespace = matches.sort(
       (a, b) => (b.match(/./g) || []).length - (a.match(/./g) || []).length
     )[0];
     return namespace.substring(0, namespace.length - 1);
   };
 
-  const extractFromName = name => {
+  const extractFromName = (name) => {
     const [type, ...restOfName] = name.split(":");
     const namespace = getNamespace(name);
     const toReturn = { type, namespace };
@@ -159,27 +182,27 @@ const run = async () => {
 
   const prettifiedAndGroupedJson = [];
   // Prettify
-  const prettifiedXml = docsXml.doc.members[0].member.map(cur => {
+  const prettifiedXml = docsXml.doc.members[0].member.map((cur) => {
     const summary = cur.summary && cur.summary[0];
     const params =
       cur.param &&
       cur.param.length > 0 &&
-      cur.param.map(p => ({ name: p["$"].name, description: p["_"] }));
+      cur.param.map((p) => ({ name: p["$"].name, description: p["_"] }));
     const returns = cur.returns && cur.returns.length > 0 && cur.returns[0];
     const value = cur.value && cur.value.length > 0 && cur.value[0];
     const examples =
       cur.example &&
       cur.example.length > 0 &&
-      cur.example.map(ex => ex.code[0]);
+      cur.example.map((ex) => ex.code[0]);
     const typeparams =
       cur.typeparam &&
       cur.typeparam.length > 0 &&
-      cur.typeparam.map(tp => ({ name: tp["$"].name, description: tp["_"] }));
+      cur.typeparam.map((tp) => ({ name: tp["$"].name, description: tp["_"] }));
     const extractedFromName = extractFromName(cur["$"].name);
 
     // Add namespace and classes
     let namespaceGroup = prettifiedAndGroupedJson.find(
-      n => n.namespace === extractedFromName.namespace
+      (n) => n.namespace === extractedFromName.namespace
     );
     if (!namespaceGroup) {
       namespaceGroup = { namespace: extractedFromName.namespace, classes: [] };
@@ -192,14 +215,14 @@ const run = async () => {
           extractedFromName.className.includes("`") && typeparams
             ? extractedFromName.className.replace(
                 /`\d/,
-                `<${typeparams.map(tp => tp.name).join(",")}>`
+                `<${typeparams.map((tp) => tp.name).join(",")}>`
               )
             : extractedFromName.className,
         typeparams,
         summary,
         methods: [],
         properties: [],
-        variables: []
+        variables: [],
       });
     }
 
@@ -210,17 +233,17 @@ const run = async () => {
       value,
       examples,
       typeparams,
-      ...extractedFromName
+      ...extractedFromName,
     };
   }, []);
 
   // Add all methods, properties and variables
   prettifiedXml
-    .filter(cur => ["M", "F", "P"].includes(cur.type))
-    .forEach(cur => {
+    .filter((cur) => ["M", "F", "P"].includes(cur.type))
+    .forEach((cur) => {
       const classGroup = prettifiedAndGroupedJson
-        .find(n => n.namespace === cur.namespace)
-        .classes.find(n => n.id === cur.className);
+        .find((n) => n.namespace === cur.namespace)
+        .classes.find((n) => n.id === cur.className);
       if (classGroup) {
         if (cur.type === "M") {
           if (cur.name.includes("Do(")) {
@@ -230,18 +253,18 @@ const run = async () => {
           if (name.includes("``") && cur.typeparams) {
             name = name.replace(
               /``\d/,
-              `<${cur.typeparams.map(tp => tp.name).join(",")}>`
+              `<${cur.typeparams.map((tp) => tp.name).join(",")}>`
             );
           }
           if (name.includes("`") && cur.params) {
             name = name.replace(
               /\(([^\)]+)\)/,
-              `(${cur.params.map(p => p.name).join(",")})`
+              `(${cur.params.map((p) => p.name).join(",")})`
             );
           }
           classGroup.methods.push({
             ...cur,
-            name
+            name,
           });
         } else if (cur.type === "F") {
           classGroup.variables.push(cur);
@@ -251,15 +274,15 @@ const run = async () => {
       }
     });
 
-  const printExamples = examples => {
+  const printExamples = (examples) => {
     if (!examples) return "";
 
     return `##### Examples\n\n${examples
-      .map(example => {
+      .map((example) => {
         const exampleSplitOnNewline = example.split("\n");
         const numSpacesFirstRow = exampleSplitOnNewline[1].search(/\S/);
         const trimmedExample = exampleSplitOnNewline
-          .map(line => line.substring(numSpacesFirstRow))
+          .map((line) => line.substring(numSpacesFirstRow))
           .join("\n");
         return `\`\`\`cs${trimmedExample}\`\`\``;
       })
@@ -284,33 +307,33 @@ const run = async () => {
     return `${trimmedSummary}\n\n`;
   };
 
-  const printTypeParams = typeparams => {
+  const printTypeParams = (typeparams) => {
     if (!typeparams || typeparams.length <= 0) return "";
     return `#### Type Parameters\n\n${typeparams
-      .map(tp => `-   \`${tp.name}\` - ${tp.description}`)
+      .map((tp) => `-   \`${tp.name}\` - ${tp.description}`)
       .join("\n")}\n\n`;
   };
 
-  const printParameters = params => {
+  const printParameters = (params) => {
     if (!params || params.length <= 0) return "";
     return `##### Parameters\n\n${params
-      .map(param => `-   \`${param.name}\` - ${param.description}`)
+      .map((param) => `-   \`${param.name}\` - ${param.description}`)
       .join("\n")}\n\n`;
   };
 
-  const printVariablesSection = variables => {
+  const printVariablesSection = (variables) => {
     if (!variables || variables.length <= 0) return "";
     return `### Variables\n\n${variables
-      .map(v => {
+      .map((v) => {
         return `#### \`${v.name}\`\n\n${printSummary(v.summary)}`;
       })
       .join("---\n\n")}`;
   };
 
-  const printPropertiesSection = properties => {
+  const printPropertiesSection = (properties) => {
     if (!properties || properties.length <= 0) return "";
     return `### Properties\n\n${properties
-      .map(prop => {
+      .map((prop) => {
         return `#### \`${prop.name}\`\n\n${printSummary(
           prop.summary
         )}${printValues(prop.values)}${printExamples(prop.examples)}`;
@@ -318,23 +341,27 @@ const run = async () => {
       .join("---\n\n")}`;
   };
 
-  const printMethodsSection = methods => {
+  const printMethodsSection = (methods) => {
     if (!methods || methods.length <= 0) return "";
     return `### Methods\n\n${methods
-      .map(method => {
+      .map((method) => {
         return `#### \`${method.name}\`\n\n${printSummary(
           method.summary
         )}${printTypeParams(method.typeparams)}${printParameters(
           method.params
-        )}${printReturns(method.returns)}${printExamples(method.examples)}`;
+        )}${printReturns(
+          typeof method.returns === "string"
+            ? method.returns
+            : JSON.stringify(method.returns)
+        )}${printExamples(method.examples)}`;
       })
       .join("---\n\n")}`;
   };
 
-  const printClasses = classes => {
+  const printClasses = (classes) => {
     if (!classes || classes.length <= 0) return "";
     return classes
-      .map(c => {
+      .map((c) => {
         return `## \`${c.name}\`\n\n${printTypeParams(
           c.typeparams
         )}${printSummary(c.summary)}${printVariablesSection(
@@ -346,16 +373,16 @@ const run = async () => {
       .join("");
   };
 
-  const printNamespace = namespace =>
+  const printNamespace = (namespace) =>
     `# Namespace - \`${namespace.namespace}\`\n\n${printClasses(
       namespace.classes
     )}`;
 
-  const printPageMeta = namespace =>
+  const printPageMeta = (namespace) =>
     `---\nid: ${namespace.toLowerCase()}\ntitle: ${namespace}\nhide_title: true\nsidebar_label: ${namespace}\n---\n\n`;
 
   // Create one MD file per namespace
-  prettifiedAndGroupedJson.forEach(namespace => {
+  prettifiedAndGroupedJson.forEach((namespace) => {
     const mdPath = path.join(
       process.cwd(),
       "docs",

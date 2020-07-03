@@ -46,21 +46,12 @@ namespace UnityAtoms.Editor
                 _popupStyle.imagePosition = ImagePosition.ImageOnly;
             }
 
+            Rect originalPosition = new Rect(position);
+
             label = EditorGUI.BeginProperty(position, label, property);
             position = EditorGUI.PrefixLabel(position, label);
 
             EditorGUI.BeginChangeCheck();
-
-            var usage = property.FindPropertyRelative("_usage");
-            int usagePopupIndex = 0;
-            for (var i = 0; i < GetUsages(property).Length; ++i)
-            {
-                if (GetUsages(property)[i].Value == usage.intValue)
-                {
-                    usagePopupIndex = i;
-                    break;
-                }
-            }
 
             // Calculate rect for configuration button
             Rect buttonRect = new Rect(position);
@@ -71,12 +62,23 @@ namespace UnityAtoms.Editor
             // Store old indent level and set it to 0, the PrefixLabel takes care of it
             int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
-            var newUsagePopupIndex = EditorGUI.Popup(buttonRect, usagePopupIndex, GetPopupOptions(property), _popupStyle);
-            usage.intValue = GetUsages(property)[newUsagePopupIndex].Value;
 
-            EditorGUI.PropertyField(position,
-                property.FindPropertyRelative(GetUsages(property)[newUsagePopupIndex].PropertyName),
-                GUIContent.none);
+            var currentUsage = property.FindPropertyRelative("_usage");
+            var newUsageValue = EditorGUI.Popup(buttonRect, currentUsage.intValue, GetPopupOptions(property), _popupStyle);
+            currentUsage.intValue = newUsageValue;
+
+
+            var usageTypePropertyName = GetUsages(property)[newUsageValue].PropertyName;
+            var usageTypeProperty = property.FindPropertyRelative(usageTypePropertyName);
+
+            if (usageTypePropertyName == "_value" && usageTypeProperty.hasVisibleChildren)
+            {
+                EditorGUI.PropertyField(originalPosition, usageTypeProperty, GUIContent.none, true);
+            }
+            else
+            {
+                EditorGUI.PropertyField(position, usageTypeProperty, GUIContent.none);
+            }
 
             if (EditorGUI.EndChangeCheck())
                 property.serializedObject.ApplyModifiedProperties();

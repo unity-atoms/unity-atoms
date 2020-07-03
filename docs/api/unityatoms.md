@@ -93,6 +93,34 @@ Variable Instancer used if `Usage` is set to `VariableInstancer`.
 
 Get or set the value for the Reference.
 
+### Methods
+
+#### `GetEvent<E>`
+
+Get event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Returns
+
+The event.
+
+---
+
+#### `SetEvent<E>(e)`
+
+Set event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Parameters
+
+-   `e` - The new event value.
+
 ---
 
 ## `AtomEventReferenceUsage`
@@ -480,6 +508,18 @@ Changed with history Event triggered when the Variable value gets changed.
 
 ---
 
+#### `_triggerChangedOnOnEnable`
+
+Whether Changed Event should be triggered on OnEnable or not
+
+---
+
+#### `_triggerChangedWithHistoryOnOnEnable`
+
+Whether ChangedWithHistory Event should be triggered on OnEnable or not
+
+---
+
 #### `_initialValue`
 
 The inital value of the Variable.
@@ -570,7 +610,7 @@ The Variable's change Event as an `IObservable<T, T>`.
 
 #### `GetEvent<E>`
 
-Get event by type.
+Get event by type (allowing inheritance).
 
 #### Type Parameters
 
@@ -578,7 +618,7 @@ Get event by type.
 
 ##### Returns
 
-The event.
+{"_":"Changed - If Changed (or ChangedWithHistory) are of type E\n ChangedWithHistory - If not Changed but ChangedWithHistory is of type E\n \n ","exception":[{"_":"if none of the events are of type E","$":{"cref":"T:System.NotSupportedException"}}]}
 
 ---
 

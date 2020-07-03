@@ -1,3 +1,4 @@
+#if UNITY_2019_1_OR_NEWER
 using System.Reflection;
 using NUnit.Framework;
 using UnityAtoms.BaseAtoms;
@@ -32,3 +33,4 @@ namespace Tests
         }
     }
 }
+#endif

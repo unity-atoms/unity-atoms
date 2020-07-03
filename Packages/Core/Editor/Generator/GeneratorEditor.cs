@@ -1,4 +1,4 @@
-#if UNITY_2018_4_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 #if UNITY_2019_1_OR_NEWER
 using UnityEngine.UIElements;
-#elif UNITY_2018_4_OR_NEWER
+#elif UNITY_2018_3_OR_NEWER
 using UnityEditor.Experimental.UIElements;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.Experimental.UIElements.StyleEnums;
@@ -114,10 +114,9 @@ namespace UnityAtoms.Editor
         /// </summary>
         private void OnEnable()
         {
-            var _atomTypesToGenerate = new List<AtomType>(AtomTypes.ALL_ATOM_TYPES);
 #if UNITY_2019_1_OR_NEWER
             var root = this.rootVisualElement;
-#elif UNITY_2018_4_OR_NEWER
+#elif UNITY_2018_3_OR_NEWER
             var root = this.GetRootVisualContainer();
 #endif
             var pathRow = new VisualElement() { style = { flexDirection = FlexDirection.Row } };

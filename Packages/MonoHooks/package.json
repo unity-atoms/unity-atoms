@@ -1,7 +1,7 @@
 {
   "name": "com.mambojambostudios.unity-atoms-mono-hooks",
   "displayName": "Unity Atoms Mono Hooks",
-  "version": "4.1.0",
+  "version": "4.2.1",
   "unity": "2018.3",
   "description": "Hook into Unity's lifecycle methods with Atom Events.",
   "keywords": [
@@ -20,7 +20,7 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "4.1.0",
-    "com.mambojambostudios.unity-atoms-base-atoms": "4.1.0"
+    "com.mambojambostudios.unity-atoms-core": "4.2.1",
+    "com.mambojambostudios.unity-atoms-base-atoms": "4.2.1"
   }
 }

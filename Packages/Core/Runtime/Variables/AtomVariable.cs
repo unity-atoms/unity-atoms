@@ -47,6 +47,18 @@ namespace UnityAtoms
         /// </summary>
         public E2 ChangedWithHistory;
 
+        /// <summary>
+        /// Whether Changed Event should be triggered on OnEnable or not
+        /// </summary>
+        [SerializeField]
+        private bool _triggerChangedOnOnEnable = default;
+
+        /// <summary>
+        /// Whether ChangedWithHistory Event should be triggered on OnEnable or not
+        /// </summary>
+        [SerializeField]
+        private bool _triggerChangedWithHistoryOnOnEnable = default;
+
         [SerializeField]
         private T _oldValue;
 
@@ -92,8 +104,17 @@ namespace UnityAtoms
             _oldValue = InitialValue;
             _value = InitialValue;
 
-            if (Changed == null) return;
-            Changed.Raise(Value);
+            if (Changed != null && _triggerChangedOnOnEnable)
+            {
+                Changed.Raise(Value);
+            }
+            if (ChangedWithHistory != null && _triggerChangedWithHistoryOnOnEnable)
+            {
+                var pair = default(P);
+                pair.Item1 = _value;
+                pair.Item2 = _oldValue;
+                ChangedWithHistory.Raise(pair);
+            }
         }
 
         /// <summary>
@@ -118,14 +139,20 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="newValue">The new value to set.</param>
         /// <returns>`true` if the value got changed, otherwise `false`.</returns>
-        public bool SetValue(T newValue)
+        public bool SetValue(T newValue, bool forceEvent = false)
         {
             var preProcessedNewValue = RunPreChangeTransformers(newValue);
+            var changeValue = !ValueEquals(preProcessedNewValue);
+            var triggerEvents = changeValue || forceEvent;
 
-            if (!ValueEquals(preProcessedNewValue))
+            if (changeValue)
             {
                 _oldValue = _value;
                 _value = preProcessedNewValue;
+            }
+
+            if (triggerEvents)
+            {
                 if (Changed != null) { Changed.Raise(_value); }
                 if (ChangedWithHistory != null)
                 {
@@ -135,10 +162,9 @@ namespace UnityAtoms
                     pair.Item2 = _oldValue;
                     ChangedWithHistory.Raise(pair);
                 }
-                return true;
             }
 
-            return false;
+            return changeValue;
         }
 
         /// <summary>
@@ -204,18 +230,21 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Get event by type.
+        /// Get event by type (allowing inheritance).
         /// </summary>
         /// <typeparam name="E"></typeparam>
-        /// <returns>The event.</returns>
+        /// <returns>Changed - If Changed (or ChangedWithHistory) are of type E
+        /// ChangedWithHistory - If not Changed but ChangedWithHistory is of type E
+        /// <exception cref="NotSupportedException">if none of the events are of type E</exception>
+        /// </returns>
         public E GetEvent<E>() where E : AtomEventBase
         {
-            if (typeof(E) == typeof(E1))
-                return (Changed as E);
-            if (typeof(E) == typeof(E2))
-                return (ChangedWithHistory as E);
+            if (Changed is E evt1)
+                return evt1;
+            if (ChangedWithHistory is E evt2)
+                return evt2;
 
-            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
+            throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
         }
 
         /// <summary>

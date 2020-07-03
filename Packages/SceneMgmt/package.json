@@ -1,7 +1,7 @@
 {
   "name": "com.mambojambostudios.unity-atoms-scene-mgmt",
   "displayName": "Unity Atoms Scene Mgmt",
-  "version": "4.1.0",
+  "version": "4.2.1",
   "unity": "2018.3",
   "description": "Unity Atoms to manage your scenes.",
   "keywords": [
@@ -20,7 +20,7 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "4.1.0",
-    "com.mambojambostudios.unity-atoms-base-atoms": "4.1.0"
+    "com.mambojambostudios.unity-atoms-core": "4.2.1",
+    "com.mambojambostudios.unity-atoms-base-atoms": "4.2.1"
   }
 }
