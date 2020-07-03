@@ -7,7 +7,7 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon ("atom-icon-delicate")]
     [AddComponentMenu ("Unity Atoms/Hooks/On Collision 2D Hook")]
-    public sealed class OnCollision2DHook : Collision2DHook
+    public sealed class OnCollision2DHook : Collider2DHook
     {
         /// <summary>
         /// Set to true if Event should be triggered on `OnCollisionEnter2D`
