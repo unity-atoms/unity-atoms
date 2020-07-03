@@ -7,7 +7,7 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon ("atom-icon-delicate")]
     [AddComponentMenu ("Unity Atoms/Hooks/On Collision Hook")]
-    public sealed class OnCollisionHook : ColliderHook
+    public sealed class OnCollisionHook : CollisionHook
     {
         /// <summary>
         /// Set to true if Event should be triggered on `OnCollisionEnter`
@@ -25,17 +25,17 @@ namespace UnityAtoms.MonoHooks
         [SerializeField]
         private bool _triggerOnStay = default (bool);
 
-        private void OnCollisionEnter (Collider other)
+        private void OnCollisionEnter (Collision other)
         {
             if (_triggerOnEnter) OnHook (other);
         }
 
-        private void OnCollisionExit (Collider other)
+        private void OnCollisionExit (Collision other)
         {
             if (_triggerOnExit) OnHook (other);
         }
 
-        private void OnCollisionStay (Collider other)
+        private void OnCollisionStay (Collision other)
         {
             if (_triggerOnStay) OnHook (other);
         }
