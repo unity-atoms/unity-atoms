@@ -19,7 +19,6 @@ namespace UnityAtoms.BaseAtoms
         public const int LIST_INSTANCER_ADDED_EVENT = 8;
         public const int LIST_INSTANCER_REMOVED_EVENT = 9;
     }
-
     /// <summary>
     /// Event Reference of type `AtomBaseVariable`. Inherits from `AtomBaseEventReference&lt;AtomBaseVariable, AtomBaseVariableEvent, AtomBaseVariableEventInstancer&gt;`.
     /// </summary>

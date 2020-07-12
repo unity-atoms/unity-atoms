@@ -8,5 +8,7 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/ColliderGameObject", fileName = "ColliderGameObjectEvent")]
-    public sealed class ColliderGameObjectEvent : AtomEvent<ColliderGameObject> { }
+    public sealed class ColliderGameObjectEvent : AtomEvent<ColliderGameObject>
+    {
+    }
 }

@@ -7,5 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/BoolPair", fileName = "BoolPairEvent")]
-    public sealed class BoolPairEvent : AtomEvent<BoolPair> { }
+    public sealed class BoolPairEvent : AtomEvent<BoolPair>
+    {
+    }
 }

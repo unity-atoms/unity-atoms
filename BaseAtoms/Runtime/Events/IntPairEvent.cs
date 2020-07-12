@@ -7,5 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/IntPair", fileName = "IntPairEvent")]
-    public sealed class IntPairEvent : AtomEvent<IntPair> { }
+    public sealed class IntPairEvent : AtomEvent<IntPair>
+    {
+    }
 }

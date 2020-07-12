@@ -12,7 +12,6 @@ namespace UnityAtoms.BaseAtoms
         public const int COLLECTION_INSTANCER_CLEARED_EVENT = 4;
         public const int LIST_INSTANCER_CLEARED_EVENT = 5;
     }
-
     /// <summary>
     /// Event Reference of type `Void`. Inherits from `AtomBaseEventReference&lt;Void, VoidEvent, VoidEventInstancer&gt;`.
     /// </summary>

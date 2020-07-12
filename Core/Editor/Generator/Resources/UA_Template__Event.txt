@@ -12,5 +12,13 @@ namespace UnityAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/{VALUE_TYPE_NAME}", fileName = "{VALUE_TYPE_NAME}Event")]
-    public sealed class {VALUE_TYPE_NAME}Event : AtomEvent<{VALUE_TYPE}> { }
+    public sealed class {VALUE_TYPE_NAME}Event : AtomEvent<{VALUE_TYPE}>
+    {
+<%IF TYPE_IS_VOID%>
+        public override void Raise()
+        {
+            Raise(new Void());
+        }
+<%ENDIF%>
+    }
 }

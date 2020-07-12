@@ -7,5 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/String", fileName = "StringVariable")]
-    public class StringVariable : EquatableAtomVariable<string, StringPair, StringEvent, StringPairEvent, StringStringFunction> { }
+    public class StringVariable : EquatableAtomVariable<string, StringPair, StringEvent, StringPairEvent, StringStringFunction>
+    {
+    }
 }

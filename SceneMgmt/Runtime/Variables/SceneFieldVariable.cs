@@ -8,5 +8,7 @@ namespace UnityAtoms.SceneMgmt
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/SceneField", fileName = "SceneFieldVariable")]
-    public sealed class SceneFieldVariable : EquatableAtomVariable<SceneField, SceneFieldPair, SceneFieldEvent, SceneFieldPairEvent, SceneFieldSceneFieldFunction> { }
+    public sealed class SceneFieldVariable : EquatableAtomVariable<SceneField, SceneFieldPair, SceneFieldEvent, SceneFieldPairEvent, SceneFieldSceneFieldFunction>
+    {
+    }
 }
