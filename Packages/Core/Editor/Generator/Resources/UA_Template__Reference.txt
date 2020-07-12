@@ -1,6 +1,8 @@
 using System;
 using UnityAtoms.BaseAtoms;
-<%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
+<%IF TYPE_HAS_NAMESPACE%>
+using {TYPE_NAMESPACE};
+<%ENDIF%>
 
 <%IF HAS_SUB_UA_NAMESPACE%>
 namespace UnityAtoms.{SUB_UA_NAMESPACE}
@@ -26,6 +28,19 @@ namespace UnityAtoms
         public {VALUE_TYPE_NAME}Reference() : base() { }
         public {VALUE_TYPE_NAME}Reference({VALUE_TYPE} value) : base(value) { }
         public bool Equals({VALUE_TYPE_NAME}Reference other) { return base.Equals(other); }
+<%IF TYPE_IS_COLOR%>
+        /// <summary>
+        /// Set Alpha of Color by value.
+        /// </summary>
+        /// <param name="value">New alpha value.</param>
+        public void SetAlpha(float value) => Value = new Color(Value.r, Value.g, Value.b, value);
+
+        /// <summary>
+        /// Set Alpha of Color by Variable value.
+        /// </summary>
+        /// <param name="variable">New alpha Variable value.</param>
+        public void SetAlpha(AtomBaseVariable<float> variable) => SetAlpha(variable.Value);
+<%ENDIF%>
     }
 <%ELSE%>
     /// <summary>
@@ -47,8 +62,16 @@ namespace UnityAtoms
         public bool Equals({VALUE_TYPE_NAME}Reference other) { return base.Equals(other); }
         protected override bool ValueEquals({VALUE_TYPE} other)
         {
+<%IF IS_COLLIDER%>
+            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value == other;
+<%ELSE%>
+<%IF TYPE_IS_GAMEOBJECT%>
+            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value.GetInstanceID() == other.GetInstanceID();
+<%ELSE%>
             throw new NotImplementedException();
-        } 
+<%ENDIF%>
+<%ENDIF%>
+        }
     }
 <%ENDIF%>
 }

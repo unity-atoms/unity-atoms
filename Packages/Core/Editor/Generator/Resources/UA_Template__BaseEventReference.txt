@@ -1,4 +1,7 @@
 using System;
+<%IF TYPE_IS_ATOMBASEVARIABLE%>using UnityEngine;<%ENDIF%>
+<%IF TYPE_IS_FSMTRANSITIONDATA%>using UnityEngine;<%ENDIF%>
+<%IF TYPE_IS_VOID%>using UnityEngine;<%ENDIF%>
 <%IF TYPE_HAS_NAMESPACE%>using {TYPE_NAMESPACE};<%ENDIF%>
 
 <%IF HAS_SUB_UA_NAMESPACE%>
@@ -7,6 +10,45 @@ namespace UnityAtoms.{SUB_UA_NAMESPACE}
 namespace UnityAtoms
 <%ENDIF%>
 {
+<%IF TYPE_IS_ATOMBASEVARIABLE%>
+    /// <summary>
+    /// Different types of Event Reference usages.
+    /// </summary>
+    public class AtomBaseVariableEventReferenceUsage
+    {
+        public const int EVENT = 0;
+        public const int EVENT_INSTANCER = 1;
+        public const int COLLECTION_ADDED_EVENT = 2;
+        public const int COLLECTION_REMOVED_EVENT = 3;
+        public const int LIST_ADDED_EVENT = 4;
+        public const int LIST_REMOVED_EVENT = 5;
+        public const int COLLECTION_INSTANCER_ADDED_EVENT = 6;
+        public const int COLLECTION_INSTANCER_REMOVED_EVENT = 7;
+        public const int LIST_INSTANCER_ADDED_EVENT = 8;
+        public const int LIST_INSTANCER_REMOVED_EVENT = 9;
+    }
+<%ENDIF%>
+<%IF TYPE_IS_VOID%>
+    public class VoidBaseEventReferenceUsage
+    {
+        public const int EVENT = 0;
+        public const int EVENT_INSTANCER = 1;
+        public const int COLLECTION_CLEARED_EVENT = 2;
+        public const int LIST_CLEARED_EVENT = 3;
+        public const int COLLECTION_INSTANCER_CLEARED_EVENT = 4;
+        public const int LIST_INSTANCER_CLEARED_EVENT = 5;
+    }
+<%ENDIF%>
+<%IF TYPE_IS_FSMTRANSITIONDATA%>
+    /// <summary>
+    /// Different Event Reference usages.
+    /// </summary>
+    public class FSMTransitionDataBaseEventReferenceUsage
+    {
+        public const int FSM = 2;
+        public const int FSM_INSTANCER = 3;
+    }
+<%ENDIF%>
     /// <summary>
     /// Event Reference of type `{VALUE_TYPE}`. Inherits from `AtomBaseEventReference&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}EventInstancer&gt;`.
     /// </summary>
@@ -15,5 +57,236 @@ namespace UnityAtoms
         {VALUE_TYPE},
         {VALUE_TYPE_NAME}Event,
         {VALUE_TYPE_NAME}EventInstancer>, IGetEvent
-    { }
+    {
+<%IF TYPE_IS_FSMTRANSITIONDATA%>
+        /// <summary>
+        /// Get the value for the Reference.
+        /// </summary>
+        /// <value>The value of type `FiniteStateMachine`.</value>
+        public override FSMTransitionDataEvent Event
+        {
+            get
+            {
+                switch (_usage)
+                {
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER): return ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted;
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM): return _fsm.TransitionStarted;
+                    default:
+                        return base.Event;
+                }
+            }
+            set
+            {
+                switch (_usage)
+                {
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER):
+                        ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted = value;
+                        break;
+                    case (FSMTransitionDataBaseEventReferenceUsage.FSM):
+                        _fsm.TransitionStarted = value;
+                        break;
+                    default:
+                        base.Event = value;
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Takes event from this FiniteStateMachine if `Usage` is set to `FSM`.
+        /// </summary>
+        [SerializeField]
+        private FiniteStateMachine _fsm = default(FiniteStateMachine);
+
+        /// <summary>
+        /// Takes event from this FiniteStateMachineInstancer if `Usage` is set to `FSM Instancer`.
+        /// </summary>
+        [SerializeField]
+        private FiniteStateMachineInstancer _fsmInstancer = default(FiniteStateMachineInstancer);
+<%ENDIF%>
+<%IF TYPE_IS_ATOMBASEVARIABLE%>
+        /// <summary>
+        /// Get or set the Event used by the Event Reference.
+        /// </summary>
+        /// <value>The event of type `E`.</value>
+        public override AtomBaseVariableEvent Event
+        {
+            get
+            {
+                switch (_usage)
+                {
+                    case (AtomBaseVariableEventReferenceUsage.COLLECTION_ADDED_EVENT): return _collection != null ? _collection.Added : null;
+                    case (AtomBaseVariableEventReferenceUsage.COLLECTION_REMOVED_EVENT): return _collection != null ? _collection.Removed : null;
+                    case (AtomBaseVariableEventReferenceUsage.LIST_ADDED_EVENT): return _list != null ? _list.Added : null;
+                    case (AtomBaseVariableEventReferenceUsage.LIST_REMOVED_EVENT): return _list != null ? _list.Removed : null;
+                    case (AtomBaseVariableEventReferenceUsage.COLLECTION_INSTANCER_ADDED_EVENT): return _collectionInstancer != null ? _collectionInstancer.Added : null;
+                    case (AtomBaseVariableEventReferenceUsage.COLLECTION_INSTANCER_REMOVED_EVENT): return _collectionInstancer != null ? _collectionInstancer.Removed : null;
+                    case (AtomBaseVariableEventReferenceUsage.LIST_INSTANCER_ADDED_EVENT): return _listInstancer != null ? _listInstancer.Added : null;
+                    case (AtomBaseVariableEventReferenceUsage.LIST_INSTANCER_REMOVED_EVENT): return _listInstancer != null ? _listInstancer.Removed : null;
+                    case (AtomBaseVariableEventReferenceUsage.EVENT_INSTANCER): return _eventInstancer != null ? _eventInstancer.Event : null;
+                    case (AtomBaseVariableEventReferenceUsage.EVENT):
+                    default:
+                        return _event;
+                }
+            }
+            set
+            {
+                switch (_usage)
+                {
+                    case (AtomBaseVariableEventReferenceUsage.COLLECTION_ADDED_EVENT):
+                        {
+                            _collection.Added = value;
+                            break;
+                        }
+                    case (AtomBaseVariableEventReferenceUsage.COLLECTION_REMOVED_EVENT):
+                        {
+                            _collection.Removed = value;
+                            break;
+                        }
+                    case (AtomBaseVariableEventReferenceUsage.LIST_ADDED_EVENT):
+                        {
+                            _list.Added = value;
+                            break;
+                        }
+                    case (AtomBaseVariableEventReferenceUsage.LIST_REMOVED_EVENT):
+                        {
+                            _list.Removed = value;
+                            break;
+                        }
+                    case (AtomBaseVariableEventReferenceUsage.COLLECTION_INSTANCER_ADDED_EVENT):
+                        {
+                            _collectionInstancer.Added = value;
+                            break;
+                        }
+                    case (AtomBaseVariableEventReferenceUsage.COLLECTION_INSTANCER_REMOVED_EVENT):
+                        {
+                            _collectionInstancer.Removed = value;
+                            break;
+                        }
+                    case (AtomBaseVariableEventReferenceUsage.LIST_INSTANCER_ADDED_EVENT):
+                        {
+                            _listInstancer.Added = value;
+                            break;
+                        }
+                    case (AtomBaseVariableEventReferenceUsage.LIST_INSTANCER_REMOVED_EVENT):
+                        {
+                            _listInstancer.Removed = value;
+                            break;
+                        }
+                    case (AtomBaseVariableEventReferenceUsage.EVENT):
+                        {
+                            _event = value;
+                            break;
+                        }
+                    default:
+                        throw new NotSupportedException($"Event not reassignable for usage {_usage}.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Collection used if `Usage` is set to `COLLECTION_ADDED_EVENT` or `COLLECTION_REMOVED_EVENT`.
+        /// </summary>
+        [SerializeField]
+        private AtomCollection _collection = default(AtomCollection);
+
+        /// <summary>
+        /// List used if `Usage` is set to `LIST_ADDED_EVENT` or `LIST_REMOVED_EVENT`.
+        /// </summary>
+        [SerializeField]
+        private AtomList _list = default(AtomList);
+
+        /// <summary>
+        /// Collection Instancer used if `Usage` is set to `COLLECTION_INSTANCER_ADDED_EVENT` or `COLLECTION_INSTANCER_REMOVED_EVENT`.
+        /// </summary>
+        [SerializeField]
+        private AtomCollectionInstancer _collectionInstancer = default(AtomCollectionInstancer);
+
+        /// <summary>
+        /// List Instancer used if `Usage` is set to `LIST_INSTANCER_ADDED_EVENT` or `LIST_INSTANCER_REMOVED_EVENT`.
+        /// </summary>
+        [SerializeField]
+        private AtomListInstancer _listInstancer = default(AtomListInstancer);
+<%ENDIF%>
+<%IF TYPE_IS_VOID%>
+        /// <summary>
+        /// Get or set the Event used by the Event Reference.
+        /// </summary>
+        /// <value>The event of type `E`.</value>
+        public override VoidEvent Event
+        {
+            get
+            {
+                switch (_usage)
+                {
+                    case (VoidBaseEventReferenceUsage.COLLECTION_CLEARED_EVENT): return _collection != null ? _collection.Cleared : null;
+                    case (VoidBaseEventReferenceUsage.LIST_CLEARED_EVENT): return _list != null ? _list.Cleared : null;
+                    case (VoidBaseEventReferenceUsage.COLLECTION_INSTANCER_CLEARED_EVENT): return _collectionInstancer != null ? _collectionInstancer.Cleared : null;
+                    case (VoidBaseEventReferenceUsage.LIST_INSTANCER_CLEARED_EVENT): return _listInstancer != null ? _listInstancer.Cleared : null;
+                    case (VoidBaseEventReferenceUsage.EVENT_INSTANCER): return _eventInstancer != null ? _eventInstancer.Event : null;
+                    case (VoidBaseEventReferenceUsage.EVENT):
+                    default:
+                        return _event;
+                }
+            }
+            set
+            {
+                switch (_usage)
+                {
+                    case (VoidBaseEventReferenceUsage.COLLECTION_CLEARED_EVENT):
+                        {
+                            _collection.Cleared = value;
+                            break;
+                        }
+                    case (VoidBaseEventReferenceUsage.LIST_CLEARED_EVENT):
+                        {
+                            _list.Cleared = value;
+                            break;
+                        }
+                    case (VoidBaseEventReferenceUsage.COLLECTION_INSTANCER_CLEARED_EVENT):
+                        {
+                            _collectionInstancer.Cleared = value;
+                            break;
+                        }
+                    case (VoidBaseEventReferenceUsage.LIST_INSTANCER_CLEARED_EVENT):
+                        {
+                            _listInstancer.Cleared = value;
+                            break;
+                        }
+                    case (VoidBaseEventReferenceUsage.EVENT):
+                        {
+                            _event = value;
+                            break;
+                        }
+                    default:
+                        throw new NotSupportedException($"Event not reassignable for usage {_usage}.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Collection used if `Usage` is set to `COLLECTION_CLEARED_EVENT`.
+        /// </summary>
+        [SerializeField]
+        private AtomCollection _collection = default(AtomCollection);
+
+        /// <summary>
+        /// List used if `Usage` is set to `LIST_CLEARED_EVENT`.
+        /// </summary>
+        [SerializeField]
+        private AtomList _list = default(AtomList);
+
+        /// <summary>
+        /// Collection Instancer used if `Usage` is set to `COLLECTION_INSTANCER_CLEARED_EVENT`.
+        /// </summary>
+        [SerializeField]
+        private AtomCollectionInstancer _collectionInstancer = default(AtomCollectionInstancer);
+
+        /// <summary>
+        /// List Instancer used if `Usage` is set to `LIST_INSTANCER_CLEARED_EVENT`.
+        /// </summary>
+        [SerializeField]
+        private AtomListInstancer _listInstancer = default(AtomListInstancer);
+<%ENDIF%>
+    }
 }

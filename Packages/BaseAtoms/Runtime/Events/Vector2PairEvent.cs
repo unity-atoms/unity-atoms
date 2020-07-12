@@ -7,5 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/Vector2Pair", fileName = "Vector2PairEvent")]
-    public sealed class Vector2PairEvent : AtomEvent<Vector2Pair> { }
+    public sealed class Vector2PairEvent : AtomEvent<Vector2Pair>
+    {
+    }
 }

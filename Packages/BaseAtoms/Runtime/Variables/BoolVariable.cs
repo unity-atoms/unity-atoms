@@ -7,5 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Bool", fileName = "BoolVariable")]
-    public sealed class BoolVariable : EquatableAtomVariable<bool, BoolPair, BoolEvent, BoolPairEvent, BoolBoolFunction> { }
+    public sealed class BoolVariable : EquatableAtomVariable<bool, BoolPair, BoolEvent, BoolPairEvent, BoolBoolFunction>
+    {
+    }
 }

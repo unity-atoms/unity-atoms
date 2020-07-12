@@ -8,5 +8,7 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Collider2DGameObject", fileName = "Collider2DGameObjectVariable")]
-    public sealed class Collider2DGameObjectVariable : EquatableAtomVariable<Collider2DGameObject, Collider2DGameObjectPair, Collider2DGameObjectEvent, Collider2DGameObjectPairEvent, Collider2DGameObjectCollider2DGameObjectFunction> { }
+    public sealed class Collider2DGameObjectVariable : EquatableAtomVariable<Collider2DGameObject, Collider2DGameObjectPair, Collider2DGameObjectEvent, Collider2DGameObjectPairEvent, Collider2DGameObjectCollider2DGameObjectFunction>
+    {
+    }
 }
