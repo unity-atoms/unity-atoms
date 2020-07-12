@@ -32,6 +32,10 @@ namespace UnityAtoms.Editor
 
             var indexOfNextEndIf = templateCopy.IndexOf("<%ENDIF%>", indexIfClosed, StringComparison.Ordinal);
             if (indexOfNextEndIf == -1) throw new Exception("No closing <%ENDIF%> for condition.");
+
+            // NOTE: We are assuming that when the next char after the conditional is a new line char that it's not inline.
+            // However, this is not always true (you can have an inline conditional at the end of a line). This implementation
+            // works for our cases for now, but we might need to come back and change this in the future for other use cases.
             var indexOfNextCharAfterEndIf = indexOfNextEndIf + "<%ENDIF%>".Length;
             var indexOfLFAfterEndIf =
                 templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal);
@@ -57,8 +61,7 @@ namespace UnityAtoms.Editor
                 resolved = templateCopy.Substring(indexOfNextElse + 8, indexOfNextEndIf - (indexOfNextElse + 8));
             }
 
-            resolved = resolved.TrimEnd();
-            resolved = resolved.TrimStart('\n');
+            resolved = resolved.Trim('\n');
             templateCopy = templateCopy.Remove(indexIfOpened, indexOfNextCharAfterEndIf - indexIfOpened);
             templateCopy = templateCopy.Insert(indexIfOpened, string.IsNullOrEmpty(resolved) ? "" : $"{resolved}" + (inline ? "" : "\n"));
             return ResolveConditionals(templateCopy, trueConditions);

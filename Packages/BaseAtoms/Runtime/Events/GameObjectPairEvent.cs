@@ -7,5 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/GameObjectPair", fileName = "GameObjectPairEvent")]
-    public sealed class GameObjectPairEvent : AtomEvent<GameObjectPair> { }
+    public sealed class GameObjectPairEvent : AtomEvent<GameObjectPair>
+    {
+    }
 }

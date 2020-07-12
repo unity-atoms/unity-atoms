@@ -14,7 +14,7 @@ namespace UnityAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/{VALUE_TYPE_NAME}", fileName = "{VALUE_TYPE_NAME}Variable")]
-    public <%IF !TYPE_IS_STRING%>sealed<%ENDIF%> class {VALUE_TYPE_NAME}Variable : EquatableAtomVariable<{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function>
+    public <%IF !TYPE_IS_STRING%>sealed <%ENDIF%>class {VALUE_TYPE_NAME}Variable : EquatableAtomVariable<{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function>
     {
 <%IF TYPE_IS_COLOR%>
         /// <summary>
