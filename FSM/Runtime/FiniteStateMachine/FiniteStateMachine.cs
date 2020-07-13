@@ -327,12 +327,9 @@ namespace UnityAtoms.FSM
             {
                 // Reset sub machines in to state
                 toState.SubMachine.Reset();
-                base.Value = toState.SubMachine.Value;
             }
-            else
-            {
-                base.Value = _currentTransition.ToState;
-            }
+
+            base.Value = _currentTransition.ToState;
             _currentFlatValue = _currentTransition.ToState;
             _currentTransition = null;
 
