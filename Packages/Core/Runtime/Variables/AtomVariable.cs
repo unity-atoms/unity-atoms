@@ -141,16 +141,6 @@ namespace UnityAtoms
             _oldValue = InitialValue;
             _value = InitialValue;
 
-            if (Changed == null)
-            {
-                Changed = ScriptableObject.CreateInstance<E1>();
-            }
-
-            if (ChangedWithHistory == null)
-            {
-                ChangedWithHistory = ScriptableObject.CreateInstance<E2>();
-            }
-
             if (_triggerChangedOnOnEnable)
             {
                 Changed.Raise(Value);
