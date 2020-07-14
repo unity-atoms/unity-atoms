@@ -15,6 +15,11 @@ namespace UnityAtoms
         protected abstract IList IList { get; }
 
         /// <summary>
+        /// Whether the list should start cleared
+        /// </summary>
+        public bool StartCleared;
+
+        /// <summary>
         /// Clear the list.
         /// </summary>
         public void Clear()
@@ -23,6 +28,12 @@ namespace UnityAtoms
             if (null != Cleared)
             {
                 Cleared.Raise();
+            }
+        }
+        private void OnEnable()
+        {
+            if(StartCleared) {
+                Clear();
             }
         }
     }
