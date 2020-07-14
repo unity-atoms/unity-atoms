@@ -32,7 +32,8 @@ namespace UnityAtoms
         }
         private void OnEnable()
         {
-            if(StartCleared) {
+            if(StartCleared) 
+            {
                 Clear();
             }
         }
