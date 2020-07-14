@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 
 namespace UnityAtoms
 {
@@ -17,7 +18,7 @@ namespace UnityAtoms
         /// <summary>
         /// Whether the list should start cleared
         /// </summary>
-        public bool StartCleared;
+        [SerializeField] protected bool StartCleared;
 
         /// <summary>
         /// Clear the list.
