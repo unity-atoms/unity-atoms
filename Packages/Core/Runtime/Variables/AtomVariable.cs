@@ -110,9 +110,9 @@ namespace UnityAtoms
 
 #if UNITY_EDITOR
         /// <summary>
-        /// List of all AtomVariable instances in editor.
+        /// Set of all AtomVariable instances in editor.
         /// </summary>
-        private static List<AtomVariable<T, P, E1, E2, F>> _instances = new List<AtomVariable<T, P, E1, E2, F>>();
+        private static HashSet<AtomVariable<T, P, E1, E2, F>> _instances = new HashSet<AtomVariable<T, P, E1, E2, F>>();
 #endif
 
         /// <summary>
@@ -154,7 +154,6 @@ namespace UnityAtoms
 #if UNITY_EDITOR
             if (EditorSettings.enterPlayModeOptionsEnabled)
             {
-                _instances.Remove(this);
                 _instances.Add(this);
 
                 EditorApplication.playModeStateChanged -= HandlePlayModeStateChange;
@@ -196,17 +195,17 @@ namespace UnityAtoms
         {
             if (state == PlayModeStateChange.ExitingEditMode)
             {
-                _instances.ForEach(instance =>
+                foreach (var instance in _instances)
                 {
                     instance.SetInitialValues();
-                });
+                }
             }
             else if (state == PlayModeStateChange.EnteredPlayMode)
             {
-                _instances.ForEach(instance =>
+                foreach (var instance in _instances)
                 {
                     instance.TriggerInitialEvents();
-                });
+                };
             }
         }
 #endif
