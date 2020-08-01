@@ -102,9 +102,11 @@ namespace UnityAtoms.Editor
                         {
                             try
                             {
+                                string path = AssetDatabase.GetAssetPath(property.serializedObject.targetObject);
+                                path = path == "" ? "Assets/" : path;
                                 // Create asset
                                 T so = ScriptableObject.CreateInstance<T>();
-                                AssetDatabase.CreateAsset(so, "Assets/" + drawerData.NameOfNewAtom + ".asset");
+                                AssetDatabase.CreateAsset(so, path + drawerData.NameOfNewAtom + ".asset");
                                 AssetDatabase.SaveAssets();
                                 // Assign the newly created SO
                                 property.objectReferenceValue = so;
