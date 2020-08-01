@@ -24,26 +24,26 @@ namespace UnityAtoms.Mobile
         /// <summary>
         /// Current input state.
         /// </summary>
-        public State TouchState { get => touchState; set => touchState = value; }
-        [SerializeField] private State touchState;
+        public State TouchState { get => _touchState; set => _touchState = value; }
+        [SerializeField] private State _touchState;
 
         /// <summary>
         /// Current input position.
         /// </summary>
-        public Vector2 Position { get => position; set => position = value; }
-        [SerializeField] private Vector2 position;
+        public Vector2 Position { get => _position; set => _position = value; }
+        [SerializeField] private Vector2 _position;
 
         /// <summary>
         /// Input position last frame.
         /// </summary>
-        public Vector2 PositionLastFrame { get => positionLastFrame; set => positionLastFrame = value; }
-        [SerializeField] private Vector2 positionLastFrame;
+        public Vector2 PositionLastFrame { get => _positionLastFrame; set => _positionLastFrame = value; }
+        [SerializeField] private Vector2 _positionLastFrame;
 
         /// <summary>
         /// Input position last time the user pressed down.
         /// </summary>
-        public Vector2 PositionLastDown { get => positionLastDown; set => positionLastDown = value; }
-        [SerializeField] private Vector2 positionLastDown;
+        public Vector2 PositionLastDown { get => _positionLastDown; set => _positionLastDown = value; }
+        [SerializeField] private Vector2 _positionLastDown;
 
         /// <summary>
         /// Create a `TouchUserInput` class.
@@ -54,10 +54,10 @@ namespace UnityAtoms.Mobile
         /// <param name="positionLastDown">Initial input position last time the user pressed down.</param>
         public TouchUserInput(State touchState, Vector2 position, Vector2 positionLastFrame, Vector2 positionLastDown)
         {
-            this.touchState = touchState;
-            this.position = position;
-            this.positionLastFrame = positionLastFrame;
-            this.positionLastDown = positionLastDown;
+            this._touchState = touchState;
+            this._position = position;
+            this._positionLastFrame = positionLastFrame;
+            this._positionLastDown = positionLastDown;
         }
 
         /// <summary>
