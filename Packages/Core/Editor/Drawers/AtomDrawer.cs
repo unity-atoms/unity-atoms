@@ -1,5 +1,6 @@
 #if UNITY_2018_3_OR_NEWER
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -103,7 +104,7 @@ namespace UnityAtoms.Editor
                             try
                             {
                                 string path = AssetDatabase.GetAssetPath(property.serializedObject.targetObject);
-                                path = path == "" ? "Assets/" : path;
+                                path = path == "" ? "Assets/" : Path.GetDirectoryName(path) + "/";
                                 // Create asset
                                 T so = ScriptableObject.CreateInstance<T>();
                                 AssetDatabase.CreateAsset(so, path + drawerData.NameOfNewAtom + ".asset");
