@@ -17,7 +17,6 @@ namespace UnityAtoms.Editor
         {
             serializedObject.Update();
 
-            bool valueWasUpdated = false;
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
             EditorGUILayout.Space();
 
@@ -61,7 +60,7 @@ namespace UnityAtoms.Editor
                         var value = serializedObject.FindProperty("_value").GetGenericPropertyValue(JsonUtility.FromJson<T>(JsonUtility.ToJson(atomTarget.BaseValue)));
                         atomTarget.BaseValue = value;
                     }
-                    valueWasUpdated = true;
+                    serializedObject.Update();
                 }
             }
 
@@ -114,10 +113,7 @@ namespace UnityAtoms.Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("_triggerChangedWithHistoryOnOnEnable"), new GUIContent("ChangedWithHistory"));
             }
 
-            if (!valueWasUpdated)
-            {
-                serializedObject.ApplyModifiedProperties();
-            }
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }

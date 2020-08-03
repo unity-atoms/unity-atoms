@@ -86,7 +86,13 @@ namespace UnityAtoms.Editor
             }
             else
             {
-                property.objectReferenceValue = EditorGUI.ObjectField(position, property.objectReferenceValue, typeof(T), false);
+                EditorGUI.BeginChangeCheck();
+                var obj = EditorGUI.ObjectField(position, property.objectReferenceValue, typeof(T), false);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    property.objectReferenceValue = obj;
+                }
+
             }
 
             if (property.objectReferenceValue == null)
