@@ -18,7 +18,8 @@ namespace UnityAtoms
         /// <summary>
         /// Whether the list should start cleared
         /// </summary>
-        [SerializeField] protected bool StartCleared;
+        [SerializeField]
+        protected bool _startCleared;
 
         /// <summary>
         /// Clear the list.
@@ -33,7 +34,7 @@ namespace UnityAtoms
         }
         private void OnEnable()
         {
-            if(StartCleared) 
+            if (_startCleared)
             {
                 Clear();
             }
