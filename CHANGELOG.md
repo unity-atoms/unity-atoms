@@ -6,7 +6,23 @@
 💅 = Polish
 🚀 = New features
 
-# [Unreleased]
+# 4.3.0 (August 4, 2020)
+
+## 🐛 Bug fixes
+
+-   [#168](https://github.com/AdamRamberg/unity-atoms/pull/168) Make IsUnityAtomsRepo OS agnostic ([@jmacgill](https://github.com/jmacgill))
+-   [#174](https://github.com/AdamRamberg/unity-atoms/pull/174) Update AtomBaseReferenceDrawer.cs ([@soraphis](https://github.com/soraphis))
+-   [#178](https://github.com/AdamRamberg/unity-atoms/pull/178) Fix Sub FSM Value issue ([@TriangularCube](https://github.com/TriangularCube))
+
+## 🚀 New features
+
+-   [#172](https://github.com/AdamRamberg/unity-atoms/pull/172) Instancer improvements. Adds the possibility to raise events from Event Instancers from the editor + makes base events none mandatory for Event Instancers. ([@mutmedia](https://github.com/mutmedia))
+-   [#179](https://github.com/AdamRamberg/unity-atoms/pull/179) Add a default Event at runtime for Changed and ChangedWithHistory if not present. ([@mutmedia](https://github.com/mutmedia) and [@AdamRamberg](https://github.com/AdamRamberg))
+-   [#180](https://github.com/AdamRamberg/unity-atoms/pull/180) Added option to clear Value List on OnEnable ([@mutmedia](https://github.com/mutmedia) and [@AdamRamberg](https://github.com/AdamRamberg))
+
+## 🏠 Internal
+
+[#169](https://github.com/AdamRamberg/unity-atoms/pull/169) Improvements to the internal templating engine used by the generator. ([@jmacgill](https://github.com/jmacgill))
 
 # 4.2.1 (June 22, 2020)
 

@@ -149,6 +149,26 @@ Reference of type `bool`. Inherits from `EquatableAtomReference<bool, BoolPair, 
 
 Reference of type `Color`. Inherits from `EquatableAtomReference<Color, ColorPair, ColorConstant, ColorVariable, ColorEvent, ColorPairEvent, ColorColorFunction, ColorVariableInstancer, AtomCollection, AtomList>`.
 
+### Methods
+
+#### `SetAlpha(System.Single)`
+
+Set Alpha of Color by value.
+
+##### Parameters
+
+-   `value` - New alpha value.
+
+---
+
+#### `SetAlpha(UnityAtoms.AtomBaseVariable{System.Single})`
+
+Set Alpha of Color by Variable value.
+
+##### Parameters
+
+-   `variable` - New alpha Variable value.
+
 ---
 
 ## `ColliderReference`

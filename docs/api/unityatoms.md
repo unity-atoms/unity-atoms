@@ -386,6 +386,12 @@ An Event Instancer is a MonoBehaviour that takes an Event as a base and creates 
 
 The Event that the in memory copy will be based on when created at runtime.
 
+---
+
+#### `_inspectorRaiseValue`
+
+Used when raising values from the inspector for debugging purposes.
+
 ### Properties
 
 #### `Event`
@@ -419,6 +425,22 @@ Set event by type.
 ##### Parameters
 
 -   `e` - The new event value.
+
+---
+
+#### `Raise`
+
+Raises the instanced Event.
+
+---
+
+#### `Raise(item)`
+
+Raises the instanced Event.
+
+##### Parameters
+
+-   `item` - The value associated with the Event.
 
 ---
 
@@ -496,13 +518,13 @@ Generic base class for Variables. Inherits from `AtomBaseVariable<T>`.
 
 ### Variables
 
-#### `Changed`
+#### `_changed`
 
 Changed Event triggered when the Variable value gets changed.
 
 ---
 
-#### `ChangedWithHistory`
+#### `_changedWithHistory`
 
 Changed with history Event triggered when the Variable value gets changed.
 
@@ -1442,6 +1464,12 @@ None generic base class of Lists. Inherits from `BaseAtom`.
 #### `Cleared`
 
 Event for when the list is cleared.
+
+---
+
+#### `_startCleared`
+
+Whether the list should start cleared
 
 ### Methods
 

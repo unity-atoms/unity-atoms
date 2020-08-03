@@ -267,6 +267,17 @@ A custom property drawer for properties using the `AtomList` attribute.
 
 ---
 
+## `AtomEventInstancerEditor<T,E>`
+
+#### Type Parameters
+
+-   `T` - The type of this event..
+-   `E` - Event of type T.
+
+Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
+
+---
+
 ## `AtomVariableEditor`2`
 
 Custom editor for Variables. Provides a better user workflow and indicates when which variables can be edited

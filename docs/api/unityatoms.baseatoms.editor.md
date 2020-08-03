@@ -7,6 +7,78 @@ sidebar_label: UnityAtoms.BaseAtoms.Editor
 
 # Namespace - `UnityAtoms.BaseAtoms.Editor`
 
+## `Collider2DEventInstancerEditor`
+
+Event property drawer of type `Collider2D`. Inherits from `AtomEventInstancerEditor<Collider2D, Collider2DEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector2EventInstancerEditor`
+
+Event property drawer of type `Vector2`. Inherits from `AtomEventInstancerEditor<Vector2, Vector2Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `VoidEventInstancerEditor`
+
+Event property drawer of type `Void`. Inherits from `AtomEventInstancerEditor<Void, VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `Vector3EventInstancerEditor`
+
+Event property drawer of type `Vector3`. Inherits from `AtomEventInstancerEditor<Vector3, Vector3Event>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `BoolEventInstancerEditor`
+
+Event property drawer of type `bool`. Inherits from `AtomEventInstancerEditor<bool, BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `AtomBaseVariableEventInstancerEditor`
+
+Event property drawer of type `AtomBaseVariable`. Inherits from `AtomEventInstancerEditor<AtomBaseVariable, AtomBaseVariableEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FloatEventInstancerEditor`
+
+Event property drawer of type `float`. Inherits from `AtomEventInstancerEditor<float, FloatEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `StringEventInstancerEditor`
+
+Event property drawer of type `string`. Inherits from `AtomEventInstancerEditor<string, StringEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `GameObjectEventInstancerEditor`
+
+Event property drawer of type `GameObject`. Inherits from `AtomEventInstancerEditor<GameObject, GameObjectEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `IntEventInstancerEditor`
+
+Event property drawer of type `int`. Inherits from `AtomEventInstancerEditor<int, IntEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColliderEventInstancerEditor`
+
+Event property drawer of type `Collider`. Inherits from `AtomEventInstancerEditor<Collider, ColliderEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `ColorEventInstancerEditor`
+
+Event property drawer of type `Color`. Inherits from `AtomEventInstancerEditor<Color, ColorEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `StringVariableEditor`
 
 Variable Inspector of type `string`. Inherits from `AtomVariableEditor`
