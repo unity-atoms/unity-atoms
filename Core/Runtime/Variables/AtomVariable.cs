@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
@@ -40,12 +41,48 @@ namespace UnityAtoms
         /// <summary>
         /// Changed Event triggered when the Variable value gets changed.
         /// </summary>
-        public E1 Changed;
+        [SerializeField]
+        [FormerlySerializedAs("Changed")]
+        private E1 _changed;
+        public E1 Changed
+        {
+            get
+            {
+                if (_changed == null)
+                {
+                    _changed = ScriptableObject.CreateInstance<E1>();
+                    _changed.name = $"{name}_ChangedEvent_Runtime_{typeof(E1)}";
+                }
+                return _changed;
+            }
+            set
+            {
+                _changed = value;
+            }
+        }
 
         /// <summary>
         /// Changed with history Event triggered when the Variable value gets changed.
         /// </summary>
-        public E2 ChangedWithHistory;
+        [SerializeField]
+        [FormerlySerializedAs("ChangedWithHistory")]
+        private E2 _changedWithHistory;
+        public E2 ChangedWithHistory
+        {
+            get
+            {
+                if (_changedWithHistory == null)
+                {
+                    _changedWithHistory = ScriptableObject.CreateInstance<E2>();
+                    _changedWithHistory.name = $"{name}_ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
+                }
+                return _changedWithHistory;
+            }
+            set
+            {
+                _changedWithHistory = value;
+            }
+        }
 
         /// <summary>
         /// Whether Changed Event should be triggered on OnEnable or not
@@ -104,11 +141,11 @@ namespace UnityAtoms
             _oldValue = InitialValue;
             _value = InitialValue;
 
-            if (Changed != null && _triggerChangedOnOnEnable)
+            if (_triggerChangedOnOnEnable)
             {
                 Changed.Raise(Value);
             }
-            if (ChangedWithHistory != null && _triggerChangedWithHistoryOnOnEnable)
+            if (_triggerChangedWithHistoryOnOnEnable)
             {
                 var pair = default(P);
                 pair.Item1 = _value;
