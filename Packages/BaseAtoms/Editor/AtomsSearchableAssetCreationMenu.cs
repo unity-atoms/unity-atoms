@@ -41,7 +41,10 @@ namespace UnityAtoms.Editor
             foreach (var type in TypeCache.GetTypesWithAttribute<CreateAssetMenuAttribute>()
                 .Where(t => t.Namespace != null && t.Namespace.Contains("Atom")))
             {
-                typeTree.Insert(type.GetCustomAttribute<CreateAssetMenuAttribute>().menuName, type, 1);
+                var name = type.GetCustomAttribute<CreateAssetMenuAttribute>().menuName;
+                var i = name.LastIndexOf('/');
+                name = (i == -1) ? name : name.Substring(0, i+1) + type.Name;
+                typeTree.Insert(name, type, 1);
             }
 
             var projectBrowserType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.ProjectBrowser");
