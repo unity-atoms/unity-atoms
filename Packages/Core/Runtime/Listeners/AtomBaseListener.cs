@@ -48,6 +48,20 @@ namespace UnityAtoms
         [SerializeField]
         private List<AtomAction> _actionResponses = new List<AtomAction>();
 
+        /// <summary>
+        /// The Conditions to evaluate;
+        /// </summary>
+        /// <typeparam name="A">The Condition type.</typeparam>
+        /// <returns>A `List&lt;A&gt;` of Conditions.</returns>
+        [SerializeField]
+        private List<AtomCondition<T>> _conditions = new List<AtomCondition<T>>();
+
+        /// <summary>
+        /// The logical operator to apply for conditions
+        /// </summary>
+        [SerializeField]
+        private AtomConditionOperators _operator = AtomConditionOperators.And;
+
         [SerializeField]
         private bool _replayEventBufferOnRegister = true;
 
@@ -69,20 +83,36 @@ namespace UnityAtoms
         /// <param name="item">The Event type.</param>
         public void OnEventRaised(T item)
         {
-            _unityEventResponse?.Invoke(item);
-            for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
+            bool shouldRespond = _operator == AtomConditionOperators.And ? true : false;
+
+            // Evaluate conditions and decide whether to respond or not
+            for (int i = 0; _conditions != null && i < _conditions.Count; ++i)
             {
-                var action = _actionResponses[i];
+                var condition = _conditions[i];
 
-                if (action == null) continue;
+                if(condition == null) continue; // TODO: Use IsUnassigned when available
 
-                if (action is AtomAction<T> actionWithParam)
+                if(_operator == AtomConditionOperators.And) shouldRespond &= condition.Call(item);
+                if(_operator == AtomConditionOperators.Or) shouldRespond |= condition.Call(item);
+            }
+            
+            if(shouldRespond)
+            {
+                _unityEventResponse?.Invoke(item);
+                for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
                 {
-                    actionWithParam.Do(item);
-                }
-                else
-                {
-                    action.Do();
+                    var action = _actionResponses[i];
+
+                    if (action == null) continue;
+
+                    if (action is AtomAction<T> actionWithParam)
+                    {
+                        actionWithParam.Do(item);
+                    }
+                    else
+                    {
+                        action.Do();
+                    }
                 }
             }
         }
