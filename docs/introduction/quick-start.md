@@ -84,10 +84,18 @@ Add the following to your `manifest.json`:
 }
 ```
 
+## Updating
+
+Updating Unity Atoms to a new release when using the Unity Package Manager is as easy as opening the Package Manager window and clicking on `Update` on the selected package.
+
+![updating](../assets/unity-atoms-update.png)
+
+Follow [Unity Atoms on Github](https://github.com/AdamRamberg/unity-atoms) to stay up-to-date on the current version.
+
 ## Create your first Atom
 
 You are now ready to create your first Atom. Simply right click somewhere in the Project window and go to **Create / Unity Atoms** and pick the Atom of your choice:
 
-![create-your-first-atom](assets/create-your-first-atom.png)
+![create-your-first-atom](../assets/quick-start/create-your-first-atom.png)
 
 Now you are ready to go to [Overview and philosopy](./overview.md) to learn more about Unity Atoms!

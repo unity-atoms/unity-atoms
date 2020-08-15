@@ -3,11 +3,37 @@
     "Introduction": [
       "introduction/quick-start",
       "introduction/overview",
-      "introduction/basic-tutorial",
-      "introduction/generator",
-      "introduction/unirx",
-      "introduction/advanced-example",
       "introduction/preferences"
+    ],
+    "Tutorials": [
+      {
+        "type": "subcategory",
+        "label": "Basics",
+        "ids": [
+          "tutorials/variables",
+          "tutorials/events",
+          "tutorials/listeners",
+          "tutorials/actions",
+          "tutorials/mono-hooks"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Intermediate",
+        "ids": [
+          "tutorials/variable-instancer",
+          "tutorials/event-instancer",
+          "tutorials/generator"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Advanced",
+        "ids": [
+          "tutorials/advanced-example",
+          "tutorials/unirx"
+        ]
+      }
     ],
     "API Reference": [
       "api/unityatoms",

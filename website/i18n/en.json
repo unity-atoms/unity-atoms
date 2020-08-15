@@ -61,18 +61,6 @@
         "title": "UnityAtoms.UI",
         "sidebar_label": "UnityAtoms.UI"
       },
-      "introduction/advanced-example": {
-        "title": "Advanced example",
-        "sidebar_label": "Advanced example"
-      },
-      "introduction/basic-tutorial": {
-        "title": "Basic tutorial",
-        "sidebar_label": "Basic tutorial"
-      },
-      "introduction/generator": {
-        "title": "Generator",
-        "sidebar_label": "Generator"
-      },
       "introduction/overview": {
         "title": "Overview and philosopy",
         "sidebar_label": "Overview and philosopy"
@@ -84,10 +72,6 @@
       "introduction/quick-start": {
         "title": "Quick start",
         "sidebar_label": "Quick start"
-      },
-      "introduction/unirx": {
-        "title": "Usage with UniRX",
-        "sidebar_label": "Usage with UniRX"
       },
       "README": {
         "title": "README"
@@ -119,6 +103,46 @@
       "subpackages/ui": {
         "title": "UI",
         "sidebar_label": "UI"
+      },
+      "tutorials/actions": {
+        "title": "Actions",
+        "sidebar_label": "Actions"
+      },
+      "tutorials/advanced-example": {
+        "title": "Advanced example",
+        "sidebar_label": "Advanced example"
+      },
+      "tutorials/event-instancer": {
+        "title": "Event Instancer",
+        "sidebar_label": "Event Instancer"
+      },
+      "tutorials/events": {
+        "title": "Events",
+        "sidebar_label": "Events"
+      },
+      "tutorials/generator": {
+        "title": "Generator",
+        "sidebar_label": "Generator"
+      },
+      "tutorials/listeners": {
+        "title": "Listeners",
+        "sidebar_label": "Listeners"
+      },
+      "tutorials/mono-hooks": {
+        "title": "Mono Hooks",
+        "sidebar_label": "Mono Hooks"
+      },
+      "tutorials/unirx": {
+        "title": "Usage with UniRX",
+        "sidebar_label": "Usage with UniRX"
+      },
+      "tutorials/variable-instancer": {
+        "title": "Variable Instancer",
+        "sidebar_label": "Variable Instancer"
+      },
+      "tutorials/variables": {
+        "title": "Variables",
+        "sidebar_label": "Variables"
       }
     },
     "links": {
@@ -128,6 +152,7 @@
     },
     "categories": {
       "Introduction": "Introduction",
+      "Tutorials": "Tutorials",
       "API Reference": "API Reference",
       "Subpackages": "Subpackages"
     }
