@@ -7,13 +7,13 @@ sidebar_label: Preferences
 
 # Preferences
 
-Preferences can be reached via `Unity/Preferences`.
+Preferences can be reached via _Unity / Preferences_.
 
-![preferences-location](assets/preferences-location.png)
+![preferences-location](../assets/preferences/location.png)
 
 And it looks like this:
 
-![preferences-overview](assets/preferences-overview.png)
+![preferences-overview](../assets/preferences/overview.png)
 
 ## Debug mode
 

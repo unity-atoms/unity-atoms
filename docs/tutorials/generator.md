@@ -7,13 +7,17 @@ sidebar_label: Generator
 
 # Generator
 
-The Generator is a powerful tool that allows you to generate your own Atoms fast and easy via an Unity editor window. It liberates you from writing otherwise tedious boilerplate code and lets you instead focus on what is important. The Generator can be found by clicking on _Tools / Unity Atoms / Generator_ in the top menu bar:
+Almost any project will eventually have custom data or reference types. These types can also be used as Unity Atoms variables or passed along as event data. Use the generator to create atoms for your own project specific types.
 
-![generator_top-bar-menu](assets/generator_top-bar-menu.png)
+The Generator is a powerful tool that allows you to generate your own Atoms fast and easy via an Unity editor window. It liberates you from writing otherwise tedious boilerplate code and lets you instead focus on what is important.
+
+The Generator can be found by clicking on _Tools / Unity Atoms / Generator_ in the top menu bar:
+
+![generator_top-bar-menu](../assets/generator/top-bar-menu.png)
 
 The Generator looks like this:
 
-![generator_window](assets/generator_window.png)
+![generator_window](../assets/generator/window.png)
 
 ## Options
 
@@ -92,7 +96,7 @@ By default the Atoms that gets generated will be under the namespace `UnityAtoms
 
 ### Type(s) to generate
 
-This is a list of Atom types that you want to generate. Simply select the Atoms that you want to generate. Some Atoms depends on other Atoms. If you unselect an Atom that other Atoms depends on, then the Generator will unselect those depending Atoms. Below you find the dependency graph:
+This is a list of Atom types that you want to generate. Simply select the Atoms that you want to generate. Some Atoms depend on other Atoms. If you unselect an Atom that other Atoms depend on, then the Generator will unselect those depending Atoms. Below you find the dependency graph:
 
 -   Pair Action - depends on Pair
 -   Pair Event - depends on Pair
