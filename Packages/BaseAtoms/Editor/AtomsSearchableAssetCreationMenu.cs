@@ -33,7 +33,7 @@ namespace UnityAtoms.Editor
             }
         }
 
-        [MenuItem("Assets/Create/Atom Search &1")] //Adds to the project window's create menu
+        [MenuItem(itemName: "Assets/Create/Atoms Search &1", isValidateFunction: false, priority: -1)] // Adds to the project window's create menu
         public static void AtomsSearchMenu()
         {
             StringTree<Type> typeTree = new StringTree<Type>();
@@ -43,14 +43,14 @@ namespace UnityAtoms.Editor
             {
                 var name = type.GetCustomAttribute<CreateAssetMenuAttribute>().menuName;
                 var i = name.LastIndexOf('/');
-                name = (i == -1) ? name : name.Substring(0, i+1) + type.Name;
+                name = (i == -1) ? name : name.Substring(0, i + 1) + type.Name;
                 typeTree.Insert(name, type, 1);
             }
 
             var projectBrowserType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.ProjectBrowser");
             var projectBrowser = EditorWindow.GetWindow(projectBrowserType);
 
-            Vector2 xy = new Vector2( projectBrowser.position.x + 10,  projectBrowser.position.y + 60);
+            Vector2 xy = new Vector2(projectBrowser.position.x + 10, projectBrowser.position.y + 60);
 
             var dropdown = new SearchTypeDropdown(new AdvancedDropdownState(), typeTree,
                 (s) =>
@@ -59,7 +59,7 @@ namespace UnityAtoms.Editor
                                                       s.GetCustomAttribute<CreateAssetMenuAttribute>().menuName);
                 })
             {
-                MinimumSize = new Vector2(projectBrowser.position.width-20, projectBrowser.position.height - 80)
+                MinimumSize = new Vector2(projectBrowser.position.width - 20, projectBrowser.position.height - 80)
             };
 
             var rect = new Rect(xy.x, xy.y, projectBrowser.position.width - 20, projectBrowser.position.height);
@@ -99,7 +99,7 @@ namespace UnityAtoms.Editor
                 if (tree.Value != null)
                 {
                     _lookup.Add(tree.Value);
-                    parentGroup.AddChild(new AdvancedDropdownItem(key) {id = _lookup.Count - 1});
+                    parentGroup.AddChild(new AdvancedDropdownItem(key) { id = _lookup.Count - 1 });
                 }
                 else
                 {
