@@ -32,4 +32,4 @@ We could then create a Collider2DAction called `DecreasePlayersHealth.cs` and ad
 
 There is much less code written and the responses can be edited in the Editor.
 
-That is it! We have covered the four most fundamental core pieces of Unity Atoms and a way to use them with Unity's built-in functionality. You can get far with these alone, but there are many more features in Unity Atoms and the subpackages to explore.
+That is it! We have covered the most fundamental pieces of Unity Atoms and a way to use them with Unity's built-in functionality. You can get far with these alone, but there are many more features in Unity Atoms and the subpackages to explore.

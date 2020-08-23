@@ -7,9 +7,9 @@ sidebar_label: Event Instancer
 
 # Event Instancer
 
-Similar to variables, events can also be instantiated for use in prefabs. In this tutorial we will build a "death" event for the monster prefab created in the variable instancer tutorial. The death event will be fired once as the monster health drops below zero.
+Similar to Variables, Events can also be instantiated for use in prefabs. In this tutorial we will build a "death" Event for the monster prefab created in the variable instancer tutorial. The death Event will be fired once as the monster health drops below zero.
 
-Some setup is necessary in our example to demonstrate how an `Event Instancer` works.
+Some setup is necessary in our example to demonstrate how an Event Instancer works.
 
 ## Damage the monster
 
@@ -52,11 +52,11 @@ To trigger the `Damage` method, create a new `IntEvent` called `HurtAllMonsters`
 
 ![hurt-all-monsters](../assets/event-instancer/hurt-all-monsters.png)
 
- > **Note:** Make sure the `Damage` method is selected from the `Dynamic` list of methods.
+> **Note:** Make sure the `Damage` method is selected from the `Dynamic` list of methods.
 
 ## Raising events from the inspector
 
-Run the scene and find the `HurtAllMonsters` event from your asset folders. Set the `Inspector Raise Value` to any number and click the `Raise` button.
+Run the scene and find the `HurtAllMonsters` Event from your asset folders. Set the `Inspector Raise Value` to any number and click the `Raise` button.
 
 ![raise-damage-event](../assets/event-instancer/raise-damage-event.png)
 
@@ -64,13 +64,13 @@ The monsters in the scene will take the entered amount of damage. Click the butt
 
 ![monsters-took-damage](../assets/event-instancer/monsters-took-damage.png)
 
-The setup is complete. We are now ready to instantiate a death event for each monster.
+The setup is complete. We are now ready to instantiate a death Event for each monster.
 
 ## Death event instancer
 
-When the monster health reaches zero or lower, we want to fire a `VoidEvent` to signal that this monster has perished. Listening for this event in the prefab allows you to customize how each monster type dies. In this example, each monster reports a different death message.
+When the monster health reaches zero or lower, we want to fire a `VoidEvent` to signal that this monster has perished. Listening for this Event in the prefab allows you to customize how each monster type dies. In this example, each monster reports a different death message.
 
-We need logic in the `Damage` method to detect when they monster died and a reference to an event we want to raise when that happens:
+We need logic in the `Damage` method to detect when they monster died and a reference to an Event we want to raise when that happens:
 
 ```cs
 using UnityEngine;
@@ -111,17 +111,17 @@ public class LogHealth : MonoBehaviour
 }
 ```
 
-In the `Monster` prefab's `LogHealth` component, select `Use Event Instancer` on the `Death` event reference field:
+In the `Monster` prefab's `LogHealth` component, select `Use Event Instancer` on the `Death` Event reference field:
 
 ![death-event-reference](../assets/event-instancer/death-event-reference.png)
 
-Add a `Void Event Instancer` component and a create a `Void Event` base event in an asset folder. Select the base event asset in the `Base` field and drag the `Void Event Instancer` component on the `Death` field of `LogHealth`:
+Add a `Void Event Instancer` component and a create a `Void Event` base Event in an asset folder. Select the base Event asset in the `Base` field and drag the `Void Event Instancer` component on the `Death` field of `LogHealth`:
 
 ![death-event-assigned](../assets/event-instancer/death-event-assigned.png)
 
-## Listening for the instantiated `Death` event
+## Listening for the instantiated `Death` Event
 
-To demonstrate the uniqueness of the `Death` event to each prefab, we'll add a method to `LogHealth` called `AnnounceDeath` that logs a customizable death message for the monster:
+To demonstrate the uniqueness of the `Death` Event to each prefab, we'll add a method to `LogHealth` called `AnnounceDeath` that logs a customizable death message for the monster:
 
 ```cs
 using UnityEngine;
@@ -179,8 +179,8 @@ Since all of the work was done in a base prefab `Monster`, the changes have auto
 
 ![orc-death-message](../assets/event-instancer/orc-death-message.png)
 
-Run the project and inflict damage using the `Raise` button in `HurtAllMonsters` event's Inspector. Eventually the monsters will run out of health one by one and they should announce their unique death messages:
+Run the project and inflict damage using the `Raise` button in `HurtAllMonsters` Event's Inspector. Eventually the monsters will run out of health one by one and they should announce their unique death messages:
 
 ![unique-death-messages](../assets/event-instancer/unique-death-messages.png)
 
-That's it! You've created an extensible system where every new prefab variant can easily be customized and all the Atoms included in the prefab are automatically wired to correct responses. Use the monster's death event listener to play a sound, play an animation, and add experience points for the player. Only your imagination is the limit!
+That's it! You've created an extensible system where every new prefab variant can easily be customized and all the Atoms included in the prefab are automatically wired to correct responses. Use the monster's death Event Listener to play a sound, play an animation, and add experience points for the player. Only your imagination is the limit!

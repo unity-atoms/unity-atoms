@@ -25,5 +25,3 @@ It is possible to create the `HealthLogger` by right clicking and go _Create / U
 ![health-listener-v3](../assets/actions/health-listener-v3.png)
 
 Every time the player’s health is changed we now log out the player’s health. This particular example is pretty simple, but I’m sure you can come up with lots of other use cases for it (for example play a sound or emit some particles).
-
-In the next tutorial a way to connect Atoms to Unity's Event Functions is introduced.

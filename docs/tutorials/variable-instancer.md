@@ -9,25 +9,25 @@ sidebar_label: Variable Instancer
 
 Unity Atoms have no problems with being used in a prefab. However, it will quickly become apparent that all instances of the prefab refer to the one and the same Atom asset, such as a specific `IntVariable` in the asset folder.
 
-For example, changing the value of a variable applies to all prefab instances that use the variable. Triggering the `Changed` event also causes all prefab instances to react. While this still has it's uses, the behaviour is not always desirable.
+For example, changing the value of a Variable applies to all prefab instances that use the Variable. Triggering the `Changed` event also causes all prefab instances to react. While this still has it's uses, the behaviour is not always desirable.
 
-To break free from global Atoms, variables can be instantiated as an in-memory copy when a prefab is created. To do this, we need a `VariableInstancer`.
+To break free from global Atoms, Variables can be instantiated as an in-memory copy when a prefab is created. To do this, we need a `VariableInstancer`.
 
-> **Note:** A `VariableInstancer` is unique to the type of the variable. The generator can generate a `VariableInstancer` of any type needed. Unity Atoms comes with a set of predefined basic types.
+> **Note:** A `VariableInstancer` is unique to the type of the Variable. The generator can generate a `VariableInstancer` of any type needed. Unity Atoms comes with a set of predefined basic types.
 
-## Add a variable instancer and assign a base variable
+## Add a Variable Instancer and assign a base Variable
 
 Start by creating an empty `GameObject` called `Monster` and add an `Int Variable Instancer` component to it:
 
 ![add-int-var-instancer](../assets/variable-instancer/add-int-var-instancer-1.png)
 
-The `VariableInstancer` needs a base variable to instantiate. Create any `IntVariable` and use the inspector to add the variable to the `Base` field. You can also click on `Create` to use a shortcut for type-appropriate variable creation from the instancer itself.
+The `VariableInstancer` needs a base Variable to instantiate. Create any `IntVariable` and use the inspector to add the variable to the `Base` field. You can also click on `Create` to use a shortcut for type-appropriate Variable creation from the instancer itself.
 
 ![add-int-var-instancer](../assets/variable-instancer/add-int-var-instancer-2.png)
 
 ## Listening for `Changed` event
 
-The `VariableInstancer` instantiates the appropriate `Changed` and `Changed With History` event instances for this variable. That's why it's possible to listen for the `Changed` event in an `Int Event Reference Listener`. Add an `Int Event Reference Listener` as a component and use the three dots next to `Event Reference` to select `Use Variable Instancer`:
+The `VariableInstancer` instantiates the appropriate `Changed` and `Changed With History` event instances for this Variable. That's why it's possible to listen for the `Changed` event in an `Int Event Reference Listener`. Add an `Int Event Reference Listener` as a component and use the three dots next to `Event Reference` to select `Use Variable Instancer`:
 
 ![use-variable-instancer](../assets/variable-instancer/use-variable-instancer.png)
 
@@ -62,7 +62,7 @@ Add the `LogHealth` component and click `+` on the `Unity Event Response`, drag 
 
 ## Usage in a script
 
-To demonstrate that the instancer works as intended, let's add a method to `LogHealth` that initializes the health value to a value from an `IntConstant` on `Start`. To use variable instancers the type of the health variable is `IntReference` instead of `IntVariable`:
+To demonstrate that the instancer works as intended, let's add a method to `LogHealth` that initializes the health value to a value from an `IntConstant` on `Start`. To use Variable Instancers the type of the health Variable is `IntReference` instead of `IntVariable`:
 
 ```cs
 using UnityEngine;
@@ -88,7 +88,7 @@ public class LogHealth : MonoBehaviour
 }
 ```
 
-In the inspector use the three dots next to `Health` of `LogHealth` and select `Variable Instancer`. As before, drag the same variable instancer on the field. Create an `IntConstant` Atom in your asset folder and name it. In this case, it is called DefaultStartHealth and has a value of 100:
+In the inspector use the three dots next to `Health` of `LogHealth` and select `Variable Instancer`. As before, drag the same Variable Instancer on the field. Create an `IntConstant` Atom in your asset folder and name it. In this case, it is called DefaultStartHealth and has a value of 100:
 
 ![init-health](../assets/variable-instancer/init-health.png)
 
@@ -116,4 +116,4 @@ Do the same for the `Orc` variant and drag an instance of both on the scene and 
 
 ![monsters-report](../assets/variable-instancer/monsters-report.png)
 
-Both variable instances are therefore unique. You can now use the variable instancer as a variable in any `IntReference` in your scripts. For example, a damage script would subtract from the variable value and only this instance of the prefab would have it's `Changed` event triggered.
+Both Variable instances are therefore unique. You can now use the Variable Instancer as a Variable in any `IntReference` in your scripts. For example, a damage script would subtract from the Variable value and only this instance of the prefab would have it's `Changed` event triggered.

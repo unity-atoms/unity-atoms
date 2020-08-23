@@ -56,7 +56,7 @@ public class HealthBar : MonoBehaviour
 }
 ```
 
-Since the player's health is going to change at runtime we make `Health` an `IntVariable` while `MaxHealth` is not going to be changed at runtime is therefore created as an `IntConstant`, They are both global assets stored as `.asset` files that are (or could be) shared between scripts. To create these `.asset` files we can right click somewhere in the Project window, and go _Create / Unity Atoms / Variables / Int_ to create the Variable and go _Create / Unity Atoms / Constants / Int_ to create the Constant. The Variable looks like this in the Unity Inspector:
+Since the player's health is going to change at runtime we make `Health` an `IntVariable` while `MaxHealth` is not going to be changed at runtime is therefore created as an `IntConstant`, They are both global assets stored as `.asset` files that could be shared between scripts. To create these `.asset` files we can right click somewhere in the Project window, and go _Create / Unity Atoms / Variables / Int_ to create the Variable and go _Create / Unity Atoms / Constants / Int_ to create the Constant. The Variable looks like this in the Unity Inspector:
 
 ![int-variable_player-health-v1](../assets/variables/int-variable_player-health-v1.png)
 
