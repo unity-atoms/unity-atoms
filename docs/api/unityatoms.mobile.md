@@ -1,3 +1,4 @@
+
 ---
 id: unityatoms.mobile
 title: UnityAtoms.Mobile
@@ -23,47 +24,29 @@ Event Reference Listener of type `TouchUserInput`. Inherits from `AtomEventRefer
 
 Module class holding data for touch user input.
 
-### Variables
+### Properties
 
-#### `InputState`
+#### `TouchState`
 
 Current input state.
 
 ---
 
-#### `InputPos`
+#### `Position`
 
 Current input position.
 
 ---
 
-#### `InputPosLastFrame`
+#### `PositionLastFrame`
 
 Input position last frame.
 
 ---
 
-#### `InputPosLastDown`
+#### `PositionLastDown`
 
 Input position last time the user pressed down.
-
-### Properties
-
-#### `InputWorldPos`
-
-The input position in world space.
-
----
-
-#### `InputWorldPosLastFrame`
-
-The input position in world space from last frame.
-
----
-
-#### `InputWorldPosLastDown`
-
-Input position last time the user pressed down in world space.
 
 ### Methods
 
@@ -77,6 +60,48 @@ Create a `TouchUserInput` class.
 -   `inputPos` - Initial input position.
 -   `inputPosLastFrame` - Initial input position last frame.
 -   `inputPosLastDown` - Initial input position last time the user pressed down.
+
+---
+
+#### `GetWorldPosition`
+
+Returns the input position in world space.
+
+##### Parameters
+
+-   `Camera` to call ScreenToWorldPoint method.
+
+##### Returns
+
+`Vector2` input position in world space.
+
+---
+
+#### `GetWorldPositionLastFrame`
+
+Returns the input position in world space from last frame.
+
+##### Parameters
+
+-   `Camera` to call ScreenToWorldPoint method.
+
+##### Returns
+
+`Vector2` input position in world space from last frame.
+
+---
+
+#### `GetWorldPositionLastDown`
+
+Returns the input position last time the user pressed down in world space.
+
+##### Parameters
+
+-   `Camera` to call ScreenToWorldPoint method.
+
+##### Returns
+
+`Vector2` input position last time the user pressed down in world space.
 
 ---
 

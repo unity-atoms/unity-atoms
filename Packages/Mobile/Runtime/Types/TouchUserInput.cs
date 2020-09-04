@@ -24,54 +24,73 @@ namespace UnityAtoms.Mobile
         /// <summary>
         /// Current input state.
         /// </summary>
-        public State InputState;
+        public State TouchState { get => _touchState; set => _touchState = value; }
+        [SerializeField] private State _touchState;
 
         /// <summary>
         /// Current input position.
         /// </summary>
-        public Vector2 InputPos;
+        public Vector2 Position { get => _position; set => _position = value; }
+        [SerializeField] private Vector2 _position;
 
         /// <summary>
         /// Input position last frame.
         /// </summary>
-        public Vector2 InputPosLastFrame;
+        public Vector2 PositionLastFrame { get => _positionLastFrame; set => _positionLastFrame = value; }
+        [SerializeField] private Vector2 _positionLastFrame;
 
         /// <summary>
         /// Input position last time the user pressed down.
         /// </summary>
-        public Vector2 InputPosLastDown;
-
-        /// <summary>
-        /// The input position in world space.
-        /// </summary>
-        /// <returns>The input position in world space.</returns>
-        public Vector2 InputWorldPos { get { return Camera.main.ScreenToWorldPoint(InputPos); } }
-
-        /// <summary>
-        /// The input position in world space from last frame.
-        /// </summary>
-        /// <returns>The input position in world space from last frame.</returns>
-        public Vector2 InputWorldPosLastFrame { get { return Camera.main.ScreenToWorldPoint(InputPosLastFrame); } }
-
-        /// <summary>
-        /// Input position last time the user pressed down in world space.
-        /// </summary>
-        /// <returns>Input position last time the user pressed down in world space.</returns>
-        public Vector2 InputWorldPosLastDown { get { return Camera.main.ScreenToWorldPoint(InputPosLastDown); } }
+        public Vector2 PositionLastDown { get => _positionLastDown; set => _positionLastDown = value; }
+        [SerializeField] private Vector2 _positionLastDown;
 
         /// <summary>
         /// Create a `TouchUserInput` class.
         /// </summary>
-        /// <param name="inputState">Initial input state.</param>
-        /// <param name="inputPos">Initial input position.</param>
-        /// <param name="inputPosLastFrame">Initial input position last frame.</param>
-        /// <param name="inputPosLastDown">Initial input position last time the user pressed down.</param>
-        public TouchUserInput(State inputState, Vector2 inputPos, Vector2 inputPosLastFrame, Vector2 inputPosLastDown)
+        /// <param name="touchState">Initial input state.</param>
+        /// <param name="position">Initial input position.</param>
+        /// <param name="positionLastFrame">Initial input position last frame.</param>
+        /// <param name="positionLastDown">Initial input position last time the user pressed down.</param>
+        public TouchUserInput(State touchState, Vector2 position, Vector2 positionLastFrame, Vector2 positionLastDown)
         {
-            this.InputState = inputState;
-            this.InputPos = inputPos;
-            this.InputPosLastFrame = inputPosLastFrame;
-            this.InputPosLastDown = inputPosLastDown;
+            this._touchState = touchState;
+            this._position = position;
+            this._positionLastFrame = positionLastFrame;
+            this._positionLastDown = positionLastDown;
+        }
+
+        /// <summary>
+        /// Returns the input position in world space.
+        /// </summary>
+        /// <param name="camera">`Camera` to call ScreenToWorldPoint method.</param>
+        /// <returns>`Vector2` input position in world space.</returns>
+        public Vector2 GetWorldPosition(Camera camera)
+        {
+            if (camera == null) return Vector2.zero;
+            return camera.ScreenToWorldPoint(Position);
+        }
+
+        /// <summary>
+        /// Returns the input position in world space from last frame.
+        /// </summary>
+        /// <param name="camera">`Camera` to call ScreenToWorldPoint method.</param>
+        /// <returns>`Vector2` input position in world space from last frame.</returns>
+        public Vector2 GetWorldPositionLastFrame(Camera camera)
+        {
+            if (camera == null) return Vector2.zero;
+            return camera.ScreenToWorldPoint(PositionLastFrame);
+        }
+
+        /// <summary>
+        /// Returns the input position last time the user pressed down in world space.
+        /// </summary>
+        /// <param name="camera">`Camera` to call ScreenToWorldPoint method.</param>
+        /// <returns>`Vector2` input position last time the user pressed down in world space.</returns>
+        public Vector2 GetWorldPositionLastDown(Camera camera)
+        {
+            if (camera == null) return Vector2.zero;
+            return camera.ScreenToWorldPoint(PositionLastDown);
         }
 
         /// <summary>
@@ -81,7 +100,7 @@ namespace UnityAtoms.Mobile
         /// <returns>`true` if equal, otherwise `false`.</returns>
         public bool Equals(TouchUserInput other)
         {
-            return this.InputState == other.InputState && this.InputWorldPos == other.InputWorldPos && this.InputWorldPosLastFrame == other.InputWorldPosLastFrame && this.InputPosLastDown == other.InputPosLastDown;
+            return this.TouchState == other.TouchState && this.Position == other.Position && this.PositionLastFrame == other.PositionLastFrame && this.PositionLastDown == other.PositionLastDown;
         }
 
         /// <summary>
@@ -102,9 +121,9 @@ namespace UnityAtoms.Mobile
         public override int GetHashCode()
         {
             var hash = 17;
-            hash = hash * 23 + this.InputState.GetHashCode();
-            hash = hash * 23 + this.InputPos.GetHashCode();
-            hash = hash * 23 + this.InputPosLastFrame.GetHashCode();
+            hash = hash * 23 + this.TouchState.GetHashCode();
+            hash = hash * 23 + this.Position.GetHashCode();
+            hash = hash * 23 + this.PositionLastFrame.GetHashCode();
             return hash;
         }
 
