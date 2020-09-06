@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace UnityAtoms
 {
@@ -105,6 +108,13 @@ namespace UnityAtoms
         [SerializeField]
         private T _initialValue = default(T);
 
+#if UNITY_EDITOR
+        /// <summary>
+        /// Set of all AtomVariable instances in editor.
+        /// </summary>
+        private static HashSet<AtomVariable<T, P, E1, E2, F>> _instances = new HashSet<AtomVariable<T, P, E1, E2, F>>();
+#endif
+
         /// <summary>
         /// When setting the value of a Variable the new value will be piped through all the pre change transformers, which allows you to create custom logic and restriction on for example what values can be set for this Variable.
         /// </summary>
@@ -138,10 +148,35 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
+            SetInitialValues();
+            TriggerInitialEvents();
+
+#if UNITY_EDITOR
+            if (EditorSettings.enterPlayModeOptionsEnabled)
+            {
+                _instances.Add(this);
+
+                EditorApplication.playModeStateChanged -= HandlePlayModeStateChange;
+                EditorApplication.playModeStateChanged += HandlePlayModeStateChange;
+            }
+#endif
+        }
+
+        /// <summary>
+        /// Set initial values
+        /// </summary>
+        private void SetInitialValues()
+        {
             _oldValue = InitialValue;
             _value = InitialValue;
+        }
 
-            if (_triggerChangedOnOnEnable)
+        /// <summary>
+        /// Trigger initial events if related options enabled
+        /// </summary>
+        private void TriggerInitialEvents()
+        {
+            if (Changed != null && _triggerChangedOnOnEnable)
             {
                 Changed.Raise(Value);
             }
@@ -153,6 +188,27 @@ namespace UnityAtoms
                 ChangedWithHistory.Raise(pair);
             }
         }
+
+
+#if UNITY_EDITOR
+        private static void HandlePlayModeStateChange(PlayModeStateChange state)
+        {
+            if (state == PlayModeStateChange.ExitingEditMode)
+            {
+                foreach (var instance in _instances)
+                {
+                    instance.SetInitialValues();
+                }
+            }
+            else if (state == PlayModeStateChange.EnteredPlayMode)
+            {
+                foreach (var instance in _instances)
+                {
+                    instance.TriggerInitialEvents();
+                };
+            }
+        }
+#endif
 
         /// <summary>
         /// Reset the Variable to its `_initialValue`.
