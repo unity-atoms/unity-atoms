@@ -21,7 +21,7 @@ namespace UnityAtoms.Editor
             types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetExportedTypes())
                 .Where(x => x != null)
-                .Where(x => (x.Attributes & TypeAttributes.Serializable) != 0)
+                .Where(x => x.IsValueType || (x.Attributes & TypeAttributes.Serializable) != 0)
                 // .Where(t => !(t.Namespace?.Contains("System") ?? false))
                 .Where(t => !(t.Namespace?.Contains("Microsoft") ?? false))
                 .Where(t => !(t.Namespace?.Contains("UnityEditor") ?? false))
@@ -42,12 +42,16 @@ namespace UnityAtoms.Editor
                 {
                     serializedObject.FindProperty("Namespace").stringValue = s.Split(':')[0];
                     serializedObject.FindProperty("BaseType").stringValue  = s.Split(':')[1];
+                    var type = types.First(grouping => grouping.Key == serializedObject.FindProperty("Namespace").stringValue)
+                        .First(t => t.Name == serializedObject.FindProperty("BaseType").stringValue);
+                    serializedObject.FindProperty("FullQualifiedName").stringValue = type.AssemblyQualifiedName;
                 });
                 dropdown.Show(rect);
             }
 
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("Namespace"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("BaseType"));
+            // EditorGUILayout.PropertyField(serializedObject.FindProperty("Namespace"));
+            // EditorGUILayout.PropertyField(serializedObject.FindProperty("BaseType"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("FullQualifiedName"));
 
             var options = serializedObject.FindProperty("GenerationOptions").intValue;
 

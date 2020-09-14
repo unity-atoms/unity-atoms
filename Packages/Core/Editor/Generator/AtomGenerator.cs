@@ -12,6 +12,7 @@ namespace UnityAtoms.Editor
     [CreateAssetMenu(fileName = "AtomGenerator", menuName = "Unity Atoms/Generation/AtomGenerator", order = 0)]
     public class AtomGenerator : ScriptableObject
     {
+        public string FullQualifiedName;
         public string Namespace;
         public string BaseType;
 
@@ -22,8 +23,8 @@ namespace UnityAtoms.Editor
 
         public void Generate()
         {
-            var type = Type.GetType($"{Namespace}.{BaseType}");
-            if(type == null) throw new TypeLoadException($"Type could not be found ({Namespace}.{BaseType})");
+            var type = Type.GetType($"{FullQualifiedName}");
+            if(type == null) throw new TypeLoadException($"Type could not be found ({FullQualifiedName})");
             var isValueTypeEquatable = type.GetInterfaces().Contains(typeof(IEquatable<>));
 
             var templateVariables = Generator.CreateTemplateVariablesMap(BaseType, Namespace, "BaseAtoms");
