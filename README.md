@@ -33,7 +33,7 @@ Unity Atoms is an open source library that aims to make your game code:
 
 _Prerequisite: Since Unity Atoms is using the Unity Package Manager (UPM) you need to use Unity version 2018.3 >=_
 
-Add the following to your `manifest.json`:
+Add the following to your `manifest.json` (which is located under your project location in the folder `Packages`):
 
 ```
 {
