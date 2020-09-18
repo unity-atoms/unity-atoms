@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Event Instancer · Unity Atoms</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Event Instancer"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Event Instancer · Unity Atoms"/><meta property="og:type" content="website"/><meta property="og:url" content="https://adamramberg.github.io/unity-atoms/"/><meta property="og:description" content="# Event Instancer"/><meta property="og:image" content="https://adamramberg.github.io/unity-atoms/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://adamramberg.github.io/unity-atoms/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/unity-atoms/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="/unity-atoms/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/unity-atoms/js/code-block-buttons.js"></script><script src="/unity-atoms/js/scrollSpy.js"></script><link rel="stylesheet" href="/unity-atoms/css/main.css"/><script src="/unity-atoms/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/unity-atoms/"><img class="logo" src="/unity-atoms/img/atoms-icon-white.png" alt="Unity Atoms"/><h2 class="headerTitleWithLogo">Unity Atoms</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/unity-atoms/introduction/quick-start" target="_self">Quick Start</a></li><li class="siteNavGroupActive"><a href="/unity-atoms/api/unityatoms" target="_self">API</a></li><li class=""><a href="https://www.github.com/AdamRamberg/unity-atoms" target="_self">Github</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Intermediate</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/unity-atoms/introduction/quick-start">Quick start</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/introduction/overview">Overview and philosopy</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/introduction/preferences">Preferences</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Tutorials</h3><ul class=""><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Basics</h4><ul><li class="navListItem"><a class="navItem" href="/unity-atoms/tutorials/variables">Variables</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/tutorials/events">Events</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/tutorials/listeners">Listeners</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/tutorials/actions">Actions</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/tutorials/mono-hooks">Mono Hooks</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Intermediate</h4><ul><li class="navListItem"><a class="navItem" href="/unity-atoms/tutorials/variable-instancer">Variable Instancer</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/unity-atoms/tutorials/event-instancer">Event Instancer</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/tutorials/generator">Generator</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Advanced</h4><ul><li class="navListItem"><a class="navItem" href="/unity-atoms/tutorials/advanced-example">Advanced example</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/tutorials/unirx">Usage with UniRX</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms">UnityAtoms</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.editor">UnityAtoms.Editor</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.baseatoms">UnityAtoms.BaseAtoms</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.baseatoms.editor">UnityAtoms.BaseAtoms.Editor</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.fsm">UnityAtoms.FSM</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.fsm.editor">UnityAtoms.FSM.Editor</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.mobile">UnityAtoms.Mobile</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.mobile.editor">UnityAtoms.Mobile.Editor</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.monohooks">UnityAtoms.MonoHooks</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.scenemgmt">UnityAtoms.SceneMgmt</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.scenemgmt.editor">UnityAtoms.SceneMgmt.Editor</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.tags">UnityAtoms.Tags</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/api/unityatoms.ui">UnityAtoms.UI</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Subpackages</h3><ul class=""><li class="navListItem"><a class="navItem" href="/unity-atoms/subpackages/base-atoms">Base Atoms</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/subpackages/fsm">FSM</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/subpackages/mobile">Mobile</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/subpackages/mono-hooks">Mono Hooks</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/subpackages/scene-mgmt">Scene Mgmt</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/subpackages/tags">Tags</a></li><li class="navListItem"><a class="navItem" href="/unity-atoms/subpackages/ui">UI</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="event-instancer"></a><a href="#event-instancer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Event Instancer</h1>
+<p>Similar to Variables, Events can also be instantiated for use in prefabs. In this tutorial we will build a &quot;death&quot; Event for the monster prefab created in the variable instancer tutorial. The death Event will be fired once as the monster health drops below zero.</p>
+<p>Some setup is necessary in our example to demonstrate how an Event Instancer works.</p>
+<h2><a class="anchor" aria-hidden="true" id="damage-the-monster"></a><a href="#damage-the-monster" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Damage the monster</h2>
+<p>To inflict damage on the monster, we can add a method called <code>Damage</code> to the <code>LogHealth</code> script that subtracts from the current health of the monster:</p>
+<pre><code class="hljs css language-cs"><span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-keyword">using</span> UnityAtoms.BaseAtoms;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">LogHealth</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    [<span class="hljs-meta">SerializeField</span>]
+    <span class="hljs-keyword">private</span> IntReference health;
+    [<span class="hljs-meta">SerializeField</span>]
+    <span class="hljs-keyword">private</span> IntConstant startHealth;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span>
+    {
+        health.Value = startHealth.Value;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Damage</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> damage</span>)</span>
+    {
+        health.Value -= damage;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReportHealth</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> health</span>)</span>
+    {
+        Debug.Log(gameObject.name + <span class="hljs-string">" reports: "</span> +
+            <span class="hljs-string">"My health changed to "</span> + health);
+    }
+}
+</code></pre>
+<p>At this point <code>LogHealth</code> as a name for the component is starting to lose it's meaning, but we'll keep extending the script for simplicity's sake.</p>
+<h2><a class="anchor" aria-hidden="true" id="global-damage-event"></a><a href="#global-damage-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Global damage event</h2>
+<p>To trigger the <code>Damage</code> method, create a new <code>IntEvent</code> called <code>HurtAllMonsters</code>. Add a new <code>Int Event Reference Listener</code> component to the <code>Monster</code> base prefab. Have the listener call <code>Damage</code> of <code>LogHealth</code>:</p>
+<p><img src="../assets/event-instancer/hurt-all-monsters.png" alt="hurt-all-monsters"></p>
+<blockquote>
+<p><strong>Note:</strong> Make sure the <code>Damage</code> method is selected from the <code>Dynamic</code> list of methods.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="raising-events-from-the-inspector"></a><a href="#raising-events-from-the-inspector" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Raising events from the inspector</h2>
+<p>Run the scene and find the <code>HurtAllMonsters</code> Event from your asset folders. Set the <code>Inspector Raise Value</code> to any number and click the <code>Raise</code> button.</p>
+<p><img src="../assets/event-instancer/raise-damage-event.png" alt="raise-damage-event"></p>
+<p>The monsters in the scene will take the entered amount of damage. Click the button multiple times to repeat inflicting the damage:</p>
+<p><img src="../assets/event-instancer/monsters-took-damage.png" alt="monsters-took-damage"></p>
+<p>The setup is complete. We are now ready to instantiate a death Event for each monster.</p>
+<h2><a class="anchor" aria-hidden="true" id="death-event-instancer"></a><a href="#death-event-instancer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Death event instancer</h2>
+<p>When the monster health reaches zero or lower, we want to fire a <code>VoidEvent</code> to signal that this monster has perished. Listening for this Event in the prefab allows you to customize how each monster type dies. In this example, each monster reports a different death message.</p>
+<p>We need logic in the <code>Damage</code> method to detect when they monster died and a reference to an Event we want to raise when that happens:</p>
+<pre><code class="hljs css language-cs"><span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-keyword">using</span> UnityAtoms.BaseAtoms;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">LogHealth</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    [<span class="hljs-meta">SerializeField</span>]
+    <span class="hljs-keyword">private</span> IntReference health;
+    [<span class="hljs-meta">SerializeField</span>]
+    <span class="hljs-keyword">private</span> IntConstant startHealth;
+    [<span class="hljs-meta">SerializeField</span>]
+    <span class="hljs-keyword">private</span> VoidBaseEventReference death;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span>
+    {
+        health.Value = startHealth.Value;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Damage</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> damage</span>)</span>
+    {
+        <span class="hljs-keyword">if</span>(health.Value &gt; <span class="hljs-number">0</span>)
+        {
+            health.Value -= damage;
+
+            <span class="hljs-keyword">if</span>(health.Value &lt;= <span class="hljs-number">0</span>)
+            {
+                death.Event.Raise();
+            }
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReportHealth</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> health</span>)</span>
+    {
+        Debug.Log(gameObject.name + <span class="hljs-string">" reports: "</span> +
+            <span class="hljs-string">"My health changed to "</span> + health);
+    }
+}
+</code></pre>
+<p>In the <code>Monster</code> prefab's <code>LogHealth</code> component, select <code>Use Event Instancer</code> on the <code>Death</code> Event reference field:</p>
+<p><img src="../assets/event-instancer/death-event-reference.png" alt="death-event-reference"></p>
+<p>Add a <code>Void Event Instancer</code> component and a create a <code>Void Event</code> base Event in an asset folder. Select the base Event asset in the <code>Base</code> field and drag the <code>Void Event Instancer</code> component on the <code>Death</code> field of <code>LogHealth</code>:</p>
+<p><img src="../assets/event-instancer/death-event-assigned.png" alt="death-event-assigned"></p>
+<h2><a class="anchor" aria-hidden="true" id="listening-for-the-instantiated-death-event"></a><a href="#listening-for-the-instantiated-death-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Listening for the instantiated <code>Death</code> Event</h2>
+<p>To demonstrate the uniqueness of the <code>Death</code> Event to each prefab, we'll add a method to <code>LogHealth</code> called <code>AnnounceDeath</code> that logs a customizable death message for the monster:</p>
+<pre><code class="hljs css language-cs"><span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-keyword">using</span> UnityAtoms.BaseAtoms;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">LogHealth</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    [<span class="hljs-meta">SerializeField</span>]
+    <span class="hljs-keyword">private</span> IntReference health;
+    [<span class="hljs-meta">SerializeField</span>]
+    <span class="hljs-keyword">private</span> IntConstant startHealth;
+    [<span class="hljs-meta">SerializeField</span>]
+    <span class="hljs-keyword">private</span> VoidBaseEventReference death;
+    [<span class="hljs-meta">SerializeField</span>]
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> deathMessage;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span>
+    {
+        health.Value = startHealth.Value;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AnnounceDeath</span>(<span class="hljs-params"></span>)</span>
+    {
+        Debug.Log(gameObject.name + <span class="hljs-string">" "</span> + deathMessage);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Damage</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> damage</span>)</span>
+    {
+        <span class="hljs-keyword">if</span>(health.Value &gt; <span class="hljs-number">0</span>)
+        {
+            health.Value -= damage;
+
+            <span class="hljs-keyword">if</span>(health.Value &lt;= <span class="hljs-number">0</span>)
+            {
+                death.Event.Raise();
+            }
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReportHealth</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> health</span>)</span>
+    {
+        Debug.Log(gameObject.name + <span class="hljs-string">" reports: "</span> +
+            <span class="hljs-string">"My health changed to "</span> + health);
+    }
+}
+</code></pre>
+<p>Now add a <code>Void Base Event Reference Listener</code> to <code>Monster</code> prefab. Wire it to the <code>Void Event Instancer</code> component and <code>AnnounceDeath</code> method using what you learned in this tutorial. The end result looks like this:</p>
+<p><img src="../assets/event-instancer/death-listener.png" alt="death-listener"></p>
+<h2><a class="anchor" aria-hidden="true" id="testing-the-event-instancer"></a><a href="#testing-the-event-instancer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Testing the <code>Event Instancer</code></h2>
+<p>Since all of the work was done in a base prefab <code>Monster</code>, the changes have automatically propagated to the <code>Wyvern</code> and <code>Orc</code> variants. Visit the variants and write a different death message for each in the <code>deathMessage</code> field of <code>LogHealth</code>:</p>
+<p><img src="../assets/event-instancer/orc-death-message.png" alt="orc-death-message"></p>
+<p>Run the project and inflict damage using the <code>Raise</code> button in <code>HurtAllMonsters</code> Event's Inspector. Eventually the monsters will run out of health one by one and they should announce their unique death messages:</p>
+<p><img src="../assets/event-instancer/unique-death-messages.png" alt="unique-death-messages"></p>
+<p>That's it! You've created an extensible system where every new prefab variant can easily be customized and all the Atoms included in the prefab are automatically wired to correct responses. Use the monster's death Event Listener to play a sound, play an animation, and add experience points for the player. Only your imagination is the limit!</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/unity-atoms/tutorials/variable-instancer"><span class="arrow-prev">← </span><span>Variable Instancer</span></a><a class="docs-next button" href="/unity-atoms/tutorials/generator"><span>Generator</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#damage-the-monster">Damage the monster</a></li><li><a href="#global-damage-event">Global damage event</a></li><li><a href="#raising-events-from-the-inspector">Raising events from the inspector</a></li><li><a href="#death-event-instancer">Death event instancer</a></li><li><a href="#listening-for-the-instantiated-death-event">Listening for the instantiated <code>Death</code> Event</a></li><li><a href="#testing-the-event-instancer">Testing the <code>Event Instancer</code></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/unity-atoms/" class="nav-home"><img src="/unity-atoms/img/atoms-icon-white.png" alt="Unity Atoms" style="width:52px;height:52px"/></a><div><h5>Docs</h5><a href="/unity-atoms/introduction/quick-start">Quick Start</a><a href="/unity-atoms/api/actions">API</a><a href="/unity-atoms/subpackages/base-atoms">Subpackages</a></div><div><h5>Community</h5><a href="https://discord.gg/W4yd7E7" target="_blank" rel="noreferrer noopener">Discord</a><a href="https://gitter.im/unity-atoms/community#" target="_blank" rel="noreferrer noopener">Gitter</a></div><div><h5>More</h5><a href="https://medium.com/@adamramberg">Blog</a><a href="https://github.com/AdamRamberg/unity-atoms">GitHub</a><a class="github-button" href="https://github.com/AdamRamberg/unity-atoms" data-icon="octicon-star" data-count-href="/AdamRamberg/unity-atoms/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Adam Ramberg</section></footer></div></body></html>
