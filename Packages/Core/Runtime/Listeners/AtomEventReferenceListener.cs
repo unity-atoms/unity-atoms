@@ -13,7 +13,7 @@ namespace UnityAtoms
     [EditorIcon("atom-icon-orange")]
     public abstract class AtomEventReferenceListener<T, E, ER, UER> : AtomBaseListener<T, E, UER>, IAtomListener<T>
         where E : AtomEvent<T>
-        where ER : IGetEvent, ISetEvent
+        where ER : IGetEvent, ISetEvent, new()
         where UER : UnityEvent<T>
     {
         /// <summary>
@@ -26,6 +26,6 @@ namespace UnityAtoms
         /// The Event Reference that we are listening to.
         /// </summary>
         [SerializeField]
-        private ER _eventReference = default(ER);
+        private ER _eventReference = new ER();
     }
 }
