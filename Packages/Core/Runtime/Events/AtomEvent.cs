@@ -26,7 +26,7 @@ namespace UnityAtoms
         protected event Action<T> _onEvent;
 
         /// <summary>
-        /// The event replays the specified number of old values to new subscribers. Works like a ReplaySubject in Rx. 
+        /// The event replays the specified number of old values to new subscribers. Works like a ReplaySubject in Rx.
         /// </summary>
         [SerializeField]
         [Range(0, 10)]
@@ -97,8 +97,9 @@ namespace UnityAtoms
         /// <summary>
         /// Unregister all handlers that were registered using the `Register` method.
         /// </summary>
-        public void UnregisterAll()
+        public override void UnregisterAll()
         {
+            base.UnregisterAll();
             _onEvent = null;
         }
 
