@@ -14,15 +14,15 @@ namespace UnityAtoms.Editor
     [CustomEditor(typeof(AtomGenerator))]
     public class AtomGeneratorEditor : UnityEditor.Editor
     {
-        IEnumerable<IGrouping<string, Type>> types;
-        private SearchTypeDropdown typeSelectorPopup;
+        private IEnumerable<IGrouping<string, Type>> _types;
+        private SearchTypeDropdown _typeSelectorPopup;
+
         private void OnEnable()
         {
-            types = AppDomain.CurrentDomain.GetAssemblies()
+            _types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetExportedTypes())
                 .Where(x => x != null)
                 .Where(x => x.IsValueType || (x.Attributes & TypeAttributes.Serializable) != 0)
-                // .Where(t => !(t.Namespace?.Contains("System") ?? false))
                 .Where(t => !(t.Namespace?.Contains("Microsoft") ?? false))
                 .Where(t => !(t.Namespace?.Contains("UnityEditor") ?? false))
                 .GroupBy(t => t.Namespace.Split('.')[0]);
@@ -30,27 +30,24 @@ namespace UnityAtoms.Editor
 
         public override void OnInspectorGUI()
         {
-            //UnityEditor.Editor.DrawPropertiesExcluding(serializedObject);
-
             Rect buttonRect = new Rect();
             var rect = GUILayoutUtility.GetRect(new GUIContent("Show"), EditorStyles.toolbarButton);
 
 
             if (GUILayout.Button("Select Type"))
             {
-                var dropdown = new SearchTypeDropdown(new AdvancedDropdownState(), types, (s) =>
+                var dropdown = new SearchTypeDropdown(new AdvancedDropdownState(), _types, (s) =>
                 {
                     serializedObject.FindProperty("Namespace").stringValue = s.Split(':')[0];
-                    serializedObject.FindProperty("BaseType").stringValue  = s.Split(':')[1];
-                    var type = types.First(grouping => grouping.Key == serializedObject.FindProperty("Namespace").stringValue)
+                    serializedObject.FindProperty("BaseType").stringValue = s.Split(':')[1];
+                    var type = _types.First(grouping =>
+                            grouping.Key == serializedObject.FindProperty("Namespace").stringValue)
                         .First(t => t.Name == serializedObject.FindProperty("BaseType").stringValue);
                     serializedObject.FindProperty("FullQualifiedName").stringValue = type.AssemblyQualifiedName;
                 });
                 dropdown.Show(rect);
             }
 
-            // EditorGUILayout.PropertyField(serializedObject.FindProperty("Namespace"));
-            // EditorGUILayout.PropertyField(serializedObject.FindProperty("BaseType"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("FullQualifiedName"));
 
             var options = serializedObject.FindProperty("GenerationOptions").intValue;
@@ -62,7 +59,7 @@ namespace UnityAtoms.Editor
 
                 EditorGUILayout.BeginHorizontal();
 
-                bool b = (options & (1 <<index)) == (1 <<index);
+                bool b = (options & (1 << index)) == (1 << index);
                 EditorGUI.BeginChangeCheck();
                 b = EditorGUILayout.Toggle(AtomTypes.ALL_ATOM_TYPES[index].DisplayName, b);
                 if (EditorGUI.EndChangeCheck())
@@ -71,7 +68,7 @@ namespace UnityAtoms.Editor
                     {
                         options |= (1 << index);
                         // add all dependencies:
-                        if(AtomTypes.DEPENDENCY_GRAPH.TryGetValue(option, out var list))
+                        if (AtomTypes.DEPENDENCY_GRAPH.TryGetValue(option, out var list))
                             list.ForEach(dep => options |= (1 << AtomTypes.ALL_ATOM_TYPES.IndexOf(dep)));
                     }
                     else
@@ -93,6 +90,7 @@ namespace UnityAtoms.Editor
                 {
                     EditorGUILayout.LabelField(GUIContent.none, GUILayout.Width(200));
                 }
+
                 EditorGUILayout.EndHorizontal();
             }
 
@@ -111,7 +109,8 @@ namespace UnityAtoms.Editor
             private readonly IEnumerable<IGrouping<string, Type>> _list;
             private readonly Action<string> _func;
 
-            public SearchTypeDropdown(AdvancedDropdownState state, IEnumerable<IGrouping<string, Type>> list, Action<string> func) : base(state)
+            public SearchTypeDropdown(AdvancedDropdownState state, IEnumerable<IGrouping<string, Type>> list,
+                Action<string> func) : base(state)
             {
                 _list = list;
                 _func = func;
@@ -133,16 +132,14 @@ namespace UnityAtoms.Editor
                     var groupItem = new AdvancedDropdownItem(group.Key);
                     foreach (var type in group)
                     {
-                        groupItem.AddChild(new AdvancedDropdownItem(group.Key + ":"+ type.Name));
+                        groupItem.AddChild(new AdvancedDropdownItem(group.Key + ":" + type.Name));
                     }
+
                     root.AddChild(groupItem);
                 }
+
                 return root;
             }
         }
-
-
     }
-
-
 }

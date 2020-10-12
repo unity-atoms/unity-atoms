@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace UnityAtoms.Editor
@@ -24,14 +22,17 @@ namespace UnityAtoms.Editor
         public void Generate()
         {
             var type = Type.GetType($"{FullQualifiedName}");
-            if(type == null) throw new TypeLoadException($"Type could not be found ({FullQualifiedName})");
+            if (type == null) throw new TypeLoadException($"Type could not be found ({FullQualifiedName})");
             var isValueTypeEquatable = type.GetInterfaces().Contains(typeof(IEquatable<>));
 
             var templateVariables = Generator.CreateTemplateVariablesMap(BaseType, Namespace, "BaseAtoms");
             var capitalizedValueType = BaseType.Capitalize();
             var templates = Generator.GetTemplatePaths();
-            var templateConditions = Generator.CreateTemplateConditions(isValueTypeEquatable, Namespace, "BaseAtoms", BaseType);
-            var baseWritePath = Path.Combine((Path.GetDirectoryName(AssetDatabase.GetAssetPath(this.GetInstanceID()))) ?? "Assets/", "Generated");
+            var templateConditions =
+                Generator.CreateTemplateConditions(isValueTypeEquatable, Namespace, "BaseAtoms", BaseType);
+            var baseWritePath =
+                Path.Combine((Path.GetDirectoryName(AssetDatabase.GetAssetPath(this.GetInstanceID()))) ?? "Assets/",
+                    "Generated");
 
             Directory.CreateDirectory(baseWritePath);
 
@@ -44,18 +45,21 @@ namespace UnityAtoms.Editor
                 {
                     var atomType = AtomTypes.ALL_ATOM_TYPES[idx];
 
-                    templateVariables["VALUE_TYPE_NAME"] = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
+                    templateVariables["VALUE_TYPE_NAME"] =
+                        atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
                     var valueType = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : BaseType;
                     templateVariables["VALUE_TYPE"] = valueType;
 
-                    var resolvedRelativeFilePath = Templating.ResolveVariables(templateVariables: templateVariables, toResolve: atomType.RelativeFileNameAndPath);
+                    var resolvedRelativeFilePath = Templating.ResolveVariables(templateVariables: templateVariables,
+                        toResolve: atomType.RelativeFileNameAndPath);
                     var targetPath = Path.Combine(baseWritePath, resolvedRelativeFilePath);
 
                     var newCreated = !File.Exists(targetPath);
 
-                    Generator.Generate(new AtomReceipe(atomType, valueType), baseWritePath, templates, templateConditions, templateVariables);
+                    Generator.Generate(new AtomReceipe(atomType, valueType), baseWritePath, templates,
+                        templateConditions, templateVariables);
 
-                    if(newCreated) AssetDatabase.ImportAsset(targetPath);
+                    if (newCreated) AssetDatabase.ImportAsset(targetPath);
                     var ms = AssetDatabase.LoadAssetAtPath<MonoScript>(targetPath);
                     Scripts.Add(ms);
                 }
@@ -63,14 +67,10 @@ namespace UnityAtoms.Editor
                 {
                     Scripts.Add(null);
                 }
+
                 idx++;
                 t >>= 1;
             }
-
         }
     }
-
-
-
-
 }

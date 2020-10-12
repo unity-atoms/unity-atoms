@@ -1,9 +1,7 @@
 #if UNITY_2018_3_OR_NEWER
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using UnityEditor;
 using UnityEngine;
 
@@ -37,22 +35,20 @@ namespace UnityAtoms.Editor
         [MenuItem("Tools/Unity Atoms/Regenerate Atoms from Assets")]
         static void RegenereateAssets()
         {
-            if (! EditorUtility.DisplayDialog("Regenerate", "This will regenerate all Atoms from Generation-Assets", "ok", "cancel"))
+            if (!EditorUtility.DisplayDialog("Regenerate", "This will regenerate all Atoms from Generation-Assets",
+                "ok", "cancel"))
             {
                 return;
             }
-            var guids = AssetDatabase.FindAssets($"t:{nameof(AtomGenerator)}");
 
-            //StringBuilder sb = new StringBuilder();
+            var guids = AssetDatabase.FindAssets($"t:{nameof(AtomGenerator)}");
             foreach (var guid in guids)
             {
-                // sb.Append("regenerate ");
                 var path = AssetDatabase.GUIDToAssetPath(guid);
-                // sb.AppendLine(path);
                 AssetDatabase.LoadAssetAtPath<AtomGenerator>(path).Generate();
             }
-            //Debug.Log(sb.ToString());
 
+            //Debug.Log(sb.ToString());
         }
 
         /// <summary>

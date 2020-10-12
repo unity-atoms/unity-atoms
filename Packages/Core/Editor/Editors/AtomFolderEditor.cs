@@ -11,13 +11,12 @@ namespace UnityAtoms.Editor
         {
             base.OnHeaderGUI();
 
-            if(! Directory.Exists(AssetDatabase.GetAssetPath(target))) return;
+            if (!Directory.Exists(AssetDatabase.GetAssetPath(target))) return;
             if (!target.name.ToLowerInvariant().Contains("atom")) return;
 
+            GUILayout.Label("UNITY ATOMS", (GUIStyle) "AC BoldHeader", GUILayout.ExpandWidth(true));
 
-            GUILayout.Label("UNITY ATOMS", (GUIStyle)"AC BoldHeader", GUILayout.ExpandWidth(true));
-
-            if (GUILayout.Button("Add Generator", (GUIStyle)"LargeButton"))
+            if (GUILayout.Button("Add Generator", (GUIStyle) "LargeButton"))
             {
                 var asset = CreateInstance<AtomGenerator>();
                 var newPath = Path.Combine(
@@ -29,6 +28,5 @@ namespace UnityAtoms.Editor
                 AssetDatabase.ImportAsset(newPath);
             }
         }
-
     }
 }
