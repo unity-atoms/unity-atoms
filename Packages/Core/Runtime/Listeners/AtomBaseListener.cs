@@ -90,29 +90,30 @@ namespace UnityAtoms
             {
                 var condition = _conditions[i];
 
-                if(condition == null) continue; // TODO: Use IsUnassigned when available
+                if(condition == null) continue;
 
-                if(_operator == AtomConditionOperators.And) shouldRespond &= condition.Call(item);
-                if(_operator == AtomConditionOperators.Or) shouldRespond |= condition.Call(item);
+                shouldRespond = _conditions[i].Call(item);
+
+                if(_operator == AtomConditionOperators.And && !shouldRespond) return;
+                if(_operator == AtomConditionOperators.Or  &&  shouldRespond) break;
             }
             
-            if(shouldRespond)
+            if(! shouldRespond) return;
+
+            _unityEventResponse?.Invoke(item);
+            for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
             {
-                _unityEventResponse?.Invoke(item);
-                for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
+                var action = _actionResponses[i];
+
+                if (action == null) continue;
+
+                if (action is AtomAction<T> actionWithParam)
                 {
-                    var action = _actionResponses[i];
-
-                    if (action == null) continue;
-
-                    if (action is AtomAction<T> actionWithParam)
-                    {
-                        actionWithParam.Do(item);
-                    }
-                    else
-                    {
-                        action.Do();
-                    }
+                    actionWithParam.Do(item);
+                }
+                else
+                {
+                    action.Do();
                 }
             }
         }
