@@ -13,6 +13,7 @@
     -   [Variable Instancer](./tutorials/variable-instancer.md)
     -   [Event Instancer](./tutorials/event-instancer.md)
     -   [Generator](./tutorials/generator.md)
+    -   [Conditions](./tutorials/conditions.md)    
     -   [Advanced example](./tutorials/advanced-example.md)
     -   [Usage with UniRX](./tutorials/unirx.md)
 -   API
