@@ -127,7 +127,7 @@ namespace UnityAtoms.Editor
             root.Add(pathRow);
 
             var typeNameRow = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
-            typeNameRow.Add(new Label() { text = "Type Name", style = { width = 180, marginRight = 8 } });
+            typeNameRow.Add(new Label() { text = "Type", style = { width = 180, marginRight = 8 } });
             textfield = new TextField() { value = _valueType, style = { flexGrow = 1 } };
             textfield.RegisterCallback<ChangeEvent<string>>(evt => _valueType = evt.newValue);
             typeNameRow.Add(textfield);

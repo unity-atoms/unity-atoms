@@ -17,6 +17,12 @@ namespace UnityAtoms.Editor
             name: "Action",
             templateName: "UA_Template__Action.txt"
         );
+        public static readonly AtomType CONDITION_T = new AtomType(
+            displayName: "Condition (T)",
+            name: "Condition",
+            templateName: "UA_Template__ConditionT.txt",
+            relativeFileNameAndPath: Path.Combine(Runtime.IsUnityAtomsRepo ? "Runtime" : "", "Conditions", $"{{VALUE_TYPE_NAME}}Condition.cs")
+        );
         public static readonly AtomType CONSTANT = new AtomType(
             displayName: "Constant",
             templateName: "UA_Template__Constant.txt",
@@ -137,6 +143,7 @@ namespace UnityAtoms.Editor
         {
             AtomTypes.ACTION,
             AtomTypes.PAIR_ACTION,
+            AtomTypes.CONDITION_T,
             AtomTypes.CONSTANT,
             AtomTypes.EVENT,
             AtomTypes.PAIR_EVENT,
