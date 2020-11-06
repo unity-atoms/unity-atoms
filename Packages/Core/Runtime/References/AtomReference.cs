@@ -68,6 +68,23 @@ namespace UnityAtoms
         }
 
         /// <summary>
+        /// <returns>True if the `Usage` is an AtomType and is unassigned. False otherwise.</returns>
+        /// </summary>
+        public bool IsUnassigned
+        {
+            get
+            {
+                switch (_usage)
+                {
+                    case (AtomReferenceUsage.CONSTANT): return _constant == null;
+                    case (AtomReferenceUsage.VARIABLE): return _variable == null;
+                    case (AtomReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Value used if `Usage` is set to `Value`.
         /// </summary>
         [SerializeField]
@@ -123,7 +140,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Get event by type. 
+        /// Get event by type.
         /// </summary>
         /// <typeparam name="E"></typeparam>
         /// <returns>The event.</returns>
