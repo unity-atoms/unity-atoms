@@ -1,6 +1,5 @@
 #if UNITY_2018_3_OR_NEWER
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -31,6 +30,25 @@ namespace UnityAtoms.Editor
                 this.ValueTypeNamespace = typeNamespace;
                 this.SubUnityAtomsNamespace = subUnityAtomsNamespace;
             }
+        }
+
+        [MenuItem("Tools/Unity Atoms/Regenerate Atoms from Assets")]
+        static void RegenereateAssets()
+        {
+            if (!EditorUtility.DisplayDialog("Regenerate", "This will regenerate all Atoms from Generation-Assets",
+                "ok", "cancel"))
+            {
+                return;
+            }
+
+            var guids = AssetDatabase.FindAssets($"t:{nameof(AtomGenerator)}");
+            foreach (var guid in guids)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                AssetDatabase.LoadAssetAtPath<AtomGenerator>(path).Generate();
+            }
+
+            //Debug.Log(sb.ToString());
         }
 
         /// <summary>
