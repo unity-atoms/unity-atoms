@@ -64,6 +64,7 @@ namespace UnityAtoms.Editor
 
             var itemsToRegenerate = new List<RegenerateItem>()
             {
+                // Base Atoms
                 new RegenerateItem(
                     valueType: "Void",
                     baseWritePath: Path.Combine(path, "BaseAtoms"),
@@ -90,10 +91,38 @@ namespace UnityAtoms.Editor
                     typeNamespace: "",
                     subUnityAtomsNamespace: "BaseAtoms"
                 ),
+
+                new RegenerateItem
+                (
+                    valueType: "double",
+                    baseWritePath: Path.Combine(path, "BaseAtoms"),
+                    isValueEquatable: true,
+                    atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES,
+                    typeNamespace: "",
+                    subUnityAtomsNamespace: "BaseAtoms"
+                ),
+
+                new RegenerateItem
+                (
+                    valueType: "Quaternion",
+                    baseWritePath: Path.Combine(path, "BaseAtoms"),
+                    isValueEquatable: true,
+                    atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES,
+                    typeNamespace: "UnityEngine",
+                    subUnityAtomsNamespace: "BaseAtoms"
+                ),
+
+                //MonoHooks
                 new RegenerateItem(valueType: "ColliderGameObject", baseWritePath: Path.Combine(path, "MonoHooks"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.MonoHooks", subUnityAtomsNamespace: "MonoHooks"),
                 new RegenerateItem(valueType: "Collider2DGameObject", baseWritePath: Path.Combine(path, "MonoHooks"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.MonoHooks", subUnityAtomsNamespace: "MonoHooks"),
+
+                //Mobile
                 new RegenerateItem(valueType: "TouchUserInput", baseWritePath: Path.Combine(path, "Mobile"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.Mobile", subUnityAtomsNamespace: "Mobile"),
+
+                //SceneMgmt
                 new RegenerateItem(valueType: "SceneField", baseWritePath: Path.Combine(path, "SceneMgmt"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityAtoms.SceneMgmt", subUnityAtomsNamespace: "SceneMgmt"),
+
+                //FSM
                 new RegenerateItem(
                     valueType: "FSMTransitionData",
                     baseWritePath: Path.Combine(path, "FSM"),
