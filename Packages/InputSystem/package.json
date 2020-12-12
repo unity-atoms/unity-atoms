@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "com.mambojambostudios.unity-atoms-core": "4.3.0",
-    "com.mambojambostudios.unity-atoms-base-atoms": "4.3.0"
+    "com.mambojambostudios.unity-atoms-base-atoms": "4.3.0",
+    "com.unity.inputsystem": "1.0.1"
   }
 }

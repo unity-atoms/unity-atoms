@@ -49,7 +49,8 @@ Add the following to your `manifest.json`:
                 "com.mambojambostudios.unity-atoms-mono-hooks",
                 "com.mambojambostudios.unity-atoms-tags",
                 "com.mambojambostudios.unity-atoms-scene-mgmt",
-                "com.mambojambostudios.unity-atoms-ui"
+                "com.mambojambostudios.unity-atoms-ui",
+		"com.mambojambostudios.unity-atoms-input-system"
             ]
         }
     ],
@@ -63,12 +64,14 @@ Add the following to your `manifest.json`:
         "com.mambojambostudios.unity-atoms-tags": "4.3.0",
         "com.mambojambostudios.unity-atoms-scene-mgmt": "4.3.0",
         "com.mambojambostudios.unity-atoms-ui": "4.3.0",
+	"com.mambojambostudios.unity-atoms-input-system": "4.3.0",
         ...
     }
 }
 ```
 
 Note that the core and base atoms packages are mandatory while the others are optional. If you don't want a subpackage, simply remove it from your `dependencies`.
+Note that subpackages may have additional dependencies.
 
 ### OpenUPM
 
@@ -86,6 +89,7 @@ openupm add com.mambojambostudios.unity-atoms-mono-hooks
 openupm add com.mambojambostudios.unity-atoms-tags
 openupm add com.mambojambostudios.unity-atoms-scene-mgmt
 openupm add com.mambojambostudios.unity-atoms-ui
+openupm add com.mambojambostudios.unity-atoms-input-system
 ```
 
 ## Documentation
