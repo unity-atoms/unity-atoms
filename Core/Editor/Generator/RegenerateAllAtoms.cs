@@ -131,6 +131,29 @@ namespace UnityAtoms.Editor
                     typeNamespace: "",
                     subUnityAtomsNamespace: "FSM"
                 ),
+
+                //Input System
+                new RegenerateItem
+                (
+                    valueType: "PlayerInput",
+                    baseWritePath: Path.Combine(path, "InputSystem"),
+                    isValueEquatable: false,
+                    atomTypesToGenerate: new List<AtomType>()
+                    { AtomTypes.EVENT, AtomTypes.ACTION, AtomTypes.UNITY_EVENT, AtomTypes.EVENT_INSTANCER },
+                    typeNamespace: "UnityEngine.InputSystem",
+                    subUnityAtomsNamespace: "InputSystem"
+                ),
+
+                new RegenerateItem
+                (
+                    valueType: "InputAction.CallbackContext",
+                    baseWritePath: Path.Combine(path, "InputSystem"),
+                    isValueEquatable: false,
+                    atomTypesToGenerate: new List<AtomType>()
+                    { AtomTypes.EVENT, AtomTypes.ACTION, AtomTypes.UNITY_EVENT, AtomTypes.EVENT_INSTANCER },
+                    typeNamespace: "UnityEngine.InputSystem",
+                    subUnityAtomsNamespace: "InputSystem"
+                ),
             };
 
             foreach (var item in itemsToRegenerate)
