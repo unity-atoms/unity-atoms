@@ -4,6 +4,7 @@
     -   [Quick start: adding Unity Atoms your project](./introduction/quick-start.md)
     -   [Overview and philosopy](./introduction/overview.md)
     -   [Preferences](./introduction/preferences.md)
+    -   [FAQ](./introduction/faq.md)
 -   Tutorials
     -   [Variables](./tutorials/variables.md)
     -   [Events](./tutorials/events.md)
