@@ -161,7 +161,7 @@ namespace UnityAtoms.Editor
                 var templates = Generator.GetTemplatePaths();
                 var templateConditions = Generator.CreateTemplateConditions(item.IsValueEquatable, item.ValueTypeNamespace, item.SubUnityAtomsNamespace, item.ValueType);
                 var templateVariables = Generator.CreateTemplateVariablesMap(item.ValueType, item.ValueTypeNamespace, item.SubUnityAtomsNamespace);
-                var capitalizedValueType = item.ValueType.Capitalize();
+                var capitalizedValueType = item.ValueType.Replace('.', '_').Capitalize();
 
                 foreach (var atomType in item.AtomTypesToGenerate)
                 {
