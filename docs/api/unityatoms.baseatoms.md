@@ -37,6 +37,12 @@ Event Reference Listener of type `IntPair`. Inherits from `AtomEventReferenceLis
 
 ---
 
+## `QuaternionPairEventReferenceListener`
+
+Event Reference Listener of type `QuaternionPair`. Inherits from `AtomEventReferenceListener<QuaternionPair, QuaternionPairEvent, QuaternionPairEventReference, QuaternionPairUnityEvent>`.
+
+---
+
 ## `Vector3PairEventReferenceListener`
 
 Event Reference Listener of type `Vector3Pair`. Inherits from `AtomEventReferenceListener<Vector3Pair, Vector3PairEvent, Vector3PairEventReference, Vector3PairUnityEvent>`.
@@ -52,6 +58,18 @@ Event Reference Listener of type `bool`. Inherits from `AtomEventReferenceListen
 ## `Collider2DEventReferenceListener`
 
 Event Reference Listener of type `Collider2D`. Inherits from `AtomEventReferenceListener<Collider2D, Collider2DEvent, Collider2DEventReference, Collider2DUnityEvent>`.
+
+---
+
+## `DoubleEventReferenceListener`
+
+Event Reference Listener of type `double`. Inherits from `AtomEventReferenceListener<double, DoubleEvent, DoubleEventReference, DoubleUnityEvent>`.
+
+---
+
+## `DoublePairEventReferenceListener`
+
+Event Reference Listener of type `DoublePair`. Inherits from `AtomEventReferenceListener<DoublePair, DoublePairEvent, DoublePairEventReference, DoublePairUnityEvent>`.
 
 ---
 
@@ -82,6 +100,12 @@ Event Reference Listener of type `Vector2`. Inherits from `AtomEventReferenceLis
 ## `FloatEventReferenceListener`
 
 Event Reference Listener of type `float`. Inherits from `AtomEventReferenceListener<float, FloatEvent, FloatEventReference, FloatUnityEvent>`.
+
+---
+
+## `QuaternionEventReferenceListener`
+
+Event Reference Listener of type `Quaternion`. Inherits from `AtomEventReferenceListener<Quaternion, QuaternionEvent, QuaternionEventReference, QuaternionUnityEvent>`.
 
 ---
 
@@ -183,6 +207,12 @@ Reference of type `int`. Inherits from `EquatableAtomReference<int, IntPair, Int
 
 ---
 
+## `QuaternionReference`
+
+Reference of type `Quaternion`. Inherits from `EquatableAtomReference<Quaternion, QuaternionPair, QuaternionConstant, QuaternionVariable, QuaternionEvent, QuaternionPairEvent, QuaternionQuaternionFunction, QuaternionVariableInstancer, AtomCollection, AtomList>`.
+
+---
+
 ## `Collider2DReference`
 
 Reference of type `Collider2D`. Inherits from `AtomReference<Collider2D, Collider2DPair, Collider2DConstant, Collider2DVariable, Collider2DEvent, Collider2DPairEvent, Collider2DCollider2DFunction, Collider2DVariableInstancer, AtomCollection, AtomList>`.
@@ -204,6 +234,12 @@ Reference of type `Vector3`. Inherits from `EquatableAtomReference<Vector3, Vect
 ## `StringReference`
 
 Reference of type `string`. Inherits from `EquatableAtomReference<string, StringPair, StringConstant, StringVariable, StringEvent, StringPairEvent, StringStringFunction, StringVariableInstancer, AtomCollection, AtomList>`.
+
+---
+
+## `DoubleReference`
+
+Reference of type `double`. Inherits from `EquatableAtomReference<double, DoublePair, DoubleConstant, DoubleVariable, DoubleEvent, DoublePairEvent, DoubleDoubleFunction, DoubleVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
@@ -231,6 +267,12 @@ IPair of type `<Color>`. Inherits from `IPair<Color>`.
 
 ---
 
+## `DoublePair`
+
+IPair of type `<double>`. Inherits from `IPair<double>`.
+
+---
+
 ## `ColliderPair`
 
 IPair of type `<Collider>`. Inherits from `IPair<Collider>`.
@@ -252,6 +294,12 @@ IPair of type `<Vector2>`. Inherits from `IPair<Vector2>`.
 ## `FloatPair`
 
 IPair of type `<float>`. Inherits from `IPair<float>`.
+
+---
+
+## `QuaternionPair`
+
+IPair of type `<Quaternion>`. Inherits from `IPair<Quaternion>`.
 
 ---
 
@@ -282,6 +330,12 @@ None generic Unity Event of type `ColliderPair`. Inherits from `UnityEvent<Colli
 ## `GameObjectPairUnityEvent`
 
 None generic Unity Event of type `GameObjectPair`. Inherits from `UnityEvent<GameObjectPair>`.
+
+---
+
+## `DoubleUnityEvent`
+
+None generic Unity Event of type `double`. Inherits from `UnityEvent<double>`.
 
 ---
 
@@ -375,6 +429,12 @@ None generic Unity Event of type `string`. Inherits from `UnityEvent<string>`.
 
 ---
 
+## `DoublePairUnityEvent`
+
+None generic Unity Event of type `DoublePair`. Inherits from `UnityEvent<DoublePair>`.
+
+---
+
 ## `FloatPairUnityEvent`
 
 None generic Unity Event of type `FloatPair`. Inherits from `UnityEvent<FloatPair>`.
@@ -387,9 +447,21 @@ None generic Unity Event of type `Vector3Pair`. Inherits from `UnityEvent<Vector
 
 ---
 
+## `QuaternionPairUnityEvent`
+
+None generic Unity Event of type `QuaternionPair`. Inherits from `UnityEvent<QuaternionPair>`.
+
+---
+
 ## `Collider2DPairUnityEvent`
 
 None generic Unity Event of type `Collider2DPair`. Inherits from `UnityEvent<Collider2DPair>`.
+
+---
+
+## `QuaternionUnityEvent`
+
+None generic Unity Event of type `Quaternion`. Inherits from `UnityEvent<Quaternion>`.
 
 ---
 
@@ -408,6 +480,12 @@ Constant of type `GameObject`. Inherits from `AtomBaseVariable<GameObject>`.
 ## `Collider2DConstant`
 
 Constant of type `Collider2D`. Inherits from `AtomBaseVariable<Collider2D>`.
+
+---
+
+## `QuaternionConstant`
+
+Constant of type `Quaternion`. Inherits from `AtomBaseVariable<Quaternion>`.
 
 ---
 
@@ -447,6 +525,12 @@ Constant of type `string`. Inherits from `AtomBaseVariable<string>`.
 
 ---
 
+## `DoubleConstant`
+
+Constant of type `double`. Inherits from `AtomBaseVariable<double>`.
+
+---
+
 ## `ColorConstant`
 
 Constant of type `Color`. Inherits from `AtomBaseVariable<Color>`.
@@ -474,6 +558,12 @@ Event Reference of type `string`. Inherits from `AtomEventReference<string, Stri
 ## `Collider2DPairEventReference`
 
 Event Reference of type `Collider2DPair`. Inherits from `AtomEventReference<Collider2DPair, Collider2DVariable, Collider2DPairEvent, Collider2DVariableInstancer, Collider2DPairEventInstancer>`.
+
+---
+
+## `DoublePairEventReference`
+
+Event Reference of type `DoublePair`. Inherits from `AtomEventReference<DoublePair, DoubleVariable, DoublePairEvent, DoubleVariableInstancer, DoublePairEventInstancer>`.
 
 ---
 
@@ -531,6 +621,18 @@ Event Reference of type `Collider2D`. Inherits from `AtomEventReference<Collider
 
 ---
 
+## `QuaternionPairEventReference`
+
+Event Reference of type `QuaternionPair`. Inherits from `AtomEventReference<QuaternionPair, QuaternionVariable, QuaternionPairEvent, QuaternionVariableInstancer, QuaternionPairEventInstancer>`.
+
+---
+
+## `QuaternionEventReference`
+
+Event Reference of type `Quaternion`. Inherits from `AtomEventReference<Quaternion, QuaternionVariable, QuaternionEvent, QuaternionVariableInstancer, QuaternionEventInstancer>`.
+
+---
+
 ## `IntPairEventReference`
 
 Event Reference of type `IntPair`. Inherits from `AtomEventReference<IntPair, IntVariable, IntPairEvent, IntVariableInstancer, IntPairEventInstancer>`.
@@ -552,6 +654,12 @@ Event Reference of type `FloatPair`. Inherits from `AtomEventReference<FloatPair
 ## `Vector3EventReference`
 
 Event Reference of type `Vector3`. Inherits from `AtomEventReference<Vector3, Vector3Variable, Vector3Event, Vector3VariableInstancer, Vector3EventInstancer>`.
+
+---
+
+## `DoubleEventReference`
+
+Event Reference of type `double`. Inherits from `AtomEventReference<double, DoubleVariable, DoubleEvent, DoubleVariableInstancer, DoubleEventInstancer>`.
 
 ---
 
@@ -633,9 +741,21 @@ Variable Instancer of type `int`. Inherits from `AtomVariableInstancer<IntVariab
 
 ---
 
+## `QuaternionVariableInstancer`
+
+Variable Instancer of type `Quaternion`. Inherits from `AtomVariableInstancer<QuaternionVariable, QuaternionPair, Quaternion, QuaternionEvent, QuaternionPairEvent, QuaternionQuaternionFunction>`.
+
+---
+
 ## `StringVariableInstancer`
 
 Variable Instancer of type `string`. Inherits from `AtomVariableInstancer<StringVariable, StringPair, string, StringEvent, StringPairEvent, StringStringFunction>`.
+
+---
+
+## `DoubleVariableInstancer`
+
+Variable Instancer of type `double`. Inherits from `AtomVariableInstancer<DoubleVariable, DoublePair, double, DoubleEvent, DoublePairEvent, DoubleDoubleFunction>`.
 
 ---
 
@@ -723,6 +843,12 @@ Event Instancer of type `Vector3`. Inherits from `AtomEventInstancer<Vector3, Ve
 
 ---
 
+## `DoubleEventInstancer`
+
+Event Instancer of type `double`. Inherits from `AtomEventInstancer<double, DoubleEvent>`.
+
+---
+
 ## `FloatEventInstancer`
 
 Event Instancer of type `float`. Inherits from `AtomEventInstancer<float, FloatEvent>`.
@@ -783,6 +909,18 @@ Event Instancer of type `Collider2D`. Inherits from `AtomEventInstancer<Collider
 
 ---
 
+## `QuaternionPairEventInstancer`
+
+Event Instancer of type `QuaternionPair`. Inherits from `AtomEventInstancer<QuaternionPair, QuaternionPairEvent>`.
+
+---
+
+## `QuaternionEventInstancer`
+
+Event Instancer of type `Quaternion`. Inherits from `AtomEventInstancer<Quaternion, QuaternionEvent>`.
+
+---
+
 ## `IntPairEventInstancer`
 
 Event Instancer of type `IntPair`. Inherits from `AtomEventInstancer<IntPair, IntPairEvent>`.
@@ -840,6 +978,12 @@ Event Instancer of type `string`. Inherits from `AtomEventInstancer<string, Stri
 ## `Collider2DPairEventInstancer`
 
 Event Instancer of type `Collider2DPair`. Inherits from `AtomEventInstancer<Collider2DPair, Collider2DPairEvent>`.
+
+---
+
+## `DoublePairEventInstancer`
+
+Event Instancer of type `DoublePair`. Inherits from `AtomEventInstancer<DoublePair, DoublePairEvent>`.
 
 ---
 
@@ -1097,6 +1241,12 @@ Variable of type `Collider2D`. Inherits from `AtomVariable<Collider2D, Collider2
 
 ---
 
+## `QuaternionVariable`
+
+Variable of type `Quaternion`. Inherits from `EquatableAtomVariable<Quaternion, QuaternionPair, QuaternionEvent, QuaternionPairEvent, QuaternionQuaternionFunction>`.
+
+---
+
 ## `ColorVariable`
 
 Variable of type `Color`. Inherits from `EquatableAtomVariable<Color, ColorPair, ColorEvent, ColorPairEvent, ColorColorFunction>`.
@@ -1166,6 +1316,12 @@ Divide Variable by Variable value.
 ##### Parameters
 
 -   `variable` - Variable value to divide by.
+
+---
+
+## `DoubleVariable`
+
+Variable of type `double`. Inherits from `EquatableAtomVariable<double, DoublePair, DoubleEvent, DoublePairEvent, DoubleDoubleFunction>`.
 
 ---
 
@@ -1265,6 +1421,30 @@ Action of type `GameObjectPair`. Inherits from `AtomAction<GameObjectPair>`.
 
 ---
 
+## `DoubleAction`
+
+Action of type `double`. Inherits from `AtomAction<double>`.
+
+---
+
+## `DoublePairAction`
+
+Action of type `DoublePair`. Inherits from `AtomAction<DoublePair>`.
+
+---
+
+## `QuaternionAction`
+
+Action of type `Quaternion`. Inherits from `AtomAction<Quaternion>`.
+
+---
+
+## `QuaternionPairAction`
+
+Action of type `QuaternionPair`. Inherits from `AtomAction<QuaternionPair>`.
+
+---
+
 ## `IntAction`
 
 Action of type `int`. Inherits from `AtomAction<int>`.
@@ -1337,6 +1517,18 @@ Function x 2 of type `GameObject`. Inherits from `AtomFunction<GameObject, GameO
 
 ---
 
+## `DoubleDoubleFunction`
+
+Function x 2 of type `double`. Inherits from `AtomFunction<double, double>`.
+
+---
+
+## `QuaternionQuaternionFunction`
+
+Function x 2 of type `Quaternion`. Inherits from `AtomFunction<Quaternion, Quaternion>`.
+
+---
+
 ## `StringStringFunction`
 
 Function x 2 of type `string`. Inherits from `AtomFunction<string, string>`.
@@ -1367,6 +1559,12 @@ Adds Variable Instancer's Variable of type GameObject to a Collection or List on
 
 ---
 
+## `SyncDoubleVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type double to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
 ## `SyncColliderVariableInstancerToCollection`
 
 Adds Variable Instancer's Variable of type Collider to a Collection or List on OnEnable and removes it on OnDestroy.
@@ -1382,6 +1580,12 @@ Adds Variable Instancer's Variable of type Vector2 to a Collection or List on On
 ## `SyncBoolVariableInstancerToCollection`
 
 Adds Variable Instancer's Variable of type bool to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
+## `SyncQuaternionVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type Quaternion to a Collection or List on OnEnable and removes it on OnDestroy.
 
 ---
 
@@ -1418,6 +1622,12 @@ Adds Variable Instancer's Variable of type int to a Collection or List on OnEnab
 ## `FloatPairEvent`
 
 Event of type `FloatPair`. Inherits from `AtomEvent<FloatPair>`.
+
+---
+
+## `DoubleEvent`
+
+Event of type `double`. Inherits from `AtomEvent<double>`.
 
 ---
 
@@ -1460,6 +1670,12 @@ Event of type `ColliderPair`. Inherits from `AtomEvent<ColliderPair>`.
 ## `IntPairEvent`
 
 Event of type `IntPair`. Inherits from `AtomEvent<IntPair>`.
+
+---
+
+## `QuaternionPairEvent`
+
+Event of type `QuaternionPair`. Inherits from `AtomEvent<QuaternionPair>`.
 
 ---
 
@@ -1520,6 +1736,18 @@ Event of type `Void`. Inherits from `AtomEvent<Void>`.
 ## `Vector2Event`
 
 Event of type `Vector2`. Inherits from `AtomEvent<Vector2>`.
+
+---
+
+## `QuaternionEvent`
+
+Event of type `Quaternion`. Inherits from `AtomEvent<Quaternion>`.
+
+---
+
+## `DoublePairEvent`
+
+Event of type `DoublePair`. Inherits from `AtomEvent<DoublePair>`.
 
 ---
 
@@ -2094,6 +2322,12 @@ Value List of type `Color`. Inherits from `AtomValueList<Color, ColorEvent>`.
 
 ---
 
+## `QuaternionValueList`
+
+Value List of type `Quaternion`. Inherits from `AtomValueList<Quaternion, QuaternionEvent>`.
+
+---
+
 ## `ColliderValueList`
 
 Value List of type `Collider`. Inherits from `AtomValueList<Collider, ColliderEvent>`.
@@ -2124,6 +2358,12 @@ Value List of type `Vector3`. Inherits from `AtomValueList<Vector3, Vector3Event
 
 ---
 
+## `DoubleValueList`
+
+Value List of type `double`. Inherits from `AtomValueList<double, DoubleEvent>`.
+
+---
+
 ## `StringValueList`
 
 Value List of type `string`. Inherits from `AtomValueList<string, StringEvent>`.
@@ -2142,6 +2382,12 @@ Set variable value Action of type `Color`. Inherits from `SetVariableValue<Color
 
 ---
 
+## `SetQuaternionVariableValue`
+
+Set variable value Action of type `Quaternion`. Inherits from `SetVariableValue<Quaternion, QuaternionPair, QuaternionVariable, QuaternionConstant, QuaternionReference, QuaternionEvent, QuaternionPairEvent, QuaternionVariableInstancer>`.
+
+---
+
 ## `SetCollider2DVariableValue`
 
 Set variable value Action of type `Collider2D`. Inherits from `SetVariableValue<Collider2D, Collider2DPair, Collider2DVariable, Collider2DConstant, Collider2DReference, Collider2DEvent, Collider2DPairEvent, Collider2DVariableInstancer>`.
@@ -2151,6 +2397,12 @@ Set variable value Action of type `Collider2D`. Inherits from `SetVariableValue<
 ## `SetBoolVariableValue`
 
 Set variable value Action of type `bool`. Inherits from `SetVariableValue<bool, BoolPair, BoolVariable, BoolConstant, BoolReference, BoolEvent, BoolPairEvent, BoolVariableInstancer>`.
+
+---
+
+## `SetDoubleVariableValue`
+
+Set variable value Action of type `double`. Inherits from `SetVariableValue<double, DoublePair, DoubleVariable, DoubleConstant, DoubleReference, DoubleEvent, DoublePairEvent, DoubleVariableInstancer>`.
 
 ---
 
