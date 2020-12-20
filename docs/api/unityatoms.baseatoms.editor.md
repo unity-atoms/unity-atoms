@@ -121,9 +121,21 @@ Variable Inspector of type `Collider2D`. Inherits from `AtomVariableEditor`
 
 ---
 
+## `QuaternionVariableEditor`
+
+Variable Inspector of type `Quaternion`. Inherits from `AtomVariableEditor`
+
+---
+
 ## `Vector3VariableEditor`
 
 Variable Inspector of type `Vector3`. Inherits from `AtomVariableEditor`
+
+---
+
+## `DoubleVariableEditor`
+
+Variable Inspector of type `double`. Inherits from `AtomVariableEditor`
 
 ---
 
@@ -139,6 +151,12 @@ Variable Inspector of type `Color`. Inherits from `AtomVariableEditor`
 
 ---
 
+## `QuaternionEventEditor`
+
+Event property drawer of type `Quaternion`. Inherits from `AtomEventEditor<Quaternion, QuaternionEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `BoolEventEditor`
 
 Event property drawer of type `bool`. Inherits from `AtomEventEditor<bool, BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -148,6 +166,12 @@ Event property drawer of type `bool`. Inherits from `AtomEventEditor<bool, BoolE
 ## `ColorPairEventEditor`
 
 Event property drawer of type `ColorPair`. Inherits from `AtomEventEditor<ColorPair, ColorPairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `DoublePairEventEditor`
+
+Event property drawer of type `DoublePair`. Inherits from `AtomEventEditor<DoublePair, DoublePairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -187,6 +211,12 @@ Event property drawer of type `BoolPair`. Inherits from `AtomEventEditor<BoolPai
 
 ---
 
+## `DoubleEventEditor`
+
+Event property drawer of type `double`. Inherits from `AtomEventEditor<double, DoubleEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `Collider2DEventEditor`
 
 Event property drawer of type `Collider2D`. Inherits from `AtomEventEditor<Collider2D, Collider2DEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -202,6 +232,12 @@ Event property drawer of type `FloatPair`. Inherits from `AtomEventEditor<FloatP
 ## `Vector2PairEventEditor`
 
 Event property drawer of type `Vector2Pair`. Inherits from `AtomEventEditor<Vector2Pair, Vector2PairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `QuaternionPairEventEditor`
+
+Event property drawer of type `QuaternionPair`. Inherits from `AtomEventEditor<QuaternionPair, QuaternionPairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -295,9 +331,21 @@ Constant property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2Con
 
 ---
 
+## `QuaternionConstantDrawer`
+
+Constant property drawer of type `Quaternion`. Inherits from `AtomDrawer<QuaternionConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `FloatConstantDrawer`
 
 Constant property drawer of type `float`. Inherits from `AtomDrawer<FloatConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `DoubleConstantDrawer`
+
+Constant property drawer of type `double`. Inherits from `AtomDrawer<DoubleConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -355,9 +403,21 @@ Variable property drawer of type `Vector3`. Inherits from `AtomDrawer<Vector3Var
 
 ---
 
+## `DoubleVariableDrawer`
+
+Variable property drawer of type `double`. Inherits from `AtomDrawer<DoubleVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `FloatVariableDrawer`
 
 Variable property drawer of type `float`. Inherits from `AtomDrawer<FloatVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `QuaternionVariableDrawer`
+
+Variable property drawer of type `Quaternion`. Inherits from `AtomDrawer<QuaternionVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -463,6 +523,12 @@ Event property drawer of type `Vector2Pair`. Inherits from `AtomDrawer<Vector2Pa
 
 ---
 
+## `QuaternionPairEventDrawer`
+
+Event property drawer of type `QuaternionPair`. Inherits from `AtomDrawer<QuaternionPairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `Collider2DPairEventDrawer`
 
 Event property drawer of type `Collider2DPair`. Inherits from `AtomDrawer<Collider2DPairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -472,6 +538,12 @@ Event property drawer of type `Collider2DPair`. Inherits from `AtomDrawer<Collid
 ## `VoidEventDrawer`
 
 Event property drawer of type `Void`. Inherits from `AtomDrawer<VoidEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `DoubleEventDrawer`
+
+Event property drawer of type `double`. Inherits from `AtomDrawer<DoubleEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -496,6 +568,12 @@ Event property drawer of type `int`. Inherits from `AtomDrawer<IntEvent>`. Only 
 ## `BoolPairEventDrawer`
 
 Event property drawer of type `BoolPair`. Inherits from `AtomDrawer<BoolPairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `DoublePairEventDrawer`
+
+Event property drawer of type `DoublePair`. Inherits from `AtomDrawer<DoublePairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -526,6 +604,12 @@ Event property drawer of type `Color`. Inherits from `AtomDrawer<ColorEvent>`. O
 ## `BoolEventDrawer`
 
 Event property drawer of type `bool`. Inherits from `AtomDrawer<BoolEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `QuaternionEventDrawer`
+
+Event property drawer of type `Quaternion`. Inherits from `AtomDrawer<QuaternionEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -577,6 +661,12 @@ Value List property drawer of type `bool`. Inherits from `AtomDrawer<BoolValueLi
 
 ---
 
+## `DoubleValueListDrawer`
+
+Value List property drawer of type `double`. Inherits from `AtomDrawer<DoubleValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
 ## `IntValueListDrawer`
 
 Value List property drawer of type `int`. Inherits from `AtomDrawer<IntValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
@@ -616,6 +706,12 @@ Value List property drawer of type `Collider`. Inherits from `AtomDrawer<Collide
 ## `Vector2ValueListDrawer`
 
 Value List property drawer of type `Vector2`. Inherits from `AtomDrawer<Vector2ValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `QuaternionValueListDrawer`
+
+Value List property drawer of type `Quaternion`. Inherits from `AtomDrawer<QuaternionValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 

@@ -1,0 +1,25 @@
+{
+  "name": "com.mambojambostudios.unity-atoms-input-system",
+  "displayName": "Unity Atoms Input System",
+  "version": "4.3.0",
+  "unity": "2018.3",
+  "description": "Unity Atoms with Unity's Input System.",
+  "keywords": [
+    "scriptable objects",
+    "unity"
+  ],
+  "category": "Unity",
+  "files": [
+    "/package.json",
+    "/package.json.meta",
+    "/Runtime",
+    "/Runtime.meta",
+    "/Editor",
+    "/Editor.meta"
+  ],
+  "dependencies": {
+    "com.mambojambostudios.unity-atoms-core": "4.3.0",
+    "com.mambojambostudios.unity-atoms-base-atoms": "4.3.0",
+    "com.unity.inputsystem": "1.0.1"
+  }
+}

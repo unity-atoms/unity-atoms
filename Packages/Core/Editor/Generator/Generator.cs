@@ -39,7 +39,7 @@ namespace UnityAtoms.Editor
         public static Dictionary<string, string> CreateTemplateVariablesMap(string valueType, string valueTypeNamespace, string subUnityAtomsNamespace)
         {
             var templateVariables = new Dictionary<string, string>() {
-                { "VALUE_TYPE_NAME", valueType.Capitalize() },
+                { "VALUE_TYPE_NAME", valueType.Replace('.', '_').Capitalize() },
                 { "VALUE_TYPE", valueType },
                 { "VALUE_TYPE_NAME_NO_PAIR", valueType.Contains("Pair") ? valueType.Capitalize().Remove(valueType.IndexOf("Pair")) : valueType.Capitalize() }
             };

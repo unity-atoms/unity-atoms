@@ -1,0 +1,17 @@
+{
+    "name": "MamboJamboStudios.UnityAtomsInputSystem.Runtime",
+    "references": [
+        "MamboJamboStudios.UnityAtomsCore.Runtime",
+        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

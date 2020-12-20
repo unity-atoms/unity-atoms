@@ -126,6 +126,8 @@ const run = async () => {
     "UnityAtoms.SceneMgmt.Editor.",
     "UnityAtoms.MonoHooks.",
     "UnityAtoms.MonoHooks.Editor.",
+    "UnityAtoms.InputSystem.",
+    "UnityAtoms.InputSystem.Editor.",
   ];
 
   const getNamespace = (name) => {
