@@ -25,6 +25,14 @@
         "title": "UnityAtoms.FSM",
         "sidebar_label": "UnityAtoms.FSM"
       },
+      "api/unityatoms.inputsystem.editor": {
+        "title": "UnityAtoms.InputSystem.Editor",
+        "sidebar_label": "UnityAtoms.InputSystem.Editor"
+      },
+      "api/unityatoms.inputsystem": {
+        "title": "UnityAtoms.InputSystem",
+        "sidebar_label": "UnityAtoms.InputSystem"
+      },
       "api/unityatoms": {
         "title": "UnityAtoms",
         "sidebar_label": "UnityAtoms"
@@ -99,6 +107,10 @@
       "subpackages/fsm": {
         "title": "FSM",
         "sidebar_label": "FSM"
+      },
+      "subpackages/input-system": {
+        "title": "Input System",
+        "sidebar_label": "Input System"
       },
       "subpackages/mobile": {
         "title": "Mobile",
