@@ -15,6 +15,8 @@
     -   [UnityAtoms.BaseAtoms.Editor](./api/unityatoms.baseatoms.editor.md)
     -   [UnityAtoms.FSM](./api/unityatoms.fsm.md)
     -   [UnityAtoms.FSM.Editor](./api/unityatoms.fsm.editor.md)
+    -   [UnityAtoms.InputSystem](./api/unityatoms.inputsystem.md)
+    -   [UnityAtoms.InputSystem.Editor](./api/unityatoms.inputsystem.editor.md)
     -   [UnityAtoms.Mobile](./api/unityatoms.mobile.md)
     -   [UnityAtoms.Mobile.Editor](./api/unityatoms.mobile.editor.md)
     -   [UnityAtoms.MonoHooks](./api/unityatoms.monohooks.md)
@@ -24,6 +26,7 @@
 -   Subpackages
     -   [BaseAtoms](./subpackages/base-atoms.md)
     -   [FSM](./subpackages/fsm.md)
+    -   [InputSystem](./subpackages/input-system.md)
     -   [Mobile](./subpackages/mobile.md)
     -   [MonoHooks](./subpackages/mono-hooks.md)
     -   [SceneMgmt](./subpackages/scene-mgmt.md)
