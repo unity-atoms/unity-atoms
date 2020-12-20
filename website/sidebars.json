@@ -24,7 +24,8 @@
         "ids": [
           "tutorials/variable-instancer",
           "tutorials/event-instancer",
-          "tutorials/generator"
+          "tutorials/generator",
+          "tutorials/conditions"
         ]
       },
       {

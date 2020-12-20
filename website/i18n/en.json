@@ -128,6 +128,10 @@
         "title": "Advanced example",
         "sidebar_label": "Advanced example"
       },
+      "tutorials/conditions": {
+        "title": "Conditions",
+        "sidebar_label": "Conditions"
+      },
       "tutorials/event-instancer": {
         "title": "Event Instancer",
         "sidebar_label": "Event Instancer"
