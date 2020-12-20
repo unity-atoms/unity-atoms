@@ -47,9 +47,19 @@ namespace UnityAtoms
         public override int GetHashCode() => _id.GetHashCode();
 
 
-        public override string ToString() =>
-            _constructedWithValue ?
-                $"{_frameCount}   [{(_value == null ? "null" : _value.ToString())}] {_stackTrace}" :
-                $"{_frameCount} {_stackTrace}";
+        public override string ToString()
+        {
+            string stringifiedValue = "";
+            if (_constructedWithValue)
+            {
+                try
+                {
+                    stringifiedValue = $"[{(_value == null ? "null" : _value.ToString())}]";
+                }
+                catch { /* Ignore error */ }
+            }
+
+            return $"{_frameCount} {stringifiedValue}{_stackTrace}";
+        }
     }
 }

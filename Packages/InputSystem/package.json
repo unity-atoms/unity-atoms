@@ -13,7 +13,9 @@
     "/package.json",
     "/package.json.meta",
     "/Runtime",
-    "/Runtime.meta"
+    "/Runtime.meta",
+    "/Editor",
+    "/Editor.meta"
   ],
   "dependencies": {
     "com.mambojambostudios.unity-atoms-core": "4.3.0",

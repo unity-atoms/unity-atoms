@@ -26,34 +26,34 @@ namespace UnityAtoms.InputSystem
         public void Raise(InputAction.CallbackContext context)
         {
             var value = context.ReadValue<T>();
-            switch(context.phase)
+            switch (context.phase)
             {
                 case InputActionPhase.Disabled:
-                    if(_disabled)
+                    if (_disabled)
                     {
                         _disabled.Raise(value);
                     }
                     break;
                 case InputActionPhase.Waiting:
-                    if(_waiting)
+                    if (_waiting)
                     {
                         _waiting.Raise(value);
                     }
                     break;
                 case InputActionPhase.Started:
-                    if(_started)
+                    if (_started)
                     {
                         _started.Raise(value);
                     }
                     break;
                 case InputActionPhase.Performed:
-                    if(_performed)
+                    if (_performed)
                     {
                         _performed.Raise(value);
                     }
                     break;
                 case InputActionPhase.Canceled:
-                    if(_canceled)
+                    if (_canceled)
                     {
                         _canceled.Raise(value);
                     }
@@ -63,11 +63,11 @@ namespace UnityAtoms.InputSystem
 
         public void UpdateValues(InputAction.CallbackContext context)
         {
-            if(_value)
+            if (_value)
             {
                 _value.Value = context.ReadValue<T>();
             }
-            if(_valueAsButton)
+            if (_valueAsButton)
             {
                 _valueAsButton.Value = context.ReadValueAsButton();
             }

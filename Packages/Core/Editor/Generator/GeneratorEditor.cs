@@ -191,16 +191,14 @@ namespace UnityAtoms.Editor
                 var templates = Generator.GetTemplatePaths();
                 var templateConditions = Generator.CreateTemplateConditions(_isValueTypeEquatable, _valueTypeNamespace, _subUnityAtomsNamespace, _valueType);
                 var templateVariables = Generator.CreateTemplateVariablesMap(_valueType, _valueTypeNamespace, _subUnityAtomsNamespace);
+                var capitalizedValueType = _valueType.Capitalize();
 
                 _atomTypesToGenerate.ForEach((atomType) =>
                 {
-                    if(atomType.IsValuePair)
-                    {
-                        templateVariables["VALUE_TYPE_NAME"] += "Pair";
-                        templateVariables["VALUE_TYPE"] = templateVariables["VALUE_TYPE"].Capitalize() + "Pair";
-                    }
-
-                    Generator.Generate(new AtomReceipe(atomType, templateVariables["VALUE_TYPE"]), _baseWritePath, templates, templateConditions, templateVariables);
+                    templateVariables["VALUE_TYPE_NAME"] = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
+                    var valueType = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : _valueType;
+                    templateVariables["VALUE_TYPE"] = valueType;
+                    Generator.Generate(new AtomReceipe(atomType, valueType), _baseWritePath, templates, templateConditions, templateVariables);
                 });
 
                 AssetDatabase.Refresh();
