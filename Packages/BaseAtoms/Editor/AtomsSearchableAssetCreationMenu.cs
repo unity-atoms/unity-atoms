@@ -39,7 +39,7 @@ namespace UnityAtoms.Editor
             StringTree<Type> typeTree = new StringTree<Type>();
 
             foreach (var type in TypeCache.GetTypesWithAttribute<CreateAssetMenuAttribute>()
-                .Where(t => t.Namespace != null && t.Namespace.Contains("Atom")))
+                .Where(t => t.GetCustomAttribute<AtomsSearchable>(true) != null))
             {
                 var name = type.GetCustomAttribute<CreateAssetMenuAttribute>().menuName;
                 var i = name.LastIndexOf('/');
