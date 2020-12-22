@@ -5,6 +5,7 @@ namespace UnityAtoms
     /// <summary>
     /// None generic base class for all Atoms.
     /// </summary>
+    [AtomsSearchable]
     public abstract class BaseAtom : ScriptableObject
     {
         /// <summary>
