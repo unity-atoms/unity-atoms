@@ -49,7 +49,7 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
-            if (_base == null)
+            if (Base == null)
             {
                 _inMemoryCopy = ScriptableObject.CreateInstance<V>();
             }
