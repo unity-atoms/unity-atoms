@@ -36,7 +36,7 @@ namespace UnityAtoms.Editor
         static void RegenereateAssets()
         {
             if (!EditorUtility.DisplayDialog("Regenerate", "This will regenerate all Atoms from Generation-Assets",
-                "ok", "cancel"))
+                "Ok", "Cancel"))
             {
                 return;
             }
@@ -47,8 +47,6 @@ namespace UnityAtoms.Editor
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 AssetDatabase.LoadAssetAtPath<AtomGenerator>(path).Generate();
             }
-
-            //Debug.Log(sb.ToString());
         }
 
         /// <summary>
