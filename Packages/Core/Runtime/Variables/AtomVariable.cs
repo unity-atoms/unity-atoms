@@ -47,6 +47,7 @@ namespace UnityAtoms
         [SerializeField]
         [FormerlySerializedAs("Changed")]
         private E1 _changed;
+        private bool _changedInstantiatedAtRuntime;
         public E1 Changed
         {
             get
@@ -54,7 +55,8 @@ namespace UnityAtoms
                 if (_changed == null)
                 {
                     _changed = ScriptableObject.CreateInstance<E1>();
-                    _changed.name = $"{name}_ChangedEvent_Runtime_{typeof(E1)}";
+                    _changed.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}ChangedEvent_Runtime_{typeof(E1)}";
+                    _changedInstantiatedAtRuntime = true;
                 }
                 return _changed;
             }
@@ -65,11 +67,17 @@ namespace UnityAtoms
         }
 
         /// <summary>
+        /// True if Variable has a Changed Event
+        /// </summary>
+        public bool HasChangedEvent { get => _changed != null; }
+
+        /// <summary>
         /// Changed with history Event triggered when the Variable value gets changed.
         /// </summary>
         [SerializeField]
         [FormerlySerializedAs("ChangedWithHistory")]
         private E2 _changedWithHistory;
+        private bool _changedWithHistoryInstantiatedAtRuntime;
         public E2 ChangedWithHistory
         {
             get
@@ -77,7 +85,8 @@ namespace UnityAtoms
                 if (_changedWithHistory == null)
                 {
                     _changedWithHistory = ScriptableObject.CreateInstance<E2>();
-                    _changedWithHistory.name = $"{name}_ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
+                    _changedWithHistory.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}_ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
+                    _changedWithHistoryInstantiatedAtRuntime = true;
                 }
                 return _changedWithHistory;
             }
@@ -86,6 +95,11 @@ namespace UnityAtoms
                 _changedWithHistory = value;
             }
         }
+
+        /// <summary>
+        /// True if Variable has a Changed with history Event
+        /// </summary>
+        public bool HasChangedWithHistoryEvent { get => _changedWithHistory != null; }
 
         /// <summary>
         /// Whether Changed Event should be triggered on OnEnable or not
@@ -162,6 +176,12 @@ namespace UnityAtoms
 #endif
         }
 
+        private void OnDisable()
+        {
+            if (_changedInstantiatedAtRuntime) _changed = null;
+            if (_changedWithHistoryInstantiatedAtRuntime) _changedWithHistory = null;
+        }
+
         /// <summary>
         /// Set initial values
         /// </summary>
@@ -169,18 +189,21 @@ namespace UnityAtoms
         {
             _oldValue = InitialValue;
             _value = InitialValue;
+
+            _changedInstantiatedAtRuntime = false;
+            _changedWithHistoryInstantiatedAtRuntime = false;
         }
 
         /// <summary>
         /// Trigger initial events if related options enabled
         /// </summary>
-        private void TriggerInitialEvents()
+        public void TriggerInitialEvents()
         {
-            if (Changed != null && _triggerChangedOnOnEnable)
+            if (HasChangedEvent && _triggerChangedOnOnEnable)
             {
                 Changed.Raise(Value);
             }
-            if (_triggerChangedWithHistoryOnOnEnable)
+            if (HasChangedWithHistoryEvent != null && _triggerChangedWithHistoryOnOnEnable)
             {
                 var pair = default(P);
                 pair.Item1 = _value;
@@ -246,8 +269,8 @@ namespace UnityAtoms
 
             if (triggerEvents)
             {
-                if (Changed != null) { Changed.Raise(_value); }
-                if (ChangedWithHistory != null)
+                if (HasChangedEvent) { Changed.Raise(_value); }
+                if (HasChangedWithHistoryEvent)
                 {
                     // NOTE: Doing new P() here, even though it is cleaner, generates garbage.
                     var pair = default(P);
@@ -332,9 +355,9 @@ namespace UnityAtoms
         /// </returns>
         public E GetEvent<E>() where E : AtomEventBase
         {
-            if (Changed is E evt1)
+            if (_changed is E evt1)
                 return evt1;
-            if (ChangedWithHistory is E evt2)
+            if (_changedWithHistory is E evt2)
                 return evt2;
 
             throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");

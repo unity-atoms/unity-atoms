@@ -29,15 +29,19 @@ namespace UnityAtoms
         /// </summary>
         protected override void ImplSpecificSetup()
         {
-            if (Base.Changed != null)
+            if (Base.HasChangedEvent)
             {
                 _inMemoryCopy.Changed = Instantiate(Base.Changed);
             }
 
-            if (Base.ChangedWithHistory != null)
+            if (Base.HasChangedWithHistoryEvent)
             {
                 _inMemoryCopy.ChangedWithHistory = Instantiate(Base.ChangedWithHistory);
             }
+
+            // Manually trigger initial events since base class has already instantiated Variable 
+            // and the Variable's OnEnable hook has therefore already been executed.
+            _inMemoryCopy.TriggerInitialEvents();
         }
 
         /// <summary>
@@ -47,10 +51,8 @@ namespace UnityAtoms
         /// <returns>The event.</returns>
         public E GetEvent<E>() where E : AtomEventBase
         {
-            if (typeof(E) == typeof(E1))
-                return (_inMemoryCopy.Changed as E);
-            if (typeof(E) == typeof(E2))
-                return (_inMemoryCopy.ChangedWithHistory as E);
+            if (typeof(E) == typeof(E1) || typeof(E) == typeof(E2))
+                return _inMemoryCopy.GetEvent<E>();
 
             throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
         }
