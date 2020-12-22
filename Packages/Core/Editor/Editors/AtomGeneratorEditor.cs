@@ -30,9 +30,7 @@ namespace UnityAtoms.Editor
 
         public override void OnInspectorGUI()
         {
-            Rect buttonRect = new Rect();
             var rect = GUILayoutUtility.GetRect(new GUIContent("Show"), EditorStyles.toolbarButton);
-
 
             if (GUILayout.Button("Select Type"))
             {
