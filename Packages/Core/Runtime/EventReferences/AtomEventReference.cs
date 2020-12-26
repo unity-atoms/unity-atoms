@@ -12,9 +12,9 @@ namespace UnityAtoms
     /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
     /// <typeparam name="EI">Event Instancer of type `T`.</typeparam>
     public abstract class AtomEventReference<T, V, E, VI, EI> : AtomBaseEventReference<T, E, EI>, IGetEvent, ISetEvent
-        where V : IGetEvent, ISetEvent
+        where V : IGetOrCreateEvent, ISetEvent
         where E : AtomEvent<T>
-        where VI : IGetEvent, ISetEvent
+        where VI : IGetOrCreateEvent, ISetEvent
         where EI : AtomEventInstancer<T, E>
     {
         /// <summary>
@@ -27,8 +27,8 @@ namespace UnityAtoms
             {
                 switch (_usage)
                 {
-                    case (AtomEventReferenceUsage.VARIABLE): return _variable.GetEvent<E>();
-                    case (AtomEventReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer.GetEvent<E>();
+                    case (AtomEventReferenceUsage.VARIABLE): return _variable.GetOrCreateEvent<E>();
+                    case (AtomEventReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer.GetOrCreateEvent<E>();
                     case (AtomEventReferenceUsage.EVENT_INSTANCER): return _eventInstancer.Event;
                     case (AtomEventReferenceUsage.EVENT):
                     default:

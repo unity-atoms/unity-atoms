@@ -17,7 +17,7 @@ namespace UnityAtoms
     /// <typeparam name="E2">Event of type `AtomEvent&lt;T, T&gt;`.</typeparam>
     /// <typeparam name="F">Function of type `FunctionEvent&lt;T, T&gt;`.</typeparam>
     [EditorIcon("atom-icon-lush")]
-    public abstract class AtomVariable<T, P, E1, E2, F> : AtomBaseVariable<T>, IGetEvent, ISetEvent
+    public abstract class AtomVariable<T, P, E1, E2, F> : AtomBaseVariable<T>, IGetEvent, ISetEvent, IGetOrCreateEvent
         where P : struct, IPair<T>
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<P>
@@ -47,15 +47,11 @@ namespace UnityAtoms
         [SerializeField]
         [FormerlySerializedAs("Changed")]
         private E1 _changed;
+        private bool _changedInstantiatedAtRuntime;
         public E1 Changed
         {
             get
             {
-                if (_changed == null)
-                {
-                    _changed = ScriptableObject.CreateInstance<E1>();
-                    _changed.name = $"{name}_ChangedEvent_Runtime_{typeof(E1)}";
-                }
                 return _changed;
             }
             set
@@ -70,15 +66,11 @@ namespace UnityAtoms
         [SerializeField]
         [FormerlySerializedAs("ChangedWithHistory")]
         private E2 _changedWithHistory;
+        private bool _changedWithHistoryInstantiatedAtRuntime;
         public E2 ChangedWithHistory
         {
             get
             {
-                if (_changedWithHistory == null)
-                {
-                    _changedWithHistory = ScriptableObject.CreateInstance<E2>();
-                    _changedWithHistory.name = $"{name}_ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
-                }
                 return _changedWithHistory;
             }
             set
@@ -162,6 +154,12 @@ namespace UnityAtoms
 #endif
         }
 
+        private void OnDisable()
+        {
+            if (_changedInstantiatedAtRuntime) _changed = null;
+            if (_changedWithHistoryInstantiatedAtRuntime) _changedWithHistory = null;
+        }
+
         /// <summary>
         /// Set initial values
         /// </summary>
@@ -169,18 +167,21 @@ namespace UnityAtoms
         {
             _oldValue = InitialValue;
             _value = InitialValue;
+
+            _changedInstantiatedAtRuntime = false;
+            _changedWithHistoryInstantiatedAtRuntime = false;
         }
 
         /// <summary>
         /// Trigger initial events if related options enabled
         /// </summary>
-        private void TriggerInitialEvents()
+        public void TriggerInitialEvents()
         {
             if (Changed != null && _triggerChangedOnOnEnable)
             {
                 Changed.Raise(Value);
             }
-            if (_triggerChangedWithHistoryOnOnEnable)
+            if (ChangedWithHistory != null && _triggerChangedWithHistoryOnOnEnable)
             {
                 var pair = default(P);
                 pair.Item1 = _value;
@@ -332,10 +333,14 @@ namespace UnityAtoms
         /// </returns>
         public E GetEvent<E>() where E : AtomEventBase
         {
-            if (Changed is E evt1)
-                return evt1;
-            if (ChangedWithHistory is E evt2)
-                return evt2;
+            if (typeof(E) == typeof(E1))
+            {
+                return Changed as E;
+            }
+            if (typeof(E) == typeof(E2))
+            {
+                return ChangedWithHistory as E;
+            }
 
             throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
         }
@@ -359,6 +364,42 @@ namespace UnityAtoms
             }
 
             throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
+        }
+
+        /// <summary>
+        /// Get event by type (allowing inheritance). Creates an event if the type is supported for this Variable, but the Event itself is `null`.
+        /// </summary>
+        /// <typeparam name="E"></typeparam>
+        /// <returns>Changed - If Changed (or ChangedWithHistory) are of type E
+        /// ChangedWithHistory - If not Changed but ChangedWithHistory is of type E
+        /// <exception cref="NotSupportedException">if none of the events are of type E</exception>
+        /// </returns>
+        public E GetOrCreateEvent<E>() where E : AtomEventBase
+        {
+            if (typeof(E) == typeof(E1))
+            {
+                if (Changed == null)
+                {
+                    Changed = ScriptableObject.CreateInstance<E1>();
+                    Changed.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}ChangedEvent_Runtime_{typeof(E1)}";
+                    _changedInstantiatedAtRuntime = true;
+                }
+
+                return Changed as E;
+            }
+            if (typeof(E) == typeof(E2))
+            {
+                if (ChangedWithHistory == null)
+                {
+                    ChangedWithHistory = ScriptableObject.CreateInstance<E2>();
+                    ChangedWithHistory.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}_ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
+                    _changedWithHistoryInstantiatedAtRuntime = true;
+                }
+
+                return ChangedWithHistory as E;
+            }
+
+            throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
         }
     }
 }

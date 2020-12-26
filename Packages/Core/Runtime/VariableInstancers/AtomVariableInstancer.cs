@@ -17,7 +17,7 @@ namespace UnityAtoms
     /// <typeparam name="F">Function of type T => T</typeparam>
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomVariableInstancer<V, P, T, E1, E2, F> : AtomBaseVariableInstancer<T, V>, IGetEvent, ISetEvent
+    public abstract class AtomVariableInstancer<V, P, T, E1, E2, F> : AtomBaseVariableInstancer<T, V>, IGetEvent, ISetEvent, IGetOrCreateEvent
         where V : AtomVariable<T, P, E1, E2, F>
         where P : struct, IPair<T>
         where E1 : AtomEvent<T>
@@ -38,6 +38,10 @@ namespace UnityAtoms
             {
                 _inMemoryCopy.ChangedWithHistory = Instantiate(Base.ChangedWithHistory);
             }
+
+            // Manually trigger initial events since base class has already instantiated Variable 
+            // and the Variable's OnEnable hook has therefore already been executed.
+            _inMemoryCopy.TriggerInitialEvents();
         }
 
         /// <summary>
@@ -47,12 +51,7 @@ namespace UnityAtoms
         /// <returns>The event.</returns>
         public E GetEvent<E>() where E : AtomEventBase
         {
-            if (typeof(E) == typeof(E1))
-                return (_inMemoryCopy.Changed as E);
-            if (typeof(E) == typeof(E2))
-                return (_inMemoryCopy.ChangedWithHistory as E);
-
-            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
+            return _inMemoryCopy.GetEvent<E>();
         }
 
         /// <summary>
@@ -62,18 +61,17 @@ namespace UnityAtoms
         /// <typeparam name="E"></typeparam>
         public void SetEvent<E>(E e) where E : AtomEventBase
         {
-            if (typeof(E) == typeof(E1))
-            {
-                _inMemoryCopy.Changed = (e as E1);
-                return;
-            }
-            if (typeof(E) == typeof(E2))
-            {
-                _inMemoryCopy.ChangedWithHistory = (e as E2);
-                return;
-            }
+            _inMemoryCopy.SetEvent<E>(e);
+        }
 
-            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
+        /// <summary>
+        /// Get event by type. Creates it if it doesn't exist.
+        /// </summary>
+        /// <typeparam name="E"></typeparam>
+        /// <returns>The event.</returns>
+        public E GetOrCreateEvent<E>() where E : AtomEventBase
+        {
+            return _inMemoryCopy.GetOrCreateEvent<E>();
         }
     }
 }
