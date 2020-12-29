@@ -93,6 +93,10 @@ Variable Instancer used if `Usage` is set to `VariableInstancer`.
 
 Get or set the value for the Reference.
 
+---
+
+#### `IsUnassigned`
+
 ### Methods
 
 #### `GetEvent<E>`
@@ -290,6 +294,20 @@ Set event by type.
 
 ---
 
+#### `GetOrCreateEvent<E>`
+
+Get event by type. Creates it if it doesn't exist.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Returns
+
+The event.
+
+---
+
 ## `AtomBaseVariableInstancer<V,P,T,E1,E2,F>`
 
 #### Type Parameters
@@ -368,6 +386,12 @@ Specify a texture name from your assets which you want to be assigned as an icon
 ## `ReadOnlyAttribute`
 
 Use to make a field read only in the Unity inspector. Solution taken from here: https://answers.unity.com/questions/489942/how-to-make-a-readonly-property-in-inspector.html
+
+---
+
+## `AtomsSearchable`
+
+Attribute that makes an Atom searchable.
 
 ---
 
@@ -572,6 +596,18 @@ When setting the value of a Variable the new value will be piped through all the
 
 ### Methods
 
+#### `SetInitialValues`
+
+Set initial values
+
+---
+
+#### `TriggerInitialEvents`
+
+Trigger initial events if related options enabled
+
+---
+
 #### `Reset(System.Boolean)`
 
 Reset the Variable to its `_initialValue`.
@@ -658,6 +694,20 @@ Set event by type.
 
 ---
 
+#### `GetOrCreateEvent<E>`
+
+Get event by type (allowing inheritance). Creates an event if the type is supported for this Variable, but the Event itself is `null`.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Returns
+
+{"_":"Changed - If Changed (or ChangedWithHistory) are of type E\n ChangedWithHistory - If not Changed but ChangedWithHistory is of type E\n \n ","exception":[{"_":"if none of the events are of type E","$":{"cref":"T:System.NotSupportedException"}}]}
+
+---
+
 ## `EquatableAtomVariable<T,P,E1,E2,F>`
 
 #### Type Parameters
@@ -669,6 +719,12 @@ Set event by type.
 -   `F` - Function of type T and T.
 
 Atom Variable base class for types that are implementing `IEquatable<T>`.
+
+---
+
+## `AtomConditionOperators`
+
+Enumeration for logical operators for `AtomCondition` Predicates
 
 ---
 
@@ -1015,6 +1071,12 @@ Unregister handler that was registered using the `Register` method.
 
 ---
 
+#### `UnregisterAll`
+
+Unregister all handlers that were registered using the `Register` method.
+
+---
+
 #### `RegisterListener(UnityAtoms.IAtomListener)`
 
 Register a Listener that in turn trigger all its associated handlers when the Event triggers.
@@ -1197,6 +1259,18 @@ The Unity Event responses. NOTE: This variable is public due to this bug: https:
 #### `_actionResponses`
 
 The Action responses;
+
+---
+
+#### `_conditions`
+
+The Conditions to evaluate;
+
+---
+
+#### `_operator`
+
+The logical operator to apply for conditions
 
 ### Properties
 
@@ -1494,6 +1568,12 @@ Interface defining an `IsValid` method.
 ## `ISetEvent`
 
 Interface for setting an event.
+
+---
+
+## `IGetOrCreateEvent`
+
+Interface for getting or creating an event.
 
 ---
 

@@ -56,15 +56,15 @@ Add the following to your `manifest.json` (which is located under your project l
     ],
     "dependencies": {
         ...
-        "com.mambojambostudios.unity-atoms-core": "4.3.0",
-        "com.mambojambostudios.unity-atoms-base-atoms": "4.3.0",
-        "com.mambojambostudios.unity-atoms-fsm": "4.3.0",
-        "com.mambojambostudios.unity-atoms-mobile": "4.3.0",
-        "com.mambojambostudios.unity-atoms-mono-hooks": "4.3.0",
-        "com.mambojambostudios.unity-atoms-tags": "4.3.0",
-        "com.mambojambostudios.unity-atoms-scene-mgmt": "4.3.0",
-        "com.mambojambostudios.unity-atoms-ui": "4.3.0",
-	"com.mambojambostudios.unity-atoms-input-system": "4.3.0",
+        "com.mambojambostudios.unity-atoms-core": "4.4.0",
+        "com.mambojambostudios.unity-atoms-base-atoms": "4.4.0",
+        "com.mambojambostudios.unity-atoms-fsm": "4.4.0",
+        "com.mambojambostudios.unity-atoms-mobile": "4.4.0",
+        "com.mambojambostudios.unity-atoms-mono-hooks": "4.4.0",
+        "com.mambojambostudios.unity-atoms-tags": "4.4.0",
+        "com.mambojambostudios.unity-atoms-scene-mgmt": "4.4.0",
+        "com.mambojambostudios.unity-atoms-ui": "4.4.0",
+	"com.mambojambostudios.unity-atoms-input-system": "4.4.0",
         ...
     }
 }

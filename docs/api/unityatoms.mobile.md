@@ -226,6 +226,12 @@ Variable of type `TouchUserInput`. Inherits from `EquatableAtomVariable<TouchUse
 
 ---
 
+## `TouchUserInputCondition`
+
+Condition of type `TouchUserInput`. Inherits from `AtomCondition<TouchUserInput>`.
+
+---
+
 ## `TouchUserInputPairAction`
 
 Action of type `TouchUserInputPair`. Inherits from `AtomAction<TouchUserInputPair>`.

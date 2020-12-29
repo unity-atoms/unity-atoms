@@ -6,6 +6,40 @@
 💅 = Polish
 🚀 = New features
 
+# 4.4.0 (December 30, 2020)
+
+-   ([@miikalo](https://github.com/miikalo) has joined as maintainer of Unity Atoms! 🥳
+
+## 🐛 Bug fixes
+
+-   [#201](https://github.com/AdamRamberg/unity-atoms/pull/201) UnregisterAll in AtomEvent does not seem to work ([@soraphis](https://github.com/soraphis))
+-   [#199](https://github.com/AdamRamberg/unity-atoms/pull/199) Null Reference Exceptions when trying to set VoidBaseEventReferenceListener event in code ([@soraphis](https://github.com/soraphis))
+-   [#216](https://github.com/AdamRamberg/unity-atoms/pull/216) Conditions created do not appear under Atoms Search [@AdamRamberg](https://github.com/AdamRamberg)
+-   [#218](https://github.com/AdamRamberg/unity-atoms/pull/218) Fixing SerializedDictionary Memory Leak [@AdamRamberg](https://github.com/AdamRamberg)
+-   [#219](https://github.com/AdamRamberg/unity-atoms/pull/219) Fixing FSM instancer where \_base always is null [@AdamRamberg](https://github.com/AdamRamberg)
+-   [#220](https://github.com/AdamRamberg/unity-atoms/pull/220) Trigger initial events for instancers [@AdamRamberg](https://github.com/AdamRamberg)
+
+## 📝 Documentation
+
+-   [#190](https://github.com/AdamRamberg/unity-atoms/pull/190) Restructure tutorials and add two new tutorials ([@miikalo](https://github.com/miikalo))
+-   [#193](https://github.com/AdamRamberg/unity-atoms/pull/193) Adding a little bit of clarity to installation ([@mutmedia](https://github.com/mutmedia)
+-   [#207](https://github.com/AdamRamberg/unity-atoms/pull/207) Add FAQ to documentation pages ([@miikalo](https://github.com/miikalo))
+-   [#206](https://github.com/AdamRamberg/unity-atoms/pull/206) Add tutorial for Conditions ([@miikalo](https://github.com/miikalo))
+
+## 💅 Polish
+
+-   [#217](https://github.com/AdamRamberg/unity-atoms/pull/217) Move "Atoms Search" under "Unity Atoms" in the "Create" context menu [@AdamRamberg](https://github.com/AdamRamberg))
+
+## 🚀 New features
+
+-   [#186](https://github.com/AdamRamberg/unity-atoms/pull/186) Searchable menu for faster atom creation ([@soraphis](https://github.com/soraphis))
+-   [#182](https://github.com/AdamRamberg/unity-atoms/pull/182) Add workaround for "Enter Play Mode" feature to enable initial values ([@hazarartuner](https://github.com/hazarartuner))
+-   [#187](https://github.com/AdamRamberg/unity-atoms/pull/187) Asset based atoms generation ([@soraphis](https://github.com/soraphis))
+-   [#191](https://github.com/AdamRamberg/unity-atoms/pull/191) Basic implementation of conditions for listeners ([@miikalo](https://github.com/miikalo))
+-   [#202](https://github.com/AdamRamberg/unity-atoms/pull/202) Added for AtomReference a check to see if an Atom is actually assigned ([@soraphis](https://github.com/soraphis))
+-   [#212](https://github.com/AdamRamberg/unity-atoms/pull/212) Unity Atoms Input System Integration ([@Casey-Hofland](https://github.com/Casey-Hofland))
+-   [#221](https://github.com/AdamRamberg/unity-atoms/pull/221) Add OnCollisionHook and OnCollision2DHook ([@Casey-Hofland](https://github.com/Casey-Hofland))
+
 # 4.3.0 (August 4, 2020)
 
 ## 🐛 Bug fixes

@@ -213,6 +213,12 @@ Variable of type `SceneField`. Inherits from `EquatableAtomVariable<SceneField, 
 
 ---
 
+## `SceneFieldCondition`
+
+Condition of type `SceneField`. Inherits from `AtomCondition<SceneField>`.
+
+---
+
 ## `SceneFieldPairAction`
 
 Action of type `SceneFieldPair`. Inherits from `AtomAction<SceneFieldPair>`.
