@@ -23,7 +23,7 @@ namespace UnityAtoms.BaseAtoms
         public bool Equals(Collision2DReference other) { return base.Equals(other); }
         protected override bool ValueEquals(Collision2D other)
         {
-            throw new NotImplementedException();
+            return Value == other;
         }
     }
 }
