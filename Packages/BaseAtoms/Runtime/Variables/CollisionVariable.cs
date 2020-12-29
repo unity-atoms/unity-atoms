@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// Variable of type `Collision`. Inherits from `EquatableAtomVariable&lt;Collision, CollisionPair, CollisionEvent, CollisionPairEvent, CollisionCollisionFunction&gt;`.
+    /// Variable of type `Collision`. Inherits from `AtomVariable&lt;Collision, CollisionPair, CollisionEvent, CollisionPairEvent, CollisionCollisionFunction&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Collision", fileName = "CollisionVariable")]
