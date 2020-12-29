@@ -62,14 +62,10 @@ namespace UnityAtoms
         public bool Equals({VALUE_TYPE_NAME}Reference other) { return base.Equals(other); }
         protected override bool ValueEquals({VALUE_TYPE} other)
         {
-<%IF IS_COLLIDER%>
-            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value == other;
-<%ELSE%>
-<%IF TYPE_IS_GAMEOBJECT%>
-            return (this.Value == null && other == null) || this.Value != null && other != null && this.Value.GetInstanceID() == other.GetInstanceID();
+<%IF TYPE_IS_GAMEOBJECT|TYPE_IS_COLLIDER|TYPE_IS_COLLIDER2D|TYPE_IS_COLLISION|TYPE_IS_COLLISION2D%>
+            return Value == other;
 <%ELSE%>
             throw new NotImplementedException();
-<%ENDIF%>
 <%ENDIF%>
         }
     }

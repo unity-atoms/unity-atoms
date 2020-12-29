@@ -67,9 +67,7 @@ namespace UnityAtoms
             }
         }
 
-        /// <summary>
         /// <returns>True if the `Usage` is an AtomType and is unassigned. False otherwise.</returns>
-        /// </summary>
         public bool IsUnassigned
         {
             get

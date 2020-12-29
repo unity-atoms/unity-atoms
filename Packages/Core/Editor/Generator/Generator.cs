@@ -28,7 +28,6 @@ namespace UnityAtoms.Editor
             templateConditions.Add("TYPE_IS_" + valueType.ToUpper());
             if (valueType == "int" || valueType == "float") { templateConditions.Add("IS_NUMERIC");}
             if (valueType == "Vector2" || valueType == "Vector3") { templateConditions.Add("IS_VECTOR");}
-            if (valueType == "Collider" || valueType == "Collider2D" || valueType == "Collider3D") { templateConditions.Add("IS_COLLIDER");}
             if (isValueTypeEquatable) { templateConditions.Add("EQUATABLE"); }
             if (!string.IsNullOrEmpty(valueTypeNamespace)) { templateConditions.Add("TYPE_HAS_NAMESPACE"); }
             if (!string.IsNullOrEmpty(subUnityAtomsNamespace)) { templateConditions.Add("HAS_SUB_UA_NAMESPACE"); }

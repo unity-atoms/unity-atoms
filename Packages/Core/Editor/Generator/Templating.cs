@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,9 +27,16 @@ namespace UnityAtoms.Editor
             var indexIfClosed = templateCopy.IndexOf("%>", indexIfOpened + 5, StringComparison.Ordinal);
             if (indexIfClosed == -1) throw new Exception("Found <%IF block but it was never closed (missing %>)");
 
-            var condition = templateCopy.Substring(indexIfOpened + 5, indexIfClosed - (indexIfOpened + 5));
-            var isNegatedCondition = condition.Substring(0, 1) == "!";
-            if (isNegatedCondition) { condition = condition.Substring(1); }
+            // NOTE: Only supports OR:ed conditions ATM
+            var conditions = new List<Tuple<string, bool>>();
+            var conditionStrings = templateCopy.Substring(indexIfOpened + 5, indexIfClosed - (indexIfOpened + 5)).Split('|').ToList();
+            conditionStrings.ForEach((c) => {
+                var isNegated = c.Substring(0, 1) == "!";
+                conditions.Add(new Tuple<string, bool>(
+                    isNegated ? c.Substring(1) : c,
+                    isNegated
+                ));
+            });
 
             var indexOfNextEndIf = templateCopy.IndexOf("<%ENDIF%>", indexIfClosed, StringComparison.Ordinal);
             if (indexOfNextEndIf == -1) throw new Exception("No closing <%ENDIF%> for condition.");
@@ -52,7 +60,7 @@ namespace UnityAtoms.Editor
             var endThenBlock = indexOfNextElse != -1 ? indexOfNextElse : indexOfNextEndIf;
 
             var resolved = "";
-            if (trueConditions.Contains(condition) ^ isNegatedCondition)
+            if (conditions.Any((condition) => trueConditions.Contains(condition.Item1) ^ condition.Item2))
             {
                 resolved = templateCopy.Substring(indexIfClosed + 2, endThenBlock - (indexIfClosed + 2));
             }
