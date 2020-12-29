@@ -17,7 +17,7 @@
   ],
   "category": "Unity",
   "scripts": {
-    "publish:all": "npm run publish:core && npm run publish:mobile && npm run publish:scene && npm run publish:tags && npm run publish:ui && npm run publish:mono && npm run publish:base && npm run publish:fsm && publish:input",
+    "publish:all": "npm run publish:core && npm run publish:mobile && npm run publish:scene && npm run publish:tags && npm run publish:ui && npm run publish:mono && npm run publish:base && npm run publish:fsm && npm run publish:input",
     "publish:core": "npm publish ./Packages/Core",
     "publish:fsm": "npm publish ./Packages/FSM",
     "publish:base": "npm publish ./Packages/BaseAtoms",
