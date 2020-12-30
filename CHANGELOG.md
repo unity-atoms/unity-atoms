@@ -6,6 +6,12 @@
 💅 = Polish
 🚀 = New features
 
+# 4.4.1 (December 30, 2020)
+
+## 🐛 Bug fixes
+
+-   [#224](https://github.com/AdamRamberg/unity-atoms/issues/224) Move Atoms Search back to its own sub menu. Having same sub path for both MenuItem and CreateAssetMenu is causing the menu to be removed. [@AdamRamberg](https://github.com/AdamRamberg)
+
 # 4.4.0 (December 30, 2020)
 
 -   ([@miikalo](https://github.com/miikalo) has joined as maintainer of Unity Atoms! 🥳
