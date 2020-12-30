@@ -6,6 +6,12 @@
 💅 = Polish
 🚀 = New features
 
+# 4.4.2 (December 30, 2020)
+
+## 🐛 Bug fixes
+
+-   Fixed ValueEquals for EquatableAtomVariable and EquatableAtomReference, which before the change caused a bug in AtomCollection. [@AdamRamberg](https://github.com/AdamRamberg)
+
 # 4.4.1 (December 30, 2020)
 
 ## 🐛 Bug fixes
