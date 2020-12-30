@@ -33,7 +33,7 @@ namespace UnityAtoms.Editor
             }
         }
 
-        [MenuItem(itemName: "Assets/Create/Unity Atoms/Search &1", isValidateFunction: false, priority: -1)] // Adds to the project window's create menu
+        [MenuItem(itemName: "Assets/Create/Atoms Search &1", isValidateFunction: false, priority: -1)] // Adds to the project window's create menu
         public static void AtomsSearchMenu()
         {
             StringTree<Type> typeTree = new StringTree<Type>();
@@ -55,8 +55,7 @@ namespace UnityAtoms.Editor
             var dropdown = new SearchTypeDropdown(new AdvancedDropdownState(), typeTree,
                 (s) =>
                 {
-                    EditorApplication.ExecuteMenuItem("Assets/Create/" +
-                                                      s.GetCustomAttribute<CreateAssetMenuAttribute>().menuName);
+                    EditorApplication.ExecuteMenuItem("Assets/Create/" + s.GetCustomAttribute<CreateAssetMenuAttribute>().menuName);
                 })
             {
                 MinimumSize = new Vector2(projectBrowser.position.width - 20, projectBrowser.position.height - 80)
