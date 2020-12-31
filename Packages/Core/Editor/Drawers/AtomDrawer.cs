@@ -9,7 +9,8 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// The base Unity Atoms property drawer. Makes it possible to create and add a new Atom via Unity's inspector. Only availble in `UNITY_2018_4_OR_NEWER`.
     /// </summary>
-    public abstract class AtomDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(BaseAtom), true)]
+    public class AtomDrawer : PropertyDrawer
     {
         class DrawerData
         {
