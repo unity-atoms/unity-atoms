@@ -19,8 +19,11 @@ namespace UnityAtoms.Editor
             public string WarningText = "";
         }
 
+        private const string NAMING_FIELD_CONTROL_NAME = "Naming Field";
+
         private Dictionary<string, DrawerData> _perPropertyViewData = new Dictionary<string, DrawerData>();
         private Type selectedType;
+        private bool focusText = false;
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -82,9 +85,16 @@ namespace UnityAtoms.Editor
             var indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
-            if (isCreatingSO)
+            GUI.SetNextControlName(NAMING_FIELD_CONTROL_NAME);
+            drawerData.NameOfNewAtom = EditorGUI.TextField(isCreatingSO ? position : Rect.zero, drawerData.NameOfNewAtom);
+
+            if(isCreatingSO)
             {
-                drawerData.NameOfNewAtom = EditorGUI.TextField(position, drawerData.NameOfNewAtom);
+                if(focusText)
+                {
+                    EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
+                    focusText = false;
+                }
             }
             else
             {
@@ -173,6 +183,9 @@ namespace UnityAtoms.Editor
                             selectedType = (Type)type;
                             drawerData.NameOfNewAtom = "";
                             drawerData.UserClickedToCreateAtom = true;
+
+                            EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
+                            focusText = true;
                         }
                     }
                 }
