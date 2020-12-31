@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -115,6 +117,7 @@ namespace UnityAtoms.Editor
 
                             drawerData.UserClickedToCreateAtom = false;
                             drawerData.WarningText = "";
+                            selectedType = null;
                         }
                         else
                         {
@@ -125,6 +128,7 @@ namespace UnityAtoms.Editor
                     {
                         drawerData.UserClickedToCreateAtom = false;
                         drawerData.WarningText = "";
+                        selectedType = null;
                     }
 
                     if (drawerData.WarningText.Length > 0)
@@ -134,10 +138,39 @@ namespace UnityAtoms.Editor
                 }
                 else
                 {
-                    if (GUI.Button(restRect, "Create"))
+                    if(GUI.Button(restRect, "Create"))
                     {
-                        drawerData.NameOfNewAtom = "";
-                        drawerData.UserClickedToCreateAtom = true;
+                        var types = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                                     from type in assembly.GetTypes()
+                                     where !type.IsAbstract
+                                     where !type.IsGenericType
+                                     where type == fieldInfo.FieldType || type.IsSubclassOf(fieldInfo.FieldType)
+                                     select type).ToArray();
+
+                        if(types.Length == 1)
+                        {
+                            OnTypeSelected(types[0]);
+                        }
+
+                        if(types.Length > 1)
+                        {
+                            var menu = new GenericMenu();
+                            for(int i = 0; i < types.Length; i++)
+                            {
+                                var type = types[i];
+
+                                menu.AddItem(new GUIContent(type.Name), false, OnTypeSelected, type);
+                            }
+
+                            menu.DropDown(restRect);
+                        }
+
+                        void OnTypeSelected(object type)
+                        {
+                            selectedType = (Type)type;
+                            drawerData.NameOfNewAtom = "";
+                            drawerData.UserClickedToCreateAtom = true;
+                        }
                     }
                 }
             }
