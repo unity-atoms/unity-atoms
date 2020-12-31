@@ -7,8 +7,7 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// The base Unity Atoms property drawer. Makes it possible to create and add a new Atom via Unity's inspector. Only availble in `UNITY_2018_4_OR_NEWER`.
     /// </summary>
-    /// <typeparam name="T">The type of Atom the property drawer should apply to.</typeparam>
-    public abstract class AtomDrawer<T> : PropertyDrawer where T : ScriptableObject
+    public abstract class AtomDrawer : PropertyDrawer
     {
         class DrawerData
         {
@@ -18,6 +17,7 @@ namespace UnityAtoms.Editor
         }
 
         private Dictionary<string, DrawerData> _perPropertyViewData = new Dictionary<string, DrawerData>();
+        private Type selectedType;
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -85,7 +85,7 @@ namespace UnityAtoms.Editor
             }
             else
             {
-                property.objectReferenceValue = EditorGUI.ObjectField(position, property.objectReferenceValue, typeof(T), false);
+                property.objectReferenceValue = EditorGUI.ObjectField(position, property.objectReferenceValue, fieldInfo.FieldType, false);
             }
 
             if (property.objectReferenceValue == null)
@@ -102,7 +102,7 @@ namespace UnityAtoms.Editor
                             try
                             {
                                 // Create asset
-                                T so = ScriptableObject.CreateInstance<T>();
+                                var so = ScriptableObject.CreateInstance(selectedType);
                                 AssetDatabase.CreateAsset(so, "Assets/" + drawerData.NameOfNewAtom + ".asset");
                                 AssetDatabase.SaveAssets();
                                 // Assign the newly created SO
