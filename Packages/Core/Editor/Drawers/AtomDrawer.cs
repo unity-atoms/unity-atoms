@@ -23,6 +23,7 @@ namespace UnityAtoms.Editor
 
         private Dictionary<string, DrawerData> _perPropertyViewData = new Dictionary<string, DrawerData>();
         private Type selectedType;
+        private bool focusText = false;
 
         // TODO: Find a more elegant solution that doesn't require the focusText value.
         private bool focusText = false;
