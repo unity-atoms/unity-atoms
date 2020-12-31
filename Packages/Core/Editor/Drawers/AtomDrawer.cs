@@ -106,7 +106,9 @@ namespace UnityAtoms.Editor
                             {
                                 // Create asset
                                 var so = ScriptableObject.CreateInstance(selectedType);
-                                AssetDatabase.CreateAsset(so, "Assets/" + drawerData.NameOfNewAtom + ".asset");
+                                var assetPath = "Assets/" + drawerData.NameOfNewAtom + ".asset";
+                                var uniqueAssetPath = AssetDatabase.GenerateUniqueAssetPath(assetPath);
+                                AssetDatabase.CreateAsset(so, uniqueAssetPath);
                                 AssetDatabase.SaveAssets();
                                 // Assign the newly created SO
                                 property.objectReferenceValue = so;
