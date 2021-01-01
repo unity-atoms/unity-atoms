@@ -1,6 +1,4 @@
-#if UNITY_2018_4_OR_NEWER
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -37,7 +35,7 @@ namespace UnityAtoms.Editor
         /// Create the editor window.
         /// </summary>
         [MenuItem("Tools/Unity Atoms/Regenerate all Atoms")]
-        static void Regenereate()
+        static void Regenerate()
         {
             if (!Runtime.IsUnityAtomsRepo)
             {
@@ -104,7 +102,6 @@ namespace UnityAtoms.Editor
                 ),
             };
 
-
             foreach (var item in itemsToRegenerate)
             {
                 var templates = Generator.GetTemplatePaths();
@@ -123,7 +120,5 @@ namespace UnityAtoms.Editor
             }
             AssetDatabase.Refresh();
         }
-
     }
 }
-#endif
