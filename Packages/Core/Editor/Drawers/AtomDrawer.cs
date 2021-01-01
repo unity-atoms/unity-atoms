@@ -155,29 +155,37 @@ namespace UnityAtoms.Editor
                 {
                     if(GUI.Button(restRect, "Create"))
                     {
-                        var types = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where !type.IsAbstract
-                                     where !type.IsGenericType
-                                     where type == fieldInfo.FieldType || type.IsSubclassOf(fieldInfo.FieldType)
-                                     select type).ToArray();
-
-                        if(types.Length == 1)
+                        if(!fieldInfo.FieldType.IsGenericType
+                            && fieldInfo.FieldType.IsSealed)
                         {
-                            OnTypeSelected(types[0]);
+                            OnTypeSelected(fieldInfo.FieldType);
                         }
-
-                        if(types.Length > 1)
+                        else
                         {
-                            var menu = new GenericMenu();
-                            for(int i = 0; i < types.Length; i++)
-                            {
-                                var type = types[i];
+                            var types = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                                         from type in assembly.GetTypes()
+                                         where !type.IsAbstract
+                                         where !type.IsGenericType
+                                         where type == fieldInfo.FieldType || type.IsSubclassOf(fieldInfo.FieldType)
+                                         select type).ToArray();
 
-                                menu.AddItem(new GUIContent(type.Name), false, OnTypeSelected, type);
+                            if(types.Length == 1)
+                            {
+                                OnTypeSelected(types[0]);
                             }
 
-                            menu.DropDown(restRect);
+                            if(types.Length > 1)
+                            {
+                                var menu = new GenericMenu();
+                                for(int i = 0; i < types.Length; i++)
+                                {
+                                    var type = types[i];
+
+                                    menu.AddItem(new GUIContent(type.Name), false, OnTypeSelected, type);
+                                }
+
+                                menu.DropDown(restRect);
+                            }
                         }
 
                         void OnTypeSelected(object type)
