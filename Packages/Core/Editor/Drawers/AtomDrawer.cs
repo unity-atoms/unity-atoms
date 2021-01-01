@@ -21,7 +21,6 @@ namespace UnityAtoms.Editor
 
         private const string NAMING_FIELD_CONTROL_NAME = "Naming Field";
 
-        private static uint objectPickerControlID = 1;
         private static Dictionary<string, int> _perPropertyObjectPickerID = new Dictionary<string, int>();
 
         private Dictionary<string, DrawerData> _perPropertyViewData = new Dictionary<string, DrawerData>();
@@ -116,11 +115,10 @@ namespace UnityAtoms.Editor
                         var types = GetInstantiateableChildrenTypes();
                         var filter = string.Join(" ", types.Select(type => $"t:{type.Name}"));
 
-                        controlID = (int)objectPickerControlID;
-                        EditorGUIUtility.ShowObjectPicker<BaseAtom>(property.objectReferenceValue, false, filter, controlID);
+                        controlID = GUIUtility.GetControlID(FocusType.Keyboard);
+                        EditorGUIUtility.ShowObjectPicker<MonoBehaviour>(property.objectReferenceValue, false, filter, controlID);
 
                         _perPropertyObjectPickerID[property.propertyPath] = controlID;
-                        objectPickerControlID += 2; // Prevent control id from becoming 0 which is an invalid ObjectPickerControlID.
                     }
 
                     if(_perPropertyObjectPickerID.TryGetValue(property.propertyPath, out controlID)
