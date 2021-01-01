@@ -63,6 +63,6 @@ Unity 2020 will support serialization of generic fields. Unity Atoms could shave
 
 A: To get started, check out the tutorials on this page.
 
-If you still happen to have questions, don't hesitate to join the [Discord server](https://discord.gg/fKfmVQyj) and you will find many helpful individuals to assist you in figuring out Unity Atoms. There are also channels for suggestions and showcasing your work, which is all welcome!
+If you still happen to have questions, don't hesitate to join the [Discord server](https://discord.gg/W4yd7E7) and you will find many helpful individuals to assist you in figuring out Unity Atoms. There are also channels for suggestions and showcasing your work, which is all welcome!
 
 Unity Atoms is an open source project and anyone may contribute to help improve Unity Atoms. Check out the [GitHub repository](https://github.com/AdamRamberg/unity-atoms), [contributing guideline](https://github.com/AdamRamberg/unity-atoms/blob/master/CONTRIBUTING.md), and become part of the project!
