@@ -21,6 +21,9 @@ namespace UnityAtoms.Editor
 
         private const string NAMING_FIELD_CONTROL_NAME = "Naming Field";
 
+        private static uint objectPickerControlID = 1;
+        private static Dictionary<string, int> _perPropertyObjectPickerID = new Dictionary<string, int>();
+
         private Dictionary<string, DrawerData> _perPropertyViewData = new Dictionary<string, DrawerData>();
         private Type selectedType;
 
@@ -100,6 +103,33 @@ namespace UnityAtoms.Editor
             }
             else
             {
+                if(fieldInfo.FieldType.IsGenericType)
+                {
+                    int controlID;
+
+                    var objectPickerButtonRect = new Rect(position);
+                    objectPickerButtonRect.x += objectPickerButtonRect.width - 20f;
+                    objectPickerButtonRect.width = 20f;
+
+                    if(GUI.Button(objectPickerButtonRect, string.Empty, GUIStyle.none))
+                    {
+                        var types = GetInstantiateableChildrenTypes();
+                        var filter = string.Join(" ", types.Select(type => $"t:{type.Name}"));
+
+                        controlID = (int)objectPickerControlID;
+                        EditorGUIUtility.ShowObjectPicker<BaseAtom>(property.objectReferenceValue, false, filter, controlID);
+
+                        _perPropertyObjectPickerID[property.propertyPath] = controlID;
+                        objectPickerControlID += 2; // Prevent control id from becoming 0 which is an invalid ObjectPickerControlID.
+                    }
+
+                    if(_perPropertyObjectPickerID.TryGetValue(property.propertyPath, out controlID)
+                        && controlID == EditorGUIUtility.GetObjectPickerControlID())
+                    {
+                        property.objectReferenceValue = EditorGUIUtility.GetObjectPickerObject();
+                    }
+                }
+
                 property.objectReferenceValue = EditorGUI.ObjectField(position, property.objectReferenceValue, fieldInfo.FieldType, false);
             }
 
@@ -162,12 +192,7 @@ namespace UnityAtoms.Editor
                         }
                         else
                         {
-                            var types = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                         from type in assembly.GetTypes()
-                                         where !type.IsAbstract
-                                         where !type.IsGenericType
-                                         where type == fieldInfo.FieldType || type.IsSubclassOf(fieldInfo.FieldType)
-                                         select type).ToArray();
+                            var types = GetInstantiateableChildrenTypes();
 
                             if(types.Length == 1)
                             {
@@ -203,6 +228,16 @@ namespace UnityAtoms.Editor
 
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
+        }
+
+        private Type[] GetInstantiateableChildrenTypes()
+        {
+            return (from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                    from type in assembly.GetTypes()
+                    where !type.IsAbstract
+                    where !type.IsGenericType
+                    where type == fieldInfo.FieldType || type.IsSubclassOf(fieldInfo.FieldType)
+                    select type).ToArray();
         }
     }
 }
