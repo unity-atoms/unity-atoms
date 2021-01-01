@@ -116,7 +116,7 @@ namespace UnityAtoms.Editor
                 foreach (var atomType in atomTypesToGenerate)
                 {
                     templateVariables["VALUE_TYPE_NAME"] = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
-                    var valueType = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : item.ValueType;
+                    var valueType = atomType.IsValuePair ? $"Pair<{capitalizedValueType}>" : item.ValueType;
                     templateVariables["VALUE_TYPE"] = valueType;
                     Generator.Generate(new AtomReceipe(atomType, valueType), item.BaseWritePath, templates, templateConditions, templateVariables);
                 }

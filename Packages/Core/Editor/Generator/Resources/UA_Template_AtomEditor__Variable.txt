@@ -9,8 +9,8 @@ namespace UnityAtoms.Editor
 <%ENDIF%>
 {
     /// <summary>
-    /// Variable Inspector of type `{VALUE_TYPE}`. Inherits from `AtomVariableEditor`
+    /// Variable Inspector of type `{VALUE_TYPE}`. Inherits from `AtomVariableEditor&lt;{VALUE_TYPE}&gt;`
     /// </summary>
     [CustomEditor(typeof({VALUE_TYPE_NAME}Variable))]
-    public sealed class {VALUE_TYPE_NAME}VariableEditor : AtomVariableEditor<{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair> { }
+    public sealed class {VALUE_TYPE_NAME}VariableEditor : AtomVariableEditor<{VALUE_TYPE}> { }
 }

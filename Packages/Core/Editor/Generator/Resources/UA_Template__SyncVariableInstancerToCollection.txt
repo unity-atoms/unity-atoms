@@ -13,5 +13,5 @@ namespace UnityAtoms
     /// </summary>
     [AddComponentMenu("Unity Atoms/Sync Variable Instancer to Collection/Sync {VALUE_TYPE_NAME} Variable Instancer to Collection")]
     [EditorIcon("atom-icon-delicate")]
-    public class Sync{VALUE_TYPE_NAME}VariableInstancerToCollection : SyncVariableInstancerToCollection<{VALUE_TYPE}, {VALUE_TYPE_NAME}Variable, {VALUE_TYPE_NAME}VariableInstancer> { }
+    public class Sync{VALUE_TYPE_NAME}VariableInstancerToCollection : SyncVariableInstancerToCollection<{VALUE_TYPE}> { }
 }
