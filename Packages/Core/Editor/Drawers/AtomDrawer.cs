@@ -77,7 +77,7 @@ namespace UnityAtoms.Editor
 
             var defaultGUIColor = GUI.color;
             GUI.color = isCreatingSO ? Color.yellow : defaultGUIColor;
-            position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), isCreatingSO ? new GUIContent("Name of New Atom") : label);
+            position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), isCreatingSO && label != GUIContent.none ? new GUIContent("Name of New Atom") : label);
             GUI.color = defaultGUIColor;
 
             var indent = EditorGUI.indentLevel;
