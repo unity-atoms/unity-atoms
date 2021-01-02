@@ -165,6 +165,7 @@ namespace UnityAtoms.Editor
                         else
                         {
                             drawerData.WarningText = "Name of new Atom must be specified!";
+                            EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
                         }
                     }
                     if (GUI.Button(secondButtonRect, "✗"))
