@@ -94,7 +94,6 @@ namespace UnityAtoms.Editor
                 {
                     property.objectReferenceValue = obj;
                 }
-
             }
 
             if (property.objectReferenceValue == null)
