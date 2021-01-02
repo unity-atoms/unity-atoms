@@ -20,6 +20,7 @@ namespace UnityAtoms.Editor
         private void OnEnable()
         {
             _types = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(x => !x.IsDynamic) //compatibility with URP assemblies
                 .SelectMany(assembly => assembly.GetExportedTypes())
                 .Where(x => x != null)
                 .Where(x => x.IsValueType || (x.Attributes & TypeAttributes.Serializable) != 0)
