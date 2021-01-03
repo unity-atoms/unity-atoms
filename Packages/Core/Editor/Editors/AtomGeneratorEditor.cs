@@ -37,10 +37,14 @@ namespace UnityAtoms.Editor
             {
                 var dropdown = new SearchTypeDropdown(new AdvancedDropdownState(), _types, (s) =>
                 {
-                    serializedObject.FindProperty("Namespace").stringValue = s.Split(':')[0];
+                    var namespace_prop = serializedObject.FindProperty("Namespace");
+                    namespace_prop.stringValue = s.Split(':')[0];
+                    if (namespace_prop.stringValue == NO_NAMESPACE)
+                        namespace_prop.stringValue = null;
+
                     serializedObject.FindProperty("BaseType").stringValue = s.Split(':')[1];
                     var type = _types.First(grouping =>
-                            grouping.Key == serializedObject.FindProperty("Namespace").stringValue)
+                            grouping.Key == (string.IsNullOrEmpty(namespace_prop.stringValue) ? NO_NAMESPACE : namespace_prop.stringValue))
                         .First(t => t.Name == serializedObject.FindProperty("BaseType").stringValue);
                     serializedObject.FindProperty("FullQualifiedName").stringValue = type.AssemblyQualifiedName;
                 });

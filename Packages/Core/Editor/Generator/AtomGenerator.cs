@@ -25,11 +25,14 @@ namespace UnityAtoms.Editor
             if (type == null) throw new TypeLoadException($"Type could not be found ({FullQualifiedName})");
             var isValueTypeEquatable = type.GetInterfaces().Contains(typeof(IEquatable<>));
 
-            var templateVariables = Generator.CreateTemplateVariablesMap(BaseType, Namespace, "BaseAtoms");
+            var baseTypeAccordingNested = type.FullName.Replace('+', '.');
+
+            var templateVariables = Generator.CreateTemplateVariablesMap(baseTypeAccordingNested, Namespace, "BaseAtoms");
             var capitalizedValueType = BaseType.Capitalize();
             var templates = Generator.GetTemplatePaths();
+
             var templateConditions =
-                Generator.CreateTemplateConditions(isValueTypeEquatable, Namespace, "BaseAtoms", BaseType);
+                Generator.CreateTemplateConditions(isValueTypeEquatable, Namespace, "BaseAtoms", baseTypeAccordingNested);
             var baseWritePath =
                 Path.Combine((Path.GetDirectoryName(AssetDatabase.GetAssetPath(this.GetInstanceID()))) ?? "Assets/",
                     "Generated");
@@ -47,7 +50,7 @@ namespace UnityAtoms.Editor
 
                     templateVariables["VALUE_TYPE_NAME"] =
                         atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
-                    var valueType = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : BaseType;
+                    var valueType = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : baseTypeAccordingNested;
                     templateVariables["VALUE_TYPE"] = valueType;
 
                     var resolvedRelativeFilePath = Templating.ResolveVariables(templateVariables: templateVariables,
