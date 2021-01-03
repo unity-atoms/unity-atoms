@@ -16,17 +16,17 @@ namespace UnityAtoms.Editor
     {
         private IEnumerable<IGrouping<string, Type>> _types;
         private SearchTypeDropdown _typeSelectorPopup;
-
+        private const string NO_NAMESPACE = "(no namespace)";
         private void OnEnable()
         {
             _types = AppDomain.CurrentDomain.GetAssemblies()
-                .Where(x => !x.IsDynamic) //compatibility with URP assemblies
+                .Where(x => !x.IsDynamic)  //compatibility with dynamic assemblies like Unity 'Universal RP'
                 .SelectMany(assembly => assembly.GetExportedTypes())
                 .Where(x => x != null)
                 .Where(x => x.IsValueType || (x.Attributes & TypeAttributes.Serializable) != 0)
                 .Where(t => !(t.Namespace?.Contains("Microsoft") ?? false))
                 .Where(t => !(t.Namespace?.Contains("UnityEditor") ?? false))
-                .GroupBy(t => t.Namespace.Split('.')[0]);
+                .GroupBy(t => t.Namespace is null ? NO_NAMESPACE : t.Namespace.Split('.')[0]);
         }
 
         public override void OnInspectorGUI()
