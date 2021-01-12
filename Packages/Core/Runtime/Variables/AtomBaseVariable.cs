@@ -7,8 +7,7 @@ namespace UnityAtoms
     /// None generic base class for Variables. Inherits from `BaseAtom`.
     /// </summary>
     [EditorIcon("atom-icon-teal")]
-    /// Default Execution order of 200 to make sure that variables OnEnable runs after listeners OnEnable() method.
-    [DefaultExecutionOrder(200)]
+    [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_BASE)]
     public abstract class AtomBaseVariable : BaseAtom
     {
         public String Id { get => _id; set => _id = value; }

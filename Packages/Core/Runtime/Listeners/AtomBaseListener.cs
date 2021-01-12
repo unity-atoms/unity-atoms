@@ -7,8 +7,7 @@ namespace UnityAtoms
     /// <summary>
     /// None generic base class for all Listeners.
     /// </summary>
-    /// Default Execution order of 100 to make sure that listeners OnEnable runs before variables OnEnable() method.
-    [DefaultExecutionOrder(100)]
+    [DefaultExecutionOrder(Runtime.ExecutionOrder.LISTENER_BASE)]
     public abstract class AtomBaseListener : MonoBehaviour
     {
         /// <summary>

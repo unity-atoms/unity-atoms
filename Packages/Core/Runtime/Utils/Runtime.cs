@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 
 namespace UnityAtoms
 {
@@ -23,6 +23,8 @@ namespace UnityAtoms
         /// </summary>
         public static class ExecutionOrder
         {
+            public const int LISTENER_BASE = -400;
+            public const int VARIABLE_BASE = -300;
             public const int VARIABLE_RESETTER = -200;
             public const int VARIABLE_INSTANCER = -100;
         }
