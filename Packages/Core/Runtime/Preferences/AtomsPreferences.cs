@@ -111,17 +111,16 @@ namespace UnityAtoms
                     enableDebug.RegisterValueChangedCallback((changeEvt) => DEBUG_MODE_PREF.Set(changeEvt.newValue));
                     wrapper.Add(enableDebug);
 
-                    var replayBufferSize = new TextField()
+                    var replayBufferSize = new SliderInt()
                     {
-                        label = "Default replay buffer size",
-                        value = DEFAULT_BUFFER_SIZE_PREF.Get().ToString(),
+                        label = "Replay buffer size (1-10)",
+                        highValue = 10,
+                        lowValue = 0,
+                        pageSize = 1,
+                        value = DEFAULT_BUFFER_SIZE_PREF.Get(),
                         tooltip = "Set the default replay buffer size for each new created Event.",
-                        style = {
-                            marginRight = 1250
-                        }
                     };
-
-                    replayBufferSize.RegisterValueChangedCallback((changeEvt) => DEFAULT_BUFFER_SIZE_PREF.Set(int.Parse(changeEvt.newValue)));
+                    replayBufferSize.RegisterValueChangedCallback((changeEvt) => DEFAULT_BUFFER_SIZE_PREF.Set(changeEvt.newValue));
                     wrapper.Add(replayBufferSize);
 
                     rootElement.Add(wrapper);
