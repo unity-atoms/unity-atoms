@@ -54,13 +54,15 @@ namespace UnityAtoms.Editor
 
         public override void OnInspectorGUI()
         {
-            var rect = GUILayoutUtility.GetRect(new GUIContent("Show"), EditorStyles.toolbarButton);
-            if(GUILayout.Button("Select Type"))
             serializedObject.Update();
 
             // Draw our type dropdown and result.
+            var buttonContent = new GUIContent("Select Type");
+            var buttonStyle = GUI.skin.button;
+            var buttonRect = EditorGUILayout.GetControlRect(false, buttonStyle.CalcHeight(buttonContent, 0f), buttonStyle);
+            if(GUI.Button(buttonRect, buttonContent))
             {
-                typeSelectorDropdown.Show(rect);
+                typeSelectorDropdown.Show(buttonRect);
             }
             EditorGUILayout.PropertyField(fullQualifiedName);
 
@@ -215,6 +217,8 @@ namespace UnityAtoms.Editor
 
         private class TypeSelectorDropdown : AdvancedDropdown
         {
+            protected new Vector2 minimumSize = new Vector2(0f, 460f);
+
             private readonly NamespaceLevel typeLevel;
             private readonly Action<Type> typeSelected;
 
@@ -223,6 +227,8 @@ namespace UnityAtoms.Editor
             {
                 this.typeLevel = new NamespaceLevel(types);
                 this.typeSelected = typeSelected;
+
+                base.minimumSize = minimumSize;
             }
 
             protected override void ItemSelected(AdvancedDropdownItem item)
