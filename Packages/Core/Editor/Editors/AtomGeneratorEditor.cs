@@ -27,6 +27,8 @@ namespace UnityAtoms.Editor
             typeNamespace = serializedObject.FindProperty(nameof(AtomGenerator.Namespace));
             baseType = serializedObject.FindProperty(nameof(AtomGenerator.BaseType));
             generatedOptions = serializedObject.FindProperty(nameof(AtomGenerator.GenerationOptions));
+
+            // Find all serializeable types in unity that are not generic or abstract.
                                      from type in assembly.GetExportedTypes()
                                      where type.IsValueType
                                         || (type.Attributes & TypeAttributes.Serializable) != 0
@@ -37,6 +39,7 @@ namespace UnityAtoms.Editor
                                         || (!type.Namespace.Contains("Microsoft") && !type.Namespace.Contains("UnityEditor"))
                                      select type;
 
+            // Create a type selector dropdown that sets properties when something is selected.
             typeSelectorDropdown = new TypeSelectorDropdown(serializeableTypes, selectedType =>
             {
                 serializedObject.Update();
@@ -53,12 +56,13 @@ namespace UnityAtoms.Editor
         {
             var rect = GUILayoutUtility.GetRect(new GUIContent("Show"), EditorStyles.toolbarButton);
             if(GUILayout.Button("Select Type"))
+            // Draw our type dropdown and result.
             {
                 typeSelectorDropdown.Show(rect);
             }
             EditorGUILayout.PropertyField(fullQualifiedName);
 
-
+            // Draw the different generator options and if a file has been generated, draw it in a disabled objectfield as well.
             var options = generatedOptions.intValue;
             var scripts = (target as AtomGenerator)?.Scripts;
             for (var index = 0; index < AtomTypes.ALL_ATOM_TYPES.Count; index++)
@@ -111,6 +115,7 @@ namespace UnityAtoms.Editor
             }
         }
 
+        // A NamespaceLevel stores different namespaceLevels of namespaces that have a sub namespace and all the types that have reached this namespaceLevel. NamespaceLevel is used for its recursion to go as many levels deep as it needs to to find all the types of every (sub)namespace it can find.
         private struct NamespaceLevel
         {
             public Dictionary<string, NamespaceLevel> namespaceLevels;
@@ -124,7 +129,7 @@ namespace UnityAtoms.Editor
                 var nameCharArray = name.ToCharArray();
                 var typeNamespaceLevelLookup = types.ToLookup(type => !string.IsNullOrEmpty(type.Namespace?.TrimStart(nameCharArray)));
 
-                // Populate namespaceLevels
+                // Populate namespaceLevels.
                 var namespaceTypeGroups = from type in typeNamespaceLevelLookup[true]
                                           group type by type.Namespace.TrimStart(nameCharArray).Split('.')[0] into namespaceTypeGroup
                                           orderby namespaceTypeGroup.Key
@@ -133,18 +138,18 @@ namespace UnityAtoms.Editor
                     namespaceTypeGroup => namespaceTypeGroup.Key
                     , namespaceTypeGroup => new NamespaceLevel($"{name}{namespaceTypeGroup.Key}.", namespaceTypeGroup));
 
-                // Populate types
+                // Populate types.
                 this.types = from type in typeNamespaceLevelLookup[false]
                                  orderby type.FullName.Substring(type.FullName.LastIndexOf('.') + 1)
                                  select type;
 
-                // Initialize other values
                 this.idTypePairs = new Dictionary<AdvancedDropdownItem, Type>();
+                // Initialize other values.
             }
 
             public AdvancedDropdownItem GetDropdownItem(AdvancedDropdownItem parent)
             {
-                var hasTypes = types.Any();
+                // Draw all the subnamespaces of this namespace level.
                 if(namespaceLevels.Count > 0)
                 {
                     parent.AddChild(new AdvancedDropdownItem("Namespaces") { enabled = false });
@@ -155,16 +160,17 @@ namespace UnityAtoms.Editor
 
                         parent.AddChild(groupItem);
                     }
+                }
 
-                    if(hasTypes)
+                // Draw all the types of this namespace level.
+                idTypePairs.Clear();
+                if(types.Any())
+                {
+                    if(namespaceLevels.Count > 0)
                     {
                         parent.AddSeparator();
                     }
-                }
 
-                idTypePairs.Clear();
-                if(hasTypes)
-                {
                     parent.AddChild(new AdvancedDropdownItem("Types") { enabled = false });
                     foreach(Type type in types)
                     {
