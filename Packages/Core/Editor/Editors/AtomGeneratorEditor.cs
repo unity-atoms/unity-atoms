@@ -92,11 +92,9 @@ namespace UnityAtoms.Editor
 
                 if (scripts != null && index < scripts.Count && scripts[index] != null)
                 {
-                    EditorGUILayout.ObjectField(scripts[index], typeof(MonoScript), false, GUILayout.Width(200));
-                }
-                else
-                {
-                    EditorGUILayout.LabelField(GUIContent.none, GUILayout.Width(200));
+                    EditorGUI.BeginDisabledGroup(true);
+                    EditorGUILayout.ObjectField(scripts[index], typeof(MonoScript), false);
+                    EditorGUI.EndDisabledGroup();
                 }
 
                 EditorGUILayout.EndHorizontal();
