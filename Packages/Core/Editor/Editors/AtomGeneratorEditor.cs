@@ -13,10 +13,20 @@ namespace UnityAtoms.Editor
     {
         private TypeSelectorDropdown typeSelectorDropdown;
 
+        private SerializedProperty fullQualifiedName;
+        private SerializedProperty typeNamespace;
+        private SerializedProperty baseType;
+        private SerializedProperty generatedOptions;
+
         private void OnEnable()
         {
             var serializeableTypes = from assembly in AppDomain.CurrentDomain.GetAssemblies()
                                      where !assembly.IsDynamic
+            // Find Properties.
+            fullQualifiedName = serializedObject.FindProperty(nameof(AtomGenerator.FullQualifiedName));
+            typeNamespace = serializedObject.FindProperty(nameof(AtomGenerator.Namespace));
+            baseType = serializedObject.FindProperty(nameof(AtomGenerator.BaseType));
+            generatedOptions = serializedObject.FindProperty(nameof(AtomGenerator.GenerationOptions));
                                      from type in assembly.GetExportedTypes()
                                      where type.IsValueType
                                         || (type.Attributes & TypeAttributes.Serializable) != 0
@@ -29,9 +39,13 @@ namespace UnityAtoms.Editor
 
             typeSelectorDropdown = new TypeSelectorDropdown(serializeableTypes, selectedType =>
             {
-                serializedObject.FindProperty("Namespace").stringValue = selectedType.Namespace;
-                serializedObject.FindProperty("BaseType").stringValue = selectedType.Name;
-                serializedObject.FindProperty("FullQualifiedName").stringValue = selectedType.AssemblyQualifiedName;
+                serializedObject.Update();
+
+                fullQualifiedName.stringValue = selectedType.AssemblyQualifiedName;
+                typeNamespace.stringValue = selectedType.Namespace;
+                baseType.stringValue = selectedType.Name;
+
+                serializedObject.ApplyModifiedProperties();
             });
         }
 
@@ -42,11 +56,10 @@ namespace UnityAtoms.Editor
             {
                 typeSelectorDropdown.Show(rect);
             }
+            EditorGUILayout.PropertyField(fullQualifiedName);
 
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("FullQualifiedName"));
 
-            var options = serializedObject.FindProperty("GenerationOptions").intValue;
-
+            var options = generatedOptions.intValue;
             var scripts = (target as AtomGenerator)?.Scripts;
             for (var index = 0; index < AtomTypes.ALL_ATOM_TYPES.Count; index++)
             {
@@ -89,9 +102,10 @@ namespace UnityAtoms.Editor
                 EditorGUILayout.EndHorizontal();
             }
 
-            serializedObject.FindProperty("GenerationOptions").intValue = options;
+            generatedOptions.intValue = options;
 
             serializedObject.ApplyModifiedProperties();
+
             if (GUILayout.Button("(Re)Generate"))
             {
                 (target as AtomGenerator)?.Generate();
