@@ -56,6 +56,8 @@ namespace UnityAtoms.Editor
         {
             var rect = GUILayoutUtility.GetRect(new GUIContent("Show"), EditorStyles.toolbarButton);
             if(GUILayout.Button("Select Type"))
+            serializedObject.Update();
+
             // Draw our type dropdown and result.
             {
                 typeSelectorDropdown.Show(rect);
