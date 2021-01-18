@@ -48,10 +48,10 @@ namespace UnityAtoms.Editor
                 {
                     var atomType = AtomTypes.ALL_ATOM_TYPES[idx];
 
-                    templateVariables["VALUE_TYPE_NAME"] =
-                        atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
+                    templateVariables["VALUE_TYPE_NAME"] = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
                     var valueType = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : baseTypeAccordingNested;
                     templateVariables["VALUE_TYPE"] = valueType;
+                    templateVariables["VALUE_TYPE_NAME_NO_PAIR"] = capitalizedValueType;
 
                     var resolvedRelativeFilePath = Templating.ResolveVariables(templateVariables: templateVariables,
                         toResolve: atomType.RelativeFileNameAndPath);
