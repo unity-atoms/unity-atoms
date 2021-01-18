@@ -121,7 +121,7 @@ namespace UnityAtoms.Editor
             public Dictionary<string, NamespaceLevel> namespaceLevels;
             public IEnumerable<Type> types;
 
-            private Dictionary<AdvancedDropdownItem, Type> idTypePairs;
+            private Dictionary<int, Type> idTypePairs;
 
             public NamespaceLevel(IEnumerable<Type> types) : this(string.Empty, types) { }
             private NamespaceLevel(string name, IEnumerable<Type> types)
@@ -143,8 +143,8 @@ namespace UnityAtoms.Editor
                                  orderby type.FullName.Substring(type.FullName.LastIndexOf('.') + 1)
                                  select type;
 
-                this.idTypePairs = new Dictionary<AdvancedDropdownItem, Type>();
                 // Initialize other values.
+                this.idTypePairs = new Dictionary<int, Type>();
             }
 
             public AdvancedDropdownItem GetDropdownItem(AdvancedDropdownItem parent)
@@ -178,17 +178,18 @@ namespace UnityAtoms.Editor
                         var dropdownItem = new AdvancedDropdownItem(name);
                         parent.AddChild(dropdownItem);
 
-                        idTypePairs.Add(dropdownItem, type);
+                        // Use Hash instead of id! If 2 AdvancedDropdownItems have the same name, they will generate the same id (stupid, I know). To ensure searching for a unique identifier, we use the hash instead.
+                        idTypePairs.Add(dropdownItem.GetHashCode(), type);
                     }
                 }
 
                 return parent;
             }
 
-            // NOTE: Do not use item.id! If 2 AdvancedDropdownItems have the same name, they will generate the same id (stupid, I know). To ensure searching for a unique identifier, we use the item itself.
+            // Find the type associated with the AdvancedDropdownItem.
             public Type FindType(AdvancedDropdownItem item)
             {
-                if(idTypePairs.TryGetValue(item, out var type))
+                if(idTypePairs.TryGetValue(item.GetHashCode(), out var type))
                 {
                     return type;
                 }
