@@ -123,25 +123,24 @@ namespace UnityAtoms.Editor
 
             private Dictionary<int, Type> idTypePairs;
 
-            public NamespaceLevel(IEnumerable<Type> types) : this(string.Empty, types) { }
-            private NamespaceLevel(string name, IEnumerable<Type> types)
+            public NamespaceLevel(IEnumerable<Type> types) : this(0, types) { }
+            private NamespaceLevel(int level, IEnumerable<Type> types)
             {
-                var nameCharArray = name.ToCharArray();
-                var typeNamespaceLevelLookup = types.ToLookup(type => !string.IsNullOrEmpty(type.Namespace?.TrimStart(nameCharArray)));
+                var typeNamespaceLevelLookup = types.ToLookup(type => type.Namespace != null && type.Namespace.Split('.').Length > level);
 
                 // Populate namespaceLevels.
                 var namespaceTypeGroups = from type in typeNamespaceLevelLookup[true]
-                                          group type by type.Namespace.TrimStart(nameCharArray).Split('.')[0] into namespaceTypeGroup
+                                          group type by type.Namespace.Split('.')[level] into namespaceTypeGroup
                                           orderby namespaceTypeGroup.Key
                                           select namespaceTypeGroup;
                 this.namespaceLevels = namespaceTypeGroups.ToDictionary(
                     namespaceTypeGroup => namespaceTypeGroup.Key
-                    , namespaceTypeGroup => new NamespaceLevel($"{name}{namespaceTypeGroup.Key}.", namespaceTypeGroup));
+                    , namespaceTypeGroup => new NamespaceLevel(level + 1, namespaceTypeGroup));
 
                 // Populate types.
                 this.types = from type in typeNamespaceLevelLookup[false]
-                                 orderby type.FullName.Substring(type.FullName.LastIndexOf('.') + 1)
-                                 select type;
+                             orderby type.FullName.Substring(type.FullName.LastIndexOf('.') + 1)
+                             select type;
 
                 // Initialize other values.
                 this.idTypePairs = new Dictionary<int, Type>();
