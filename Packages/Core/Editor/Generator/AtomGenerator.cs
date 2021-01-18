@@ -19,6 +19,14 @@ namespace UnityAtoms.Editor
         // Referencing Generated Files here:
         public List<MonoScript> Scripts = new List<MonoScript>(AtomTypes.ALL_ATOM_TYPES.Count);
 
+        private void Reset()
+        {
+            for(int i = 0; i < AtomTypes.ALL_ATOM_TYPES.Count; i++)
+            {
+                GenerationOptions |= (1 << i);
+            }
+        }
+
         public void Generate()
         {
             var type = Type.GetType($"{FullQualifiedName}");
