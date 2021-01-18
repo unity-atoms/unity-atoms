@@ -1,54 +1,46 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Reflection;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
-using UnityAtoms;
 
 namespace UnityAtoms.Editor
 {
     [CustomEditor(typeof(AtomGenerator))]
     public class AtomGeneratorEditor : UnityEditor.Editor
     {
-        private IEnumerable<IGrouping<string, Type>> _types;
-        private SearchTypeDropdown _typeSelectorPopup;
-        private const string NO_NAMESPACE = "(no namespace)";
+        private TypeSelectorDropdown typeSelectorDropdown;
+
         private void OnEnable()
         {
-            _types = AppDomain.CurrentDomain.GetAssemblies()
-                .Where(x => !x.IsDynamic)  //compatibility with dynamic assemblies like Unity 'Universal RP'
-                .SelectMany(assembly => assembly.GetExportedTypes())
-                .Where(x => x != null)
-                .Where(x => x.IsValueType || (x.Attributes & TypeAttributes.Serializable) != 0)
-                .Where(t => !(t.Namespace?.Contains("Microsoft") ?? false))
-                .Where(t => !(t.Namespace?.Contains("UnityEditor") ?? false))
-                .GroupBy(t => t.Namespace is null ? NO_NAMESPACE : t.Namespace.Split('.')[0]);
+            var serializeableTypes = from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                                     where !assembly.IsDynamic
+                                     from type in assembly.GetExportedTypes()
+                                     where type.IsValueType
+                                        || (type.Attributes & TypeAttributes.Serializable) != 0
+                                     where !type.IsGenericType
+                                     where !type.IsAbstract
+                                     where type != null
+                                     where type.Namespace == null
+                                        || (!type.Namespace.Contains("Microsoft") && !type.Namespace.Contains("UnityEditor"))
+                                     select type;
+
+            typeSelectorDropdown = new TypeSelectorDropdown(serializeableTypes, selectedType =>
+            {
+                serializedObject.FindProperty("Namespace").stringValue = selectedType.Namespace;
+                serializedObject.FindProperty("BaseType").stringValue = selectedType.Name;
+                serializedObject.FindProperty("FullQualifiedName").stringValue = selectedType.AssemblyQualifiedName;
+            });
         }
 
         public override void OnInspectorGUI()
         {
             var rect = GUILayoutUtility.GetRect(new GUIContent("Show"), EditorStyles.toolbarButton);
-
-            if (GUILayout.Button("Select Type"))
+            if(GUILayout.Button("Select Type"))
             {
-                var dropdown = new SearchTypeDropdown(new AdvancedDropdownState(), _types, (s) =>
-                {
-                    var namespace_prop = serializedObject.FindProperty("Namespace");
-                    namespace_prop.stringValue = s.Split(':')[0];
-                    if (namespace_prop.stringValue == NO_NAMESPACE)
-                        namespace_prop.stringValue = null;
-
-                    serializedObject.FindProperty("BaseType").stringValue = s.Split(':')[1];
-                    var type = _types.First(grouping =>
-                            grouping.Key == (string.IsNullOrEmpty(namespace_prop.stringValue) ? NO_NAMESPACE : namespace_prop.stringValue))
-                        .First(t => t.Name == serializedObject.FindProperty("BaseType").stringValue);
-                    serializedObject.FindProperty("FullQualifiedName").stringValue = type.AssemblyQualifiedName;
-                });
-                dropdown.Show(rect);
+                typeSelectorDropdown.Show(rect);
             }
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("FullQualifiedName"));
@@ -107,41 +99,124 @@ namespace UnityAtoms.Editor
             }
         }
 
-        private class SearchTypeDropdown : AdvancedDropdown
+        private struct NamespaceLevel
         {
-            private readonly IEnumerable<IGrouping<string, Type>> _list;
-            private readonly Action<string> _func;
+            public Dictionary<string, NamespaceLevel> namespaceLevels;
+            public IEnumerable<Type> types;
 
-            public SearchTypeDropdown(AdvancedDropdownState state, IEnumerable<IGrouping<string, Type>> list,
-                Action<string> func) : base(state)
+            private Dictionary<AdvancedDropdownItem, Type> idTypePairs;
+
+            public NamespaceLevel(IEnumerable<Type> types) : this(string.Empty, types) { }
+            private NamespaceLevel(string name, IEnumerable<Type> types)
             {
-                _list = list;
-                _func = func;
+                var nameCharArray = name.ToCharArray();
+                var typeNamespaceLevelLookup = types.ToLookup(type => !string.IsNullOrEmpty(type.Namespace?.TrimStart(nameCharArray)));
+
+                // Populate namespaceLevels
+                var namespaceTypeGroups = from type in typeNamespaceLevelLookup[true]
+                                          group type by type.Namespace.TrimStart(nameCharArray).Split('.')[0] into namespaceTypeGroup
+                                          orderby namespaceTypeGroup.Key
+                                          select namespaceTypeGroup;
+                this.namespaceLevels = namespaceTypeGroups.ToDictionary(
+                    namespaceTypeGroup => namespaceTypeGroup.Key
+                    , namespaceTypeGroup => new NamespaceLevel($"{name}{namespaceTypeGroup.Key}.", namespaceTypeGroup));
+
+                // Populate types
+                this.types = from type in typeNamespaceLevelLookup[false]
+                                 orderby type.FullName.Substring(type.FullName.LastIndexOf('.') + 1)
+                                 select type;
+
+                // Initialize other values
+                this.idTypePairs = new Dictionary<AdvancedDropdownItem, Type>();
+            }
+
+            public AdvancedDropdownItem GetDropdownItem(AdvancedDropdownItem parent)
+            {
+                var hasTypes = types.Any();
+                if(namespaceLevels.Count > 0)
+                {
+                    parent.AddChild(new AdvancedDropdownItem("Namespaces") { enabled = false });
+                    foreach(KeyValuePair<string, NamespaceLevel> namespaceLevel in namespaceLevels)
+                    {
+                        var groupItem = new AdvancedDropdownItem(namespaceLevel.Key);
+                        groupItem = namespaceLevel.Value.GetDropdownItem(groupItem);
+
+                        parent.AddChild(groupItem);
+                    }
+
+                    if(hasTypes)
+                    {
+                        parent.AddSeparator();
+                    }
+                }
+
+                idTypePairs.Clear();
+                if(hasTypes)
+                {
+                    parent.AddChild(new AdvancedDropdownItem("Types") { enabled = false });
+                    foreach(Type type in types)
+                    {
+                        var name = type.FullName.Substring(type.FullName.LastIndexOf('.') + 1);
+                        var dropdownItem = new AdvancedDropdownItem(name);
+                        parent.AddChild(dropdownItem);
+
+                        idTypePairs.Add(dropdownItem, type);
+                    }
+                }
+
+                return parent;
+            }
+
+            // NOTE: Do not use item.id! If 2 AdvancedDropdownItems have the same name, they will generate the same id (stupid, I know). To ensure searching for a unique identifier, we use the item itself.
+            public Type FindType(AdvancedDropdownItem item)
+            {
+                if(idTypePairs.TryGetValue(item, out var type))
+                {
+                    return type;
+                }
+
+                foreach(NamespaceLevel namespaceLevel in namespaceLevels.Values)
+                {
+                    if(namespaceLevel.TryGetType(item, out type))
+                    {
+                        return type;
+                    }
+                }
+
+                return null;
+            }
+
+            public bool TryGetType(AdvancedDropdownItem item, out Type type)
+            {
+                type = FindType(item);
+                return type != null;
+            }
+        }
+
+        private class TypeSelectorDropdown : AdvancedDropdown
+        {
+            private readonly NamespaceLevel typeLevel;
+            private readonly Action<Type> typeSelected;
+
+            public TypeSelectorDropdown(IEnumerable<Type> types, Action<Type> typeSelected) : this(new AdvancedDropdownState(), types, typeSelected) { }
+            public TypeSelectorDropdown(AdvancedDropdownState state, IEnumerable<Type> types, Action<Type> typeSelected) : base(state)
+            {
+                this.typeLevel = new NamespaceLevel(types);
+                this.typeSelected = typeSelected;
             }
 
             protected override void ItemSelected(AdvancedDropdownItem item)
             {
                 base.ItemSelected(item);
-                _func?.Invoke(item.name);
+                if(item.enabled && typeLevel.TryGetType(item, out var type))
+                {
+                    typeSelected?.Invoke(type);
+                }
             }
 
             protected override AdvancedDropdownItem BuildRoot()
             {
-                var root = new AdvancedDropdownItem("Serializable Types");
-
-
-                foreach (var group in _list)
-                {
-                    var groupItem = new AdvancedDropdownItem(group.Key);
-                    foreach (var type in group)
-                    {
-                        groupItem.AddChild(new AdvancedDropdownItem(group.Key + ":" + type.Name));
-                    }
-
-                    root.AddChild(groupItem);
-                }
-
-                return root;
+                return typeLevel.GetDropdownItem(new AdvancedDropdownItem("Serializable Types"));
             }
         }
     }
