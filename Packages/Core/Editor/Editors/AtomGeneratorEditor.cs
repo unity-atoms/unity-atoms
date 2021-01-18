@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using UnityEditor;
+using UnityEditor.Compilation;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
@@ -20,8 +20,6 @@ namespace UnityAtoms.Editor
 
         private void OnEnable()
         {
-            var serializeableTypes = from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     where !assembly.IsDynamic
             // Find Properties.
             fullQualifiedName = serializedObject.FindProperty(nameof(AtomGenerator.FullQualifiedName));
             typeNamespace = serializedObject.FindProperty(nameof(AtomGenerator.Namespace));
@@ -29,14 +27,13 @@ namespace UnityAtoms.Editor
             generatedOptions = serializedObject.FindProperty(nameof(AtomGenerator.GenerationOptions));
 
             // Find all serializeable types in unity that are not generic or abstract.
+            var serializeableTypes = from assemblyDefinition in CompilationPipeline.GetAssemblies(AssembliesType.Player)
+                                     let assembly = System.Reflection.Assembly.Load(assemblyDefinition.name)
+                                     where !assembly.IsDynamic
                                      from type in assembly.GetExportedTypes()
-                                     where type.IsValueType
-                                        || (type.Attributes & TypeAttributes.Serializable) != 0
+                                     where type.IsSerializable || type.IsSubclassOf(typeof(ScriptableObject))
                                      where !type.IsGenericType
                                      where !type.IsAbstract
-                                     where type != null
-                                     where type.Namespace == null
-                                        || (!type.Namespace.Contains("Microsoft") && !type.Namespace.Contains("UnityEditor"))
                                      select type;
 
             // Create a type selector dropdown that sets properties when something is selected.
