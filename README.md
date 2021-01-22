@@ -1,13 +1,13 @@
 # ⚛️ Unity Atoms
 
-[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-core?label=core&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-core/)
-[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-base-atoms?label=base-atoms&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-base-atoms/)
-[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-fsm?label=fsm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-fsm/)
-[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-mobile?label=mobile&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-mobile/)
-[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-mono-hooks?label=mono-hooks&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-mono-hooks/)
-[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-tags?label=tags&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-tags/)
-[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-scene-mgmt?label=scene-mgmt&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-scene-mgmt/)
-[![openupm](https://img.shields.io/npm/v/com.mambojambostudios.unity-atoms-ui?label=ui&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mambojambostudios.unity-atoms-ui/)
+[![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-core?label=core&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-core/)
+[![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-base-atoms?label=base-atoms&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-base-atoms/)
+[![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-fsm?label=fsm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-fsm/)
+[![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-mobile?label=mobile&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-mobile/)
+[![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-mono-hooks?label=mono-hooks&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-mono-hooks/)
+[![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-tags?label=tags&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-tags/)
+[![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-scene-mgmt?label=scene-mgmt&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-scene-mgmt/)
+[![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-ui?label=ui&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-ui/)
 
 _Tiny modular pieces utilizing the power of Scriptable Objects_
 
@@ -42,29 +42,29 @@ Add the following to your `manifest.json` (which is located under your project l
             "name": "NPM Registry",
             "url": "https://registry.npmjs.org",
             "scopes": [
-                "com.mambojambostudios.unity-atoms-core",
-                "com.mambojambostudios.unity-atoms-base-atoms",
-                "com.mambojambostudios.unity-atoms-fsm",
-                "com.mambojambostudios.unity-atoms-mobile",
-                "com.mambojambostudios.unity-atoms-mono-hooks",
-                "com.mambojambostudios.unity-atoms-tags",
-                "com.mambojambostudios.unity-atoms-scene-mgmt",
-                "com.mambojambostudios.unity-atoms-ui",
-		"com.mambojambostudios.unity-atoms-input-system"
+                "com.unity-atoms.unity-atoms-core",
+                "com.unity-atoms.unity-atoms-base-atoms",
+                "com.unity-atoms.unity-atoms-fsm",
+                "com.unity-atoms.unity-atoms-mobile",
+                "com.unity-atoms.unity-atoms-mono-hooks",
+                "com.unity-atoms.unity-atoms-tags",
+                "com.unity-atoms.unity-atoms-scene-mgmt",
+                "com.unity-atoms.unity-atoms-ui",
+		        "com.unity-atoms.unity-atoms-input-system"
             ]
         }
     ],
     "dependencies": {
         ...
-        "com.mambojambostudios.unity-atoms-core": "4.4.2",
-        "com.mambojambostudios.unity-atoms-base-atoms": "4.4.2",
-        "com.mambojambostudios.unity-atoms-fsm": "4.4.2",
-        "com.mambojambostudios.unity-atoms-mobile": "4.4.2",
-        "com.mambojambostudios.unity-atoms-mono-hooks": "4.4.2",
-        "com.mambojambostudios.unity-atoms-tags": "4.4.2",
-        "com.mambojambostudios.unity-atoms-scene-mgmt": "4.4.2",
-        "com.mambojambostudios.unity-atoms-ui": "4.4.2",
-	"com.mambojambostudios.unity-atoms-input-system": "4.4.2",
+        "com.unity-atoms.unity-atoms-core": "4.4.2",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.2",
+        "com.unity-atoms.unity-atoms-fsm": "4.4.2",
+        "com.unity-atoms.unity-atoms-mobile": "4.4.2",
+        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.2",
+        "com.unity-atoms.unity-atoms-tags": "4.4.2",
+        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.2",
+        "com.unity-atoms.unity-atoms-ui": "4.4.2",
+	    "com.unity-atoms.unity-atoms-input-system": "4.4.2",
         ...
     }
 }
@@ -79,22 +79,22 @@ The package is available on the [openupm registry](https://openupm.com). It's re
 
 ```
 # required
-openupm add com.mambojambostudios.unity-atoms-core
-openupm add com.mambojambostudios.unity-atoms-base-atoms
+openupm add com.unity-atoms.unity-atoms-core
+openupm add com.unity-atoms.unity-atoms-base-atoms
 
 # optional
-openupm add com.mambojambostudios.unity-atoms-fsm
-openupm add com.mambojambostudios.unity-atoms-mobile
-openupm add com.mambojambostudios.unity-atoms-mono-hooks
-openupm add com.mambojambostudios.unity-atoms-tags
-openupm add com.mambojambostudios.unity-atoms-scene-mgmt
-openupm add com.mambojambostudios.unity-atoms-ui
-openupm add com.mambojambostudios.unity-atoms-input-system
+openupm add com.unity-atoms.unity-atoms-fsm
+openupm add com.unity-atoms.unity-atoms-mobile
+openupm add com.unity-atoms.unity-atoms-mono-hooks
+openupm add com.unity-atoms.unity-atoms-tags
+openupm add com.unity-atoms.unity-atoms-scene-mgmt
+openupm add com.unity-atoms.unity-atoms-ui
+openupm add com.unity-atoms.unity-atoms-input-system
 ```
 
 ## Documentation
 
-The Unity Atoms docs are now published at **https://adamramberg.github.io/unity-atoms**.
+The Unity Atoms docs are now published at **https://unity-atoms.github.io/unity-atoms**.
 
 ### Blog posts
 

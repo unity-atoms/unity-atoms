@@ -1,10 +1,13 @@
 {
-    "name": "MamboJamboStudios.UnityAtomsUI.Runtime",
+    "name": "UnityAtoms.UnityAtomsBaseAtoms.Editor",
     "references": [
-        "MamboJamboStudios.UnityAtomsCore.Runtime",
-        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime"
+        "UnityAtoms.UnityAtomsCore.Runtime",
+        "UnityAtoms.UnityAtomsCore.Editor",
+        "UnityAtoms.UnityAtomsBaseAtoms.Runtime"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

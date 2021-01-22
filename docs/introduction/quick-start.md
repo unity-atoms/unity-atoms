@@ -22,27 +22,27 @@ Add the following to your `manifest.json`:
             "name": "NPM Registry",
             "url": "https://registry.npmjs.org",
             "scopes": [
-                "com.mambojambostudios.unity-atoms-core",
-                "com.mambojambostudios.unity-atoms-base-atoms",
-                "com.mambojambostudios.unity-atoms-fsm",
-                "com.mambojambostudios.unity-atoms-mobile",
-                "com.mambojambostudios.unity-atoms-mono-hooks",
-                "com.mambojambostudios.unity-atoms-tags",
-                "com.mambojambostudios.unity-atoms-scene-mgmt",
-                "com.mambojambostudios.unity-atoms-ui"
+                "com.unity-atoms.unity-atoms-core",
+                "com.unity-atoms.unity-atoms-base-atoms",
+                "com.unity-atoms.unity-atoms-fsm",
+                "com.unity-atoms.unity-atoms-mobile",
+                "com.unity-atoms.unity-atoms-mono-hooks",
+                "com.unity-atoms.unity-atoms-tags",
+                "com.unity-atoms.unity-atoms-scene-mgmt",
+                "com.unity-atoms.unity-atoms-ui"
             ]
         }
     ],
     "dependencies": {
         ...
-        "com.mambojambostudios.unity-atoms-core": "4.4.2",
-        "com.mambojambostudios.unity-atoms-base-atoms": "4.4.2",
-        "com.mambojambostudios.unity-atoms-fsm": "4.4.2",
-        "com.mambojambostudios.unity-atoms-mobile": "4.4.2",
-        "com.mambojambostudios.unity-atoms-mono-hooks": "4.4.2",
-        "com.mambojambostudios.unity-atoms-tags": "4.4.2",
-        "com.mambojambostudios.unity-atoms-scene-mgmt": "4.4.2",
-        "com.mambojambostudios.unity-atoms-ui": "4.4.2",
+        "com.unity-atoms.unity-atoms-core": "4.4.2",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.2",
+        "com.unity-atoms.unity-atoms-fsm": "4.4.2",
+        "com.unity-atoms.unity-atoms-mobile": "4.4.2",
+        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.2",
+        "com.unity-atoms.unity-atoms-tags": "4.4.2",
+        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.2",
+        "com.unity-atoms.unity-atoms-ui": "4.4.2",
         ...
     }
 }
@@ -56,16 +56,16 @@ The package is available on the [openupm registry](https://openupm.com). It's re
 
 ```
 # required
-openupm add com.mambojambostudios.unity-atoms-core
-openupm add com.mambojambostudios.unity-atoms-base-atoms
+openupm add com.unity-atoms.unity-atoms-core
+openupm add com.unity-atoms.unity-atoms-base-atoms
 
 # optional
-openupm add com.mambojambostudios.unity-atoms-fsm
-openupm add com.mambojambostudios.unity-atoms-mobile
-openupm add com.mambojambostudios.unity-atoms-mono-hooks
-openupm add com.mambojambostudios.unity-atoms-tags
-openupm add com.mambojambostudios.unity-atoms-scene-mgmt
-openupm add com.mambojambostudios.unity-atoms-ui
+openupm add com.unity-atoms.unity-atoms-fsm
+openupm add com.unity-atoms.unity-atoms-mobile
+openupm add com.unity-atoms.unity-atoms-mono-hooks
+openupm add com.unity-atoms.unity-atoms-tags
+openupm add com.unity-atoms.unity-atoms-scene-mgmt
+openupm add com.unity-atoms.unity-atoms-ui
 ```
 
 ### Github URL
@@ -78,11 +78,13 @@ Add the following to your `manifest.json`:
 {
     "dependencies": {
         ...
-        "com.mambojambostudios.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git#master",
+        "com.unity-atoms.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git#master",
         ...
     }
 }
 ```
+
+It's also possible to add specific subpackages using the approach explained [here](https://forum.unity.com/threads/some-feedback-on-package-manager-git-support.743345/#post-5425311).
 
 ## Updating
 

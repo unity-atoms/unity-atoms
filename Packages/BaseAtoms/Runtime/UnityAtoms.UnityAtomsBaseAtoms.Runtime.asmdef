@@ -1,6 +1,9 @@
 {
-    "name": "MamboJamboStudios.UnityAtomsCore.Runtime",
-    "references": [],
+    "name": "UnityAtoms.UnityAtomsBaseAtoms.Runtime",
+    "references": [
+        "UnityAtoms.UnityAtomsCore.Editor",
+        "UnityAtoms.UnityAtomsCore.Runtime"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

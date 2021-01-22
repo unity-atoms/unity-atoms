@@ -1,8 +1,8 @@
 {
-    "name": "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime",
+    "name": "UnityAtoms.UnityAtomsSceneMgmt.Runtime",
     "references": [
-        "MamboJamboStudios.UnityAtomsCore.Editor",
-        "MamboJamboStudios.UnityAtomsCore.Runtime"
+        "UnityAtoms.UnityAtomsCore.Runtime",
+        "UnityAtoms.UnityAtomsBaseAtoms.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,8 +1,8 @@
 {
-    "name": "MamboJamboStudios.UnityAtomsFSM.Runtime",
+    "name": "UnityAtoms.UnityAtomsTags.Runtime",
     "references": [
-        "MamboJamboStudios.UnityAtomsCore.Runtime",
-        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime"
+        "UnityAtoms.UnityAtomsCore.Runtime",
+        "UnityAtoms.UnityAtomsBaseAtoms.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,8 +1,8 @@
 {
-    "name": "MamboJamboStudios.UnityAtomsCore.Runtime.Tests",
+    "name": "UnityAtoms.UnityAtomsCore.Runtime.Tests",
     "references": [
-        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime",
-        "MamboJamboStudios.UnityAtomsCore.Runtime",
+        "UnityAtoms.UnityAtomsBaseAtoms.Runtime",
+        "UnityAtoms.UnityAtomsCore.Runtime",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

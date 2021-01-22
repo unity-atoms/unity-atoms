@@ -1,5 +1,5 @@
 {
-  "name": "com.mambojambostudios.unity-atoms-tags",
+  "name": "com.unity-atoms.unity-atoms-tags",
   "displayName": "Unity Atoms Tags",
   "version": "4.4.2",
   "unity": "2018.3",
@@ -18,7 +18,7 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "4.4.2",
-    "com.mambojambostudios.unity-atoms-base-atoms": "4.4.2"
+    "com.unity-atoms.unity-atoms-core": "4.4.2",
+    "com.unity-atoms.unity-atoms-base-atoms": "4.4.2"
   }
 }

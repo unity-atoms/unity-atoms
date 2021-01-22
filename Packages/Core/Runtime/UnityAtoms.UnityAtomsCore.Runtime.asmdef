@@ -1,9 +1,6 @@
 {
-    "name": "MamboJamboStudios.UnityAtomsMobile.Runtime",
-    "references": [
-        "MamboJamboStudios.UnityAtomsCore.Runtime",
-        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime"
-    ],
+    "name": "UnityAtoms.UnityAtomsCore.Runtime",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

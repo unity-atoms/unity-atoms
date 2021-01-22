@@ -14,7 +14,7 @@ The reason for this project structure is that we want to include examples in the
 ### UPM doesn't allow...
 
 -   importing a sub folder in a Git repo when depending on a package through a Git URL.
--   excluding files (using property "files" in package.json) when importing locally using the file syntax (eg. "com.mambojambostudios.unity-atoms-core": "file:../../Packages/Core").
+-   excluding files (using property "files" in package.json) when importing locally using the file syntax (eg. "com.unity-atoms.unity-atoms-core": "file:../../Packages/Core").
 -   package.json in subdirectories (only root level)
 
 ### Current project structure therefore allows for...

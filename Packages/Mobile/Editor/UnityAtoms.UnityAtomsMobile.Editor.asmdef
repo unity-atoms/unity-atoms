@@ -1,7 +1,9 @@
 {
-    "name": "MamboJamboStudios.UnityAtomsCore.Editor",
+    "name": "UnityAtoms.UnityAtomsMobile.Editor",
     "references": [
-        "MamboJamboStudios.UnityAtomsCore.Runtime"
+        "UnityAtoms.UnityAtomsMobile.Runtime",
+        "UnityAtoms.UnityAtomsCore.Runtime",
+        "UnityAtoms.UnityAtomsCore.Editor"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [

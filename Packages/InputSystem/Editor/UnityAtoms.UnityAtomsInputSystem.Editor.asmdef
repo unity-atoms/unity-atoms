@@ -1,9 +1,10 @@
 {
-    "name": "MamboJamboStudios.UnityAtomsBaseAtoms.Editor",
+    "name": "UnityAtoms.UnityAtomsInputSystem.Editor",
     "references": [
-        "MamboJamboStudios.UnityAtomsCore.Runtime",
-        "MamboJamboStudios.UnityAtomsCore.Editor",
-        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime"
+        "UnityAtoms.UnityAtomsCore.Runtime",
+        "UnityAtoms.UnityAtomsCore.Editor",
+        "Unity.InputSystem",
+        "UnityAtoms.UnityAtomsInputSystem.Runtime"
     ],
     "includePlatforms": [
         "Editor"

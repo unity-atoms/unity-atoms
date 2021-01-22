@@ -1,11 +1,11 @@
 {
-    "name": "MamboJamboStudios.UnityAtomsTags.Runtime.Tests",
+    "name": "UnityAtoms.UnityAtomsTags.Runtime.Tests",
     "references": [
-        "MamboJamboStudios.UnityAtomsTags.Runtime",
-        "MamboJamboStudios.UnityAtomsCore.Runtime",
+        "UnityAtoms.UnityAtomsTags.Runtime",
+        "UnityAtoms.UnityAtomsCore.Runtime",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime"
+        "UnityAtoms.UnityAtomsBaseAtoms.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

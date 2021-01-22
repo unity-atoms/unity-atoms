@@ -1,5 +1,5 @@
 {
-  "name": "com.mambojambostudios.unity-atoms-input-system",
+  "name": "com.unity-atoms.unity-atoms-input-system",
   "displayName": "Unity Atoms Input System",
   "version": "4.4.2",
   "unity": "2018.3",
@@ -18,8 +18,8 @@
     "/Editor.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "4.4.2",
-    "com.mambojambostudios.unity-atoms-base-atoms": "4.4.2",
+    "com.unity-atoms.unity-atoms-core": "4.4.2",
+    "com.unity-atoms.unity-atoms-base-atoms": "4.4.2",
     "com.unity.inputsystem": "1.0.1"
   }
 }

@@ -1,8 +1,8 @@
 {
-    "name": "MamboJamboStudios.UnityAtomsInputSystem.Runtime",
+    "name": "UnityAtoms.UnityAtomsInputSystem.Runtime",
     "references": [
-        "MamboJamboStudios.UnityAtomsCore.Runtime",
-        "MamboJamboStudios.UnityAtomsBaseAtoms.Runtime",
+        "UnityAtoms.UnityAtomsCore.Runtime",
+        "UnityAtoms.UnityAtomsBaseAtoms.Runtime",
         "Unity.InputSystem"
     ],
     "includePlatforms": [],
