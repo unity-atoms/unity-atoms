@@ -35,7 +35,7 @@ namespace UnityAtoms
                 {
                     case (AtomReferenceUsage.CONSTANT): return _constant == null ? default(T) : _constant.Value;
                     case (AtomReferenceUsage.VARIABLE): return _variable == null ? default(T) : _variable.Value;
-                    case (AtomReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null ? default(T) : _variableInstancer.Value;
+                    case (AtomReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null || _variableInstancer.Variable == null ? default(T) : _variableInstancer.Value;
                     case (AtomReferenceUsage.VALUE):
                     default:
                         return _value;
@@ -76,7 +76,7 @@ namespace UnityAtoms
                 {
                     case (AtomReferenceUsage.CONSTANT): return _constant == null;
                     case (AtomReferenceUsage.VARIABLE): return _variable == null;
-                    case (AtomReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null;
+                    case (AtomReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null || _variableInstancer.Variable == null;
                 }
                 return false;
             }
