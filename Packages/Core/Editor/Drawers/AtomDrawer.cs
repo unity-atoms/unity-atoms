@@ -104,7 +104,8 @@ namespace UnityAtoms.Editor
                     Rect secondButtonRect;
                     Rect firstButtonRect = IMGUIUtils.SnipRectH(restRect, restRect.width - buttonWidth, out secondButtonRect, gutter);
                     if (GUI.Button(firstButtonRect, "✓")
-                        || Event.current.keyCode == KeyCode.Return)
+                        || (Event.current.keyCode == KeyCode.Return
+                            && GUI.GetNameOfFocusedControl() == NAMING_FIELD_CONTROL_NAME))
                     {
                         if (drawerData.NameOfNewAtom.Length > 0)
                         {
@@ -134,7 +135,8 @@ namespace UnityAtoms.Editor
                         }
                     }
                     if (GUI.Button(secondButtonRect, "✗")
-                        || Event.current.keyCode == KeyCode.Escape)
+                        || (Event.current.keyCode == KeyCode.Escape
+                            && GUI.GetNameOfFocusedControl() == NAMING_FIELD_CONTROL_NAME))
                     {
                         drawerData.UserClickedToCreateAtom = false;
                         drawerData.WarningText = "";
