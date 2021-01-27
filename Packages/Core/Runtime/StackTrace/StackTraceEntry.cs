@@ -8,9 +8,21 @@ namespace UnityAtoms
     {
         private readonly Guid _id;
         private readonly int _frameCount;
-        private readonly string _stackTrace;
+        private string _stackTrace;
         private readonly object _value;
         private readonly bool _constructedWithValue = false;
+        private StackTrace _trace;
+
+        private StackTraceEntry(StackTrace trace)
+        {
+            _id = Guid.NewGuid();
+            _trace = trace;
+
+            if (Application.isPlaying)
+            {
+                _frameCount = Time.frameCount;
+            }
+        }
 
         private StackTraceEntry(string stackTrace)
         {
@@ -35,9 +47,22 @@ namespace UnityAtoms
             }
         }
 
-        public static StackTraceEntry Create(object obj, int skipFrames = 0) => new StackTraceEntry(new StackTrace(skipFrames).ToString(), obj);
+        private StackTraceEntry(StackTrace trace, object value)
+        {
+            _value = value;
+            _constructedWithValue = true;
+            _id = Guid.NewGuid();
+            _trace = trace;
 
-        public static StackTraceEntry Create(int skipFrames = 0) => new StackTraceEntry(new StackTrace(skipFrames).ToString());
+            if (Application.isPlaying)
+            {
+                _frameCount = Time.frameCount;
+            }
+        }
+
+        public static StackTraceEntry Create(object obj, int skipFrames = 0) => new StackTraceEntry(new StackTrace(skipFrames), obj);
+
+        public static StackTraceEntry Create(int skipFrames = 0) => new StackTraceEntry(new StackTrace(skipFrames));
 
 
         public override bool Equals(object obj) => Equals(obj as StackTraceEntry);
@@ -49,17 +74,14 @@ namespace UnityAtoms
 
         public override string ToString()
         {
-            string stringifiedValue = "";
-            if (_constructedWithValue)
+            if (_stackTrace == null)
             {
-                try
-                {
-                    stringifiedValue = $"[{(_value == null ? "null" : _value.ToString())}]";
-                }
-                catch { /* Ignore error */ }
+                _stackTrace = _trace.ToString();
             }
 
-            return $"{_frameCount} {stringifiedValue}{_stackTrace}";
+            return _constructedWithValue
+                ? $"{_frameCount}   [{(_value == null ? "null" : _value.ToString())}] {_stackTrace}"
+                : $"{_frameCount} {_stackTrace}";
         }
     }
 }
