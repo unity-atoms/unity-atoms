@@ -15,7 +15,7 @@ namespace UnityAtoms.FSM
     public class FiniteStateMachine : StringVariable
     {
         /// <summary>
-        /// Get or set current value of this FSM. If a sub FSM is having the current state, then its state will be returned. Using the setter is the same thing as calling `Dispatch`. 
+        /// Get or set current value of this FSM. If a sub FSM is having the current state, then its state will be returned. Using the setter is the same thing as calling `Dispatch`.
         /// </summary>
         /// <value>The command to issue.</value>
         public override string Value
@@ -64,8 +64,10 @@ namespace UnityAtoms.FSM
         /// </summary>
         private string _currentFlatValue;
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+
             if (CompleteCurrentTransition != null && CompleteCurrentTransition.ReplayBufferSize > 0)
             {
                 Debug.LogWarning("The Complete Current Transition event had a replay buffer size great than 0, which would cause unwanted behaviour. Setting it to 0 in order to avoid unexpected behaviour.");
@@ -109,8 +111,10 @@ namespace UnityAtoms.FSM
             }
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
+
             if (FiniteStateMachineMonoHook.GetInstance() != null)
             {
                 FiniteStateMachineMonoHook.GetInstance().OnUpdate -= OnUpdate;
