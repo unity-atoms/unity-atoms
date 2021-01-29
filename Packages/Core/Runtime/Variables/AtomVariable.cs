@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -23,6 +24,12 @@ namespace UnityAtoms
         where E2 : AtomEvent<P>
         where F : AtomFunction<T, T>
     {
+        /// <summary>
+        /// Manage asset's lifetime
+        /// </summary>
+        [SerializeField]
+        private Scope _scope = Scope.Global;
+
         /// <summary>
         /// The Variable value as a property.
         /// </summary>
@@ -138,8 +145,10 @@ namespace UnityAtoms
             _value = RunPreChangeTransformers(_value);
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
+            ManageLifetime(_scope);
+
             SetInitialValues();
             TriggerInitialEvents();
 
@@ -154,10 +163,20 @@ namespace UnityAtoms
 #endif
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
+            if (_scope == Scope.Scene)
+            {
+                SceneManager.activeSceneChanged -= OnActiveSceneChanged;
+            }
+
             if (_changedInstantiatedAtRuntime) _changed = null;
             if (_changedWithHistoryInstantiatedAtRuntime) _changedWithHistory = null;
+        }
+
+        protected override void OnActiveSceneChanged(Scene scene1, Scene scene2)
+        {
+            Reset(false);
         }
 
         /// <summary>

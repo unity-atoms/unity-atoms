@@ -2,6 +2,10 @@ using System;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
+#if USE_ADDRESSABLES
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
+#endif
 
 namespace UnityAtoms.Editor
 {
@@ -16,6 +20,10 @@ namespace UnityAtoms.Editor
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
+
+            DisplayLifetime();
+
+            GUI.enabled = true;
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
             EditorGUILayout.Space();
@@ -114,6 +122,42 @@ namespace UnityAtoms.Editor
             }
 
             serializedObject.ApplyModifiedProperties();
+        }
+
+        /// <summary>
+        /// Display scope dropdown and warning if the addressable package is in use
+        /// </summary>
+        private void DisplayLifetime()
+        {
+            if (Application.isPlaying) GUI.enabled = false;
+            #if USE_ADDRESSABLES
+            AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
+            string assetPath = AssetDatabase.GetAssetPath(serializedObject.targetObject);
+            string guid = AssetDatabase.AssetPathToGUID(assetPath);
+            AddressableAssetEntry entry = settings.FindAssetEntry(guid);
+            #endif
+
+            SerializedProperty scope = serializedObject.FindProperty("_scope");
+            #if USE_ADDRESSABLES
+            if (entry != null)
+            {
+                GUI.enabled = false;
+                scope.enumValueIndex = 2;
+            }
+            #endif
+            EditorGUILayout.PropertyField(scope);
+            #if USE_ADDRESSABLES
+            if (entry != null)
+            {
+                EditorGUILayout.HelpBox("This asset is marked as addressable, his lifetime will not be managed by Unity Atoms.\nSee more in documentation", MessageType.Warning);
+            }
+            else
+            {
+                EditorGUILayout.HelpBox("Addressables is installed, careful, Unity Atoms might be unable to manage the asset.\nSee more in documentation", MessageType.Info);
+            }
+            #endif
+
+            EditorGUILayout.Space();
         }
     }
 }

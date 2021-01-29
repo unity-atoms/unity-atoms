@@ -1,9 +1,9 @@
 {
     "name": "UnityAtoms.UnityAtomsCore.Editor",
     "references": [
-        "UnityAtoms.UnityAtomsCore.Runtime"
+        "UnityAtoms.UnityAtomsCore.Runtime",
+        "Unity.Addressables.Editor"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [
         "Editor"
     ],
@@ -13,5 +13,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [
+        {
+            "name": "com.unity.addressables",
+            "expression": "1.0",
+            "define": "USE_ADDRESSABLES"
+        }
+    ],
+    "noEngineReferences": false
 }
