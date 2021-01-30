@@ -5,6 +5,8 @@ using UnityEditor;
 using UnityEditor.Compilation;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using Assembly = System.Reflection.Assembly;
+using Object = UnityEngine.Object;
 
 namespace UnityAtoms.Editor
 {
@@ -18,6 +20,8 @@ namespace UnityAtoms.Editor
         private SerializedProperty baseType;
         private SerializedProperty generatedOptions;
 
+        private static bool safeSearch = true;
+
         private void OnEnable()
         {
             // Find Properties.
@@ -26,18 +30,62 @@ namespace UnityAtoms.Editor
             baseType = serializedObject.FindProperty(nameof(AtomGenerator.BaseType));
             generatedOptions = serializedObject.FindProperty(nameof(AtomGenerator.GenerationOptions));
 
-            // Find all serializeable types in unity that are not generic or abstract.
-            var serializeableTypes = from assemblyDefinition in CompilationPipeline.GetAssemblies(AssembliesType.Player)
-                                     let assembly = System.Reflection.Assembly.Load(assemblyDefinition.name)
-                                     where !assembly.IsDynamic
-                                     from type in assembly.GetExportedTypes()
-                                     where type.IsSerializable || type.IsSubclassOf(typeof(ScriptableObject))
-                                     where !type.IsGenericType
-                                     where !type.IsAbstract
-                                     select type;
+            // Check if the current type is unsafe.
+            var currentType = Type.GetType(fullQualifiedName.stringValue);
+            if(currentType == null
+                || currentType.IsSubclassOf(typeof(Object)))
+            {
+                safeSearch = true;
+            }
+            else if(!currentType.IsSerializable)
+            {
+                safeSearch = false;
+            }
+            else
+            {
+                var assemblies = from assemblyDefinition in CompilationPipeline.GetAssemblies(AssembliesType.Player)
+                                 let assembly = Assembly.Load(assemblyDefinition.name)
+                                 select assembly;
+                safeSearch = assemblies.Contains(currentType.Assembly);
+            }
+
+            RefreshDropdown();
+        }
+
+        public void RefreshDropdown()
+        {
+            // Search Player assemblies only if safe searching, else search all assemblies.
+            IEnumerable<Assembly> assemblies;
+            if(safeSearch)
+            {
+                assemblies = from assemblyDefinition in CompilationPipeline.GetAssemblies(AssembliesType.Player)
+                             let assembly = Assembly.Load(assemblyDefinition.name)
+                             select assembly;
+            }
+            else
+            {
+                assemblies = from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                             select assembly;
+            }
+
+            // Find all types in unity that are not generic or abstract.
+            var types = from assembly in assemblies
+                        where !assembly.IsDynamic
+                        from type in assembly.GetExportedTypes()
+                        where !type.IsGenericType
+                        where !type.IsAbstract
+                        select type;
+
+            // Disregard non serializable types if safe searching.
+            if(safeSearch)
+            {
+                types = from type in types
+                        where type.IsUnitySerializable()
+                        select type;
+            }
 
             // Create a type selector dropdown that sets properties when something is selected.
-            typeSelectorDropdown = new TypeSelectorDropdown(serializeableTypes, selectedType =>
+            typeSelectorDropdown = new TypeSelectorDropdown(types, selectedType =>
             {
                 serializedObject.Update();
 
@@ -54,13 +102,30 @@ namespace UnityAtoms.Editor
             serializedObject.Update();
 
             // Draw our type dropdown and result.
-            var buttonContent = new GUIContent("Select Type");
+            var buttonContent = safeSearch
+                ? new GUIContent($"Select Unity Type", $"Select from all Unity compatible types.")
+                : new GUIContent($"Select Unsafe Type", $"Select from all types, serializable or not. Be aware that some types may not be compatible with all platforms!");
             var buttonStyle = GUI.skin.button;
-            var buttonRect = EditorGUILayout.GetControlRect(false, buttonStyle.CalcHeight(buttonContent, 0f), buttonStyle);
+            var dropdownRect = EditorGUILayout.GetControlRect(false, buttonStyle.CalcHeight(buttonContent, 0f), buttonStyle);
+            var toggleRect = new Rect(dropdownRect);
+            toggleRect.width = 16f;
+            var buttonRect = new Rect(dropdownRect);
+            buttonRect.width -= 20f;
+            buttonRect.x += 20f;
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUI.BeginChangeCheck();
+            safeSearch = EditorGUI.Toggle(toggleRect, safeSearch);
+            if(EditorGUI.EndChangeCheck())
+            {
+                RefreshDropdown();
+            }
+
             if(GUI.Button(buttonRect, buttonContent))
             {
-                typeSelectorDropdown.Show(buttonRect);
+                typeSelectorDropdown.Show(dropdownRect);
             }
+            EditorGUILayout.EndHorizontal();
             EditorGUILayout.PropertyField(fullQualifiedName);
 
             // Draw the different generator options and if a file has been generated, draw it in a disabled objectfield as well.
@@ -175,6 +240,11 @@ namespace UnityAtoms.Editor
                     foreach(Type type in types)
                     {
                         var name = type.FullName.Substring(type.FullName.LastIndexOf('.') + 1);
+                        if(!type.IsUnitySerializable())
+                        {
+                            name += " (Not Serializable)";
+                        }
+
                         var dropdownItem = new AdvancedDropdownItem(name);
                         parent.AddChild(dropdownItem);
 
