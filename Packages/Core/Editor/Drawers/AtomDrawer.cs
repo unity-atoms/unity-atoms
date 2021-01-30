@@ -19,6 +19,8 @@ namespace UnityAtoms.Editor
             public string WarningText = "";
         }
 
+        private const string NAMING_FIELD_CONTROL_NAME = "Naming Field";
+
         private Dictionary<string, DrawerData> _perPropertyViewData = new Dictionary<string, DrawerData>();
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -75,17 +77,16 @@ namespace UnityAtoms.Editor
 
             var defaultGUIColor = GUI.color;
             GUI.color = isCreatingSO ? Color.yellow : defaultGUIColor;
-            position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), isCreatingSO ? new GUIContent("Name of New Atom") : label);
+            position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), isCreatingSO && label != GUIContent.none ? new GUIContent("Name of New Atom") : label);
             GUI.color = defaultGUIColor;
 
             var indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
-            if (isCreatingSO)
-            {
-                drawerData.NameOfNewAtom = EditorGUI.TextField(position, drawerData.NameOfNewAtom);
-            }
-            else
+            GUI.SetNextControlName(NAMING_FIELD_CONTROL_NAME);
+            drawerData.NameOfNewAtom = EditorGUI.TextField(isCreatingSO ? position : Rect.zero, drawerData.NameOfNewAtom);
+
+            if (!isCreatingSO)
             {
                 EditorGUI.BeginChangeCheck();
                 var obj = EditorGUI.ObjectField(position, property.objectReferenceValue, typeof(T), false);
@@ -93,7 +94,6 @@ namespace UnityAtoms.Editor
                 {
                     property.objectReferenceValue = obj;
                 }
-
             }
 
             if (property.objectReferenceValue == null)
@@ -103,7 +103,9 @@ namespace UnityAtoms.Editor
                     var buttonWidth = 24;
                     Rect secondButtonRect;
                     Rect firstButtonRect = IMGUIUtils.SnipRectH(restRect, restRect.width - buttonWidth, out secondButtonRect, gutter);
-                    if (GUI.Button(firstButtonRect, "✓"))
+                    if (GUI.Button(firstButtonRect, "✓")
+                        || (Event.current.keyCode == KeyCode.Return
+                            && GUI.GetNameOfFocusedControl() == NAMING_FIELD_CONTROL_NAME))
                     {
                         if (drawerData.NameOfNewAtom.Length > 0)
                         {
@@ -129,9 +131,12 @@ namespace UnityAtoms.Editor
                         else
                         {
                             drawerData.WarningText = "Name of new Atom must be specified!";
+                            EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
                         }
                     }
-                    if (GUI.Button(secondButtonRect, "✗"))
+                    if (GUI.Button(secondButtonRect, "✗")
+                        || (Event.current.keyCode == KeyCode.Escape
+                            && GUI.GetNameOfFocusedControl() == NAMING_FIELD_CONTROL_NAME))
                     {
                         drawerData.UserClickedToCreateAtom = false;
                         drawerData.WarningText = "";
@@ -148,6 +153,8 @@ namespace UnityAtoms.Editor
                     {
                         drawerData.NameOfNewAtom = "";
                         drawerData.UserClickedToCreateAtom = true;
+
+                        EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
                     }
                 }
             }
