@@ -10,7 +10,7 @@ namespace UnityAtoms.Editor
     [CreateAssetMenu(fileName = "AtomGenerator", menuName = "Unity Atoms/Generation/AtomGenerator", order = 0)]
     public class AtomGenerator : ScriptableObject
     {
-        public string FullQualifiedName;
+        [TextArea] public string FullQualifiedName;
         public string Namespace;
         public string BaseType;
 

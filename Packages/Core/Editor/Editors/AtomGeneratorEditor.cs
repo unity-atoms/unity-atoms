@@ -129,6 +129,8 @@ namespace UnityAtoms.Editor
             EditorGUILayout.PropertyField(fullQualifiedName);
 
             // Draw the different generator options and if a file has been generated, draw it in a disabled objectfield as well.
+            EditorGUILayout.Space(EditorGUIUtility.singleLineHeight);
+            EditorGUILayout.LabelField($"Options", EditorStyles.boldLabel);
             var options = generatedOptions.intValue;
             var scripts = (target as AtomGenerator)?.Scripts;
             for (var index = 0; index < AtomTypes.ALL_ATOM_TYPES.Count; index++)
