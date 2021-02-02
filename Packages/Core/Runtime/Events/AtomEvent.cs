@@ -14,6 +14,9 @@ namespace UnityAtoms
     {
         public T InspectorRaiseValue { get => _inspectorRaiseValue; }
 
+        [SerializeField]
+        private bool UseLocalReplayBuffer = false;
+
         /// <summary>
         /// Retrieve Replay Buffer as a List. This call will allocate memory so use sparsely.
         /// </summary>
@@ -37,7 +40,10 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
-            _replayBufferSize = AtomPreferences.ReplayBufferSize;
+            if (!UseLocalReplayBuffer)
+            {
+                _replayBufferSize = AtomPreferences.ReplayBufferSize;
+            }
         }
 
         private void OnDisable()
