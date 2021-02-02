@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.IO;
 
@@ -23,6 +23,7 @@ namespace UnityAtoms.Editor
                     AssetDatabase.GetAssetPath(target),
                     "New Atom Type.asset"
                 );
+                newPath = AssetDatabase.GenerateUniqueAssetPath(newPath);
                 Debug.Log(newPath);
                 AssetDatabase.CreateAsset(asset, newPath);
                 AssetDatabase.ImportAsset(newPath);
