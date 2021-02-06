@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerDescription: Raised when an Enemy is removed from the Spawned Enemies
     list.
+  UseLocalReplayBuffer: 1
   _replayBufferSize: 1
   _inspectorRaiseValue: {fileID: 0}

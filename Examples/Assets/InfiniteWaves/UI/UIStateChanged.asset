@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: UIStateChanged
   m_EditorClassIdentifier: 
   _developerDescription: Raised when UI state is changed.
+  UseLocalReplayBuffer: 1
   _replayBufferSize: 1
   _inspectorRaiseValue: 

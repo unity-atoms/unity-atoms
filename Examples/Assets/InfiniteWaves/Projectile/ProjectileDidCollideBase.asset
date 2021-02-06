@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerDescription: Raised when a projectile do collide. This is a base Event
     used for creating in memory copies.
+  UseLocalReplayBuffer: 1
   _replayBufferSize: 1

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: WaveCountChanged
   m_EditorClassIdentifier: 
   _developerDescription: Raised when the wave count changes.
+  UseLocalReplayBuffer: 1
   _replayBufferSize: 1
   _inspectorRaiseValue: 0

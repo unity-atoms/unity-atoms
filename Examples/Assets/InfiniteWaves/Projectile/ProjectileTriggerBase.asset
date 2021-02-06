@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerDescription: Raised when a projectile enters a trigger. This is a base
     Event used for creating in memory copies.
+  UseLocalReplayBuffer: 1
   _replayBufferSize: 1
   _inspectorRaiseValue: {fileID: 0}

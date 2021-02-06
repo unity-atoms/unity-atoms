@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: EnemyAdded
   m_EditorClassIdentifier: 
   _developerDescription: Raised when an Enemy is added to the Enemies List.
+  UseLocalReplayBuffer: 1
   _replayBufferSize: 0
   _inspectorRaiseValue: {fileID: 0}

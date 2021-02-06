@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerDescription: Raised when Enemy data is removed from the Enemy data Collection
     its associated with. This is a base Event used for creating in memory copies.
+  UseLocalReplayBuffer: 1
   _replayBufferSize: 2
   _inspectorRaiseValue: {fileID: 0}

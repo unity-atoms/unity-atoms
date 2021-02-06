@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerDescription: Raised when Enemy data is added to an Enemy Data Collection.
     This is a base Event that will be used as a base in an Instancer.
+  UseLocalReplayBuffer: 1
   _replayBufferSize: 2
   _inspectorRaiseValue: {fileID: 0}
