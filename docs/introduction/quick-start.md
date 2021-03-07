@@ -78,7 +78,7 @@ Add the following to your `manifest.json`:
 {
     "dependencies": {
         ...
-        "com.unity-atoms.unity-atoms": "https://github.com/AdamRamberg/unity-atoms.git#master",
+        "com.unity-atoms.unity-atoms": "https://github.com/unity-atoms/unity-atoms.git#master",
         ...
     }
 }
@@ -92,7 +92,7 @@ Updating Unity Atoms to a new release when using the Unity Package Manager is as
 
 ![updating](../assets/unity-atoms-update.png)
 
-Follow [Unity Atoms on Github](https://github.com/AdamRamberg/unity-atoms) to stay up-to-date on the current version.
+Follow [Unity Atoms on Github](https://github.com/unity-atoms/unity-atoms) to stay up-to-date on the current version.
 
 ## Create your first Atom
 

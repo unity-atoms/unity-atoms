@@ -7,4 +7,4 @@ sidebar_label: Advanced example
 
 # Advanced example
 
-See the example scene "InfiniteWaves" in the [example project](https://github.com/AdamRamberg/unity-atoms/tree/master/Examples).
+See the example scene "InfiniteWaves" in the [example project](https://github.com/unity-atoms/unity-atoms-examples).
