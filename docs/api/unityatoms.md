@@ -728,6 +728,12 @@ Enumeration for logical operators for `AtomCondition` Predicates
 
 ---
 
+## `AtomCondition`1`
+
+Base abstract class for Conditions. Condition must be an AtomFunction<bool, T>.
+
+---
+
 ## `AtomAction`
 
 Base abstract class for Actions. Inherits from `BaseAtom`.

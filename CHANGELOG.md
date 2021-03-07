@@ -6,6 +6,21 @@
 💅 = Polish
 🚀 = New features
 
+# 4.4.3 (Mars 7, 2021)
+
+## 🐛 Bug fixes
+
+-   [#241](https://github.com/unity-atoms/unity-atoms/pull/241) Value of a VariableInstancer in EditMode leads to NullRef. ([@soraphis](https://github.com/soraphis))
+-   [#230](https://github.com/unity-atoms/unity-atoms/pull/230) Compatibility with dynamic assemblies and different namespace/class conditions. ([@soraphis](https://github.com/soraphis))
+
+## 🏃‍♀ Performance
+
+-   [#238](https://github.com/unity-atoms/unity-atoms/pull/238) Lazy stacktrace toString conversion. ([@soraphis](https://github.com/soraphis))
+
+## 💅 Polish
+
+-   [#229](https://github.com/unity-atoms/unity-atoms/pull/229) Create button ease of use ([@Casey-Hofland](https://github.com/Casey-Hofland))
+
 # 4.4.2 (December 30, 2020)
 
 ## 🐛 Bug fixes

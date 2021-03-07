@@ -47,7 +47,7 @@ namespace UnityAtoms
         /// </summary>
         protected virtual void ImplSpecificSetup() { }
 
-        private void Start()
+        private void OnEnable()
         {
             if (Base == null)
             {
