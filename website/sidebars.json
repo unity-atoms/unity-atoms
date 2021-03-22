@@ -1,7 +1,7 @@
 {
   "docs": {
     "Introduction": [
-      "introduction/quick-start",
+      "introduction/installation",
       "introduction/overview",
       "introduction/preferences",
       "introduction/faq"
@@ -11,6 +11,7 @@
         "type": "subcategory",
         "label": "Basics",
         "ids": [
+          "tutorials/creating-atoms",
           "tutorials/variables",
           "tutorials/events",
           "tutorials/listeners",

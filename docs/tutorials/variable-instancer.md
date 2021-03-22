@@ -7,11 +7,17 @@ sidebar_label: Variable Instancer
 
 # Variable Instancer
 
-Unity Atoms have no problems with being used in a prefab. However, it will quickly become apparent that all instances of the prefab refer to the one and the same Atom asset, such as a specific `IntVariable` in the asset folder.
+Unity Atoms have no problems with prefabs. However, it will quickly become apparent that all instances of the prefab refer to the one and the same Atom asset, such as a specific `IntVariable`.
+
+## Instancers explained
 
 For example, changing the value of a Variable applies to all prefab instances that use the Variable. Triggering the `Changed` event also causes all prefab instances to react. While this still has it's uses, the behaviour is not always desirable.
 
-To break free from global Atoms, Variables can be instantiated as an in-memory copy when a prefab is created. To do this, we need a `VariableInstancer`.
+![without-instancers](../assets/variable-instancer/without-instancers.png)
+
+To break free from globally defined Atoms, Variables can be instantiated as an in-memory copy when a prefab is created. To do this, we need a `VariableInstancer`.
+
+![with-instancers](../assets/variable-instancer/with-instancers.png)
 
 > **Note:** A `VariableInstancer` is unique to the type of the Variable. The generator can generate a `VariableInstancer` of any type needed. Unity Atoms comes with a set of predefined basic types.
 
@@ -19,21 +25,17 @@ To break free from global Atoms, Variables can be instantiated as an in-memory c
 
 Start by creating an empty `GameObject` called `Monster` and add an `Int Variable Instancer` component to it:
 
-![add-int-var-instancer](../assets/variable-instancer/add-int-var-instancer-1.png)
+![add-int-var-instancer-1](../assets/variable-instancer/add-int-var-instancer-1.png)
 
-The `VariableInstancer` needs a base Variable to instantiate. Create any `IntVariable` and use the inspector to add the variable to the `Base` field. You can also click on `Create` to use a shortcut for type-appropriate Variable creation from the instancer itself.
+The `VariableInstancer` needs a base Variable to instantiate. [Create](creating-atoms.md) any `IntVariable` and use the inspector to add the variable to the `Base` field. You can also click on `Create` to use a shortcut for type-appropriate Variable creation from the instancer itself.
 
-![add-int-var-instancer](../assets/variable-instancer/add-int-var-instancer-2.png)
+![instancer-base-variable](../assets/variable-instancer/instancer-base-variable.gif)
 
 ## Listening for `Changed` event
 
-The `VariableInstancer` instantiates the appropriate `Changed` and `Changed With History` event instances for this Variable. That's why it's possible to listen for the `Changed` event in an `Int Event Reference Listener`. Add an `Int Event Reference Listener` as a component and use the three dots next to `Event Reference` to select `Use Variable Instancer`:
+The `VariableInstancer` instantiates the appropriate `Changed` and `Changed With History` event instances for this Variable. That's why it's possible to listen for the `Changed` event in an `Int Event Reference Listener`. Add an `Int Event Reference Listener` as a component and use the three dots next to `Event Reference` to select `Use Variable Instancer` and drag the `Int Variable Instancer` on the `Event Reference` field:
 
-![use-variable-instancer](../assets/variable-instancer/use-variable-instancer.png)
-
-Grabbing from the title of the component, drag the `Int Variable Instancer` on the `Event Reference` field:
-
-![drag-variable-instancer](../assets/variable-instancer/drag-variable-instancer.png)
+![listener-use-instancer](../assets/variable-instancer/listener-use-instancer.gif)
 
 This event listener now listens to the instantiated `Changed` event from the `Int Variable Instancer`.
 
@@ -56,7 +58,7 @@ public class LogHealth : MonoBehaviour
 
 Add the `LogHealth` component and click `+` on the `Unity Event Response`, drag the `LogHealth` to the response field and choose the `ReportHealth` method from the list:
 
-![add-log-health](../assets/variable-instancer/add-log-health.png)
+![instancer-listener-response](../assets/variable-instancer/instancer-listener-response.gif)
 
 > **Note:** If the method does not appear under the `Dynamic` section with the data type of the listener, the method signature is wrong. The Unity response method can only have one parameter which corresponds to the listener type. Using a method with static parameters will still get called, but won't have access to the event data.
 
