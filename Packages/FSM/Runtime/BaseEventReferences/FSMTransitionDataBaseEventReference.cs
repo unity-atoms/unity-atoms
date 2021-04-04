@@ -15,16 +15,13 @@ namespace UnityAtoms.FSM
     /// Event Reference of type `FSMTransitionData`. Inherits from `AtomBaseEventReference&lt;FSMTransitionData, FSMTransitionDataEvent, FSMTransitionDataEventInstancer&gt;`.
     /// </summary>
     [Serializable]
-    public sealed class FSMTransitionDataBaseEventReference : AtomBaseEventReference<
-        FSMTransitionData,
-        FSMTransitionDataEvent,
-        FSMTransitionDataEventInstancer>, IGetEvent
+    public sealed class FSMTransitionDataBaseEventReference : AtomBaseEventReference<FSMTransitionData>
     {
         /// <summary>
         /// Get the value for the Reference.
         /// </summary>
         /// <value>The value of type `FiniteStateMachine`.</value>
-        public override FSMTransitionDataEvent Event
+        public override AtomEvent<FSMTransitionData> Event
         {
             get
             {
@@ -41,10 +38,10 @@ namespace UnityAtoms.FSM
                 switch (_usage)
                 {
                     case (FSMTransitionDataBaseEventReferenceUsage.FSM_INSTANCER):
-                        ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted = value;
+                        ((FiniteStateMachine)_fsmInstancer.Variable).TransitionStarted = (FSMTransitionDataEvent)value;
                         break;
                     case (FSMTransitionDataBaseEventReferenceUsage.FSM):
-                        _fsm.TransitionStarted = value;
+                        _fsm.TransitionStarted = (FSMTransitionDataEvent)value;
                         break;
                     default:
                         base.Event = value;

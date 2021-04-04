@@ -23,16 +23,13 @@ namespace UnityAtoms.BaseAtoms
     /// Event Reference of type `AtomBaseVariable`. Inherits from `AtomBaseEventReference&lt;AtomBaseVariable, AtomBaseVariableEvent, AtomBaseVariableEventInstancer&gt;`.
     /// </summary>
     [Serializable]
-    public sealed class AtomBaseVariableBaseEventReference : AtomBaseEventReference<
-        AtomBaseVariable,
-        AtomBaseVariableEvent,
-        AtomBaseVariableEventInstancer>, IGetEvent
+    public sealed class AtomBaseVariableBaseEventReference : AtomBaseEventReference<AtomBaseVariable>
     {
         /// <summary>
         /// Get or set the Event used by the Event Reference.
         /// </summary>
         /// <value>The event of type `E`.</value>
-        public override AtomBaseVariableEvent Event
+        public override AtomEvent<AtomBaseVariable> Event
         {
             get
             {
@@ -58,42 +55,42 @@ namespace UnityAtoms.BaseAtoms
                 {
                     case (AtomBaseVariableEventReferenceUsage.COLLECTION_ADDED_EVENT):
                         {
-                            _collection.Added = value;
+                            _collection.Added = (AtomBaseVariableEvent)value;
                             break;
                         }
                     case (AtomBaseVariableEventReferenceUsage.COLLECTION_REMOVED_EVENT):
                         {
-                            _collection.Removed = value;
+                            _collection.Removed = (AtomBaseVariableEvent)value;
                             break;
                         }
                     case (AtomBaseVariableEventReferenceUsage.LIST_ADDED_EVENT):
                         {
-                            _list.Added = value;
+                            _list.Added = (AtomBaseVariableEvent)value;
                             break;
                         }
                     case (AtomBaseVariableEventReferenceUsage.LIST_REMOVED_EVENT):
                         {
-                            _list.Removed = value;
+                            _list.Removed = (AtomBaseVariableEvent)value;
                             break;
                         }
                     case (AtomBaseVariableEventReferenceUsage.COLLECTION_INSTANCER_ADDED_EVENT):
                         {
-                            _collectionInstancer.Added = value;
+                            _collectionInstancer.Added = (AtomBaseVariableEvent)value;
                             break;
                         }
                     case (AtomBaseVariableEventReferenceUsage.COLLECTION_INSTANCER_REMOVED_EVENT):
                         {
-                            _collectionInstancer.Removed = value;
+                            _collectionInstancer.Removed = (AtomBaseVariableEvent)value;
                             break;
                         }
                     case (AtomBaseVariableEventReferenceUsage.LIST_INSTANCER_ADDED_EVENT):
                         {
-                            _listInstancer.Added = value;
+                            _listInstancer.Added = (AtomBaseVariableEvent)value;
                             break;
                         }
                     case (AtomBaseVariableEventReferenceUsage.LIST_INSTANCER_REMOVED_EVENT):
                         {
-                            _listInstancer.Removed = value;
+                            _listInstancer.Removed = (AtomBaseVariableEvent)value;
                             break;
                         }
                     case (AtomBaseVariableEventReferenceUsage.EVENT):

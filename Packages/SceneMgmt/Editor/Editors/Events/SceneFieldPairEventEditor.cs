@@ -10,6 +10,6 @@ namespace UnityAtoms.SceneMgmt.Editor
     /// Event property drawer of type `SceneFieldPair`. Inherits from `AtomEventEditor&lt;SceneFieldPair, SceneFieldPairEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomEditor(typeof(SceneFieldPairEvent))]
-    public sealed class SceneFieldPairEventEditor : AtomEventEditor<SceneFieldPair, SceneFieldPairEvent> { }
+    public sealed class SceneFieldPairEventEditor : AtomEventEditor<Pair<SceneField>> { }
 }
 #endif

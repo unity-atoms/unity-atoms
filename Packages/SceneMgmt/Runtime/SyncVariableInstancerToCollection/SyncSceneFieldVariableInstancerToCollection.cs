@@ -9,5 +9,5 @@ namespace UnityAtoms.SceneMgmt
     /// </summary>
     [AddComponentMenu("Unity Atoms/Sync Variable Instancer to Collection/Sync SceneField Variable Instancer to Collection")]
     [EditorIcon("atom-icon-delicate")]
-    public class SyncSceneFieldVariableInstancerToCollection : SyncVariableInstancerToCollection<SceneField, SceneFieldVariable, SceneFieldVariableInstancer> { }
+    public class SyncSceneFieldVariableInstancerToCollection : SyncVariableInstancerToCollection<SceneField> { }
 }

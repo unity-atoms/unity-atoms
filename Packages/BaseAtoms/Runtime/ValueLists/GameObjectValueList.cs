@@ -3,9 +3,9 @@ using UnityEngine;
 namespace UnityAtoms.BaseAtoms
 {
     /// <summary>
-    /// Value List of type `GameObject`. Inherits from `AtomValueList&lt;GameObject, GameObjectEvent&gt;`.
+    /// Value List of type `GameObject`. Inherits from `AtomValueList&lt;GameObject&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-piglet")]
     [CreateAssetMenu(menuName = "Unity Atoms/Value Lists/GameObject", fileName = "GameObjectValueList")]
-    public sealed class GameObjectValueList : AtomValueList<GameObject, GameObjectEvent> { }
+    public sealed class GameObjectValueList : AtomValueList<GameObject> { }
 }

@@ -15,13 +15,13 @@ namespace UnityAtoms.FSM
         public string Command { get => _command.Value; }
 
         [SerializeField]
-        private StringReference _fromState = default;
+        private AtomReference<string> _fromState = default;
 
         [SerializeField]
-        private StringReference _toState = default;
+        private AtomReference<string> _toState = default;
 
         [SerializeField]
-        private StringReference _command = default;
+        private AtomReference<string> _command = default;
 
         [SerializeField]
         private BoolVariable _testCondition = default;

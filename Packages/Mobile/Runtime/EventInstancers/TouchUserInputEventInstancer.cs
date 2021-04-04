@@ -8,5 +8,5 @@ namespace UnityAtoms.Mobile
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/TouchUserInput Event Instancer")]
-    public class TouchUserInputEventInstancer : AtomEventInstancer<TouchUserInput, TouchUserInputEvent> { }
+    public class TouchUserInputEventInstancer : AtomEventInstancer<TouchUserInput> { }
 }

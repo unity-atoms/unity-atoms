@@ -10,6 +10,6 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Event property drawer of type `GameObject`. Inherits from `AtomEventEditor&lt;GameObject, GameObjectEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomEditor(typeof(GameObjectEvent))]
-    public sealed class GameObjectEventEditor : AtomEventEditor<GameObject, GameObjectEvent> { }
+    public sealed class GameObjectEventEditor : AtomEventEditor<GameObject> { }
 }
 #endif

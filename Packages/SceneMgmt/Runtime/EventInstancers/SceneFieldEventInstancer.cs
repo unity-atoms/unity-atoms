@@ -8,5 +8,5 @@ namespace UnityAtoms.SceneMgmt
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/SceneField Event Instancer")]
-    public class SceneFieldEventInstancer : AtomEventInstancer<SceneField, SceneFieldEvent> { }
+    public class SceneFieldEventInstancer : AtomEventInstancer<SceneField> { }
 }

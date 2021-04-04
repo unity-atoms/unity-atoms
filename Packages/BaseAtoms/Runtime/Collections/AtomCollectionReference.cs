@@ -35,7 +35,7 @@ namespace UnityAtoms.BaseAtoms
                 switch (_usage)
                 {
                     case (AtomCollectionReferenceUsage.COLLECTION_INSTANCER):
-                        return _instancer == null ? default(AtomCollection) : _instancer.Variable;
+                        return _instancer == null ? default(AtomCollection) : (AtomCollection)_instancer.Variable;
                     case (AtomCollectionReferenceUsage.COLLECTION):
                     default:
                         return _collection;

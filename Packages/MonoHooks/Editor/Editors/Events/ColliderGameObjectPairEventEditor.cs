@@ -10,6 +10,6 @@ namespace UnityAtoms.MonoHooks.Editor
     /// Event property drawer of type `ColliderGameObjectPair`. Inherits from `AtomEventEditor&lt;ColliderGameObjectPair, ColliderGameObjectPairEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomEditor(typeof(ColliderGameObjectPairEvent))]
-    public sealed class ColliderGameObjectPairEventEditor : AtomEventEditor<ColliderGameObjectPair, ColliderGameObjectPairEvent> { }
+    public sealed class ColliderGameObjectPairEventEditor : AtomEventEditor<Pair<ColliderGameObject>> { }
 }
 #endif

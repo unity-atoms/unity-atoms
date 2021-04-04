@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Vector3", fileName = "Vector3Variable")]
-    public sealed class Vector3Variable : EquatableAtomVariable<Vector3, Vector3Pair, Vector3Event, Vector3PairEvent, Vector3Vector3Function>
+    public sealed class Vector3Variable : EquatableAtomVariable<Vector3>
     {
         /// <summary>
         /// Multiply variable by value.

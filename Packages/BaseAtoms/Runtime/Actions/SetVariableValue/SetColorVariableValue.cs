@@ -8,15 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/Color", fileName = "SetColorVariableValue")]
-    public sealed class SetColorVariableValue : SetVariableValue<
-        Color,
-        ColorPair,
-        ColorVariable,
-        ColorConstant,
-        ColorReference,
-        ColorEvent,
-        ColorPairEvent,
-        ColorColorFunction,
-        ColorVariableInstancer>
-    { }
+    public sealed class SetColorVariableValue : SetVariableValue<Color> { }
 }

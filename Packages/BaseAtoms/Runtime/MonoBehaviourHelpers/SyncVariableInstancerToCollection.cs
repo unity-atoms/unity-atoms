@@ -8,15 +8,13 @@ namespace UnityAtoms.BaseAtoms
     /// Adds a Variable from a Variable Instancer to a Collection or List on OnEnable and removes it on OnDestroy.
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
-    public class SyncVariableInstancerToCollection<T, V, VI> : MonoBehaviour
-        where V : AtomBaseVariable<T>
-        where VI : class, IVariable<V>
+    public class SyncVariableInstancerToCollection<T> : MonoBehaviour
     {
         /// <summary>
         /// The Variable Instancer whose Variable will get synced to the List and / or Collection defined.
         /// </summary>
         [SerializeField]
-        private VI _variableInstancer = default;
+        private AtomVariableInstancer<T> _variableInstancer = default;
 
         /// <summary>
         /// If assigned the Variable from the Variable Instancer will be added to the Collection on Start using `_syncToCollectionKey` as key or if not specified it uses the gameObject's instance id as key. The value will also be removed from the collection OnDestroy.

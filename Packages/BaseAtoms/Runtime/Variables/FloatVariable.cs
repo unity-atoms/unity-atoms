@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Float", fileName = "FloatVariable")]
-    public sealed class FloatVariable : EquatableAtomVariable<float, FloatPair, FloatEvent, FloatPairEvent, FloatFloatFunction>
+    public sealed class FloatVariable : EquatableAtomVariable<float>
     {
         /// <summary>
         /// Add value to Variable.

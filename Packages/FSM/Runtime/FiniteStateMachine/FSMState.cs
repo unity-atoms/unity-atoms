@@ -16,10 +16,10 @@ namespace UnityAtoms.FSM
         public float Cooldown { get => _cooldown.Value; }
 
         [SerializeField]
-        private StringReference _id = default(StringReference);
+        private AtomReference<string> _id = default(AtomReference<string>);
 
         [SerializeField]
-        private FloatReference _cooldown = new FloatReference(0f);
+        private AtomReference<float> _cooldown = new AtomReference<float>(0f);
 
         [SerializeField]
         private FiniteStateMachine _subMachine = default(FiniteStateMachine);

@@ -8,12 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/Int Variable Instancer")]
-    public class IntVariableInstancer : AtomVariableInstancer<
-        IntVariable,
-        IntPair,
-        int,
-        IntEvent,
-        IntPairEvent,
-        IntIntFunction>
-    { }
+    public class IntVariableInstancer : AtomVariableInstancer<int> { }
 }

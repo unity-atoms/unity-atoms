@@ -7,32 +7,22 @@ namespace UnityAtoms
     /// An Event Reference lets you define an event in your script where you then from the inspector can choose if it's going to use the Event from an Event, Event Instancer, Variable or a Variable Instancer.
     /// </summary>
     /// <typeparam name="T">The type of the event.</typeparam>
-    /// <typeparam name="V">Variable of type `T`.</typeparam>
-    /// <typeparam name="E">Event of type `T`.</typeparam>
-    /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
-    /// <typeparam name="EI">Event Instancer of type `T`.</typeparam>
-    public abstract class AtomEventReference<T, V, E, VI, EI> : AtomBaseEventReference<T, E, EI>, IGetEvent, ISetEvent
-        where V : IGetOrCreateEvent, ISetEvent
-        where E : AtomEvent<T>
-        where VI : IGetOrCreateEvent, ISetEvent
-        where EI : AtomEventInstancer<T, E>
+    [Serializable]
+    public class AtomEventReference<T> : AtomBaseEventReference<T>
     {
         /// <summary>
         /// Get or set the Event used by the Event Reference.
         /// </summary>
         /// <value>The event of type `E`.</value>
-        public override E Event
+        public override AtomEvent<T> Event
         {
             get
             {
                 switch (_usage)
                 {
-                    case (AtomEventReferenceUsage.VARIABLE): return _variable.GetOrCreateEvent<E>();
-                    case (AtomEventReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer.GetOrCreateEvent<E>();
-                    case (AtomEventReferenceUsage.EVENT_INSTANCER): return _eventInstancer.Event;
-                    case (AtomEventReferenceUsage.EVENT):
-                    default:
-                        return _event;
+                    case (AtomEventReferenceUsage.VARIABLE): return _variable.GetEvent<AtomEvent<T>>();
+                    case (AtomEventReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer.GetEvent<AtomEvent<T>>();
+                    default: return base.Event;
                 }
             }
             set
@@ -40,22 +30,14 @@ namespace UnityAtoms
                 switch (_usage)
                 {
                     case (AtomEventReferenceUsage.VARIABLE):
-                        {
-                            _variable.SetEvent<E>(value);
-                            break;
-                        }
+                        _variable.SetEvent(value);
+                        break;
                     case (AtomEventReferenceUsage.VARIABLE_INSTANCER):
-                        {
-                            _variableInstancer.SetEvent<E>(value);
-                            break;
-                        }
-                    case (AtomEventReferenceUsage.EVENT):
-                        {
-                            _event = value;
-                            break;
-                        }
+                        _variableInstancer.SetEvent(value);
+                        break;
                     default:
-                        throw new NotSupportedException($"Event not reassignable for usage {_usage}.");
+                        base.Event = value;
+                        break;
                 }
             }
         }
@@ -64,22 +46,12 @@ namespace UnityAtoms
         /// Variable used if `Usage` is set to `Variable`.
         /// </summary>
         [SerializeField]
-        private V _variable = default(V);
+        private AtomVariable<T> _variable = default(AtomVariable<T>);
 
         /// <summary>
         /// Variable Instancer used if `Usage` is set to `VariableInstancer`.
         /// </summary>
         [SerializeField]
-        private VI _variableInstancer = default(VI);
-
-        protected AtomEventReference()
-        {
-            _usage = AtomEventReferenceUsage.EVENT;
-        }
-
-        public static implicit operator E(AtomEventReference<T, V, E, VI, EI> reference)
-        {
-            return reference.Event;
-        }
+        private AtomVariableInstancer<T> _variableInstancer = default(AtomVariableInstancer<T>);
     }
 }

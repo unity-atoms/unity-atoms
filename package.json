@@ -1,7 +1,7 @@
 {
   "name": "com.unity-atoms.unity-atoms",
   "displayName": "Unity Atoms",
-  "version": "4.4.3",
+  "version": "5.0.0",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
@@ -9,7 +9,7 @@
     "type": "git",
     "url": "git+https://github.com/unity-atoms/unity-atoms.git"
   },
-  "unity": "2018.3",
+  "unity": "2020.1",
   "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
   "keywords": [
     "scriptable objects",
@@ -17,16 +17,15 @@
   ],
   "category": "Unity",
   "scripts": {
-    "publish:all": "npm run publish:core && npm run publish:mobile && npm run publish:scene && npm run publish:tags && npm run publish:ui && npm run publish:mono && npm run publish:base && npm run publish:fsm && npm run publish:input",
-    "publish:core": "npm publish ./Packages/Core",
-    "publish:fsm": "npm publish ./Packages/FSM",
-    "publish:base": "npm publish ./Packages/BaseAtoms",
-    "publish:mobile": "npm publish ./Packages/Mobile",
-    "publish:scene": "npm publish ./Packages/SceneMgmt",
-    "publish:tags": "npm publish ./Packages/Tags",
-    "publish:ui": "npm publish ./Packages/UI",
-    "publish:mono": "npm publish ./Packages/MonoHooks",
-    "publish:input": "npm publish ./Packages/InputSystem",
+    "publish:all": "npm run publish:core && npm run publish:mobile && npm run publish:scene && npm run publish:tags && npm run publish:ui && npm run publish:mono && npm run publish:base && npm run publish:fsm",
+    "publish:core": "npm publish ./Packages/Core --tag alpha",
+    "publish:fsm": "npm publish ./Packages/FSM --tag alpha",
+    "publish:base": "npm publish ./Packages/BaseAtoms --tag alpha",
+    "publish:mobile": "npm publish ./Packages/Mobile --tag alpha",
+    "publish:scene": "npm publish ./Packages/SceneMgmt --tag alpha",
+    "publish:tags": "npm publish ./Packages/Tags --tag alpha",
+    "publish:ui": "npm publish ./Packages/UI --tag alpha",
+    "publish:mono": "npm publish ./Packages/MonoHooks --tag alpha",
     "generate:docs": "node scripts/generateDocs.js",
     "generate:docs:verbose": "node scripts/generateDocs.js --verbose"
   },

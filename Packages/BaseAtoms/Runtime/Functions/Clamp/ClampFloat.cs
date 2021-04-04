@@ -8,17 +8,17 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sand")]
     [CreateAssetMenu(menuName = "Unity Atoms/Functions/Transformers/Clamp Float (float => float)", fileName = "ClampFloat")]
-    public class ClampFloat : FloatFloatFunction, IIsValid
+    public class ClampFloat : AtomFunction<float, float>, IIsValid
     {
         /// <summary>
         /// The minimum value.
         /// </summary>
-        public FloatReference Min;
+        public AtomReference<float> Min;
 
         /// <summary>
         /// The maximum value.
         /// </summary>
-        public FloatReference Max;
+        public AtomReference<float> Max;
 
         public override float Call(float value)
         {

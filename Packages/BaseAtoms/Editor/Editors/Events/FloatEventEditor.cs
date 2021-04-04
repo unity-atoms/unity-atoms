@@ -9,6 +9,6 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Event property drawer of type `float`. Inherits from `AtomEventEditor&lt;float, FloatEvent&gt;`. Only availble in `UNITY_2019_1_OR_NEWER`.
     /// </summary>
     [CustomEditor(typeof(FloatEvent))]
-    public sealed class FloatEventEditor : AtomEventEditor<float, FloatEvent> { }
+    public sealed class FloatEventEditor : AtomEventEditor<float> { }
 }
 #endif

@@ -9,12 +9,5 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/ColliderGameObject Variable Instancer")]
-    public class ColliderGameObjectVariableInstancer : AtomVariableInstancer<
-        ColliderGameObjectVariable,
-        ColliderGameObjectPair,
-        ColliderGameObject,
-        ColliderGameObjectEvent,
-        ColliderGameObjectPairEvent,
-        ColliderGameObjectColliderGameObjectFunction>
-    { }
+    public class ColliderGameObjectVariableInstancer : AtomVariableInstancer<ColliderGameObject> { }
 }

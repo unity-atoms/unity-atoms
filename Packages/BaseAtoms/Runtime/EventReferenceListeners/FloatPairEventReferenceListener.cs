@@ -7,10 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/FloatPair Event Reference Listener")]
-    public sealed class FloatPairEventReferenceListener : AtomEventReferenceListener<
-        FloatPair,
-        FloatPairEvent,
-        FloatPairEventReference,
-        FloatPairUnityEvent>
-    { }
+    public sealed class FloatPairEventReferenceListener : AtomListener<Pair<float>> { }
 }

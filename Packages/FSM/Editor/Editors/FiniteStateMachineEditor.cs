@@ -62,7 +62,7 @@ namespace UnityAtoms.FSM.Editor
                     {
                         var oldValueProp = serializedObject.FindProperty("_oldValue");
                         object oldValue = oldValueProp.GetPropertyValue();
-                        evt.GetType().GetMethod("RaiseEditor", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { (object)(new StringPair() { Item1 = (string)atomTarget.BaseValue, Item2 = (string)oldValue }) });
+                        evt.GetType().GetMethod("RaiseEditor", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { (object)(new Pair<string>() { Item1 = (string)atomTarget.BaseValue, Item2 = (string)oldValue }) });
                     }
                 }
 

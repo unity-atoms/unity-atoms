@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/Int Event Instancer")]
-    public class IntEventInstancer : AtomEventInstancer<int, IntEvent> { }
+    public class IntEventInstancer : AtomEventInstancer<int> { }
 }

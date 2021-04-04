@@ -9,20 +9,18 @@ namespace UnityAtoms
     /// Generic base class for Value Lists. Inherits from `BaseAtomList` and `IList&lt;T&gt;`.
     /// </summary>
     /// <typeparam name="T">The list item type.</typeparam>
-    /// <typeparam name="E">Event of type `AtomEvent&lt;T&gt;`.</typeparam>
     [EditorIcon("atom-icon-piglet")]
-    public abstract class AtomValueList<T, E> : BaseAtomValueList, IList<T>
-        where E : AtomEvent<T>
+    public abstract class AtomValueList<T> : BaseAtomValueList, IList<T>
     {
         /// <summary>
         /// Event for when something is added to the list.
         /// </summary>
-        public E Added;
+        public AtomEvent<T> Added;
 
         /// <summary>
         /// Event for when something is removed from the list.
         /// </summary>
-        public E Removed;
+        public AtomEvent<T> Removed;
 
         /// <summary>
         /// Get the count of the list.

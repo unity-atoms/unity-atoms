@@ -8,12 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/Bool Variable Instancer")]
-    public class BoolVariableInstancer : AtomVariableInstancer<
-        BoolVariable,
-        BoolPair,
-        bool,
-        BoolEvent,
-        BoolPairEvent,
-        BoolBoolFunction>
-    { }
+    public class BoolVariableInstancer : AtomVariableInstancer<bool> { }
 }

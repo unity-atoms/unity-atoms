@@ -7,10 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/String Event Reference Listener")]
-    public sealed class StringEventReferenceListener : AtomEventReferenceListener<
-        string,
-        StringEvent,
-        StringEventReference,
-        StringUnityEvent>
-    { }
+    public sealed class StringEventReferenceListener : AtomListener<string> { }
 }

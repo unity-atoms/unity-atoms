@@ -8,5 +8,5 @@ namespace UnityAtoms.SceneMgmt.Editor
     /// Variable Inspector of type `SceneField`. Inherits from `AtomVariableEditor`
     /// </summary>
     [CustomEditor(typeof(SceneFieldVariable))]
-    public sealed class SceneFieldVariableEditor : AtomVariableEditor<SceneField, SceneFieldPair> { }
+    public sealed class SceneFieldVariableEditor : AtomVariableEditor<SceneField> { }
 }

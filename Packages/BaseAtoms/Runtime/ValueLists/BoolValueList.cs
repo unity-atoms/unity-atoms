@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-piglet")]
     [CreateAssetMenu(menuName = "Unity Atoms/Value Lists/Bool", fileName = "BoolValueList")]
-    public sealed class BoolValueList : AtomValueList<bool, BoolEvent> { }
+    public sealed class BoolValueList : AtomValueList<bool> { }
 }

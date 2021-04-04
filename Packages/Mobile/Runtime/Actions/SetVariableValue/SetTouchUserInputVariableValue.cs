@@ -9,15 +9,5 @@ namespace UnityAtoms.Mobile
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/TouchUserInput", fileName = "SetTouchUserInputVariableValue")]
-    public sealed class SetTouchUserInputVariableValue : SetVariableValue<
-        TouchUserInput,
-        TouchUserInputPair,
-        TouchUserInputVariable,
-        TouchUserInputConstant,
-        TouchUserInputReference,
-        TouchUserInputEvent,
-        TouchUserInputPairEvent,
-        TouchUserInputTouchUserInputFunction,
-        TouchUserInputVariableInstancer>
-    { }
+    public sealed class SetTouchUserInputVariableValue : SetVariableValue<TouchUserInput> { }
 }

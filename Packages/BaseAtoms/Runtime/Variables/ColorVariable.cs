@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Color", fileName = "ColorVariable")]
-    public sealed class ColorVariable : EquatableAtomVariable<Color, ColorPair, ColorEvent, ColorPairEvent, ColorColorFunction>
+    public sealed class ColorVariable : EquatableAtomVariable<Color>
     {
         /// <summary>
         /// Set Alpha of Color by value.

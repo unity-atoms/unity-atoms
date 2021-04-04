@@ -8,5 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [AddComponentMenu("Unity Atoms/Sync Variable Instancer to Collection/Sync Vector3 Variable Instancer to Collection")]
     [EditorIcon("atom-icon-delicate")]
-    public class SyncVector3VariableInstancerToCollection : SyncVariableInstancerToCollection<Vector3, Vector3Variable, Vector3VariableInstancer> { }
+    public class SyncVector3VariableInstancerToCollection : SyncVariableInstancerToCollection<Vector3> { }
 }

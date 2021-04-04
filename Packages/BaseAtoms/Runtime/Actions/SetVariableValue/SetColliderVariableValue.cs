@@ -8,15 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-purple")]
     [CreateAssetMenu(menuName = "Unity Atoms/Actions/Set Variable Value/Collider", fileName = "SetColliderVariableValue")]
-    public sealed class SetColliderVariableValue : SetVariableValue<
-        Collider,
-        ColliderPair,
-        ColliderVariable,
-        ColliderConstant,
-        ColliderReference,
-        ColliderEvent,
-        ColliderPairEvent,
-        ColliderColliderFunction,
-        ColliderVariableInstancer>
-    { }
+    public sealed class SetColliderVariableValue : SetVariableValue<Collider> { }
 }

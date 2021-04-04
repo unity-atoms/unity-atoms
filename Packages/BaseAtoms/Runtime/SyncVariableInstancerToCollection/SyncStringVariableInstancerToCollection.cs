@@ -8,5 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [AddComponentMenu("Unity Atoms/Sync Variable Instancer to Collection/Sync String Variable Instancer to Collection")]
     [EditorIcon("atom-icon-delicate")]
-    public class SyncStringVariableInstancerToCollection : SyncVariableInstancerToCollection<string, StringVariable, StringVariableInstancer> { }
+    public class SyncStringVariableInstancerToCollection : SyncVariableInstancerToCollection<string> { }
 }

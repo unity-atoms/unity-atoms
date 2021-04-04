@@ -27,11 +27,15 @@ Unity Atoms is an open source library that aims to make your game code:
 -   ✏️ Editable _- Scriptable Objects makes it possible to make changes to your game at runtime_
 -   🐛 Debuggable _- modular code is easier to debug than tightly coupled code_
 
+## Requirements
+
+As of Unity Atoms v5, Unity 2020.1 or newer is required. We made this move due to Unity 2020.1's ability to serialize generic types. Unity Atoms v4 and below were pushing the use of generics to the limit, making it hard to implmenet new features, making it hard to update the library for end users and made the code base unnessarily complicated.
+
 ## Installation
 
 ### NPM
 
-_Prerequisite: Since Unity Atoms is using the Unity Package Manager (UPM) you need to use Unity version 2018.3 >=_
+_Prerequisite: Since Unity Atoms is using the Unity Package Manager (UPM) you need to use Unity version 2020.1 >=_
 
 Add the following to your `manifest.json` (which is located under your project location in the folder `Packages`):
 
@@ -56,15 +60,14 @@ Add the following to your `manifest.json` (which is located under your project l
     ],
     "dependencies": {
         ...
-        "com.unity-atoms.unity-atoms-core": "4.4.3",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.3",
-        "com.unity-atoms.unity-atoms-fsm": "4.4.3",
-        "com.unity-atoms.unity-atoms-mobile": "4.4.3",
-        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.3",
-        "com.unity-atoms.unity-atoms-tags": "4.4.3",
-        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.3",
-        "com.unity-atoms.unity-atoms-ui": "4.4.3",
-	    "com.unity-atoms.unity-atoms-input-system": "4.4.3",
+        "com.mambojambostudios.unity-atoms-core": "5.0.0-alpha",
+        "com.mambojambostudios.unity-atoms-base-atoms": "5.0.0-alpha",
+        "com.mambojambostudios.unity-atoms-fsm": "5.0.0-alpha",
+        "com.mambojambostudios.unity-atoms-mobile": "5.0.0-alpha",
+        "com.mambojambostudios.unity-atoms-mono-hooks": "5.0.0-alpha",
+        "com.mambojambostudios.unity-atoms-tags": "5.0.0-alpha",
+        "com.mambojambostudios.unity-atoms-scene-mgmt": "5.0.0-alpha",
+        "com.mambojambostudios.unity-atoms-ui": "5.0.0-alpha",
         ...
     }
 }

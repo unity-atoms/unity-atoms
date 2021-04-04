@@ -9,39 +9,57 @@ namespace UnityAtoms
     /// This is handy when you want to use atoms for prefabs that are instantiated at runtime. Use together with AtomCollection to
     /// react accordingly when a prefab with an associated atom is added or deleted to the scene.
     /// </summary>
-    /// <typeparam name="V">Variable of type T.</typeparam>
-    /// <typeparam name="P">IPair of type `T`.</typeparam>
     /// <typeparam name="T">The value type.</typeparam>
-    /// <typeparam name="E1">Event of type T.</typeparam>
-    /// <typeparam name="E2">Event x 2 of type T.</typeparam>
-    /// <typeparam name="F">Function of type T => T</typeparam>
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomVariableInstancer<V, P, T, E1, E2, F> : AtomBaseVariableInstancer<T, V>, IGetEvent, ISetEvent, IGetOrCreateEvent
-        where V : AtomVariable<T, P, E1, E2, F>
-        where P : struct, IPair<T>
-        where E1 : AtomEvent<T>
-        where E2 : AtomEvent<P>
-        where F : AtomFunction<T, T>
+    public abstract class AtomVariableInstancer<T> : MonoBehaviour, IGetEvent, ISetEvent
     {
+        /// <summary>
+        /// Getter for retrieving the in memory runtime variable.
+        /// </summary>
+        public AtomBaseVariable<T> Variable { get => _inMemoryCopy; }
+
+        /// <summary>
+        /// Getter for retrieving the value of the in memory runtime variable.
+        /// </summary>
+        public T Value { get => _inMemoryCopy.Value; set => _inMemoryCopy.Value = value; }
+
+        public virtual AtomBaseVariable<T> Base { get => _base; }
+
+        [SerializeField]
+        [ReadOnly]
+        protected AtomBaseVariable<T> _inMemoryCopy = default(AtomBaseVariable<T>);
+
+        /// <summary>
+        /// The variable that the in memory copy will be based on when created at runtime.
+        /// </summary>
+        [SerializeField]
+        protected AtomBaseVariable<T> _base = null;
+
+        private void OnEnable()
+        {
+            Assert.IsNotNull(Base);
+            _inMemoryCopy = Instantiate(Base);
+            ImplSpecificSetup();
+        }
+
         /// <summary>
         /// Override to add implementation specific setup on `OnEnable`.
         /// </summary>
-        protected override void ImplSpecificSetup()
+        protected virtual void ImplSpecificSetup()
         {
-            if (Base.Changed != null)
+            if (_inMemoryCopy is AtomVariable<T> inMemoryCopy && Base is AtomVariable<T> baseVariable)
             {
-                _inMemoryCopy.Changed = Instantiate(Base.Changed);
-            }
+                if (baseVariable.Changed != null)
+                {
+                    inMemoryCopy.Changed = Instantiate(baseVariable.Changed);
+                }
 
-            if (Base.ChangedWithHistory != null)
-            {
-                _inMemoryCopy.ChangedWithHistory = Instantiate(Base.ChangedWithHistory);
+                if (baseVariable.ChangedWithHistory != null)
+                {
+                    inMemoryCopy.ChangedWithHistory = Instantiate(baseVariable.ChangedWithHistory);
+                }
             }
-
-            // Manually trigger initial events since base class has already instantiated Variable 
-            // and the Variable's OnEnable hook has therefore already been executed.
-            _inMemoryCopy.TriggerInitialEvents();
         }
 
         /// <summary>
@@ -51,7 +69,19 @@ namespace UnityAtoms
         /// <returns>The event.</returns>
         public E GetEvent<E>() where E : AtomEventBase
         {
-            return _inMemoryCopy.GetEvent<E>();
+            if (_inMemoryCopy is AtomVariable<T> inMemoryCopy)
+            {
+                if (typeof(E).IsSameOrSubclass(typeof(AtomEvent<T>)))
+                {
+                    return (inMemoryCopy.Changed as E);
+                }
+                if (typeof(E).IsSameOrSubclass(typeof(AtomEvent<Pair<T>>)))
+                {
+                    return (inMemoryCopy.ChangedWithHistory as E);
+                }
+            }
+
+            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(AtomEvent<T>)} or {typeof(AtomEvent<Pair<T>>)}.");
         }
 
         /// <summary>
@@ -61,17 +91,21 @@ namespace UnityAtoms
         /// <typeparam name="E"></typeparam>
         public void SetEvent<E>(E e) where E : AtomEventBase
         {
-            _inMemoryCopy.SetEvent<E>(e);
-        }
+            if (_inMemoryCopy is AtomVariable<T> inMemoryCopy)
+            {
+                if (typeof(E).IsSameOrSubclass(typeof(AtomEvent<T>)))
+                {
+                    inMemoryCopy.Changed = (e as AtomEvent<T>);
+                    return;
+                }
+                if (typeof(E).IsSameOrSubclass(typeof(AtomEvent<Pair<T>>)))
+                {
+                    inMemoryCopy.ChangedWithHistory = (e as AtomEvent<Pair<T>>);
+                    return;
+                }
+            }
 
-        /// <summary>
-        /// Get event by type. Creates it if it doesn't exist.
-        /// </summary>
-        /// <typeparam name="E"></typeparam>
-        /// <returns>The event.</returns>
-        public E GetOrCreateEvent<E>() where E : AtomEventBase
-        {
-            return _inMemoryCopy.GetOrCreateEvent<E>();
+            throw new Exception($"Event type {typeof(E)} not supported! Use {typeof(AtomEvent<T>)} or {typeof(AtomEvent<Pair<T>>)}.");
         }
     }
 }

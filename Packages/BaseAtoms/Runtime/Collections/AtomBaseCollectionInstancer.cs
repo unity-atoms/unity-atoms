@@ -7,28 +7,26 @@ namespace UnityAtoms.BaseAtoms
     /// Creates an in memory copy of a Collection using a base.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <typeparam name="V"></typeparam>
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomBaseCollectionInstancer<T, V> : AtomBaseVariableInstancer<T, V>
-        where V : AtomBaseVariable<T>, IWithCollectionEvents
+    public abstract class AtomBaseCollectionInstancer<T> : AtomVariableInstancer<T>
     {
         public AtomBaseVariableEvent Added
         {
-            get => ((V)_inMemoryCopy).Added;
-            set => ((V)_inMemoryCopy).Added = value;
+            get => ((IWithCollectionEvents)_inMemoryCopy).Added;
+            set => ((IWithCollectionEvents)_inMemoryCopy).Added = value;
         }
 
         public AtomBaseVariableEvent Removed
         {
-            get => ((V)_inMemoryCopy).Removed;
-            set => ((V)_inMemoryCopy).Removed = value;
+            get => ((IWithCollectionEvents)_inMemoryCopy).Removed;
+            set => ((IWithCollectionEvents)_inMemoryCopy).Removed = value;
         }
 
         public VoidEvent Cleared
         {
-            get => ((V)_inMemoryCopy).Cleared;
-            set => ((V)_inMemoryCopy).Cleared = value;
+            get => ((IWithCollectionEvents)_inMemoryCopy).Cleared;
+            set => ((IWithCollectionEvents)_inMemoryCopy).Cleared = value;
         }
 
         /// <summary>
@@ -36,8 +34,8 @@ namespace UnityAtoms.BaseAtoms
         /// </summary>
         protected override void ImplSpecificSetup()
         {
-            var baseCollection = (V)Base;
-            var inMemoryCopy = (V)_inMemoryCopy;
+            var baseCollection = (IWithCollectionEvents)Base;
+            var inMemoryCopy = (IWithCollectionEvents)_inMemoryCopy;
 
             if (baseCollection.Added != null)
             {

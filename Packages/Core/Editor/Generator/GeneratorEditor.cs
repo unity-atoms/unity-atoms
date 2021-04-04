@@ -47,63 +47,15 @@ namespace UnityAtoms.Editor
         private void AddAtomTypeToGenerate(AtomType atomType)
         {
             _atomTypesToGenerate.Add(atomType);
-
-            foreach (KeyValuePair<AtomType, List<AtomType>> entry in AtomTypes.DEPENDENCY_GRAPH)
-            {
-                if (!_typeVEDict.ContainsKey(entry.Key)) continue;
-
-                if (entry.Value.All((atom) => _atomTypesToGenerate.Contains(atom)))
-                {
-                    _typeVEDict[entry.Key].SetEnabled(true);
-                }
-            }
-
-            _typesToGenerateInfoRow.Query<Label>().First().text = "";
         }
 
         /// <summary>
         /// Remove provided `AtomType` from the list of Atom types to be generated.
         /// </summary>
         /// <param name="atomType">The `AtomType` to be removed.</param>
-        private List<AtomType> RemoveAtomTypeToGenerate(AtomType atomType)
+        private void RemoveAtomTypeToGenerate(AtomType atomType)
         {
             _atomTypesToGenerate.Remove(atomType);
-            List<AtomType> disabledDeps = new List<AtomType>();
-
-            foreach (KeyValuePair<AtomType, List<AtomType>> entry in AtomTypes.DEPENDENCY_GRAPH)
-            {
-                if (!_typeVEDict.ContainsKey(entry.Key)) continue;
-
-                if (_atomTypesToGenerate.Contains(entry.Key) && entry.Value.Any((atom) => !_atomTypesToGenerate.Contains(atom)))
-                {
-                    _typeVEDict[entry.Key].SetEnabled(false);
-                    var toggle = _typeVEDict[entry.Key].Query<Toggle>().First();
-                    toggle.SetValueWithoutNotify(false);
-                    toggle.MarkDirtyRepaint();
-                    disabledDeps.Add(entry.Key);
-                    disabledDeps = disabledDeps.Concat(RemoveAtomTypeToGenerate(entry.Key)).ToList();
-                }
-            }
-
-            return disabledDeps;
-        }
-
-        /// <summary>
-        /// Set and display warning text in the editor.
-        /// </summary>
-        /// <param name="atomType">`AtomType` to generate the warning for.</param>
-        /// <param name="disabledDeps">List of disabled deps.</param>
-        private void SetWarningText(AtomType atomType, List<AtomType> disabledDeps = null)
-        {
-            if (disabledDeps != null && disabledDeps.Count > 0)
-            {
-                string warningText = $"{String.Join(", ", disabledDeps.Select((a) => a.Name))} depend(s) on {atomType.Name}.";
-                _typesToGenerateInfoRow.Query<Label>().First().text = warningText;
-            }
-            else
-            {
-                _typesToGenerateInfoRow.Query<Label>().First().text = "";
-            }
         }
 
         private static string _baseWritePath = Runtime.IsUnityAtomsRepo
@@ -241,8 +193,7 @@ namespace UnityAtoms.Editor
                 }
                 else
                 {
-                    var disabledDeps = RemoveAtomTypeToGenerate(atomType);
-                    SetWarningText(atomType, disabledDeps);
+                    RemoveAtomTypeToGenerate(atomType);
                 }
             });
 
