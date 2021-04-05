@@ -1,8 +1,8 @@
 {
   "name": "com.unity-atoms.unity-atoms-input-system",
   "displayName": "Unity Atoms Input System",
-  "version": "4.4.3",
-  "unity": "2018.3",
+  "version": "5.0.0",
+  "unity": "2020.1",
   "description": "Unity Atoms with Unity's Input System.",
   "keywords": [
     "scriptable objects",
@@ -18,8 +18,8 @@
     "/Editor.meta"
   ],
   "dependencies": {
-    "com.unity-atoms.unity-atoms-core": "4.4.3",
-    "com.unity-atoms.unity-atoms-base-atoms": "4.4.3",
-    "com.unity.inputsystem": "1.0.1"
+    "com.unity-atoms.unity-atoms-core": "5.0.0",
+    "com.unity-atoms.unity-atoms-base-atoms": "5.0.0",
+    "com.unity.inputsystem": "1.0.2"
   }
 }

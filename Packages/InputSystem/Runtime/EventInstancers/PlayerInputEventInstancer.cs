@@ -8,5 +8,5 @@ namespace UnityAtoms.InputSystem
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/PlayerInput Event Instancer")]
-    public class PlayerInputEventInstancer : AtomEventInstancer<PlayerInput, PlayerInputEvent> { }
+    public class PlayerInputEventInstancer : AtomEventInstancer<PlayerInput> { }
 }

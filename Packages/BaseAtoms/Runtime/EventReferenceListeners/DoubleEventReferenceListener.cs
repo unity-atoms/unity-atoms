@@ -7,10 +7,6 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Double Event Reference Listener")]
-    public sealed class DoubleEventReferenceListener : AtomEventReferenceListener<
-        double,
-        DoubleEvent,
-        DoubleEventReference,
-        DoubleUnityEvent>
+    public sealed class DoubleEventReferenceListener : AtomListener<double>
     { }
 }

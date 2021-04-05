@@ -102,7 +102,7 @@ namespace UnityAtoms.FSM
                     FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate -= OnFixedUpdate;
                     FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate += OnFixedUpdate;
 
-                    Reset();
+                    ResetValue();
                 };
 
                 SceneManager.sceneLoaded += handler;
@@ -326,7 +326,7 @@ namespace UnityAtoms.FSM
             if (toState.SubMachine != null)
             {
                 // Reset sub machines in to state
-                toState.SubMachine.Reset();
+                toState.SubMachine.ResetValue();
             }
 
             base.Value = _currentTransition.ToState;

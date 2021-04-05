@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/CollisionPair", fileName = "CollisionPairEvent")]
-    public sealed class CollisionPairEvent : AtomEvent<CollisionPair>
+    public sealed class CollisionPairEvent : AtomEvent<Pair<Collision>>
     {
     }
 }

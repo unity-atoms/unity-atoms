@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/QuaternionPair", fileName = "QuaternionPairEvent")]
-    public sealed class QuaternionPairEvent : AtomEvent<QuaternionPair>
+    public sealed class QuaternionPairEvent : AtomEvent<Pair<Quaternion>>
     {
     }
 }

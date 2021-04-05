@@ -6,13 +6,12 @@ namespace UnityAtoms.InputSystem
 {
     public class CallbackContextInterpreter<T, P, C, V, E1, E2, F, VI> : BaseAtom
         where T : struct
-        where P : struct, IPair<T>
         where C : AtomBaseVariable<T>
-        where V : AtomVariable<T, P, E1, E2, F>
+        where V : AtomVariable<T>
         where E1 : AtomEvent<T>
-        where E2 : AtomEvent<P>
+        where E2 : AtomEvent<Pair<T>>
         where F : AtomFunction<T, T>
-        where VI : AtomVariableInstancer<V, P, T, E1, E2, F>
+        where VI : AtomVariableInstancer<T>
     {
         [SerializeField] private E1 _started;
         [SerializeField] private E1 _performed;

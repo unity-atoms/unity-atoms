@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Double", fileName = "DoubleVariable")]
-    public sealed class DoubleVariable : EquatableAtomVariable<double, DoublePair, DoubleEvent, DoublePairEvent, DoubleDoubleFunction>
+    public sealed class DoubleVariable : EquatableAtomVariable<double>
     {
     }
 }

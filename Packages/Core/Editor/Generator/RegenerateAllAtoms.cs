@@ -159,7 +159,7 @@ namespace UnityAtoms.Editor
                     baseWritePath: Path.Combine(path, "InputSystem"),
                     isValueEquatable: false,
                     atomTypesToGenerate: new List<AtomType>()
-                    { AtomTypes.EVENT, AtomTypes.ACTION, AtomTypes.UNITY_EVENT, AtomTypes.EVENT_INSTANCER },
+                    { AtomTypes.EVENT, AtomTypes.EVENT_INSTANCER },
                     typeNamespace: "UnityEngine.InputSystem",
                     subUnityAtomsNamespace: "InputSystem"
                 ),
@@ -170,7 +170,7 @@ namespace UnityAtoms.Editor
                     baseWritePath: Path.Combine(path, "InputSystem"),
                     isValueEquatable: false,
                     atomTypesToGenerate: new List<AtomType>()
-                    { AtomTypes.EVENT, AtomTypes.ACTION, AtomTypes.UNITY_EVENT, AtomTypes.EVENT_INSTANCER },
+                    { AtomTypes.EVENT, AtomTypes.EVENT_INSTANCER },
                     typeNamespace: "UnityEngine.InputSystem",
                     subUnityAtomsNamespace: "InputSystem"
                 ),

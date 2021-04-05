@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityAtoms.MonoHooks;
 
 namespace UnityAtoms.MonoHooks
 {
@@ -8,10 +7,6 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/CollisionGameObject Event Reference Listener")]
-    public sealed class CollisionGameObjectEventReferenceListener : AtomEventReferenceListener<
-        CollisionGameObject,
-        CollisionGameObjectEvent,
-        CollisionGameObjectEventReference,
-        CollisionGameObjectUnityEvent>
+    public sealed class CollisionGameObjectEventReferenceListener : AtomListener<CollisionGameObject>
     { }
 }

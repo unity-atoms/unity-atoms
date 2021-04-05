@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/Collision2DPair Event Instancer")]
-    public class Collision2DPairEventInstancer : AtomEventInstancer<Collision2DPair, Collision2DPairEvent> { }
+    public class Collision2DPairEventInstancer : AtomEventInstancer<Pair<Collision2D>> { }
 }

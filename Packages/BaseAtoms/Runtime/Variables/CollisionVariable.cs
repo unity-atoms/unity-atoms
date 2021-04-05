@@ -8,7 +8,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Collision", fileName = "CollisionVariable")]
-    public sealed class CollisionVariable : AtomVariable<Collision, CollisionPair, CollisionEvent, CollisionPairEvent, CollisionCollisionFunction>
+    public sealed class CollisionVariable : AtomVariable<Collision>
     {
         protected override bool ValueEquals(Collision other)
         {

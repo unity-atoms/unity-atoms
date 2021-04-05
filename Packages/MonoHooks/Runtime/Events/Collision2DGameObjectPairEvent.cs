@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityAtoms.MonoHooks;
 
 namespace UnityAtoms.MonoHooks
 {
@@ -8,7 +7,7 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/Collision2DGameObjectPair", fileName = "Collision2DGameObjectPairEvent")]
-    public sealed class Collision2DGameObjectPairEvent : AtomEvent<Collision2DGameObjectPair>
+    public sealed class Collision2DGameObjectPairEvent : AtomEvent<Pair<Collision2DGameObject>>
     {
     }
 }

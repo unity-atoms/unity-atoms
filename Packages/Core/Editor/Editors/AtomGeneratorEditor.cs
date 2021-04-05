@@ -142,25 +142,25 @@ namespace UnityAtoms.Editor
                 bool b = (options & (1 << index)) == (1 << index);
                 EditorGUI.BeginChangeCheck();
                 b = EditorGUILayout.Toggle(AtomTypes.ALL_ATOM_TYPES[index].DisplayName, b);
-                if (EditorGUI.EndChangeCheck())
-                {
-                    if (b)
-                    {
-                        options |= (1 << index);
-                        // add all dependencies:
-                        if (AtomTypes.DEPENDENCY_GRAPH.TryGetValue(option, out var list))
-                            list.ForEach(dep => options |= (1 << AtomTypes.ALL_ATOM_TYPES.IndexOf(dep)));
-                    }
-                    else
-                    {
-                        options &= ~(1 << index);
-                        // remove all depending:
-                        foreach (var keyValuePair in AtomTypes.DEPENDENCY_GRAPH.Where(kv => kv.Value.Contains(option)))
-                        {
-                            options &= ~(1 << AtomTypes.ALL_ATOM_TYPES.IndexOf(keyValuePair.Key));
-                        }
-                    }
-                }
+                //if (EditorGUI.EndChangeCheck())
+                //{
+                //    if (b)
+                //    {
+                //        options |= (1 << index);
+                //        // add all dependencies:
+                //        //if (AtomTypes.DEPENDENCY_GRAPH.TryGetValue(option, out var list))
+                //        //    list.ForEach(dep => options |= (1 << AtomTypes.ALL_ATOM_TYPES.IndexOf(dep)));
+                //    }
+                //    else
+                //    {
+                //        options &= ~(1 << index);
+                //        // remove all depending:
+                //        //foreach (var keyValuePair in AtomTypes.DEPENDENCY_GRAPH.Where(kv => kv.Value.Contains(option)))
+                //        //{
+                //        //    options &= ~(1 << AtomTypes.ALL_ATOM_TYPES.IndexOf(keyValuePair.Key));
+                //        //}
+                //    }
+                //}
 
                 if (scripts != null && index < scripts.Count && scripts[index] != null)
                 {

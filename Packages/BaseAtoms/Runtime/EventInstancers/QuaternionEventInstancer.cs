@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/Quaternion Event Instancer")]
-    public class QuaternionEventInstancer : AtomEventInstancer<Quaternion, QuaternionEvent> { }
+    public class QuaternionEventInstancer : AtomEventInstancer<Quaternion> { }
 }

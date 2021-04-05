@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityAtoms.BaseAtoms;
-using UnityAtoms.MonoHooks;
 
 namespace UnityAtoms.MonoHooks
 {
@@ -9,12 +7,6 @@ namespace UnityAtoms.MonoHooks
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/CollisionGameObject Variable Instancer")]
-    public class CollisionGameObjectVariableInstancer : AtomVariableInstancer<
-        CollisionGameObjectVariable,
-        CollisionGameObjectPair,
-        CollisionGameObject,
-        CollisionGameObjectEvent,
-        CollisionGameObjectPairEvent,
-        CollisionGameObjectCollisionGameObjectFunction>
+    public class CollisionGameObjectVariableInstancer : AtomVariableInstancer<CollisionGameObject>
     { }
 }

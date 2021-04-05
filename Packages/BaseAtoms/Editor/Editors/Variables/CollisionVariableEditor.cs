@@ -8,5 +8,5 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// Variable Inspector of type `Collision`. Inherits from `AtomVariableEditor`
     /// </summary>
     [CustomEditor(typeof(CollisionVariable))]
-    public sealed class CollisionVariableEditor : AtomVariableEditor<Collision, CollisionPair> { }
+    public sealed class CollisionVariableEditor : AtomVariableEditor<Collision> { }
 }

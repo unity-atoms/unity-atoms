@@ -1,4 +1,3 @@
-#if UNITY_2019_1_OR_NEWER
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -17,8 +16,6 @@ namespace UnityAtoms.Editor
             IMGUIContainer defaultInspector = new IMGUIContainer(() => DrawDefaultInspector());
             root.Add(defaultInspector);
 
-            E atomEvent = target as E;
-
             var runtimeWrapper = new VisualElement();
             runtimeWrapper.SetEnabled(Application.isPlaying);
             runtimeWrapper.Add(new Button(() =>
@@ -31,12 +28,7 @@ namespace UnityAtoms.Editor
             });
             root.Add(runtimeWrapper);
 
-#if !UNITY_ATOMS_GENERATE_DOCS
-            StackTraceEditor.RenderStackTrace(root, atomEvent.GetInstanceID());
-#endif
-
             return root;
         }
     }
 }
-#endif

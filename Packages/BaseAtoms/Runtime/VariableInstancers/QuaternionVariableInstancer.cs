@@ -1,4 +1,3 @@
-using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
@@ -8,12 +7,6 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/Quaternion Variable Instancer")]
-    public class QuaternionVariableInstancer : AtomVariableInstancer<
-        QuaternionVariable,
-        QuaternionPair,
-        Quaternion,
-        QuaternionEvent,
-        QuaternionPairEvent,
-        QuaternionQuaternionFunction>
+    public class QuaternionVariableInstancer : AtomVariableInstancer<Quaternion>
     { }
 }

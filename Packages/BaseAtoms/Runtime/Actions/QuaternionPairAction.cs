@@ -5,5 +5,5 @@ namespace UnityAtoms.BaseAtoms
     /// Action of type `QuaternionPair`. Inherits from `AtomAction&lt;QuaternionPair&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-purple")]
-    public abstract class QuaternionPairAction : AtomAction<QuaternionPair> { }
+    public abstract class QuaternionPairAction : AtomAction<Pair<Quaternion>> { }
 }

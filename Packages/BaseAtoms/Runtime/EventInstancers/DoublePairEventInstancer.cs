@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/DoublePair Event Instancer")]
-    public class DoublePairEventInstancer : AtomEventInstancer<DoublePair, DoublePairEvent> { }
+    public class DoublePairEventInstancer : AtomEventInstancer<Pair<double>> { }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.MonoHooks
 {
@@ -7,23 +6,19 @@ namespace UnityAtoms.MonoHooks
     /// Base class for all `MonoHook`s of type `Collision2D`.
     /// </summary>
     [EditorIcon("atom-icon-delicate")]
-    public abstract class Collision2DHook : MonoHook<
-        Collision2DEvent,
-        Collision2D,
-        Collision2DEventReference,
-        GameObjectGameObjectFunction>
+    public abstract class Collision2DHook : MonoHook<Collision2D>
     {
         /// <summary>
         /// Event including a GameObject reference.
         /// </summary>
-        public Collision2DGameObjectEvent EventWithGameObject
+        public AtomEvent<Collision2DGameObject> EventWithGameObject
         {
-            get => _eventWithGameObjectReference != null ? _eventWithGameObjectReference.GetEvent<Collision2DGameObjectEvent>() : null;
+            get => _eventWithGameObjectReference != null ? _eventWithGameObjectReference.Event : null;
             set
             {
                 if(_eventWithGameObjectReference != null)
                 {
-                    _eventWithGameObjectReference.SetEvent<Collision2DGameObjectEvent>(value);
+                    _eventWithGameObjectReference.Event = value;
                 }
             }
         }

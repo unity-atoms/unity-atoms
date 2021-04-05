@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/Quaternion", fileName = "QuaternionVariable")]
-    public sealed class QuaternionVariable : EquatableAtomVariable<Quaternion, QuaternionPair, QuaternionEvent, QuaternionPairEvent, QuaternionQuaternionFunction>
+    public sealed class QuaternionVariable : EquatableAtomVariable<Quaternion>
     {
     }
 }

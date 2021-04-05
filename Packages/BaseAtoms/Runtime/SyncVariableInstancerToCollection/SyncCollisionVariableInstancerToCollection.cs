@@ -8,5 +8,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [AddComponentMenu("Unity Atoms/Sync Variable Instancer to Collection/Sync Collision Variable Instancer to Collection")]
     [EditorIcon("atom-icon-delicate")]
-    public class SyncCollisionVariableInstancerToCollection : SyncVariableInstancerToCollection<Collision, CollisionVariable, CollisionVariableInstancer> { }
+    public class SyncCollisionVariableInstancerToCollection : SyncVariableInstancerToCollection<Collision> { }
 }

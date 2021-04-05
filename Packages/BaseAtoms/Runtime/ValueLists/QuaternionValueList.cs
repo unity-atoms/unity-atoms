@@ -7,5 +7,5 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-piglet")]
     [CreateAssetMenu(menuName = "Unity Atoms/Value Lists/Quaternion", fileName = "QuaternionValueList")]
-    public sealed class QuaternionValueList : AtomValueList<Quaternion, QuaternionEvent> { }
+    public sealed class QuaternionValueList : AtomValueList<Quaternion> { }
 }

@@ -7,10 +7,6 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/Quaternion Event Reference Listener")]
-    public sealed class QuaternionEventReferenceListener : AtomEventReferenceListener<
-        Quaternion,
-        QuaternionEvent,
-        QuaternionEventReference,
-        QuaternionUnityEvent>
+    public sealed class QuaternionEventReferenceListener : AtomListener<Quaternion>
     { }
 }

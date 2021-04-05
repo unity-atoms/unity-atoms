@@ -8,5 +8,5 @@ namespace UnityAtoms.InputSystem
     /// </summary>
     [EditorIcon("atom-icon-sign-blue")]
     [AddComponentMenu("Unity Atoms/Event Instancers/InputAction_CallbackContext Event Instancer")]
-    public class InputAction_CallbackContextEventInstancer : AtomEventInstancer<InputAction.CallbackContext, InputAction_CallbackContextEvent> { }
+    public class InputAction_CallbackContextEventInstancer : AtomEventInstancer<InputAction.CallbackContext> { }
 }

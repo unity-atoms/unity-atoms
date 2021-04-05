@@ -20,6 +20,6 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "5.0.0"
+    "com.unity-atoms.unity-atoms-core": "5.0.0"
   }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityAtoms.BaseAtoms;
 
 namespace UnityAtoms.BaseAtoms
 {
@@ -8,12 +7,6 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-hotpink")]
     [AddComponentMenu("Unity Atoms/Variable Instancers/Double Variable Instancer")]
-    public class DoubleVariableInstancer : AtomVariableInstancer<
-        DoubleVariable,
-        DoublePair,
-        double,
-        DoubleEvent,
-        DoublePairEvent,
-        DoubleDoubleFunction>
+    public class DoubleVariableInstancer : AtomVariableInstancer<double>
     { }
 }
