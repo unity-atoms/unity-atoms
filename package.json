@@ -1,5 +1,5 @@
 {
-  "name": "com.mambojambostudios.unity-atoms",
+  "name": "com.unity-atoms.unity-atoms",
   "displayName": "Unity Atoms",
   "version": "5.0.0",
   "publishConfig": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AdamRamberg/unity-atoms.git"
+    "url": "git+https://github.com/unity-atoms/unity-atoms.git"
   },
   "unity": "2020.1",
   "description": "Tiny modular pieces utilizing the power of Scriptable Objects",

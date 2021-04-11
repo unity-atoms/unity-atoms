@@ -14,7 +14,7 @@ The reason for this project structure is that we want to include examples in the
 ### UPM doesn't allow...
 
 -   importing a sub folder in a Git repo when depending on a package through a Git URL.
--   excluding files (using property "files" in package.json) when importing locally using the file syntax (eg. "com.mambojambostudios.unity-atoms-core": "file:../../Packages/Core").
+-   excluding files (using property "files" in package.json) when importing locally using the file syntax (eg. "com.unity-atoms.unity-atoms-core": "file:../../Packages/Core").
 -   package.json in subdirectories (only root level)
 
 ### Current project structure therefore allows for...
@@ -129,7 +129,7 @@ If you are doing updates that requires you to update all existing Atoms you can 
 
 ## Pull requests
 
-Pull requests should be made to the [canary branch](https://github.com/AdamRamberg/unity-atoms/tree/canary).
+Pull requests should be made to the [canary branch](https://github.com/unity-atoms/unity-atoms/tree/canary).
 
 ### Checklist before submitting a PR
 

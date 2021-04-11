@@ -151,6 +151,8 @@ namespace UnityAtoms.BaseAtoms
         public void Clear()
         {
             _dict.Clear();
+            _serializedKeys.Clear();
+            _serializedValues.Clear();
             _cleared?.Invoke();
         }
 

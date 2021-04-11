@@ -22,7 +22,7 @@ namespace UnityAtoms
                 {
                     case (AtomReferenceUsage.CONSTANT): return _constant == null ? default(T) : _constant.Value;
                     case (AtomReferenceUsage.VARIABLE): return _variable == null ? default(T) : _variable.Value;
-                    case (AtomReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null ? default(T) : _variableInstancer.Value;
+                    case (AtomReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null || _variableInstancer.Variable == null ? default(T) : _variableInstancer.Value;
                     case (AtomReferenceUsage.VALUE):
                     default:
                         return _value;
@@ -51,6 +51,21 @@ namespace UnityAtoms
                     default:
                         throw new NotSupportedException("Can't reassign constant value.");
                 }
+            }
+        }
+
+        /// <returns>True if the `Usage` is an AtomType and is unassigned. False otherwise.</returns>
+        public bool IsUnassigned
+        {
+            get
+            {
+                switch (_usage)
+                {
+                    case (AtomReferenceUsage.CONSTANT): return _constant == null;
+                    case (AtomReferenceUsage.VARIABLE): return _variable == null;
+                    case (AtomReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null || _variableInstancer.Variable == null;
+                }
+                return false;
             }
         }
 
@@ -108,7 +123,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Get event by type. 
+        /// Get event by type.
         /// </summary>
         /// <typeparam name="E"></typeparam>
         /// <returns>The event.</returns>

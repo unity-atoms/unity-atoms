@@ -1,4 +1,3 @@
-#if UNITY_2019_1_OR_NEWER
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -33,4 +32,3 @@ namespace UnityAtoms.Editor
         }
     }
 }
-#endif

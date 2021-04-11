@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
@@ -17,6 +19,7 @@ namespace UnityAtoms.Editor
         public static string ResolveConditionals(string template, List<string> trueConditions)
         {
             var templateCopy = String.Copy(template);
+            templateCopy = templateCopy.Replace("\r\n", "\n");
 
             var indexIfOpened = templateCopy.LastIndexOf("<%IF ", StringComparison.Ordinal);
             if (indexIfOpened == -1) return templateCopy; // No IF blocks left and nothing else to resolve. Return template.
@@ -24,20 +27,40 @@ namespace UnityAtoms.Editor
             var indexIfClosed = templateCopy.IndexOf("%>", indexIfOpened + 5, StringComparison.Ordinal);
             if (indexIfClosed == -1) throw new Exception("Found <%IF block but it was never closed (missing %>)");
 
-            var condition = templateCopy.Substring(indexIfOpened + 5, indexIfClosed - (indexIfOpened + 5));
-            var isNegatedCondition = condition.Substring(0, 1) == "!";
-            if (isNegatedCondition) { condition = condition.Substring(1); }
+            // NOTE: Only supports OR:ed conditions ATM
+            var conditions = new List<Tuple<string, bool>>();
+            var conditionStrings = templateCopy.Substring(indexIfOpened + 5, indexIfClosed - (indexIfOpened + 5)).Split('|').ToList();
+            conditionStrings.ForEach((c) => {
+                var isNegated = c.Substring(0, 1) == "!";
+                conditions.Add(new Tuple<string, bool>(
+                    isNegated ? c.Substring(1) : c,
+                    isNegated
+                ));
+            });
 
             var indexOfNextEndIf = templateCopy.IndexOf("<%ENDIF%>", indexIfClosed, StringComparison.Ordinal);
             if (indexOfNextEndIf == -1) throw new Exception("No closing <%ENDIF%> for condition.");
-            var indexOfNextLineAfterEndIf = templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal) + 1;
+
+            // NOTE: We are assuming that when the next char after the conditional is a new line char that it's not inline.
+            // However, this is not always true (you can have an inline conditional at the end of a line). This implementation
+            // works for our cases for now, but we might need to come back and change this in the future for other use cases.
+            var indexOfNextCharAfterEndIf = indexOfNextEndIf + "<%ENDIF%>".Length;
+            var indexOfLFAfterEndIf =
+                templateCopy.IndexOf("\n", indexOfNextEndIf, StringComparison.Ordinal);
+            var inline = true;
+            if (indexOfLFAfterEndIf == indexOfNextCharAfterEndIf)
+            {
+                indexOfNextCharAfterEndIf = indexOfLFAfterEndIf + 1;
+                inline = false;
+            }
 
             var indexOfNextElse = templateCopy.IndexOf("<%ELSE%>", indexIfClosed, StringComparison.Ordinal);
+            if (indexOfNextElse >= indexOfNextEndIf) indexOfNextElse = -1;
 
             var endThenBlock = indexOfNextElse != -1 ? indexOfNextElse : indexOfNextEndIf;
 
             var resolved = "";
-            if (trueConditions.Contains(condition) ^ isNegatedCondition)
+            if (conditions.Any((condition) => trueConditions.Contains(condition.Item1) ^ condition.Item2))
             {
                 resolved = templateCopy.Substring(indexIfClosed + 2, endThenBlock - (indexIfClosed + 2));
             }
@@ -47,9 +70,8 @@ namespace UnityAtoms.Editor
             }
 
             resolved = resolved.Trim('\n');
-            templateCopy = templateCopy.Remove(indexIfOpened, indexOfNextLineAfterEndIf - indexIfOpened);
-            templateCopy = templateCopy.Insert(indexIfOpened, string.IsNullOrEmpty(resolved) ? "" : $"{resolved}\n");
-
+            templateCopy = templateCopy.Remove(indexIfOpened, indexOfNextCharAfterEndIf - indexIfOpened);
+            templateCopy = templateCopy.Insert(indexIfOpened, string.IsNullOrEmpty(resolved) ? "" : $"{resolved}" + (inline ? "" : "\n"));
             return ResolveConditionals(templateCopy, trueConditions);
         }
 

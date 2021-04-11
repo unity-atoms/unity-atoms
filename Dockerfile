@@ -1,4 +1,4 @@
-FROM node:8.11.4
+FROM node:12.18.3
 
 WORKDIR /app/website
 

@@ -1,4 +1,4 @@
-#if UNITY_2018_4_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 #if UNITY_2019_1_OR_NEWER
 using UnityEngine.UIElements;
-#elif UNITY_2018_4_OR_NEWER
+#elif UNITY_2018_3_OR_NEWER
 using UnityEditor.Experimental.UIElements;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.Experimental.UIElements.StyleEnums;
@@ -68,7 +68,7 @@ namespace UnityAtoms.Editor
         {
 #if UNITY_2019_1_OR_NEWER
             var root = this.rootVisualElement;
-#elif UNITY_2018_4_OR_NEWER
+#elif UNITY_2018_3_OR_NEWER
             var root = this.GetRootVisualContainer();
 #endif
             var pathRow = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
@@ -79,7 +79,7 @@ namespace UnityAtoms.Editor
             root.Add(pathRow);
 
             var typeNameRow = new VisualElement() { style = { flexDirection = FlexDirection.Row } };
-            typeNameRow.Add(new Label() { text = "Type Name", style = { width = 180, marginRight = 8 } });
+            typeNameRow.Add(new Label() { text = "Type", style = { width = 180, marginRight = 8 } });
             textfield = new TextField() { value = _valueType, style = { flexGrow = 1 } };
             textfield.RegisterCallback<ChangeEvent<string>>(evt => _valueType = evt.newValue);
             typeNameRow.Add(textfield);
@@ -141,9 +141,9 @@ namespace UnityAtoms.Editor
             var button2 = new Button(() =>
             {
                 var templates = Generator.GetTemplatePaths();
-                var templateConditions = Generator.CreateTemplateConditions(_isValueTypeEquatable, _valueTypeNamespace, _subUnityAtomsNamespace);
+                var templateConditions = Generator.CreateTemplateConditions(_isValueTypeEquatable, _valueTypeNamespace, _subUnityAtomsNamespace, _valueType);
                 var templateVariables = Generator.CreateTemplateVariablesMap(_valueType, _valueTypeNamespace, _subUnityAtomsNamespace);
-                var capitalizedValueType = _valueType.Capitalize();
+                var capitalizedValueType = _valueType.Replace('.', '_').Capitalize();
 
                 _atomTypesToGenerate.ForEach((atomType) =>
                 {

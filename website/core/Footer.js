@@ -64,7 +64,7 @@ class Footer extends React.Component {
           <div>
             <h5>More</h5>
             <a href="https://medium.com/@adamramberg">Blog</a>
-            <a href="https://github.com/AdamRamberg/unity-atoms">GitHub</a>
+            <a href="https://github.com/unity-atoms/unity-atoms">GitHub</a>
             <a
               className="github-button"
               href={repoUrl}

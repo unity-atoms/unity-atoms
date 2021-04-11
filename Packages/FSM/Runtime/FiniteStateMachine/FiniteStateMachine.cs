@@ -84,6 +84,9 @@ namespace UnityAtoms.FSM
                 FiniteStateMachineMonoHook.GetInstance(createIfNotExist: true).OnUpdate -= OnUpdate;
                 FiniteStateMachineMonoHook.GetInstance().OnUpdate += OnUpdate;
 
+                FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate -= OnFixedUpdate;
+                FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate += OnFixedUpdate;
+
                 FiniteStateMachineMonoHook.GetInstance().OnStart -= OnStart;
                 FiniteStateMachineMonoHook.GetInstance().OnStart += OnStart;
             }
@@ -95,6 +98,10 @@ namespace UnityAtoms.FSM
                     SceneManager.sceneLoaded -= handler;
                     FiniteStateMachineMonoHook.GetInstance(createIfNotExist: true).OnUpdate -= OnUpdate;
                     FiniteStateMachineMonoHook.GetInstance().OnUpdate += OnUpdate;
+
+                    FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate -= OnFixedUpdate;
+                    FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate += OnFixedUpdate;
+
                     ResetValue();
                 };
 
@@ -107,6 +114,7 @@ namespace UnityAtoms.FSM
             if (FiniteStateMachineMonoHook.GetInstance() != null)
             {
                 FiniteStateMachineMonoHook.GetInstance().OnUpdate -= OnUpdate;
+                FiniteStateMachineMonoHook.GetInstance().OnFixedUpdate -= OnFixedUpdate;
                 FiniteStateMachineMonoHook.GetInstance().OnStart -= OnStart;
             }
             _onUpdate = null;
@@ -319,12 +327,9 @@ namespace UnityAtoms.FSM
             {
                 // Reset sub machines in to state
                 toState.SubMachine.ResetValue();
-                base.Value = toState.SubMachine.Value;
             }
-            else
-            {
-                base.Value = _currentTransition.ToState;
-            }
+
+            base.Value = _currentTransition.ToState;
             _currentFlatValue = _currentTransition.ToState;
             _currentTransition = null;
 
