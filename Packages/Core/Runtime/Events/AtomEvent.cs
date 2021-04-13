@@ -6,23 +6,30 @@ using UnityEngine;
 namespace UnityAtoms
 {
     /// <summary>
-    /// Generic base class for Events. Inherits from `AtomEventBase`.
+    /// Generic base class for Events.
     /// </summary>
     /// <typeparam name="T">The type for this Event.</typeparam>
     [EditorIcon("atom-icon-cherry")]
     public class AtomEvent<T> : AtomEventBase
     {
-        public T InspectorRaiseValue { get => _inspectorRaiseValue; }
+        /// <summary>
+        /// Value used when raising events at runtime with the inspector.
+        /// </summary>
+        public T InspectorRaiseValue => _inspectorRaiseValue;
 
         /// <summary>
         /// Retrieve Replay Buffer as a List. This call will allocate memory so use sparsely.
         /// </summary>
-        /// <returns></returns>
-        public List<T> ReplayBuffer { get => _replayBuffer.ToList(); }
+        public List<T> ReplayBuffer => _replayBuffer.ToList();
 
+        /// <summary>
+        /// How many items to store in the replay buffer.
+        /// </summary>
         public int ReplayBufferSize { get => _replayBufferSize; set => _replayBufferSize = value; }
 
-        [SerializeField]
+        /// <summary>
+        /// <see cref="MulticastDelegate"/> to invoke when the event is raised.
+        /// </summary>
         protected event Action<T> _onEvent;
 
         /// <summary>
@@ -33,19 +40,17 @@ namespace UnityAtoms
         [Tooltip("The number of old values (between 0-10) being replayed when someone subscribes to this Event.")]
         private int _replayBufferSize = 1;
 
-        private Queue<T> _replayBuffer = new Queue<T>();
+        /// <summary>
+        /// Queue used as a replay buffer.
+        /// </summary>
+        private readonly Queue<T> _replayBuffer = new Queue<T>();
 
+        /// <summary>
+        /// This function is called when the scriptable object goes out of scope.
+        /// </summary>
         private void OnDisable()
         {
-            // Clear all delegates when exiting play mode
-            if (_onEvent != null)
-            {
-                var invocationList = _onEvent.GetInvocationList();
-                foreach (var d in invocationList)
-                {
-                    _onEvent -= (Action<T>)d;
-                }
-            }
+            _onEvent = null;
         }
 
         /// <summary>
@@ -70,9 +75,8 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Used in editor scipts since Raise is ambigious when using reflection to get method.
+        /// Used in editor scripts since Raise is ambiguous when using reflection to get method.
         /// </summary>
-        /// <param name="item"></param>
         public void RaiseEditor(T item) => Raise(item);
 
         /// <summary>
@@ -86,7 +90,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Unregister handler that was registered using the `Register` method.
+        /// Unregister handler that was registered using the <see cref="Register"/> method.
         /// </summary>
         /// <param name="action">The handler.</param>
         public void Unregister(Action<T> action)
@@ -95,7 +99,7 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Unregister all handlers that were registered using the `Register` method.
+        /// Unregister all handlers that were registered using the <see cref="Register"/> method.
         /// </summary>
         public override void UnregisterAll()
         {
@@ -104,20 +108,18 @@ namespace UnityAtoms
         }
 
         /// <summary>
-        /// Register a Listener that in turn trigger all its associated handlers when the Event triggers.
+        /// Register a Listener that in turn trigger all its associated handlers when the Event is invoked.
         /// </summary>
         /// <param name="listener">The Listener to register.</param>
         public void RegisterListener(IAtomListener<T> listener, bool replayEventsBuffer = true)
         {
             _onEvent += listener.OnEventRaised;
             if (replayEventsBuffer)
-            {
                 ReplayBufferToSubscriber(listener.OnEventRaised);
-            }
         }
 
         /// <summary>
-        /// Unregister a listener that was registered using the `RegisterListener` method.
+        /// Unregister a listener that was registered using the <see cref="RegisterListener"/> method.
         /// </summary>
         /// <param name="listener">The Listener to unregister.</param>
         public void UnregisterListener(IAtomListener<T> listener)
@@ -125,42 +127,49 @@ namespace UnityAtoms
             _onEvent -= listener.OnEventRaised;
         }
 
-        #region Observable
         /// <summary>
-        /// Turn the Event into an `IObservable&lt;T&gt;`. Makes Events compatible with for example UniRx.
+        /// Turn the Event into an <see cref="IObservable{T}"/>. Makes Events compatible with for example UniRx.
         /// </summary>
-        /// <returns>The Event as an `IObservable&lt;T&gt;`.</returns>
-        public IObservable<T> Observe()
-        {
-            return new ObservableEvent<T>(Register, Unregister);
-        }
-        #endregion // Observable
+        /// <returns>The Event as an <see cref="IObservable{T}"/>.</returns>
+        public IObservable<T> Observe() => new ObservableEvent<T>(Register, Unregister);
 
+        /// <summary>
+        /// Adds <paramref name="item"/> to the replay buffer.
+        /// </summary>
+        /// <param name="item">The item to add.</param>
         protected void AddToReplayBuffer(T item)
         {
-            if (_replayBufferSize > 0)
-            {
-                while (_replayBuffer.Count >= _replayBufferSize) { _replayBuffer.Dequeue(); }
-                _replayBuffer.Enqueue(item);
-            }
+            if (_replayBufferSize <= 0) return;
+            TrimReplayBuffer();
+            _replayBuffer.Enqueue(item);
         }
 
+        /// <summary>
+        /// Trim the replay buffer by removing excess items.
+        /// </summary>
+        private void TrimReplayBuffer()
+        {
+            while (_replayBuffer.Count >= _replayBufferSize)
+                _replayBuffer.Dequeue();
+        }
+
+        /// <summary>
+        /// Replay buffer into a subscriber.
+        /// </summary>
+        /// <param name="action">The action to call on each item in the replay buffer.</param>
         private void ReplayBufferToSubscriber(Action<T> action)
         {
-            if (_replayBufferSize > 0 && _replayBuffer.Count > 0)
+            if (_replayBufferSize <= 0 || _replayBuffer.Count <= 0) return;
+
+            var enumerator = _replayBuffer.GetEnumerator();
+            try
             {
-                var enumerator = _replayBuffer.GetEnumerator();
-                try
-                {
-                    while (enumerator.MoveNext())
-                    {
-                        action(enumerator.Current);
-                    }
-                }
-                finally
-                {
-                    enumerator.Dispose();
-                }
+                while (enumerator.MoveNext())
+                    action(enumerator.Current);
+            }
+            finally
+            {
+                enumerator.Dispose();
             }
         }
     }

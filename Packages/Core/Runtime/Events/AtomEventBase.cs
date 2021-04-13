@@ -1,11 +1,10 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityAtoms
 {
     /// <summary>
-    /// None generic base class for Events. Inherits from `BaseAtom` and `ISerializationCallbackReceiver`.
+    /// Non-generic base class for Events.
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     public abstract class AtomEventBase : BaseAtom, ISerializationCallbackReceiver
@@ -15,7 +14,9 @@ namespace UnityAtoms
         /// </summary>
         public event Action OnEventNoValue;
 
-
+        /// <summary>
+        /// Raise the Event.
+        /// </summary>
         public virtual void Raise()
         {
 #if !UNITY_ATOMS_GENERATE_DOCS && UNITY_EDITOR
@@ -68,19 +69,14 @@ namespace UnityAtoms
             OnEventNoValue -= listener.OnEventRaised;
         }
 
+        /// <inheritdoc />
         public void OnBeforeSerialize() { }
 
+        /// <inheritdoc />
         public virtual void OnAfterDeserialize()
         {
             // Clear all delegates when exiting play mode
-            if (OnEventNoValue != null)
-            {
-                foreach (var d in OnEventNoValue.GetInvocationList())
-                {
-                    OnEventNoValue -= (Action)d;
-                }
-            }
+            OnEventNoValue = null;
         }
-
     }
 }
