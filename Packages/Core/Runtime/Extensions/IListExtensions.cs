@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace UnityAtoms
 {
@@ -9,17 +10,15 @@ namespace UnityAtoms
         public static T First<T>(this IList<T> list, Func<T, bool> func)
         {
             for (int i = 0; list != null && i < list.Count; ++i)
-            {
                 if (func(list[i])) return list[i];
-            }
 
             return default(T);
         }
 
         public static bool Exists<T>(this IList<T> list, Func<T, bool> func)
         {
-            var first = list.First<T>(func);
-            return first != null ? true : false;
+            var first = list.First(func);
+            return first is { };
         }
 
         public static GameObject GetOrInstantiate(this IList<GameObject> list, UnityEngine.Object prefab, Vector3 position, Quaternion quaternion, Func<GameObject, bool> condition)
@@ -33,7 +32,7 @@ namespace UnityAtoms
                 return component;
             }
 
-            var newGameObject = GameObject.Instantiate(prefab, position, quaternion) as GameObject;
+            var newGameObject = Object.Instantiate(prefab, position, quaternion) as GameObject;
             list.Add(newGameObject);
             return newGameObject;
         }

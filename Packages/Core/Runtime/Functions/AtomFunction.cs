@@ -13,27 +13,26 @@ namespace UnityAtoms
         /// <summary>
         /// The actual function.
         /// </summary>
-        [HideInInspector]
         public Func<R> Func;
 
         /// <summary>
         /// Call the Function.
         /// </summary>
+        /// <exception cref="InvalidOperationException">If <see cref="Func"/> is not set.</exception>
         /// <returns>Whatever the function decides to return of type `R`.</returns>
         public virtual R Call()
         {
-            if (Func != null)
-            {
-                return Func();
-            }
+            if (Func == null)
+                throw new InvalidOperationException("Either set Func or override the Call method.");
 
-            throw new Exception("Either set Func or override the Call method.");
+            return Func();
         }
 
         /// <summary>
         /// Set the Function providing a `Func&lt;R&gt;`.
         /// </summary>
         /// <param name="func">The `Func&lt;R&gt;` to set.</param>
+        /// <exception cref="InvalidOperationException">If <see cref="Func"/> is not set.</exception>
         /// <returns>An `AtomFunction&lt;R&gt;`.</returns>
         public AtomFunction<R> SetFunc(Func<R> func)
         {
@@ -53,22 +52,20 @@ namespace UnityAtoms
         /// <summary>
         /// The actual function.
         /// </summary>
-        [HideInInspector]
         public Func<T1, R> Func;
 
         /// <summary>
         /// Call the Function.
         /// </summary>
         /// <param name="t1">The first parameter.</param>
+        /// <exception cref="InvalidOperationException">If <see cref="Func"/> is not set.</exception>
         /// <returns>Whatever the function decides to return of type `R`.</returns>
         public virtual R Call(T1 t1)
         {
-            if (Func != null)
-            {
-                return Func(t1);
-            }
+            if (Func == null)
+                throw new InvalidOperationException("Either set Func or override the Call method.");
 
-            throw new Exception("Either set Func or override the Call method.");
+            return Func(t1);
         }
 
         /// <summary>
@@ -95,7 +92,6 @@ namespace UnityAtoms
         /// <summary>
         /// The actual function.
         /// </summary>
-        [HideInInspector]
         public Func<T1, T2, R> Func;
 
         /// <summary>
@@ -103,15 +99,14 @@ namespace UnityAtoms
         /// </summary>
         /// <param name="t1">The first parameter.</param>
         /// <param name="t2">The second parameter.</param>
+        /// <exception cref="InvalidOperationException">If <see cref="Func"/> is not set.</exception>
         /// <returns>Whatever the function decides to return of type `R`.</returns>
         public virtual R Call(T1 t1, T2 t2)
         {
-            if (Func != null)
-            {
-                return Func(t1, t2);
-            }
+            if (Func == null)
+                throw new InvalidOperationException("Either set Func or override the Call method.");
 
-            throw new Exception("Either set Func or override the Call method.");
+            return Func(t1, t2);
         }
 
         /// <summary>
@@ -139,7 +134,6 @@ namespace UnityAtoms
         /// <summary>
         /// The actual function.
         /// </summary>
-        [HideInInspector]
         public Func<T1, T2, T3, R> Func;
 
         /// <summary>
@@ -148,15 +142,14 @@ namespace UnityAtoms
         /// <param name="t1">The first parameter.</param>
         /// <param name="t2">The second parameter.</param>
         /// <param name="t3">The third parameter.</param>
+        /// <exception cref="InvalidOperationException">If <see cref="Func"/> is not set.</exception>
         /// <returns>Whatever the function decides to return of type `R`.</returns>
         public virtual R Call(T1 t1, T2 t2, T3 t3)
         {
-            if (Func != null)
-            {
-                return Func(t1, t2, t3);
-            }
+            if (Func == null)
+                throw new InvalidOperationException("Either set Func or override the Call method.");
 
-            throw new Exception("Either set Func or override the Call method.");
+            return Func(t1, t2, t3);
         }
 
         /// <summary>
@@ -185,7 +178,6 @@ namespace UnityAtoms
         /// <summary>
         /// The actual function.
         /// </summary>
-        [HideInInspector]
         public Func<T1, T2, T3, T4, R> Func;
 
         /// <summary>
@@ -195,15 +187,14 @@ namespace UnityAtoms
         /// <param name="t2">The second parameter.</param>
         /// <param name="t3">The third parameter.</param>
         /// <param name="t4">The fourth parameter.</param>
+        /// <exception cref="InvalidOperationException">If <see cref="Func"/> is not set.</exception>
         /// <returns>Whatever the function decides to return of type `R`.</returns>
         public virtual R Call(T1 t1, T2 t2, T3 t3, T4 t4)
         {
-            if (Func != null)
-            {
-                return Func(t1, t2, t3, t4);
-            }
+            if (Func == null)
+                throw new InvalidOperationException("Either set Func or override the Call method.");
 
-            throw new Exception("Either set Func or override the Call method.");
+            return Func(t1, t2, t3, t4);
         }
 
         /// <summary>
@@ -233,7 +224,6 @@ namespace UnityAtoms
         /// <summary>
         /// The actual function.
         /// </summary>
-        [HideInInspector]
         public Func<T1, T2, T3, T4, T5, R> Func;
 
         /// <summary>
@@ -244,15 +234,14 @@ namespace UnityAtoms
         /// <param name="t3">The third parameter.</param>
         /// <param name="t4">The fourth parameter.</param>
         /// <param name="t5">The fifth parameter.</param>
+        /// <exception cref="InvalidOperationException">If <see cref="Func"/> is not set.</exception>
         /// <returns>Whatever the function decides to return of type `R`.</returns>
         public virtual R Call(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5)
         {
-            if (Func != null)
-            {
-                return Func(t1, t2, t3, t4, t5);
-            }
+            if (Func == null)
+                throw new InvalidOperationException("Either set Func or override the Call method.");
 
-            throw new Exception("Either set Func or override the Call method.");
+            return Func(t1, t2, t3, t4, t5);
         }
 
         /// <summary>

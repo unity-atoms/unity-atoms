@@ -15,10 +15,8 @@ namespace UnityAtoms
 
         void OnEnable()
         {
-            for (var i = 0; i < _variables.Count; ++i)
-            {
-                _variables[i].ResetValue(true);
-            }
+            foreach (AtomBaseVariable variable in _variables)
+                variable.ResetValue(true);
         }
     }
 }

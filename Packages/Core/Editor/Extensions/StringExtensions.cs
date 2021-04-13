@@ -14,11 +14,7 @@ namespace UnityAtoms
         /// <param name="str">The string to parse.</param>
         /// <param name="def">The default value if not able to parse the provided string.</param>
         /// <returns>Returns the string parsed to an int. If not able to parse the string, it returns the default value provided to the method.</returns>
-        public static int ToInt(this string str, int def)
-        {
-            int num;
-            return int.TryParse(str, out num) ? num : def;
-        }
+        public static int ToInt(this string str, int def) => int.TryParse(str, out int num) ? num : def;
 
         /// <summary>
         /// Repeats the string X amount of times.

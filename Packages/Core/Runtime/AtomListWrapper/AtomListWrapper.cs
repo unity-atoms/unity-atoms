@@ -9,9 +9,8 @@ namespace UnityAtoms
     /// <typeparam name="T">Type used in list.</typeparam>
     public abstract class AtomListWrapper<T>
     {
-        public List<T> List { get => _list; }
+        public List<T> List => _list;
 
-        [SerializeField]
-        private List<T> _list = default;
+        [SerializeField] private List<T> _list = default;
     }
 }

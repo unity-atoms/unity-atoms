@@ -93,8 +93,8 @@ namespace UnityAtoms
                 if(_operator == AtomConditionOperators.And && !shouldRespond) return;
                 if(_operator == AtomConditionOperators.Or  &&  shouldRespond) break;
             }
-            
-            if(! shouldRespond) return;
+
+            if(!shouldRespond) return;
 
             _unityEventResponse?.Invoke(item);
             for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
@@ -104,13 +104,9 @@ namespace UnityAtoms
                 if (action == null) continue;
 
                 if (action is AtomAction<T> actionWithParam)
-                {
                     actionWithParam.Do(item);
-                }
                 else
-                {
                     action.Do();
-                }
             }
         }
 
