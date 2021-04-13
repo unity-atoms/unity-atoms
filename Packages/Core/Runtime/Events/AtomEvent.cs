@@ -41,7 +41,7 @@ namespace UnityAtoms
         private int _replayBufferSize = 1;
 
         /// <summary>
-        /// Queue used as a replay buffer.
+        /// Stores the replay buffer.
         /// </summary>
         private readonly Queue<T> _replayBuffer = new Queue<T>();
 
@@ -140,37 +140,23 @@ namespace UnityAtoms
         protected void AddToReplayBuffer(T item)
         {
             if (_replayBufferSize <= 0) return;
-            TrimReplayBuffer();
+
+            while (_replayBuffer.Count >= _replayBufferSize)
+                _replayBuffer.Dequeue();
+
             _replayBuffer.Enqueue(item);
         }
 
         /// <summary>
-        /// Trim the replay buffer by removing excess items.
-        /// </summary>
-        private void TrimReplayBuffer()
-        {
-            while (_replayBuffer.Count >= _replayBufferSize)
-                _replayBuffer.Dequeue();
-        }
-
-        /// <summary>
-        /// Replay buffer into a subscriber.
+        /// Invokes the <paramref name="action"/> on every element in the replayBuffer.
         /// </summary>
         /// <param name="action">The action to call on each item in the replay buffer.</param>
         private void ReplayBufferToSubscriber(Action<T> action)
         {
             if (_replayBufferSize <= 0 || _replayBuffer.Count <= 0) return;
 
-            var enumerator = _replayBuffer.GetEnumerator();
-            try
-            {
-                while (enumerator.MoveNext())
-                    action(enumerator.Current);
-            }
-            finally
-            {
-                enumerator.Dispose();
-            }
+            foreach (T item in _replayBuffer)
+                action(item);
         }
     }
 }
