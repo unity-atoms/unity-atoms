@@ -145,8 +145,6 @@ namespace UnityAtoms.Editor
                         {
                             try
                             {
-                                string path = AssetDatabase.GetAssetPath(property.serializedObject.targetObject);
-                                path = path == "" ? "Assets/" : Path.GetDirectoryName(path) + "/";
                                 // Create asset
                                 var so = ScriptableObject.CreateInstance(selectedType);
                                 var assetPath = "Assets/" + drawerData.NameOfNewAtom + ".asset";
