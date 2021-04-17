@@ -11,13 +11,13 @@
 const siteConfig = {
   title: 'Unity Atoms', // Title for your website.
   tagline: 'Tiny modular pieces utilizing the power of Scriptable Objects',
-  url: 'https://adamramberg.github.io', // Your website URL
+  url: 'https://unity-atoms.github.io', // Your website URL
   baseUrl: '/unity-atoms/',
   docsUrl: '',
 
   // Used for publishing and more
   projectName: 'unity-atoms',
-  organizationName: 'AdamRamberg',
+  organizationName: 'unity-atoms',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
@@ -26,7 +26,7 @@ const siteConfig = {
   headerLinks: [
     { doc: 'introduction/quick-start', label: 'Quick Start' },
     { doc: 'api/unityatoms', label: 'API' },
-    { href: 'https://www.github.com/AdamRamberg/unity-atoms', label: 'Github' },
+    { href: 'https://www.github.com/unity-atoms/unity-atoms', label: 'Github' },
   ],
 
   /* path to images for header/footer */
@@ -92,7 +92,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  repoUrl: 'https://github.com/AdamRamberg/unity-atoms',
+  repoUrl: 'https://github.com/unity-atoms/unity-atoms',
 };
 
 module.exports = siteConfig;

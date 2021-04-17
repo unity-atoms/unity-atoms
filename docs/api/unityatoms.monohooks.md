@@ -7,6 +7,12 @@ sidebar_label: UnityAtoms.MonoHooks
 
 # Namespace - `UnityAtoms.MonoHooks`
 
+## `CollisionGameObjectPairEventReferenceListener`
+
+Event Reference Listener of type `CollisionGameObjectPair`. Inherits from `AtomEventReferenceListener<CollisionGameObjectPair, CollisionGameObjectPairEvent, CollisionGameObjectPairEventReference, CollisionGameObjectPairUnityEvent>`.
+
+---
+
 ## `Collider2DGameObjectEventReferenceListener`
 
 Event Reference Listener of type `Collider2DGameObject`. Inherits from `AtomEventReferenceListener<Collider2DGameObject, Collider2DGameObjectEvent, Collider2DGameObjectEventReference, Collider2DGameObjectUnityEvent>`.
@@ -16,6 +22,12 @@ Event Reference Listener of type `Collider2DGameObject`. Inherits from `AtomEven
 ## `ColliderGameObjectEventReferenceListener`
 
 Event Reference Listener of type `ColliderGameObject`. Inherits from `AtomEventReferenceListener<ColliderGameObject, ColliderGameObjectEvent, ColliderGameObjectEventReference, ColliderGameObjectUnityEvent>`.
+
+---
+
+## `Collision2DGameObjectEventReferenceListener`
+
+Event Reference Listener of type `Collision2DGameObject`. Inherits from `AtomEventReferenceListener<Collision2DGameObject, Collision2DGameObjectEvent, Collision2DGameObjectEventReference, Collision2DGameObjectUnityEvent>`.
 
 ---
 
@@ -31,9 +43,33 @@ Event Reference Listener of type `ColliderGameObjectPair`. Inherits from `AtomEv
 
 ---
 
+## `Collision2DGameObjectPairEventReferenceListener`
+
+Event Reference Listener of type `Collision2DGameObjectPair`. Inherits from `AtomEventReferenceListener<Collision2DGameObjectPair, Collision2DGameObjectPairEvent, Collision2DGameObjectPairEventReference, Collision2DGameObjectPairUnityEvent>`.
+
+---
+
+## `CollisionGameObjectEventReferenceListener`
+
+Event Reference Listener of type `CollisionGameObject`. Inherits from `AtomEventReferenceListener<CollisionGameObject, CollisionGameObjectEvent, CollisionGameObjectEventReference, CollisionGameObjectUnityEvent>`.
+
+---
+
 ## `ColliderGameObjectReference`
 
 Reference of type `ColliderGameObject`. Inherits from `EquatableAtomReference<ColliderGameObject, ColliderGameObjectPair, ColliderGameObjectConstant, ColliderGameObjectVariable, ColliderGameObjectEvent, ColliderGameObjectPairEvent, ColliderGameObjectColliderGameObjectFunction, ColliderGameObjectVariableInstancer, AtomCollection, AtomList>`.
+
+---
+
+## `CollisionGameObjectReference`
+
+Reference of type `CollisionGameObject`. Inherits from `EquatableAtomReference<CollisionGameObject, CollisionGameObjectPair, CollisionGameObjectConstant, CollisionGameObjectVariable, CollisionGameObjectEvent, CollisionGameObjectPairEvent, CollisionGameObjectCollisionGameObjectFunction, CollisionGameObjectVariableInstancer, AtomCollection, AtomList>`.
+
+---
+
+## `Collision2DGameObjectReference`
+
+Reference of type `Collision2DGameObject`. Inherits from `EquatableAtomReference<Collision2DGameObject, Collision2DGameObjectPair, Collision2DGameObjectConstant, Collision2DGameObjectVariable, Collision2DGameObjectEvent, Collision2DGameObjectPairEvent, Collision2DGameObjectCollision2DGameObjectFunction, Collision2DGameObjectVariableInstancer, AtomCollection, AtomList>`.
 
 ---
 
@@ -49,9 +85,27 @@ IPair of type `<Collider2DGameObject>`. Inherits from `IPair<Collider2DGameObjec
 
 ---
 
+## `Collision2DGameObjectPair`
+
+IPair of type `<Collision2DGameObject>`. Inherits from `IPair<Collision2DGameObject>`.
+
+---
+
 ## `ColliderGameObjectPair`
 
 IPair of type `<ColliderGameObject>`. Inherits from `IPair<ColliderGameObject>`.
+
+---
+
+## `CollisionGameObjectPair`
+
+IPair of type `<CollisionGameObject>`. Inherits from `IPair<CollisionGameObject>`.
+
+---
+
+## `Collision2DGameObjectUnityEvent`
+
+None generic Unity Event of type `Collision2DGameObject`. Inherits from `UnityEvent<Collision2DGameObject>`.
 
 ---
 
@@ -64,6 +118,24 @@ None generic Unity Event of type `Collider2DGameObject`. Inherits from `UnityEve
 ## `Collider2DGameObjectPairUnityEvent`
 
 None generic Unity Event of type `Collider2DGameObjectPair`. Inherits from `UnityEvent<Collider2DGameObjectPair>`.
+
+---
+
+## `CollisionGameObjectPairUnityEvent`
+
+None generic Unity Event of type `CollisionGameObjectPair`. Inherits from `UnityEvent<CollisionGameObjectPair>`.
+
+---
+
+## `CollisionGameObjectUnityEvent`
+
+None generic Unity Event of type `CollisionGameObject`. Inherits from `UnityEvent<CollisionGameObject>`.
+
+---
+
+## `Collision2DGameObjectPairUnityEvent`
+
+None generic Unity Event of type `Collision2DGameObjectPair`. Inherits from `UnityEvent<Collision2DGameObjectPair>`.
 
 ---
 
@@ -85,9 +157,33 @@ Constant of type `ColliderGameObject`. Inherits from `AtomBaseVariable<ColliderG
 
 ---
 
+## `Collision2DGameObjectConstant`
+
+Constant of type `Collision2DGameObject`. Inherits from `AtomBaseVariable<Collision2DGameObject>`.
+
+---
+
 ## `Collider2DGameObjectConstant`
 
 Constant of type `Collider2DGameObject`. Inherits from `AtomBaseVariable<Collider2DGameObject>`.
+
+---
+
+## `CollisionGameObjectConstant`
+
+Constant of type `CollisionGameObject`. Inherits from `AtomBaseVariable<CollisionGameObject>`.
+
+---
+
+## `CollisionGameObjectEventReference`
+
+Event Reference of type `CollisionGameObject`. Inherits from `AtomEventReference<CollisionGameObject, CollisionGameObjectVariable, CollisionGameObjectEvent, CollisionGameObjectVariableInstancer, CollisionGameObjectEventInstancer>`.
+
+---
+
+## `CollisionGameObjectPairEventReference`
+
+Event Reference of type `CollisionGameObjectPair`. Inherits from `AtomEventReference<CollisionGameObjectPair, CollisionGameObjectVariable, CollisionGameObjectPairEvent, CollisionGameObjectVariableInstancer, CollisionGameObjectPairEventInstancer>`.
 
 ---
 
@@ -109,9 +205,21 @@ Event Reference of type `Collider2DGameObjectPair`. Inherits from `AtomEventRefe
 
 ---
 
+## `Collision2DGameObjectPairEventReference`
+
+Event Reference of type `Collision2DGameObjectPair`. Inherits from `AtomEventReference<Collision2DGameObjectPair, Collision2DGameObjectVariable, Collision2DGameObjectPairEvent, Collision2DGameObjectVariableInstancer, Collision2DGameObjectPairEventInstancer>`.
+
+---
+
 ## `ColliderGameObjectEventReference`
 
 Event Reference of type `ColliderGameObject`. Inherits from `AtomEventReference<ColliderGameObject, ColliderGameObjectVariable, ColliderGameObjectEvent, ColliderGameObjectVariableInstancer, ColliderGameObjectEventInstancer>`.
+
+---
+
+## `Collision2DGameObjectEventReference`
+
+Event Reference of type `Collision2DGameObject`. Inherits from `AtomEventReference<Collision2DGameObject, Collision2DGameObjectVariable, Collision2DGameObjectEvent, Collision2DGameObjectVariableInstancer, Collision2DGameObjectEventInstancer>`.
 
 ---
 
@@ -121,9 +229,27 @@ Variable Instancer of type `ColliderGameObject`. Inherits from `AtomVariableInst
 
 ---
 
+## `CollisionGameObjectVariableInstancer`
+
+Variable Instancer of type `CollisionGameObject`. Inherits from `AtomVariableInstancer<CollisionGameObjectVariable, CollisionGameObjectPair, CollisionGameObject, CollisionGameObjectEvent, CollisionGameObjectPairEvent, CollisionGameObjectCollisionGameObjectFunction>`.
+
+---
+
 ## `Collider2DGameObjectVariableInstancer`
 
 Variable Instancer of type `Collider2DGameObject`. Inherits from `AtomVariableInstancer<Collider2DGameObjectVariable, Collider2DGameObjectPair, Collider2DGameObject, Collider2DGameObjectEvent, Collider2DGameObjectPairEvent, Collider2DGameObjectCollider2DGameObjectFunction>`.
+
+---
+
+## `Collision2DGameObjectVariableInstancer`
+
+Variable Instancer of type `Collision2DGameObject`. Inherits from `AtomVariableInstancer<Collision2DGameObjectVariable, Collision2DGameObjectPair, Collision2DGameObject, Collision2DGameObjectEvent, Collision2DGameObjectPairEvent, Collision2DGameObjectCollision2DGameObjectFunction>`.
+
+---
+
+## `Collision2DGameObjectPairEventInstancer`
+
+Event Instancer of type `Collision2DGameObjectPair`. Inherits from `AtomEventInstancer<Collision2DGameObjectPair, Collision2DGameObjectPairEvent>`.
 
 ---
 
@@ -133,9 +259,27 @@ Event Instancer of type `ColliderGameObject`. Inherits from `AtomEventInstancer<
 
 ---
 
+## `Collision2DGameObjectEventInstancer`
+
+Event Instancer of type `Collision2DGameObject`. Inherits from `AtomEventInstancer<Collision2DGameObject, Collision2DGameObjectEvent>`.
+
+---
+
 ## `Collider2DGameObjectPairEventInstancer`
 
 Event Instancer of type `Collider2DGameObjectPair`. Inherits from `AtomEventInstancer<Collider2DGameObjectPair, Collider2DGameObjectPairEvent>`.
+
+---
+
+## `CollisionGameObjectEventInstancer`
+
+Event Instancer of type `CollisionGameObject`. Inherits from `AtomEventInstancer<CollisionGameObject, CollisionGameObjectEvent>`.
+
+---
+
+## `CollisionGameObjectPairEventInstancer`
+
+Event Instancer of type `CollisionGameObjectPair`. Inherits from `AtomEventInstancer<CollisionGameObjectPair, CollisionGameObjectPairEvent>`.
 
 ---
 
@@ -157,9 +301,21 @@ Variable of type `Collider2DGameObject`. Inherits from `EquatableAtomVariable<Co
 
 ---
 
+## `CollisionGameObjectVariable`
+
+Variable of type `CollisionGameObject`. Inherits from `EquatableAtomVariable<CollisionGameObject, CollisionGameObjectPair, CollisionGameObjectEvent, CollisionGameObjectPairEvent, CollisionGameObjectCollisionGameObjectFunction>`.
+
+---
+
 ## `ColliderGameObjectVariable`
 
 Variable of type `ColliderGameObject`. Inherits from `EquatableAtomVariable<ColliderGameObject, ColliderGameObjectPair, ColliderGameObjectEvent, ColliderGameObjectPairEvent, ColliderGameObjectColliderGameObjectFunction>`.
+
+---
+
+## `Collision2DGameObjectVariable`
+
+Variable of type `Collision2DGameObject`. Inherits from `EquatableAtomVariable<Collision2DGameObject, Collision2DGameObjectPair, Collision2DGameObjectEvent, Collision2DGameObjectPairEvent, Collision2DGameObjectCollision2DGameObjectFunction>`.
 
 ---
 
@@ -235,6 +391,42 @@ Set to true if Event should be triggered on `OnTriggerStay`
 
 ---
 
+## `OnCollisionHook`
+
+Mono Hook for [`OnCollisionEnter`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnCollisionEnter.html), [`OnCollisionExit`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnCollisionExit.html) and [`OnCollisionStay`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnCollisionStay.html)
+
+### Variables
+
+#### `_collisionOnEnter`
+
+Set to true if Event should be triggered on `OnCollisionEnter`
+
+---
+
+#### `_collisionOnExit`
+
+Set to true if Event should be triggered on `OnCollisionExit`
+
+---
+
+#### `_collisionOnStay`
+
+Set to true if Event should be triggered on `OnCollisionStay`
+
+---
+
+## `Collision2DHook`
+
+Base class for all `MonoHook`s of type `Collision2D`.
+
+### Properties
+
+#### `EventWithGameObject`
+
+Event including a GameObject reference.
+
+---
+
 ## `MonoHook<E,EV,F>`
 
 #### Type Parameters
@@ -259,6 +451,30 @@ The Event
 
 ---
 
+## `OnCollision2DHook`
+
+Mono Hook for [`OnCollisionEnter2D`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnCollisionEnter2D.html), [`OnCollisionExit2D`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnCollisionExit2D.html) and [`OnCollisionStay2D`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnCollisionStay2D.html)
+
+### Variables
+
+#### `_collisionOnEnter`
+
+Set to true if Event should be triggered on `OnCollisionEnter2D`
+
+---
+
+#### `_collisionOnExit`
+
+Set to true if Event should be triggered on `OnCollisionExit2D`
+
+---
+
+#### `_collisionOnStay`
+
+Set to true if Event should be triggered on `OnCollisionStay2D`
+
+---
+
 ## `OnLateUpdateHook`
 
 Mono Hook for [`LateUpdate`](https://docs.unity3d.com/ScriptReference/MonoBehaviour.LateUpdate.html)
@@ -280,6 +496,18 @@ Mono Hook for [`FixedUpdate`](https://docs.unity3d.com/ScriptReference/MonoBehav
 ## `OnPointerDownHook`
 
 Mono Hook for `OnPointerDown`
+
+---
+
+## `CollisionHook`
+
+Base class for all `MonoHook`s of type `Collision`.
+
+### Properties
+
+#### `EventWithGameObject`
+
+Event including a GameObject reference.
 
 ---
 
@@ -343,15 +571,57 @@ Selector function for the Event `EventWithGameObjectReference`. Makes it possibl
 
 ---
 
+## `ColliderGameObjectCondition`
+
+Condition of type `ColliderGameObject`. Inherits from `AtomCondition<ColliderGameObject>`.
+
+---
+
+## `CollisionGameObjectCondition`
+
+Condition of type `CollisionGameObject`. Inherits from `AtomCondition<CollisionGameObject>`.
+
+---
+
+## `Collision2DGameObjectCondition`
+
+Condition of type `Collision2DGameObject`. Inherits from `AtomCondition<Collision2DGameObject>`.
+
+---
+
+## `Collider2DGameObjectCondition`
+
+Condition of type `Collider2DGameObject`. Inherits from `AtomCondition<Collider2DGameObject>`.
+
+---
+
 ## `Collider2DGameObjectAction`
 
 Action of type `Collider2DGameObject`. Inherits from `AtomAction<Collider2DGameObject>`.
 
 ---
 
+## `Collision2DGameObjectPairAction`
+
+Action of type `Collision2DGameObjectPair`. Inherits from `AtomAction<Collision2DGameObjectPair>`.
+
+---
+
+## `Collision2DGameObjectAction`
+
+Action of type `Collision2DGameObject`. Inherits from `AtomAction<Collision2DGameObject>`.
+
+---
+
 ## `Collider2DGameObjectPairAction`
 
 Action of type `Collider2DGameObjectPair`. Inherits from `AtomAction<Collider2DGameObjectPair>`.
+
+---
+
+## `CollisionGameObjectAction`
+
+Action of type `CollisionGameObject`. Inherits from `AtomAction<CollisionGameObject>`.
 
 ---
 
@@ -367,15 +637,39 @@ Action of type `ColliderGameObject`. Inherits from `AtomAction<ColliderGameObjec
 
 ---
 
+## `CollisionGameObjectPairAction`
+
+Action of type `CollisionGameObjectPair`. Inherits from `AtomAction<CollisionGameObjectPair>`.
+
+---
+
+## `CollisionGameObjectCollisionGameObjectFunction`
+
+Function x 2 of type `CollisionGameObject`. Inherits from `AtomFunction<CollisionGameObject, CollisionGameObject>`.
+
+---
+
 ## `Collider2DGameObjectCollider2DGameObjectFunction`
 
 Function x 2 of type `Collider2DGameObject`. Inherits from `AtomFunction<Collider2DGameObject, Collider2DGameObject>`.
 
 ---
 
+## `Collision2DGameObjectCollision2DGameObjectFunction`
+
+Function x 2 of type `Collision2DGameObject`. Inherits from `AtomFunction<Collision2DGameObject, Collision2DGameObject>`.
+
+---
+
 ## `ColliderGameObjectColliderGameObjectFunction`
 
 Function x 2 of type `ColliderGameObject`. Inherits from `AtomFunction<ColliderGameObject, ColliderGameObject>`.
+
+---
+
+## `SyncCollision2DGameObjectVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type Collision2DGameObject to a Collection or List on OnEnable and removes it on OnDestroy.
 
 ---
 
@@ -391,9 +685,33 @@ Adds Variable Instancer's Variable of type ColliderGameObject to a Collection or
 
 ---
 
+## `SyncCollisionGameObjectVariableInstancerToCollection`
+
+Adds Variable Instancer's Variable of type CollisionGameObject to a Collection or List on OnEnable and removes it on OnDestroy.
+
+---
+
 ## `ColliderGameObjectPairEvent`
 
 Event of type `ColliderGameObjectPair`. Inherits from `AtomEvent<ColliderGameObjectPair>`.
+
+---
+
+## `CollisionGameObjectPairEvent`
+
+Event of type `CollisionGameObjectPair`. Inherits from `AtomEvent<CollisionGameObjectPair>`.
+
+---
+
+## `Collision2DGameObjectPairEvent`
+
+Event of type `Collision2DGameObjectPair`. Inherits from `AtomEvent<Collision2DGameObjectPair>`.
+
+---
+
+## `CollisionGameObjectEvent`
+
+Event of type `CollisionGameObject`. Inherits from `AtomEvent<CollisionGameObject>`.
 
 ---
 
@@ -415,9 +733,27 @@ Event of type `Collider2DGameObjectPair`. Inherits from `AtomEvent<Collider2DGam
 
 ---
 
+## `Collision2DGameObjectEvent`
+
+Event of type `Collision2DGameObject`. Inherits from `AtomEvent<Collision2DGameObject>`.
+
+---
+
 ## `ColliderGameObjectValueList`
 
 Value List of type `ColliderGameObject`. Inherits from `AtomValueList<ColliderGameObject, ColliderGameObjectEvent>`.
+
+---
+
+## `CollisionGameObjectValueList`
+
+Value List of type `CollisionGameObject`. Inherits from `AtomValueList<CollisionGameObject, CollisionGameObjectEvent>`.
+
+---
+
+## `Collision2DGameObjectValueList`
+
+Value List of type `Collision2DGameObject`. Inherits from `AtomValueList<Collision2DGameObject, Collision2DGameObjectEvent>`.
 
 ---
 
@@ -427,9 +763,21 @@ Value List of type `Collider2DGameObject`. Inherits from `AtomValueList<Collider
 
 ---
 
+## `SetCollisionGameObjectVariableValue`
+
+Set variable value Action of type `CollisionGameObject`. Inherits from `SetVariableValue<CollisionGameObject, CollisionGameObjectPair, CollisionGameObjectVariable, CollisionGameObjectConstant, CollisionGameObjectReference, CollisionGameObjectEvent, CollisionGameObjectPairEvent, CollisionGameObjectVariableInstancer>`.
+
+---
+
 ## `SetCollider2DGameObjectVariableValue`
 
 Set variable value Action of type `Collider2DGameObject`. Inherits from `SetVariableValue<Collider2DGameObject, Collider2DGameObjectPair, Collider2DGameObjectVariable, Collider2DGameObjectConstant, Collider2DGameObjectReference, Collider2DGameObjectEvent, Collider2DGameObjectPairEvent, Collider2DGameObjectVariableInstancer>`.
+
+---
+
+## `SetCollision2DGameObjectVariableValue`
+
+Set variable value Action of type `Collision2DGameObject`. Inherits from `SetVariableValue<Collision2DGameObject, Collision2DGameObjectPair, Collision2DGameObjectVariable, Collision2DGameObjectConstant, Collision2DGameObjectReference, Collision2DGameObjectEvent, Collision2DGameObjectPairEvent, Collision2DGameObjectVariableInstancer>`.
 
 ---
 

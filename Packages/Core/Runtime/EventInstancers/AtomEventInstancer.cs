@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace UnityAtoms
 {
-
     /// <summary>
     /// An Event Instancer is a MonoBehaviour that takes an Event as a base and creates an in memory copy of it on OnEnable.
     /// This is handy when you want to use Events for prefabs that are instantiated at runtime. 

@@ -26,7 +26,6 @@ namespace UnityAtoms.Editor
         {
             serializedObject.Update();
 
-            bool valueWasUpdated = false;
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
             EditorGUILayout.Space();
 
@@ -69,7 +68,7 @@ namespace UnityAtoms.Editor
                         var value = serializedObject.FindProperty("_value").GetGenericPropertyValue(JsonUtility.FromJson(JsonUtility.ToJson(atomTarget.BaseValue), _variableType));
                         atomTarget.BaseValue = value;
                     }
-                    valueWasUpdated = true;
+                    serializedObject.Update();
                 }
             }
 
@@ -82,8 +81,8 @@ namespace UnityAtoms.Editor
 
             using (new EditorGUILayout.HorizontalScope())
             {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("Changed"));
-                var changed = serializedObject.FindProperty("Changed").objectReferenceValue;
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("_changed"));
+                var changed = serializedObject.FindProperty("_changed").objectReferenceValue;
                 if (changed != null && changed is AtomEventBase evt && target is AtomBaseVariable atomTarget)
                 {
                     GUILayout.Space(2);
@@ -96,8 +95,8 @@ namespace UnityAtoms.Editor
 
             using (new EditorGUILayout.HorizontalScope())
             {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("ChangedWithHistory"));
-                var changedWithHistory = serializedObject.FindProperty("ChangedWithHistory").objectReferenceValue;
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("_changedWithHistory"));
+                var changedWithHistory = serializedObject.FindProperty("_changedWithHistory").objectReferenceValue;
                 if (changedWithHistory != null && changedWithHistory is AtomEventBase evt && target is AtomBaseVariable atomTarget)
                 {
                     GUILayout.Space(2);
@@ -127,10 +126,7 @@ namespace UnityAtoms.Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("_triggerChangedWithHistoryOnOnEnable"), new GUIContent("ChangedWithHistory"));
             }
 
-            if (!valueWasUpdated)
-            {
-                serializedObject.ApplyModifiedProperties();
-            }
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }

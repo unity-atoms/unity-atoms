@@ -1,9 +1,9 @@
 {
-  "name": "com.mambojambostudios.unity-atoms-tags",
+  "name": "com.unity-atoms.unity-atoms-tags",
   "displayName": "Unity Atoms Tags",
   "version": "5.0.0",
   "unity": "2020.1",
-  "description": "A replacement to Unity´s tags based on Unity Atoms.",
+  "description": "A replacement to Unity\u00b4s tags based on Unity Atoms.",
   "keywords": [
     "scriptable objects",
     "unity"
@@ -18,7 +18,7 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.mambojambostudios.unity-atoms-core": "5.0.0",
-    "com.mambojambostudios.unity-atoms-base-atoms": "5.0.0"
+    "com.unity-atoms.unity-atoms-core": "5.0.0",
+    "com.unity-atoms.unity-atoms-base-atoms": "5.0.0"
   }
 }

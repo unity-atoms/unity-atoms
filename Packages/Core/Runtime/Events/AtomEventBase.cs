@@ -15,8 +15,12 @@ namespace UnityAtoms
         /// </summary>
         public event Action OnEventNoValue;
 
+
         public virtual void Raise()
         {
+#if !UNITY_ATOMS_GENERATE_DOCS && UNITY_EDITOR
+            StackTraces.AddStackTrace(GetInstanceID(), StackTraceEntry.Create());
+#endif
             OnEventNoValue?.Invoke();
         }
 
@@ -36,6 +40,14 @@ namespace UnityAtoms
         public void Unregister(Action del)
         {
             OnEventNoValue -= del;
+        }
+
+        /// <summary>
+        /// Unregister all handlers that were registered using the `Register` method.
+        /// </summary>
+        public virtual void UnregisterAll()
+        {
+            OnEventNoValue = null;
         }
 
         /// <summary>

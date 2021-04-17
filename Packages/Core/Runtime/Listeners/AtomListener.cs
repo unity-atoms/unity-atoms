@@ -44,6 +44,20 @@ namespace UnityAtoms
         [SerializeField]
         private List<AtomAction> _actionResponses = new List<AtomAction>();
 
+        /// <summary>
+        /// The Conditions to evaluate;
+        /// </summary>
+        /// <typeparam name="A">The Condition type.</typeparam>
+        /// <returns>A `List&lt;A&gt;` of Conditions.</returns>
+        [SerializeField]
+        private List<AtomCondition<T>> _conditions = new List<AtomCondition<T>>();
+
+        /// <summary>
+        /// The logical operator to apply for conditions
+        /// </summary>
+        [SerializeField]
+        private AtomConditionOperators _operator = AtomConditionOperators.And;
+
         [SerializeField]
         private bool _replayEventBufferOnRegister = true;
 
@@ -65,6 +79,23 @@ namespace UnityAtoms
         /// <param name="item">The Event type.</param>
         public void OnEventRaised(T item)
         {
+            bool shouldRespond = _operator == AtomConditionOperators.And ? true : false;
+
+            // Evaluate conditions and decide whether to respond or not
+            for (int i = 0; _conditions != null && i < _conditions.Count; ++i)
+            {
+                var condition = _conditions[i];
+
+                if(condition == null) continue;
+
+                shouldRespond = _conditions[i].Call(item);
+
+                if(_operator == AtomConditionOperators.And && !shouldRespond) return;
+                if(_operator == AtomConditionOperators.Or  &&  shouldRespond) break;
+            }
+            
+            if(! shouldRespond) return;
+
             _unityEventResponse?.Invoke(item);
             for (int i = 0; _actionResponses != null && i < _actionResponses.Count; ++i)
             {

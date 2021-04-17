@@ -239,7 +239,7 @@ A custom property drawer for Event References. Makes it possible to choose betwe
 
 -   `T` - The type of Atom the property drawer should apply to.
 
-The base Unity Atoms property drawer. Makes it possible to create and add a new Atom via Unity's inspector. Only availble in `UNITY_2018_4_OR_NEWER`.
+The base Unity Atoms property drawer. Makes it possible to create and add a new Atom via Unity's inspector. Only availble in `UNITY_2018_3_OR_NEWER`.
 
 ---
 
@@ -264,6 +264,17 @@ Make property read only by using the abbtribute `[ReadOnly]`. Solution taken fro
 ## `AtomListAttributeDrawer`
 
 A custom property drawer for properties using the `AtomList` attribute.
+
+---
+
+## `AtomEventInstancerEditor<T,E>`
+
+#### Type Parameters
+
+-   `T` - The type of this event..
+-   `E` - Event of type T.
+
+Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
 
 ---
 

@@ -6,16 +6,111 @@
 💅 = Polish
 🚀 = New features
 
-# [Unreleased]
+# 4.4.3 (Mars 7, 2021)
+
+## 🐛 Bug fixes
+
+-   [#241](https://github.com/unity-atoms/unity-atoms/pull/241) Value of a VariableInstancer in EditMode leads to NullRef. ([@soraphis](https://github.com/soraphis))
+-   [#230](https://github.com/unity-atoms/unity-atoms/pull/230) Compatibility with dynamic assemblies and different namespace/class conditions. ([@soraphis](https://github.com/soraphis))
+
+## 🏃‍♀ Performance
+
+-   [#238](https://github.com/unity-atoms/unity-atoms/pull/238) Lazy stacktrace toString conversion. ([@soraphis](https://github.com/soraphis))
+
+## 💅 Polish
+
+-   [#229](https://github.com/unity-atoms/unity-atoms/pull/229) Create button ease of use ([@Casey-Hofland](https://github.com/Casey-Hofland))
+
+# 4.4.2 (December 30, 2020)
+
+## 🐛 Bug fixes
+
+-   Fixed ValueEquals for EquatableAtomVariable and EquatableAtomReference, which before the change caused a bug in AtomCollection. [@AdamRamberg](https://github.com/AdamRamberg)
+
+# 4.4.1 (December 30, 2020)
+
+## 🐛 Bug fixes
+
+-   [#224](https://github.com/AdamRamberg/unity-atoms/issues/224) Move Atoms Search back to its own sub menu. Having same sub path for both MenuItem and CreateAssetMenu is causing the menu to be removed. [@AdamRamberg](https://github.com/AdamRamberg)
+
+# 4.4.0 (December 30, 2020)
+
+-   ([@miikalo](https://github.com/miikalo) has joined as maintainer of Unity Atoms! 🥳
+
+## 🐛 Bug fixes
+
+-   [#201](https://github.com/AdamRamberg/unity-atoms/pull/201) UnregisterAll in AtomEvent does not seem to work ([@soraphis](https://github.com/soraphis))
+-   [#199](https://github.com/AdamRamberg/unity-atoms/pull/199) Null Reference Exceptions when trying to set VoidBaseEventReferenceListener event in code ([@soraphis](https://github.com/soraphis))
+-   [#216](https://github.com/AdamRamberg/unity-atoms/pull/216) Conditions created do not appear under Atoms Search [@AdamRamberg](https://github.com/AdamRamberg)
+-   [#218](https://github.com/AdamRamberg/unity-atoms/pull/218) Fixing SerializedDictionary Memory Leak [@AdamRamberg](https://github.com/AdamRamberg)
+-   [#219](https://github.com/AdamRamberg/unity-atoms/pull/219) Fixing FSM instancer where \_base always is null [@AdamRamberg](https://github.com/AdamRamberg)
+-   [#220](https://github.com/AdamRamberg/unity-atoms/pull/220) Trigger initial events for instancers [@AdamRamberg](https://github.com/AdamRamberg)
+
+## 📝 Documentation
+
+-   [#190](https://github.com/AdamRamberg/unity-atoms/pull/190) Restructure tutorials and add two new tutorials ([@miikalo](https://github.com/miikalo))
+-   [#193](https://github.com/AdamRamberg/unity-atoms/pull/193) Adding a little bit of clarity to installation ([@mutmedia](https://github.com/mutmedia)
+-   [#207](https://github.com/AdamRamberg/unity-atoms/pull/207) Add FAQ to documentation pages ([@miikalo](https://github.com/miikalo))
+-   [#206](https://github.com/AdamRamberg/unity-atoms/pull/206) Add tutorial for Conditions ([@miikalo](https://github.com/miikalo))
+
+## 💅 Polish
+
+-   [#217](https://github.com/AdamRamberg/unity-atoms/pull/217) Move "Atoms Search" under "Unity Atoms" in the "Create" context menu [@AdamRamberg](https://github.com/AdamRamberg))
+
+## 🚀 New features
+
+-   [#186](https://github.com/AdamRamberg/unity-atoms/pull/186) Searchable menu for faster atom creation ([@soraphis](https://github.com/soraphis))
+-   [#182](https://github.com/AdamRamberg/unity-atoms/pull/182) Add workaround for "Enter Play Mode" feature to enable initial values ([@hazarartuner](https://github.com/hazarartuner))
+-   [#187](https://github.com/AdamRamberg/unity-atoms/pull/187) Asset based atoms generation ([@soraphis](https://github.com/soraphis))
+-   [#191](https://github.com/AdamRamberg/unity-atoms/pull/191) Basic implementation of conditions for listeners ([@miikalo](https://github.com/miikalo))
+-   [#202](https://github.com/AdamRamberg/unity-atoms/pull/202) Added for AtomReference a check to see if an Atom is actually assigned ([@soraphis](https://github.com/soraphis))
+-   [#212](https://github.com/AdamRamberg/unity-atoms/pull/212) Unity Atoms Input System Integration ([@Casey-Hofland](https://github.com/Casey-Hofland))
+-   [#221](https://github.com/AdamRamberg/unity-atoms/pull/221) Add OnCollisionHook and OnCollision2DHook ([@Casey-Hofland](https://github.com/Casey-Hofland))
+
+# 4.3.0 (August 4, 2020)
+
+## 🐛 Bug fixes
+
+-   [#168](https://github.com/AdamRamberg/unity-atoms/pull/168) Make IsUnityAtomsRepo OS agnostic ([@jmacgill](https://github.com/jmacgill))
+-   [#174](https://github.com/AdamRamberg/unity-atoms/pull/174) Update AtomBaseReferenceDrawer.cs ([@soraphis](https://github.com/soraphis))
+-   [#178](https://github.com/AdamRamberg/unity-atoms/pull/178) Fix Sub FSM Value issue ([@TriangularCube](https://github.com/TriangularCube))
+
+## 🚀 New features
+
+-   [#172](https://github.com/AdamRamberg/unity-atoms/pull/172) Instancer improvements. Adds the possibility to raise events from Event Instancers from the editor + makes base events none mandatory for Event Instancers. ([@mutmedia](https://github.com/mutmedia))
+-   [#179](https://github.com/AdamRamberg/unity-atoms/pull/179) Add a default Event at runtime for Changed and ChangedWithHistory if not present. ([@mutmedia](https://github.com/mutmedia) and [@AdamRamberg](https://github.com/AdamRamberg))
+-   [#180](https://github.com/AdamRamberg/unity-atoms/pull/180) Added option to clear Value List on OnEnable ([@mutmedia](https://github.com/mutmedia) and [@AdamRamberg](https://github.com/AdamRamberg))
+
+## 🏠 Internal
+
+[#169](https://github.com/AdamRamberg/unity-atoms/pull/169) Improvements to the internal templating engine used by the generator. ([@jmacgill](https://github.com/jmacgill))
+
+# 4.2.1 (June 22, 2020)
+
+## 🐛 Bug fixes
+
+-   Fixed clear button handler for StackTraces. ([@AdamRamberg](https://github.com/AdamRamberg)
+-   Fixed and rearranged StackTraces compiler flags. ([@AdamRamberg](https://github.com/AdamRamberg)
+
+# 4.2.0 (June 20, 2020)
 
 ## 🐛 Bug fixes
 
 -   [#145](https://github.com/AdamRamberg/unity-atoms/pull/145) Removed duplicate check before adding an item to the list ([@mnarimani](https://github.com/mnarimani))
 -   [#147](https://github.com/AdamRamberg/unity-atoms/pull/147) Fix code generation bug ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#155](https://github.com/AdamRamberg/unity-atoms/pull/155) Fixing drawer for generated reference of complex struct type ([@bguyl](https://github.com/bguyl)
+-   Fix bug where usage popup sometimes were hidden. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#160](https://github.com/AdamRamberg/unity-atoms/issues/160) Hook up OnFixedUpdate handler. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#164](https://github.com/AdamRamberg/unity-atoms/issues/164) Does not work in Unity 2018.3 ([@AdamRamberg](https://github.com/AdamRamberg))
+
+## 📝 Documentation
+
+-   [#152](https://github.com/AdamRamberg/unity-atoms/pull/152) Add the [Serializable] attribute in the doc ([@bguyl](https://github.com/bguyl)
 
 ## 🏠 Internal
 
--   Upgraded Example project to Unity version 2019.3.10f1. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   Upgraded Example project to Unity version 2019.3.15f1. ([@AdamRamberg](https://github.com/AdamRamberg))
+-   Add GetParent / GetValue extenstions for SerializedProperty. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 ## 💅 Polish
 
@@ -25,6 +120,8 @@
 ## 🚀 New features
 
 -   [#125](https://github.com/AdamRamberg/unity-atoms/issues/125) Add booleans to decide if Changed and/or ChangedWithHistory Events are triggered on AtomVariable OnEnable ([@iruizmar](https://github.com/iruizmar))
+-   [#157](https://github.com/AdamRamberg/unity-atoms/pull/157) Added forceEvent parameter for SetValue function on AtomVariable ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#159](https://github.com/AdamRamberg/unity-atoms/pull/159) Debug events by displaying stack traces for events. ([@AdamRamberg](https://github.com/AdamRamberg))
 
 # 4.1.0 (April 3, 2020)
 
