@@ -11,7 +11,7 @@ namespace UnityAtoms
     {
         protected override bool ValueEquals(T other)
         {
-            return (_value == null && other == null) || (_value != null && _value.Equals(other));
+            return (_value == null && other == null) || (_value?.Equals(other) == true);
         }
     }
 }

@@ -1,4 +1,4 @@
-#if UNITY_2018_4_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -22,9 +22,12 @@ namespace UnityAtoms.Editor
             return Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
         }
 
-        public static List<string> CreateTemplateConditions(bool isValueTypeEquatable, string valueTypeNamespace, string subUnityAtomsNamespace)
+        public static List<string> CreateTemplateConditions(bool isValueTypeEquatable, string valueTypeNamespace, string subUnityAtomsNamespace, string valueType)
         {
             var templateConditions = new List<string>();
+            templateConditions.Add("TYPE_IS_" + valueType.ToUpper());
+            if (valueType == "int" || valueType == "float") { templateConditions.Add("IS_NUMERIC");}
+            if (valueType == "Vector2" || valueType == "Vector3") { templateConditions.Add("IS_VECTOR");}
             if (isValueTypeEquatable) { templateConditions.Add("EQUATABLE"); }
             if (!string.IsNullOrEmpty(valueTypeNamespace)) { templateConditions.Add("TYPE_HAS_NAMESPACE"); }
             if (!string.IsNullOrEmpty(subUnityAtomsNamespace)) { templateConditions.Add("HAS_SUB_UA_NAMESPACE"); }
@@ -35,7 +38,7 @@ namespace UnityAtoms.Editor
         public static Dictionary<string, string> CreateTemplateVariablesMap(string valueType, string valueTypeNamespace, string subUnityAtomsNamespace)
         {
             var templateVariables = new Dictionary<string, string>() {
-                { "VALUE_TYPE_NAME", valueType.Capitalize() },
+                { "VALUE_TYPE_NAME", valueType.Replace('.', '_').Capitalize() },
                 { "VALUE_TYPE", valueType },
                 { "VALUE_TYPE_NAME_NO_PAIR", valueType.Contains("Pair") ? valueType.Capitalize().Remove(valueType.IndexOf("Pair")) : valueType.Capitalize() }
             };
@@ -151,8 +154,8 @@ namespace UnityAtoms.Editor
             {
                 if (kvp.Value > 1)
                 {
-                    var usingStr = $"using {kvp.Key};\n";
-                    contentCopy = contentCopy.Remove(contentCopy.IndexOf(usingStr), usingStr.Length);
+                    var usingStr = $"using {kvp.Key};";
+                    contentCopy = contentCopy.Remove(contentCopy.IndexOf(usingStr), usingStr.Length+1);
                 }
             }
 

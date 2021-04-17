@@ -46,3 +46,9 @@ node_modules
 /website/build
 
 .DS_Store
+
+# Ignore unnecessary .meta files created when used as a git submodule
+/docs/**/*.meta
+/scripts/**/*.meta
+/website/**/*.meta
+/*.meta

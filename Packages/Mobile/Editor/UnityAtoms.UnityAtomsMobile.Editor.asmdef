@@ -1,0 +1,19 @@
+{
+    "name": "UnityAtoms.UnityAtomsMobile.Editor",
+    "references": [
+        "UnityAtoms.UnityAtomsMobile.Runtime",
+        "UnityAtoms.UnityAtomsCore.Runtime",
+        "UnityAtoms.UnityAtomsCore.Editor"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

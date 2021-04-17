@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 namespace UnityAtoms.FSM
 {
@@ -11,7 +11,6 @@ namespace UnityAtoms.FSM
         public const int FSM = 2;
         public const int FSM_INSTANCER = 3;
     }
-
     /// <summary>
     /// Event Reference of type `FSMTransitionData`. Inherits from `AtomBaseEventReference&lt;FSMTransitionData, FSMTransitionDataEvent, FSMTransitionDataEventInstancer&gt;`.
     /// </summary>

@@ -7,5 +7,7 @@ namespace UnityAtoms.BaseAtoms
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
     [CreateAssetMenu(menuName = "Unity Atoms/Events/AtomBaseVariable", fileName = "AtomBaseVariableEvent")]
-    public sealed class AtomBaseVariableEvent : AtomEvent<AtomBaseVariable> { }
+    public sealed class AtomBaseVariableEvent : AtomEvent<AtomBaseVariable>
+    {
+    }
 }
