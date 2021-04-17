@@ -10,26 +10,22 @@ namespace UnityAtoms.Editor
     {
         public static readonly AtomType CONSTANT = new AtomType(
             displayName: "Constant",
-            templateName: "UA_Template__Constant.txt",
-            drawerTemplateName: "UA_Template_AtomDrawer__Constant.txt"
+            templateName: "UA_Template__Constant.txt"
         );
         public static readonly AtomType EVENT = new AtomType(
             displayName: "Event",
             templateName: "UA_Template__Event.txt",
-            drawerTemplateName: "UA_Template_AtomDrawer__Event.txt",
             editorTemplateName: "UA_Template_AtomEditor__Event.txt"
         );
         public static readonly AtomType PAIR_EVENT = new AtomType(
             displayName: "Pair Event",
             name: "Event",
             templateName: "UA_Template__Event.txt",
-            drawerTemplateName: "UA_Template_AtomDrawer__Event.txt",
             editorTemplateName: "UA_Template_AtomEditor__Event.txt"
         );
         public static readonly AtomType VALUE_LIST = new AtomType(
             displayName: "Value List",
-            templateName: "UA_Template__ValueList.txt",
-            drawerTemplateName: "UA_Template_AtomDrawer__ValueList.txt"
+            templateName: "UA_Template__ValueList.txt"
         );
         // BASE_EVENT_REFERENCE_LISTENER is only used in thoses cases where a Variable does not make sense, eg. Void.
         public static readonly AtomType BASE_EVENT_REFERENCE_LISTENER = new AtomType(
@@ -65,7 +61,6 @@ namespace UnityAtoms.Editor
         public static readonly AtomType VARIABLE = new AtomType(
             displayName: "Variable",
             templateName: "UA_Template__Variable.txt",
-            drawerTemplateName: "UA_Template_AtomDrawer__Variable.txt",
             editorTemplateName: "UA_Template_AtomEditor__Variable.txt"
         );
         public static readonly AtomType VARIABLE_INSTANCER = new AtomType(

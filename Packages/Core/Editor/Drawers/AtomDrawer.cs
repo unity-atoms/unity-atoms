@@ -1,16 +1,16 @@
-#if UNITY_2018_3_OR_NEWER
+using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
     /// <summary>
-    /// The base Unity Atoms property drawer. Makes it possible to create and add a new Atom via Unity's inspector. Only availble in `UNITY_2018_3_OR_NEWER`.
+    /// The base Unity Atoms property drawer. Makes it possible to create and add a new Atom via Unity's inspector.
     /// </summary>
-    /// <typeparam name="T">The type of Atom the property drawer should apply to.</typeparam>
-    public abstract class AtomDrawer<T> : PropertyDrawer where T : ScriptableObject
+    [CustomPropertyDrawer(typeof(BaseAtom), true)]
+    public class AtomDrawer : PropertyDrawer
     {
         class DrawerData
         {
@@ -21,7 +21,13 @@ namespace UnityAtoms.Editor
 
         private const string NAMING_FIELD_CONTROL_NAME = "Naming Field";
 
+        private static Dictionary<string, int> _perPropertyObjectPickerID = new Dictionary<string, int>();
+
         private Dictionary<string, DrawerData> _perPropertyViewData = new Dictionary<string, DrawerData>();
+        private Type selectedType;
+
+        // TODO: Find a more elegant solution that doesn't require the focusText value.
+        private bool focusText = false;
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -86,14 +92,43 @@ namespace UnityAtoms.Editor
             GUI.SetNextControlName(NAMING_FIELD_CONTROL_NAME);
             drawerData.NameOfNewAtom = EditorGUI.TextField(isCreatingSO ? position : Rect.zero, drawerData.NameOfNewAtom);
 
-            if (!isCreatingSO)
+            if(isCreatingSO)
             {
-                EditorGUI.BeginChangeCheck();
-                var obj = EditorGUI.ObjectField(position, property.objectReferenceValue, typeof(T), false);
-                if (EditorGUI.EndChangeCheck())
+                if(focusText)
                 {
-                    property.objectReferenceValue = obj;
+                    EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
+                    focusText = false;
                 }
+            }
+            else
+            {
+                if(fieldInfo.FieldType.IsGenericType)
+                {
+                    int controlID;
+
+                    var objectPickerButtonRect = new Rect(position);
+                    objectPickerButtonRect.x += objectPickerButtonRect.width - 20f;
+                    objectPickerButtonRect.width = 20f;
+
+                    if(GUI.Button(objectPickerButtonRect, string.Empty, GUIStyle.none))
+                    {
+                        var types = GetInstantiateableChildrenTypes();
+                        var filter = string.Join(" ", types.Select(type => $"t:{type.Name}"));
+
+                        controlID = GUIUtility.GetControlID(FocusType.Keyboard);
+                        EditorGUIUtility.ShowObjectPicker<MonoBehaviour>(property.objectReferenceValue, false, filter, controlID);
+
+                        _perPropertyObjectPickerID[property.propertyPath] = controlID;
+                    }
+
+                    if(_perPropertyObjectPickerID.TryGetValue(property.propertyPath, out controlID)
+                        && controlID == EditorGUIUtility.GetObjectPickerControlID())
+                    {
+                        property.objectReferenceValue = EditorGUIUtility.GetObjectPickerObject();
+                    }
+                }
+
+                property.objectReferenceValue = EditorGUI.ObjectField(position, property.objectReferenceValue, fieldInfo.FieldType, false);
             }
 
             if (property.objectReferenceValue == null)
@@ -104,8 +139,7 @@ namespace UnityAtoms.Editor
                     Rect secondButtonRect;
                     Rect firstButtonRect = IMGUIUtils.SnipRectH(restRect, restRect.width - buttonWidth, out secondButtonRect, gutter);
                     if (GUI.Button(firstButtonRect, "✓")
-                        || (Event.current.keyCode == KeyCode.Return
-                            && GUI.GetNameOfFocusedControl() == NAMING_FIELD_CONTROL_NAME))
+                        || Event.current.keyCode == KeyCode.Return)
                     {
                         if (drawerData.NameOfNewAtom.Length > 0)
                         {
@@ -114,8 +148,10 @@ namespace UnityAtoms.Editor
                                 string path = AssetDatabase.GetAssetPath(property.serializedObject.targetObject);
                                 path = path == "" ? "Assets/" : Path.GetDirectoryName(path) + "/";
                                 // Create asset
-                                T so = ScriptableObject.CreateInstance<T>();
-                                AssetDatabase.CreateAsset(so, path + drawerData.NameOfNewAtom + ".asset");
+                                var so = ScriptableObject.CreateInstance(selectedType);
+                                var assetPath = "Assets/" + drawerData.NameOfNewAtom + ".asset";
+                                var uniqueAssetPath = AssetDatabase.GenerateUniqueAssetPath(assetPath);
+                                AssetDatabase.CreateAsset(so, uniqueAssetPath);
                                 AssetDatabase.SaveAssets();
                                 // Assign the newly created SO
                                 property.objectReferenceValue = so;
@@ -127,6 +163,7 @@ namespace UnityAtoms.Editor
 
                             drawerData.UserClickedToCreateAtom = false;
                             drawerData.WarningText = "";
+                            selectedType = null;
                         }
                         else
                         {
@@ -135,11 +172,11 @@ namespace UnityAtoms.Editor
                         }
                     }
                     if (GUI.Button(secondButtonRect, "✗")
-                        || (Event.current.keyCode == KeyCode.Escape
-                            && GUI.GetNameOfFocusedControl() == NAMING_FIELD_CONTROL_NAME))
+                        || Event.current.keyCode == KeyCode.Escape)
                     {
                         drawerData.UserClickedToCreateAtom = false;
                         drawerData.WarningText = "";
+                        selectedType = null;
                     }
 
                     if (drawerData.WarningText.Length > 0)
@@ -149,12 +186,45 @@ namespace UnityAtoms.Editor
                 }
                 else
                 {
-                    if (GUI.Button(restRect, "Create"))
+                    if(GUI.Button(restRect, "Create"))
                     {
-                        drawerData.NameOfNewAtom = "";
-                        drawerData.UserClickedToCreateAtom = true;
+                        if(!fieldInfo.FieldType.IsGenericType
+                            && fieldInfo.FieldType.IsSealed)
+                        {
+                            OnTypeSelected(fieldInfo.FieldType);
+                        }
+                        else
+                        {
+                            var types = GetInstantiateableChildrenTypes();
 
-                        EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
+                            if(types.Length == 1)
+                            {
+                                OnTypeSelected(types[0]);
+                            }
+
+                            if(types.Length > 1)
+                            {
+                                var menu = new GenericMenu();
+                                for(int i = 0; i < types.Length; i++)
+                                {
+                                    var type = types[i];
+
+                                    menu.AddItem(new GUIContent(type.Name), false, OnTypeSelected, type);
+                                }
+
+                                menu.DropDown(restRect);
+                            }
+                        }
+
+                        void OnTypeSelected(object type)
+                        {
+                            selectedType = (Type)type;
+                            drawerData.NameOfNewAtom = "";
+                            drawerData.UserClickedToCreateAtom = true;
+
+                            EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
+                            focusText = true;
+                        }
                     }
                 }
             }
@@ -162,6 +232,15 @@ namespace UnityAtoms.Editor
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
         }
+
+        private Type[] GetInstantiateableChildrenTypes()
+        {
+            return (from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                    from type in assembly.GetTypes()
+                    where !type.IsAbstract
+                    where !type.IsGenericType
+                    where type == fieldInfo.FieldType || type.IsSubclassOf(fieldInfo.FieldType)
+                    select type).ToArray();
+        }
     }
 }
-#endif

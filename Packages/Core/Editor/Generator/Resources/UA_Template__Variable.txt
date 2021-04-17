@@ -10,11 +10,12 @@ namespace UnityAtoms
 {
 <%IF EQUATABLE%>
     /// <summary>
-    /// Variable of type `{VALUE_TYPE}`. Inherits from `EquatableAtomVariable&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function&gt;`.
+    /// Variable of type `{VALUE_TYPE}`. Inherits from `EquatableAtomVariable&lt;{VALUE_TYPE}&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/{VALUE_TYPE_NAME}", fileName = "{VALUE_TYPE_NAME}Variable")]
-    public <%IF !TYPE_IS_STRING%>sealed <%ENDIF%>class {VALUE_TYPE_NAME}Variable : EquatableAtomVariable<{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function>
+
+    public sealed class {VALUE_TYPE_NAME}Variable : EquatableAtomVariable<{VALUE_TYPE}>
     {
 <%IF TYPE_IS_COLOR%>
         /// <summary>
@@ -106,11 +107,11 @@ namespace UnityAtoms
     }
 <%ELSE%>
     /// <summary>
-    /// Variable of type `{VALUE_TYPE}`. Inherits from `AtomVariable&lt;{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function&gt;`.
+    /// Variable of type `{VALUE_TYPE}`. Inherits from `AtomVariable&lt;{VALUE_TYPE}&gt;`.
     /// </summary>
     [EditorIcon("atom-icon-lush")]
     [CreateAssetMenu(menuName = "Unity Atoms/Variables/{VALUE_TYPE_NAME}", fileName = "{VALUE_TYPE_NAME}Variable")]
-    public sealed class {VALUE_TYPE_NAME}Variable : AtomVariable<{VALUE_TYPE}, {VALUE_TYPE_NAME}Pair, {VALUE_TYPE_NAME}Event, {VALUE_TYPE_NAME}PairEvent, {VALUE_TYPE_NAME}{VALUE_TYPE_NAME}Function>
+    public sealed class {VALUE_TYPE_NAME}Variable : AtomVariable<{VALUE_TYPE}>
     {
         protected override bool ValueEquals({VALUE_TYPE} other)
         {

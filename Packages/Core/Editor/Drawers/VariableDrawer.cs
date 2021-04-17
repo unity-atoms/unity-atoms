@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
-    public abstract class VariableDrawer<T> : AtomDrawer<T> where T : ScriptableObject
+    [CustomPropertyDrawer(typeof(AtomBaseVariable<>), true)]
+    public class VariableDrawer : AtomDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

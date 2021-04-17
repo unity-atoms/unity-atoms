@@ -12,5 +12,5 @@ namespace UnityAtoms
     /// </summary>
     [EditorIcon("atom-icon-orange")]
     [AddComponentMenu("Unity Atoms/Listeners/{VALUE_TYPE_NAME} Event Reference Listener")]
-    public sealed class {VALUE_TYPE_NAME}EventReferenceListener : AtomEventReferenceListener<{VALUE_TYPE}> { }
+    public sealed class {VALUE_TYPE_NAME}EventReferenceListener : AtomListener<{VALUE_TYPE}> { }
 }

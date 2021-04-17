@@ -1,4 +1,3 @@
-#if UNITY_2018_3_OR_NEWER
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -53,7 +52,7 @@ namespace UnityAtoms.Editor
         /// Create the editor window.
         /// </summary>
         [MenuItem("Tools/Unity Atoms/Regenerate all Atoms")]
-        static void Regenereate()
+        static void Regenerate()
         {
             if (!Runtime.IsUnityAtomsRepo)
             {
@@ -186,7 +185,7 @@ namespace UnityAtoms.Editor
                 foreach (var atomType in item.AtomTypesToGenerate)
                 {
                     templateVariables["VALUE_TYPE_NAME"] = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
-                    var valueType = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : item.ValueType;
+                    var valueType = atomType.IsValuePair ? $"Pair<{capitalizedValueType}>" : item.ValueType;
                     templateVariables["VALUE_TYPE"] = valueType;
                     Generator.Generate(new AtomReceipe(atomType, valueType), item.BaseWritePath, templates, templateConditions, templateVariables);
                 }
@@ -195,4 +194,3 @@ namespace UnityAtoms.Editor
         }
     }
 }
-#endif
