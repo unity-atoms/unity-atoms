@@ -179,12 +179,18 @@ namespace UnityAtoms
         /// </summary>
         public void TriggerInitialEvents()
         {
-            if (Changed != null && _triggerChangedOnOnEnable)
+            if (_triggerChangedOnOnEnable)
             {
+                if (Changed == null)
+                    GetOrCreateEvent<E1>();
+
                 Changed.Raise(Value);
             }
-            if (ChangedWithHistory != null && _triggerChangedWithHistoryOnOnEnable)
+            if (_triggerChangedWithHistoryOnOnEnable)
             {
+                if(ChangedWithHistory == null)
+                    GetOrCreateEvent<E2>();
+
                 var pair = default(P);
                 pair.Item1 = _value;
                 pair.Item2 = _oldValue;
