@@ -54,7 +54,7 @@ namespace UnityAtoms
         /// <typeparam name="A">The Condition type.</typeparam>
         /// <returns>A `List&lt;A&gt;` of Conditions.</returns>
         [SerializeField]
-        private List<AtomCondition<T>> _conditions = new List<AtomCondition<T>>();
+        private List<AtomCondition> _conditions = new List<AtomCondition>();
 
         /// <summary>
         /// The logical operator to apply for conditions
@@ -92,7 +92,14 @@ namespace UnityAtoms
 
                 if(condition == null) continue;
 
-                shouldRespond = _conditions[i].Call(item);
+                if (condition is AtomCondition<T> conditionWithParam)
+                {
+                    shouldRespond = conditionWithParam.Call(item);
+                }
+                else
+                {
+                    shouldRespond = condition.Call();
+                }
 
                 if(_operator == AtomConditionOperators.And && !shouldRespond) return;
                 if(_operator == AtomConditionOperators.Or  &&  shouldRespond) break;
