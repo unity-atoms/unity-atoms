@@ -1,4 +1,3 @@
-#if UNITY_2018_3_OR_NEWER
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using UnityEngine;
 namespace UnityAtoms.Editor
 {
     /// <summary>
-    /// Generator that generates new Atom types based on the input data. Used by the `GeneratorEditor`. Only availble in `UNITY_2019_1_OR_NEWER`.
+    /// Generator that generates new Atom types based on the input data. Used by the `GeneratorEditor`.
     /// </summary>
     internal static class Generator
     {
@@ -163,4 +162,3 @@ namespace UnityAtoms.Editor
         }
     }
 }
-#endif

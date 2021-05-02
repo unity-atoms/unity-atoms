@@ -14,14 +14,12 @@ namespace UnityAtoms.Editor
         );
         public static readonly AtomType EVENT = new AtomType(
             displayName: "Event",
-            templateName: "UA_Template__Event.txt",
-            editorTemplateName: "UA_Template_AtomEditor__Event.txt"
+            templateName: "UA_Template__Event.txt"
         );
         public static readonly AtomType PAIR_EVENT = new AtomType(
             displayName: "Pair Event",
             name: "Event",
-            templateName: "UA_Template__Event.txt",
-            editorTemplateName: "UA_Template_AtomEditor__Event.txt"
+            templateName: "UA_Template__Event.txt"
         );
         public static readonly AtomType VALUE_LIST = new AtomType(
             displayName: "Value List",
@@ -60,8 +58,7 @@ namespace UnityAtoms.Editor
         );
         public static readonly AtomType VARIABLE = new AtomType(
             displayName: "Variable",
-            templateName: "UA_Template__Variable.txt",
-            editorTemplateName: "UA_Template_AtomEditor__Variable.txt"
+            templateName: "UA_Template__Variable.txt"
         );
         public static readonly AtomType VARIABLE_INSTANCER = new AtomType(
             displayName: "Variable Instancer",
@@ -71,7 +68,7 @@ namespace UnityAtoms.Editor
         public static readonly AtomType EVENT_INSTANCER = new AtomType(
             displayName: "Event Instancer",
             templateName: "UA_Template__EventInstancer.txt",
-            editorTemplateName: "UA_Template__AtomEditor_EventInstancer.txt"
+            editorTemplateName: "UA_Template_AtomEditor__EventInstancer.txt"
         );
         public static readonly AtomType PAIR_EVENT_INSTANCER = new AtomType(
             displayName: "Pair Event Instancer",

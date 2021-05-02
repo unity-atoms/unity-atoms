@@ -8,9 +8,9 @@ namespace UnityAtoms
 <%ENDIF%>
 {
     /// <summary>
-    /// Constant of type `{VALUE_TYPE}`. Inherits from `AtomBaseVariable&lt;{VALUE_TYPE}&gt;`.
+    /// Constant of type `{VALUE_TYPE}`. Inherits from `AtomBaseVariable {VALUE_TYPE} `.
     /// </summary>
     [EditorIcon("atom-icon-teal")]
     [CreateAssetMenu(menuName = "Unity Atoms/Constants/{VALUE_TYPE_NAME}", fileName = "{VALUE_TYPE_NAME}Constant")]
-    public sealed class {VALUE_TYPE_NAME}Constant : AtomBaseVariable<{VALUE_TYPE}> { }
+    public sealed class {VALUE_TYPE_NAME}Constant : AtomBaseVariable<{VALUE_TYPE}> {}
 }

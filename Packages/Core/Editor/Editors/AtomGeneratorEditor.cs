@@ -107,25 +107,38 @@ namespace UnityAtoms.Editor
                 : new GUIContent($"Select Unsafe Type", $"Select from all types, serializable or not. Be aware that some types may not be compatible with all platforms!");
             var buttonStyle = GUI.skin.button;
             var dropdownRect = EditorGUILayout.GetControlRect(false, buttonStyle.CalcHeight(buttonContent, 0f), buttonStyle);
+            var toggleLabelRect = new Rect(dropdownRect);
+            toggleLabelRect.width = 32f;
             var toggleRect = new Rect(dropdownRect);
             toggleRect.width = 16f;
+            toggleRect.x += 36f;
             var buttonRect = new Rect(dropdownRect);
-            buttonRect.width -= 20f;
-            buttonRect.x += 20f;
+            buttonRect.width -= 56f;
+            buttonRect.x += 56f;
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUI.BeginChangeCheck();
-            safeSearch = EditorGUI.Toggle(toggleRect, safeSearch);
-            if(EditorGUI.EndChangeCheck())
             {
-                RefreshDropdown();
-            }
+                EditorGUI.LabelField(toggleLabelRect, "Safe");
 
-            if(GUI.Button(buttonRect, buttonContent))
-            {
-                typeSelectorDropdown.Show(dropdownRect);
+                EditorGUI.BeginChangeCheck();
+                safeSearch = EditorGUI.Toggle(toggleRect, safeSearch);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    RefreshDropdown();
+                }
+
+                if (GUI.Button(buttonRect, buttonContent))
+                {
+                    typeSelectorDropdown.Show(dropdownRect);
+                }
             }
             EditorGUILayout.EndHorizontal();
+
+            if(!safeSearch)
+            {
+                EditorGUILayout.HelpBox("Safe Search is turned off. Be aware that some types may not be compatible with all platforms.", MessageType.Warning);
+            }
+
             EditorGUILayout.PropertyField(fullQualifiedName);
 
             // Draw the different generator options and if a file has been generated, draw it in a disabled objectfield as well.
