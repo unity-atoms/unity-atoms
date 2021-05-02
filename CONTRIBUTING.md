@@ -23,6 +23,35 @@ The reason for this project structure is that we want to include examples in the
 -   use the local pacakges in the example repo
 -   referencing this git repo in another project's manifest file
 
+### Smooth Workflow
+
+The github layout makes it difficult to contribute to Atoms from inside a Unity project. However, there are a few steps one can take to alleviate this issue.
+
+1.  Clone the atoms repository and place it where you want your Unity project to be.
+2.  Create a new Unity project (name it whatever, it won't matter) and wait for Unity to load.
+3.  Close Unity and drag all the files of your newly created Unity project inside your atoms repository.
+4.  Inside the Unity Hub, add the atoms repository to your Projects and open it.
+5.  Inside Unity, go to Edit > Preferences > External Tools. Toggle "Embedded Packages" and click the "Regenerate Project Files" button.
+
+You now have the atoms repository inside a Unity project and can easily make changes to it. However, this approach will lead to all kinds of changes in the repository you don't want to push (for example the Assets folder). So we will take a couple of extra steps to supress those.
+
+1.  Open your repository folder and enable hidden items to be shown (this may be dependant on your OS).
+2.  Go to .git > info > exclude.
+3.  Paste the following:
+```
+/[Aa]ssets/
+/[Ll]ogs/
+/[Pp]roject[Ss]ettings/
+/[Uu]ser[Ss]ettings/
+
+manifest.json
+packages-lock.json
+```
+
+Now your Atoms contributing experience will be as smooth as butter on ice.
+
+If you are still confused, you can also [watch this step-by-step](https://youtu.be/BV22qR921Sw) guide on how to set it up.
+
 ## Style Guide
 
 ### Language Usage
