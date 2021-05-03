@@ -47,40 +47,49 @@ namespace UnityAtoms.Editor
 
             Directory.CreateDirectory(baseWritePath);
 
-            Scripts.Clear();
-            var t = GenerationOptions;
-            var idx = 0;
-            while (t > 0)
+            try
             {
-                if (t % 2 == 1)
+                AssetDatabase.StartAssetEditing();
+
+                Scripts.Clear();
+                var t = GenerationOptions;
+                var idx = 0;
+                while (t > 0)
                 {
-                    var atomType = AtomTypes.ALL_ATOM_TYPES[idx];
+                    if (t % 2 == 1)
+                    {
+                        var atomType = AtomTypes.ALL_ATOM_TYPES[idx];
 
-                    templateVariables["VALUE_TYPE_NAME"] = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
-                    var valueType = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : baseTypeAccordingNested;
-                    templateVariables["VALUE_TYPE"] = valueType;
-                    templateVariables["VALUE_TYPE_NAME_NO_PAIR"] = capitalizedValueType;
+                        templateVariables["VALUE_TYPE_NAME"] = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
+                        var valueType = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : baseTypeAccordingNested;
+                        templateVariables["VALUE_TYPE"] = valueType;
+                        templateVariables["VALUE_TYPE_NAME_NO_PAIR"] = capitalizedValueType;
 
-                    var resolvedRelativeFilePath = Templating.ResolveVariables(templateVariables: templateVariables,
-                        toResolve: atomType.RelativeFileNameAndPath);
-                    var targetPath = Path.Combine(baseWritePath, resolvedRelativeFilePath);
+                        var resolvedRelativeFilePath = Templating.ResolveVariables(templateVariables: templateVariables,
+                            toResolve: atomType.RelativeFileNameAndPath);
+                        var targetPath = Path.Combine(baseWritePath, resolvedRelativeFilePath);
 
-                    var newCreated = !File.Exists(targetPath);
+                        var newCreated = !File.Exists(targetPath);
 
-                    Generator.Generate(new AtomReceipe(atomType, valueType), baseWritePath, templates,
-                        templateConditions, templateVariables);
+                        Generator.Generate(new AtomReceipe(atomType, valueType), baseWritePath, templates,
+                            templateConditions, templateVariables);
 
-                    if (newCreated) AssetDatabase.ImportAsset(targetPath);
-                    var ms = AssetDatabase.LoadAssetAtPath<MonoScript>(targetPath);
-                    Scripts.Add(ms);
+                        if (newCreated) AssetDatabase.ImportAsset(targetPath);
+                        var ms = AssetDatabase.LoadAssetAtPath<MonoScript>(targetPath);
+                        Scripts.Add(ms);
+                    }
+                    else
+                    {
+                        Scripts.Add(null);
+                    }
+
+                    idx++;
+                    t >>= 1;
                 }
-                else
-                {
-                    Scripts.Add(null);
-                }
-
-                idx++;
-                t >>= 1;
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
             }
         }
     }
