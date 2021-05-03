@@ -1,15 +1,15 @@
+using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace UnityAtoms.Editor
 {
-    /// <summary>
-    /// Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
-    /// </summary>
-    /// <typeparam name="T">The type of this event..</typeparam>
-    /// <typeparam name="E">Event of type T.</typeparam>
-    public abstract class AtomEventInstancerEditor<T, E> : UnityEditor.Editor
-        where E : AtomEvent<T>
+    ///// <summary>
+    ///// Custom editor for Events. Adds the possiblity to raise an Event from Unity's Inspector.
+    ///// </summary>
+    [CustomEditor(typeof(AtomEventInstancer<>), true)]
+    public class AtomEventInstancerEditor : UnityEditor.Editor
     {
         public override VisualElement CreateInspectorGUI()
         {
@@ -18,17 +18,23 @@ namespace UnityAtoms.Editor
             IMGUIContainer defaultInspector = new IMGUIContainer(() => DrawDefaultInspector());
             root.Add(defaultInspector);
 
-            var eventInstancer = target as AtomEventInstancer<T>;
-            AtomEvent<T> atomEvent = eventInstancer.Event;
-
             var runtimeWrapper = new VisualElement();
             runtimeWrapper.SetEnabled(Application.isPlaying);
             runtimeWrapper.Add(new Button(() =>
             {
-                atomEvent.Raise(eventInstancer.Event.InspectorRaiseValue);
+                var targetType = target.GetType();
+                var atomEventInstancerEventProperty = targetType.GetProperty(nameof(AtomEventInstancer<object>.Event), BindingFlags.Instance | BindingFlags.Public);
+                var atomEventInstancerEvent = atomEventInstancerEventProperty.GetValue(target);
+
+                var atomEventInstancerEventType = atomEventInstancerEvent.GetType();
+                var inspectorRaiseValueProperty = atomEventInstancerEventType.GetProperty(nameof(AtomEvent<object>.InspectorRaiseValue), BindingFlags.Instance | BindingFlags.Public);
+                var inspectorRaiseValue = inspectorRaiseValueProperty.GetValue(atomEventInstancerEvent);
+
+                var raiseMethod = atomEventInstancerEventType.GetMethod(nameof(AtomEvent<object>.Raise), new[] { inspectorRaiseValueProperty.PropertyType });
+                raiseMethod.Invoke(atomEventInstancerEvent, new[] { inspectorRaiseValue });
             })
             {
-                text = "Raise"
+                text = "Raise",
             });
             root.Add(runtimeWrapper);
 
