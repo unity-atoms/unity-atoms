@@ -21,6 +21,9 @@ namespace UnityAtoms.Editor
             return Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
         }
 
+
+        #region Deprecated
+        [Obsolete("Use the same method with a Type parameter instead.", false)]
         public static List<string> CreateTemplateConditions(bool isValueTypeEquatable, string valueTypeNamespace, string subUnityAtomsNamespace, string valueType)
         {
             var templateConditions = new List<string>();
@@ -34,6 +37,7 @@ namespace UnityAtoms.Editor
             return templateConditions;
         }
 
+        [Obsolete("Use the same method with a Type parameter instead.", false)]
         public static Dictionary<string, string> CreateTemplateVariablesMap(string valueType, string valueTypeNamespace, string subUnityAtomsNamespace)
         {
             var templateVariables = new Dictionary<string, string>() {
@@ -70,6 +74,7 @@ namespace UnityAtoms.Editor
         /// generator.Generate("MyStruct", "", false, new List&lt;AtomType&gt;() { AtomTypes.ACTION }, "MyNamespace", ""); // Generates an Atom Action of type MyStruct
         /// </code>
         /// </example>
+        [Obsolete("Use the same method with a Type parameter instead.", false)]
         public static void Generate(AtomReceipe atomReceipe, string baseWritePath, string[] templatePaths, List<string> templateConditions, Dictionary<string, string> templateVariables)
         {
             var (atomType, valueType) = atomReceipe;
@@ -126,6 +131,7 @@ namespace UnityAtoms.Editor
         /// </summary>
         /// <param name="template">The content template to remove namespace from.</param>
         /// <returns>A copy of `content`, but without duplicate namespaces.</returns>
+        [Obsolete("Outdated method.", false)]
         private static string RemoveDuplicateNamespaces(string template)
         {
             var currentIndex = 0;
@@ -154,11 +160,12 @@ namespace UnityAtoms.Editor
                 if (kvp.Value > 1)
                 {
                     var usingStr = $"using {kvp.Key};";
-                    contentCopy = contentCopy.Remove(contentCopy.IndexOf(usingStr), usingStr.Length+1);
+                    contentCopy = contentCopy.Remove(contentCopy.IndexOf(usingStr), usingStr.Length + 1);
                 }
             }
 
             return contentCopy;
         }
+        #endregion
     }
 }

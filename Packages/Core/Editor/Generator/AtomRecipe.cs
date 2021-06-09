@@ -5,8 +5,8 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// Internal module class that holds that regarding an Atom type.
     /// </summary>
-
-    internal struct AtomReceipe : IEquatable<AtomReceipe>
+    [Obsolete("Atom Receipe is outdated.", false)]
+    public struct AtomReceipe : IEquatable<AtomReceipe>
     {
         public AtomType AtomType { get; set; }
         public string ValueType { get; set; }
