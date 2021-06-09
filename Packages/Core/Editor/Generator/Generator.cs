@@ -1,7 +1,7 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,8 +10,9 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// Generator that generates new Atom types based on the input data. Used by the `GeneratorEditor`.
     /// </summary>
-    internal static class Generator
+    public static class Generator
     {
+        #region Template Methods
         public static string[] GetTemplatePaths()
         {
             var templateSearchPath = Runtime.IsUnityAtomsRepo ?
@@ -21,6 +22,191 @@ namespace UnityAtoms.Editor
             return Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
         }
 
+        public static Dictionary<string, string> CreateTemplateVariablesMap(Type type, bool asPair, string withNamespace = default)
+        {
+            var typeName = type.FullName.Replace('+', '.'); // This accounts for nested types.
+            var displayNameNoPair = type.Name.Capitalize();
+            var displayName = displayNameNoPair;
+
+            if (asPair)
+            {
+                typeName = $"Pair<{typeName}>";
+                displayName += "Pair";
+            }
+
+            // Add Types.
+            var templateVariables = new Dictionary<string, string>()
+            {
+                { "VALUE_TYPE", typeName },
+                { "VALUE_TYPE_NAME", displayName },
+                { "VALUE_TYPE_NAME_NO_PAIR", displayNameNoPair }
+            };
+
+            // Add Namespaces if applicable.
+            var typeNamespace = type.Namespace;
+            if (!string.IsNullOrEmpty(typeNamespace))
+            {
+                templateVariables.Add("TYPE_NAMESPACE", typeNamespace);
+            }
+            if (!string.IsNullOrEmpty(withNamespace))
+            {
+                templateVariables.Add("SUB_UA_NAMESPACE", withNamespace);
+            }
+
+            return templateVariables;
+        }
+
+        public static List<string> CreateTemplateConditions(Type type, string withNamespace = default)
+        {
+            var typeName = type.FullName.Replace('+', '.'); // This accounts for nested types.
+
+            // Add type.
+            var templateConditions = new List<string>
+            {
+                $"TYPE_IS_{typeName.ToUpper()}"
+            };
+
+            // Add Type code condition if applicable.
+            if (type.IsNumeric())
+            {
+                templateConditions.Add("IS_NUMERIC");
+            }
+            if (type.IsVector())
+            {
+                templateConditions.Add("IS_VECTOR");
+            }
+
+            // Add Equatable condition if applicable.
+            var isTypeEquatable = type.GetInterfaces().Contains(typeof(IEquatable<>));
+            if (isTypeEquatable)
+            {
+                templateConditions.Add("EQUATABLE");
+            }
+
+            // Add Namespace conditions if applicable.
+            var typeNamespace = type.Namespace;
+            if (!string.IsNullOrEmpty(typeNamespace))
+            {
+                templateConditions.Add("TYPE_HAS_NAMESPACE");
+            }
+            if (!string.IsNullOrEmpty(withNamespace))
+            {
+                templateConditions.Add("HAS_SUB_UA_NAMESPACE");
+            }
+
+            return templateConditions;
+        }
+        #endregion
+
+        /// <summary>
+        /// Generate new Atoms based on the input data.
+        /// </summary>
+        /// <param name="type">The type of Atom to generate.</param>
+        /// <param name="path">The folder path where the Atoms are going to be written to.</param>
+        /// <param name="withNamespace">By default the Atoms that gets generated will be under the namespace `UnityAtoms`. If you for example like it to be under `UnityAtoms.MyNamespace` you would then enter `MyNamespace` in this field.</param>
+        /// <param name="resolvers">The resolvers to use for generating the atoms.</param>
+        /// <example>
+        /// <code>
+        /// namespace MyNamespace
+        /// {
+        ///     public struct MyStruct
+        ///     {
+        ///         public string Text;
+        ///         public int Number;
+        ///     }
+        /// }
+        /// Generator.Generate(typeof(MyStruct), "Assets/Atoms", "MyNamespace", ConstantTemplate.ResolveConstant, EventTemplate.ResolveEvent); // Generates an AtomConstant and AtomEvent of type MyStruct.
+        /// </code>
+        /// </example>
+        public static MonoScript[] Generate(Type type, string path, string withNamespace = default, params Resolver[] resolvers)
+        {
+            var assetPaths = new string[resolvers.Length];
+
+            try
+            {
+                AssetDatabase.StartAssetEditing();
+
+                for(int i = 0; i < resolvers.Length; i++)
+                {
+                    var resolver = resolvers[i];
+
+                    var content = resolver(type, out string className, withNamespace);
+                    var filePath = assetPaths[i] = $"{path}/{className}.cs";
+
+                    File.WriteAllText(filePath, content);
+                    AssetDatabase.ImportAsset(filePath);
+                }
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
+            }
+
+            var monoScripts = new MonoScript[assetPaths.Length];
+            for (int i = 0; i < assetPaths.Length; i++)
+            {
+                var assetPath = assetPaths[i];
+                monoScripts[i] = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
+            }
+
+            return monoScripts;
+        }
+
+        /// <summary>
+        /// Generate new Atoms based on the input data.
+        /// </summary>
+        /// <param name="type">The type of Atom to generate.</param>
+        /// <param name="path">The folder path where the Atoms are going to be written to.</param>
+        /// <param name="resolver">The resolver to use for generating the atom.</param>
+        /// <param name="withNamespace">By default the Atoms that gets generated will be under the namespace `UnityAtoms`. If you for example like it to be under `UnityAtoms.MyNamespace` you would then enter `MyNamespace` in this field.</param>
+        /// <example>
+        /// <code>
+        /// namespace MyNamespace
+        /// {
+        ///     public struct MyStruct
+        ///     {
+        ///         public string Text;
+        ///         public int Number;
+        ///     }
+        /// }
+        /// Generator.Generate(typeof(AtomEvent<MyStruct>), "Assets/Atoms", EventTemplate.ResolveEvent, "MyNamespace"); // Generates an AtomEvent of type MyStruct.
+        /// </code>
+        /// </example>
+        public static MonoScript Generate(Type type, string path, Resolver resolver, string withNamespace = default)
+        {
+            var content = resolver(type, out string className, withNamespace);
+
+            path += $"/{className}.cs";
+
+            File.WriteAllText(path, content);
+            AssetDatabase.ImportAsset(path);
+
+            return AssetDatabase.LoadAssetAtPath<MonoScript>(path);
+        }
+
+        /// <summary>
+        /// Generate new Atoms based on the input data.
+        /// </summary>
+        /// <param name="type">The type of Atom to generate.</param>
+        /// <param name="path">The folder path where the Atoms are going to be written to.</param>
+        /// <param name="withNamespace">By default the Atoms that gets generated will be under the namespace `UnityAtoms`. If you for example like it to be under `UnityAtoms.MyNamespace` you would then enter `MyNamespace` in this field.</param>
+        /// <example>
+        /// <code>
+        /// namespace MyNamespace
+        /// {
+        ///     public struct MyStruct
+        ///     {
+        ///         public string Text;
+        ///         public int Number;
+        ///     }
+        /// }
+        /// Generator.Generate(typeof(AtomEvent<MyStruct>), "Assets/Atoms", "MyNamespace"); // Generates an AtomEvent of type MyStruct.
+        /// </code>
+        /// </example>
+        public static MonoScript Generate(Type type, string path, string withNamespace = default)
+        {
+            return Generate(type, path, Template.ResolveAtom, withNamespace);
+        }
 
         #region Deprecated
         [Obsolete("Use the same method with a Type parameter instead.", false)]

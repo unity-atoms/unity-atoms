@@ -7,7 +7,7 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// Internal module class that holds that regarding an Atom type.
     /// </summary>
-    internal struct AtomType : IEquatable<AtomType>
+    public struct AtomType : IEquatable<AtomType>
     {
         public string DisplayName { get; set; }
         public string Name { get; set; }
@@ -31,18 +31,20 @@ namespace UnityAtoms.Editor
             string drawerTemplateName = "",
             string relativeDrawerFileNameAndPath = "",
             string editorTemplateName = "",
-            string relativeEditorFileNameAndPath = ""
+            string relativeEditorFileNameAndPath = "",
+            bool isValuePair = false
         )
         {
             this.DisplayName = displayName;
             this.TemplateName = templateName;
+            this.IsValuePair = isValuePair;
+
             this.Name = string.IsNullOrEmpty(name) ? Regex.Replace(displayName, @"\s+", "") : name;
             this.RelativeFileNameAndPath = string.IsNullOrEmpty(relativeFileNameAndPath) ? CreateRelativeFilePath(this.Name) : relativeFileNameAndPath;
             this.DrawerTemplateName = drawerTemplateName;
             this.RelativeDrawerFileNameAndPath = string.IsNullOrEmpty(relativeDrawerFileNameAndPath) ? CreateRelativeDrawerPath(this.Name) : relativeDrawerFileNameAndPath;
             this.EditorTemplateName = editorTemplateName;
             this.RelativeEditorFileNameAndPath = string.IsNullOrEmpty(relativeEditorFileNameAndPath) ? CreateEditorDrawerPath(this.Name) : relativeEditorFileNameAndPath;
-            this.IsValuePair = this.DisplayName != "Pair" && this.DisplayName.Contains("Pair");
         }
 
         public bool HasDrawerTemplate => !string.IsNullOrWhiteSpace(DrawerTemplateName);
