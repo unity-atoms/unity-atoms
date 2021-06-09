@@ -10,77 +10,52 @@ namespace UnityAtoms.Editor
     [CreateAssetMenu(fileName = "AtomGenerator", menuName = "Unity Atoms/Generation/AtomGenerator", order = 0)]
     public class AtomGenerator : ScriptableObject
     {
-        [TextArea] public string FullQualifiedName;
-        public string Namespace;
-        public string BaseType;
+        public static Dictionary<string, Resolver> resolvers = new Dictionary<string, Resolver>();
 
-        public int GenerationOptions;
+        public string assemblyQualifiedName;
+        public string withNamespace;
+        public bool[] options = Enumerable.Repeat(true, resolvers.Count).ToArray();
+        public MonoScript[] scripts = new MonoScript[resolvers.Count];
+        public string[] keys = resolvers.Keys.ToArray();
 
-        // Referencing Generated Files here:
-        public List<MonoScript> Scripts = new List<MonoScript>(AtomTypes.ALL_ATOM_TYPES.Count);
-
-        private void Reset()
-        {
-            for(int i = 0; i < AtomTypes.ALL_ATOM_TYPES.Count; i++)
-            {
-                GenerationOptions |= (1 << i);
-            }
-        }
+        [SerializeField][HideInInspector] private bool safeSearch = true;
 
         public void Generate()
         {
-            var type = Type.GetType($"{FullQualifiedName}");
-            if (type == null) throw new TypeLoadException($"Type could not be found ({FullQualifiedName})");
-            var isValueTypeEquatable = type.GetInterfaces().Contains(typeof(IEquatable<>));
-
-            var baseTypeAccordingNested = type.FullName.Replace('+', '.');
-
-            var templateVariables = Generator.CreateTemplateVariablesMap(baseTypeAccordingNested, Namespace, "BaseAtoms");
-            var capitalizedValueType = BaseType.Capitalize();
-            var templates = Generator.GetTemplatePaths();
-
-            var templateConditions =
-                Generator.CreateTemplateConditions(isValueTypeEquatable, Namespace, "BaseAtoms", baseTypeAccordingNested);
-            var baseWritePath =
-                Path.Combine((Path.GetDirectoryName(AssetDatabase.GetAssetPath(this.GetInstanceID()))) ?? "Assets/",
-                    "Generated");
-
-            Directory.CreateDirectory(baseWritePath);
-
-            Scripts.Clear();
-            var t = GenerationOptions;
-            var idx = 0;
-            while (t > 0)
+            var assetPaths = new string[resolvers.Count];
+            
+            try
             {
-                if (t % 2 == 1)
+                AssetDatabase.StartAssetEditing();
+
+                var resolvers = new Resolver[AtomGenerator.resolvers.Count];
+                AtomGenerator.resolvers.Values.CopyTo(resolvers, 0);
+
+                var type = Type.GetType(assemblyQualifiedName);
+                for (int i = 0; i < options.Length; i++)
                 {
-                    var atomType = AtomTypes.ALL_ATOM_TYPES[idx];
+                    if (options[i])
+                    {
+                        var resolver = resolvers[i];
+                        assetPaths[i] = AssetDatabase.GetAssetPath(scripts[i]);
+                        var path = Path.GetDirectoryName(assetPaths[i]);
 
-                    templateVariables["VALUE_TYPE_NAME"] = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : capitalizedValueType;
-                    var valueType = atomType.IsValuePair ? $"{capitalizedValueType}Pair" : baseTypeAccordingNested;
-                    templateVariables["VALUE_TYPE"] = valueType;
-                    templateVariables["VALUE_TYPE_NAME_NO_PAIR"] = capitalizedValueType;
-
-                    var resolvedRelativeFilePath = Templating.ResolveVariables(templateVariables: templateVariables,
-                        toResolve: atomType.RelativeFileNameAndPath);
-                    var targetPath = Path.Combine(baseWritePath, resolvedRelativeFilePath);
-
-                    var newCreated = !File.Exists(targetPath);
-
-                    Generator.Generate(new AtomReceipe(atomType, valueType), baseWritePath, templates,
-                        templateConditions, templateVariables);
-
-                    if (newCreated) AssetDatabase.ImportAsset(targetPath);
-                    var ms = AssetDatabase.LoadAssetAtPath<MonoScript>(targetPath);
-                    Scripts.Add(ms);
+                        Generator.Generate(type, path, resolver, withNamespace);
+                    }
                 }
-                else
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
+            }
+
+            for (int i = 0; i < options.Length; i++)
+            {
+                if(options[i])
                 {
-                    Scripts.Add(null);
+                    var assetPath = assetPaths[i];
+                    scripts[i] = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
                 }
-
-                idx++;
-                t >>= 1;
             }
         }
     }

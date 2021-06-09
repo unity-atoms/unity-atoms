@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Compilation;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using Assembly = System.Reflection.Assembly;
-using Object = UnityEngine.Object;
 
 namespace UnityAtoms.Editor
 {
@@ -15,48 +13,82 @@ namespace UnityAtoms.Editor
     {
         private TypeSelectorDropdown typeSelectorDropdown;
 
-        private SerializedProperty fullQualifiedName;
-        private SerializedProperty typeNamespace;
-        private SerializedProperty baseType;
-        private SerializedProperty generatedOptions;
-
-        private static bool safeSearch = true;
+        private SerializedProperty assemblyQualifiedName;
+        private SerializedProperty withNamespace;
+        private SerializedProperty options;
+        private SerializedProperty scripts;
+        private SerializedProperty keys;
+        private SerializedProperty safeSearch;
 
         private void OnEnable()
         {
             // Find Properties.
-            fullQualifiedName = serializedObject.FindProperty(nameof(AtomGenerator.FullQualifiedName));
-            typeNamespace = serializedObject.FindProperty(nameof(AtomGenerator.Namespace));
-            baseType = serializedObject.FindProperty(nameof(AtomGenerator.BaseType));
-            generatedOptions = serializedObject.FindProperty(nameof(AtomGenerator.GenerationOptions));
+            assemblyQualifiedName = serializedObject.FindProperty(nameof(AtomGenerator.assemblyQualifiedName));
+            withNamespace = serializedObject.FindProperty(nameof(AtomGenerator.withNamespace));
+            options = serializedObject.FindProperty(nameof(AtomGenerator.options));
+            scripts = serializedObject.FindProperty(nameof(AtomGenerator.scripts));
+            keys = serializedObject.FindProperty(nameof(AtomGenerator.keys));
+            safeSearch = serializedObject.FindProperty(nameof(safeSearch));
 
-            // Check if the current type is unsafe.
-            var currentType = Type.GetType(fullQualifiedName.stringValue);
-            if(currentType == null
-                || currentType.IsSubclassOf(typeof(Object)))
-            {
-                safeSearch = true;
-            }
-            else if(!currentType.IsSerializable)
-            {
-                safeSearch = false;
-            }
-            else
-            {
-                var assemblies = from assemblyDefinition in CompilationPipeline.GetAssemblies(AssembliesType.Player)
-                                 let assembly = Assembly.Load(assemblyDefinition.name)
-                                 select assembly;
-                safeSearch = assemblies.Contains(currentType.Assembly);
-            }
+            UpdateOptions();
 
             RefreshDropdown();
+        }
+
+        private void UpdateOptions()
+        {
+            var resolverKeys = AtomGenerator.resolvers.Keys.ToArray();
+            for (int i = keys.arraySize - 1; i >= 0; i--)
+            {
+                var key = keys.GetArrayElementAtIndex(i);
+
+                var keyIndex = Array.IndexOf(resolverKeys, key.stringValue);
+                if (keyIndex == -1)
+                {
+                    var srcIndex = i;
+                    for (int dstIndex = srcIndex + 1; dstIndex < keys.arraySize; dstIndex++)
+                    {
+                        options.MoveArrayElement(srcIndex, dstIndex);
+                        scripts.MoveArrayElement(srcIndex, dstIndex);
+                        keys.MoveArrayElement(srcIndex, dstIndex);
+
+                        srcIndex++;
+                    }
+                    options.DeleteArrayElementAtIndex(srcIndex);
+                    scripts.DeleteArrayElementAtIndex(srcIndex);
+                    keys.DeleteArrayElementAtIndex(srcIndex);
+                }
+            }
+
+            keys.arraySize =
+                 options.arraySize =
+                 scripts.arraySize =
+                 resolverKeys.Length;
+
+            for (int i = 0; i < resolverKeys.Length; i++)
+            {
+                var resolverKey = resolverKeys[i];
+                var key = keys.GetArrayElementAtIndex(i);
+
+                if(key.stringValue != resolverKey)
+                {
+                    var option = options.GetArrayElementAtIndex(i);
+                    var script = scripts.GetArrayElementAtIndex(i);
+
+                    key.stringValue = resolverKey;
+                    option.boolValue = false;
+                    script.objectReferenceValue = null;
+                }
+            }
+
+            serializedObject.ApplyModifiedPropertiesWithoutUndo();
         }
 
         public void RefreshDropdown()
         {
             // Search Player assemblies only if safe searching, else search all assemblies.
             IEnumerable<Assembly> assemblies;
-            if(safeSearch)
+            if(safeSearch.boolValue)
             {
                 assemblies = from assemblyDefinition in CompilationPipeline.GetAssemblies(AssembliesType.Player)
                              let assembly = Assembly.Load(assemblyDefinition.name)
@@ -77,7 +109,7 @@ namespace UnityAtoms.Editor
                         select type;
 
             // Disregard non serializable types if safe searching.
-            if(safeSearch)
+            if(safeSearch.boolValue)
             {
                 types = from type in types
                         where type.IsUnitySerializable()
@@ -89,9 +121,7 @@ namespace UnityAtoms.Editor
             {
                 serializedObject.Update();
 
-                fullQualifiedName.stringValue = selectedType.AssemblyQualifiedName;
-                typeNamespace.stringValue = selectedType.Namespace;
-                baseType.stringValue = selectedType.Name;
+                assemblyQualifiedName.stringValue = selectedType.AssemblyQualifiedName;
 
                 serializedObject.ApplyModifiedProperties();
             });
@@ -102,7 +132,9 @@ namespace UnityAtoms.Editor
             serializedObject.Update();
 
             // Draw our type dropdown and result.
-            var buttonContent = safeSearch
+            const float rectMargin = 4f;
+
+            var buttonContent = safeSearch.boolValue
                 ? new GUIContent($"Select Unity Type", $"Select from all Unity compatible types.")
                 : new GUIContent($"Select Unsafe Type", $"Select from all types, serializable or not. Be aware that some types may not be compatible with all platforms!");
             var buttonStyle = GUI.skin.button;
@@ -111,17 +143,18 @@ namespace UnityAtoms.Editor
             toggleLabelRect.width = 32f;
             var toggleRect = new Rect(dropdownRect);
             toggleRect.width = 16f;
-            toggleRect.x += 36f;
+            toggleRect.x += (toggleLabelRect.width + rectMargin);
             var buttonRect = new Rect(dropdownRect);
-            buttonRect.width -= 56f;
-            buttonRect.x += 56f;
+            buttonRect.width -= (toggleRect.width + toggleRect.x - toggleLabelRect.x + rectMargin);
+            buttonRect.x += (toggleRect.width + toggleRect.x - toggleLabelRect.x + rectMargin);
 
             EditorGUILayout.BeginHorizontal();
             {
                 EditorGUI.LabelField(toggleLabelRect, "Safe");
 
                 EditorGUI.BeginChangeCheck();
-                safeSearch = EditorGUI.Toggle(toggleRect, safeSearch);
+                EditorGUI.PropertyField(toggleRect, safeSearch, GUIContent.none);
+                //safeSearch = EditorGUI.Toggle(toggleRect, safeSearch);
                 if (EditorGUI.EndChangeCheck())
                 {
                     RefreshDropdown();
@@ -134,197 +167,60 @@ namespace UnityAtoms.Editor
             }
             EditorGUILayout.EndHorizontal();
 
-            if(!safeSearch)
+            // Draw the selected type name.
+            var typeLabelRect = new Rect(toggleLabelRect);
+            typeLabelRect.width = toggleRect.x + toggleRect.width;
+            typeLabelRect.y += (EditorGUIUtility.singleLineHeight + rectMargin);
+            var typeRect = new Rect(buttonRect);
+            typeRect.y += (EditorGUIUtility.singleLineHeight + rectMargin);
+
+            EditorGUI.BeginDisabledGroup(true);
+            EditorGUI.LabelField(typeLabelRect, "Type");
+            EditorGUI.TextField(typeRect, Type.GetType(assemblyQualifiedName.stringValue)?.FullName);
+            EditorGUILayout.Space(EditorGUIUtility.singleLineHeight + rectMargin);
+            EditorGUI.EndDisabledGroup();
+
+            // Draw a warning if safe search is turned off to notify the user about their poor judgement.
+            if (!safeSearch.boolValue)
             {
                 EditorGUILayout.HelpBox("Safe Search is turned off. Be aware that some types may not be compatible with all platforms.", MessageType.Warning);
             }
 
-            EditorGUILayout.PropertyField(fullQualifiedName);
+            //Draw the namespace field.
+            EditorGUILayout.PropertyField(withNamespace, new GUIContent("Namespace"));
+            EditorGUILayout.Space(EditorGUIUtility.singleLineHeight);
 
             // Draw the different generator options and if a file has been generated, draw it in a disabled objectfield as well.
-            EditorGUILayout.Space(EditorGUIUtility.singleLineHeight);
             EditorGUILayout.LabelField($"Options", EditorStyles.boldLabel);
-            var options = generatedOptions.intValue;
-            var scripts = (target as AtomGenerator)?.Scripts;
-            for (var index = 0; index < AtomTypes.ALL_ATOM_TYPES.Count; index++)
+
+            for(int i = 0; i < keys.arraySize; i++)
             {
-                var option = AtomTypes.ALL_ATOM_TYPES[index];
+                var option = options.GetArrayElementAtIndex(i);
+                var script = scripts.GetArrayElementAtIndex(i);
+                var key = keys.GetArrayElementAtIndex(i);
+
+                var optionLabel = new GUIContent(key.stringValue);
 
                 EditorGUILayout.BeginHorizontal();
 
-                bool b = (options & (1 << index)) == (1 << index);
-                EditorGUI.BeginChangeCheck();
-                b = EditorGUILayout.Toggle(AtomTypes.ALL_ATOM_TYPES[index].DisplayName, b);
-                //if (EditorGUI.EndChangeCheck())
-                //{
-                //    if (b)
-                //    {
-                //        options |= (1 << index);
-                //        // add all dependencies:
-                //        //if (AtomTypes.DEPENDENCY_GRAPH.TryGetValue(option, out var list))
-                //        //    list.ForEach(dep => options |= (1 << AtomTypes.ALL_ATOM_TYPES.IndexOf(dep)));
-                //    }
-                //    else
-                //    {
-                //        options &= ~(1 << index);
-                //        // remove all depending:
-                //        //foreach (var keyValuePair in AtomTypes.DEPENDENCY_GRAPH.Where(kv => kv.Value.Contains(option)))
-                //        //{
-                //        //    options &= ~(1 << AtomTypes.ALL_ATOM_TYPES.IndexOf(keyValuePair.Key));
-                //        //}
-                //    }
-                //}
-
-                if (scripts != null && index < scripts.Count && scripts[index] != null)
-                {
-                    EditorGUI.BeginDisabledGroup(true);
-                    EditorGUILayout.ObjectField(scripts[index], typeof(MonoScript), false);
-                    EditorGUI.EndDisabledGroup();
-                }
+                EditorGUILayout.PropertyField(option, optionLabel);
+                EditorGUILayout.PropertyField(script, GUIContent.none);
 
                 EditorGUILayout.EndHorizontal();
             }
 
-            generatedOptions.intValue = options;
-
             serializedObject.ApplyModifiedProperties();
 
+            EditorGUI.BeginDisabledGroup(string.IsNullOrEmpty(assemblyQualifiedName.stringValue));
             if (GUILayout.Button("(Re)Generate"))
             {
-                (target as AtomGenerator)?.Generate();
+                (target as AtomGenerator).Generate();
                 AssetDatabase.SaveAssets();
             }
-        }
-
-        // A NamespaceLevel stores different namespaceLevels of namespaces that have a sub namespace and all the types that have reached this namespaceLevel. NamespaceLevel is used for its recursion to go as many levels deep as it needs to to find all the types of every (sub)namespace it can find.
-        private struct NamespaceLevel
-        {
-            public Dictionary<string, NamespaceLevel> namespaceLevels;
-            public IEnumerable<Type> types;
-
-            private Dictionary<int, Type> idTypePairs;
-
-            public NamespaceLevel(IEnumerable<Type> types) : this(0, types) { }
-            private NamespaceLevel(int level, IEnumerable<Type> types)
+            EditorGUI.EndDisabledGroup();
+            if (string.IsNullOrEmpty(assemblyQualifiedName.stringValue))
             {
-                var typeNamespaceLevelLookup = types.ToLookup(type => type.Namespace != null && type.Namespace.Split('.').Length > level);
-
-                // Populate namespaceLevels.
-                var namespaceTypeGroups = from type in typeNamespaceLevelLookup[true]
-                                          group type by type.Namespace.Split('.')[level] into namespaceTypeGroup
-                                          orderby namespaceTypeGroup.Key
-                                          select namespaceTypeGroup;
-                this.namespaceLevels = namespaceTypeGroups.ToDictionary(
-                    namespaceTypeGroup => namespaceTypeGroup.Key
-                    , namespaceTypeGroup => new NamespaceLevel(level + 1, namespaceTypeGroup));
-
-                // Populate types.
-                this.types = from type in typeNamespaceLevelLookup[false]
-                             orderby type.FullName.Substring(type.FullName.LastIndexOf('.') + 1)
-                             select type;
-
-                // Initialize other values.
-                this.idTypePairs = new Dictionary<int, Type>();
-            }
-
-            public AdvancedDropdownItem GetDropdownItem(AdvancedDropdownItem parent)
-            {
-                // Draw all the subnamespaces of this namespace level.
-                if(namespaceLevels.Count > 0)
-                {
-                    parent.AddChild(new AdvancedDropdownItem("Namespaces") { enabled = false });
-                    foreach(KeyValuePair<string, NamespaceLevel> namespaceLevel in namespaceLevels)
-                    {
-                        var groupItem = new AdvancedDropdownItem(namespaceLevel.Key);
-                        groupItem = namespaceLevel.Value.GetDropdownItem(groupItem);
-
-                        parent.AddChild(groupItem);
-                    }
-                }
-
-                // Draw all the types of this namespace level.
-                idTypePairs.Clear();
-                if(types.Any())
-                {
-                    if(namespaceLevels.Count > 0)
-                    {
-                        parent.AddSeparator();
-                    }
-
-                    parent.AddChild(new AdvancedDropdownItem("Types") { enabled = false });
-                    foreach(Type type in types)
-                    {
-                        var name = type.FullName.Substring(type.FullName.LastIndexOf('.') + 1);
-                        if(!type.IsUnitySerializable())
-                        {
-                            name += " (Not Serializable)";
-                        }
-
-                        var dropdownItem = new AdvancedDropdownItem(name);
-                        parent.AddChild(dropdownItem);
-
-                        // Use Hash instead of id! If 2 AdvancedDropdownItems have the same name, they will generate the same id (stupid, I know). To ensure searching for a unique identifier, we use the hash instead.
-                        idTypePairs.Add(dropdownItem.GetHashCode(), type);
-                    }
-                }
-
-                return parent;
-            }
-
-            // Find the type associated with the AdvancedDropdownItem.
-            public Type FindType(AdvancedDropdownItem item)
-            {
-                if(idTypePairs.TryGetValue(item.GetHashCode(), out var type))
-                {
-                    return type;
-                }
-
-                foreach(NamespaceLevel namespaceLevel in namespaceLevels.Values)
-                {
-                    if(namespaceLevel.TryGetType(item, out type))
-                    {
-                        return type;
-                    }
-                }
-
-                return null;
-            }
-
-            public bool TryGetType(AdvancedDropdownItem item, out Type type)
-            {
-                type = FindType(item);
-                return type != null;
-            }
-        }
-
-        private class TypeSelectorDropdown : AdvancedDropdown
-        {
-            protected new Vector2 minimumSize = new Vector2(0f, 460f);
-
-            private readonly NamespaceLevel typeLevel;
-            private readonly Action<Type> typeSelected;
-
-            public TypeSelectorDropdown(IEnumerable<Type> types, Action<Type> typeSelected) : this(new AdvancedDropdownState(), types, typeSelected) { }
-            public TypeSelectorDropdown(AdvancedDropdownState state, IEnumerable<Type> types, Action<Type> typeSelected) : base(state)
-            {
-                this.typeLevel = new NamespaceLevel(types);
-                this.typeSelected = typeSelected;
-
-                base.minimumSize = minimumSize;
-            }
-
-            protected override void ItemSelected(AdvancedDropdownItem item)
-            {
-                base.ItemSelected(item);
-                if(item.enabled && typeLevel.TryGetType(item, out var type))
-                {
-                    typeSelected?.Invoke(type);
-                }
-            }
-
-            protected override AdvancedDropdownItem BuildRoot()
-            {
-                return typeLevel.GetDropdownItem(new AdvancedDropdownItem("Serializable Types"));
+                EditorGUILayout.HelpBox("You must pick a type before you may generate atoms.", MessageType.Error);
             }
         }
     }
