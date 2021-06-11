@@ -7,6 +7,7 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// Internal module class that holds that regarding an Atom type.
     /// </summary>
+    [Obsolete("AtomType is being deprecated for a Type based workflow.", false)]
     public struct AtomType : IEquatable<AtomType>
     {
         public string DisplayName { get; set; }

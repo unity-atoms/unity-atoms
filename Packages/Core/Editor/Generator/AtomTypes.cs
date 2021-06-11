@@ -1,11 +1,13 @@
 using System.IO;
 using System.Collections.Generic;
+using System;
 
 namespace UnityAtoms.Editor
 {
     /// <summary>
     /// Internal static class holding predefined static `AtomType`s.
     /// </summary>
+    [Obsolete("AtomTypes is being deprecated for a Type based workflow.", false)]
     internal static class AtomTypes
     {
         public static readonly AtomType CONSTANT = new AtomType(
