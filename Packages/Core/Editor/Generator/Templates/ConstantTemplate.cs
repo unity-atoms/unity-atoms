@@ -14,7 +14,8 @@ namespace UnityAtoms.Editor
         public static string ResolveConstant(Type type, out string className, string withNamespace = default)
         {
             type = typeof(AtomBaseVariable<>).MakeGenericType(type);
-            return Template.ResolveAtom(type, out className, withNamespace);
+            return Template.ResolveAtomAsset(type, out className, withNamespace);
+
         }
     }
 }
