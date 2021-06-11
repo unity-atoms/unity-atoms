@@ -18,7 +18,11 @@ namespace UnityAtoms.Editor
         public MonoScript[] scripts = new MonoScript[resolvers.Count];
         public string[] keys = resolvers.Keys.ToArray();
 
+#if UNITY_EDITOR
+#pragma warning disable CS0414 // Value is never used warning, however the value is used inside the AtomGeneratorEditor.
         [SerializeField][HideInInspector] private bool safeSearch = true;
+#pragma warning restore CS0414
+#endif
 
         public void Generate()
         {
