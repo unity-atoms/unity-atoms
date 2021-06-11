@@ -37,10 +37,15 @@ namespace UnityAtoms.Editor
                     if (options[i])
                     {
                         var resolver = resolvers[i];
-                        assetPaths[i] = AssetDatabase.GetAssetPath(scripts[i]);
-                        var path = Path.GetDirectoryName(assetPaths[i]);
+                        var script = scripts[i];
 
-                        Generator.Generate(type, path, resolver, withNamespace);
+                        var path = script
+                            ? AssetDatabase.GetAssetPath(script)
+                            : AssetDatabase.GetAssetPath(this);
+                        path = Path.GetDirectoryName(path);
+
+                        Generator.Generate(resolver, type, ref path, withNamespace);
+                        assetPaths[i] = path;
                     }
                 }
             }
@@ -53,8 +58,7 @@ namespace UnityAtoms.Editor
             {
                 if(options[i])
                 {
-                    var assetPath = assetPaths[i];
-                    scripts[i] = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
+                    scripts[i] = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPaths[i]);
                 }
             }
         }

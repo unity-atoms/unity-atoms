@@ -102,7 +102,7 @@ namespace UnityAtoms.Editor
         /// Generate new Atoms based on the input data.
         /// </summary>
         /// <param name="type">The type of Atom to generate.</param>
-        /// <param name="path">The folder path where the Atoms are going to be written to.</param>
+        /// <param name="directory">The folder path where the Atoms are going to be written to.</param>
         /// <param name="withNamespace">By default the Atoms that gets generated will be under the namespace `UnityAtoms`. If you for example like it to be under `UnityAtoms.MyNamespace` you would then enter `MyNamespace` in this field.</param>
         /// <param name="resolvers">The resolvers to use for generating the atoms.</param>
         /// <example>
@@ -118,7 +118,7 @@ namespace UnityAtoms.Editor
         /// Generator.Generate(typeof(MyStruct), "Assets/Atoms", "MyNamespace", ConstantTemplate.ResolveConstant, EventTemplate.ResolveEvent); // Generates an AtomConstant and AtomEvent of type MyStruct.
         /// </code>
         /// </example>
-        public static MonoScript[] Generate(Type type, string path, string withNamespace = default, params Resolver[] resolvers)
+        public static MonoScript[] Generate(Type type, string directory, string withNamespace = default, params Resolver[] resolvers)
         {
             var assetPaths = new string[resolvers.Length];
 
@@ -129,12 +129,8 @@ namespace UnityAtoms.Editor
                 for(int i = 0; i < resolvers.Length; i++)
                 {
                     var resolver = resolvers[i];
-
-                    var content = resolver(type, out string className, withNamespace);
-                    var filePath = assetPaths[i] = $"{path}/{className}.cs";
-
-                    File.WriteAllText(filePath, content);
-                    AssetDatabase.ImportAsset(filePath);
+                    assetPaths[i] = directory;
+                    Generate(resolver, type, ref assetPaths[i], withNamespace);
                 }
             }
             finally
@@ -172,7 +168,7 @@ namespace UnityAtoms.Editor
         /// Generator.Generate(typeof(AtomEvent<MyStruct>), "Assets/Atoms", EventTemplate.ResolveEvent, "MyNamespace"); // Generates an AtomEvent of type MyStruct.
         /// </code>
         /// </example>
-        public static MonoScript Generate(Type type, string path, Resolver resolver, string withNamespace = default)
+        public static MonoScript Generate(Resolver resolver, Type type, ref string path, string withNamespace = default)
         {
             var content = resolver(type, out string className, withNamespace);
 
@@ -203,9 +199,9 @@ namespace UnityAtoms.Editor
         /// Generator.Generate(typeof(AtomEvent<MyStruct>), "Assets/Atoms", "MyNamespace"); // Generates an AtomEvent of type MyStruct.
         /// </code>
         /// </example>
-        public static MonoScript Generate(Type type, string path, string withNamespace = default)
+        public static MonoScript Generate(Type type, ref string path, string withNamespace = default)
         {
-            return Generate(type, path, Template.ResolveAtom, withNamespace);
+            return Generate(Template.ResolveAtomAsset, type, ref path, withNamespace);
         }
 
         #region Deprecated

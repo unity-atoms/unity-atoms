@@ -37,6 +37,7 @@ namespace UnityAtoms.Editor
 
         private void UpdateOptions()
         {
+            // Delete removed resolvers.
             var resolverKeys = AtomGenerator.resolvers.Keys.ToArray();
             for (int i = keys.arraySize - 1; i >= 0; i--)
             {
@@ -60,24 +61,21 @@ namespace UnityAtoms.Editor
                 }
             }
 
-            keys.arraySize =
-                 options.arraySize =
-                 scripts.arraySize =
-                 resolverKeys.Length;
-
+            // Insert added resolvers.
             for (int i = 0; i < resolverKeys.Length; i++)
             {
                 var resolverKey = resolverKeys[i];
-                var key = keys.GetArrayElementAtIndex(i);
 
-                if(key.stringValue != resolverKey)
+                if(keys.arraySize <= i
+                    || keys.GetArrayElementAtIndex(i).stringValue != resolverKey)
                 {
-                    var option = options.GetArrayElementAtIndex(i);
-                    var script = scripts.GetArrayElementAtIndex(i);
+                    keys.InsertArrayElementAtIndex(i);
+                    options.InsertArrayElementAtIndex(i);
+                    scripts.InsertArrayElementAtIndex(i);
 
-                    key.stringValue = resolverKey;
-                    option.boolValue = false;
-                    script.objectReferenceValue = null;
+                    keys.GetArrayElementAtIndex(i).stringValue = resolverKey;
+                    options.GetArrayElementAtIndex(i).boolValue = default;
+                    scripts.GetArrayElementAtIndex(i).objectReferenceValue = default;
                 }
             }
 
