@@ -11,7 +11,7 @@ Variables and Events exposes methods that returns [`IObservables`](https://docs.
 
 ## Simple example
 
-The `HealthBar.cs` script from the [Basic tutorial](./basic-tutorial) could be rewritten like this using UniRx:
+The `HealthBar.cs` script from the [Variables](./variables.md) tutorial could be rewritten like this using UniRx:
 
 ```cs
 using UnityEngine;
