@@ -6,6 +6,16 @@
 💅 = Polish
 🚀 = New features
 
+# 4.4.4 (TODO: UPDATE THE DATE ON MERGE DAY)
+
+## 📝 Documentation
+
+-   A "Smooth Workflow" section has been added under the CONTRIBUTING.md to explain how one can easily start contributing to Atoms whilst working from inside Unity. This was an issue as the atoms repository is not naturally compatible with Unity. ([@Casey-Hofland](https://github.com/Casey-Hofland))
+
+## 🏃‍♀ Performance
+
+-   [#276](https://github.com/unity-atoms/unity-atoms/issues/276) This AtomGenerator has been improved to take no longer than about a single reimport. ([@Casey-Hofland](https://github.com/Casey-Hofland))
+
 # 4.4.3 (Mars 7, 2021)
 
 ## 🐛 Bug fixes

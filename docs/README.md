@@ -1,11 +1,12 @@
 # Table of Contents
 
 -   Introduction
-    -   [Quick start: adding Unity Atoms your project](./introduction/quick-start.md)
+    -   [Installation](./introduction/installation.md)
     -   [Overview and philosopy](./introduction/overview.md)
     -   [Preferences](./introduction/preferences.md)
     -   [FAQ](./introduction/faq.md)
 -   Tutorials
+    -   [Creating Atoms](./tutorials/creating-atoms.md)
     -   [Variables](./tutorials/variables.md)
     -   [Events](./tutorials/events.md)
     -   [Listeners](./tutorials/listeners.md)

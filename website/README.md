@@ -107,7 +107,7 @@ My new content here..
 {
   "docs": {
     "Getting Started": [
-      "quick-start",
+      "installation",
       "newly-created-doc" // new doc here
     ],
     ...
