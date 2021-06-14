@@ -73,6 +73,10 @@
         "title": "FAQ",
         "sidebar_label": "FAQ"
       },
+      "introduction/installation": {
+        "title": "Installation",
+        "sidebar_label": "Installation"
+      },
       "introduction/overview": {
         "title": "Overview and philosopy",
         "sidebar_label": "Overview and philosopy"
@@ -80,10 +84,6 @@
       "introduction/preferences": {
         "title": "Preferences",
         "sidebar_label": "Preferences"
-      },
-      "introduction/quick-start": {
-        "title": "Quick start",
-        "sidebar_label": "Quick start"
       },
       "README": {
         "title": "README"
@@ -132,6 +132,10 @@
         "title": "Conditions",
         "sidebar_label": "Conditions"
       },
+      "tutorials/creating-atoms": {
+        "title": "Creating Atoms",
+        "sidebar_label": "Creating Atoms"
+      },
       "tutorials/event-instancer": {
         "title": "Event Instancer",
         "sidebar_label": "Event Instancer"
@@ -166,7 +170,7 @@
       }
     },
     "links": {
-      "Quick Start": "Quick Start",
+      "Installation": "Installation",
       "API": "API",
       "Github": "Github"
     },

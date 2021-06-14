@@ -11,6 +11,9 @@ The `ChangeFillAmount` function created in the listeners tutorial is actually a 
 
 ```cs
 [CreateAssetMenu(menuName = "Unity Atoms/Examples/Health Logger")]
+using UnityEngine;
+using UnityAtoms.BaseAtoms;
+
 public class HealthLogger : IntAction
 {
     public override void Do(int health)

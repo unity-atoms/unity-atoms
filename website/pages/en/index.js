@@ -82,7 +82,7 @@ const HomeSplash = ({ language = '' }) => (
     <div className="inner">
       <ProjectTitle />
       <PromoSection>
-        <Button href={docUrl('introduction/quick-start', language)}>
+        <Button href={docUrl('introduction/installation', language)}>
           Get Started
         </Button>
       </PromoSection>

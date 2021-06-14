@@ -1,16 +1,15 @@
 ---
-id: quick-start
-title: Quick start
+id: installation
+title: Installation
 hide_title: true
-sidebar_label: Quick start
+sidebar_label: Installation
 ---
 
-# Quick start
+# Installation
 
-## Installation
+Welcome to Unity Atoms! There are several ways to add Unity Atoms to your project.
 
 _Prerequisite: Since Unity Atoms is using the Unity Package Manager (UPM) you need to use Unity version 2018.3 >=_
-
 ### NPM
 
 Add the following to your `manifest.json`:
@@ -97,8 +96,8 @@ Follow [Unity Atoms on Github](https://github.com/unity-atoms/unity-atoms) to st
 
 ## Create your first Atom
 
-You are now ready to create your first Atom. Simply right click somewhere in the Project window and go to **Create / Unity Atoms** and pick the Atom of your choice:
+To dive right in, create your first Atom using any of the available techniques mentioned in [Creating Atoms](../tutorials/creating-atoms.md).
 
-![create-your-first-atom](../assets/quick-start/create-your-first-atom.png)
+## Learn more
 
-Now you are ready to go to [Overview and philosopy](./overview.md) to learn more about Unity Atoms!
+Go to [Overview and philosopy](./overview.md) to learn more about Unity Atoms and how to tune in to the correct mindset when using them.
