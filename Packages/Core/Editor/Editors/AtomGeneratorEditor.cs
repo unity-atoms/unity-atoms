@@ -86,7 +86,7 @@ namespace UnityAtoms.Editor
         {
             // Search Player assemblies only if safe searching, else search all assemblies.
             IEnumerable<Assembly> assemblies;
-            if(safeSearch.boolValue)
+            if (safeSearch.boolValue)
             {
                 assemblies = from assemblyDefinition in CompilationPipeline.GetAssemblies(AssembliesType.Player)
                              let assembly = Assembly.Load(assemblyDefinition.name)
@@ -107,7 +107,7 @@ namespace UnityAtoms.Editor
                         select type;
 
             // Disregard non serializable types if safe searching.
-            if(safeSearch.boolValue)
+            if (safeSearch.boolValue)
             {
                 types = from type in types
                         where type.IsUnitySerializable()
@@ -152,7 +152,6 @@ namespace UnityAtoms.Editor
 
                 EditorGUI.BeginChangeCheck();
                 EditorGUI.PropertyField(toggleRect, safeSearch, GUIContent.none);
-                //safeSearch = EditorGUI.Toggle(toggleRect, safeSearch);
                 if (EditorGUI.EndChangeCheck())
                 {
                     RefreshDropdown();
@@ -202,7 +201,10 @@ namespace UnityAtoms.Editor
                 EditorGUILayout.BeginHorizontal();
 
                 EditorGUILayout.PropertyField(option, optionLabel);
+
+                EditorGUI.BeginDisabledGroup(true);
                 EditorGUILayout.PropertyField(script, GUIContent.none);
+                EditorGUI.EndDisabledGroup();
 
                 EditorGUILayout.EndHorizontal();
             }

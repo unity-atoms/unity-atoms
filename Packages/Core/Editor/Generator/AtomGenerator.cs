@@ -13,16 +13,14 @@ namespace UnityAtoms.Editor
         public static Dictionary<string, Resolver> resolvers = new Dictionary<string, Resolver>();
 
         public string assemblyQualifiedName;
-        public string withNamespace;
+        public string withNamespace = nameof(UnityAtoms);
         public bool[] options = Enumerable.Repeat(true, resolvers.Count).ToArray();
         public MonoScript[] scripts = new MonoScript[resolvers.Count];
         public string[] keys = resolvers.Keys.ToArray();
 
-#if UNITY_EDITOR
 #pragma warning disable CS0414 // Value is never used warning, however the value is used inside the AtomGeneratorEditor.
         [SerializeField][HideInInspector] private bool safeSearch = true;
 #pragma warning restore CS0414
-#endif
 
         public void Generate()
         {

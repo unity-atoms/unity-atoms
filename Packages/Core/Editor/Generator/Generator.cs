@@ -13,6 +13,7 @@ namespace UnityAtoms.Editor
     public static class Generator
     {
         #region Template Methods
+        [Obsolete("This methods makes the legacy generator methods work with types. It is strongly recommended however to use the Generate methods instead.", false)]
         public static string[] GetTemplatePaths()
         {
             var templateSearchPath = Runtime.IsUnityAtomsRepo ?
@@ -22,6 +23,7 @@ namespace UnityAtoms.Editor
             return Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
         }
 
+        [Obsolete("This methods makes the legacy generator methods work with types. It is strongly recommended however to use the Generate methods instead.", false)]
         public static Dictionary<string, string> CreateTemplateVariablesMap(Type type, bool asPair, string withNamespace = default)
         {
             var typeName = type.FullName.Replace('+', '.'); // This accounts for nested types.
@@ -56,6 +58,7 @@ namespace UnityAtoms.Editor
             return templateVariables;
         }
 
+        [Obsolete("This methods makes the legacy generator methods work with types. It is strongly recommended however to use the Generate methods instead.", false)]
         public static List<string> CreateTemplateConditions(Type type, string withNamespace = default)
         {
             var typeName = type.FullName.Replace('+', '.'); // This accounts for nested types.
@@ -257,7 +260,7 @@ namespace UnityAtoms.Editor
         /// </code>
         /// </example>
         [Obsolete("Use the same method with a Type parameter instead.", false)]
-        public static void Generate(AtomReceipe atomReceipe, string baseWritePath, string[] templatePaths, List<string> templateConditions, Dictionary<string, string> templateVariables)
+        public static void Generate(AtomRecipe atomReceipe, string baseWritePath, string[] templatePaths, List<string> templateConditions, Dictionary<string, string> templateVariables)
         {
             var (atomType, valueType) = atomReceipe;
 
