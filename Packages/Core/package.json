@@ -22,5 +22,8 @@
     "/Editor/UnityAtoms.UnityAtomsCore.Editor.asmdef.meta",
     "/Documentation",
     "/Documentation.meta"
-  ]
+  ],
+  "dependencies": {
+    "com.unity.modules.uielements": "1.0.0"
+  }
 }
