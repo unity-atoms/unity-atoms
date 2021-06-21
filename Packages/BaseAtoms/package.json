@@ -20,6 +20,8 @@
     "/Documentation.meta"
   ],
   "dependencies": {
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.physics2d": "1.0.0",
     "com.unity-atoms.unity-atoms-core": "4.4.3"
   }
 }

@@ -20,6 +20,7 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.unity-atoms.unity-atoms-core": "4.4.3"
+    "com.unity-atoms.unity-atoms-core": "4.4.3",
+    "com.unity-atoms.unity-atoms-base-atoms": "4.4.3"
   }
 }
