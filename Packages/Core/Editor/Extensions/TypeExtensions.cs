@@ -89,6 +89,11 @@ namespace UnityAtoms
             }
         }
 
+        public static string GenericName(this Type type)
+        {
+            return type.ToString().Replace("`1[", "<").Replace(']', '>').Replace('+', '.');
+        }
+
         public static bool IsNumeric(this Type type)
         {
             switch (Type.GetTypeCode(type))
