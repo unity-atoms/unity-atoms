@@ -5,9 +5,39 @@ namespace UnityAtoms
 {
     internal static class TypeExtensions
     {
+        public static readonly Type[] serializedBuiltInTypes =
+        {
+            typeof(Vector2),
+            typeof(Vector2Int),
+            typeof(Vector3),
+            typeof(Vector3Int),
+            typeof(Vector4),
+            typeof(Rect),
+            typeof(RectInt),
+            typeof(Quaternion),
+            typeof(Matrix4x4),
+            typeof(Color),
+            typeof(Color32),
+            typeof(LayerMask),
+            typeof(AnimationCurve),
+            typeof(Gradient),
+            typeof(RectOffset),
+            typeof(GUIStyle),
+        };
+
         public static bool IsUnitySerializable(this Type type)
         {
-            return type.IsSerializable || type.IsSubclassOf(typeof(UnityEngine.Object));
+            return !type.IsAbstract
+                && !type.IsGenericType
+                && (type.IsSerializable
+                    || (type.IsPrimitive
+                        && type != typeof(IntPtr)
+                        && type != typeof(UIntPtr))
+                    || type == typeof(string)
+                    || type.IsEnum
+                    || type.IsSubclassOf(typeof(UnityEngine.Object))
+                    || Array.IndexOf(serializedBuiltInTypes, type) != -1
+                    );
         }
 
         public static bool IsKeyword(this Type type)
