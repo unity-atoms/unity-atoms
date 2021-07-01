@@ -1,12 +1,11 @@
-using System.Linq;
 using System.Text;
 
 namespace UnityAtoms
 {
     /// <summary>
-    /// Internal extension class for strings.
+    /// Public extension class for strings.
     /// </summary>
-    internal static class StringExtensions
+    public static class StringExtensions
     {
         /// <summary>
         /// Tries to parse a string to an int.
@@ -48,6 +47,11 @@ namespace UnityAtoms
         {
             var indexFirstNewLineChar = str.IndexOfAny(new char[] { '\r', '\n' });
             return indexFirstNewLineChar == -1 ? str : str.Substring(0, indexFirstNewLineChar);
+        }
+
+        public static string Remove(this string str, string value)
+        {
+            return str.Replace(value, string.Empty);
         }
     }
 }

@@ -1,9 +1,10 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace UnityAtoms
 {
-    internal static class TypeExtensions
+    public static class TypeExtensions
     {
         public static readonly Type[] serializedBuiltInTypes =
         {
@@ -122,6 +123,17 @@ namespace UnityAtoms
         public static string GenericName(this Type type)
         {
             return type.ToString().Replace("`1[", "<").Replace(']', '>').Replace('+', '.');
+        }
+
+        public static bool IsEquatable(this Type type)
+        {
+            return type.GetInterfaces().Contains(typeof(IEquatable<>).MakeGenericType(type));
+        }
+
+        public static bool IsColor(this Type type)
+        {
+            return type == typeof(Color)
+                || type == typeof(Color32);
         }
 
         public static bool IsNumeric(this Type type)
