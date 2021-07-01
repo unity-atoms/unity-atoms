@@ -274,7 +274,7 @@ namespace UnityAtoms.Editor
             }
 
             // Add Equatable condition if applicable.
-            var isTypeEquatable = type.GetInterfaces().Contains(typeof(IEquatable<>));
+            var isTypeEquatable = type.GetInterfaces().Contains(typeof(IEquatable<>).MakeGenericType(type));
             if (isTypeEquatable)
             {
                 templateConditions.Add("EQUATABLE");
@@ -301,8 +301,8 @@ namespace UnityAtoms.Editor
         {
             var templateConditions = new List<string>();
             templateConditions.Add("TYPE_IS_" + valueType.ToUpper());
-            if (valueType == "int" || valueType == "float") { templateConditions.Add("IS_NUMERIC");}
-            if (valueType == "Vector2" || valueType == "Vector3") { templateConditions.Add("IS_VECTOR");}
+            if (valueType == "int" || valueType == "float") { templateConditions.Add("IS_NUMERIC"); }
+            if (valueType == "Vector2" || valueType == "Vector3") { templateConditions.Add("IS_VECTOR"); }
             if (isValueTypeEquatable) { templateConditions.Add("EQUATABLE"); }
             if (!string.IsNullOrEmpty(valueTypeNamespace)) { templateConditions.Add("TYPE_HAS_NAMESPACE"); }
             if (!string.IsNullOrEmpty(subUnityAtomsNamespace)) { templateConditions.Add("HAS_SUB_UA_NAMESPACE"); }
