@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.Compilation;
 using UnityEngine;
 
 namespace UnityAtoms.Editor
@@ -25,7 +26,7 @@ namespace UnityAtoms.Editor
         [Serializable]
         public class Solver
         {
-            public Template template;
+            public readonly Template template;
             public bool option;
             public MonoScript script;
 
@@ -35,12 +36,19 @@ namespace UnityAtoms.Editor
             }
         }
 
+        protected virtual void Awake()
+        {
+            _solversPopulated = true;
+
+            CompilationPipeline.RequestScriptCompilation();
+        }
+
         #region Serialization
         [SerializeField] private string _assemblyQualifiedName;
-        [SerializeField] private List<string> _keys;
-        [SerializeField] private List<Template> _templates;
-        [SerializeField] private List<bool> _options;
-        [SerializeField] private List<MonoScript> _scripts;
+        [SerializeField] private List<string> _keys = new List<string>();
+        [SerializeField] private List<Template> _templates = new List<Template>();
+        [SerializeField] private List<bool> _options = new List<bool>();
+        [SerializeField] private List<MonoScript> _scripts = new List<MonoScript>();
 
         [NonSerialized] private bool _solversPopulated = false;
 
@@ -54,30 +62,34 @@ namespace UnityAtoms.Editor
         {
             _assemblyQualifiedName = generatedType?.AssemblyQualifiedName;
 
-            if (!_solversPopulated && generatedType != null)
+            if (!_solversPopulated)
             {
-                var keyTemplatePairs = new Dictionary<string, Template>();
-                populator?.Invoke(generatedType, keyTemplatePairs);
+                solvers.Clear();
 
-                foreach (var keyTemplatePair in keyTemplatePairs)
+                if (generatedType != null)
                 {
-                    var solver = new Solver(keyTemplatePair.Value);
-                    solver.template.@namespace = @namespace;
+                    var keyTemplatePairs = new Dictionary<string, Template>();
+                    populator?.Invoke(generatedType, keyTemplatePairs);
 
-                    var keyIndex = _keys.IndexOf(keyTemplatePair.Key);
-                    if (keyIndex != -1)
+                    foreach (var keyTemplatePair in keyTemplatePairs)
                     {
-                        solver.option = _options[keyIndex];
-                        solver.script = _scripts[keyIndex];
+                        var solver = new Solver(keyTemplatePair.Value);
+                        solver.template.@namespace = @namespace;
+
+                        var keyIndex = _keys.IndexOf(keyTemplatePair.Key);
+                        if (keyIndex != -1)
+                        {
+                            solver.option = _options[keyIndex];
+                            solver.script = _scripts[keyIndex];
+                        }
+
+                        solvers.Add(keyTemplatePair.Key, solver);
                     }
 
-                    solvers.Add(keyTemplatePair.Key, solver);
+                    var readOnlySolvers = new ReadOnlyDictionary<string, Solver>(solvers);
+                    evaluator?.Invoke(generatedType, readOnlySolvers);
+                    solvers = new SortedList<string, Solver>(readOnlySolvers);
                 }
-
-                var readOnlySolvers = new ReadOnlyDictionary<string, Solver>(solvers);
-                evaluator?.Invoke(generatedType, readOnlySolvers);
-                solvers = new SortedList<string, Solver>(readOnlySolvers);
-
             }
             _solversPopulated = true;
 
@@ -101,6 +113,18 @@ namespace UnityAtoms.Editor
             generatedType = Type.GetType(_assemblyQualifiedName ?? string.Empty);
 
             solvers.Clear();
+            for (int i = 0; i < _keys.Count; i++)
+            {
+                var key = _keys[i];
+                var solver = new Solver(_templates[i])
+                {
+                    option = _options[i],
+                    script = _scripts[i],
+                };
+
+                solvers.Add(key, solver);
+            }
+
             _solversPopulated = false;
         }
         #endregion

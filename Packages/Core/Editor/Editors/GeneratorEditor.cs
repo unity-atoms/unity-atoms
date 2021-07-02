@@ -189,7 +189,7 @@ namespace UnityAtoms.Editor
                 EditorGUILayout.PropertyField(option, optionLabel);
 
                 EditorGUI.BeginDisabledGroup(true);
-                EditorGUILayout.PropertyField(script, GUIContent.none);
+                //EditorGUILayout.PropertyField(script, GUIContent.none);
                 EditorGUI.EndDisabledGroup();
 
                 EditorGUILayout.EndHorizontal();

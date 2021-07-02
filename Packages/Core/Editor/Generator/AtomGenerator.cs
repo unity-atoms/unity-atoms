@@ -1,3 +1,5 @@
+using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace UnityAtoms.Editor
@@ -10,7 +12,10 @@ namespace UnityAtoms.Editor
         {
             add
             {
-                var generators = Resources.FindObjectsOfTypeAll<AtomGenerator>();
+                var generatorGuids = AssetDatabase.FindAssets($"t:{nameof(AtomGenerator)}");
+                var generatorAssetPaths = Array.ConvertAll(generatorGuids, generatorGuid => AssetDatabase.GUIDToAssetPath(generatorGuid));
+                var generators = Array.ConvertAll(generatorAssetPaths, generatorAssetPath => AssetDatabase.LoadAssetAtPath<AtomGenerator>(generatorAssetPath));
+
                 foreach (var generator in generators)
                 {
                     lock (populatorsLock)
@@ -21,7 +26,10 @@ namespace UnityAtoms.Editor
             }
             remove
             {
-                var generators = Resources.FindObjectsOfTypeAll<AtomGenerator>();
+                var generatorGuids = AssetDatabase.FindAssets($"t:{nameof(AtomGenerator)}");
+                var generatorAssetPaths = Array.ConvertAll(generatorGuids, generatorGuid => AssetDatabase.GUIDToAssetPath(generatorGuid));
+                var generators = Array.ConvertAll(generatorAssetPaths, generatorAssetPath => AssetDatabase.LoadAssetAtPath<AtomGenerator>(generatorAssetPath));
+
                 foreach (var generator in generators)
                 {
                     lock (populatorsLock)
@@ -37,7 +45,10 @@ namespace UnityAtoms.Editor
         {
             add
             {
-                var generators = Resources.FindObjectsOfTypeAll<AtomGenerator>();
+                var generatorGuids = AssetDatabase.FindAssets($"t:{nameof(AtomGenerator)}");
+                var generatorAssetPaths = Array.ConvertAll(generatorGuids, generatorGuid => AssetDatabase.GUIDToAssetPath(generatorGuid));
+                var generators = Array.ConvertAll(generatorAssetPaths, generatorAssetPath => AssetDatabase.LoadAssetAtPath<AtomGenerator>(generatorAssetPath));
+
                 foreach (var generator in generators)
                 {
                     lock (evaluatorsLock)
@@ -48,7 +59,10 @@ namespace UnityAtoms.Editor
             }
             remove
             {
-                var generators = Resources.FindObjectsOfTypeAll<AtomGenerator>();
+                var generatorGuids = AssetDatabase.FindAssets($"t:{nameof(AtomGenerator)}");
+                var generatorAssetPaths = Array.ConvertAll(generatorGuids, generatorGuid => AssetDatabase.GUIDToAssetPath(generatorGuid));
+                var generators = Array.ConvertAll(generatorAssetPaths, generatorAssetPath => AssetDatabase.LoadAssetAtPath<AtomGenerator>(generatorAssetPath));
+
                 foreach (var generator in generators)
                 {
                     lock (evaluatorsLock)
