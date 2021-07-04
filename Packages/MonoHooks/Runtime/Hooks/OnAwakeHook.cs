@@ -25,13 +25,13 @@ namespace UnityAtoms.MonoHooks
         private void Awake()
         {
             // This is needed because it's not certain that OnEnable on all scripts are called before Awake on all scripts
-            if (_eventReference != null && _listener != null)
+            if (_event != null && _listener != null)
             {
-                _eventReference.Event.RegisterListener(_listener);
+                _event.RegisterListener(_listener);
             }
             if (_eventWithGameObjectReference != null && _gameObjectListener != null)
             {
-                _eventWithGameObjectReference.Event.RegisterListener(_gameObjectListener);
+                _eventWithGameObjectReference.RegisterListener(_gameObjectListener);
             }
 
             OnHook();
