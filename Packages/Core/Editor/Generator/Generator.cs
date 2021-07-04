@@ -1,17 +1,237 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using UnityEditor;
+using UnityEditor.Compilation;
 using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
     /// <summary>
-    /// Generator that generates new Atom types based on the input data. Used by the `GeneratorEditor`.
+    /// Generator that can be populated by Templates to generate scripts from. Used by the `GeneratorEditor`.
     /// </summary>
-    internal static class Generator
+    public abstract class Generator : ScriptableObject, ISerializationCallbackReceiver
     {
+#pragma warning disable CS0414 // Value is never used warning, however the value is used inside the GeneratorEditor.
+        [SerializeField] [HideInInspector] private bool safeSearch = true;
+#pragma warning restore CS0414
+
+        public Type generatedType;
+        public string @namespace = nameof(UnityAtoms);
+
+        protected SortedList<string, Solver> solvers = new SortedList<string, Solver>();
+
+        [Serializable]
+        public class Solver
+        {
+            public readonly Template template;
+            public bool option;
+            public MonoScript script;
+
+            internal Solver(Template template)
+            {
+                this.template = template;
+            }
+        }
+
+        protected virtual void Awake()
+        {
+            _solversPopulated = true;
+
+            CompilationPipeline.RequestScriptCompilation();
+        }
+
+        #region Serialization
+        [SerializeField] private string _assemblyQualifiedName;
+        [SerializeField] private List<string> _keys = new List<string>();
+        [SerializeField] private List<Template> _templates = new List<Template>();
+        [SerializeField] private List<bool> _options = new List<bool>();
+        [SerializeField] private List<MonoScript> _scripts = new List<MonoScript>();
+
+        [NonSerialized] private bool _solversPopulated = false;
+
+        public delegate void Populator(Type generatedType, Dictionary<string, Template> templates);
+        public event Populator populator;
+
+        public delegate void Evaluator(Type generatedType, ReadOnlyDictionary<string, Solver> solvers);
+        public event Evaluator evaluator;
+
+        public void OnBeforeSerialize()
+        {
+            _assemblyQualifiedName = generatedType?.AssemblyQualifiedName;
+
+            if (!_solversPopulated)
+            {
+                solvers.Clear();
+
+                if (generatedType != null)
+                {
+                    var keyTemplatePairs = new Dictionary<string, Template>();
+                    populator?.Invoke(generatedType, keyTemplatePairs);
+
+                    foreach (var keyTemplatePair in keyTemplatePairs)
+                    {
+                        var solver = new Solver(keyTemplatePair.Value);
+                        solver.template.@namespace = @namespace;
+
+                        var keyIndex = _keys.IndexOf(keyTemplatePair.Key);
+                        if (keyIndex != -1)
+                        {
+                            solver.option = _options[keyIndex];
+                            solver.script = _scripts[keyIndex];
+                        }
+
+                        solvers.Add(keyTemplatePair.Key, solver);
+                    }
+
+                    var readOnlySolvers = new ReadOnlyDictionary<string, Solver>(solvers);
+                    evaluator?.Invoke(generatedType, readOnlySolvers);
+                    solvers = new SortedList<string, Solver>(readOnlySolvers);
+                }
+            }
+            _solversPopulated = true;
+
+            _keys = new List<string>(solvers.Keys);
+
+            _templates = new List<Template>(solvers.Values.Count);
+            _options = new List<bool>(solvers.Values.Count);
+            _scripts = new List<MonoScript>(solvers.Values.Count);
+            for (int i = 0; i < solvers.Values.Count; i++)
+            {
+                var solver = solvers.Values[i];
+
+                _templates.Add(solver.template);
+                _options.Add(solver.option);
+                _scripts.Add(solver.script);
+            }
+        }
+
+        public void OnAfterDeserialize()
+        {
+            generatedType = Type.GetType(_assemblyQualifiedName ?? string.Empty);
+
+            solvers.Clear();
+            for (int i = 0; i < _keys.Count; i++)
+            {
+                var key = _keys[i];
+                var solver = new Solver(_templates[i])
+                {
+                    option = _options[i],
+                    script = _scripts[i],
+                };
+
+                solvers.Add(key, solver);
+            }
+
+            _solversPopulated = false;
+        }
+        #endregion
+
+        #region Generation
+        /// <summary>
+        /// Generate scripts inside the generators directory from the generators templates.
+        /// </summary>
+        public void Generate()
+        {
+            var assetPaths = new string[solvers.Values.Count];
+
+            try
+            {
+                AssetDatabase.StartAssetEditing();
+
+                for (int i = 0; i < solvers.Values.Count; i++)
+                {
+                    var solver = solvers.Values[i];
+
+                    if (solver.option)
+                    {
+                        var directory = solver.script
+                            ? AssetDatabase.GetAssetPath(solver.script)
+                            : AssetDatabase.GetAssetPath(this);
+                        directory = Path.GetDirectoryName(directory);
+
+                        Generate(directory, solver.template);
+                        assetPaths[i] = $"{directory}/{solver.template.className}.cs";
+                    }
+                }
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
+                AssetDatabase.SaveAssets();
+            }
+
+            for (int i = 0; i < solvers.Values.Count; i++)
+            {
+                var solver = solvers.Values[i];
+
+                if (solver.option)
+                {
+                    solvers.Values[i].script = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPaths[i]);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Generate scripts inside the directory from the input templates.
+        /// </summary>
+        /// <param name="directory">The folder path where the scripts are going to be written to.</param>
+        /// <param name="template">The template to generate the script from.</param>
+        /// <param name="templates">The templates to generate the scripts from.</param>
+        public static MonoScript[] Generate(string directory, params Template[] templates)
+        {
+            var assetPaths = new string[templates.Length];
+
+            try
+            {
+                AssetDatabase.StartAssetEditing();
+
+                for (int i = 0; i < templates.Length; i++)
+                {
+                    var template = templates[i];
+                    Generate(directory, template);
+
+                    assetPaths[i] = $"{directory}/{template.className}.cs";
+                }
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
+                AssetDatabase.SaveAssets();
+            }
+
+            var monoScripts = new MonoScript[assetPaths.Length];
+            for (int i = 0; i < assetPaths.Length; i++)
+            {
+                var assetPath = assetPaths[i];
+                monoScripts[i] = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
+            }
+
+            return monoScripts;
+        }
+
+        /// <summary>
+        /// Generate scripts inside the directory from the input templates.
+        /// </summary>
+        /// <param name="directory">The folder path where the scripts are going to be written to.</param>
+        /// <param name="template">The template to generate the script from.</param>
+        /// <param name="templates">The templates to generate the scripts from.</param>
+        public static MonoScript Generate(string directory, Template template)
+        {
+            var content = template.Resolve();
+            var path = $"{directory}/{template.className}.cs";
+
+            File.WriteAllText(path, content);
+            AssetDatabase.ImportAsset(path);
+
+            return AssetDatabase.LoadAssetAtPath<MonoScript>(path);
+        }
+        #endregion
+
+        #region Template Methods
+        [Obsolete("This methods makes the legacy generator methods work with types. It is strongly recommended however to use the Generate methods instead.", false)]
         public static string[] GetTemplatePaths()
         {
             var templateSearchPath = Runtime.IsUnityAtomsRepo ?
@@ -21,12 +241,92 @@ namespace UnityAtoms.Editor
             return Directory.GetFiles(templateSearchPath, "UA_Template*.txt", SearchOption.AllDirectories);
         }
 
+        [Obsolete("This methods makes the legacy generator methods work with types. It is strongly recommended however to use the Generate methods instead.", false)]
+        public static Dictionary<string, string> CreateTemplateVariablesMap(Type type, bool asPair, string withNamespace = default)
+        {
+            var typeName = type.FullName.Replace('+', '.'); // This accounts for nested types.
+            var displayNameNoPair = type.Name.Capitalize();
+            var displayName = displayNameNoPair;
+
+            if (asPair)
+            {
+                typeName = $"Pair<{typeName}>";
+                displayName += "Pair";
+            }
+
+            // Add Types.
+            var templateVariables = new Dictionary<string, string>()
+            {
+                { "VALUE_TYPE", typeName },
+                { "VALUE_TYPE_NAME", displayName },
+                { "VALUE_TYPE_NAME_NO_PAIR", displayNameNoPair }
+            };
+
+            // Add Namespaces if applicable.
+            var typeNamespace = type.Namespace;
+            if (!string.IsNullOrEmpty(typeNamespace))
+            {
+                templateVariables.Add("TYPE_NAMESPACE", typeNamespace);
+            }
+            if (!string.IsNullOrEmpty(withNamespace))
+            {
+                templateVariables.Add("SUB_UA_NAMESPACE", withNamespace);
+            }
+
+            return templateVariables;
+        }
+
+        [Obsolete("This methods makes the legacy generator methods work with types. It is strongly recommended however to use the Generate methods instead.", false)]
+        public static List<string> CreateTemplateConditions(Type type, string withNamespace = default)
+        {
+            var typeName = type.FullName.Replace('+', '.'); // This accounts for nested types.
+
+            // Add type.
+            var templateConditions = new List<string>
+            {
+                $"TYPE_IS_{typeName.ToUpper()}"
+            };
+
+            // Add Type code condition if applicable.
+            if (type.IsNumeric())
+            {
+                templateConditions.Add("IS_NUMERIC");
+            }
+            if (type.IsVector())
+            {
+                templateConditions.Add("IS_VECTOR");
+            }
+
+            // Add Equatable condition if applicable.
+            var isTypeEquatable = type.GetInterfaces().Contains(typeof(IEquatable<>).MakeGenericType(type));
+            if (isTypeEquatable)
+            {
+                templateConditions.Add("EQUATABLE");
+            }
+
+            // Add Namespace conditions if applicable.
+            var typeNamespace = type.Namespace;
+            if (!string.IsNullOrEmpty(typeNamespace))
+            {
+                templateConditions.Add("TYPE_HAS_NAMESPACE");
+            }
+            if (!string.IsNullOrEmpty(withNamespace))
+            {
+                templateConditions.Add("HAS_SUB_UA_NAMESPACE");
+            }
+
+            return templateConditions;
+        }
+        #endregion
+
+        #region Deprecated
+        [Obsolete("Use the same method with a Type parameter instead.", false)]
         public static List<string> CreateTemplateConditions(bool isValueTypeEquatable, string valueTypeNamespace, string subUnityAtomsNamespace, string valueType)
         {
             var templateConditions = new List<string>();
             templateConditions.Add("TYPE_IS_" + valueType.ToUpper());
-            if (valueType == "int" || valueType == "float") { templateConditions.Add("IS_NUMERIC");}
-            if (valueType == "Vector2" || valueType == "Vector3") { templateConditions.Add("IS_VECTOR");}
+            if (valueType == "int" || valueType == "float") { templateConditions.Add("IS_NUMERIC"); }
+            if (valueType == "Vector2" || valueType == "Vector3") { templateConditions.Add("IS_VECTOR"); }
             if (isValueTypeEquatable) { templateConditions.Add("EQUATABLE"); }
             if (!string.IsNullOrEmpty(valueTypeNamespace)) { templateConditions.Add("TYPE_HAS_NAMESPACE"); }
             if (!string.IsNullOrEmpty(subUnityAtomsNamespace)) { templateConditions.Add("HAS_SUB_UA_NAMESPACE"); }
@@ -34,6 +334,7 @@ namespace UnityAtoms.Editor
             return templateConditions;
         }
 
+        [Obsolete("Use the same method with a Type parameter instead.", false)]
         public static Dictionary<string, string> CreateTemplateVariablesMap(string valueType, string valueTypeNamespace, string subUnityAtomsNamespace)
         {
             var templateVariables = new Dictionary<string, string>() {
@@ -70,7 +371,8 @@ namespace UnityAtoms.Editor
         /// generator.Generate("MyStruct", "", false, new List&lt;AtomType&gt;() { AtomTypes.ACTION }, "MyNamespace", ""); // Generates an Atom Action of type MyStruct
         /// </code>
         /// </example>
-        public static void Generate(AtomReceipe atomReceipe, string baseWritePath, string[] templatePaths, List<string> templateConditions, Dictionary<string, string> templateVariables)
+        [Obsolete("Use the same method with a Type parameter instead.", false)]
+        public static void Generate(AtomRecipe atomReceipe, string baseWritePath, string[] templatePaths, List<string> templateConditions, Dictionary<string, string> templateVariables)
         {
             var (atomType, valueType) = atomReceipe;
 
@@ -126,6 +428,7 @@ namespace UnityAtoms.Editor
         /// </summary>
         /// <param name="template">The content template to remove namespace from.</param>
         /// <returns>A copy of `content`, but without duplicate namespaces.</returns>
+        [Obsolete("Outdated method.", false)]
         private static string RemoveDuplicateNamespaces(string template)
         {
             var currentIndex = 0;
@@ -154,11 +457,12 @@ namespace UnityAtoms.Editor
                 if (kvp.Value > 1)
                 {
                     var usingStr = $"using {kvp.Key};";
-                    contentCopy = contentCopy.Remove(contentCopy.IndexOf(usingStr), usingStr.Length+1);
+                    contentCopy = contentCopy.Remove(contentCopy.IndexOf(usingStr), usingStr.Length + 1);
                 }
             }
 
             return contentCopy;
         }
+        #endregion
     }
 }

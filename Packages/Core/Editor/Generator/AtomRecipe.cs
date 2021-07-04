@@ -5,26 +5,26 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// Internal module class that holds that regarding an Atom type.
     /// </summary>
-
-    internal struct AtomReceipe : IEquatable<AtomReceipe>
+    [Obsolete("Atom Receipe is outdated.", false)]
+    public struct AtomRecipe : IEquatable<AtomRecipe>
     {
         public AtomType AtomType { get; set; }
         public string ValueType { get; set; }
 
-        public AtomReceipe(AtomType atomType, string valueType)
+        public AtomRecipe(AtomType atomType, string valueType)
         {
             this.AtomType = atomType;
             this.ValueType = valueType;
         }
 
-        public bool Equals(AtomReceipe other)
+        public bool Equals(AtomRecipe other)
         {
             return this.AtomType.Equals(other) && this.ValueType == other.ValueType;
         }
 
         public override bool Equals(object obj)
         {
-            return Equals((AtomReceipe)obj);
+            return Equals((AtomRecipe)obj);
         }
 
         public override int GetHashCode()
