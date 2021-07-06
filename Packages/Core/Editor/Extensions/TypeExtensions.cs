@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 namespace UnityAtoms
@@ -120,9 +121,35 @@ namespace UnityAtoms
             }
         }
 
-        public static string GenericName(this Type type)
+        public static string CodeCompatibleFullName(this Type type)
         {
             return type.ToString().Replace("`1[", "<").Replace(']', '>').Replace('+', '.');
+        }
+
+        public static string CodeCompatibleName(this Type type)
+        {
+            var typeName = new StringBuilder();
+            RecursiveGenericName(type);
+            return typeName.ToString();
+
+            void RecursiveGenericName(Type type)
+            {
+                typeName.Append(type.CSharpName().Replace("`1", string.Empty));
+
+                if (type.IsGenericType)
+                {
+                    typeName.Append('<');
+
+                    foreach (var genericTypeArgument in type.GenericTypeArguments)
+                    {
+                        RecursiveGenericName(genericTypeArgument);
+                        typeName.Append(", ");
+                    }
+                    typeName.Remove(typeName.Length - 2, 2);
+
+                    typeName.Append('>');
+                }
+            }
         }
 
         public static bool IsEquatable(this Type type)

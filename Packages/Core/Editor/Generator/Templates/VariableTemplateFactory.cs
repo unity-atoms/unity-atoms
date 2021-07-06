@@ -57,49 +57,49 @@ $@"
         /// Add value to Variable.
         /// </summary>
         /// <param name=""value"">Value to add.</param>
-        public void Add({generatedType.GenericName()} value) => Value += value;
+        public void Add({generatedType.CodeCompatibleFullName()} value) => Value += value;
 
         /// <summary>
         /// Add variable value to Variable.
         /// </summary>
         /// <param name=""variable"">Variable with value to add.</param>
-        public void Add(AtomBaseVariable<{generatedType.GenericName()}> variable) => Add(variable.Value);
+        public void Add(AtomBaseVariable<{generatedType.CodeCompatibleFullName()}> variable) => Add(variable.Value);
 
         /// <summary>
         /// Subtract value from Variable.
         /// </summary>
         /// <param name=""value"">Value to subtract.</param>
-        public void Subtract({generatedType.GenericName()} value) => Value -= value;
+        public void Subtract({generatedType.CodeCompatibleFullName()} value) => Value -= value;
 
         /// <summary>
         /// Subtract variable value from Variable.
         /// </summary>
         /// <param name=""variable"">Variable with value to subtract.</param>
-        public void Subtract(AtomBaseVariable<{generatedType.GenericName()}> variable) => Subtract(variable.Value);
+        public void Subtract(AtomBaseVariable<{generatedType.CodeCompatibleFullName()}> variable) => Subtract(variable.Value);
 
         /// <summary>
         /// Multiply variable by value.
         /// </summary>
         /// <param name=""value"">Value to multiple by.</param>
-        public void MultiplyBy({generatedType.GenericName()} value) => Value *= value;
+        public void MultiplyBy({generatedType.CodeCompatibleFullName()} value) => Value *= value;
 
         /// <summary>
         /// Multiply variable by Variable value.
         /// </summary>
         /// <param name=""variable"">Variable with value to multiple by.</param>
-        public void MultiplyBy(AtomBaseVariable<{generatedType.GenericName()}> variable) => MultiplyBy(variable.Value);
+        public void MultiplyBy(AtomBaseVariable<{generatedType.CodeCompatibleFullName()}> variable) => MultiplyBy(variable.Value);
 
         /// <summary>
         /// Divide Variable by value.
         /// </summary>
         /// <param name=""value"">Value to divide by.</param>
-        public void DivideBy({generatedType.GenericName()} value) => Value /= value;
+        public void DivideBy({generatedType.CodeCompatibleFullName()} value) => Value /= value;
 
         /// <summary>
         /// Divide Variable by Variable value.
         /// </summary>
         /// <param name=""variable"">Variable value to divide by.</param>
-        public void DivideBy(AtomBaseVariable<{generatedType.GenericName()}> variable) => DivideBy(variable.Value);
+        public void DivideBy(AtomBaseVariable<{generatedType.CodeCompatibleFullName()}> variable) => DivideBy(variable.Value);
     ";
                 }
                 else if (generatedType.IsVector())
@@ -151,7 +151,7 @@ $@"
 
                 solver.template.body +=
 $@"
-        protected override bool ValueEquals({generatedType.GenericName()} other)
+        protected override bool ValueEquals({generatedType.CodeCompatibleFullName()} other)
         {{
             {valueEqualsMethodContent}
         }}

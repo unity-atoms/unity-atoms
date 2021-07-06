@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using UnityEngine;
 
 namespace UnityAtoms.Editor
@@ -16,6 +17,8 @@ namespace UnityAtoms.Editor
             var pairTypeName = pairType.CSharpName().Capitalize();
 
             template.className = template.className.Replace(pairTypeName, typeName) + atomName;
+            template.summary = template.summary.Remove(template.summary.IndexOf(' '));
+            template.summary += $" of type {WebUtility.HtmlEncode(pairType.CodeCompatibleName())}. Inherits from {WebUtility.HtmlEncode(template.baseClass.CodeCompatibleName())}.";
 
             if (template.attributes.ContainsKey(typeof(CreateAssetMenuAttribute)))
             {

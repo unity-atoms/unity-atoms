@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using UnityEngine;
 
 namespace UnityAtoms.Editor
@@ -13,6 +14,8 @@ namespace UnityAtoms.Editor
 
             var template = new Template($"{typeName}{atomName.Remove(" ")}", atomType);
             template.attributes.Add(typeof(EditorIcon), new[] { $"\"{editorIconName}\"" });
+
+            template.summary = $"{atomName} of type {WebUtility.HtmlEncode(typeArgument.CodeCompatibleName())}. Inherits from {WebUtility.HtmlEncode(template.baseClass.CodeCompatibleName())}.";
 
             return template;
         }
