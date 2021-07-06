@@ -13,13 +13,13 @@ namespace UnityAtoms.MonoHooks
         /// The Event
         /// </summary>
         [SerializeField]
-        protected VoidEvent _event;
+        protected VoidBaseEventReference _eventReference;
 
         /// <summary>
         /// Event including a GameObject reference.
         /// </summary>
         [SerializeField]
-        protected GameObjectEvent _eventWithGameObjectReference;
+        protected GameObjectEventReference _eventWithGameObjectReference;
 
         /// <summary>
         /// Selector function for the Event `EventWithGameObjectReference`. Makes it possible to for example select the parent GameObject and pass that a long to the `EventWithGameObjectReference`.
@@ -29,13 +29,13 @@ namespace UnityAtoms.MonoHooks
 
         protected void OnHook()
         {
-            if (_event != null)
+            if (_eventReference != null && _eventReference.Event != null)
             {
-                _event.Raise();
+                _eventReference.Event.Raise();
             }
-            if (_eventWithGameObjectReference != null)
+            if (_eventWithGameObjectReference != null && _eventWithGameObjectReference.Event != null)
             {
-                _eventWithGameObjectReference.Raise(_selectGameObjectReference != null ? _selectGameObjectReference.Call(gameObject) : gameObject);
+                _eventWithGameObjectReference.Event.Raise(_selectGameObjectReference != null ? _selectGameObjectReference.Call(gameObject) : gameObject);
             }
         }
     }
