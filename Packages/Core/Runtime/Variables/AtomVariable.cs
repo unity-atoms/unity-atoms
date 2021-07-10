@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UnityAtoms
 {
@@ -11,6 +12,8 @@ namespace UnityAtoms
     [EditorIcon("atom-icon-lush")]
     public abstract class AtomVariable<T> : AtomBaseVariable<T>, IGetEvent, ISetEvent
     {
+
+        #region Properties
         /// <summary>
         /// The Variable value as a property.
         /// </summary>
@@ -32,12 +35,34 @@ namespace UnityAtoms
         /// <summary>
         /// Changed Event triggered when the Variable value gets changed.
         /// </summary>
-        public AtomEvent<T> Changed;
+        public AtomEvent<T> Changed
+        {
+            get => _changed;
+            set => _changed = value;
+        }
 
         /// <summary>
         /// Changed with history Event triggered when the Variable value gets changed.
         /// </summary>
-        public AtomEvent<Pair<T>> ChangedWithHistory;
+        public AtomEvent<Pair<T>> ChangedWithHistory
+        {
+            get => _changedWithHistory;
+            set => _changedWithHistory = value;
+        }
+        #endregion Properties
+
+        #region Fields
+        /// <summary>
+        /// Manage asset's lifetime
+        /// </summary>
+        [SerializeField]
+        private Scope _scope = Scope.Global;
+
+        [SerializeField]
+        private AtomEvent<T> _changed;
+
+        [SerializeField]
+        private AtomEvent<Pair<T>> _changedWithHistory;
 
         /// <summary>
         /// Whether Changed Event should be triggered on OnEnable or not
@@ -84,7 +109,9 @@ namespace UnityAtoms
         private List<AtomFunction<T, T>> _preChangeTransformers = new List<AtomFunction<T, T>>();
 
         protected abstract bool ValueEquals(T other);
+        #endregion Fields
 
+        #region MonoBehaviour
         private void OnValidate()
         {
             InitialValue = RunPreChangeTransformers(InitialValue);
@@ -95,6 +122,8 @@ namespace UnityAtoms
         {
             _oldValue = InitialValue;
             _value = InitialValue;
+
+            ManageLifetime(_scope);
 
             if (Changed != null && _triggerChangedOnOnEnable)
             {
@@ -107,6 +136,20 @@ namespace UnityAtoms
                 pair.Item2 = _oldValue;
                 ChangedWithHistory.Raise(pair);
             }
+        }
+
+        private void OnDisable()
+        {
+            if (_scope == Scope.Scene)
+            {
+                SceneManager.activeSceneChanged -= OnActiveSceneChanged;
+            }
+        }
+        #endregion MonoBehaviour
+
+        protected override void OnActiveSceneChanged(Scene scene1, Scene scene2)
+        {
+            ResetValue();
         }
 
         /// <summary>
