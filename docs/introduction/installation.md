@@ -28,7 +28,8 @@ Add the following to your `manifest.json`:
                 "com.unity-atoms.unity-atoms-mono-hooks",
                 "com.unity-atoms.unity-atoms-tags",
                 "com.unity-atoms.unity-atoms-scene-mgmt",
-                "com.unity-atoms.unity-atoms-ui"
+                "com.unity-atoms.unity-atoms-ui",
+                "com.unity-atoms.unity-atoms-input-system"
             ]
         }
     ],
