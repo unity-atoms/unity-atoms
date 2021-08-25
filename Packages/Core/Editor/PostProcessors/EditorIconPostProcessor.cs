@@ -32,13 +32,18 @@ namespace UnityAtoms.Editor
                 {
                     // Hack, hack, hack away....
                     var scriptText = File.ReadAllText(assetPath);
-                    var containsEditorIconAttr = scriptText.Contains("[EditorIcon(");
+                    var containsEditorIconAttr = scriptText.Contains("[EditorIcon(") || scriptText.Contains("[UnityAtoms.EditorIcon(");
 
                     if (containsEditorIconAttr)
                     {
                         // Extract icon name from attribute
                         // We are assuming that template strings are not used
                         var attrIconNameStartIndex = scriptText.IndexOf("[EditorIcon(") + 13;
+                        if(attrIconNameStartIndex == 12)
+                        {
+                            attrIconNameStartIndex = scriptText.IndexOf("[UnityAtoms.EditorIcon(") + 24;
+                        }
+
                         var attrIconNameLength = scriptText.IndexOf("\")", attrIconNameStartIndex) - attrIconNameStartIndex;
                         var iconName = scriptText.Substring(attrIconNameStartIndex, attrIconNameLength);
 
