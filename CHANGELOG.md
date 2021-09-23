@@ -8,6 +8,10 @@
 
 # 4.4.4 (TODO: UPDATE THE DATE ON MERGE DAY)
 
+## 🐛 Bug fixes
+
+-   [#300](https://github.com/unity-atoms/unity-atoms/pull/300) Fixed Serialization on AtomCollections.
+
 ## 📝 Documentation
 
 -   A "Smooth Workflow" section has been added under the CONTRIBUTING.md to explain how one can easily start contributing to Atoms whilst working from inside Unity. This was an issue as the atoms repository is not naturally compatible with Unity. ([@Casey-Hofland](https://github.com/Casey-Hofland))
