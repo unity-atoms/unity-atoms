@@ -311,8 +311,15 @@ namespace UnityAtoms.FSM
             }
         }
 
-        private void EndCurrentTransition()
+        private void EndCurrentTransition(bool completedTransition)
         {
+            //If the transition is denied, handles as if nothing happened
+            if (!completedTransition)
+            {
+                _currentTransition = null;
+                return;
+            }
+
             if (_resetOnNextTransitionCompleted)
             {
                 _resetOnNextTransitionCompleted = false;
