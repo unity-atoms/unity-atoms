@@ -7,7 +7,7 @@ namespace UnityAtoms.Editor
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (property.serializedObject.isEditingMultipleObjects
+            if(property.serializedObject.isEditingMultipleObjects
              || property.objectReferenceValue == null)
             {
                 base.OnGUI(position, property, label);
@@ -19,21 +19,29 @@ namespace UnityAtoms.Editor
 
             var inner = new SerializedObject(property.objectReferenceValue);
             var valueProp = inner.FindProperty("_value");
-            var width = GetPreviewSpace(valueProp.type);
-            Rect previewRect = new Rect(position);
-            previewRect.width = GetPreviewSpace(valueProp.type);
-            position.xMin = previewRect.xMax;
-
+            var isTypeSerializable = valueProp == null ? false : true;
             int indent = EditorGUI.indentLevel;
+
+            Rect previewRect = new Rect(position);
+            previewRect.width = isTypeSerializable ? GetPreviewSpace(valueProp.type) : GetPreviewSpace("");
+            position.xMin = previewRect.xMax + 6f;
+
             EditorGUI.indentLevel = 0;
 
-            EditorGUI.BeginDisabledGroup(true);
-            EditorGUI.PropertyField(previewRect, valueProp, GUIContent.none, false);
-            EditorGUI.EndDisabledGroup();
-
-            position.x = position.x + 6f;
-            position.width = position.width - 6f;
+            // First draw the real property because of PrefixLabel inherits disable group when displaying value first.
             base.OnGUI(position, property, GUIContent.none);
+
+            // Then draw value in disabled group.
+            EditorGUI.BeginDisabledGroup(true);
+            if(isTypeSerializable)
+            {
+                EditorGUI.PropertyField(previewRect, valueProp, GUIContent.none, false);
+            }
+            else
+            {
+                EditorGUI.LabelField(previewRect, "[Non serialized value]");
+            }
+            EditorGUI.EndDisabledGroup();
 
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
@@ -41,7 +49,7 @@ namespace UnityAtoms.Editor
 
         private float GetPreviewSpace(string type)
         {
-            switch (type)
+            switch(type)
             {
                 case "Vector2":
                 case "Vector3":

@@ -35,7 +35,10 @@ namespace UnityAtoms.Editor
                 }
             }
 
-            return EditorGUI.GetPropertyHeight(property.FindPropertyRelative(usageData.PropertyName), label);
+            var relativeProperty = property.FindPropertyRelative(usageData.PropertyName);
+            return relativeProperty == null ?
+                EditorGUIUtility.singleLineHeight :
+                EditorGUI.GetPropertyHeight(relativeProperty, label);
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -71,10 +74,11 @@ namespace UnityAtoms.Editor
             var usageTypePropertyName = GetUsages(property)[newUsageValue].PropertyName;
             var usageTypeProperty = property.FindPropertyRelative(usageTypePropertyName);
 
-
-            var valueFieldHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative(usageTypePropertyName), label);
-
-            if (usageTypePropertyName == "_value" && valueFieldHeight > EditorGUIUtility.singleLineHeight+2)
+            if(usageTypeProperty == null)
+            {
+                EditorGUI.LabelField(position, "[Non serialized value]");
+            }
+            else if(usageTypePropertyName == "_value" && usageTypeProperty.hasVisibleChildren)
             {
                 EditorGUI.PropertyField(originalPosition, usageTypeProperty, GUIContent.none, true);
             }
