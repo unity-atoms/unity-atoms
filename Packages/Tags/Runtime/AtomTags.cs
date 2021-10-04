@@ -199,6 +199,7 @@ namespace UnityAtoms.Tags
         public static GameObject FindByTag(string tag)
         {
             if (!TaggedGameObjects.ContainsKey(tag)) return null;
+            if (TaggedGameObjects.Count < 1) return null;
             return TaggedGameObjects[tag][0];
         }
 
