@@ -64,6 +64,7 @@ namespace UnityAtoms.Editor
             var gutter = drawerData.UserClickedToCreateAtom ? 2f : 6f;
             Rect restRect = new Rect();
             Rect warningRect = new Rect();
+            Rect nestRect = new Rect();
 
             if (drawerData.WarningText.Length > 0)
             {
@@ -73,6 +74,10 @@ namespace UnityAtoms.Editor
             if (property.objectReferenceValue == null)
             {
                 position = IMGUIUtils.SnipRectH(position, position.width - restWidth, out restRect, gutter);
+            }
+            else if(property.GetParent() is BaseAtom ab && IsValidFuse(ab))
+            {
+                position = IMGUIUtils.SnipRectH(position, position.width - restWidth, out nestRect, gutter);
             }
 
             var defaultGUIColor = GUI.color;
@@ -92,6 +97,10 @@ namespace UnityAtoms.Editor
                 var obj = EditorGUI.ObjectField(position, property.objectReferenceValue, typeof(T), false);
                 if (EditorGUI.EndChangeCheck())
                 {
+                    if(obj == null && property.GetParent() is BaseAtom ab && IsFused(property, ab))
+                    {
+                        DiffuseAtom(property, ab, drawerData);
+                    }
                     property.objectReferenceValue = obj;
                 }
             }
@@ -115,10 +124,23 @@ namespace UnityAtoms.Editor
                                 path = path == "" ? "Assets/" : Path.GetDirectoryName(path) + "/";
                                 // Create asset
                                 T so = ScriptableObject.CreateInstance<T>();
-                                AssetDatabase.CreateAsset(so, path + drawerData.NameOfNewAtom + ".asset");
-                                AssetDatabase.SaveAssets();
-                                // Assign the newly created SO
-                                property.objectReferenceValue = so;
+
+                                //property.objectReferenceValue = so;
+                                if (property.GetParent() is BaseAtom ab)
+                                {
+                                    so.name = drawerData.NameOfNewAtom;
+                                    AssetDatabase.AddObjectToAsset(so, ab);
+                                    AssetDatabase.SaveAssets();
+                                    AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(ab));
+                                    AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(so));
+                                    property.objectReferenceValue = so;
+                                }
+                                else
+                                {
+                                    AssetDatabase.CreateAsset(so, path + drawerData.NameOfNewAtom + ".asset");
+                                    AssetDatabase.SaveAssets();
+                                    property.objectReferenceValue = so;
+                                }
                             }
                             catch
                             {
@@ -158,9 +180,95 @@ namespace UnityAtoms.Editor
                     }
                 }
             }
-
+            else 
+            {
+                if (property.GetParent() is BaseAtom ab)
+                {
+                    var x = FindSubAsset(ab, property.objectReferenceValue);
+                    if (x == null)
+                    {
+                        if (GUI.Button(nestRect, "Fuse"))
+                        {
+                            FuseAtom(property, ab, drawerData);
+                        }
+                    }
+                    else if(IsValidFuse(ab))
+                    {
+                        if (GUI.Button(nestRect, "Diffuse"))
+                        {
+                            DiffuseAtom(property, ab, drawerData);
+                        }
+                    }
+                }                
+            }
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
+        }
+
+        private static void FuseAtom(SerializedProperty property, BaseAtom ab, DrawerData drawerData)
+        {
+            var sourceIsMain = AssetDatabase.IsMainAsset(property.objectReferenceValue);
+            var sourcePath = AssetDatabase.GetAssetPath(property.objectReferenceValue);
+            AssetDatabase.RemoveObjectFromAsset(property.objectReferenceValue);
+            AssetDatabase.AddObjectToAsset(property.objectReferenceValue, ab);
+
+            if (sourceIsMain)
+                AssetDatabase.DeleteAsset(sourcePath);
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+
+        private static void DiffuseAtom(SerializedProperty property, BaseAtom ab, DrawerData drawerData)
+        {
+            var variablePath = AssetDatabase.GetAssetOrScenePath(ab);
+            var destinationPath = variablePath.Replace($"/{ab.name}.asset", "");
+            var assetName = property.objectReferenceValue.name + ".asset";
+            var assetPath = Path.Combine(destinationPath, assetName);
+            var assetUniquePath = AssetDatabase.GenerateUniqueAssetPath(assetPath);
+            AssetDatabase.RemoveObjectFromAsset(property.objectReferenceValue);
+            AssetDatabase.CreateAsset(property.objectReferenceValue, assetUniquePath);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+
+        private Object FindSubAsset(Object asset, Object assetToFind)
+        {
+            Object[] objs = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(asset));
+            foreach (var item in objs)
+            {
+                if(assetToFind.Equals(item))
+                {
+                    return item;
+                }
+            }
+            return default;
+        }
+
+        private bool IsValidFuse(BaseAtom ab)
+        {
+            var variablePath = AssetDatabase.GetAssetOrScenePath(ab);
+            var destinationPath = variablePath.Replace($"/{ab.name}.asset", "");
+            if (destinationPath.Contains(".asset"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool IsFused(SerializedProperty property, BaseAtom ab)
+        {
+            if(FindSubAsset(ab, property.objectReferenceValue) != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
