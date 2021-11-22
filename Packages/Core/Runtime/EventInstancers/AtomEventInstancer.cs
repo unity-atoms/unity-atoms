@@ -46,7 +46,7 @@ namespace UnityAtoms
             {
                 _inMemoryCopy = ScriptableObject.CreateInstance<E>();
             }
-            else
+            else if(_inMemoryCopy == null)
             {
                 _inMemoryCopy = Instantiate(_base);
             }
