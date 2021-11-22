@@ -29,14 +29,22 @@ namespace UnityAtoms
         /// </summary>
         protected override void ImplSpecificSetup()
         {
-            if (Base.Changed != null)
+            if(Base != null)
             {
-                _inMemoryCopy.Changed = Instantiate(Base.Changed);
-            }
+                if (Base.Changed != null)
+                {
+                    _inMemoryCopy.Changed = Instantiate(Base.Changed);
+                }
 
-            if (Base.ChangedWithHistory != null)
+                if (Base.ChangedWithHistory != null)
+                {
+                    _inMemoryCopy.ChangedWithHistory = Instantiate(Base.ChangedWithHistory);
+                }
+            }
+            else
             {
-                _inMemoryCopy.ChangedWithHistory = Instantiate(Base.ChangedWithHistory);
+                _inMemoryCopy.Changed = _inMemoryCopy.GetOrCreateEvent<E1>();
+                _inMemoryCopy.ChangedWithHistory = _inMemoryCopy.GetOrCreateEvent<E2>();
             }
 
             // Manually trigger initial events since base class has already instantiated Variable 
