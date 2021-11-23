@@ -52,6 +52,7 @@ namespace UnityAtoms
         {
             get
             {
+                GetOrCreateEvent<E1>();
                 return _changed;
             }
             set
@@ -71,6 +72,7 @@ namespace UnityAtoms
         {
             get
             {
+                GetOrCreateEvent<E2>();
                 return _changedWithHistory;
             }
             set
@@ -378,25 +380,25 @@ namespace UnityAtoms
         {
             if (typeof(E) == typeof(E1))
             {
-                if (Changed == null)
+                if (_changed == null)
                 {
-                    Changed = ScriptableObject.CreateInstance<E1>();
-                    Changed.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}ChangedEvent_Runtime_{typeof(E1)}";
+                    _changed = ScriptableObject.CreateInstance<E1>();
+                    _changed.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}ChangedEvent_Runtime_{typeof(E1)}";
                     _changedInstantiatedAtRuntime = true;
                 }
 
-                return Changed as E;
+                return _changed as E;
             }
             if (typeof(E) == typeof(E2))
             {
-                if (ChangedWithHistory == null)
+                if (_changedWithHistory == null)
                 {
-                    ChangedWithHistory = ScriptableObject.CreateInstance<E2>();
-                    ChangedWithHistory.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}_ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
+                    _changedWithHistory = ScriptableObject.CreateInstance<E2>();
+                    _changedWithHistory.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}_ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
                     _changedWithHistoryInstantiatedAtRuntime = true;
                 }
 
-                return ChangedWithHistory as E;
+                return _changedWithHistory as E;
             }
 
             throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
