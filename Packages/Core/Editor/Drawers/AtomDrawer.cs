@@ -125,7 +125,6 @@ namespace UnityAtoms.Editor
                                 // Create asset
                                 T so = ScriptableObject.CreateInstance<T>();
 
-                                //property.objectReferenceValue = so;
                                 if (property.GetParent() is BaseAtom ab)
                                 {
                                     so.name = drawerData.NameOfNewAtom;
@@ -184,8 +183,8 @@ namespace UnityAtoms.Editor
             {
                 if (property.GetParent() is BaseAtom ab)
                 {
-                    var x = FindSubAsset(ab, property.objectReferenceValue);
-                    if (x == null)
+                    var subAsset = FindSubAsset(ab, property.objectReferenceValue);
+                    if (subAsset == null)
                     {
                         if (GUI.Button(nestRect, "Fuse"))
                         {
@@ -232,9 +231,9 @@ namespace UnityAtoms.Editor
             AssetDatabase.Refresh();
         }
 
-        private Object FindSubAsset(Object asset, Object assetToFind)
+        private Object FindSubAsset(Object parent, Object assetToFind)
         {
-            Object[] objs = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(asset));
+            Object[] objs = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(parent));
             foreach (var item in objs)
             {
                 if(assetToFind.Equals(item))
