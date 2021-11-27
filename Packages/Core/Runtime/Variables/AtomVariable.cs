@@ -394,7 +394,7 @@ namespace UnityAtoms
                 if (_changedWithHistory == null)
                 {
                     _changedWithHistory = ScriptableObject.CreateInstance<E2>();
-                    _changedWithHistory.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}_ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
+                    _changedWithHistory.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
                     _changedWithHistoryInstantiatedAtRuntime = true;
                 }
 
