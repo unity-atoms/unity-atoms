@@ -23,7 +23,7 @@ namespace UnityAtoms.Editor
         public static Object FindSubAsset(Object parent, Object assetToFind)
         {
             Object[] objs = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(parent));
-            foreach (var item in objs)
+            foreach (Object item in objs)
             {
                 if (assetToFind.Equals(item))
                 {
@@ -35,14 +35,7 @@ namespace UnityAtoms.Editor
 
         public static bool IsFused(SerializedProperty property, BaseAtom ab)
         {
-            if (FindSubAsset(ab, property.objectReferenceValue) != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return FindSubAsset(ab, property.objectReferenceValue) != null;
         }
 
         public static void FuseAtom(SerializedProperty property, BaseAtom ab)

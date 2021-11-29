@@ -122,7 +122,7 @@ namespace UnityAtoms.Editor
                             {
                                 string path = AssetDatabase.GetAssetPath(property.serializedObject.targetObject);
                                 path = path == "" ? "Assets/" : Path.GetDirectoryName(path) + "/";
-                                // Create asset
+
                                 T so = ScriptableObject.CreateInstance<T>();
 
                                 if (property.GetParent() is BaseAtom ab)

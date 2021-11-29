@@ -6,7 +6,9 @@ using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
-    //Code found at: https://github.com/Maligan/unity-subassets-drag-and-drop/blob/master/SubAssetDragAndDrop.cs and modified.
+    /// <summary>
+    /// Code found at: https://github.com/Maligan/unity-subassets-drag-and-drop/blob/master/SubAssetDragAndDrop.cs and modified.
+    /// </summary>
     [InitializeOnLoad]
     public static class SubAssetDragAndDrop
     {
@@ -124,7 +126,10 @@ namespace UnityAtoms.Editor
             }
         }
 
-        private static List<UnityEngine.Object> GetHiddenReferences(UnityEngine.Object asset, string refsPath = null, List<UnityEngine.Object> refs = null)
+        private static List<UnityEngine.Object> GetHiddenReferences(
+            UnityEngine.Object asset,
+            string refsPath = null,
+            List<UnityEngine.Object> refs = null)
         {
             if (refsPath == null)
             {
