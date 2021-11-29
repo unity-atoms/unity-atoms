@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
-    //code found at: https://github.com/Maligan/unity-subassets-drag-and-drop/blob/master/SubAssetDragAndDrop.cs
+    //Code found at: https://github.com/Maligan/unity-subassets-drag-and-drop/blob/master/SubAssetDragAndDrop.cs and modified.
     [InitializeOnLoad]
     public static class SubAssetDragAndDrop
     {
@@ -17,28 +17,40 @@ namespace UnityAtoms.Editor
 
         private static void OnProjectWindowItemOnGUI(string guid, Rect selectionRect)
         {
-            // Break - key modifier doen't pressed
+            // Break - key modifier is not pressed
             var activated = Event.current.alt;
-            if (activated == false) return;
+            if (activated == false)
+                return;
 
             // Break - OnGUI() call not for mouse target
             var within = selectionRect.Contains(Event.current.mousePosition);
-            if (within == false) return;
+            if (within == false)
+                return;
 
             // Break - destination match one of sources 
             var target = AssetDatabase.GUIDToAssetPath(guid);
             var targetInSources = Array.IndexOf(DragAndDrop.paths, target) != -1;
-            if (targetInSources) return;
+            if (targetInSources)
+                return;
 
             // Break - unity default moving
             var targetIsFolder = AssetDatabase.IsValidFolder(target);
             if (targetIsFolder)
+            {
                 foreach (var asset in DragAndDrop.objectReferences)
-                    if (AssetDatabase.IsMainAsset(asset)) return;
+                {
+                    if (AssetDatabase.IsMainAsset(asset))
+                        return;
+                }
+            }
+                
 
             // Break - there is Unity restriction to use GameObjects as SubAssets
             foreach (var obj in DragAndDrop.objectReferences)
-                if (obj is GameObject) return;
+            {
+                if (obj is GameObject)
+                    return;
+            }
 
             if (Event.current.type == EventType.DragUpdated)
             {
@@ -55,23 +67,27 @@ namespace UnityAtoms.Editor
 
         private static void Move(IEnumerable<UnityEngine.Object> sources, string destinationPath)
         {
-            var destinationIsFolder = AssetDatabase.IsValidFolder(destinationPath);
-
             foreach (var source in sources)
             {
                 var sourcePath = AssetDatabase.GetAssetPath(source);
                 var sourceIsMain = AssetDatabase.IsMainAsset(source);
                 var sourceAssets = new List<UnityEngine.Object>() { source };
                 if (sourceIsMain)
+                {
                     sourceAssets.AddRange(AssetDatabase.LoadAllAssetRepresentationsAtPath(sourcePath));
+                }
 
                 // Peform move assets from source file to destination
                 foreach (var asset in sourceAssets)
+                {
                     MoveAsset(asset, destinationPath);
+                }
 
                 // Remove asset file if it is empty now
                 if (sourceIsMain)
+                {
                     AssetDatabase.DeleteAsset(sourcePath);
+                }
             }
 
             AssetDatabase.SaveAssets();
@@ -111,10 +127,14 @@ namespace UnityAtoms.Editor
         private static List<UnityEngine.Object> GetHiddenReferences(UnityEngine.Object asset, string refsPath = null, List<UnityEngine.Object> refs = null)
         {
             if (refsPath == null)
+            {
                 refsPath = AssetDatabase.GetAssetPath(asset);
+            }
 
             if (refs == null)
+            {
                 refs = new List<UnityEngine.Object>();
+            }
 
             var iterator = new SerializedObject(asset).GetIterator();
             while (iterator.Next(true))
