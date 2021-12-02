@@ -97,9 +97,21 @@ namespace UnityAtoms.Editor
                 var obj = EditorGUI.ObjectField(position, property.objectReferenceValue, typeof(T), false);
                 if (EditorGUI.EndChangeCheck())
                 {
-                    if(obj == null && property.GetParent() is BaseAtom ab && AtomFuser.IsFused(property, ab))
+                    if (property.GetParent() is BaseAtom ab)
                     {
-                        AtomFuser.DiffuseAtom(property, ab);
+                        if (obj == null && AtomFuser.IsFused(property, ab))
+                        {
+                            AtomFuser.DiffuseAtom(property, ab);
+                        }
+                        else if (property.objectReferenceValue != null && AtomFuser.IsFused(property, ab))
+                        {
+                            if (property.objectReferenceValue.name != obj.name)
+                            {
+                                AtomFuser.DiffuseAtom(property, ab);
+                                property.objectReferenceValue = obj;
+                                AtomFuser.FuseAtom(property, ab);
+                            }
+                        }
                     }
                     property.objectReferenceValue = obj;
                 }
