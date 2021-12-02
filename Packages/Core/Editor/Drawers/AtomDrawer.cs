@@ -1,6 +1,7 @@
 #if UNITY_2018_3_OR_NEWER
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
@@ -155,12 +156,56 @@ namespace UnityAtoms.Editor
                         drawerData.UserClickedToCreateAtom = true;
 
                         EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
+
+                        if (property.GetParent() is BaseAtom abc)
+                        {
+                            var atomName = CheckForDuplicateAtom(abc.name + CleanPropertyName(property.name) + CreatePrettier(typeof(T).ToString(), "."));
+                            drawerData.NameOfNewAtom = atomName;
+                        }
+                        else
+                        {
+                            var atomName = CheckForDuplicateAtom(CleanPropertyName(property.name) + CreatePrettier(typeof(T).ToString(), "."));
+                            drawerData.NameOfNewAtom = atomName;
+                        }
                     }
                 }
             }
 
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
+        }
+
+        private string CreatePrettier(string result, string identifier)
+        {
+            return result.Contains(identifier) ? result[(result.LastIndexOf(identifier) + 1)..] : result;
+        }
+
+        private string CleanPropertyName(string propertyName)
+        {
+            var cleanString = propertyName;
+            if (propertyName[0].ToString() == "_")
+            {
+                cleanString = propertyName[1..];
+            }
+            if (Regex.Match(cleanString, @"[a-zA-Z]").Success)
+            {
+                var index = Regex.Match(cleanString, @"[a-zA-Z]").Index;
+                cleanString = cleanString[index].ToString().ToUpper() + cleanString[(index + 1)..];
+            }
+            return cleanString;
+        }
+
+        private string CheckForDuplicateAtom(string atomName)
+        {
+            var results = AssetDatabase.FindAssets(atomName);
+            if (results.Length > 0)
+            {
+                return atomName + " (" + results.Length.ToString() + ")";
+            }
+            else
+            {
+                return atomName;
+            }
         }
     }
 }
