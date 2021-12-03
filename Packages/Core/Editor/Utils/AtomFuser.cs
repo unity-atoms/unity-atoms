@@ -23,8 +23,9 @@ namespace UnityAtoms.Editor
         public static Object FindSubAsset(Object parent, Object assetToFind)
         {
             Object[] objs = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(parent));
-            foreach (Object item in objs)
+            for (int i = 0; i < objs.Length; i++)
             {
+                Object item = objs[i];
                 if (assetToFind.Equals(item))
                 {
                     return item;
@@ -49,7 +50,7 @@ namespace UnityAtoms.Editor
             {
                 AssetDatabase.DeleteAsset(sourcePath);
             }
-
+            EditorGUIUtility.PingObject(property.objectReferenceInstanceIDValue);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
@@ -63,6 +64,7 @@ namespace UnityAtoms.Editor
             var assetUniquePath = AssetDatabase.GenerateUniqueAssetPath(assetPath);
             AssetDatabase.RemoveObjectFromAsset(property.objectReferenceValue);
             AssetDatabase.CreateAsset(property.objectReferenceValue, assetUniquePath);
+            EditorGUIUtility.PingObject(property.objectReferenceInstanceIDValue);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
