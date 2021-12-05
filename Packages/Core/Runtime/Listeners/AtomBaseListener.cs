@@ -30,6 +30,11 @@ namespace UnityAtoms
         where UER : UnityEvent<T>
     {
         /// <summary>
+        /// The boolean to enable or disable this listeners replay event buffer.
+        /// </summary>
+        public bool ReplayEventBufferOnRegister { get { return _replayEventBufferOnRegister; } set { _replayEventBufferOnRegister = value; } }
+
+        /// <summary>
         /// The Event we are listening for as a property.
         /// </summary>
         /// <value>The Event of type `E`.</value>

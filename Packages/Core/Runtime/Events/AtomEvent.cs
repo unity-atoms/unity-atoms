@@ -26,7 +26,7 @@ namespace UnityAtoms
         protected event Action<T> _onEvent;
 
         [SerializeField]
-        private bool _useLocalReplayBuffer = true;
+        private bool _useLocalReplayBuffer = false;
 
         /// <summary>
         /// The event replays the specified number of old values to new subscribers. Works like a ReplaySubject in Rx.
@@ -90,10 +90,13 @@ namespace UnityAtoms
         /// Register handler to be called when the Event triggers.
         /// </summary>
         /// <param name="action">The handler.</param>
-        public void Register(Action<T> action)
+        public void Register(Action<T> action, bool replayEventsBuffer = true)
         {
             _onEvent += action;
-            ReplayBufferToSubscriber(action);
+            if (replayEventsBuffer)
+            {
+                ReplayBufferToSubscriber(action);
+            }
         }
 
         /// <summary>

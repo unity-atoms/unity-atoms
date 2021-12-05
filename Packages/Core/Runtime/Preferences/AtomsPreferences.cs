@@ -113,9 +113,11 @@ namespace UnityAtoms
 
                     var replayBufferSize = new SliderInt()
                     {
-                        label = "Replay buffer size (1-10)",
 #if UNITY_2020_2_OR_NEWER
+                        label = "Default replay buffer size",
                         showInputField = true,
+#else
+                        label = "Default replay buffer size (1-10)",
 #endif
                         highValue = 10,
                         lowValue = 0,
