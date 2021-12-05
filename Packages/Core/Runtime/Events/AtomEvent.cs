@@ -25,6 +25,9 @@ namespace UnityAtoms
         [SerializeField]
         protected event Action<T> _onEvent;
 
+        [SerializeField]
+        private bool _useLocalReplayBuffer = true;
+
         /// <summary>
         /// The event replays the specified number of old values to new subscribers. Works like a ReplaySubject in Rx.
         /// </summary>
@@ -34,6 +37,14 @@ namespace UnityAtoms
         private int _replayBufferSize = 1;
 
         private Queue<T> _replayBuffer = new Queue<T>();
+
+        private void OnEnable()
+        {
+            if (!_useLocalReplayBuffer)
+            {
+                _replayBufferSize = AtomPreferences.ReplayBufferSize;
+            }
+        }
 
         private void OnDisable()
         {

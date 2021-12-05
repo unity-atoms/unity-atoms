@@ -7,6 +7,7 @@ namespace UnityAtoms
     /// <summary>
     /// None generic base class for all Listeners.
     /// </summary>
+    [DefaultExecutionOrder(Runtime.ExecutionOrder.LISTENER_BASE)]
     public abstract class AtomBaseListener : MonoBehaviour
     {
         /// <summary>
