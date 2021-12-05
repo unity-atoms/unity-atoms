@@ -28,7 +28,7 @@ namespace UnityAtoms.BaseAtoms
         /// If this string is not null or white space and if a Collection to sync to is defined, this is the key that will used when adding the Variable to the Collection. If not defined the key defaults to this GameObject's instance id.
         /// </summary>
         [SerializeField]
-        private String _syncToCollectionKey = default;
+        private StringReference _syncToCollectionKey = default;
 
         /// <summary>
         /// If assigned the Variable from the Variable Instancer will be added to the list on Start. The value will also be removed from the list OnDestroy.
@@ -42,7 +42,7 @@ namespace UnityAtoms.BaseAtoms
 
             if (_syncToCollection != null && _syncToCollection.GetValue() != null)
             {
-                _syncToCollection.GetValue().Add(String.IsNullOrWhiteSpace(_syncToCollectionKey) ? GetInstanceID().ToString() : _syncToCollectionKey, _variableInstancer.Variable);
+                _syncToCollection.GetValue().Add(String.IsNullOrWhiteSpace(_syncToCollectionKey.Value) ? GetInstanceID().ToString() : _syncToCollectionKey, _variableInstancer.Variable);
             }
 
             if (_syncToList != null && _syncToList.GetValue() != null)
