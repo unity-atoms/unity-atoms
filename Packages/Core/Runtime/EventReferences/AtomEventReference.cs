@@ -89,7 +89,8 @@ namespace UnityAtoms
         {
             if (AtomPreferences.IsDebugModeEnabled)
             {
-                throw new NullReferenceException($"{atomEventReferenceUsage} reference is missing in inspector.");
+                Debug.Log($"{atomEventReferenceUsage} reference is missing in inspector.");
+                return null;
             }
             else
             {
