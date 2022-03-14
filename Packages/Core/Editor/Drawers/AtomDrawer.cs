@@ -266,7 +266,14 @@ namespace UnityAtoms.Editor
 
         private Type GetAtomEventType()
         {
-            return TypeCache.GetTypesDerivedFrom(fieldInfo.FieldType).First();
+            if (TypeCache.GetTypesDerivedFrom(fieldInfo.FieldType).Count != 0)
+            {
+                return TypeCache.GetTypesDerivedFrom(fieldInfo.FieldType).First();
+            }
+            else
+            {
+                return TypeCache.GetTypesDerivedFrom(fieldInfo.FieldType.BaseType).First();
+            }
         }
     }
 }
