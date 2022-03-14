@@ -27,12 +27,9 @@ namespace UnityAtoms
             {
                 switch (_usage)
                 {
-                    case (AtomEventReferenceUsage.VARIABLE):
-                        return _variable == null ? LogNullReference(nameof(_variable)) : _variable.GetOrCreateEvent<E>();
-                    case (AtomEventReferenceUsage.VARIABLE_INSTANCER):
-                        return _variableInstancer == null ? LogNullReference(nameof(_variableInstancer)) : _variableInstancer.GetOrCreateEvent<E>();
-                    case (AtomEventReferenceUsage.EVENT_INSTANCER):
-                        return _eventInstancer == null ? LogNullReference(nameof(_eventInstancer)) : _eventInstancer.Event;
+                    case (AtomEventReferenceUsage.VARIABLE): return _variable == null ? null : _variable.GetOrCreateEvent<E>();
+                    case (AtomEventReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null ? null : _variableInstancer.GetOrCreateEvent<E>();
+                    case (AtomEventReferenceUsage.EVENT_INSTANCER): return _eventInstancer == null ? null : _eventInstancer.Event;
                     case (AtomEventReferenceUsage.EVENT):
                     default:
                         return _event;
@@ -83,19 +80,6 @@ namespace UnityAtoms
         public static implicit operator E(AtomEventReference<T, V, E, VI, EI> reference)
         {
             return reference.Event;
-        }
-
-        private E LogNullReference(string atomEventReferenceUsage)
-        {
-            if (AtomPreferences.IsDebugModeEnabled)
-            {
-                Debug.Log($"{atomEventReferenceUsage} reference is missing in inspector.");
-                return null;
-            }
-            else
-            {
-                return null;
-            }
         }
     }
 }
