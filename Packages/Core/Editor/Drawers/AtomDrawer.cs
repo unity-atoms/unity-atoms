@@ -18,7 +18,6 @@ namespace UnityAtoms.Editor
             public bool UserClickedToCreateAtom = false;
             public string NameOfNewAtom = "";
             public string WarningText = "";
-            public Type fieldType;
         }
 
         private const string NAMING_FIELD_CONTROL_NAME = "Naming Field";
@@ -99,8 +98,6 @@ namespace UnityAtoms.Editor
                     objectPickerButtonRect.x += objectPickerButtonRect.width - 20f;
                     objectPickerButtonRect.width = 20f;
 
-                    drawerData.fieldType = GetAtomEventType();
-
                     if (GUI.Button(objectPickerButtonRect, string.Empty, GUIStyle.none))
                     {
                         var types = GetInstantiateableChildrenTypes();
@@ -118,13 +115,8 @@ namespace UnityAtoms.Editor
                         property.objectReferenceValue = EditorGUIUtility.GetObjectPickerObject();
                     }
                 }
-               
-                EditorGUI.BeginChangeCheck();
-                var obj = EditorGUI.ObjectField(position, property.objectReferenceValue, drawerData.fieldType, false);
-                if (EditorGUI.EndChangeCheck())
-                {
-                    property.objectReferenceValue = obj;
-                }
+
+                property.objectReferenceValue = EditorGUI.ObjectField(position, property.objectReferenceValue, GetAtomEventType(), false);
             }
 
             if (property.objectReferenceValue == null)
@@ -182,16 +174,32 @@ namespace UnityAtoms.Editor
                 {
                     if (GUI.Button(restRect, "Create"))
                     {
-                        drawerData.NameOfNewAtom = "";
                         drawerData.UserClickedToCreateAtom = true;
 
                         EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
+                        CreateAtomName(property, drawerData);
                     }
                 }
             }
 
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
+        }
+
+        private void CreateAtomName(SerializedProperty property, DrawerData drawerData)
+        {
+            if (property.GetParent() is BaseAtom atom)
+            {
+                var atomName = AtomNameUtils.CheckForDuplicateAtom(atom.name + AtomNameUtils.CleanPropertyName(property.name)
+                    + AtomNameUtils.FilterLastIndexOf(GetAtomEventType().ToString(), "."));
+                drawerData.NameOfNewAtom = atomName;
+            }
+            else
+            {
+                var atomName = AtomNameUtils.CheckForDuplicateAtom(AtomNameUtils.CleanPropertyName(property.name)
+                    + AtomNameUtils.FilterLastIndexOf(GetAtomEventType().ToString(), "."));
+                drawerData.NameOfNewAtom = atomName;
+            }
         }
 
         private Type[] GetInstantiateableChildrenTypes()
