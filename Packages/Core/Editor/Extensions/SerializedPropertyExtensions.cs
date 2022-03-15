@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 namespace UnityAtoms.Editor
 {
@@ -124,6 +125,12 @@ namespace UnityAtoms.Editor
             }
         }
 
+        public static object GetTopParent(this SerializedProperty property)
+        {
+            object obj = property.serializedObject.targetObject;
+            return obj;
+        }
+
         public static object GetParent(this SerializedProperty property)
         {
             var path = property.propertyPath.Replace(".Array.data[", "[");
@@ -164,6 +171,8 @@ namespace UnityAtoms.Editor
         public static object GetValue(this object source, string name, int index)
         {
             var enumerable = GetValue(source, name) as IEnumerable;
+            if (enumerable == null)
+                return null;
             var enm = enumerable.GetEnumerator();
             while (index-- >= 0)
                 enm.MoveNext();

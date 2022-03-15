@@ -81,8 +81,8 @@ namespace UnityAtoms.Editor
 
             using (new EditorGUILayout.HorizontalScope())
             {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("_changed"));
-                var changed = serializedObject.FindProperty("_changed").objectReferenceValue;
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("Changed"));
+                var changed = serializedObject.FindProperty("Changed").objectReferenceValue;
                 if (changed != null && changed is AtomEventBase evt && target is AtomBaseVariable atomTarget)
                 {
                     GUILayout.Space(2);
@@ -95,8 +95,8 @@ namespace UnityAtoms.Editor
 
             using (new EditorGUILayout.HorizontalScope())
             {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("_changedWithHistory"));
-                var changedWithHistory = serializedObject.FindProperty("_changedWithHistory").objectReferenceValue;
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("ChangedWithHistory"));
+                var changedWithHistory = serializedObject.FindProperty("ChangedWithHistory").objectReferenceValue;
                 if (changedWithHistory != null && changedWithHistory is AtomEventBase evt && target is AtomBaseVariable atomTarget)
                 {
                     GUILayout.Space(2);
