@@ -95,31 +95,31 @@ namespace UnityAtoms.Editor
 
             if (!isCreatingSO)
             {
-                if (fieldInfo.FieldType.IsGenericType)
-                {
-                    int controlID;
+                //if (fieldInfo.FieldType.IsGenericType)
+                //{
+                //    int controlID;
 
-                    var objectPickerButtonRect = new Rect(position);
-                    objectPickerButtonRect.x += objectPickerButtonRect.width - 20f;
-                    objectPickerButtonRect.width = 20f;
+                //    var objectPickerButtonRect = new Rect(position);
+                //    objectPickerButtonRect.x += objectPickerButtonRect.width - 20f;
+                //    objectPickerButtonRect.width = 20f;
 
-                    if (GUI.Button(objectPickerButtonRect, string.Empty, GUIStyle.none))
-                    {
-                        var types = GetInstantiateableChildrenTypes();
-                        var filter = string.Join(" ", types.Select(type => $"t:{type.Name}"));
+                //    if (GUI.Button(objectPickerButtonRect, string.Empty, GUIStyle.none))
+                //    {
+                //        var types = GetInstantiateableChildrenTypes();
+                //        var filter = string.Join(" ", types.Select(type => $"t:{type.Name}"));
                         
-                        controlID = GUIUtility.GetControlID(FocusType.Keyboard);
-                        EditorGUIUtility.ShowObjectPicker<MonoBehaviour>(property.objectReferenceValue, false, filter, controlID);
+                //        controlID = GUIUtility.GetControlID(FocusType.Keyboard);
+                //        EditorGUIUtility.ShowObjectPicker<MonoBehaviour>(property.objectReferenceValue, false, filter, controlID);
 
-                        _perPropertyObjectPickerID[property.propertyPath] = controlID;
-                    }
+                //        _perPropertyObjectPickerID[property.propertyPath] = controlID;
+                //    }
 
-                    if (_perPropertyObjectPickerID.TryGetValue(property.propertyPath, out controlID)
-                        && controlID == EditorGUIUtility.GetObjectPickerControlID())
-                    {
-                        property.objectReferenceValue = EditorGUIUtility.GetObjectPickerObject();
-                    }
-                }
+                //    if (_perPropertyObjectPickerID.TryGetValue(property.propertyPath, out controlID)
+                //        && controlID == EditorGUIUtility.GetObjectPickerControlID())
+                //    {
+                //        property.objectReferenceValue = EditorGUIUtility.GetObjectPickerObject();
+                //    }
+                //}
 
                 EditorGUI.BeginChangeCheck();
                 var obj = EditorGUI.ObjectField(position, property.objectReferenceValue, GetAtomEventType(), false);
@@ -259,10 +259,10 @@ namespace UnityAtoms.Editor
             }
         }
 
-        private Type[] GetInstantiateableChildrenTypes()
-        {
-            return TypeCache.GetTypesDerivedFrom(fieldInfo.FieldType).ToArray();
-        }
+        //private Type[] GetInstantiateableChildrenTypes()
+        //{
+        //    return TypeCache.GetTypesDerivedFrom(fieldInfo.FieldType).ToArray();
+        //}
 
         private Type GetAtomEventType()
         {
