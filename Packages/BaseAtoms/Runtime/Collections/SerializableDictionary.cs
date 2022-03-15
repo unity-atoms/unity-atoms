@@ -26,7 +26,7 @@ namespace UnityAtoms.BaseAtoms
 
         [SerializeField]
         private List<K> _serializedKeys = new List<K>();
-        [SerializeField]
+        [SerializeField, HideCreate]
         private List<V> _serializedValues = new List<V>();
 
         /// <summary>

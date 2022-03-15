@@ -29,7 +29,7 @@ namespace UnityAtoms.BaseAtoms
         private event Action<AtomBaseVariable> _removed;
         private event Action _cleared;
 
-        [SerializeField]
+        [SerializeField, HideCreate]
         private List<AtomBaseVariable> _serializedList = new List<AtomBaseVariable>();
 
         public void OnAfterDeserialize()

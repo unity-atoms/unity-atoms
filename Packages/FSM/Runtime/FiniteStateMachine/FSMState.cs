@@ -21,7 +21,7 @@ namespace UnityAtoms.FSM
         [SerializeField]
         private AtomReference<float> _cooldown = new AtomReference<float>(0f);
 
-        [SerializeField]
+        [SerializeField, HideCreate]
         private FiniteStateMachine _subMachine = default(FiniteStateMachine);
     }
 }
