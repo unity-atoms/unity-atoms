@@ -77,7 +77,7 @@ namespace UnityAtoms.Editor
             {
                 position = IMGUIUtils.SnipRectH(position, position.width - restWidth, out restRect, gutter);
             }
-            else if (property.GetParent() is BaseAtom ab && AtomFuser.IsValidFuse(ab))
+            else if (property.GetTopParent() is BaseAtom ab && AtomFuser.IsValidFuse(ab))
             {
                 position = IMGUIUtils.SnipRectH(position, position.width - restWidth, out fuseRect, gutter);
             }
@@ -95,37 +95,11 @@ namespace UnityAtoms.Editor
 
             if (!isCreatingSO)
             {
-                //if (fieldInfo.FieldType.IsGenericType)
-                //{
-                //    int controlID;
-
-                //    var objectPickerButtonRect = new Rect(position);
-                //    objectPickerButtonRect.x += objectPickerButtonRect.width - 20f;
-                //    objectPickerButtonRect.width = 20f;
-
-                //    if (GUI.Button(objectPickerButtonRect, string.Empty, GUIStyle.none))
-                //    {
-                //        var types = GetInstantiateableChildrenTypes();
-                //        var filter = string.Join(" ", types.Select(type => $"t:{type.Name}"));
-                        
-                //        controlID = GUIUtility.GetControlID(FocusType.Keyboard);
-                //        EditorGUIUtility.ShowObjectPicker<MonoBehaviour>(property.objectReferenceValue, false, filter, controlID);
-
-                //        _perPropertyObjectPickerID[property.propertyPath] = controlID;
-                //    }
-
-                //    if (_perPropertyObjectPickerID.TryGetValue(property.propertyPath, out controlID)
-                //        && controlID == EditorGUIUtility.GetObjectPickerControlID())
-                //    {
-                //        property.objectReferenceValue = EditorGUIUtility.GetObjectPickerObject();
-                //    }
-                //}
-
                 EditorGUI.BeginChangeCheck();
                 var obj = EditorGUI.ObjectField(position, property.objectReferenceValue, GetAtomEventType(), false);
                 if (EditorGUI.EndChangeCheck())
                 {
-                    if (property.GetParent() is BaseAtom ab)
+                    if (property.GetTopParent() is BaseAtom ab)
                     {
                         if (obj == null && AtomFuser.IsFused(property, ab))
                         {
@@ -164,7 +138,7 @@ namespace UnityAtoms.Editor
                                 path = path == "" ? "Assets/" : Path.GetDirectoryName(path) + "/";
                                 // Create asset
                                 var so = ScriptableObject.CreateInstance(GetAtomEventType());
-                                if (property.GetParent() is BaseAtom ab)
+                                if (property.GetTopParent() is BaseAtom ab)
                                 {
                                     so.name = drawerData.NameOfNewAtom;
                                     AssetDatabase.AddObjectToAsset(so, ab);
@@ -220,7 +194,7 @@ namespace UnityAtoms.Editor
             }
             else
             {
-                if (property.GetParent() is BaseAtom ab)
+                if (property.GetTopParent() is BaseAtom ab)
                 {
                     var subAsset = AtomFuser.FindSubAsset(ab, property.objectReferenceValue);
                     if (subAsset == null)
@@ -245,7 +219,7 @@ namespace UnityAtoms.Editor
 
         private void CreateAtomName(SerializedProperty property, DrawerData drawerData)
         {
-            if (property.GetParent() is BaseAtom atom)
+            if (property.GetTopParent() is BaseAtom atom)
             {
                 var atomName = AtomNameUtils.CheckForDuplicateAtom(atom.name + AtomNameUtils.CleanPropertyName(property.name)
                     + AtomNameUtils.FilterLastIndexOf(GetAtomEventType().ToString(), "."));
@@ -258,11 +232,6 @@ namespace UnityAtoms.Editor
                 drawerData.NameOfNewAtom = atomName;
             }
         }
-
-        //private Type[] GetInstantiateableChildrenTypes()
-        //{
-        //    return TypeCache.GetTypesDerivedFrom(fieldInfo.FieldType).ToArray();
-        //}
 
         private Type GetAtomEventType()
         {

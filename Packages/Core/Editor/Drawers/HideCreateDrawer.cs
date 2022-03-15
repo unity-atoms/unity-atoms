@@ -29,7 +29,7 @@ namespace UnityAtoms.Editor
             var indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
-            EditorGUI.ObjectField(position, property.objectReferenceValue, GetAtomEventType(), false);
+            property.objectReferenceValue = EditorGUI.ObjectField(position, property.objectReferenceValue, GetAtomEventType(), false);
             
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();

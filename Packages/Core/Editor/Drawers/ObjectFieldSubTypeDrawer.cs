@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ namespace UnityAtoms.Editor
             var indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
-            EditorGUI.ObjectField(position, property.objectReferenceValue, objectFieldSubType.SubType, false);
+            property.objectReferenceValue = EditorGUI.ObjectField(position, property.objectReferenceValue, objectFieldSubType.SubType, false);
 
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
