@@ -1,9 +1,8 @@
+using System;
 using UnityEngine;
 
 namespace UnityAtoms
 {
-    public class HideCreate : PropertyAttribute
-    {
-    }
-
+    [AttributeUsage(AttributeTargets.Field)]
+    public class HideCreate : PropertyAttribute {}
 }
