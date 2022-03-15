@@ -23,7 +23,6 @@ namespace UnityAtoms.Editor
         private const string NAMING_FIELD_CONTROL_NAME = "Naming Field";
 
         private Dictionary<string, DrawerData> _perPropertyViewData = new Dictionary<string, DrawerData>();
-        private static Dictionary<string, int> _perPropertyObjectPickerID = new Dictionary<string, int>();
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {

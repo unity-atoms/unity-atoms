@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// Property drawer to hide the ScriptableObject create button on desired fields e.g. FSM statemachine.
+    /// </summary>
     [CustomPropertyDrawer(typeof(HideCreate))]
     public class HideCreateDrawer : PropertyDrawer
     {

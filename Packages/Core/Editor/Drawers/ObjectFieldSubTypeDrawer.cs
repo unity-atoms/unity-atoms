@@ -1,12 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// Property drawer To correct certain fields into the right Type. This is used in e.g. AtomList and AtomCollection.
+    /// </summary>
     [CustomPropertyDrawer(typeof(ObjectFieldSubType))]
     public class ObjectFieldSubTypeDrawer : PropertyDrawer
     {
