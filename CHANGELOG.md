@@ -6,21 +6,47 @@
 💅 = Polish
 🚀 = New features
 
-# 4.4.4 (TODO: UPDATE THE DATE ON MERGE DAY)
+# 4.4.4 (March 15, 2022)
+
+-   [@Casey-Hofland](https://github.com/Casey-Hofland) has left Unity Atoms as a maintainer. We wish Casey all the best and thank him for his contributions and help!
+-   [@ThimoDEV](https://github.com/ThimoDEV) has joined as maintainer of Unity Atoms! 🥳
 
 ## 🐛 Bug fixes
 
--   [#300](https://github.com/unity-atoms/unity-atoms/pull/300) Fixed Serialization on AtomCollections.
+-   [#340](https://github.com/unity-atoms/unity-atoms/pull/340) Fix NullReferenceException when Event Reference Listeners event reference is not set ([@ThimoDEV](https://github.com/ThimoDEV))
+-   [#280](https://github.com/unity-atoms/unity-atoms/pull/289) Fix hasChildren display in AtomReferences ([@Casey-Hofland](https://github.com/Casey-Hofland))
+-   [#270](https://github.com/unity-atoms/unity-atoms/pull/270) Fix ChangedOnOnEnable not triggered ([@simonbucher](https://github.com/simonbucher))
+-   [#297](https://github.com/unity-atoms/unity-atoms/pull/297) Fix FiniteStateMachine not listening to Raise Event To Complete Transition ([@Kyrw](https://github.com/Kyrw))
+-   [#306](https://github.com/unity-atoms/unity-atoms/pull/306) Fix in case no object was tagged FindByTag throwing an exception instead of returning null ([@soraphis](https://github.com/soraphis))
+-   [#314](https://github.com/unity-atoms/unity-atoms/pull/314) Fix Drawer trying to create field for public Action ([@ThimoDEV](https://github.com/ThimoDEV))
+-   [#309](https://github.com/unity-atoms/unity-atoms/pull/309) Fix the null check on Base events in AtomVariableInstancer not accounting for Base itself and not creating runtime AtomEvents ([@ThimoDEV](https://github.com/ThimoDEV))
+-   [#310](https://github.com/unity-atoms/unity-atoms/pull/310) Fix void event instancer stopping working after a deactivate/activate cycle ([@ThimoDEV](https://github.com/ThimoDEV))
+-   [#311](https://github.com/unity-atoms/unity-atoms/pull/311) Fix ulong variable throwing error when the value being edited in play mode ([@ThimoDEV](https://github.com/ThimoDEV))
+-   [#312](https://github.com/unity-atoms/unity-atoms/pull/312) Remove duplicate definition of GameObjectGameObjectFunction in MonoHooks package ([@ThimoDEV](https://github.com/ThimoDEV))
+-   [#313](https://github.com/unity-atoms/unity-atoms/pull/313) Fix default Changed and ChangedWithHistory events not created at runtime ([@ThimoDEV](https://github.com/ThimoDEV))
+-   [#278](https://github.com/unity-atoms/unity-atoms/pull/278) Fix conditions not serializing in Unity 2019 ([@miikalo](https://github.com/miikalo))
+-   [#300](https://github.com/unity-atoms/unity-atoms/pull/300) Fixed Serialization on AtomCollections. ([@Kyrw](https://github.com/Kyrw))
 
 ## 📝 Documentation
 
+-   [#294](https://github.com/unity-atoms/unity-atoms/pull/294) Add missing scoped registry in install docs ([@ahSOLO](https://github.com/ahSOLO))
+-   [#280](https://github.com/unity-atoms/unity-atoms/pull/280) Update link in UniRx tutorial ([@miikalo](https://github.com/miikalo))
+-   [#267](https://github.com/unity-atoms/unity-atoms/pull/267) Updated documentation and tutorials on the website for v4 ([@miikalo](https://github.com/miikalo))
 -   A "Smooth Workflow" section has been added under the CONTRIBUTING.md to explain how one can easily start contributing to Atoms whilst working from inside Unity. This was an issue as the atoms repository is not naturally compatible with Unity. ([@Casey-Hofland](https://github.com/Casey-Hofland))
 
+## 🏠 Internal
+
+-   [#320](https://github.com/unity-atoms/unity-atoms/pull/320) Change private to protected in 'list' variable in AtomValueList ([@ThimoDEV](https://github.com/ThimoDEV))
 ## 🏃‍♀ Performance
 
--   [#276](https://github.com/unity-atoms/unity-atoms/issues/276) This AtomGenerator has been improved to take no longer than about a single reimport. ([@Casey-Hofland](https://github.com/Casey-Hofland))
+-   [#329](https://github.com/unity-atoms/unity-atoms/pull/329) Fix unnecessary allocations when debug mode disabled ([@soraphis](https://github.com/soraphis))
+-   [#276](https://github.com/unity-atoms/unity-atoms/issues/276) The AtomGenerator has been improved to take no longer than about a single reimport ([@Casey-Hofland](https://github.com/Casey-Hofland))
 
-# 4.4.3 (Mars 7, 2021)
+## 💅 Polish
+
+-   [#284](https://github.com/unity-atoms/unity-atoms/pull/284) Fixed specifying package dependencies ([@lumpn](https://github.com/lumpn))
+
+# 4.4.3 (March 7, 2021)
 
 ## 🐛 Bug fixes
 
@@ -49,7 +75,7 @@
 
 # 4.4.0 (December 30, 2020)
 
--   ([@miikalo](https://github.com/miikalo) has joined as maintainer of Unity Atoms! 🥳
+-   [@miikalo](https://github.com/miikalo) has joined as maintainer of Unity Atoms! 🥳
 
 ## 🐛 Bug fixes
 
