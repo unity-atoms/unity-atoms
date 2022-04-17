@@ -7,15 +7,9 @@ sidebar_label: UnityAtoms.FSM.Editor
 
 # Namespace - `UnityAtoms.FSM.Editor`
 
-## `FiniteStateMachineInstancerEditor`
+## `FiniteStateMachineReferenceDrawer`
 
-Custom property drawer for type `FiniteStateMachineInstancer`.
-
----
-
-## `FiniteStateMachineEditor`
-
-Custom property drawer for type `FiniteStateMachine`.
+A custom property drawer for FiniteStateMachineReference. Makes it possible to choose between a FSM or a FSM Instancer.
 
 ---
 
@@ -25,20 +19,26 @@ A custom property drawer for References. Makes it possible to choose between a v
 
 ---
 
-## `FiniteStateMachineReferenceDrawer`
+## `FSMTransitionDataEventDrawer`
 
-A custom property drawer for FiniteStateMachineReference. Makes it possible to choose between a FSM or a FSM Instancer.
+Event property drawer of type `FSMTransitionData`. Inherits from `AtomDrawer<FSMTransitionDataEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `FiniteStateMachineEditor`
+
+Custom property drawer for type `FiniteStateMachine`.
+
+---
+
+## `FiniteStateMachineInstancerEditor`
+
+Custom property drawer for type `FiniteStateMachineInstancer`.
 
 ---
 
 ## `FSMTransitionDataEventEditor`
 
 Event property drawer of type `FSMTransitionData`. Inherits from `AtomEventEditor<FSMTransitionData, FSMTransitionDataEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `FSMTransitionDataEventDrawer`
-
-Event property drawer of type `FSMTransitionData`. Inherits from `AtomDrawer<FSMTransitionDataEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---

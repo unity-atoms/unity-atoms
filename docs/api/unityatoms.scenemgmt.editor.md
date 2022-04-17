@@ -13,9 +13,33 @@ Customer property drawer for `SceneField`.
 
 ---
 
-## `SceneFieldVariableEditor`
+## `SceneFieldConstantDrawer`
 
-Variable Inspector of type `SceneField`. Inherits from `AtomVariableEditor`
+Constant property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SceneFieldEventDrawer`
+
+Event property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SceneFieldPairEventDrawer`
+
+Event property drawer of type `SceneFieldPair`. Inherits from `AtomDrawer<SceneFieldPairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SceneFieldValueListDrawer`
+
+Value List property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+
+---
+
+## `SceneFieldVariableDrawer`
+
+Variable property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
 
 ---
 
@@ -31,32 +55,8 @@ Event property drawer of type `SceneFieldPair`. Inherits from `AtomEventEditor<S
 
 ---
 
-## `SceneFieldConstantDrawer`
+## `SceneFieldVariableEditor`
 
-Constant property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldConstant>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `SceneFieldVariableDrawer`
-
-Variable property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldVariable>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `SceneFieldPairEventDrawer`
-
-Event property drawer of type `SceneFieldPair`. Inherits from `AtomDrawer<SceneFieldPairEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `SceneFieldEventDrawer`
-
-Event property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldEvent>`. Only availble in `UNITY_2019_1_OR_NEWER`.
-
----
-
-## `SceneFieldValueListDrawer`
-
-Value List property drawer of type `SceneField`. Inherits from `AtomDrawer<SceneFieldValueList>`. Only availble in `UNITY_2019_1_OR_NEWER`.
+Variable Inspector of type `SceneField`. Inherits from `AtomVariableEditor`
 
 ---
