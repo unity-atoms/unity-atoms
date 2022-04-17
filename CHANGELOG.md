@@ -6,7 +6,7 @@
 💅 = Polish
 🚀 = New features
 
-# 4.4.4 (March 15, 2022)
+# 4.4.4 (April 17, 2022)
 
 -   [@Casey-Hofland](https://github.com/Casey-Hofland) has left Unity Atoms as a maintainer. We wish Casey all the best and thank him for his contributions and help!
 -   [@ThimoDEV](https://github.com/ThimoDEV) has joined as maintainer of Unity Atoms! 🥳
