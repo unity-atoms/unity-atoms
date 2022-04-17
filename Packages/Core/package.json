@@ -1,7 +1,7 @@
 {
   "name": "com.unity-atoms.unity-atoms-core",
   "displayName": "Unity Atoms Core",
-  "version": "4.4.3",
+  "version": "4.4.4",
   "unity": "2018.3",
   "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
   "keywords": [
@@ -22,5 +22,8 @@
     "/Editor/UnityAtoms.UnityAtomsCore.Editor.asmdef.meta",
     "/Documentation",
     "/Documentation.meta"
-  ]
+  ],
+  "dependencies": {
+    "com.unity.modules.uielements": "1.0.0"
+  }
 }

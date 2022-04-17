@@ -28,21 +28,22 @@ Add the following to your `manifest.json`:
                 "com.unity-atoms.unity-atoms-mono-hooks",
                 "com.unity-atoms.unity-atoms-tags",
                 "com.unity-atoms.unity-atoms-scene-mgmt",
-                "com.unity-atoms.unity-atoms-ui"
+                "com.unity-atoms.unity-atoms-ui",
+                "com.unity-atoms.unity-atoms-input-system"
             ]
         }
     ],
     "dependencies": {
         ...
-        "com.unity-atoms.unity-atoms-core": "4.4.3",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.3",
-        "com.unity-atoms.unity-atoms-fsm": "4.4.3",
-        "com.unity-atoms.unity-atoms-mobile": "4.4.3",
-        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.3",
-        "com.unity-atoms.unity-atoms-tags": "4.4.3",
-        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.3",
-        "com.unity-atoms.unity-atoms-ui": "4.4.3",
-        "com.unity-atoms.unity-atoms-input-system": "4.4.3",
+        "com.unity-atoms.unity-atoms-core": "4.4.4",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.4",
+        "com.unity-atoms.unity-atoms-fsm": "4.4.4",
+        "com.unity-atoms.unity-atoms-mobile": "4.4.4",
+        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.4",
+        "com.unity-atoms.unity-atoms-tags": "4.4.4",
+        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.4",
+        "com.unity-atoms.unity-atoms-ui": "4.4.4",
+        "com.unity-atoms.unity-atoms-input-system": "4.4.4",
         ...
     }
 }

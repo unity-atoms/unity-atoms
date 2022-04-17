@@ -40,7 +40,7 @@ namespace UnityAtoms
         /// <typeparam name="T">The list item type.</typeparam>
         /// <returns>The actual `List&lt;T&gt;`.</returns>
         [SerializeField]
-        private List<T> list = new List<T>();
+        protected List<T> list = new List<T>();
 
         /// <summary>
         /// Add an item to the list.

@@ -24,7 +24,10 @@ namespace UnityAtoms.Editor
             {
                 try
                 {
-                    field.SetValue(box, property.FindPropertyRelative(field.Name).GetPropertyValue());
+                    if (!field.Attributes.HasFlag(FieldAttributes.NotSerialized))
+                    {
+                        field.SetValue(box, property.FindPropertyRelative(field.Name).GetPropertyValue());
+                    }
                 }
                 catch (InvalidOperationException)
                 {

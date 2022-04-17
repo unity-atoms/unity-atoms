@@ -6,10 +6,7 @@ Thanks for considering contributing to Unity Atoms ❤️ Read the guidelines be
 
 Unity Atoms is a [monorepo](https://en.wikipedia.org/wiki/Monorepo). Basically that means that there are several packages / projects contained in one repository.
 
--   Packages - contains all the different packages.
--   Examples - this folder is a Unity project folder that contains examples. This folder is not included in the distribution of Unity Atoms.
-
-The reason for this project structure is that we want to include examples in the repo (needing a Unity project), but there are at the same time currently some restrictions when using the UPM regarding how to import it to your project.
+-   Packages - contains all the different packages
 
 ### UPM doesn't allow...
 

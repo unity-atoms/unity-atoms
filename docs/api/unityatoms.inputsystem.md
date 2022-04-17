@@ -7,15 +7,15 @@ sidebar_label: UnityAtoms.InputSystem
 
 # Namespace - `UnityAtoms.InputSystem`
 
-## `InputAction_CallbackContextUnityEvent`
+## `InputAction_CallbackContextAction`
 
-None generic Unity Event of type `InputAction.CallbackContext`. Inherits from `UnityEvent<InputAction.CallbackContext>`.
+Action of type `InputAction.CallbackContext`. Inherits from `AtomAction<InputAction.CallbackContext>`.
 
 ---
 
-## `PlayerInputUnityEvent`
+## `PlayerInputAction`
 
-None generic Unity Event of type `PlayerInput`. Inherits from `UnityEvent<PlayerInput>`.
+Action of type `PlayerInput`. Inherits from `AtomAction<PlayerInput>`.
 
 ---
 
@@ -31,18 +31,6 @@ Event Instancer of type `PlayerInput`. Inherits from `AtomEventInstancer<PlayerI
 
 ---
 
-## `InputAction_CallbackContextAction`
-
-Action of type `InputAction.CallbackContext`. Inherits from `AtomAction<InputAction.CallbackContext>`.
-
----
-
-## `PlayerInputAction`
-
-Action of type `PlayerInput`. Inherits from `AtomAction<PlayerInput>`.
-
----
-
 ## `InputAction_CallbackContextEvent`
 
 Event of type `InputAction.CallbackContext`. Inherits from `AtomEvent<InputAction.CallbackContext>`.
@@ -52,5 +40,17 @@ Event of type `InputAction.CallbackContext`. Inherits from `AtomEvent<InputActio
 ## `PlayerInputEvent`
 
 Event of type `PlayerInput`. Inherits from `AtomEvent<PlayerInput>`.
+
+---
+
+## `InputAction_CallbackContextUnityEvent`
+
+None generic Unity Event of type `InputAction.CallbackContext`. Inherits from `UnityEvent<InputAction.CallbackContext>`.
+
+---
+
+## `PlayerInputUnityEvent`
+
+None generic Unity Event of type `PlayerInput`. Inherits from `UnityEvent<PlayerInput>`.
 
 ---

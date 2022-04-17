@@ -27,9 +27,9 @@ namespace UnityAtoms
             {
                 switch (_usage)
                 {
-                    case (AtomEventReferenceUsage.VARIABLE): return _variable.GetOrCreateEvent<E>();
-                    case (AtomEventReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer.GetOrCreateEvent<E>();
-                    case (AtomEventReferenceUsage.EVENT_INSTANCER): return _eventInstancer.Event;
+                    case (AtomEventReferenceUsage.VARIABLE): return _variable == null ? null : _variable.GetOrCreateEvent<E>();
+                    case (AtomEventReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer == null ? null : _variableInstancer.GetOrCreateEvent<E>();
+                    case (AtomEventReferenceUsage.EVENT_INSTANCER): return _eventInstancer == null ? null : _eventInstancer.Event;
                     case (AtomEventReferenceUsage.EVENT):
                     default:
                         return _event;

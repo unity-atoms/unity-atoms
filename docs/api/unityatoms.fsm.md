@@ -7,27 +7,15 @@ sidebar_label: UnityAtoms.FSM
 
 # Namespace - `UnityAtoms.FSM`
 
-## `TransitionListWrapper`
+## `FSMTransitionDataAction`
 
-Needed in order to use our custom property drawer for transitions in the FSM.
-
----
-
-## `Transition`
-
-Controls a transition from a FromState to a ToState.
+Action of type `FSMTransitionData`. Inherits from `AtomAction<FSMTransitionData>`.
 
 ---
 
-## `FSMTransitionData`
+## `FSMTransitionDataBaseEventReferenceListener`
 
-A struct representing a transition in a FSM.
-
----
-
-## `FSMTransitionDataUnityEvent`
-
-None generic Unity Event of type `FSMTransitionData`. Inherits from `UnityEvent<FSMTransitionData>`.
+Event Reference Listener of type `FSMTransitionData`. Inherits from `AtomEventReferenceListener<FSMTransitionData, FSMTransitionDataEvent, FSMTransitionDataBaseEventReference, FSMTransitionDataUnityEvent>`.
 
 ---
 
@@ -67,39 +55,9 @@ Event Instancer of type `FSMTransitionData`. Inherits from `AtomEventInstancer<F
 
 ---
 
-## `FSMTransitionDataAction`
+## `FSMTransitionDataEvent`
 
-Action of type `FSMTransitionData`. Inherits from `AtomAction<FSMTransitionData>`.
-
----
-
-## `FiniteStateMachineReferenceUsage`
-
-Different usages of the FSM reference.
-
----
-
-## `FiniteStateMachineReference`
-
-Reference of type `FiniteStateMachine`. Inherits from `AtomBaseReference`.
-
-### Variables
-
-#### `_fsm`
-
-Variable used if `Usage` is set to `FSM`.
-
----
-
-#### `_fsmInstancer`
-
-Variable Instancer used if `Usage` is set to `FSM_INSTANCER`.
-
-### Properties
-
-#### `Machine`
-
-Get the value for the Reference.
+Event of type `FSMTransitionData`. Inherits from `AtomEvent<FSMTransitionData>`.
 
 ---
 
@@ -187,12 +145,6 @@ Dispatches a new command to the FiniteStateMachine, invoking any necessary trans
 
 ---
 
-## `FiniteStateMachineMonoHook`
-
-Needed By FiniteStateMachine in order to gain access to some of the Unity life cycle methods.
-
----
-
 ## `FiniteStateMachineInstancer`
 
 Takes a base FSM and creates an in memory copy of it on OnEnable. Removes the FSM on OnDestroy.
@@ -205,9 +157,39 @@ The variable that the in memory copy will be based on when created at runtime.
 
 ---
 
-## `FSMStateListWrapper`
+## `FiniteStateMachineMonoHook`
 
-Needed in order to use our custom property drawer for states in the FSM.
+Needed By FiniteStateMachine in order to gain access to some of the Unity life cycle methods.
+
+---
+
+## `FiniteStateMachineReferenceUsage`
+
+Different usages of the FSM reference.
+
+---
+
+## `FiniteStateMachineReference`
+
+Reference of type `FiniteStateMachine`. Inherits from `AtomBaseReference`.
+
+### Variables
+
+#### `_fsm`
+
+Variable used if `Usage` is set to `FSM`.
+
+---
+
+#### `_fsmInstancer`
+
+Variable Instancer used if `Usage` is set to `FSM_INSTANCER`.
+
+### Properties
+
+#### `Machine`
+
+Get the value for the Reference.
 
 ---
 
@@ -217,14 +199,32 @@ Class representing a state in the FSM.
 
 ---
 
-## `FSMTransitionDataEvent`
+## `FSMStateListWrapper`
 
-Event of type `FSMTransitionData`. Inherits from `AtomEvent<FSMTransitionData>`.
+Needed in order to use our custom property drawer for states in the FSM.
 
 ---
 
-## `FSMTransitionDataBaseEventReferenceListener`
+## `FSMTransitionData`
 
-Event Reference Listener of type `FSMTransitionData`. Inherits from `AtomEventReferenceListener<FSMTransitionData, FSMTransitionDataEvent, FSMTransitionDataBaseEventReference, FSMTransitionDataUnityEvent>`.
+A struct representing a transition in a FSM.
+
+---
+
+## `Transition`
+
+Controls a transition from a FromState to a ToState.
+
+---
+
+## `TransitionListWrapper`
+
+Needed in order to use our custom property drawer for transitions in the FSM.
+
+---
+
+## `FSMTransitionDataUnityEvent`
+
+None generic Unity Event of type `FSMTransitionData`. Inherits from `UnityEvent<FSMTransitionData>`.
 
 ---

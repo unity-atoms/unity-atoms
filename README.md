@@ -56,15 +56,15 @@ Add the following to your `manifest.json` (which is located under your project l
     ],
     "dependencies": {
         ...
-        "com.unity-atoms.unity-atoms-core": "4.4.3",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.3",
-        "com.unity-atoms.unity-atoms-fsm": "4.4.3",
-        "com.unity-atoms.unity-atoms-mobile": "4.4.3",
-        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.3",
-        "com.unity-atoms.unity-atoms-tags": "4.4.3",
-        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.3",
-        "com.unity-atoms.unity-atoms-ui": "4.4.3",
-	    "com.unity-atoms.unity-atoms-input-system": "4.4.3",
+        "com.unity-atoms.unity-atoms-core": "4.4.4",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.4",
+        "com.unity-atoms.unity-atoms-fsm": "4.4.4",
+        "com.unity-atoms.unity-atoms-mobile": "4.4.4",
+        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.4",
+        "com.unity-atoms.unity-atoms-tags": "4.4.4",
+        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.4",
+        "com.unity-atoms.unity-atoms-ui": "4.4.4",
+	    "com.unity-atoms.unity-atoms-input-system": "4.4.4",
         ...
     }
 }
@@ -115,6 +115,6 @@ For questions and support please join our [Discord channel](https://discord.gg/W
 -   [AdamRamberg](https://github.com/AdamRamberg)
 -   [soraphis](https://github.com/soraphis)
 -   [miikalo](https://github.com/miikalo)
--   [Casey-Hofland](https://github.com/Casey-Hofland)
+-   [ThimoDEV](https://github.com/ThimoDEV)
 
 We are looking for more people to join the team! Contact us if you want to jump aboard.

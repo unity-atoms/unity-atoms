@@ -7,95 +7,294 @@ sidebar_label: UnityAtoms
 
 # Namespace - `UnityAtoms`
 
-## `Void`
+## `StringExtensions`
 
-Dummy module class used for representing nothing in for example empty Events, eg: `AtomEvent<Void>`
+Internal extension class for strings.
+
+### Methods
+
+#### `ToInt(System.String,System.Int32)`
+
+Tries to parse a string to an int.
+
+##### Parameters
+
+-   `str` - The string to parse.
+-   `def` - The default value if not able to parse the provided string.
+
+##### Returns
+
+Returns the string parsed to an int. If not able to parse the string, it returns the default value provided to the method.
 
 ---
 
-## `EquatableAtomReference<T,P,C,V,E1,E2,F,VI>`
+#### `Repeat(System.String,System.Int32)`
+
+Repeats the string X amount of times.
+
+##### Parameters
+
+-   `str` - The string to repeat.
+-   `times` - The number of times to repeat the provided string.
+
+##### Returns
+
+The string repeated X amount of times.
+
+---
+
+#### `Capitalize(System.String)`
+
+Capitalize the provided string.
+
+##### Parameters
+
+-   `str` - The string to capitalize.
+
+##### Returns
+
+A capitalized version of the string provided.
+
+---
+
+## `IMGUIUtils`
+
+Utility methods for IMGUI.
+
+### Methods
+
+#### `SnipRectH(UnityEngine.Rect,System.Single)`
+
+Snip a `Rect` horizontally.
+
+##### Parameters
+
+-   `rect` - The rect.
+-   `range` - The range.
+
+##### Returns
+
+A new `Rect` snipped horizontally.
+
+---
+
+#### `SnipRectH(UnityEngine.Rect,System.Single,UnityEngine.Rect@,System.Single)`
+
+Snip a `Rect` horizontally.
+
+##### Parameters
+
+-   `rect` - The rect.
+-   `range` - The range.
+-   `rest` - Rest rect.
+-   `gutter` - Gutter
+
+##### Returns
+
+A new `Rect` snipped horizontally.
+
+---
+
+#### `SnipRectV(UnityEngine.Rect,System.Single)`
+
+Snip a `Rect` vertically.
+
+##### Parameters
+
+-   `rect` - The rect.
+-   `range` - The range.
+
+##### Returns
+
+A new `Rect` snipped vertically.
+
+---
+
+#### `SnipRectV(UnityEngine.Rect,System.Single,UnityEngine.Rect@,System.Single)`
+
+Snip a `Rect` vertically.
+
+##### Parameters
+
+-   `rect` - The rect.
+-   `range` - The range.
+-   `rest` - Rest rect.
+-   `gutter` - Gutter
+
+##### Returns
+
+A new `Rect` snipped vertically.
+
+---
+
+## `AtomAction`
+
+Base abstract class for Actions. Inherits from `BaseAtom`.
+
+### Methods
+
+#### `Do`
+
+Perform the Action.
+
+---
+
+## `AtomAction<T1>`
 
 #### Type Parameters
 
--   `T` - The type of the variable.
--   `P` - IPair of type `T`.
--   `C` - Constant of type `T`.
--   `V` - Variable of type `T`.
--   `E1` - Event of type `T`.
--   `E2` - Event of type `IPair<T>`.
--   `F` - Function of type `T => T`.
--   `VI` - Variable Instancer of type `T`.
+-   `T1` - The type for this Action.
 
-Atom Reference that where the value is implementing `IEquatable`.
+Generic abstract base class for Actions. Inherits from `AtomAction`.
 
----
+### Methods
 
-## `AtomReferenceUsage`
+#### `Do(t1)`
 
-Different Reference usages.
+Perform the Action.
+
+##### Parameters
+
+-   `t1` - The first parameter.
 
 ---
 
-## `AtomBaseReference`
-
-None generic base class for `AtomReference<T, C, V, E1, E2, F, VI>`.
-
-### Variables
-
-#### `_usage`
-
-Describes how we use the Reference and where the value comes from.
-
----
-
-## `AtomReference<T,P,C,V,E1,E2,F,VI>`
+## `SetVariableValue<T,P,V,C,R,E1,E2,F,VI>`
 
 #### Type Parameters
 
--   `T` - The type of the variable.
--   `P` - IPair of type `T`.
--   `C` - Constant of type `T`.
--   `V` - Variable of type `T`.
--   `E1` - Event of type `T`.
--   `E2` - Event of type `IPair<T>`.
--   `F` - Function of type `T => T`.
--   `VI` - Variable Instancer of type `T`.
+-   `T` - The type of the Variable to set.
+-   `P` - A IPair of type T.
+-   `V` - A Variable class of type `T` to set.
+-   `C` - A Constant class of type `T`.
+-   `R` - A Reference of type `T`.
+-   `E1` - An Event of type `T`.
+-   `E2` - An Event x 2 of type `T`.
+-   `F` - A Function x 2 of type `T`.
+-   `VI` - A Variable Instancer of type `T`.
 
-A Reference lets you define a variable in your script where you then from the inspector can choose if it's going to be taking the value from a Constant, Variable, Value or a Variable Instancer.
+Base class for all SetVariableValue Actions. Inherits from `AtomAction`.
 
 ### Variables
-
-#### `_value`
-
-Value used if `Usage` is set to `Value`.
-
----
-
-#### `_constant`
-
-Constant used if `Usage` is set to `Constant`.
-
----
 
 #### `_variable`
 
-Variable used if `Usage` is set to `Variable`.
+The Variable to set.
 
 ---
 
-#### `_variableInstancer`
+#### `_value`
 
-Variable Instancer used if `Usage` is set to `VariableInstancer`.
+The value to use.
+
+### Methods
+
+#### `Do`
+
+Perform the action.
+
+---
+
+## `AtomListWrapper<T>`
+
+#### Type Parameters
+
+-   `T` - Type used in list.
+
+Needed in order to create a property drawer for a List / Array. See this for more info: https://answers.unity.com/questions/605875/custompropertydrawer-for-array-types-in-43.html
+
+---
+
+## `AtomsSearchable`
+
+Attribute that makes an Atom searchable.
+
+---
+
+## `EditorIcon`
+
+Specify a texture name from your assets which you want to be assigned as an icon to the MonoScript.
+
+---
+
+## `ReadOnlyAttribute`
+
+Use to make a field read only in the Unity inspector. Solution taken from here: https://answers.unity.com/questions/489942/how-to-make-a-readonly-property-in-inspector.html
+
+---
+
+## `BaseAtom`
+
+None generic base class for all Atoms.
+
+### Variables
+
+#### `_developerDescription`
+
+A description of the Atom made for documentation purposes.
+
+---
+
+## `AtomCondition`
+
+Base abstract class for Conditions. Inherits from `BaseAtom`.
+
+### Methods
+
+#### `Call`
+
+Check the condition.
+
+---
+
+## `AtomCondition`1`
+
+Generic abstract base class for Conditions. Inherits from `AtomCondition`.
+
+### Methods
+
+#### `Call(t1)`
+
+Evaluate the Condition.
+
+##### Parameters
+
+-   `t1` - The first parameter.
+
+---
+
+## `AtomConditionOperators`
+
+Enumeration for logical operators for `AtomCondition` Predicates
+
+---
+
+## `AtomEventInstancer<T,E>`
+
+#### Type Parameters
+
+-   `T` - The value type.
+-   `E` - Event of type T.
+
+An Event Instancer is a MonoBehaviour that takes an Event as a base and creates an in memory copy of it on OnEnable. This is handy when you want to use Events for prefabs that are instantiated at runtime.
+
+### Variables
+
+#### `_base`
+
+The Event that the in memory copy will be based on when created at runtime.
+
+---
+
+#### `_inspectorRaiseValue`
+
+Used when raising values from the inspector for debugging purposes.
 
 ### Properties
 
-#### `Value`
+#### `Event`
 
-Get or set the value for the Reference.
-
----
-
-#### `IsUnassigned`
+Getter for retrieving the in memory runtime Event.
 
 ### Methods
 
@@ -124,6 +323,22 @@ Set event by type.
 ##### Parameters
 
 -   `e` - The new event value.
+
+---
+
+#### `Raise`
+
+Raises the instanced Event.
+
+---
+
+#### `Raise(item)`
+
+Raises the instanced Event.
+
+##### Parameters
+
+-   `item` - The value associated with the Event.
 
 ---
 
@@ -235,180 +450,19 @@ Get or set the Event used by the Event Reference.
 
 ---
 
-## `AtomListWrapper<T>`
+## `AtomEvent<T>`
 
 #### Type Parameters
 
--   `T` - Type used in list.
+-   `T` - The type for this Event.
 
-Needed in order to create a property drawer for a List / Array. See this for more info: https://answers.unity.com/questions/605875/custompropertydrawer-for-array-types-in-43.html
-
----
-
-## `AtomVariableInstancer<V,P,T,E1,E2,F>`
-
-#### Type Parameters
-
--   `V` - Variable of type T.
--   `P` - IPair of type `T`.
--   `T` - The value type.
--   `E1` - Event of type T.
--   `E2` - Event x 2 of type T.
--   `F` - Function of type T => T
-
-A Variable Instancer is a MonoBehaviour that takes a variable as a base and creates an in memory copy of it OnEnable. This is handy when you want to use atoms for prefabs that are instantiated at runtime. Use together with AtomCollection to react accordingly when a prefab with an associated atom is added or deleted to the scene.
-
-### Methods
-
-#### `ImplSpecificSetup`
-
-Override to add implementation specific setup on `OnEnable`.
-
----
-
-#### `GetEvent<E>`
-
-Get event by type.
-
-#### Type Parameters
-
--   `E` - undefined
-
-##### Returns
-
-The event.
-
----
-
-#### `SetEvent<E>(e)`
-
-Set event by type.
-
-#### Type Parameters
-
--   `E` - undefined
-
-##### Parameters
-
--   `e` - The new event value.
-
----
-
-#### `GetOrCreateEvent<E>`
-
-Get event by type. Creates it if it doesn't exist.
-
-#### Type Parameters
-
--   `E` - undefined
-
-##### Returns
-
-The event.
-
----
-
-## `AtomBaseVariableInstancer<V,P,T,E1,E2,F>`
-
-#### Type Parameters
-
--   `V` - Variable of type T.
--   `P` - IPair of type `T`.
--   `T` - The value type.
--   `E1` - Event of type T.
--   `E2` - Event x 2 of type T.
--   `F` - Function of type T => T
-
-A Variable Instancer is a MonoBehaviour that takes a variable as a base and creates an in memory copy of it OnEnable. This is handy when you want to use atoms for prefabs that are instantiated at runtime. Use together with AtomCollection to react accordingly when a prefab with an assoicated atom is added or deleted to the scene.
+Generic base class for Events. Inherits from `AtomEventBase`.
 
 ### Variables
 
-#### `_base`
+#### `_replayBufferSize`
 
-The variable that the in memory copy will be based on when created at runtime.
-
-### Properties
-
-#### `Variable`
-
-Getter for retrieving the in memory runtime variable.
-
----
-
-#### `Value`
-
-Getter for retrieving the value of the in memory runtime variable.
-
-### Methods
-
-#### `ImplSpecificSetup`
-
-Override to add implementation specific setup on `OnEnable`.
-
----
-
-## `Runtime`
-
-Internal constant and static readonly members for runtime usage.
-
-### Properties
-
-#### `IsUnityAtomsRepo`
-
-Determine if we are working the Unity Atoms source library / repo or not.
-
----
-
-## `Runtime.Constants`
-
-Runtime constants
-
-### Variables
-
-#### `LOG_PREFIX`
-
-Prefix that should be pre-pended to all Debug.Logs made from UnityAtoms to help immediately inform a user that those logs are made from this library.
-
----
-
-## `Runtime.ExecutionOrder`
-
-Constants for defining DefaultExecutionOrder.
-
----
-
-## `EditorIcon`
-
-Specify a texture name from your assets which you want to be assigned as an icon to the MonoScript.
-
----
-
-## `ReadOnlyAttribute`
-
-Use to make a field read only in the Unity inspector. Solution taken from here: https://answers.unity.com/questions/489942/how-to-make-a-readonly-property-in-inspector.html
-
----
-
-## `AtomsSearchable`
-
-Attribute that makes an Atom searchable.
-
----
-
-## `AtomEventInstancer<T,E>`
-
-#### Type Parameters
-
--   `T` - The value type.
--   `E` - Event of type T.
-
-An Event Instancer is a MonoBehaviour that takes an Event as a base and creates an in memory copy of it on OnEnable. This is handy when you want to use Events for prefabs that are instantiated at runtime.
-
-### Variables
-
-#### `_base`
-
-The Event that the in memory copy will be based on when created at runtime.
+The event replays the specified number of old values to new subscribers. Works like a ReplaySubject in Rx.
 
 ---
 
@@ -418,49 +472,15 @@ Used when raising values from the inspector for debugging purposes.
 
 ### Properties
 
-#### `Event`
+#### `ReplayBuffer`
 
-Getter for retrieving the in memory runtime Event.
+Retrieve Replay Buffer as a List. This call will allocate memory so use sparsely.
 
 ### Methods
 
-#### `GetEvent<E>`
-
-Get event by type.
-
-#### Type Parameters
-
--   `E` - undefined
-
-##### Returns
-
-The event.
-
----
-
-#### `SetEvent<E>(e)`
-
-Set event by type.
-
-#### Type Parameters
-
--   `E` - undefined
-
-##### Parameters
-
--   `e` - The new event value.
-
----
-
-#### `Raise`
-
-Raises the instanced Event.
-
----
-
 #### `Raise(item)`
 
-Raises the instanced Event.
+Raise the Event.
 
 ##### Parameters
 
@@ -468,301 +488,121 @@ Raises the instanced Event.
 
 ---
 
-## `AtomBaseVariable`
+#### `RaiseEditor(item)`
 
-None generic base class for Variables. Inherits from `BaseAtom`.
+Used in editor scipts since Raise is ambigious when using reflection to get method.
 
-### Properties
+##### Parameters
 
-#### `BaseValue`
+-   `item` - undefined
 
-The Variable value as an `object`.abstract Beware of boxing! 🥊
+---
+
+#### `Register(action)`
+
+Register handler to be called when the Event triggers.
+
+##### Parameters
+
+-   `action` - The handler.
+
+---
+
+#### `Unregister(action)`
+
+Unregister handler that was registered using the `Register` method.
+
+##### Parameters
+
+-   `action` - The handler.
+
+---
+
+#### `UnregisterAll`
+
+Unregister all handlers that were registered using the `Register` method.
+
+---
+
+#### `RegisterListener(listener)`
+
+Register a Listener that in turn trigger all its associated handlers when the Event triggers.
+
+##### Parameters
+
+-   `listener` - The Listener to register.
+
+---
+
+#### `UnregisterListener(listener)`
+
+Unregister a listener that was registered using the `RegisterListener` method.
+
+##### Parameters
+
+-   `listener` - The Listener to unregister.
+
+---
+
+#### `Observe`
+
+Turn the Event into an `IObservable<T>`. Makes Events compatible with for example UniRx.
+
+##### Returns
+
+The Event as an `IObservable<T>`.
+
+---
+
+## `AtomEventBase`
+
+None generic base class for Events. Inherits from `BaseAtom` and `ISerializationCallbackReceiver`.
 
 ### Methods
 
-#### `Reset(System.Boolean)`
+#### `Register(System.Action)`
 
-Abstract method that could be implemented to reset the Variable value.
-
----
-
-## `AtomBaseVariable<T>`
-
-#### Type Parameters
-
--   `T` - The Variable value type.
-
-Generic base class for Variables. Inherits from `AtomBaseVariable`.
-
-### Properties
-
-#### `BaseValue`
-
-The Variable value as an `object`.abstract Beware of boxing! 🥊
-
----
-
-#### `Value`
-
-The Variable value as a property.
-
-### Methods
-
-#### `Equals(other)`
-
-Determines equality between Variables.
+Register handler to be called when the Event triggers.
 
 ##### Parameters
 
--   `other` - The other Variable to compare.
-
-##### Returns
-
-`true` if they are equal, otherwise `false`.
+-   `del` - The handler.
 
 ---
 
-#### `Reset(System.Boolean)`
+#### `Unregister(System.Action)`
 
-Not implemented.abstract Throws Exception
-
----
-
-## `AtomVariable<T,P,E1,E2,F>`
-
-#### Type Parameters
-
--   `T` - The Variable value type.
--   `P` - IPair of type `T`.
--   `E1` - Event of type `AtomEvent<T>`.
--   `E2` - Event of type `AtomEvent<T, T>`.
--   `F` - Function of type `FunctionEvent<T, T>`.
-
-Generic base class for Variables. Inherits from `AtomBaseVariable<T>`.
-
-### Variables
-
-#### `_changed`
-
-Changed Event triggered when the Variable value gets changed.
-
----
-
-#### `_changedWithHistory`
-
-Changed with history Event triggered when the Variable value gets changed.
-
----
-
-#### `_triggerChangedOnOnEnable`
-
-Whether Changed Event should be triggered on OnEnable or not
-
----
-
-#### `_triggerChangedWithHistoryOnOnEnable`
-
-Whether ChangedWithHistory Event should be triggered on OnEnable or not
-
----
-
-#### `_initialValue`
-
-The inital value of the Variable.
-
-### Properties
-
-#### `Value`
-
-The Variable value as a property.
-
----
-
-#### `InitialValue`
-
-The initial value as a property.
-
----
-
-#### `OldValue`
-
-The value the Variable had before its value got changed last time.
-
----
-
-#### `PreChangeTransformers`
-
-When setting the value of a Variable the new value will be piped through all the pre change transformers, which allows you to create custom logic and restriction on for example what values can be set for this Variable.
-
-### Methods
-
-#### `SetInitialValues`
-
-Set initial values
-
----
-
-#### `TriggerInitialEvents`
-
-Trigger initial events if related options enabled
-
----
-
-#### `Reset(System.Boolean)`
-
-Reset the Variable to its `_initialValue`.
+Unregister handler that was registered using the `Register` method.
 
 ##### Parameters
 
--   `shouldTriggerEvents` - Set to `true` if Events should be triggered on reset, otherwise `false`.
+-   `del` - The handler.
 
 ---
 
-#### `SetValue(newValue)`
+#### `UnregisterAll`
 
-Set the Variable value.
+Unregister all handlers that were registered using the `Register` method.
+
+---
+
+#### `RegisterListener(UnityAtoms.IAtomListener)`
+
+Register a Listener that in turn trigger all its associated handlers when the Event triggers.
 
 ##### Parameters
 
--   `newValue` - The new value to set.
-
-##### Returns
-
-`true` if the value got changed, otherwise `false`.
+-   `listener` - The Listener to register.
 
 ---
 
-#### `SetValue(variable)`
+#### `UnregisterListener(UnityAtoms.IAtomListener)`
 
-Set the Variable value.
+Unregister a listener that was registered using the `RegisterListener` method.
 
 ##### Parameters
 
--   `variable` - The value to set provided from another Variable.
-
-##### Returns
-
-`true` if the value got changed, otherwise `false`.
-
----
-
-#### `ObserveChange`
-
-Turn the Variable's change Event into an `IObservable<T>`. Makes the Variable's change Event compatible with for example UniRx.
-
-##### Returns
-
-The Variable's change Event as an `IObservable<T>`.
-
----
-
-#### `ObserveChangeWithHistory`
-
-Turn the Variable's change with history Event into an `IObservable<T, T>`. Makes the Variable's change with history Event compatible with for example UniRx.
-
-##### Returns
-
-The Variable's change Event as an `IObservable<T, T>`.
-
----
-
-#### `GetEvent<E>`
-
-Get event by type (allowing inheritance).
-
-#### Type Parameters
-
--   `E` - undefined
-
-##### Returns
-
-{"_":"Changed - If Changed (or ChangedWithHistory) are of type E\n ChangedWithHistory - If not Changed but ChangedWithHistory is of type E\n \n ","exception":[{"_":"if none of the events are of type E","$":{"cref":"T:System.NotSupportedException"}}]}
-
----
-
-#### `SetEvent<E>(e)`
-
-Set event by type.
-
-#### Type Parameters
-
--   `E` - undefined
-
-##### Parameters
-
--   `e` - The new event value.
-
----
-
-#### `GetOrCreateEvent<E>`
-
-Get event by type (allowing inheritance). Creates an event if the type is supported for this Variable, but the Event itself is `null`.
-
-#### Type Parameters
-
--   `E` - undefined
-
-##### Returns
-
-{"_":"Changed - If Changed (or ChangedWithHistory) are of type E\n ChangedWithHistory - If not Changed but ChangedWithHistory is of type E\n \n ","exception":[{"_":"if none of the events are of type E","$":{"cref":"T:System.NotSupportedException"}}]}
-
----
-
-## `EquatableAtomVariable<T,P,E1,E2,F>`
-
-#### Type Parameters
-
--   `T` - The Variable type.
--   `P` - Pair of type T.
--   `E1` - Event of type T.
--   `E2` - Pair event of type T.
--   `F` - Function of type T and T.
-
-Atom Variable base class for types that are implementing `IEquatable<T>`.
-
----
-
-## `AtomConditionOperators`
-
-Enumeration for logical operators for `AtomCondition` Predicates
-
----
-
-## `AtomCondition`1`
-
-Base abstract class for Conditions. Condition must be an AtomFunction<bool, T>.
-
----
-
-## `AtomAction`
-
-Base abstract class for Actions. Inherits from `BaseAtom`.
-
-### Methods
-
-#### `Do`
-
-Perform the Action.
-
----
-
-## `AtomAction<T1>`
-
-#### Type Parameters
-
--   `T1` - The type for this Action.
-
-Generic abstract base class for Actions. Inherits from `AtomAction`.
-
-### Methods
-
-#### `Do(t1)`
-
-Perform the Action.
-
-##### Parameters
-
--   `t1` - The first parameter.
+-   `listener` - The Listener to unregister.
 
 ---
 
@@ -1051,184 +891,57 @@ An `AtomFunction<R, T1, T2, T3, T4, T5>`.
 
 ---
 
-## `AtomEventBase`
+## `IAtomCollection`
 
-None generic base class for Events. Inherits from `BaseAtom` and `ISerializationCallbackReceiver`.
-
-### Methods
-
-#### `Register(System.Action)`
-
-Register handler to be called when the Event triggers.
-
-##### Parameters
-
--   `del` - The handler.
+Interface for Atom Collections.
 
 ---
 
-#### `Unregister(System.Action)`
+## `IAtomList`
 
-Unregister handler that was registered using the `Register` method.
-
-##### Parameters
-
--   `del` - The handler.
+Interface for Atom Lists.
 
 ---
 
-#### `UnregisterAll`
+## `IGetEvent`
 
-Unregister all handlers that were registered using the `Register` method.
-
----
-
-#### `RegisterListener(UnityAtoms.IAtomListener)`
-
-Register a Listener that in turn trigger all its associated handlers when the Event triggers.
-
-##### Parameters
-
--   `listener` - The Listener to register.
+Interface for getting an event.
 
 ---
 
-#### `UnregisterListener(UnityAtoms.IAtomListener)`
+## `IGetOrCreateEvent`
 
-Unregister a listener that was registered using the `RegisterListener` method.
-
-##### Parameters
-
--   `listener` - The Listener to unregister.
+Interface for getting or creating an event.
 
 ---
 
-## `AtomEvent<T>`
+## `IGetValue`1`
 
-#### Type Parameters
-
--   `T` - The type for this Event.
-
-Generic base class for Events. Inherits from `AtomEventBase`.
-
-### Variables
-
-#### `_replayBufferSize`
-
-The event replays the specified number of old values to new subscribers. Works like a ReplaySubject in Rx.
+Interface for getting a value.
 
 ---
 
-#### `_inspectorRaiseValue`
+## `IIsValid`
 
-Used when raising values from the inspector for debugging purposes.
-
-### Properties
-
-#### `ReplayBuffer`
-
-Retrieve Replay Buffer as a List. This call will allocate memory so use sparsely.
-
-### Methods
-
-#### `Raise(item)`
-
-Raise the Event.
-
-##### Parameters
-
--   `item` - The value associated with the Event.
+Interface defining an `IsValid` method.
 
 ---
 
-#### `RaiseEditor(item)`
+## `IPair`1`
 
-Used in editor scipts since Raise is ambigious when using reflection to get method.
-
-##### Parameters
-
--   `item` - undefined
+Interface defining a generic `IPair<T>`.
 
 ---
 
-#### `Register(action)`
+## `ISetEvent`
 
-Register handler to be called when the Event triggers.
-
-##### Parameters
-
--   `action` - The handler.
+Interface for setting an event.
 
 ---
 
-#### `Unregister(action)`
+## `IVariable`1`
 
-Unregister handler that was registered using the `Register` method.
-
-##### Parameters
-
--   `action` - The handler.
-
----
-
-#### `UnregisterAll`
-
-Unregister all handlers that were registered using the `Register` method.
-
----
-
-#### `RegisterListener(listener)`
-
-Register a Listener that in turn trigger all its associated handlers when the Event triggers.
-
-##### Parameters
-
--   `listener` - The Listener to register.
-
----
-
-#### `UnregisterListener(listener)`
-
-Unregister a listener that was registered using the `RegisterListener` method.
-
-##### Parameters
-
--   `listener` - The Listener to unregister.
-
----
-
-#### `Observe`
-
-Turn the Event into an `IObservable<T>`. Makes Events compatible with for example UniRx.
-
-##### Returns
-
-The Event as an `IObservable<T>`.
-
----
-
-## `AtomEventReferenceListener<T,E,ER,UER>`
-
-#### Type Parameters
-
--   `T` - The type that we are listening for.
--   `E` - Event of type `T`.
--   `ER` - Event Reference of type `T`.
--   `UER` - UnityEvent of type `T`.
-
-Generic base class for Listeners using Event Reference. Inherits from `AtomListener<T, E, UER>` and implements `IAtomListener<T>`.
-
-### Variables
-
-#### `_eventReference`
-
-The Event Reference that we are listening to.
-
-### Properties
-
-#### `Event`
-
-The Event we are listening for as a property.
+Interface for retrieving a Variable.
 
 ---
 
@@ -1326,21 +1039,190 @@ The Event we are listening for as a property.
 
 ---
 
+## `AtomEventReferenceListener<T,E,ER,UER>`
+
+#### Type Parameters
+
+-   `T` - The type that we are listening for.
+-   `E` - Event of type `T`.
+-   `ER` - Event Reference of type `T`.
+-   `UER` - UnityEvent of type `T`.
+
+Generic base class for Listeners using Event Reference. Inherits from `AtomListener<T, E, UER>` and implements `IAtomListener<T>`.
+
+### Variables
+
+#### `_eventReference`
+
+The Event Reference that we are listening to.
+
+### Properties
+
+#### `Event`
+
+The Event we are listening for as a property.
+
+---
+
 ## `VariableResetter`
 
 Resets all the Variables in the list on OnEnable. Note that this will cause Events on the Variables to be triggered.
 
 ---
 
-## `BaseAtom`
+## `AtomPreferences`
 
-None generic base class for all Atoms.
+Class to set preferences for Unity Atoms.
+
+---
+
+## `AtomReferenceUsage`
+
+Different Reference usages.
+
+---
+
+## `AtomBaseReference`
+
+None generic base class for `AtomReference<T, C, V, E1, E2, F, VI>`.
 
 ### Variables
 
-#### `_developerDescription`
+#### `_usage`
 
-A description of the Atom made for documentation purposes.
+Describes how we use the Reference and where the value comes from.
+
+---
+
+## `AtomReference<T,P,C,V,E1,E2,F,VI>`
+
+#### Type Parameters
+
+-   `T` - The type of the variable.
+-   `P` - IPair of type `T`.
+-   `C` - Constant of type `T`.
+-   `V` - Variable of type `T`.
+-   `E1` - Event of type `T`.
+-   `E2` - Event of type `IPair<T>`.
+-   `F` - Function of type `T => T`.
+-   `VI` - Variable Instancer of type `T`.
+
+A Reference lets you define a variable in your script where you then from the inspector can choose if it's going to be taking the value from a Constant, Variable, Value or a Variable Instancer.
+
+### Variables
+
+#### `_value`
+
+Value used if `Usage` is set to `Value`.
+
+---
+
+#### `_constant`
+
+Constant used if `Usage` is set to `Constant`.
+
+---
+
+#### `_variable`
+
+Variable used if `Usage` is set to `Variable`.
+
+---
+
+#### `_variableInstancer`
+
+Variable Instancer used if `Usage` is set to `VariableInstancer`.
+
+### Properties
+
+#### `Value`
+
+Get or set the value for the Reference.
+
+---
+
+#### `IsUnassigned`
+
+### Methods
+
+#### `GetEvent<E>`
+
+Get event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Returns
+
+The event.
+
+---
+
+#### `SetEvent<E>(e)`
+
+Set event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Parameters
+
+-   `e` - The new event value.
+
+---
+
+## `EquatableAtomReference<T,P,C,V,E1,E2,F,VI>`
+
+#### Type Parameters
+
+-   `T` - The type of the variable.
+-   `P` - IPair of type `T`.
+-   `C` - Constant of type `T`.
+-   `V` - Variable of type `T`.
+-   `E1` - Event of type `T`.
+-   `E2` - Event of type `IPair<T>`.
+-   `F` - Function of type `T => T`.
+-   `VI` - Variable Instancer of type `T`.
+
+Atom Reference that where the value is implementing `IEquatable`.
+
+---
+
+## `Void`
+
+Dummy module class used for representing nothing in for example empty Events, eg: `AtomEvent<Void>`
+
+---
+
+## `Runtime`
+
+Internal constant and static readonly members for runtime usage.
+
+### Properties
+
+#### `IsUnityAtomsRepo`
+
+Determine if we are working the Unity Atoms source library / repo or not.
+
+---
+
+## `Runtime.Constants`
+
+Runtime constants
+
+### Variables
+
+#### `LOG_PREFIX`
+
+Prefix that should be pre-pended to all Debug.Logs made from UnityAtoms to help immediately inform a user that those logs are made from this library.
+
+---
+
+## `Runtime.ExecutionOrder`
+
+Constants for defining DefaultExecutionOrder.
 
 ---
 
@@ -1559,212 +1441,364 @@ Clear the list.
 
 ---
 
-## `IPair`1`
-
-Interface defining a generic `IPair<T>`.
-
----
-
-## `IIsValid`
-
-Interface defining an `IsValid` method.
-
----
-
-## `ISetEvent`
-
-Interface for setting an event.
-
----
-
-## `IGetOrCreateEvent`
-
-Interface for getting or creating an event.
-
----
-
-## `IGetEvent`
-
-Interface for getting an event.
-
----
-
-## `IAtomCollection`
-
-Interface for Atom Collections.
-
----
-
-## `IVariable`1`
-
-Interface for retrieving a Variable.
-
----
-
-## `IGetValue`1`
-
-Interface for getting a value.
-
----
-
-## `IAtomList`
-
-Interface for Atom Lists.
-
----
-
-## `IMGUIUtils`
-
-Utility methods for IMGUI.
-
-### Methods
-
-#### `SnipRectH(UnityEngine.Rect,System.Single)`
-
-Snip a `Rect` horizontally.
-
-##### Parameters
-
--   `rect` - The rect.
--   `range` - The range.
-
-##### Returns
-
-A new `Rect` snipped horizontally.
-
----
-
-#### `SnipRectH(UnityEngine.Rect,System.Single,UnityEngine.Rect@,System.Single)`
-
-Snip a `Rect` horizontally.
-
-##### Parameters
-
--   `rect` - The rect.
--   `range` - The range.
--   `rest` - Rest rect.
--   `gutter` - Gutter
-
-##### Returns
-
-A new `Rect` snipped horizontally.
-
----
-
-#### `SnipRectV(UnityEngine.Rect,System.Single)`
-
-Snip a `Rect` vertically.
-
-##### Parameters
-
--   `rect` - The rect.
--   `range` - The range.
-
-##### Returns
-
-A new `Rect` snipped vertically.
-
----
-
-#### `SnipRectV(UnityEngine.Rect,System.Single,UnityEngine.Rect@,System.Single)`
-
-Snip a `Rect` vertically.
-
-##### Parameters
-
--   `rect` - The rect.
--   `range` - The range.
--   `rest` - Rest rect.
--   `gutter` - Gutter
-
-##### Returns
-
-A new `Rect` snipped vertically.
-
----
-
-## `StringExtensions`
-
-Internal extension class for strings.
-
-### Methods
-
-#### `ToInt(System.String,System.Int32)`
-
-Tries to parse a string to an int.
-
-##### Parameters
-
--   `str` - The string to parse.
--   `def` - The default value if not able to parse the provided string.
-
-##### Returns
-
-Returns the string parsed to an int. If not able to parse the string, it returns the default value provided to the method.
-
----
-
-#### `Repeat(System.String,System.Int32)`
-
-Repeats the string X amount of times.
-
-##### Parameters
-
--   `str` - The string to repeat.
--   `times` - The number of times to repeat the provided string.
-
-##### Returns
-
-The string repeated X amount of times.
-
----
-
-#### `Capitalize(System.String)`
-
-Capitalize the provided string.
-
-##### Parameters
-
--   `str` - The string to capitalize.
-
-##### Returns
-
-A capitalized version of the string provided.
-
----
-
-## `SetVariableValue<T,P,V,C,R,E1,E2,F,VI>`
+## `AtomBaseVariableInstancer<V,P,T,E1,E2,F>`
 
 #### Type Parameters
 
--   `T` - The type of the Variable to set.
--   `P` - A IPair of type T.
--   `V` - A Variable class of type `T` to set.
--   `C` - A Constant class of type `T`.
--   `R` - A Reference of type `T`.
--   `E1` - An Event of type `T`.
--   `E2` - An Event x 2 of type `T`.
--   `F` - A Function x 2 of type `T`.
--   `VI` - A Variable Instancer of type `T`.
+-   `V` - Variable of type T.
+-   `P` - IPair of type `T`.
+-   `T` - The value type.
+-   `E1` - Event of type T.
+-   `E2` - Event x 2 of type T.
+-   `F` - Function of type T => T
 
-Base class for all SetVariableValue Actions. Inherits from `AtomAction`.
+A Variable Instancer is a MonoBehaviour that takes a variable as a base and creates an in memory copy of it OnEnable. This is handy when you want to use atoms for prefabs that are instantiated at runtime. Use together with AtomCollection to react accordingly when a prefab with an assoicated atom is added or deleted to the scene.
 
 ### Variables
 
-#### `_variable`
+#### `_base`
 
-The Variable to set.
+The variable that the in memory copy will be based on when created at runtime.
+
+### Properties
+
+#### `Variable`
+
+Getter for retrieving the in memory runtime variable.
 
 ---
 
-#### `_value`
+#### `Value`
 
-The value to use.
+Getter for retrieving the value of the in memory runtime variable.
 
 ### Methods
 
-#### `Do`
+#### `ImplSpecificSetup`
 
-Perform the action.
+Override to add implementation specific setup on `OnEnable`.
+
+---
+
+## `AtomVariableInstancer<V,P,T,E1,E2,F>`
+
+#### Type Parameters
+
+-   `V` - Variable of type T.
+-   `P` - IPair of type `T`.
+-   `T` - The value type.
+-   `E1` - Event of type T.
+-   `E2` - Event x 2 of type T.
+-   `F` - Function of type T => T
+
+A Variable Instancer is a MonoBehaviour that takes a variable as a base and creates an in memory copy of it OnEnable. This is handy when you want to use atoms for prefabs that are instantiated at runtime. Use together with AtomCollection to react accordingly when a prefab with an associated atom is added or deleted to the scene.
+
+### Methods
+
+#### `ImplSpecificSetup`
+
+Override to add implementation specific setup on `OnEnable`.
+
+---
+
+#### `GetEvent<E>`
+
+Get event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Returns
+
+The event.
+
+---
+
+#### `SetEvent<E>(e)`
+
+Set event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Parameters
+
+-   `e` - The new event value.
+
+---
+
+#### `GetOrCreateEvent<E>`
+
+Get event by type. Creates it if it doesn't exist.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Returns
+
+The event.
+
+---
+
+## `AtomBaseVariable`
+
+None generic base class for Variables. Inherits from `BaseAtom`.
+
+### Properties
+
+#### `BaseValue`
+
+The Variable value as an `object`.abstract Beware of boxing! 🥊
+
+### Methods
+
+#### `Reset(System.Boolean)`
+
+Abstract method that could be implemented to reset the Variable value.
+
+---
+
+## `AtomBaseVariable<T>`
+
+#### Type Parameters
+
+-   `T` - The Variable value type.
+
+Generic base class for Variables. Inherits from `AtomBaseVariable`.
+
+### Properties
+
+#### `BaseValue`
+
+The Variable value as an `object`.abstract Beware of boxing! 🥊
+
+---
+
+#### `Value`
+
+The Variable value as a property.
+
+### Methods
+
+#### `Equals(other)`
+
+Determines equality between Variables.
+
+##### Parameters
+
+-   `other` - The other Variable to compare.
+
+##### Returns
+
+`true` if they are equal, otherwise `false`.
+
+---
+
+#### `Reset(System.Boolean)`
+
+Not implemented.abstract Throws Exception
+
+---
+
+## `AtomVariable<T,P,E1,E2,F>`
+
+#### Type Parameters
+
+-   `T` - The Variable value type.
+-   `P` - IPair of type `T`.
+-   `E1` - Event of type `AtomEvent<T>`.
+-   `E2` - Event of type `AtomEvent<T, T>`.
+-   `F` - Function of type `FunctionEvent<T, T>`.
+
+Generic base class for Variables. Inherits from `AtomBaseVariable<T>`.
+
+### Variables
+
+#### `_changed`
+
+Changed Event triggered when the Variable value gets changed.
+
+---
+
+#### `_changedWithHistory`
+
+Changed with history Event triggered when the Variable value gets changed.
+
+---
+
+#### `_triggerChangedOnOnEnable`
+
+Whether Changed Event should be triggered on OnEnable or not
+
+---
+
+#### `_triggerChangedWithHistoryOnOnEnable`
+
+Whether ChangedWithHistory Event should be triggered on OnEnable or not
+
+---
+
+#### `_initialValue`
+
+The inital value of the Variable.
+
+---
+
+#### `_instances`
+
+Set of all AtomVariable instances in editor.
+
+### Properties
+
+#### `Value`
+
+The Variable value as a property.
+
+---
+
+#### `InitialValue`
+
+The initial value as a property.
+
+---
+
+#### `OldValue`
+
+The value the Variable had before its value got changed last time.
+
+---
+
+#### `PreChangeTransformers`
+
+When setting the value of a Variable the new value will be piped through all the pre change transformers, which allows you to create custom logic and restriction on for example what values can be set for this Variable.
+
+### Methods
+
+#### `SetInitialValues`
+
+Set initial values
+
+---
+
+#### `TriggerInitialEvents`
+
+Trigger initial events if related options enabled
+
+---
+
+#### `Reset(System.Boolean)`
+
+Reset the Variable to its `_initialValue`.
+
+##### Parameters
+
+-   `shouldTriggerEvents` - Set to `true` if Events should be triggered on reset, otherwise `false`.
+
+---
+
+#### `SetValue(newValue)`
+
+Set the Variable value.
+
+##### Parameters
+
+-   `newValue` - The new value to set.
+
+##### Returns
+
+`true` if the value got changed, otherwise `false`.
+
+---
+
+#### `SetValue(variable)`
+
+Set the Variable value.
+
+##### Parameters
+
+-   `variable` - The value to set provided from another Variable.
+
+##### Returns
+
+`true` if the value got changed, otherwise `false`.
+
+---
+
+#### `ObserveChange`
+
+Turn the Variable's change Event into an `IObservable<T>`. Makes the Variable's change Event compatible with for example UniRx.
+
+##### Returns
+
+The Variable's change Event as an `IObservable<T>`.
+
+---
+
+#### `ObserveChangeWithHistory`
+
+Turn the Variable's change with history Event into an `IObservable<T, T>`. Makes the Variable's change with history Event compatible with for example UniRx.
+
+##### Returns
+
+The Variable's change Event as an `IObservable<T, T>`.
+
+---
+
+#### `GetEvent<E>`
+
+Get event by type (allowing inheritance).
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Returns
+
+{"_":"Changed - If Changed (or ChangedWithHistory) are of type E\r\n ChangedWithHistory - If not Changed but ChangedWithHistory is of type E\r\n \r\n ","exception":[{"_":"if none of the events are of type E","$":{"cref":"T:System.NotSupportedException"}}]}
+
+---
+
+#### `SetEvent<E>(e)`
+
+Set event by type.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Parameters
+
+-   `e` - The new event value.
+
+---
+
+#### `GetOrCreateEvent<E>`
+
+Get event by type (allowing inheritance). Creates an event if the type is supported for this Variable, but the Event itself is `null`.
+
+#### Type Parameters
+
+-   `E` - undefined
+
+##### Returns
+
+{"_":"Changed - If Changed (or ChangedWithHistory) are of type E\r\n ChangedWithHistory - If not Changed but ChangedWithHistory is of type E\r\n \r\n ","exception":[{"_":"if none of the events are of type E","$":{"cref":"T:System.NotSupportedException"}}]}
+
+---
+
+## `EquatableAtomVariable<T,P,E1,E2,F>`
+
+#### Type Parameters
+
+-   `T` - The Variable type.
+-   `P` - Pair of type T.
+-   `E1` - Event of type T.
+-   `E2` - Pair event of type T.
+-   `F` - Function of type T and T.
+
+Atom Variable base class for types that are implementing `IEquatable<T>`.
 
 ---

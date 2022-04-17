@@ -67,16 +67,12 @@ namespace UnityAtoms.Editor
             var newUsageValue = EditorGUI.Popup(buttonRect, currentUsage.intValue, GetPopupOptions(property), _popupStyle);
             currentUsage.intValue = newUsageValue;
 
-
             var usageTypePropertyName = GetUsages(property)[newUsageValue].PropertyName;
             var usageTypeProperty = property.FindPropertyRelative(usageTypePropertyName);
 
-
-            var valueFieldHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative(usageTypePropertyName), label);
-
-            if (usageTypePropertyName == "_value" && valueFieldHeight > EditorGUIUtility.singleLineHeight+2)
+            if (usageTypePropertyName == "_value")
             {
-                EditorGUI.PropertyField(originalPosition, usageTypeProperty, GUIContent.none, true);
+                EditorGUI.PropertyField(usageTypeProperty.hasChildren ? originalPosition : position, usageTypeProperty, GUIContent.none, true);
             }
             else
             {

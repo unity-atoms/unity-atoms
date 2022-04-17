@@ -270,6 +270,7 @@ namespace UnityAtoms.FSM
                 if (transition.TestCondition())
                 {
                     _currentTransition = transition;
+                    transition.Begin(this, EndCurrentTransition);
                     if (_transitionStarted != null)
                     {
                         _transitionStarted.Raise(
@@ -282,7 +283,6 @@ namespace UnityAtoms.FSM
                             }
                         );
                     }
-                    transition.Begin(this, EndCurrentTransition);
                 }
             }
             else

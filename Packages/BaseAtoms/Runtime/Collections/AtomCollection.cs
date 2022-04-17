@@ -53,6 +53,11 @@ namespace UnityAtoms.BaseAtoms
         void OnDisable()
         {
             if (Value == null) return;
+			
+			//Calling OnAfterDeserialize again here, as Collection may use StringConstant or StringVariable as key, and Unity doesnt ensures execution order in Scriptable Objects
+            // As such is possible that the Collection is called before its keys are ready to be used.
+            // On OnEnable, all atoms are supposed to already have been initialized, and calling OnAfterDeserialize, will fix any issue with not ready keys
+            Value.OnAfterDeserialize();
 
             Value.Added -= PropogateAdded;
             Value.Removed -= PropogateRemoved;
