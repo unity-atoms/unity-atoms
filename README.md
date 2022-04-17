@@ -115,5 +115,6 @@ For questions and support please join our [Discord channel](https://discord.gg/W
 -   [AdamRamberg](https://github.com/AdamRamberg)
 -   [soraphis](https://github.com/soraphis)
 -   [miikalo](https://github.com/miikalo)
+-   [ThimoDEV](https://github.com/ThimoDEV)
 
 We are looking for more people to join the team! Contact us if you want to jump aboard.
