@@ -60,10 +60,15 @@ namespace UnityAtoms
             }
         }
 
+#if UNITY_EDITOR
         public static StackTraceEntry Create(object obj, int skipFrames = 0) => AtomPreferences.IsDebugModeEnabled ? new StackTraceEntry(new StackTrace(skipFrames), obj) : null;
 
         public static StackTraceEntry Create(int skipFrames = 0) => AtomPreferences.IsDebugModeEnabled ? new StackTraceEntry(new StackTrace(skipFrames)) : null;
+#else
+        public static StackTraceEntry Create(object obj, int skipFrames = 0) => null;
 
+        public static StackTraceEntry Create(int skipFrames = 0) => null;
+#endif
 
         public override bool Equals(object obj) => Equals(obj as StackTraceEntry);
 
