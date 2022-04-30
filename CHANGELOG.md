@@ -6,6 +6,12 @@
 💅 = Polish
 🚀 = New features
 
+# 4.4.5 (April 30, 2022)
+
+## 🐛 Bug fixes
+
+-   [#348](https://github.com/unity-atoms/unity-atoms/pull/348) Fix conditional compilation for EDITOR only code that prevented building projects ([@soraphis](https://github.com/soraphis))
+
 # 4.4.4 (April 17, 2022)
 
 -   [@Casey-Hofland](https://github.com/Casey-Hofland) has left Unity Atoms as a maintainer. We wish Casey all the best and thank him for his contributions and help!
