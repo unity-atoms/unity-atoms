@@ -6,7 +6,7 @@
 💅 = Polish
 🚀 = New features
 
-# 4.4.5 (April 30, 2022)
+# 4.4.5 (May 9, 2022)
 
 ## 🐛 Bug fixes
 
