@@ -13,7 +13,7 @@ A great use for Mono Hooks in our example would allow us to remove the `Harmful.
 
 ![mono-hooks-trigger-2d](../assets/mono-hooks/trigger-2d.png)
 
-We could then create a Collider2DAction called `DecreasePlayersHealth.cs` and add it to a Collider2D Listener attached to the Harmful GameObject:
+We could then create a Collider2DAction called `DecreasePlayersHealth.cs` and add it to a Collider2D Event Reference Listener attached to the Harmful GameObject:
 
 ```cs
     public class DecreasePlayersHealth : Collider2DAction
