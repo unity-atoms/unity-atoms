@@ -31,7 +31,7 @@ namespace UnityAtoms.Editor
         {
             var type = Type.GetType($"{FullQualifiedName}");
             if (type == null) throw new TypeLoadException($"Type could not be found ({FullQualifiedName})");
-            var isValueTypeEquatable = type.GetInterfaces().Contains(typeof(IEquatable<>));
+            var isValueTypeEquatable = typeof(IEquatable<>).MakeGenericType(type).IsAssignableFrom(type);
 
             var baseTypeAccordingNested = type.FullName.Replace('+', '.');
 
