@@ -72,7 +72,9 @@ namespace UnityAtoms.Editor
 
             if (usageTypePropertyName == "_value")
             {
-                EditorGUI.PropertyField(usageTypeProperty.hasChildren ? originalPosition : position, usageTypeProperty, GUIContent.none, true);
+                var hasChildren = usageTypeProperty.hasChildren &&
+                    usageTypeProperty.propertyType == SerializedPropertyType.Generic;
+                EditorGUI.PropertyField(hasChildren ? originalPosition : position, usageTypeProperty, GUIContent.none, true);
             }
             else
             {
