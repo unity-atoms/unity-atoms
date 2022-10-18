@@ -156,11 +156,6 @@ namespace UnityAtoms
 #endif
         }
 
-        private void OnDisable()
-        {
-            if (_changedInstantiatedAtRuntime) _changed = null;
-            if (_changedWithHistoryInstantiatedAtRuntime) _changedWithHistory = null;
-        }
 
         /// <summary>
         /// Set initial values
