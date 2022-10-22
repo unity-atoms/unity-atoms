@@ -56,6 +56,7 @@ namespace UnityAtoms.Editor
             // Calculate rect for configuration button
             Rect buttonRect = new Rect(position);
             buttonRect.yMin += _popupStyle.margin.top;
+            buttonRect.yMax = buttonRect.yMin + EditorGUIUtility.singleLineHeight;
             buttonRect.width = _popupStyle.fixedWidth + _popupStyle.margin.right;
             position.xMin = buttonRect.xMax;
 
@@ -70,9 +71,14 @@ namespace UnityAtoms.Editor
             var usageTypePropertyName = GetUsages(property)[newUsageValue].PropertyName;
             var usageTypeProperty = property.FindPropertyRelative(usageTypePropertyName);
 
-            if (usageTypePropertyName == "_value")
+            var expanded = usageTypeProperty.isExpanded;
+            usageTypeProperty.isExpanded = true;
+            var valueFieldHeight = EditorGUI.GetPropertyHeight(usageTypeProperty, label);
+            usageTypeProperty.isExpanded = expanded;
+
+            if (usageTypePropertyName == "_value" && valueFieldHeight > EditorGUIUtility.singleLineHeight + 2)
             {
-                EditorGUI.PropertyField(usageTypeProperty.hasChildren ? originalPosition : position, usageTypeProperty, GUIContent.none, true);
+                EditorGUI.PropertyField(originalPosition, usageTypeProperty, GUIContent.none, true);
             }
             else
             {
