@@ -47,7 +47,6 @@ namespace UnityAtoms
         [SerializeField]
         [FormerlySerializedAs("Changed")]
         private E1 _changed;
-        private bool _changedInstantiatedAtRuntime;
         public E1 Changed
         {
             get
@@ -67,7 +66,6 @@ namespace UnityAtoms
         [SerializeField]
         [FormerlySerializedAs("ChangedWithHistory")]
         private E2 _changedWithHistory;
-        private bool _changedWithHistoryInstantiatedAtRuntime;
         public E2 ChangedWithHistory
         {
             get
@@ -164,9 +162,6 @@ namespace UnityAtoms
         {
             _oldValue = InitialValue;
             _value = InitialValue;
-
-            _changedInstantiatedAtRuntime = false;
-            _changedWithHistoryInstantiatedAtRuntime = false;
         }
 
         /// <summary>
@@ -183,7 +178,7 @@ namespace UnityAtoms
             }
             if (_triggerChangedWithHistoryOnOnEnable)
             {
-                if(ChangedWithHistory == null)
+                if (ChangedWithHistory == null)
                     GetOrCreateEvent<E2>();
 
                 var pair = default(P);
@@ -385,7 +380,6 @@ namespace UnityAtoms
                 {
                     _changed = ScriptableObject.CreateInstance<E1>();
                     _changed.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}ChangedEvent_Runtime_{typeof(E1)}";
-                    _changedInstantiatedAtRuntime = true;
                 }
 
                 return _changed as E;
@@ -396,7 +390,6 @@ namespace UnityAtoms
                 {
                     _changedWithHistory = ScriptableObject.CreateInstance<E2>();
                     _changedWithHistory.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
-                    _changedWithHistoryInstantiatedAtRuntime = true;
                 }
 
                 return _changedWithHistory as E;
