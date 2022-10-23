@@ -20,14 +20,15 @@ namespace UnityAtoms.Editor
             var inner = new SerializedObject(property.objectReferenceValue);
             var valueProp = inner.FindProperty("_value");
             Rect previewRect = new Rect(position);
-            previewRect.width = GetPreviewSpace(valueProp == null ? "" : valueProp.type);
+            previewRect.width = GetPreviewSpace(valueProp?.type);
             position.xMin = previewRect.xMax;
 
             int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
             EditorGUI.BeginDisabledGroup(true);
-            if(valueProp != null){
+            if (valueProp != null)
+            {
                 EditorGUI.PropertyField(previewRect, valueProp, GUIContent.none, false);
             }
             else
