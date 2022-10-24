@@ -28,6 +28,7 @@ namespace UnityAtoms.FSM
             {
                 ((FiniteStateMachine)_inMemoryCopy).CompleteCurrentTransition = Instantiate(((FiniteStateMachine)Base).CompleteCurrentTransition);
             }
+            base.ImplSpecificSetup();
         }
     }
 }
