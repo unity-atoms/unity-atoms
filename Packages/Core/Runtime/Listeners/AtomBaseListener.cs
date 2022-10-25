@@ -7,6 +7,7 @@ namespace UnityAtoms
     /// <summary>
     /// None generic base class for all Listeners.
     /// </summary>
+    [DefaultExecutionOrder(Runtime.ExecutionOrder.LISTENER_BASE)]
     public abstract class AtomBaseListener : MonoBehaviour
     {
         /// <summary>
@@ -28,6 +29,11 @@ namespace UnityAtoms
         where E : AtomEvent<T>
         where UER : UnityEvent<T>
     {
+        /// <summary>
+        /// The boolean to enable or disable this listeners replay event buffer.
+        /// </summary>
+        public bool ReplayEventBufferOnRegister { get { return _replayEventBufferOnRegister; } set { _replayEventBufferOnRegister = value; } }
+
         /// <summary>
         /// The Event we are listening for as a property.
         /// </summary>

@@ -8,9 +8,9 @@ namespace UnityAtoms
         private Action<Action<T>> _unregister;
         private List<IObserver<T>> _observers = new List<IObserver<T>>();
 
-        public ObservableEvent(Action<Action<T>> register, Action<Action<T>> unregister)
+        public ObservableEvent(Action<Action<T>, bool> register, Action<Action<T>> unregister)
         {
-            register(NotifyObservers);
+            register(NotifyObservers, true);
             _unregister = unregister;
         }
 

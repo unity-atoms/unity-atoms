@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -40,9 +40,31 @@ namespace UnityAtoms
             }
         }
 
+        public class IntPreference : Preference<int>
+        {
+            public override int Get()
+            {
+                if (!EditorPrefs.HasKey(Key))
+                {
+                    EditorPrefs.SetInt(Key, DefaultValue);
+                }
+
+                return EditorPrefs.GetInt(Key);
+            }
+
+            public override void Set(int value)
+            {
+                EditorPrefs.SetInt(Key, value);
+            }
+        }
+
         public static bool IsDebugModeEnabled { get => DEBUG_MODE_PREF.Get(); }
 
         private static BoolPreference DEBUG_MODE_PREF = new BoolPreference() { DefaultValue = false, Key = "UnityAtoms.DebugMode" };
+
+        public static int ReplayBufferSize { get => DEFAULT_BUFFER_SIZE_PREF.Get(); }
+
+        private static IntPreference DEFAULT_BUFFER_SIZE_PREF = new IntPreference() { DefaultValue = 0, Key = "UnityAtoms.ReplayBufferSize" };
 
 #if UNITY_2019_1_OR_NEWER
         [SettingsProvider]
@@ -88,6 +110,23 @@ namespace UnityAtoms
                     };
                     enableDebug.RegisterValueChangedCallback((changeEvt) => DEBUG_MODE_PREF.Set(changeEvt.newValue));
                     wrapper.Add(enableDebug);
+
+                    var replayBufferSize = new SliderInt()
+                    {
+#if UNITY_2020_2_OR_NEWER
+                        label = "Default replay buffer size",
+                        showInputField = true,
+#else
+                        label = "Default replay buffer size (1-10)",
+#endif
+                        highValue = 10,
+                        lowValue = 0,
+                        pageSize = 1,
+                        value = DEFAULT_BUFFER_SIZE_PREF.Get(),
+                        tooltip = "Set the default replay buffer size for each new created Event.",
+                    };
+                    replayBufferSize.RegisterValueChangedCallback((changeEvt) => DEFAULT_BUFFER_SIZE_PREF.Set(changeEvt.newValue));
+                    wrapper.Add(replayBufferSize);
 
                     rootElement.Add(wrapper);
                 },

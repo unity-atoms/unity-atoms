@@ -7,6 +7,7 @@ namespace UnityAtoms
     /// None generic base class for Variables. Inherits from `BaseAtom`.
     /// </summary>
     [EditorIcon("atom-icon-teal")]
+    [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_BASE)]
     public abstract class AtomBaseVariable : BaseAtom
     {
         public String Id { get => _id; set => _id = value; }
