@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.unity-atoms.unity-atoms-base-atoms": {
-      "version": "file:BaseAtoms",
+      "version": "file:com.unity-atoms.unity-atoms-base-atoms",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -11,7 +11,7 @@
       }
     },
     "com.unity-atoms.unity-atoms-core": {
-      "version": "file:Core",
+      "version": "file:com.unity-atoms.unity-atoms-core",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -19,7 +19,7 @@
       }
     },
     "com.unity-atoms.unity-atoms-fsm": {
-      "version": "file:FSM",
+      "version": "file:com.unity-atoms.unity-atoms-fsm",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -28,7 +28,7 @@
       }
     },
     "com.unity-atoms.unity-atoms-input-system": {
-      "version": "file:InputSystem",
+      "version": "file:com.unity-atoms.unity-atoms-input-system",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -38,7 +38,7 @@
       }
     },
     "com.unity-atoms.unity-atoms-mobile": {
-      "version": "file:Mobile",
+      "version": "file:com.unity-atoms.unity-atoms-mobile",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -47,7 +47,7 @@
       }
     },
     "com.unity-atoms.unity-atoms-mono-hooks": {
-      "version": "file:MonoHooks",
+      "version": "file:com.unity-atoms.unity-atoms-mono-hooks",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -57,7 +57,7 @@
       }
     },
     "com.unity-atoms.unity-atoms-scene-mgmt": {
-      "version": "file:SceneMgmt",
+      "version": "file:com.unity-atoms.unity-atoms-scene-mgmt",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -66,7 +66,7 @@
       }
     },
     "com.unity-atoms.unity-atoms-tags": {
-      "version": "file:Tags",
+      "version": "file:com.unity-atoms.unity-atoms-tags",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -75,7 +75,7 @@
       }
     },
     "com.unity-atoms.unity-atoms-ui": {
-      "version": "file:UI",
+      "version": "file:com.unity-atoms.unity-atoms-ui",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
