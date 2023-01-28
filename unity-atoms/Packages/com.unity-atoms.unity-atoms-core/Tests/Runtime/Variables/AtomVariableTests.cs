@@ -1,34 +1,21 @@
 using NUnit.Framework;
 using UnityAtoms;
+using UnityAtoms.BaseAtoms;
 using NSubstitute;
 using UnityEngine;
 using System;
-
-using ObjectVariable = UnityAtoms.AtomVariable<object, AtomVariableTests.ObjectPair, UnityAtoms.AtomEvent<object>, UnityAtoms.AtomEvent<AtomVariableTests.ObjectPair>, UnityAtoms.AtomFunction<object, object>>;
+using FluentAssertions;
 
 public class AtomVariableTests
 {
-    public struct ObjectPair : IPair<object>
-    {
-        public object Item1 { get => _item1; set => _item1 = value; }
-
-        public object Item2 { get => _item2; set => _item2 = value; }
-
-        [SerializeField]
-        private object _item1;
-        [SerializeField]
-        private object _item2;
-        public void Deconstruct(out object item1, out object item2) { item1 = Item1; item2 = Item2; }
-    }
-
     public class UnsupportedEvent : AtomEventBase { }
 
-    ObjectVariable _atomVariable;
+    TestObjectVariable _testObjectVariable;
 
     [SetUp]
     public void SetUp()
     {
-        _atomVariable = Substitute.For<ObjectVariable>();
+        _testObjectVariable = Substitute.For<TestObjectVariable>();
     }
 
     [Test]
@@ -36,24 +23,30 @@ public class AtomVariableTests
     {
         UnsupportedEvent _unsupportedEvent = ScriptableObject.CreateInstance<UnsupportedEvent>();
 
-        Assert.Throws<Exception>(() => _atomVariable.SetEvent(_unsupportedEvent));
+        Assert.Throws<Exception>(() => _testObjectVariable.SetEvent(_unsupportedEvent));
     }
 
     [Test]
     public void Sets_Changed_if_event_type_matches()
     {
-        var _event = Substitute.For<AtomEvent<object>>();
+        var _event = Substitute.For<TestObjectEvent>();
 
-        _atomVariable.SetEvent(_event);
-        Assert.AreEqual(_atomVariable.Changed, _event);
+        _testObjectVariable.SetEvent(_event);
+        Assert.AreEqual(_testObjectVariable.Changed, _event);
     }
 
     [Test]
     public void Sets_ChangedWithHistory_if_event_type_matches_pair_event()
     {
-        var _event = Substitute.For<AtomEvent<ObjectPair>>();
+        var _event = Substitute.For<TestObjectPairEvent>();
 
-        _atomVariable.SetEvent(_event);
-        Assert.AreEqual(_atomVariable.ChangedWithHistory, _event);
+        _testObjectVariable.SetEvent(_event);
+        Assert.AreEqual(_testObjectVariable.ChangedWithHistory, _event);
+    }
+
+    [Test]
+    public void SetValue_is_called_when_Value_is_set()
+    {
+
     }
 }
