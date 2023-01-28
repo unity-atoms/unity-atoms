@@ -5,7 +5,7 @@ using System.Linq;
 public class BaseAtomTests
 {
     [Test]
-    public void BaseAtom_has_searchable_attribute()
+    public void Has_AtomsSearchable_attribute()
     {
         var _attribute = typeof(BaseAtom).GetCustomAttributes(typeof(AtomsSearchable), true).FirstOrDefault() as AtomsSearchable;
 

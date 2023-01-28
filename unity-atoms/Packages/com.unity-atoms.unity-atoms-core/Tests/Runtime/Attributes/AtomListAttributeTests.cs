@@ -5,7 +5,7 @@ using NSubstitute;
 public class AtomListAttributeTests
 {
     [Test]
-    public void AtomListAttribute_assigns_correct_properties()
+    public void Assigns_correct_properties()
     {
         string _label = "label";
         string _childPropName = "childPropName";
