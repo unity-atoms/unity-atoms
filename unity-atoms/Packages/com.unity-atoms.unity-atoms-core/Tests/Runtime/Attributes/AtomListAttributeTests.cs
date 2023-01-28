@@ -7,6 +7,13 @@ public class AtomListAttributeTests
     [Test]
     public void AtomListAttribute_assigns_correct_properties()
     {
-        var _atomListAttribute = Substitute.For<AtomListAttribute>();
+        string _label = "label";
+        string _childPropName = "childPropName";
+        bool _includeChildrenForItems = false;
+        var _atomListAttribute = Substitute.For<AtomListAttribute>(_label, _childPropName, _includeChildrenForItems);
+
+        Assert.AreEqual(_atomListAttribute.Label, _label);
+        Assert.AreEqual(_atomListAttribute.ChildPropName, _childPropName);
+        Assert.AreEqual(_atomListAttribute.IncludeChildrenForItems, _includeChildrenForItems);
     }
 }
