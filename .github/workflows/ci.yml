@@ -1,7 +1,7 @@
 name: Continuous Integration
 
 on:
-  pull_request:
+  push:
     branches: [ master, canary, v5 ]
 
 jobs:
