@@ -1,0 +1,46 @@
+{
+  "name": "com.unity-atoms.unity-atoms",
+  "displayName": "Unity Atoms",
+  "version": "4.4.5",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unity-atoms/unity-atoms.git"
+  },
+  "unity": "2018.3",
+  "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
+  "keywords": [
+    "scriptable objects",
+    "unity"
+  ],
+  "category": "Unity",
+  "scripts": {
+    "publish:all": "npm run publish:core && npm run publish:mobile && npm run publish:scene && npm run publish:tags && npm run publish:ui && npm run publish:mono && npm run publish:base && npm run publish:fsm && npm run publish:input",
+    "publish:core": "npm publish ./Core",
+    "publish:fsm": "npm publish ./FSM",
+    "publish:base": "npm publish ./BaseAtoms",
+    "publish:mobile": "npm publish ./Mobile",
+    "publish:scene": "npm publish ./SceneMgmt",
+    "publish:tags": "npm publish ./Tags",
+    "publish:ui": "npm publish ./UI",
+    "publish:mono": "npm publish ./MonoHooks",
+    "publish:input": "npm publish ./InputSystem",
+    "generate:docs": "node scripts/generateDocs.js",
+    "generate:docs:verbose": "node scripts/generateDocs.js --verbose"
+  },
+  "files": [
+    "/LICENSE.md",
+    "/LICENSE.md.meta",
+    "/README.md",
+    "/README.md.meta",
+    "/package.json",
+    "/package.json.meta"
+  ],
+  "devDependencies": {
+    "rimraf": "^3.0.0",
+    "xml2js": "^0.4.22",
+    "yargs": "^14.2.0"
+  }
+}
