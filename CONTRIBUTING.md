@@ -4,50 +4,29 @@ Thanks for considering contributing to Unity Atoms ❤️ Read the guidelines be
 
 ## Project structure
 
-Unity Atoms is a [monorepo](https://en.wikipedia.org/wiki/Monorepo). Basically that means that there are several packages / projects contained in one repository.
+Unity Atoms is a [monorepo](https://en.wikipedia.org/wiki/Monorepo). Everything related to Unity Atoms (website, packages, Unity project...) is contained in one repository.
 
--   Packages - contains all the different packages
+-   unity-atoms - contains the Unity project for development and testing
+-   unity-atoms/Packages - contains all the different packages
+-   website - the website hosted on GitHub Pages
+-   docs - the tutorials and other pages hosted on the website
+-   scripts - any helper scripts
 
-### UPM doesn't allow...
+## Branches
 
--   importing a sub folder in a Git repo when depending on a package through a Git URL.
--   excluding files (using property "files" in package.json) when importing locally using the file syntax (eg. "com.unity-atoms.unity-atoms-core": "file:../../Packages/Core").
--   package.json in subdirectories (only root level)
+-   canary - development of Unity 2019 compatible changes
+-   v5 - development of Unity 2020+ compatible changes
+-   master - latest release of Unity Atoms
 
-### Current project structure therefore allows for...
+### Workflow
 
--   including an example repo for examples
--   use the local pacakges in the example repo
--   referencing this git repo in another project's manifest file
-
-### Smooth Workflow
-
-The github layout makes it difficult to contribute to Atoms from inside a Unity project. However, there are a few steps one can take to alleviate this issue.
-
-1.  Clone the atoms repository and place it where you want your Unity project to be.
-2.  Create a new Unity project (name it whatever, it won't matter) and wait for Unity to load.
-3.  Close Unity and drag all the files of your newly created Unity project inside your atoms repository.
-4.  Inside the Unity Hub, add the atoms repository to your Projects and open it.
-5.  Inside Unity, go to Edit > Preferences > External Tools. Toggle "Embedded Packages" and click the "Regenerate Project Files" button.
-
-You now have the atoms repository inside a Unity project and can easily make changes to it. However, this approach will lead to all kinds of changes in the repository you don't want to push (for example the Assets folder). So we will take a couple of extra steps to supress those.
-
-1.  Open your repository folder and enable hidden items to be shown (this may be dependant on your OS).
-2.  Go to .git > info > exclude.
-3.  Paste the following:
-```
-/[Aa]ssets/
-/[Ll]ogs/
-/[Pp]roject[Ss]ettings/
-/[Uu]ser[Ss]ettings/
-
-manifest.json
-packages-lock.json
-```
-
-Now your Atoms contributing experience will be as smooth as butter on ice.
-
-If you are still confused, you can also [watch this step-by-step](https://youtu.be/BV22qR921Sw) guide on how to set it up.
+1. Fork the project on GitHub
+1. Clone the fork on your local machine
+1. Create a local branch for your work
+1. Add the unity-atoms directory as a Unity project on Unity Hub
+1. Open the unity-atoms/Packages directory with any editor
+1. Make any necessary changes and test them in Unity
+1. Push your branch and create a pull request
 
 ## Style Guide
 
@@ -155,7 +134,10 @@ If you are doing updates that requires you to update all existing Atoms you can 
 
 ## Pull requests
 
-Pull requests should be made to the [canary branch](https://github.com/unity-atoms/unity-atoms/tree/canary).
+-   Pull requests for v4 (Unity 2019 compatible) should be made to the [canary branch](https://github.com/unity-atoms/unity-atoms/tree/canary).
+-   Pull requests for v5 (Unity 2020+ compatible) should be made to the [v5 branch](https://github.com/unity-atoms/unity-atoms/tree/v5).
+
+Do not target master in your pull request.
 
 ### Checklist before submitting a PR
 
