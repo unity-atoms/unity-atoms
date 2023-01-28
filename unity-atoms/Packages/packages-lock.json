@@ -14,7 +14,7 @@
       "dependencies": {
         "com.unity.modules.physics": "1.0.0",
         "com.unity.modules.physics2d": "1.0.0",
-        "com.unity-atoms.unity-atoms-core": "4.4.3"
+        "com.unity-atoms.unity-atoms-core": "4.4.5"
       }
     },
     "com.unity-atoms.unity-atoms-core": {
@@ -30,8 +30,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity-atoms.unity-atoms-core": "4.4.3",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.3"
+        "com.unity-atoms.unity-atoms-core": "4.4.5",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.5"
       }
     },
     "com.unity-atoms.unity-atoms-input-system": {
@@ -39,8 +39,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity-atoms.unity-atoms-core": "4.4.3",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.3",
+        "com.unity-atoms.unity-atoms-core": "4.4.5",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.5",
         "com.unity.inputsystem": "1.0.1"
       }
     },
@@ -49,8 +49,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity-atoms.unity-atoms-core": "4.4.3",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.3"
+        "com.unity-atoms.unity-atoms-core": "4.4.5",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.5"
       }
     },
     "com.unity-atoms.unity-atoms-mono-hooks": {
@@ -59,8 +59,8 @@
       "source": "embedded",
       "dependencies": {
         "com.unity.ugui": "1.0.0",
-        "com.unity-atoms.unity-atoms-core": "4.4.3",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.3"
+        "com.unity-atoms.unity-atoms-core": "4.4.5",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.5"
       }
     },
     "com.unity-atoms.unity-atoms-scene-mgmt": {
@@ -68,8 +68,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity-atoms.unity-atoms-core": "4.4.3",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.3"
+        "com.unity-atoms.unity-atoms-core": "4.4.5",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.5"
       }
     },
     "com.unity-atoms.unity-atoms-tags": {
@@ -77,8 +77,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity-atoms.unity-atoms-core": "4.4.3",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.3"
+        "com.unity-atoms.unity-atoms-core": "4.4.5",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.5"
       }
     },
     "com.unity-atoms.unity-atoms-ui": {
@@ -86,8 +86,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity-atoms.unity-atoms-core": "4.4.3",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.3"
+        "com.unity-atoms.unity-atoms-core": "4.4.5",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.5"
       }
     },
     "com.unity.ext.nunit": {
@@ -107,7 +107,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.14",
+      "version": "2.0.15",
       "depth": 0,
       "source": "registry",
       "dependencies": {
