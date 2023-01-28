@@ -10,12 +10,22 @@ public class AtomVariableTests
 {
     public class UnsupportedEvent : AtomEventBase { }
 
-    TestObjectVariable _testObjectVariable;
+    TestObjectVariable _substitute;
+    TestObjectVariable _real;
+    TestObjectEvent _event;
+    TestObjectPairEvent _eventPair;
+    TestObject _object;
+    bool _raiseWasCalled;
 
     [SetUp]
     public void SetUp()
     {
-        _testObjectVariable = Substitute.For<TestObjectVariable>();
+        _substitute = Substitute.For<TestObjectVariable>();
+        _real = ScriptableObject.CreateInstance<TestObjectVariable>();
+        _event = Substitute.For<TestObjectEvent>();
+        _eventPair = Substitute.For<TestObjectPairEvent>();
+        _object = new TestObject();
+        _raiseWasCalled = false;
     }
 
     [Test]
@@ -23,30 +33,54 @@ public class AtomVariableTests
     {
         UnsupportedEvent _unsupportedEvent = ScriptableObject.CreateInstance<UnsupportedEvent>();
 
-        Assert.Throws<Exception>(() => _testObjectVariable.SetEvent(_unsupportedEvent));
+        Assert.Throws<Exception>(() => _substitute.SetEvent(_unsupportedEvent));
     }
 
     [Test]
     public void Sets_Changed_if_event_type_matches()
     {
-        var _event = Substitute.For<TestObjectEvent>();
-
-        _testObjectVariable.SetEvent(_event);
-        Assert.AreEqual(_testObjectVariable.Changed, _event);
+        _substitute.SetEvent(_event);
+        Assert.AreEqual(_substitute.Changed, _event);
     }
 
     [Test]
     public void Sets_ChangedWithHistory_if_event_type_matches_pair_event()
     {
-        var _event = Substitute.For<TestObjectPairEvent>();
-
-        _testObjectVariable.SetEvent(_event);
-        Assert.AreEqual(_testObjectVariable.ChangedWithHistory, _event);
+        _substitute.SetEvent(_eventPair);
+        Assert.AreEqual(_substitute.ChangedWithHistory, _eventPair);
     }
 
     [Test]
-    public void SetValue_is_called_when_Value_is_set()
+    public void Changed_event_is_raised_when_SetValue_is_called()
     {
+        _event.Register(() => _raiseWasCalled = true);
+        _real.Changed = _event;
+        _real.SetValue(new TestObject());
 
+        Assert.IsTrue(_raiseWasCalled);
+    }
+
+    [Test]
+    public void Changed_event_is_not_raised_if_value_does_not_change()
+    {
+        _event.Register(() => _raiseWasCalled = true);
+        _real.Changed = _event;
+        _real.SetValue(_object);
+        _raiseWasCalled = false;
+        _real.SetValue(_object);
+
+        Assert.IsFalse(_raiseWasCalled);
+    }
+
+    [Test]
+    public void Changed_event_raised_if_value_does_not_change_and_forceEvent_is_true()
+    {
+        _event.Register(() => _raiseWasCalled = true);
+        _real.Changed = _event;
+        _real.SetValue(_object);
+        _raiseWasCalled = false;
+        _real.SetValue(_object, true);
+
+        Assert.IsTrue(_raiseWasCalled);
     }
 }
