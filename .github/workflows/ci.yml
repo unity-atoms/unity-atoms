@@ -8,6 +8,7 @@ jobs:
   testAllModes:
     name: Execute ${{ matrix.testMode }} tests
     runs-on: ubuntu-latest
+    environment: ci
     strategy:
       fail-fast: false
       matrix:
