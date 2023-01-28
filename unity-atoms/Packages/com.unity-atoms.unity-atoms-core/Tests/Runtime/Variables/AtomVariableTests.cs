@@ -34,7 +34,7 @@ public class AtomVariableTests
     [Test]
     public void Throws_Exception_when_unsupported_event_type_is_used()
     {
-        UnsupportedEvent _unsupportedEvent = new UnsupportedEvent();
+        UnsupportedEvent _unsupportedEvent = ScriptableObject.CreateInstance<UnsupportedEvent>();
 
         Assert.Throws<Exception>(() => _atomVariable.SetEvent(_unsupportedEvent));
     }
