@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.boundfoxstudios.fluentassertions": "5.10.3-r5",
     "com.unity.ide.rider": "1.1.4",
     "com.unity.ide.vscode": "1.2.3",
     "com.unity.test-framework": "1.1.30",
@@ -47,7 +48,8 @@
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
-        "net.tnrd.nsubstitute"
+        "net.tnrd.nsubstitute",
+        "com.boundfoxstudios.fluentassertions"
       ]
     }
   ]

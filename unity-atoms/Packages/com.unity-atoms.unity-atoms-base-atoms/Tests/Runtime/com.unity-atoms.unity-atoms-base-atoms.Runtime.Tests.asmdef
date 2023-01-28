@@ -4,7 +4,8 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "UnityAtoms.UnityAtomsCore.Runtime",
-        "UnityAtoms.UnityAtomsBaseAtoms.Runtime"
+        "UnityAtoms.UnityAtomsBaseAtoms.Runtime",
+        "BoundfoxStudios.FluentAssertions"
     ],
     "includePlatforms": [
         "Editor"
@@ -13,7 +14,10 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "nunit.framework.dll"
+        "nunit.framework.dll",
+        "Castle.Core.dll",
+        "NSubstitute.dll",
+        "System.Threading.Tasks.Extensions.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [

@@ -3,7 +3,8 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "UnityAtoms.UnityAtomsCore.Runtime"
+        "UnityAtoms.UnityAtomsCore.Runtime",
+        "BoundfoxStudios.FluentAssertions"
     ],
     "includePlatforms": [
         "Editor"

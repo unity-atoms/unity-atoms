@@ -25,6 +25,7 @@ MonoBehaviour:
     m_Url: https://package.openupm.com
     m_Scopes:
     - net.tnrd.nsubstitute
+    - com.boundfoxstudios.fluentassertions
     m_IsDefault: 0
   m_UserSelectedRegistryName: package.openupm.com
   m_UserAddingNewScopedRegistry: 0
@@ -36,10 +37,12 @@ MonoBehaviour:
       m_Url: https://package.openupm.com
       m_Scopes:
       - net.tnrd.nsubstitute
+      - com.boundfoxstudios.fluentassertions
       m_IsDefault: 0
     m_Modified: 0
     m_Name: package.openupm.com
     m_Url: https://package.openupm.com
     m_Scopes:
     - net.tnrd.nsubstitute
+    - com.boundfoxstudios.fluentassertions
     m_SelectedScopeIndex: 0

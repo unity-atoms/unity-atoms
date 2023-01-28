@@ -1,17 +1,14 @@
 using NUnit.Framework;
 using UnityAtoms;
-using System.Linq;
+using FluentAssertions;
 using NSubstitute;
-using System;
 
 public class AtomBaseVariableTests
 {
     [Test]
     public void Has_EditorIcon_attribute()
     {
-        var _attribute = typeof(AtomBaseVariable).GetCustomAttributes(typeof(EditorIcon), true).FirstOrDefault() as EditorIcon;
-
-        Assert.NotNull(_attribute);
+        typeof(AtomBaseVariable).Should().BeDecoratedWith<EditorIcon>();
     }
 
     [Test]
