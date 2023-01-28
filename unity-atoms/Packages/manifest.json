@@ -4,6 +4,7 @@
     "com.unity.ide.vscode": "1.2.3",
     "com.unity.test-framework": "1.1.30",
     "com.unity.ugui": "1.0.0",
+    "net.tnrd.nsubstitute": "4.2.2",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -40,5 +41,14 @@
     "com.unity-atoms.unity-atoms-core",
     "com.unity-atoms.unity-atoms-base-atoms",
     "com.unity-atoms.unity-atoms-tags"
+  ],
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "net.tnrd.nsubstitute"
+      ]
+    }
   ]
 }
