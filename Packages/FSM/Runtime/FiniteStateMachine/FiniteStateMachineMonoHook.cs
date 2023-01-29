@@ -14,6 +14,7 @@ namespace UnityAtoms.FSM
             {
                 GameObject go = new GameObject("FiniteStateMachineUpdateHook");
                 _instance = go.AddComponent<FiniteStateMachineMonoHook>();
+                DontDestroyOnLoad(go);
             }
 
             return _instance;
