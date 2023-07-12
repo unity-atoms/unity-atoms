@@ -11,8 +11,8 @@ namespace UnityAtoms.Editor
     public class AtomGenerator : ScriptableObject
     {
         [TextArea] public string FullQualifiedName;
-        public string Namespace;
-        public string BaseType;
+        public string Namespace => string.IsNullOrWhiteSpace(FullQualifiedName) ? "" : Type.GetType(FullQualifiedName)?.Namespace;
+        public string BaseType => string.IsNullOrWhiteSpace(FullQualifiedName) ? "" : Type.GetType(FullQualifiedName)?.Name;
 
         public int GenerationOptions;
 
