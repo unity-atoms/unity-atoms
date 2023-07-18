@@ -9,10 +9,6 @@ sidebar_label: FSM
 
 Finite state machine implemented using Unity Atoms.
 
-## API
-
-Check out the [API](../api/unityatoms.fsm).
-
 ## What is it?
 
 A finite state machine implementation for Unity Atoms. The package was inspired by [this](https://github.com/dubit/unity-fsm) open source Unity FSM repo. The FSM in Unity Atoms is actually derrived from `StringVariable`, so everything you can do with a `StringVariable` you can also do with a FSM.
