@@ -7,7 +7,7 @@ sidebar_label: Overview and Philosophy
 
 :::caution
 
-The following Content was written by Chat-GPT and only proofread by Soraphis
+The following Content was (mostly) written by Chat-GPT and only proofread by Soraphis
 
 :::
 
