@@ -245,7 +245,11 @@ namespace UnityAtoms.Editor
                         parent.AddChild(dropdownItem);
 
                         // Use Hash instead of id! If 2 AdvancedDropdownItems have the same name, they will generate the same id (stupid, I know). To ensure searching for a unique identifier, we use the hash instead.
-                        if (!idTypePairs.TryAdd(dropdownItem.GetHashCode(), type) && type.FullName != idTypePairs[dropdownItem.GetHashCode()].FullName)
+                        if(!idTypePairs.TryGetValue(dropdownItem.GetHashCode(), out var preExistingType))
+                        {
+                            idTypePairs.Add(dropdownItem.GetHashCode(), type);
+                        }
+                        else if(preExistingType.FullName != type.FullName) // type already exists, but it might be just the type itself (e.g. happens for me when using a ECS project)
                         {
                             Debug.LogError($"Could not add '{type.FullName}' to list, because it had a hash collision with: {idTypePairs[dropdownItem.GetHashCode()].FullName}");
                         }
