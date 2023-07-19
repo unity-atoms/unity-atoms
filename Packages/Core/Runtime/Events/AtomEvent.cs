@@ -67,6 +67,7 @@ namespace UnityAtoms
                 foreach (var instance in _instances)
                 {
                     instance._replayBuffer.Clear();
+                    instance.UnregisterAll();
                 }
             }
             else if (state == PlayModeStateChange.EnteredPlayMode)
@@ -74,6 +75,7 @@ namespace UnityAtoms
                 foreach (var instance in _instances)
                 {
                     instance._replayBuffer.Clear();
+                    instance.UnregisterAll();
                 }
             }
         }
@@ -82,14 +84,7 @@ namespace UnityAtoms
         private void OnDisable()
         {
             // Clear all delegates when exiting play mode
-            if (_onEvent != null)
-            {
-                var invocationList = _onEvent.GetInvocationList();
-                foreach (var d in invocationList)
-                {
-                    _onEvent -= (Action<T>)d;
-                }
-            }
+            UnregisterAll();
         }
 
         /// <summary>
