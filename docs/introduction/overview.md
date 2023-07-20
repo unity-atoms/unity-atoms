@@ -1,17 +1,17 @@
 ---
 id: overview
-title: Overview and philosopy
+title: Overview
 hide_title: true
-sidebar_label: Overview and philosopy
+sidebar_label: Overview
 ---
 
-# Overview and philosopy
+# Overview
 
-This chapter outlines the theoretical concepts behind Unity Atoms. This knowledge helps you better understand a new way of thinking about data and state in your project.
+This chapter provides an overview of the building blocks and concepts of Unity Atoms. This knowledge helps you better understand a new way of thinking about data and state in your project.
 
 ## Fundamentals
 
-Unity Atoms is an event based system that encourages the game to be as data-driven as possible. The four most fundamental parts of Unity Atoms are:
+Unity Atoms is an event based system that encourages the game to be as data-driven as possible. The five most fundamental parts of Unity Atoms are:
 
 -   Data
 -   Events

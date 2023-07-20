@@ -7,7 +7,7 @@ sidebar_label: Variables
 
 # Variables, Constants, and References
 
-Below follows a step-by-step example of managing a player's health using Unity Atoms. If you haven't read the [Creating Atoms](./creating-atoms.md) and [Overview and philosopy](../introduction/overview.md) section you should do that before proceeding.
+Below follows a step-by-step example of managing a player's health using Unity Atoms. If you haven't read the [Creating Atoms](./creating-atoms.md) and [Overview](../introduction/overview.md) section you should do that before proceeding.
 
 _NOTE: This tutorial is based on [this](https://medium.com/@adamramberg/unity-atoms-tiny-modular-pieces-utilizing-the-power-of-scriptable-objects-e8add1b95201) blog post. The blog post is based on a previous version of Unity Atoms and as such will vary in content and appearance. The ideas presented by the blog post still apply._ 
 

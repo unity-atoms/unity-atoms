@@ -2,7 +2,7 @@
 
 -   Introduction
     -   [Installation](./introduction/installation.md)
-    -   [Overview and philosopy](./introduction/overview.md)
+    -   [Overview](./introduction/overview.md)
     -   [Preferences](./introduction/preferences.md)
     -   [FAQ](./introduction/faq.md)
 -   Tutorials

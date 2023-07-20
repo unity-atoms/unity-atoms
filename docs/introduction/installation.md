@@ -101,4 +101,4 @@ To dive right in, create your first Atom using any of the available techniques m
 
 ## Learn more
 
-Go to [Overview and philosopy](./overview.md) to learn more about Unity Atoms and how to tune in to the correct mindset when using them.
+Go to [Overview](./overview.md) to learn more about Unity Atoms and how to tune in to the correct mindset when using them.
