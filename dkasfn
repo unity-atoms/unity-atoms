@@ -1,0 +1,261 @@
+*   [33m910922c[m[33m ([m[1;36mHEAD -> [m[1;32mThaungThanHan[m[33m, [m[1;31morigin/ThaungThanHan[m[33m)[m Merge branch 'ThaungThanHan' of https://github.com/ThaungThanHan/unity-atoms into ThaungThanHan
+[31m|[m[32m\[m  
+[31m|[m * [33m279307f[m Added OnTagAdded and OnTagRemoved event handlers
+[31m|[m * [33m5df498b[m Corrected docs/tutorials/mono-hooks.md to reference a Collider2D Event Reference Listener updated screenshot to match
+* [32m|[m [33me352903[m Added OnTagAdded and OnTagRemoved event handlers
+* [32m|[m [33m2f5ba12[m Corrected docs/tutorials/mono-hooks.md to reference a Collider2D Event Reference Listener updated screenshot to match
+[32m|[m [32m|[m * [33m06795bd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m Added OnTagAdded and OnTagRemoved event handlers
+[32m|[m [32m|[m * [33ma7b359e[m Corrected docs/tutorials/mono-hooks.md to reference a Collider2D Event Reference Listener updated screenshot to match
+[32m|[m [32m|[m[32m/[m  
+[32m|[m[32m/[m[32m|[m   
+* [32m|[m [33m62bc3c9[m[33m ([m[1;31mupstream/canary[m[33m)[m fix: Event Replay Buffer not cleared when domain reload disabled (#403)
+* [32m|[m [33mb225290[m FIX: Using TextField in AssetGenerator does not work as expected (#409)
+* [32m|[m [33mf75215a[m fix: SyncGameObjectToList adding object multiple times to list (#389)
+* [32m|[m [33mfb47175[m prevents FiniteStateMachineMonoHook singleton from being unloaded (#386)
+* [32m|[m [33m994026f[m Added input-system shield to README
+* [32m|[m [33md6d3fbb[m Call base impl of ImplSpecificSetup() in FSM instancer (#373)
+* [32m|[m [33m1d49809[m prevent null reference exceptions in editor when using not-serializab… (#371)
+* [32m|[m [33m9cf1b60[m fix: corrected IEquatable implementation check (#362)
+* [32m|[m [33mbc2a685[m fix: #363 enum property did not return int value, but index (#364)
+* [32m|[m [33mb457ac3[m removed ondisable method, to fix #349 (#369)
+* [32m|[m [33mb2e3024[m fix: #353 "Vector2/3 reference not properly showing" (#359)
+[32m|[m[32m/[m  
+* [33ma41a7f4[m Update release date of 4.4.5
+* [33m12515ae[m Update all version references to 4.4.5 (#350)
+* [33m4ee7155[m fix: conditional compilation for EDITOR only code
+* [33md4eb9cc[m Update release date of 4.4.4
+*   [33m47f3062[m Merge branch 'canary'
+[34m|[m[35m\[m  
+[34m|[m * [33m495e303[m Add ThimoDEV to the list of maintainers
+[34m|[m * [33m3b39e6a[m Prepare for release of 4.4.4 (#343)
+[34m|[m * [33m5c094f1[m [Removed] Debug mode logging
+[34m|[m * [33ma64ae84[m [Changed] NRE to Debug.Log
+[34m|[m * [33m46037ac[m fix #321 NRE when Event Reference Listeners event reference is not set
+[34m|[m * [33ma35e734[m Remove Casey-Hofland from list of maintainers
+[34m|[m * [33m9837fff[m fixing unnecessary allocations when debug mode disabled
+[34m|[m * [33maecaa73[m Fix hasChildren display in AtomReferences
+[34m|[m * [33m7c372e6[m Feature #293 changed private list variable to protected to support custom classes
+[34m|[m * [33m3aa06a7[m Fix ChangedOnOnEnable not triggered
+[34m|[m * [33mc810df6[m FiniteStateMachine not listening to Raise Event To Complete Transition #296
+[34m|[m * [33mb5b724f[m add missing scoped registry in install docs
+[34m|[m * [33ma724065[m fix #305 empty list of tagged objects throws NRE (#306)
+[34m|[m * [33m8c1d6f2[m fix #237 Drawer property value is null error
+[34m|[m * [33m902f971[m Remove extra underscore from ChangedHistoryEvent
+[34m|[m * [33m225b8f7[m Fix #255 AtomVariableInstancer assumes Base != null (#309)
+[34m|[m * [33m67833f3[m [Fixed] event refernce listener listening to old event
+[34m|[m * [33m1c0ebd0[m fix #254 ulong cast error
+[34m|[m * [33m7c86054[m fix #252 Removed duplicate function definition
+[34m|[m * [33ma7b3d7b[m fix #282 changed/changedwithhistory events not created when registered in code
+[34m|[m * [33ma7c9c69[m Fixed collection deserialization problem. (#300)
+[34m|[m * [33m7b29e15[m Revert "Use event references in mono hooks (#271)" (#287)
+[34m|[m * [33m25412ab[m Use event references in mono hooks (#271)
+[34m|[m * [33mc2dd137[m Fix conditions not serializing in Unity 2019 (#278)
+[34m|[m * [33me794dcf[m Fixed specifying package dependencies (#284)
+* [35m|[m [33mcdf7928[m Bump tar from 4.4.8 to 4.4.19 in /website
+* [35m|[m [33m53a9c65[m Bump lodash from 4.17.19 to 4.17.21 in /website
+* [35m|[m [33m3e9c88d[m Bump postcss from 7.0.18 to 7.0.39 in /website
+* [35m|[m [33m3da8fea[m Bump shelljs from 0.8.3 to 0.8.5 in /website
+* [35m|[m [33m277a8e3[m Bump url-parse from 1.4.7 to 1.5.7 in /website
+* [35m|[m [33mfa0ac43[m Bump ajv from 6.10.2 to 6.12.6 in /website
+* [35m|[m [33mbf52da0[m Workflow for acquiring Unity activation file
+[35m|[m[35m/[m  
+*   [33m7b6b843[m Merge branch 'canary'
+[36m|[m[1;31m\[m  
+[36m|[m * [33mcfb92f5[m fix #279 Update link in UniRx tutorial (#280)
+[36m|[m * [33mc7136d2[m Updated documentation and tutorials (#267)
+[36m|[m * [33mcdbfa35[m Update CHANGELOG.md
+[36m|[m * [33m907cf70[m Speedup Atom Generation (#275)
+* [1;31m|[m [33mece64fe[m Update CONTRIBUTING.md
+[1;31m|[m[1;31m/[m  
+* [33m85bbaa0[m Add unnecessary .meta files to gitignore
+* [33mc79a974[m website fixes
+* [33m120a0b8[m 🧑‍🔬 v4.4.3
+* [33m989a262[m Update website URL in docs (#257)
+* [33m06fc87a[m compatibility with dynamic assemblies and different namespace/class conditions (#230)
+* [33m2f31db4[m Create button ease of use (#229)
+* [33m6727645[m Lazy stacktrace toString conversion (#238)
+* [33m58b5242[m fixing #240 - Value of a VariableInstancer in EditMode leads to NullRef (#241)
+* [33mdbe9777[m Revert "Bump highlight.js from 9.15.10 to 9.18.5 in /website (#244)" (#245)
+* [33m280a545[m Bump highlight.js from 9.15.10 to 9.18.5 in /website (#244)
+* [33m2ad1483[m Remove example project (moved to seperate repo)
+* [33ma6c7076[m Changes due to move to new organization
+* [33m584e673[m Fix the Discord link in the FAQ (#227)
+* [33mb1313d6[m Update README.md (#228)
+* [33ma443064[m 🍺 v4.4.2
+* [33m3c9bc21[m Fix ValueEquals for EquatableAtomVariable and EquatableAtomReference
+* [33md8b2b92[m 🍾 v4.4.1
+* [33m8417d67[m  #224 - Move Atoms Search back to its own sub menu. Having same sub path for both MenuItem and CreateAssetMenu is causing the menu to be removed.
+* [33mada6b56[m Fix publish:all script
+* [33m18b4565[m 🎅 v4.4.0
+* [33m21a588b[m Add OnCollisionHook and OnCollision2DHook (#221)
+* [33m7bdb2b7[m Trigger initial events for instancers (#220)
+* [33mef7fa62[m Fixing FSM instancer where _base always is null (#219)
+* [33ma503695[m Clear keys and values when clearing seriazlied dict (#218)
+* [33m3c74509[m Add AtomsSearchable attribute to indentify searchable atoms and apply to BaseAtom (#216)
+* [33m7356e78[m Move atom search menu item (#217)
+* [33mcede860[m Add tutorial for Conditions (#206)
+* [33mfcf0b2c[m Add FAQ with comparison to another framework (#207)
+* [33m9ca9ece[m Unity Atoms Input System Integration (#212)
+* [33mc552881[m Added for AtomReference a check to see if an Atom is actually assigned. (#202)
+* [33m8f6392c[m #52 Basic implementation of conditions for listeners (#191)
+* [33m53b350e[m Fixing #196 (EventReferenceListener null reference) (#199)
+* [33m77faff6[m  asset based atoms generation (#187)
+* [33m13086d0[m more clarity to installation process (#193)
+*   [33m831312f[m Merge pull request #201 from soraphis/canary-200-fix
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33mfa97e23[m fixing #200 (UnregisterAll for AtomEventBase) UnregisterAll did not unregister for listeners of OnEventNoValue.
+[1;32m|[m[1;32m/[m  
+* [33m5a0a29f[m Add workaround for "Enter Play Mode" feature to enable initial values (#182)
+* [33m1fe176b[m Added miikalo as a maintainer
+* [33md6688c2[m #154 adds a searchable menu for faster atom creation.  (#186)
+* [33m39e6867[m Bump prismjs from 1.17.1 to 1.21.0 in /website (#188)
+* [33m532008c[m #189 Restructure tutorials and add two new tutorials (#190)
+* [33m56803a8[m 🧞‍♀️ v4.3.0
+* [33m47286f4[m Creating new atom in current directory improvement (#184)
+* [33m0c1aaf7[m Bump lodash from 4.17.15 to 4.17.19 in /website (#181)
+* [33m4a8f9ba[m #180 - Minor style fix
+* [33mcf567e8[m Added StartCleared to ValueList (#180)
+* [33m0540add[m #179 - Fixes to AtomDrawer + FSM editor
+* [33mcd8cd63[m Default Value For Changed and ChangedWithHistory (#179)
+* [33me427ea9[m Fix Sub FSM Value Set issue (#178)
+* [33m3140fea[m Generator creates compilable code with type specific modifications (#169)
+* [33m1e2ea61[m Instancer improvements (#172)
+* [33m3ae6200[m Update AtomBaseReferenceDrawer.cs (#174)
+* [33m3bdd7bb[m Make IsUnityAtomsRepo OS agnostic (#168)
+* [33m9dd7f91[m 🐞v4.2.1
+* [33m46a526c[m - Fixed clear button handler for StackTraces - Fixed and rearranged StackTraces compiler flags
+* [33me3ed5b5[m Hacks to get docs generator working
+* [33m49f9ff3[m 🐝 v4.2.0
+* [33m74b1bb2[m Add #164 to changelog
+* [33m4278f71[m #164 - Does not work in Unity 2018.3
+* [33mf855767[m Changelog + assembly fixes
+* [33m70f8130[m Debug events by displaying stack traces for events (#159)
+* [33m1e8abc6[m #160 - Hook up OnFixedUpdate handler
+* [33m27959b9[m Fix bug where usage popup sometimes were hidden
+* [33mb2a838a[m #132 - Add GetEvent and SetEvent functions to AtomReference (#158)
+* [33m634b42a[m #131 - Added forceEvent parameter for SetValue function on AtomVariable (#157)
+* [33m4aa1f4a[m Fixing drawer for generated reference of complex struct type (#155)
+* [33m849ae95[m Add GetParent / GetValue extenstions for SerializedProperty
+* [33m2ac8a74[m Add the [Serializable] attribute in the doc (#152)
+* [33m2c17c47[m Update changelog
+* [33m5dfc5fe[m Fix code generation bug (#147)
+* [33mf3bf70b[m Removed duplicate check before adding an item to AtomValueList (#145)
+* [33m4a802d0[m Changes in GetEvent implementation to allow inheritance (#140)
+* [33ma0956cc[m Cleaning up CHANGELOG
+* [33m3666304[m Added inspector toggle for triggering Changed and ChangedWithHistory on OnEnable (#126)
+* [33ma54fbf9[m CHANGELOG + Unity 2019.3.10f1
+* [33mbec125f[m changed from Multiline to TextArea attribute (#128)
+* [33mce9e818[m More changelog updates for v4.1.0 💜
+* [33m2ff7cda[m Updated changelog for v4.1.0 💜
+* [33m4176aa4[m 💜 v4.1.0
+* [33m55d96c2[m #122 Add Event Refs for Collections and Lists (#123)
+* [33m76ba614[m Minior name changes in example + docs
+*   [33mce0082d[m Merge branch 'master' into canary
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33m96d703a[m Update README + CHANGELOG
+* [1;35m|[m [33m1bf2de2[m Update README + CHANGELOG
+* [1;35m|[m [33m5a2816e[m Fix typos (#120)
+[1;35m|[m[1;35m/[m  
+* [33m60a0c28[m Bump acorn from 7.1.0 to 7.1.1 in /website (#117)
+* [33m3c26513[m 🦹‍♂️ v4.0.2
+* [33mcb5f702[m Fixes to issues in v4.0.1
+* [33m342d533[m 🦸‍♂️ v4.0.1
+* [33m5ec125f[m Add editor folder to FSM pkg
+* [33me2bc533[m Fixes to CHANGELOG for v4.0.0
+* [33me2d16b2[m Website fixes for FSM
+*   [33m8c6abe1[m Merge branch 'v4' into canary
+[1;36m|[m[31m\[m  
+[1;36m|[m * [33mbbe496f[m 🦸‍♂️ v4.0.0
+[1;36m|[m * [33mf09e466[m FSM docs v1
+[1;36m|[m * [33m2642179[m Docs
+[1;36m|[m * [33m0e8f13b[m FSM docs
+[1;36m|[m * [33m4ba6bee[m Added some more docs
+[1;36m|[m * [33m4ad596d[m Rename functions correctly
+[1;36m|[m * [33m9fd64a1[m Move AtomListAttribute to core
+[1;36m|[m * [33m24831f5[m Docs added
+[1;36m|[m * [33m48ca635[m Add docs to example scripts
+[1;36m|[m * [33m25bd51f[m Document atoms in Examples
+[1;36m|[m * [33m698c18d[m Fix Variable with class type issues
+[1;36m|[m * [33m2eb4ced[m Rename example scene
+[1;36m|[m * [33m8c8833a[m Missing meta
+[1;36m|[m * [33m4b2f83e[m Rearranging scenes
+[1;36m|[m * [33mcacb2d1[m Correctly generate comments
+[1;36m|[m * [33mfdfcf03[m Remove sync functionality in variable instancers
+[1;36m|[m * [33m20db73a[m Move sync variable instancer to collection to its own MB
+[1;36m|[m * [33m42f2149[m Fix scenes
+[1;36m|[m * [33m60bfe01[m Add namespaces
+[1;36m|[m * [33ma90a336[m Finished example scene
+[1;36m|[m * [33m74bfaf7[m Example WIP + Variable ID
+[1;36m|[m * [33mf00c9be[m Demo scene wip
+[1;36m|[m * [33mc71fe4f[m Tweak
+[1;36m|[m * [33m9a8f749[m Fix timing issues
+[1;36m|[m * [33m90079f5[m Fix atomstag bug
+[1;36m|[m * [33me6ac211[m WIP
+[1;36m|[m * [33m68ac185[m Remove _base in FSM instancer
+[1;36m|[m * [33m616bca9[m Fix transition data event reference
+[1;36m|[m * [33me4c489c[m WIP
+[1;36m|[m * [33m42d97b8[m More WIP
+[1;36m|[m * [33m17fd35a[m Clean up WIP
+[1;36m|[m * [33m5d6e94a[m WIP
+[1;36m|[m * [33mdbe95e9[m WIP
+[1;36m|[m * [33mba583f8[m WIP FSM
+[1;36m|[m * [33mcb3486a[m Align base event reference listener
+[1;36m|[m * [33m769388c[m FSM pkg + Example WIP
+[1;36m|[m * [33m05d3549[m Re add accidently deleted stuff
+[1;36m|[m * [33m88ae9f8[m WIP
+[1;36m|[m * [33m06d8969[m Example WIP
+[1;36m|[m * [33mf8a73c1[m Set default to avoid compiler warnings
+[1;36m|[m * [33m254352f[m Add missing meta file for BaseAtoms
+[1;36m|[m * [33mf87d3e4[m Add blog posts to README
+[1;36m|[m * [33m818c0a2[m Align docs
+[1;36m|[m * [33mb4b8ad0[m Remove white spaces in Variable Instancers
+[1;36m|[m * [33m25cca2c[m Use Event Reference in MonoHooks
+[1;36m|[m * [33m15dd11a[m Fix example scenes
+[1;36m|[m * [33m44c2413[m Fix intro scene
+[1;36m|[m * [33m6f78cab[m Update docs + remove ds store
+[1;36m|[m * [33mc3bc592[m More WIP
+[1;36m|[m * [33m5d9f8dc[m WIP
+* [31m|[m   [33mbe02769[m Merge pull request #118 from Enderlook/canary
+[31m|[m[33m\[m [31m\[m  
+[31m|[m [33m|[m[31m/[m  
+[31m|[m[31m/[m[33m|[m   
+[31m|[m * [33mc4d1f20[m Fix typo
+[31m|[m[31m/[m  
+* [33m3613e32[m v3.0.0 🐉
+* [33m85f72ab[m Add AddComponentMenu to Variable Instancers
+* [33m81e35f1[m Add util actions to Variables (#115)
+* [33m6309943[m Replay subject (#114)
+* [33m7c4f92e[m Add constructor with value to Reference classes (#113)
+* [33mbeb7405[m Update Example project to 2019.3.1f1
+* [33md045434[m Fix ValueEquals in AtomVariable template
+* [33m8a6b8a9[m Added Variable Instancer, Event Reference, Atom Collection and Atom List (old Atom List renamed to Atom Value List) (#110)
+* [33m0a1fea4[m Fix variable equality issues (#111)
+* [33m9a9b72f[m Reactivate Generator function in Unity 2018.4. (#106)
+* [33med856be[m Fix indentation bug in variable drawer (#109)
+* [33m630d45b[m IsUnityAtomsRepo should never be settable (#108)
+* [33m9b027e2[m Added pre change transformers to Variables + Clamp Int / Float (#93)
+* [33m1772b75[m Update AtomVariable.cs
+* [33m0916c0a[m Fix screenshots method naming mistake
+* [33m90a505b[m v2.1.1 🤖
+* [33maf6cd06[m Update example project to Unity 2019.2.17f1
+* [33m82e78f5[m Fix Remove Tag from AtomTags and Fix Remove Tag Test (#102)
+* [33ma3db8f1[m docs: add installation options and badges for OpenUPM (#100)
+* [33md619146[m Unity v2018.4 Support (#98)
+* [33mb51de33[m v2.1.0 🚀
+* [33mbe6a479[m #84 parameterless atom listener (#86)
+* [33me0fa81b[m New feature -> New features
+* [33mcc63d65[m Name OnTriggerHook class properly. (#91)
+* [33m6c70a40[m Add items to the CHANGELOG
+* [33ma5641f6[m Variable and Constant Drawers show a preview value (#89)
+* [33m1dd2bae[m Better user guidance for working with AtomVariables (#70)
+*   [33m1c8964e[m Merge pull request #88 from IceTrooper/#87-fixed-bug-with-multiline-constant-value-in-atomreference
+[34m|[m[35m\[m  
+[34m|[m * [33m789c39d[m #87 bug fixed
+* [35m|[m [33m23a8873[m Changed AddComponentMenu names for Listeners/Hooks (#84)
+* [35m|[m   [33macf901e[m Merge branch 'canary'
+[36m|[m[1;31m\[m [35m\[m  
+[36m|[m * [35m|[m [33me7fe472[m Updated CHANGELOG.md
+[36m|[m * [35m|[m   [33me2faf2e[m Merge pull request #78 from Saso222/canary
+[36m|[m [35m|[m[1;33m\[m [35m\[m  
+[36m|[m [35m|[m [1;33m|[m[35m/[m  
+[36m|[m [35m|[m[35m/[m[1;33m|[m  
