@@ -17,8 +17,8 @@ namespace UnityAtoms.Tags
     public sealed class AtomTags : MonoBehaviour, ISerializationCallbackReceiver
     {
         // declaring events
-        public event Action<string> TagAdded;
-        public event Action<string> TagRemoved;
+        public AtomEventString OnTagAdded;
+        public AtomEventString OnTagRemoved;
         /// <summary>
         /// Get the tags associated with this GameObject as `StringConstants` in a `ReadOnlyList&lt;T&gt;`.
         /// </summary>
