@@ -87,6 +87,18 @@ The `Developer Description` is a text describing the Variable in order to docume
 
 `Changed` and `Changed With History` are explained in the [Events](./events.md) tutorial.
 
+## Clamp health changes
+
+Before we continue we can create a pre change transformer to clamp the `Health` between 0 and the value of `MaxHealth`. Go ahead and create an `ClampInt` function and rename it `ClampHealth`. Set min to 0 and max to `MaxHealth`. 
+
+![clamp-health](../assets/variables/clamp-health.png)
+
+Add it as a pre change transformer to the `Health` variable:
+
+![int-variable_clamp-health](../assets/variables/int-variable_clamp-health.png)
+
+The value of `Health` will now be clamped between 0 and the value of `MaxHealth`.
+
 ## Assigning Atoms
 
 Atoms can be assigned using the Unity Inspector. Assign the Atoms on the `PlayerHealth`  like this:
