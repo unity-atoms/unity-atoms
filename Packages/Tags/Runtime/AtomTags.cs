@@ -16,6 +16,9 @@ namespace UnityAtoms.Tags
     [AddComponentMenu("Unity Atoms/Tags")]
     public sealed class AtomTags : MonoBehaviour, ISerializationCallbackReceiver
     {
+        // declaring events
+        public event Action<string> TagAdded;
+        public event Action<string> TagRemoved;
         /// <summary>
         /// Get the tags associated with this GameObject as `StringConstants` in a `ReadOnlyList&lt;T&gt;`.
         /// </summary>
@@ -172,6 +175,9 @@ namespace UnityAtoms.Tags
             // Update static accessors:
             if (!TaggedGameObjects.ContainsKey(tag.Value)) TaggedGameObjects.Add(tag.Value, new List<GameObject>());
             TaggedGameObjects[tag.Value].Add(this.gameObject);
+
+            // Start TagAdded event
+            TagAdded?.Invoke(tag.Value);
         }
 
         /// <summary>
@@ -189,6 +195,10 @@ namespace UnityAtoms.Tags
             // Update static accessors:
             if (!TaggedGameObjects.ContainsKey(tag)) return; // this should never happen
             TaggedGameObjects[tag].Remove(this.gameObject);
+
+            // Start TagRemoved event
+            TagRemoved?.Invoke(tag);
+
         }
 
         /// <summary>
