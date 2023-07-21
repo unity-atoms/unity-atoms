@@ -2,12 +2,14 @@
 
 -   Introduction
     -   [Installation](./introduction/installation.md)
-    -   [Overview and philosopy](./introduction/overview.md)
+    -   [Philosophy](./introduction/philosophy.md)
+    -   [Overview](./introduction/overview.md)
     -   [Preferences](./introduction/preferences.md)
     -   [FAQ](./introduction/faq.md)
 -   Tutorials
     -   [Creating Atoms](./tutorials/creating-atoms.md)
     -   [Variables](./tutorials/variables.md)
+    -   [Variable Pre Change Transformers](./tutorials/variable-transformers.md)
     -   [Events](./tutorials/events.md)
     -   [Listeners](./tutorials/listeners.md)
     -   [Actions](./tutorials/actions.md)

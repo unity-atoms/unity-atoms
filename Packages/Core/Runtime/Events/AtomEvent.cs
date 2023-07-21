@@ -1,6 +1,9 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace UnityAtoms
@@ -35,17 +38,53 @@ namespace UnityAtoms
 
         private Queue<T> _replayBuffer = new Queue<T>();
 
+#if UNITY_EDITOR
+        /// <summary>
+        /// Set of all AtomVariable instances in editor.
+        /// </summary>
+        private static HashSet<AtomEvent<T>> _instances = new HashSet<AtomEvent<T>>();
+#endif
+
+        private void OnEnable()
+        {
+#if UNITY_EDITOR
+            if (EditorSettings.enterPlayModeOptionsEnabled)
+            {
+                _instances.Add(this);
+
+                EditorApplication.playModeStateChanged -= HandlePlayModeStateChange;
+                EditorApplication.playModeStateChanged += HandlePlayModeStateChange;
+            }
+#endif
+        }
+
+
+#if UNITY_EDITOR
+        private static void HandlePlayModeStateChange(PlayModeStateChange state)
+        {
+            if (state == PlayModeStateChange.ExitingEditMode)
+            {
+                foreach (var instance in _instances)
+                {
+                    instance._replayBuffer.Clear();
+                    instance.UnregisterAll();
+                }
+            }
+            else if (state == PlayModeStateChange.EnteredPlayMode)
+            {
+                foreach (var instance in _instances)
+                {
+                    instance._replayBuffer.Clear();
+                    instance.UnregisterAll();
+                }
+            }
+        }
+#endif
+
         private void OnDisable()
         {
             // Clear all delegates when exiting play mode
-            if (_onEvent != null)
-            {
-                var invocationList = _onEvent.GetInvocationList();
-                foreach (var d in invocationList)
-                {
-                    _onEvent -= (Action<T>)d;
-                }
-            }
+            UnregisterAll();
         }
 
         /// <summary>

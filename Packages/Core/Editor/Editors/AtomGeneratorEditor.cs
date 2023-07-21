@@ -16,8 +16,6 @@ namespace UnityAtoms.Editor
         private TypeSelectorDropdown typeSelectorDropdown;
 
         private SerializedProperty fullQualifiedName;
-        private SerializedProperty typeNamespace;
-        private SerializedProperty baseType;
         private SerializedProperty generatedOptions;
 
         private static bool safeSearch = true;
@@ -26,8 +24,6 @@ namespace UnityAtoms.Editor
         {
             // Find Properties.
             fullQualifiedName = serializedObject.FindProperty(nameof(AtomGenerator.FullQualifiedName));
-            typeNamespace = serializedObject.FindProperty(nameof(AtomGenerator.Namespace));
-            baseType = serializedObject.FindProperty(nameof(AtomGenerator.BaseType));
             generatedOptions = serializedObject.FindProperty(nameof(AtomGenerator.GenerationOptions));
 
             // Check if the current type is unsafe.
@@ -90,8 +86,6 @@ namespace UnityAtoms.Editor
                 serializedObject.Update();
 
                 fullQualifiedName.stringValue = selectedType.AssemblyQualifiedName;
-                typeNamespace.stringValue = selectedType.Namespace;
-                baseType.stringValue = selectedType.Name;
 
                 serializedObject.ApplyModifiedProperties();
             });
@@ -251,7 +245,14 @@ namespace UnityAtoms.Editor
                         parent.AddChild(dropdownItem);
 
                         // Use Hash instead of id! If 2 AdvancedDropdownItems have the same name, they will generate the same id (stupid, I know). To ensure searching for a unique identifier, we use the hash instead.
-                        idTypePairs.Add(dropdownItem.GetHashCode(), type);
+                        if(!idTypePairs.TryGetValue(dropdownItem.GetHashCode(), out var preExistingType))
+                        {
+                            idTypePairs.Add(dropdownItem.GetHashCode(), type);
+                        }
+                        else if(preExistingType.FullName != type.FullName) // type already exists, but it might be just the type itself (e.g. happens for me when using a ECS project)
+                        {
+                            Debug.LogError($"Could not add '{type.FullName}' to list, because it had a hash collision with: {idTypePairs[dropdownItem.GetHashCode()].FullName}");
+                        }
                     }
                 }
 

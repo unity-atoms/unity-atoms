@@ -14,8 +14,12 @@
         "sidebar_label": "Installation"
       },
       "introduction/overview": {
-        "title": "Overview and philosopy",
-        "sidebar_label": "Overview and philosopy"
+        "title": "Overview",
+        "sidebar_label": "Overview"
+      },
+      "introduction/philosophy": {
+        "title": "Philosophy",
+        "sidebar_label": "Philosophy"
       },
       "introduction/preferences": {
         "title": "Preferences",
@@ -99,6 +103,10 @@
       "tutorials/variable-instancer": {
         "title": "Variable Instancer",
         "sidebar_label": "Variable Instancer"
+      },
+      "tutorials/variable-transformers": {
+        "title": "Variable Pre Change Transformers",
+        "sidebar_label": "Variable Pre Change Transformers"
       },
       "tutorials/variables": {
         "title": "Variables",
