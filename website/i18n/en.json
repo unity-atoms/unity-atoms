@@ -5,70 +5,6 @@
     "previous": "Previous",
     "tagline": "Tiny modular pieces utilizing the power of Scriptable Objects",
     "docs": {
-      "api/unityatoms.baseatoms.editor": {
-        "title": "UnityAtoms.BaseAtoms.Editor",
-        "sidebar_label": "UnityAtoms.BaseAtoms.Editor"
-      },
-      "api/unityatoms.baseatoms": {
-        "title": "UnityAtoms.BaseAtoms",
-        "sidebar_label": "UnityAtoms.BaseAtoms"
-      },
-      "api/unityatoms.editor": {
-        "title": "UnityAtoms.Editor",
-        "sidebar_label": "UnityAtoms.Editor"
-      },
-      "api/unityatoms.fsm.editor": {
-        "title": "UnityAtoms.FSM.Editor",
-        "sidebar_label": "UnityAtoms.FSM.Editor"
-      },
-      "api/unityatoms.fsm": {
-        "title": "UnityAtoms.FSM",
-        "sidebar_label": "UnityAtoms.FSM"
-      },
-      "api/unityatoms.inputsystem.editor": {
-        "title": "UnityAtoms.InputSystem.Editor",
-        "sidebar_label": "UnityAtoms.InputSystem.Editor"
-      },
-      "api/unityatoms.inputsystem": {
-        "title": "UnityAtoms.InputSystem",
-        "sidebar_label": "UnityAtoms.InputSystem"
-      },
-      "api/unityatoms": {
-        "title": "UnityAtoms",
-        "sidebar_label": "UnityAtoms"
-      },
-      "api/unityatoms.mobile.editor": {
-        "title": "UnityAtoms.Mobile.Editor",
-        "sidebar_label": "UnityAtoms.Mobile.Editor"
-      },
-      "api/unityatoms.mobile": {
-        "title": "UnityAtoms.Mobile",
-        "sidebar_label": "UnityAtoms.Mobile"
-      },
-      "api/unityatoms.monohooks.editor": {
-        "title": "UnityAtoms.MonoHooks.Editor",
-        "sidebar_label": "UnityAtoms.MonoHooks.Editor"
-      },
-      "api/unityatoms.monohooks": {
-        "title": "UnityAtoms.MonoHooks",
-        "sidebar_label": "UnityAtoms.MonoHooks"
-      },
-      "api/unityatoms.scenemgmt.editor": {
-        "title": "UnityAtoms.SceneMgmt.Editor",
-        "sidebar_label": "UnityAtoms.SceneMgmt.Editor"
-      },
-      "api/unityatoms.scenemgmt": {
-        "title": "UnityAtoms.SceneMgmt",
-        "sidebar_label": "UnityAtoms.SceneMgmt"
-      },
-      "api/unityatoms.tags": {
-        "title": "UnityAtoms.Tags",
-        "sidebar_label": "UnityAtoms.Tags"
-      },
-      "api/unityatoms.ui": {
-        "title": "UnityAtoms.UI",
-        "sidebar_label": "UnityAtoms.UI"
-      },
       "introduction/faq": {
         "title": "FAQ",
         "sidebar_label": "FAQ"
@@ -179,13 +115,12 @@
     },
     "links": {
       "Installation": "Installation",
-      "API": "API",
+      "Tutorials": "Tutorials",
       "Github": "Github"
     },
     "categories": {
       "Introduction": "Introduction",
       "Tutorials": "Tutorials",
-      "API Reference": "API Reference",
       "Subpackages": "Subpackages"
     }
   },
