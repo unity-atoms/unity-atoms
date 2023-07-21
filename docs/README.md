@@ -9,7 +9,7 @@
 -   Tutorials
     -   [Creating Atoms](./tutorials/creating-atoms.md)
     -   [Variables](./tutorials/variables.md)
-    -   [Variables: PreChangeTransformers](./tutorials/variables-transformers.md)
+    -   [Variable Pre Change Transformers](./tutorials/variable-transformers.md)
     -   [Events](./tutorials/events.md)
     -   [Listeners](./tutorials/listeners.md)
     -   [Actions](./tutorials/actions.md)
