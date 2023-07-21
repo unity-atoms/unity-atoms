@@ -2,6 +2,7 @@
   "docs": {
     "Introduction": [
       "introduction/installation",
+      "introduction/philosophy",
       "introduction/overview",
       "introduction/preferences",
       "introduction/faq"
@@ -23,6 +24,7 @@
         "type": "subcategory",
         "label": "Intermediate",
         "ids": [
+          "tutorials/variable-transformers",
           "tutorials/variable-instancer",
           "tutorials/event-instancer",
           "tutorials/generator",
