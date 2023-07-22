@@ -8,6 +8,7 @@
 [![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-tags?label=tags&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-tags/)
 [![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-scene-mgmt?label=scene-mgmt&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-scene-mgmt/)
 [![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-ui?label=ui&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-ui/)
+[![openupm](https://img.shields.io/npm/v/com.unity-atoms.unity-atoms-input-system?label=input-system&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.unity-atoms.unity-atoms-input-system/)
 
 _Tiny modular pieces utilizing the power of Scriptable Objects_
 
@@ -56,15 +57,15 @@ Add the following to your `manifest.json` (which is located under your project l
     ],
     "dependencies": {
         ...
-        "com.unity-atoms.unity-atoms-core": "4.4.5",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.5",
-        "com.unity-atoms.unity-atoms-fsm": "4.4.5",
-        "com.unity-atoms.unity-atoms-mobile": "4.4.5",
-        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.5",
-        "com.unity-atoms.unity-atoms-tags": "4.4.5",
-        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.5",
-        "com.unity-atoms.unity-atoms-ui": "4.4.5",
-	    "com.unity-atoms.unity-atoms-input-system": "4.4.5",
+        "com.unity-atoms.unity-atoms-core": "4.4.6",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.6",
+        "com.unity-atoms.unity-atoms-fsm": "4.4.6",
+        "com.unity-atoms.unity-atoms-mobile": "4.4.6",
+        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.6",
+        "com.unity-atoms.unity-atoms-tags": "4.4.6",
+        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.6",
+        "com.unity-atoms.unity-atoms-ui": "4.4.6",
+	    "com.unity-atoms.unity-atoms-input-system": "4.4.6",
         ...
     }
 }

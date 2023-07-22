@@ -11,8 +11,8 @@ namespace UnityAtoms.Editor
     public class AtomGenerator : ScriptableObject
     {
         [TextArea] public string FullQualifiedName;
-        public string Namespace;
-        public string BaseType;
+        public string Namespace => string.IsNullOrWhiteSpace(FullQualifiedName) ? "" : Type.GetType(FullQualifiedName)?.Namespace;
+        public string BaseType => string.IsNullOrWhiteSpace(FullQualifiedName) ? "" : Type.GetType(FullQualifiedName)?.Name;
 
         public int GenerationOptions;
 
@@ -31,7 +31,7 @@ namespace UnityAtoms.Editor
         {
             var type = Type.GetType($"{FullQualifiedName}");
             if (type == null) throw new TypeLoadException($"Type could not be found ({FullQualifiedName})");
-            var isValueTypeEquatable = type.GetInterfaces().Contains(typeof(IEquatable<>));
+            var isValueTypeEquatable = typeof(IEquatable<>).MakeGenericType(type).IsAssignableFrom(type);
 
             var baseTypeAccordingNested = type.FullName.Replace('+', '.');
 

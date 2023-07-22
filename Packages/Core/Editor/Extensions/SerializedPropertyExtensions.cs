@@ -54,7 +54,7 @@ namespace UnityAtoms.Editor
                 case SerializedPropertyType.String: return property.stringValue;
                 case SerializedPropertyType.Color: return property.colorValue;
                 case SerializedPropertyType.LayerMask: return (LayerMask)property.intValue;
-                case SerializedPropertyType.Enum: return property.enumValueIndex;
+                case SerializedPropertyType.Enum: return property.intValue;
                 case SerializedPropertyType.Vector2: return property.vector2Value;
                 case SerializedPropertyType.Vector3: return property.vector3Value;
                 case SerializedPropertyType.Vector4: return property.vector4Value;

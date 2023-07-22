@@ -7,4 +7,4 @@ sidebar_label: Scene Mgmt
 
 # Unity Atoms / Scene Mgmt
 
-Unity Atoms to manage your scenes. See the [API](../api/unityatoms.scenemgmt) for more info.
+Unity Atoms to manage your scenes. 

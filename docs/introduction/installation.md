@@ -35,15 +35,15 @@ Add the following to your `manifest.json`:
     ],
     "dependencies": {
         ...
-        "com.unity-atoms.unity-atoms-core": "4.4.5",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.5",
-        "com.unity-atoms.unity-atoms-fsm": "4.4.5",
-        "com.unity-atoms.unity-atoms-mobile": "4.4.5",
-        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.5",
-        "com.unity-atoms.unity-atoms-tags": "4.4.5",
-        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.5",
-        "com.unity-atoms.unity-atoms-ui": "4.4.5",
-        "com.unity-atoms.unity-atoms-input-system": "4.4.5",
+        "com.unity-atoms.unity-atoms-core": "4.4.6",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.6",
+        "com.unity-atoms.unity-atoms-fsm": "4.4.6",
+        "com.unity-atoms.unity-atoms-mobile": "4.4.6",
+        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.6",
+        "com.unity-atoms.unity-atoms-tags": "4.4.6",
+        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.6",
+        "com.unity-atoms.unity-atoms-ui": "4.4.6",
+        "com.unity-atoms.unity-atoms-input-system": "4.4.6",
         ...
     }
 }
@@ -101,4 +101,4 @@ To dive right in, create your first Atom using any of the available techniques m
 
 ## Learn more
 
-Go to [Overview and philosopy](./overview.md) to learn more about Unity Atoms and how to tune in to the correct mindset when using them.
+Go to [overview ](./overview.md) to learn more about Unity Atoms and how to tune in to the correct mindset when using them.

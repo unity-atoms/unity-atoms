@@ -35,7 +35,10 @@ namespace UnityAtoms.Editor
                 }
             }
 
-            return EditorGUI.GetPropertyHeight(property.FindPropertyRelative(usageData.PropertyName), label);
+            var innerProperty = property.FindPropertyRelative(usageData.PropertyName);
+            return innerProperty == null ?
+                EditorGUIUtility.singleLineHeight :
+                EditorGUI.GetPropertyHeight(innerProperty, label);
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -56,6 +59,7 @@ namespace UnityAtoms.Editor
             // Calculate rect for configuration button
             Rect buttonRect = new Rect(position);
             buttonRect.yMin += _popupStyle.margin.top;
+            buttonRect.yMax = buttonRect.yMin + EditorGUIUtility.singleLineHeight;
             buttonRect.width = _popupStyle.fixedWidth + _popupStyle.margin.right;
             position.xMin = buttonRect.xMax;
 
@@ -70,15 +74,26 @@ namespace UnityAtoms.Editor
             var usageTypePropertyName = GetUsages(property)[newUsageValue].PropertyName;
             var usageTypeProperty = property.FindPropertyRelative(usageTypePropertyName);
 
-            if (usageTypePropertyName == "_value")
+            if (usageTypeProperty == null)
             {
-                EditorGUI.PropertyField(usageTypeProperty.hasChildren ? originalPosition : position, usageTypeProperty, GUIContent.none, true);
+                EditorGUI.LabelField(position, "[Non serialized value]");
             }
             else
             {
-                EditorGUI.PropertyField(position, usageTypeProperty, GUIContent.none);
-            }
+                var expanded = usageTypeProperty.isExpanded;
+                usageTypeProperty.isExpanded = true;
+                var valueFieldHeight = EditorGUI.GetPropertyHeight(usageTypeProperty, label);
+                usageTypeProperty.isExpanded = expanded;
 
+                if (usageTypePropertyName == "_value" && (valueFieldHeight > EditorGUIUtility.singleLineHeight + 2))
+                {
+                    EditorGUI.PropertyField(originalPosition, usageTypeProperty, GUIContent.none, true);
+                }
+                else
+                {
+                    EditorGUI.PropertyField(position, usageTypeProperty, GUIContent.none);
+                }
+            }
             if (EditorGUI.EndChangeCheck())
                 property.serializedObject.ApplyModifiedProperties();
 

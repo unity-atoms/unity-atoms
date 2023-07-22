@@ -6,6 +6,28 @@
 💅 = Polish
 🚀 = New features
 
+# 4.4.6 (July 22, 2023)
+
+## 🐛 Bug fixes
+-   [#359](https://github.com/unity-atoms/unity-atoms/pull/359) Vector2/3 reference not properly showing ([@soraphis](https://github.com/soraphis))
+-   [#369](https://github.com/unity-atoms/unity-atoms/pull/369) Removed OnDisable method, to fix #349 ([@soraphis](https://github.com/soraphis))
+-   [#364](https://github.com/unity-atoms/unity-atoms/pull/364) Fix: #363 enum property did not return int value, but index ([@soraphis](https://github.com/soraphis))
+-   [#362](https://github.com/unity-atoms/unity-atoms/pull/362) Fix: corrected IEquatable implementation check ([@soraphis](https://github.com/soraphis))
+-   [#371](https://github.com/unity-atoms/unity-atoms/pull/371) Prevent null reference exceptions in editor when using non-serializable types ([@soraphis](https://github.com/soraphis))
+-   [#373](https://github.com/unity-atoms/unity-atoms/pull/373) Call base impl of ImplSpecificSetup() in FSM instancer ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#386](https://github.com/unity-atoms/unity-atoms/pull/386) FiniteStateMachineMonoHook unload fix ([@soraphis](https://github.com/soraphis))
+-   [#389](https://github.com/unity-atoms/unity-atoms/pull/389) Fixes syncgameobjecttolist adding object multiple times  ([@soraphis](https://github.com/soraphis))
+-   [#409](https://github.com/unity-atoms/unity-atoms/pull/409) FIX: Using TextField in AssetGenerator does not work as expected ([@soraphis](https://github.com/soraphis))
+-   [#403](https://github.com/unity-atoms/unity-atoms/pull/403) fix: Event Replay Buffer not cleared when domain reload disabled ([@soraphis](https://github.com/soraphis))
+
+## 📝 Documentation
+-   [#413](https://github.com/unity-atoms/unity-atoms/pull/413) Adding Documentation ([@soraphis](https://github.com/soraphis) and [@AdamRamberg](https://github.com/AdamRamberg))
+-   [#411](https://github.com/unity-atoms/unity-atoms/pull/411) Remove generated API docs ([@AdamRamberg](https://github.com/AdamRamberg))
+
+## 💅 Polish
+-   [994026f](https://github.com/unity-atoms/unity-atoms/commit/994026fb7e74f0436c188f8e9c4e8050a4b2e639) Added input-system shield to README  ([@AdamRamberg](https://github.com/AdamRamberg))
+-   [#317](https://github.com/unity-atoms/unity-atoms/pull/317) Set event name suggestion on Variable Changed event creation ([@ThimoDEV](https://github.com/ThimoDEV))
+
 # 4.4.5 (May 9, 2022)
 
 ## 🐛 Bug fixes

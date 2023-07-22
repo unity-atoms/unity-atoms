@@ -1,7 +1,7 @@
 {
   "name": "com.unity-atoms.unity-atoms",
   "displayName": "Unity Atoms",
-  "version": "4.4.5",
+  "version": "4.4.6",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
@@ -26,9 +26,7 @@
     "publish:tags": "npm publish ./Packages/Tags",
     "publish:ui": "npm publish ./Packages/UI",
     "publish:mono": "npm publish ./Packages/MonoHooks",
-    "publish:input": "npm publish ./Packages/InputSystem",
-    "generate:docs": "node scripts/generateDocs.js",
-    "generate:docs:verbose": "node scripts/generateDocs.js --verbose"
+    "publish:input": "npm publish ./Packages/InputSystem"
   },
   "files": [
     "/LICENSE.md",
@@ -39,10 +37,5 @@
     "/package.json.meta",
     "/Packages",
     "/Packages.meta"
-  ],
-  "devDependencies": {
-    "rimraf": "^3.0.0",
-    "xml2js": "^0.4.22",
-    "yargs": "^14.2.0"
-  }
+  ]
 }

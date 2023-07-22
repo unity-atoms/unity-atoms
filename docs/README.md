@@ -2,12 +2,14 @@
 
 -   Introduction
     -   [Installation](./introduction/installation.md)
-    -   [Overview and philosopy](./introduction/overview.md)
+    -   [Philosophy](./introduction/philosophy.md)
+    -   [Overview](./introduction/overview.md)
     -   [Preferences](./introduction/preferences.md)
     -   [FAQ](./introduction/faq.md)
 -   Tutorials
     -   [Creating Atoms](./tutorials/creating-atoms.md)
     -   [Variables](./tutorials/variables.md)
+    -   [Variable Pre Change Transformers](./tutorials/variable-transformers.md)
     -   [Events](./tutorials/events.md)
     -   [Listeners](./tutorials/listeners.md)
     -   [Actions](./tutorials/actions.md)
@@ -18,21 +20,6 @@
     -   [Conditions](./tutorials/conditions.md)    
     -   [Advanced example](./tutorials/advanced-example.md)
     -   [Usage with UniRX](./tutorials/unirx.md)
--   API
-    -   [UnityAtoms](./api/unityatoms.md)
-    -   [UnityAtoms.Editor](./api/unityatoms.editor.md)
-    -   [UnityAtoms.BaseAtoms](./api/unityatoms.baseatoms.md)
-    -   [UnityAtoms.BaseAtoms.Editor](./api/unityatoms.baseatoms.editor.md)
-    -   [UnityAtoms.FSM](./api/unityatoms.fsm.md)
-    -   [UnityAtoms.FSM.Editor](./api/unityatoms.fsm.editor.md)
-    -   [UnityAtoms.InputSystem](./api/unityatoms.inputsystem.md)
-    -   [UnityAtoms.InputSystem.Editor](./api/unityatoms.inputsystem.editor.md)
-    -   [UnityAtoms.Mobile](./api/unityatoms.mobile.md)
-    -   [UnityAtoms.Mobile.Editor](./api/unityatoms.mobile.editor.md)
-    -   [UnityAtoms.MonoHooks](./api/unityatoms.monohooks.md)
-    -   [UnityAtoms.SceneMgmt](./api/unityatoms.scenemgmt.md)
-    -   [UnityAtoms.SceneMgmt.Editor](./api/unityatoms.scenemgmt.editor.md)
-    -   [UnityAtoms.Tags](./api/unityatoms.tags.md)
 -   Subpackages
     -   [BaseAtoms](./subpackages/base-atoms.md)
     -   [FSM](./subpackages/fsm.md)

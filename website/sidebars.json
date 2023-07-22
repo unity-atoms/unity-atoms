@@ -2,6 +2,7 @@
   "docs": {
     "Introduction": [
       "introduction/installation",
+      "introduction/philosophy",
       "introduction/overview",
       "introduction/preferences",
       "introduction/faq"
@@ -23,6 +24,7 @@
         "type": "subcategory",
         "label": "Intermediate",
         "ids": [
+          "tutorials/variable-transformers",
           "tutorials/variable-instancer",
           "tutorials/event-instancer",
           "tutorials/generator",
@@ -37,23 +39,6 @@
           "tutorials/unirx"
         ]
       }
-    ],
-    "API Reference": [
-      "api/unityatoms",
-      "api/unityatoms.editor",
-      "api/unityatoms.baseatoms",
-      "api/unityatoms.baseatoms.editor",
-      "api/unityatoms.fsm",
-      "api/unityatoms.fsm.editor",
-      "api/unityatoms.inputsystem",
-      "api/unityatoms.inputsystem.editor",
-      "api/unityatoms.mobile",
-      "api/unityatoms.mobile.editor",
-      "api/unityatoms.monohooks",
-      "api/unityatoms.scenemgmt",
-      "api/unityatoms.scenemgmt.editor",
-      "api/unityatoms.tags",
-      "api/unityatoms.ui"
     ],
     "Subpackages": [
       "subpackages/base-atoms",

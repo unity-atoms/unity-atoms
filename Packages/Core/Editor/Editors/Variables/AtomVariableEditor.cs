@@ -13,9 +13,26 @@ namespace UnityAtoms.Editor
     {
         private bool _lockedInitialValue = true;
         private bool _onEnableTriggerSectionVisible = true;
+
+        private void DrawPotentiallyUnserializablePropertyField(SerializedProperty property, bool drawWarningWhenUnserializable = false)
+        {
+            if (property == null)
+            {
+                if (drawWarningWhenUnserializable)
+                {
+                    EditorGUILayout.HelpBox("Can't display values because the type is not serializable! You can still use this type, but won't be able to show values in the Editor.", MessageType.Warning);
+                }
+            }
+            else
+            {
+                EditorGUILayout.PropertyField(property, true);
+            }
+        }
+
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
+
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
             EditorGUILayout.Space();
@@ -24,7 +41,7 @@ namespace UnityAtoms.Editor
 
             EditorGUILayout.BeginHorizontal();
             EditorGUI.BeginDisabledGroup(_lockedInitialValue && EditorApplication.isPlayingOrWillChangePlaymode);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_initialValue"), true);
+            DrawPotentiallyUnserializablePropertyField(serializedObject.FindProperty("_initialValue"), drawWarningWhenUnserializable: true);
             EditorGUI.EndDisabledGroup();
             if (EditorApplication.isPlaying)
             {
@@ -36,7 +53,7 @@ namespace UnityAtoms.Editor
             using (new EditorGUI.DisabledGroupScope(!EditorApplication.isPlaying))
             {
                 EditorGUI.BeginChangeCheck();
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("_value"), true);
+                DrawPotentiallyUnserializablePropertyField(serializedObject.FindProperty("_value"));
                 if (EditorGUI.EndChangeCheck() && target is AtomBaseVariable atomTarget)
                 {
                     try
@@ -48,8 +65,8 @@ namespace UnityAtoms.Editor
                         {
                             atomTarget.BaseValue = (double)(float)value;
                         }
-                        //Ulong is deserialized to System32 Int. 
-                        else if(typeof(T) == typeof(ulong))
+                        //Ulong is deserialized to System32 Int.
+                        else if (typeof(T) == typeof(ulong))
                         {
                             atomTarget.BaseValue = (ulong)(int)value;
                         }
@@ -71,7 +88,7 @@ namespace UnityAtoms.Editor
 
 
             EditorGUI.BeginDisabledGroup(true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_oldValue"), true);
+            DrawPotentiallyUnserializablePropertyField(serializedObject.FindProperty("_oldValue"));
             EditorGUI.EndDisabledGroup();
 
             const int raiseButtonWidth = 52;
