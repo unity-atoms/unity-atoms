@@ -154,18 +154,9 @@ namespace UnityAtoms.Editor
                         drawerData.UserClickedToCreateAtom = true;
                         EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
 
-                        if (property.GetParent() is BaseAtom abc)
-                        {
-                            var atomName = AtomNameUtils.CheckForDuplicateAtom(abc.name + AtomNameUtils.CleanPropertyName(property.name)
-                                + AtomNameUtils.FilterLastIndexOf(typeof(T).ToString(), "."));
-                            drawerData.NameOfNewAtom = atomName;
-                        }
-                        else
-                        {
-                            var atomName = AtomNameUtils.CheckForDuplicateAtom(AtomNameUtils.CleanPropertyName(property.name)
-                                + AtomNameUtils.FilterLastIndexOf(typeof(T).ToString(), "."));
-                            drawerData.NameOfNewAtom = atomName;
-                        }
+                        var baseAtomName = AtomNameUtils.CleanPropertyName(property.name) + typeof(T).Name;
+                        var atomName = property.GetParent() is BaseAtom parentAtom ? parentAtom.name + baseAtomName : baseAtomName;
+                        drawerData.NameOfNewAtom = AtomNameUtils.CreateUniqueName(atomName);
                     }
                 }
             }
