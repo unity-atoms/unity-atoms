@@ -151,10 +151,12 @@ namespace UnityAtoms.Editor
                 {
                     if (GUI.Button(restRect, "Create"))
                     {
-                        drawerData.NameOfNewAtom = "";
                         drawerData.UserClickedToCreateAtom = true;
-
                         EditorGUI.FocusTextInControl(NAMING_FIELD_CONTROL_NAME);
+
+                        var baseAtomName = AtomNameUtils.CleanPropertyName(property.name) + typeof(T).Name;
+                        var atomName = property.GetParent() is BaseAtom parentAtom ? parentAtom.name + baseAtomName : baseAtomName;
+                        drawerData.NameOfNewAtom = AtomNameUtils.CreateUniqueName(atomName);
                     }
                 }
             }
