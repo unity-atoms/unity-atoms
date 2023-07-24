@@ -62,7 +62,7 @@ namespace UnityAtoms
 #if UNITY_EDITOR
         private static void HandlePlayModeStateChange(PlayModeStateChange state)
         {
-            if (state == PlayModeStateChange.ExitingEditMode)
+            if (state == PlayModeStateChange.ExitingEditMode) // BEFORE any GO is initialized:
             {
                 foreach (var instance in _instances)
                 {
@@ -70,7 +70,7 @@ namespace UnityAtoms
                     instance.UnregisterAll();
                 }
             }
-            else if (state == PlayModeStateChange.EnteredPlayMode)
+            else if (state == PlayModeStateChange.EnteredEditMode) // AFTER Playmode stopped
             {
                 foreach (var instance in _instances)
                 {
