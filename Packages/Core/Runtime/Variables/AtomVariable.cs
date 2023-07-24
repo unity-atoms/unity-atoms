@@ -196,6 +196,11 @@ namespace UnityAtoms
             {
                 foreach (var instance in _instances)
                 {
+                    if (instance == null)
+                    {
+                        _instances.Remove(instance);
+                        continue;
+                    }
                     instance.SetInitialValues();
                 }
             }
@@ -203,6 +208,11 @@ namespace UnityAtoms
             {
                 foreach (var instance in _instances)
                 {
+                    if (instance == null)
+                    {
+                        _instances.Remove(instance);
+                        continue;
+                    }
                     instance.TriggerInitialEvents();
                 };
             }

@@ -66,6 +66,11 @@ namespace UnityAtoms
             {
                 foreach (var instance in _instances)
                 {
+                    if (instance == null)
+                    {
+                        _instances.Remove(instance);
+                        continue;
+                    }
                     instance._replayBuffer.Clear();
                     instance.UnregisterAll();
                 }
@@ -74,6 +79,11 @@ namespace UnityAtoms
             {
                 foreach (var instance in _instances)
                 {
+                    if (instance == null)
+                    {
+                        _instances.Remove(instance);
+                        continue;
+                    }
                     instance._replayBuffer.Clear();
                     instance.UnregisterAll();
                 }
