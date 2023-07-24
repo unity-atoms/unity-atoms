@@ -192,7 +192,7 @@ namespace UnityAtoms
 #if UNITY_EDITOR
         private static void HandlePlayModeStateChange(PlayModeStateChange state)
         {
-            if (state == PlayModeStateChange.ExitingEditMode)
+            if (state == PlayModeStateChange.ExitingEditMode)  // BEFORE any GO is initialized:
             {
                 foreach (var instance in _instances)
                 {
@@ -204,7 +204,7 @@ namespace UnityAtoms
                     instance.SetInitialValues();
                 }
             }
-            else if (state == PlayModeStateChange.EnteredPlayMode)
+            else if (state == PlayModeStateChange.EnteredPlayMode)  // within/end of the first frame
             {
                 foreach (var instance in _instances)
                 {
