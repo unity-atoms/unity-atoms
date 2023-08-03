@@ -76,6 +76,7 @@ namespace UnityAtoms
 
         private void OnDisable()
         {
+            _instances.Remove(this);
             // Clear all delegates when exiting play mode
             UnregisterAll();
         }

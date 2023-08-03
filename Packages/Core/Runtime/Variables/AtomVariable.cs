@@ -154,6 +154,10 @@ namespace UnityAtoms
 #endif
         }
 
+        private void OnDisable()
+        {
+            _instances.Remove(this);
+        }
 
         /// <summary>
         /// Set initial values
@@ -196,11 +200,6 @@ namespace UnityAtoms
             {
                 foreach (var instance in _instances)
                 {
-                    if (instance == null)
-                    {
-                        _instances.Remove(instance);
-                        continue;
-                    }
                     instance.SetInitialValues();
                 }
             }
@@ -208,11 +207,6 @@ namespace UnityAtoms
             {
                 foreach (var instance in _instances)
                 {
-                    if (instance == null)
-                    {
-                        _instances.Remove(instance);
-                        continue;
-                    }
                     instance.TriggerInitialEvents();
                 };
             }

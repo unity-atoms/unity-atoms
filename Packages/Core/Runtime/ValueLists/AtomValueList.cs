@@ -54,8 +54,9 @@ namespace UnityAtoms
         private static HashSet<AtomValueList<T, E>> _instances = new HashSet<AtomValueList<T, E>>();
 #endif
         
-        protected virtual void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
 #if UNITY_EDITOR
             if (EditorSettings.enterPlayModeOptionsEnabled)
             {
@@ -66,7 +67,12 @@ namespace UnityAtoms
             }
 #endif
         }
-        
+
+        private void OnDisable()
+        {
+            _instances.Remove(this);
+        }
+
 #if UNITY_EDITOR
         private static void HandlePlayModeStateChange(PlayModeStateChange state)
         {
