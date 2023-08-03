@@ -74,11 +74,6 @@ namespace UnityAtoms
             {
                 foreach (var instance in _instances)
                 {
-                    if (instance == null)
-                    {
-                        _instances.Remove(instance);
-                        continue;
-                    }
                     if(instance._startCleared) instance.list.Clear();
                     instance._initial = instance.list.ToList();
                 }
@@ -87,11 +82,6 @@ namespace UnityAtoms
             {                
                 foreach (var instance in _instances)
                 {
-                    if (instance == null) // might be for UnityEngine.Objects
-                    {
-                        _instances.Remove(instance);
-                        continue;
-                    }
                     instance.list = instance._initial;
                 }
             }
