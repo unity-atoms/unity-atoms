@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace UnityAtoms
@@ -42,6 +44,49 @@ namespace UnityAtoms
         [SerializeField]
         protected List<T> list = new List<T>();
 
+        private List<T> _initial;
+        
+        
+#if UNITY_EDITOR
+        /// <summary>
+        /// Set of all AtomVariable instances in editor.
+        /// </summary>
+        private static HashSet<AtomValueList<T, E>> _instances = new HashSet<AtomValueList<T, E>>();
+#endif
+        
+        protected virtual void OnEnable()
+        {
+#if UNITY_EDITOR
+            if (EditorSettings.enterPlayModeOptionsEnabled)
+            {
+                _instances.Add(this);
+
+                EditorApplication.playModeStateChanged -= HandlePlayModeStateChange;
+                EditorApplication.playModeStateChanged += HandlePlayModeStateChange;
+            }
+#endif
+        }
+        
+#if UNITY_EDITOR
+        private static void HandlePlayModeStateChange(PlayModeStateChange state)
+        {
+            if (state == PlayModeStateChange.ExitingEditMode) // BEFORE any GO is initialized:
+            {
+                foreach (var instance in _instances)
+                {
+                    if(instance._startCleared) instance.list.Clear();
+                    instance._initial = instance.list.ToList();
+                }
+            }
+            else if (state == PlayModeStateChange.EnteredEditMode) // AFTER Playmode stopped
+            {                
+                foreach (var instance in _instances)
+                {
+                    instance.list = instance._initial;
+                }
+            }
+        }
+#endif
         /// <summary>
         /// Add an item to the list.
         /// </summary>

@@ -62,15 +62,8 @@ namespace UnityAtoms
 #if UNITY_EDITOR
         private static void HandlePlayModeStateChange(PlayModeStateChange state)
         {
-            if (state == PlayModeStateChange.ExitingEditMode)
-            {
-                foreach (var instance in _instances)
-                {
-                    instance._replayBuffer.Clear();
-                    instance.UnregisterAll();
-                }
-            }
-            else if (state == PlayModeStateChange.EnteredPlayMode)
+            if (state == PlayModeStateChange.ExitingEditMode // BEFORE any GO is initialized:
+                || state == PlayModeStateChange.EnteredEditMode) // AFTER Playmode stopped
             {
                 foreach (var instance in _instances)
                 {
