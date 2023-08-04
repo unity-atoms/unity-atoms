@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityAtoms.BaseAtoms;
-using UnityAtoms;
 
 namespace UnityAtoms.FSM
 {
@@ -64,8 +63,10 @@ namespace UnityAtoms.FSM
         /// </summary>
         private string _currentFlatValue;
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable(); // handles resetting and initial values and all that.
+
             if (CompleteCurrentTransition != null && CompleteCurrentTransition.ReplayBufferSize > 0)
             {
                 Debug.LogWarning("The Complete Current Transition event had a replay buffer size great than 0, which would cause unwanted behaviour. Setting it to 0 in order to avoid unexpected behaviour.");

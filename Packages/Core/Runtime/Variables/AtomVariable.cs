@@ -138,7 +138,7 @@ namespace UnityAtoms
             _value = RunPreChangeTransformers(_value);
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             SetInitialValues();
             TriggerInitialEvents();

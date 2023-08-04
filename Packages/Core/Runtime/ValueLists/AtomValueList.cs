@@ -45,15 +45,15 @@ namespace UnityAtoms
         protected List<T> list = new List<T>();
 
         private List<T> _initial;
-        
-        
+
+
 #if UNITY_EDITOR
         /// <summary>
         /// Set of all AtomVariable instances in editor.
         /// </summary>
         private static HashSet<AtomValueList<T, E>> _instances = new HashSet<AtomValueList<T, E>>();
 #endif
-        
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -80,12 +80,12 @@ namespace UnityAtoms
             {
                 foreach (var instance in _instances)
                 {
-                    if(instance._startCleared) instance.list.Clear();
+                    if (instance._startCleared) instance.list.Clear();
                     instance._initial = instance.list.ToList();
                 }
             }
             else if (state == PlayModeStateChange.EnteredEditMode) // AFTER Playmode stopped
-            {                
+            {
                 foreach (var instance in _instances)
                 {
                     instance.list = instance._initial;
