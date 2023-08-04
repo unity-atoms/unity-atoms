@@ -154,6 +154,14 @@ namespace UnityAtoms
 #endif
         }
 
+        private void OnDisable()
+        {
+            // NOTE: This will not be called when deleting the Atom from the editor.
+            // Therefore, there might still be null instances, but even though not ideal,
+            // it should not cause any problems.
+            // More info: https://issuetracker.unity3d.com/issues/ondisable-and-ondestroy-methods-are-not-called-when-a-scriptableobject-is-deleted-manually-in-project-window 
+            _instances.Remove(this);
+        }
 
         /// <summary>
         /// Set initial values
