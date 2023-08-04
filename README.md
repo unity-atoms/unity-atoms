@@ -57,15 +57,15 @@ Add the following to your `manifest.json` (which is located under your project l
     ],
     "dependencies": {
         ...
-        "com.unity-atoms.unity-atoms-core": "4.4.6",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.4.6",
-        "com.unity-atoms.unity-atoms-fsm": "4.4.6",
-        "com.unity-atoms.unity-atoms-mobile": "4.4.6",
-        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.6",
-        "com.unity-atoms.unity-atoms-tags": "4.4.6",
-        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.6",
-        "com.unity-atoms.unity-atoms-ui": "4.4.6",
-	    "com.unity-atoms.unity-atoms-input-system": "4.4.6",
+        "com.unity-atoms.unity-atoms-core": "4.4.7",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.4.7",
+        "com.unity-atoms.unity-atoms-fsm": "4.4.7",
+        "com.unity-atoms.unity-atoms-mobile": "4.4.7",
+        "com.unity-atoms.unity-atoms-mono-hooks": "4.4.7",
+        "com.unity-atoms.unity-atoms-tags": "4.4.7",
+        "com.unity-atoms.unity-atoms-scene-mgmt": "4.4.7",
+        "com.unity-atoms.unity-atoms-ui": "4.4.7",
+	    "com.unity-atoms.unity-atoms-input-system": "4.4.7",
         ...
     }
 }

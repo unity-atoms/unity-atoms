@@ -6,6 +6,13 @@
 💅 = Polish
 🚀 = New features
 
+# 4.4.7 (August 4, 2023)
+
+## 🐛 Bug fixes
+-   [#422](https://github.com/unity-atoms/unity-atoms/pull/422) make FSM compatible with disabled domain reload ([@soraphis](https://github.com/soraphis))
+-   [#420](https://github.com/unity-atoms/unity-atoms/pull/420) AtomValueList disabled domain reload compatibility ([@soraphis](https://github.com/soraphis))
+-   [#421](https://github.com/unity-atoms/unity-atoms/pull/421) Handling dead references when resetting objects ([@soraphis](https://github.com/soraphis) and [@AdamRamberg](https://github.com/AdamRamberg))
+
 # 4.4.6 (July 22, 2023)
 
 ## 🐛 Bug fixes
