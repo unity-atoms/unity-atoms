@@ -13,3 +13,4 @@ _Here is a check list for publishing a new version:_
     -   [] Run `GIT_USER=<your-username> \ CURRENT_BRANCH=master \ npm run publish-gh-pages` to publish the website.
 -   [] Create a new release under `releases` on the Github repo.
 -   [] From the root run `npm run publish:all`. This is only possible for me (Adam Ramberg) at the moment. Will need to look into a solution for this.
+-   [] If master and canary have deviated, then checkout canary, run `git reset --hard master` and force push in order to make them idenctical. This ensures that the work on the next release can start from a clean slate.
