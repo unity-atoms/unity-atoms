@@ -6,6 +6,11 @@
 💅 = Polish
 🚀 = New features
 
+# 4.4.8 (August 8, 2023)
+
+## 🐛 Bug fixes
+-   [#425](https://github.com/unity-atoms/unity-atoms/pull/425) Fix "The name '_instances' does not exist in the current context" ([@AdamRamberg](https://github.com/AdamRamberg))
+
 # 4.4.7 (August 4, 2023)
 
 ## 🐛 Bug fixes
