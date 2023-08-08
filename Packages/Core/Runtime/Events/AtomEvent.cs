@@ -80,7 +80,9 @@ namespace UnityAtoms
             // Therefore, there might still be null instances, but even though not ideal,
             // it should not cause any problems.
             // More info: https://issuetracker.unity3d.com/issues/ondisable-and-ondestroy-methods-are-not-called-when-a-scriptableobject-is-deleted-manually-in-project-window
+#if UNITY_EDITOR
             _instances.Remove(this);
+#endif
             // Clear all delegates when exiting play mode
             UnregisterAll();
         }
