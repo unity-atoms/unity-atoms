@@ -87,12 +87,6 @@ namespace UnityAtoms.SceneMgmt
             {
                 /* Sadly its not easy to find which gameobject/component has this SceneField, at least not at this point */
                 Debug.LogError($"A scene [{_sceneName}] you used as reference has no valid build Index", _sceneAsset);
-                // Exit play mode - might be a bit too harsh?
-#if UNITY_2019_1_OR_NEWER
-                EditorApplication.ExitPlaymode();
-#else
-                EditorApplication.isPlaying = false;
-#endif
             }
 #endif
         }
