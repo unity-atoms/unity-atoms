@@ -11,6 +11,7 @@ namespace UnityAtoms
 
         public static void AddStackTrace(int id, StackTraceEntry stackTrace)
         {
+            if(stackTrace == null) return;
             if (AtomPreferences.IsDebugModeEnabled)
             {
                 GetStackTraces(id).Insert(0, stackTrace);
