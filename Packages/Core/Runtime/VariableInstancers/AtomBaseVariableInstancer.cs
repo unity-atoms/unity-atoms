@@ -4,6 +4,11 @@ using UnityEngine.Assertions;
 
 namespace UnityAtoms
 {
+    public abstract class AtomBaseVariableInstancer : MonoBehaviour
+    {
+        
+    }
+    
     /// <summary>
     /// A Variable Instancer is a MonoBehaviour that takes a variable as a base and creates an in memory copy of it OnEnable.
     /// This is handy when you want to use atoms for prefabs that are instantiated at runtime. Use together with AtomCollection to
@@ -17,7 +22,7 @@ namespace UnityAtoms
     /// <typeparam name="F">Function of type T => T</typeparam>
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomBaseVariableInstancer<T, V> : MonoBehaviour, IVariable<V>
+    public abstract class AtomBaseVariableInstancer<T, V> : AtomBaseVariableInstancer, IVariable<V>
         where V : AtomBaseVariable<T>
     {
         /// <summary>
@@ -25,6 +30,22 @@ namespace UnityAtoms
         /// </summary>
         public V Variable { get => _inMemoryCopy; }
 
+        public void SetSource(V variable)
+        {
+            _base = variable;
+            if (Application.isPlaying)
+            {
+                Debug.LogWarning("Setting the underlying variable of an instancers at runtime can result in hard to find issues. be careful.");
+                if (_inMemoryCopy != null)
+                {
+                    Destroy(_inMemoryCopy);
+                    _inMemoryCopy = null;
+                }
+                OnEnable();
+            }
+            
+        }
+        
         /// <summary>
         /// Getter for retrieving the value of the in memory runtime variable.
         /// </summary>

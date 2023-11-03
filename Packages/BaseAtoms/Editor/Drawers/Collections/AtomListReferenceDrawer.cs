@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// A custom property drawer for AtomListReference. Makes it possible to choose between a List or a List Instancer.
     /// </summary>
     [CustomPropertyDrawer(typeof(AtomListReference), true)]
-    public class AtomListReferenceDrawer : AtomBaseReferenceDrawer
+    public class AtomListReferenceDrawer : AtomBaseReferenceDrawer<AtomListInstancer>
     {
         protected class UsageList : UsageData
         {

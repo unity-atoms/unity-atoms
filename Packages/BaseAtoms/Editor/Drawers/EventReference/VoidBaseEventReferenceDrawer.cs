@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// A custom property drawer for Void BaseEventReferences. Makes it possible to choose between an Event, Event Instancer, Collection Cleared, List Cleared, Collection Instancer Cleared or List Instancer Cleared.
     /// </summary>
     [CustomPropertyDrawer(typeof(VoidBaseEventReference), true)]
-    public class VoidBaseEventReferenceDrawer : AtomBaseReferenceDrawer
+    public class VoidBaseEventReferenceDrawer : AtomBaseReferenceDrawer<VoidEventInstancer>
     {
         protected class UsageEvent : UsageData
         {

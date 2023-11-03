@@ -7,7 +7,7 @@ namespace UnityAtoms.Editor
     /// </summary>
 
     [CustomPropertyDrawer(typeof(AtomBaseReference), true)]
-    public class AtomReferenceDrawer : AtomBaseReferenceDrawer
+    public class AtomReferenceDrawer : AtomBaseReferenceDrawer<AtomBaseVariableInstancer>
     {
         protected class UsageValue : UsageData
         {

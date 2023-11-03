@@ -6,7 +6,7 @@ namespace UnityAtoms.Editor
     /// A custom property drawer for Event References. Makes it possible to choose between an Event, Event Instancer, Variable or a Variable Instancer.
     /// </summary>
     [CustomPropertyDrawer(typeof(AtomBaseEventReference), true)]
-    public class AtomEventReferenceDrawer : AtomBaseReferenceDrawer
+    public class AtomEventReferenceDrawer : AtomBaseReferenceDrawer<AtomEventInstancer>
     {
         protected class UsageEvent : UsageData
         {

@@ -7,7 +7,7 @@ namespace UnityAtoms.FSM.Editor
     /// A custom property drawer for FiniteStateMachineReference. Makes it possible to choose between a FSM or a FSM Instancer.
     /// </summary>
     [CustomPropertyDrawer(typeof(FiniteStateMachineReference), true)]
-    public class FiniteStateMachineReferenceDrawer : AtomBaseReferenceDrawer
+    public class FiniteStateMachineReferenceDrawer : AtomBaseReferenceDrawer<FiniteStateMachineInstancer>
     {
         protected class UsageFSM : UsageData
         {

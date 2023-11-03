@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// A custom property drawer for AtomCollectionReference. Makes it possible to choose between a Collection or a Collection Instancer.
     /// </summary>
     [CustomPropertyDrawer(typeof(AtomCollectionReference), true)]
-    public class AtomCollectionReferenceDrawer : AtomBaseReferenceDrawer
+    public class AtomCollectionReferenceDrawer : AtomBaseReferenceDrawer<AtomCollectionInstancer>
     {
         protected class UsageCollection : UsageData
         {

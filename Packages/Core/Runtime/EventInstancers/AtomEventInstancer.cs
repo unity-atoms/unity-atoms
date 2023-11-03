@@ -5,6 +5,11 @@ using UnityEngine.Assertions;
 namespace UnityAtoms
 {
 
+    public abstract class AtomEventInstancer : MonoBehaviour
+    {
+        
+    }
+    
     /// <summary>
     /// An Event Instancer is a MonoBehaviour that takes an Event as a base and creates an in memory copy of it on OnEnable.
     /// This is handy when you want to use Events for prefabs that are instantiated at runtime. 
@@ -13,7 +18,7 @@ namespace UnityAtoms
     /// <typeparam name="E">Event of type T.</typeparam>
     [EditorIcon("atom-icon-sign-blue")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomEventInstancer<T, E> : MonoBehaviour, IGetEvent, ISetEvent
+    public abstract class AtomEventInstancer<T, E> : AtomEventInstancer, IGetEvent, ISetEvent
         where E : AtomEvent<T>
     {
         public T InspectorRaiseValue { get => _inspectorRaiseValue; }

@@ -7,7 +7,7 @@ namespace UnityAtoms.BaseAtoms.Editor
     /// A custom property drawer for AtomBaseVariable BaseEventReferences. Makes it possible to choose between an Event, Event Instancer, Collection Added, Collection Removed, List Added, List Removed, Collection Instancer Added, Collection Instancer Removed, List Instancer Added or List Instancer Removed.
     /// </summary>
     [CustomPropertyDrawer(typeof(AtomBaseVariableBaseEventReference), true)]
-    public class AtomBaseVariableBaseEventReferenceDrawer : AtomBaseReferenceDrawer
+    public class AtomBaseVariableBaseEventReferenceDrawer : AtomBaseReferenceDrawer<AtomBaseVariableEventInstancer>
     {
         protected class UsageEvent : UsageData
         {

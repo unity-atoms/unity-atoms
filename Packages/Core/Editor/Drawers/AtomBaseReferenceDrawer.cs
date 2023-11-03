@@ -8,7 +8,8 @@ namespace UnityAtoms.Editor
     /// A custom property drawer for References (Events and regular). Makes it possible to reference a resources (Variable or Event) through multiple options.
     /// </summary>
 
-    public abstract class AtomBaseReferenceDrawer : PropertyDrawer
+    public abstract class AtomBaseReferenceDrawer<TInstancerType> : PropertyDrawer
+        where TInstancerType : MonoBehaviour
     {
         protected abstract class UsageData
         {
@@ -16,6 +17,7 @@ namespace UnityAtoms.Editor
             public abstract string PropertyName { get; }
             public abstract string DisplayName { get; }
         }
+        const string USAGE_PROPERTY_NAME = "_usage";
 
         protected abstract UsageData[] GetUsages(SerializedProperty prop = null);
 
@@ -24,7 +26,7 @@ namespace UnityAtoms.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            var usageIntVal = property.FindPropertyRelative("_usage").intValue;
+            var usageIntVal = property.FindPropertyRelative(USAGE_PROPERTY_NAME).intValue;
             var usageData = GetUsages(property)[0];
             for (var i = 0; i < GetUsages(property).Length; ++i)
             {
@@ -67,8 +69,9 @@ namespace UnityAtoms.Editor
             int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
-            var currentUsage = property.FindPropertyRelative("_usage");
+            var currentUsage = property.FindPropertyRelative(USAGE_PROPERTY_NAME);
             var newUsageValue = EditorGUI.Popup(buttonRect, currentUsage.intValue, GetPopupOptions(property), _popupStyle);
+            DetermineDragAndDropFieldReferenceType(position, property, ref newUsageValue);
             currentUsage.intValue = newUsageValue;
 
             var usageTypePropertyName = GetUsages(property)[newUsageValue].PropertyName;
@@ -100,5 +103,63 @@ namespace UnityAtoms.Editor
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
         }
+
+        #region Auto DragAndDrop UsageTypeDetection
+        private void DetermineDragAndDropFieldReferenceType(in Rect position, SerializedProperty property,
+            ref int newUsageValue)
+        {
+            EventType mouseEventType = Event.current.type;
+
+            if (mouseEventType != EventType.DragUpdated && mouseEventType != EventType.DragPerform)
+                return;
+
+            if (!IsMouseHoveringOverProperty(position))
+                return;
+
+            var draggedObjects = DragAndDrop.objectReferences;
+
+            if (draggedObjects.Length < 1)
+                return;
+
+            Object draggedObject = draggedObjects[0];
+
+            if (draggedObject is GameObject gameObject)
+                draggedObject = gameObject.GetComponent<TInstancerType>();
+
+            UpdateConfigurationOption(property, draggedObject, ref newUsageValue);
+        }
+
+        private void UpdateConfigurationOption(SerializedProperty property, Object draggedObject, ref int newUsageValue)
+        {
+            if (!draggedObject)
+                return;
+
+            var usages = GetUsages(property);
+
+            for (int index = 0; index < usages.Length; index++)
+            {
+                var usage = usages[index];
+                SerializedProperty fieldProperty = property.FindPropertyRelative(usage.PropertyName);
+                string draggedObjectType = draggedObject.GetType().Name;
+                string fieldPropertyType = fieldProperty.type.Replace("PPtr<$", "").Replace(">", "");
+
+                if (draggedObjectType == fieldPropertyType)
+                {
+                    newUsageValue = index;
+                    break;
+                }
+            }
+        }
+
+        private static bool IsMouseHoveringOverProperty(Rect rectPosition)
+        {
+            const int HEIGHT_OFFSET_TO_AVOID_OVERLAP = 1;
+            Rect controlRect = rectPosition;
+            controlRect.height -= HEIGHT_OFFSET_TO_AVOID_OVERLAP;
+
+            return controlRect.Contains(Event.current.mousePosition);
+        }
+        #endregion
+        
     }
 }
