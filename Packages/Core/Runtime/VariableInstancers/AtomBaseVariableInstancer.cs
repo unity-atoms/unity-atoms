@@ -30,22 +30,6 @@ namespace UnityAtoms
         /// </summary>
         public V Variable { get => _inMemoryCopy; }
 
-        public void SetSource(V variable)
-        {
-            _base = variable;
-            if (Application.isPlaying)
-            {
-                Debug.LogWarning("Setting the underlying variable of an instancers at runtime can result in hard to find issues. be careful.");
-                if (_inMemoryCopy != null)
-                {
-                    Destroy(_inMemoryCopy);
-                    _inMemoryCopy = null;
-                }
-                OnEnable();
-            }
-            
-        }
-        
         /// <summary>
         /// Getter for retrieving the value of the in memory runtime variable.
         /// </summary>
