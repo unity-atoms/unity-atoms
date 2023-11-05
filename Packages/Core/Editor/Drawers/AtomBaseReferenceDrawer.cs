@@ -40,9 +40,8 @@ namespace UnityAtoms.Editor
 
             using (var scope = new EditorGUI.PropertyScope(position, label, property))
             {
-                label = scope.content;
-                position = EditorGUI.PrefixLabel(position, label);
-                Rect buttonRect = new Rect(position);
+                guiData.Label = scope.content;
+                guiData.Position = EditorGUI.PrefixLabel(position, label);
                 // Store old indent level and set it to 0, the PrefixLabel takes care of it
                 int indent = EditorGUI.indentLevel;
                 EditorGUI.indentLevel = 0;
@@ -50,7 +49,7 @@ namespace UnityAtoms.Editor
                     EditorGUI.BeginChangeCheck();
                     {
                         DetermineDragAndDropFieldReferenceType(guiData);
-                        DrawConfigurationButton(buttonRect, ref guiData);
+                        DrawConfigurationButton(ref guiData);
                         string currentUsageTypePropertyName = GetUsages(guiData.Property)[GetUsageIndex(guiData.Property)].PropertyName;
                         DrawField(currentUsageTypePropertyName, guiData, originalPosition);
                     }
@@ -82,9 +81,9 @@ namespace UnityAtoms.Editor
                 EditorGUI.GetPropertyHeight(innerProperty, label);
         }
 
-        private void DrawConfigurationButton(Rect configurationButtonRect, ref GuiData guiData)
+        private void DrawConfigurationButton(ref GuiData guiData)
         {
-            Rect button = configurationButtonRect;
+            Rect button = new Rect(guiData.Position);
             button.yMin += _popupStyle.margin.top;
             button.yMax = button.yMin + EditorGUIUtility.singleLineHeight;
             button.width = _popupStyle.fixedWidth + _popupStyle.margin.right;
