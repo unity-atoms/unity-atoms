@@ -60,7 +60,7 @@ namespace UnityAtoms.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            var usageIntVal = property.FindPropertyRelative("_usage").intValue;
+            var usageIntVal = GetUsageIndex(property);
             var usageData = GetUsages(property)[0];
 
             for (int i = 0; i < GetUsages(property).Length; ++i)
@@ -124,12 +124,12 @@ namespace UnityAtoms.Editor
             }
         }
         
-        private void SetUsageIndex(SerializedProperty property, int index)
+        private static void SetUsageIndex(SerializedProperty property, int index)
         {
             property.FindPropertyRelative(USAGE_PROPERTY_NAME).intValue = index;
         }
         
-        private int GetUsageIndex(SerializedProperty property)
+        private static int GetUsageIndex(SerializedProperty property)
         {
             return property.FindPropertyRelative(USAGE_PROPERTY_NAME).intValue;
         }
