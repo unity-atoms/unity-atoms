@@ -7,7 +7,7 @@ namespace UnityAtoms.Editor
     /// <summary>
     /// A custom property drawer for References (Events and regular). Makes it possible to reference a resources (Variable or Event) through multiple options.
     /// </summary>
-    public abstract partial class AtomBaseReferenceDrawer : PropertyDrawer
+    public abstract class AtomBaseReferenceDrawer : PropertyDrawer
     {
         protected abstract class UsageData
         {
@@ -15,6 +15,8 @@ namespace UnityAtoms.Editor
             public abstract string PropertyName { get; }
             public abstract string DisplayName { get; }
         }
+        
+        private const string USAGE_PROPERTY_NAME = "_usage";
 
         protected abstract UsageData[] GetUsages(SerializedProperty prop = null);
 
@@ -37,8 +39,9 @@ namespace UnityAtoms.Editor
 
             Rect originalPosition = new Rect(position);
 
-            label = EditorGUI.BeginProperty(position, label, property);
+            using (var scope = new EditorGUI.PropertyScope(position, label, property))
             {
+                label = scope.content;
                 position = EditorGUI.PrefixLabel(position, label);
                 Rect buttonRect = new Rect(position);
                 // Store old indent level and set it to 0, the PrefixLabel takes care of it
@@ -47,12 +50,9 @@ namespace UnityAtoms.Editor
                 {
                     EditorGUI.BeginChangeCheck();
                     {
-                        string currentUsageTypePropertyName;
-                        UsageIndex usageIndex = UsageIndex.GetBy(guiData.Property);
-
                         DetermineDragAndDropFieldReferenceType(guiData);
                         DrawConfigurationButton(buttonRect, guiData);
-                        currentUsageTypePropertyName = GetUsages(guiData.Property)[usageIndex.Index].PropertyName;
+                        string currentUsageTypePropertyName = GetUsages(guiData.Property)[GetUsageIndex(guiData.Property)].PropertyName;
                         DrawField(currentUsageTypePropertyName, guiData, originalPosition);
                     }
                     if (EditorGUI.EndChangeCheck())
@@ -60,7 +60,6 @@ namespace UnityAtoms.Editor
                 }
                 EditorGUI.indentLevel = indent;
             }
-            EditorGUI.EndProperty();
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -92,9 +91,9 @@ namespace UnityAtoms.Editor
             button.width = _popupStyle.fixedWidth + _popupStyle.margin.right;
             guiData.Position.xMin = button.xMax;
 
-            var currentUsage = UsageIndex.GetBy(guiData.Property);
-            var newUsageValue = EditorGUI.Popup(button, currentUsage.Index, GetPopupOptions(guiData.Property), _popupStyle);
-            currentUsage.Index = newUsageValue;
+            var currentUsageIndex = GetUsageIndex(guiData.Property);
+            var newUsageValue = EditorGUI.Popup(button, currentUsageIndex, GetPopupOptions(guiData.Property), _popupStyle);
+            SetUsageIndex(guiData.Property, newUsageValue);
         }
 
         private static void DrawField(string usageTypePropertyName, GuiData guiData, Rect originalPosition)
@@ -128,7 +127,18 @@ namespace UnityAtoms.Editor
                 }
             }
         }
-
+        
+        private void SetUsageIndex(SerializedProperty property, int index)
+        {
+            property.FindPropertyRelative(USAGE_PROPERTY_NAME).intValue = index;
+        }
+        
+        private int GetUsageIndex(SerializedProperty property)
+        {
+            return property.FindPropertyRelative(USAGE_PROPERTY_NAME).intValue;
+        }
+        
+        
         #region Auto Drag And Drop Usage Type Detection
         private void DetermineDragAndDropFieldReferenceType(GuiData guiData)
         {
@@ -140,23 +150,26 @@ namespace UnityAtoms.Editor
             if (!IsMouseHoveringOverProperty(guiData.Position))
                 return;
 
-            var property = guiData.Property;
             var draggedObjects = DragAndDrop.objectReferences;
 
             if (draggedObjects.Length < 1)
                 return;
             
             Object draggedObject = draggedObjects[0];
-            
+
             if (draggedObject is GameObject gameObject)
-                draggedObject = gameObject.GetComponent<BaseAtomInstancer>();
-            
-            UpdateConfigurationOption(property, draggedObject);
+            {
+                object[] instancers = gameObject.GetComponents<IAtomInstancer>();
+
+                UpdateUsageConfigurationOption(guiData.Property, instancers);
+            }
+            else
+                UpdateUsageConfigurationOption(guiData.Property, draggedObject);
         }
         
-        private void UpdateConfigurationOption(SerializedProperty property, Object draggedObject)
+        private void UpdateUsageConfigurationOption(SerializedProperty property, params object[] draggedObjects)
         {
-            if (!draggedObject)
+            if (draggedObjects == null || draggedObjects.Length < 1)
                 return;
             
             var usages = GetUsages(property);
@@ -165,13 +178,17 @@ namespace UnityAtoms.Editor
             {
                 var usage = usages[index];
                 SerializedProperty fieldProperty = property.FindPropertyRelative(usage.PropertyName);
-                string draggedObjectType = draggedObject.GetType().Name;
                 string fieldPropertyType = fieldProperty.type.Replace("PPtr<$", "").Replace(">", "");
 
-                if (draggedObjectType == fieldPropertyType)
+                foreach (object draggedObject in draggedObjects)
                 {
-                    UsageIndex.GetBy(property).Index = index;
-                    break;
+                    string draggedObjectType = draggedObject.GetType().Name;
+
+                    if (draggedObjectType == fieldPropertyType)
+                    {
+                        SetUsageIndex(property, index);
+                        return;
+                    }
                 }
             }
         }

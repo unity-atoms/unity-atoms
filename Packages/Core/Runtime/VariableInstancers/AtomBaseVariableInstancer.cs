@@ -17,7 +17,7 @@ namespace UnityAtoms
     /// <typeparam name="F">Function of type T => T</typeparam>
     [EditorIcon("atom-icon-hotpink")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomBaseVariableInstancer<T, V> : BaseAtomInstancer, IVariable<V>
+    public abstract class AtomBaseVariableInstancer<T, V> : MonoBehaviour, IVariable<V>, IAtomInstancer
         where V : AtomBaseVariable<T>
     {
         /// <summary>
