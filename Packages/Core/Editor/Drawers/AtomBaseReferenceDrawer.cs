@@ -36,8 +36,6 @@ namespace UnityAtoms.Editor
                 _popupStyle.imagePosition = ImagePosition.ImageOnly;
             }
 
-            Rect originalPosition = new Rect(position);
-
             using (var scope = new EditorGUI.PropertyScope(position, label, property))
             {
                 guiData.Label = scope.content;
@@ -50,8 +48,8 @@ namespace UnityAtoms.Editor
                     {
                         DetermineDragAndDropFieldReferenceType(guiData);
                         DrawConfigurationButton(ref guiData);
-                        string currentUsageTypePropertyName = GetUsages(guiData.Property)[GetUsageIndex(guiData.Property)].PropertyName;
-                        DrawField(currentUsageTypePropertyName, guiData, originalPosition);
+                        string currentUsageTypePropertyName = GetUsages(property)[GetUsageIndex(property)].PropertyName;
+                        DrawField(currentUsageTypePropertyName, guiData, position);
                     }
                     if (EditorGUI.EndChangeCheck())
                         property.serializedObject.ApplyModifiedProperties();
@@ -94,7 +92,7 @@ namespace UnityAtoms.Editor
             SetUsageIndex(guiData.Property, newUsageValue);
         }
 
-        private static void DrawField(string usageTypePropertyName, in GuiData guiData, Rect originalPosition)
+        private static void DrawField(string usageTypePropertyName, in GuiData guiData, in Rect originalPosition)
         {
             var usageTypeProperty = guiData.Property.FindPropertyRelative(usageTypePropertyName);
 
@@ -171,17 +169,17 @@ namespace UnityAtoms.Editor
                 return;
             
             var usages = GetUsages(property);
-
-            for (int index = 0; index < usages.Length; index++)
+            
+            foreach (object draggedObject in draggedObjects)
             {
-                var usage = usages[index];
-                SerializedProperty fieldProperty = property.FindPropertyRelative(usage.PropertyName);
-                string fieldPropertyType = fieldProperty.type.Replace("PPtr<$", "").Replace(">", "");
+                string draggedObjectType = draggedObject.GetType().Name;
 
-                foreach (object draggedObject in draggedObjects)
+                for (int index = 0; index < usages.Length; index++)
                 {
-                    string draggedObjectType = draggedObject.GetType().Name;
-
+                    var usage = usages[index];
+                    SerializedProperty fieldProperty = property.FindPropertyRelative(usage.PropertyName);
+                    string fieldPropertyType = fieldProperty.type.Replace("PPtr<$", "").Replace(">", "");
+                    
                     if (draggedObjectType == fieldPropertyType)
                     {
                         SetUsageIndex(property, index);
@@ -191,7 +189,7 @@ namespace UnityAtoms.Editor
             }
         }
         
-        private static bool IsMouseHoveringOverProperty(Rect rectPosition)
+        private static bool IsMouseHoveringOverProperty(in Rect rectPosition)
         {
             const int HEIGHT_OFFSET_TO_AVOID_OVERLAP = 1;
             Rect controlRect = rectPosition;
