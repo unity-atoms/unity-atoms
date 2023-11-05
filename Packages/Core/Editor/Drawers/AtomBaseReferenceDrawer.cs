@@ -15,7 +15,6 @@ namespace UnityAtoms.Editor
             public abstract string PropertyName { get; }
             public abstract string DisplayName { get; }
         }
-        
         private const string USAGE_PROPERTY_NAME = "_usage";
 
         protected abstract UsageData[] GetUsages(SerializedProperty prop = null);
@@ -51,7 +50,7 @@ namespace UnityAtoms.Editor
                     EditorGUI.BeginChangeCheck();
                     {
                         DetermineDragAndDropFieldReferenceType(guiData);
-                        DrawConfigurationButton(buttonRect, guiData);
+                        DrawConfigurationButton(buttonRect, ref guiData);
                         string currentUsageTypePropertyName = GetUsages(guiData.Property)[GetUsageIndex(guiData.Property)].PropertyName;
                         DrawField(currentUsageTypePropertyName, guiData, originalPosition);
                     }
@@ -83,7 +82,7 @@ namespace UnityAtoms.Editor
                 EditorGUI.GetPropertyHeight(innerProperty, label);
         }
 
-        private void DrawConfigurationButton(Rect configurationButtonRect, GuiData guiData)
+        private void DrawConfigurationButton(Rect configurationButtonRect, ref GuiData guiData)
         {
             Rect button = configurationButtonRect;
             button.yMin += _popupStyle.margin.top;
@@ -96,7 +95,7 @@ namespace UnityAtoms.Editor
             SetUsageIndex(guiData.Property, newUsageValue);
         }
 
-        private static void DrawField(string usageTypePropertyName, GuiData guiData, Rect originalPosition)
+        private static void DrawField(string usageTypePropertyName, in GuiData guiData, Rect originalPosition)
         {
             var usageTypeProperty = guiData.Property.FindPropertyRelative(usageTypePropertyName);
 
@@ -140,7 +139,7 @@ namespace UnityAtoms.Editor
         
         
         #region Auto Drag And Drop Usage Type Detection
-        private void DetermineDragAndDropFieldReferenceType(GuiData guiData)
+        private void DetermineDragAndDropFieldReferenceType(in GuiData guiData)
         {
             EventType mouseEventType = Event.current.type;
 
