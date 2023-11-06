@@ -170,7 +170,7 @@ namespace UnityAtoms.Editor
             
             var usages = GetUsages(property);
             int currentUsageIndex = GetUsageIndex(property);
-            int newUsageIndex = -1;
+            int newUsageIndex = currentUsageIndex;
             
             foreach (object draggedObject in draggedObjects)
             {
