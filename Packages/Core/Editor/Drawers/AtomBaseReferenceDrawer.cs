@@ -169,6 +169,8 @@ namespace UnityAtoms.Editor
                 return;
             
             var usages = GetUsages(property);
+            int currentUsageIndex = GetUsageIndex(property);
+            int newUsageIndex = -1;
             
             foreach (object draggedObject in draggedObjects)
             {
@@ -179,14 +181,25 @@ namespace UnityAtoms.Editor
                     var usage = usages[index];
                     SerializedProperty fieldProperty = property.FindPropertyRelative(usage.PropertyName);
                     string fieldPropertyType = fieldProperty.type.Replace("PPtr<$", "").Replace(">", "");
-                    
+
                     if (draggedObjectType == fieldPropertyType)
                     {
-                        SetUsageIndex(property, index);
-                        return;
+                        bool isUsageSetByUser = (currentUsageIndex == index);
+                        
+                        if (isUsageSetByUser)
+                            return;
+
+                        bool isNewUsageIndexSet = (newUsageIndex > -1);
+                        
+                        if (!isNewUsageIndexSet)
+                            newUsageIndex = index;
+                        
+                        break;
                     }
                 }
             }
+            
+            SetUsageIndex(property, newUsageIndex);
         }
         
         private static bool IsMouseHoveringOverProperty(in Rect rectPosition)
