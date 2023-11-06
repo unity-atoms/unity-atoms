@@ -170,7 +170,7 @@ namespace UnityAtoms.Editor
             
             var usages = GetUsages(property);
             int currentUsageIndex = GetUsageIndex(property);
-            int newUsageIndex = currentUsageIndex;
+            int newUsageIndex = -1;
             
             foreach (object draggedObject in draggedObjects)
             {
@@ -199,7 +199,8 @@ namespace UnityAtoms.Editor
                 }
             }
             
-            SetUsageIndex(property, newUsageIndex);
+            if (newUsageIndex > -1)
+                SetUsageIndex(property, newUsageIndex);
         }
         
         private static bool IsMouseHoveringOverProperty(in Rect rectPosition)
