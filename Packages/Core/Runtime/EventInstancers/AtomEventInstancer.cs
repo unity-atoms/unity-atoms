@@ -13,7 +13,7 @@ namespace UnityAtoms
     /// <typeparam name="E">Event of type T.</typeparam>
     [EditorIcon("atom-icon-sign-blue")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomEventInstancer<T, E> : MonoBehaviour, IGetEvent, ISetEvent
+    public abstract class AtomEventInstancer<T, E> : MonoBehaviour, IGetEvent, ISetEvent, IAtomInstancer
         where E : AtomEvent<T>
     {
         public T InspectorRaiseValue { get => _inspectorRaiseValue; }
