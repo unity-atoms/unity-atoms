@@ -79,7 +79,14 @@ namespace UnityAtoms.Editor
 
             var innerProperty = property.FindPropertyRelative(usageData.PropertyName);
 
-            return innerProperty == null ?
+            bool forceSingleLine = false;
+#if UNITY_2021_2_OR_NEWER
+            // This is needed for similar reasons as described in the comment in the DrawField method below.
+            // This is basically a hack to fix a bug on Unity's side, which we need to revert when / if Unity fix it on their side.
+            forceSingleLine = innerProperty != null && innerProperty.propertyType == SerializedPropertyType.Quaternion;
+#endif
+
+            return innerProperty == null || forceSingleLine ?
                 EditorGUIUtility.singleLineHeight :
                 EditorGUI.GetPropertyHeight(innerProperty, label);
         }
@@ -109,12 +116,16 @@ namespace UnityAtoms.Editor
             {
                 var expanded = usageTypeProperty.isExpanded;
                 usageTypeProperty.isExpanded = true;
+#if UNITY_2021_2_OR_NEWER
                 var valueFieldHeight = usageTypeProperty.propertyType == SerializedPropertyType.Quaternion ?
                     // In versions prior to 2022.3 GetPropertyHeight returns the wrong value for "SerializedPropertyType.Quaternion"
                     // In later versions, the fix is introduced _but only_ when using the SerializedPropertyType parameter, not when using the SerializedProperty parameter version.
                     // ALSO the SerializedPropertyType parameter version does not work with the isExpanded flag which we set to true exactly for this reason a (few) lines above.
                     EditorGUI.GetPropertyHeight(SerializedPropertyType.Vector3, guiData.Label) :
                     EditorGUI.GetPropertyHeight(usageTypeProperty, guiData.Label);
+#else
+                var valueFieldHeight = EditorGUI.GetPropertyHeight(usageTypeProperty, guiData.Label);
+#endif
 
                 usageTypeProperty.isExpanded = expanded;
 
