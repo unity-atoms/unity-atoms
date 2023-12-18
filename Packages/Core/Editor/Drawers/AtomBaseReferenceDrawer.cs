@@ -174,15 +174,13 @@ namespace UnityAtoms.Editor
             
             foreach (object draggedObject in draggedObjects)
             {
-                string draggedObjectType = draggedObject.GetType().Name;
-
                 for (int index = 0; index < usages.Length; index++)
                 {
                     var usage = usages[index];
-                    SerializedProperty fieldProperty = property.FindPropertyRelative(usage.PropertyName);
-                    string fieldPropertyType = fieldProperty.type.Replace("PPtr<$", "").Replace(">", "");
+                    var usageProperty = property.FindPropertyRelative(usage.PropertyName);
+                    bool isDraggedTypeEqualUsageType = IsEqualTypes(usageProperty, draggedObject);
 
-                    if (draggedObjectType == fieldPropertyType)
+                    if (isDraggedTypeEqualUsageType)
                     {
                         bool isUsageSetByUser = (currentUsageIndex == index);
                         
@@ -201,6 +199,21 @@ namespace UnityAtoms.Editor
             
             if (newUsageIndex > -1)
                 SetUsageIndex(property, newUsageIndex);
+        }
+
+        private static bool IsEqualTypes(SerializedProperty property, object otherObject)
+        {
+            string otherObjectTypeName = otherObject.GetType().Name;
+            string propertyObjectTypeName = GetPropertyTypeName(property);
+
+            return (otherObjectTypeName == propertyObjectTypeName);
+        }
+
+        private static string GetPropertyTypeName(SerializedProperty property)
+        {
+            string fieldPropertyType = property.type.Replace("PPtr<$", "").Replace(">", "");
+
+            return fieldPropertyType;
         }
         
         private static bool IsMouseHoveringOverProperty(in Rect rectPosition)
