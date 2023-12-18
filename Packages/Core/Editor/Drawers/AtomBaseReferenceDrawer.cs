@@ -79,7 +79,14 @@ namespace UnityAtoms.Editor
 
             var innerProperty = property.FindPropertyRelative(usageData.PropertyName);
 
-            return innerProperty == null ?
+            bool forceSingleLine = false;
+#if UNITY_2021_2_OR_NEWER
+            // This is needed for similar reasons as described in the comment in the DrawField method below.
+            // This is basically a hack to fix a bug on Unity's side, which we need to revert when / if Unity fix it on their side.
+            forceSingleLine = innerProperty != null && innerProperty.propertyType == SerializedPropertyType.Quaternion;
+#endif
+
+            return innerProperty == null || forceSingleLine ?
                 EditorGUIUtility.singleLineHeight :
                 EditorGUI.GetPropertyHeight(innerProperty, label);
         }
