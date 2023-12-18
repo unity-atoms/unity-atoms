@@ -24,16 +24,19 @@ namespace UnityAtoms.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            GuiData guiData = new GuiData() {
+            GuiData guiData = new GuiData()
+            {
                 Position = position,
                 Property = property,
                 Label = label
             };
-            
+
             if (_popupStyle == null)
             {
-                _popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
-                _popupStyle.imagePosition = ImagePosition.ImageOnly;
+                _popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"))
+                {
+                    imagePosition = ImagePosition.ImageOnly
+                };
             }
 
             using (var scope = new EditorGUI.PropertyScope(position, label, property))
@@ -52,7 +55,9 @@ namespace UnityAtoms.Editor
                         DrawField(currentUsageTypePropertyName, guiData, position);
                     }
                     if (EditorGUI.EndChangeCheck())
+                    {
                         property.serializedObject.ApplyModifiedProperties();
+                    }
                 }
                 EditorGUI.indentLevel = indent;
             }
@@ -104,13 +109,13 @@ namespace UnityAtoms.Editor
             {
                 var expanded = usageTypeProperty.isExpanded;
                 usageTypeProperty.isExpanded = true;
-                var valueFieldHeight = usageTypeProperty.propertyType switch {
+                var valueFieldHeight = usageTypeProperty.propertyType == SerializedPropertyType.Quaternion ?
                     // In versions prior to 2022.3 GetPropertyHeight returns the wrong value for "SerializedPropertyType.Quaternion"
                     // In later versions, the fix is introduced _but only_ when using the SerializedPropertyType parameter, not when using the SerializedProperty parameter version.
                     // ALSO the SerializedPropertyType parameter version does not work with the isExpanded flag which we set to true exactly for this reason a (few) lines above.
-                    SerializedPropertyType.Quaternion => EditorGUI.GetPropertyHeight(SerializedPropertyType.Vector3, guiData.Label),
-                    _ => EditorGUI.GetPropertyHeight(usageTypeProperty, guiData.Label),
-                };
+                    EditorGUI.GetPropertyHeight(SerializedPropertyType.Vector3, guiData.Label) :
+                    EditorGUI.GetPropertyHeight(usageTypeProperty, guiData.Label);
+
                 usageTypeProperty.isExpanded = expanded;
 
                 if (usageTypePropertyName == "_value" && (valueFieldHeight > EditorGUIUtility.singleLineHeight + 2))
@@ -123,105 +128,121 @@ namespace UnityAtoms.Editor
                 }
             }
         }
-        
+
         private static void SetUsageIndex(SerializedProperty property, int index)
         {
             property.FindPropertyRelative(USAGE_PROPERTY_NAME).intValue = index;
         }
-        
+
         private static int GetUsageIndex(SerializedProperty property)
         {
             return property.FindPropertyRelative(USAGE_PROPERTY_NAME).intValue;
         }
-        
-        
+
+
         #region Auto Drag And Drop Usage Type Detection
         private void DetermineDragAndDropFieldReferenceType(in GuiData guiData)
         {
             EventType mouseEventType = Event.current.type;
 
             if (mouseEventType != EventType.DragUpdated && mouseEventType != EventType.DragPerform)
+            {
                 return;
-            
+            }
+
             if (!IsMouseHoveringOverProperty(guiData.Position))
+            {
                 return;
+            }
 
             var draggedObjects = DragAndDrop.objectReferences;
-
             if (draggedObjects.Length < 1)
+            {
                 return;
-            
+            }
+
             Object draggedObject = draggedObjects[0];
 
             if (draggedObject is GameObject gameObject)
             {
                 object[] instancers = gameObject.GetComponents<IAtomInstancer>();
-
                 UpdateUsageConfigurationOption(guiData.Property, instancers);
             }
             else
+            {
                 UpdateUsageConfigurationOption(guiData.Property, draggedObject);
+            }
         }
-        
+
         private void UpdateUsageConfigurationOption(SerializedProperty property, params object[] draggedObjects)
         {
             if (draggedObjects == null || draggedObjects.Length < 1)
+            {
                 return;
-            
+            }
+
             var usages = GetUsages(property);
             int currentUsageIndex = GetUsageIndex(property);
             int newUsageIndex = -1;
-            
+
             foreach (object draggedObject in draggedObjects)
             {
                 for (int index = 0; index < usages.Length; index++)
                 {
                     var usage = usages[index];
                     var usageProperty = property.FindPropertyRelative(usage.PropertyName);
-                    bool isDraggedTypeEqualUsageType = IsEqualTypes(usageProperty, draggedObject);
+                    bool isDraggedTypeSameAsUsageType = AreTypesEqual(usageProperty, draggedObject);
 
-                    if (isDraggedTypeEqualUsageType)
+                    if (isDraggedTypeSameAsUsageType)
                     {
-                        bool isUsageSetByUser = (currentUsageIndex == index);
-                        
-                        if (isUsageSetByUser)
-                            return;
+                        bool isUsageSetByUser = currentUsageIndex == index;
 
-                        bool isNewUsageIndexSet = (newUsageIndex > -1);
-                        
+                        if (isUsageSetByUser)
+                        {
+                            return;
+                        }
+
+                        bool isNewUsageIndexSet = newUsageIndex > -1;
                         if (!isNewUsageIndexSet)
+                        {
                             newUsageIndex = index;
-                        
+                        }
+
                         break;
                     }
                 }
             }
-            
+
             if (newUsageIndex > -1)
+            {
                 SetUsageIndex(property, newUsageIndex);
+            }
         }
 
-        private static bool IsEqualTypes(SerializedProperty property, object otherObject)
+        private static bool AreTypesEqual(SerializedProperty property, object otherObject)
         {
             string otherObjectTypeName = otherObject.GetType().Name;
             string propertyObjectTypeName = GetPropertyTypeName(property);
-
-            return (otherObjectTypeName == propertyObjectTypeName);
+            return otherObjectTypeName == propertyObjectTypeName;
         }
 
+        private static readonly string PPTR_GENERIC_PREFIX = "PPtr<$";
         private static string GetPropertyTypeName(SerializedProperty property)
         {
-            string fieldPropertyType = property.type.Replace("PPtr<$", "").Replace(">", "");
-
-            return fieldPropertyType;
+            if (!property.type.StartsWith(PPTR_GENERIC_PREFIX))
+            {
+                return property.type;
+            }
+            string fieldPropertyType = property.type.Replace(PPTR_GENERIC_PREFIX, "");
+            return fieldPropertyType.Remove(fieldPropertyType.Length - 1);
         }
-        
+
         private static bool IsMouseHoveringOverProperty(in Rect rectPosition)
         {
             const int HEIGHT_OFFSET_TO_AVOID_OVERLAP = 1;
             Rect controlRect = rectPosition;
             controlRect.height -= HEIGHT_OFFSET_TO_AVOID_OVERLAP;
-            
+
             return controlRect.Contains(Event.current.mousePosition);
         }
         #endregion
