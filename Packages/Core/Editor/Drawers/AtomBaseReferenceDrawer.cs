@@ -109,12 +109,16 @@ namespace UnityAtoms.Editor
             {
                 var expanded = usageTypeProperty.isExpanded;
                 usageTypeProperty.isExpanded = true;
+#if UNITY_2021_2_OR_NEWER
                 var valueFieldHeight = usageTypeProperty.propertyType == SerializedPropertyType.Quaternion ?
                     // In versions prior to 2022.3 GetPropertyHeight returns the wrong value for "SerializedPropertyType.Quaternion"
                     // In later versions, the fix is introduced _but only_ when using the SerializedPropertyType parameter, not when using the SerializedProperty parameter version.
                     // ALSO the SerializedPropertyType parameter version does not work with the isExpanded flag which we set to true exactly for this reason a (few) lines above.
                     EditorGUI.GetPropertyHeight(SerializedPropertyType.Vector3, guiData.Label) :
                     EditorGUI.GetPropertyHeight(usageTypeProperty, guiData.Label);
+#else
+                var valueFieldHeight = EditorGUI.GetPropertyHeight(usageTypeProperty, guiData.Label);
+#endif
 
                 usageTypeProperty.isExpanded = expanded;
 
