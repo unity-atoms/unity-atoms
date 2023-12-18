@@ -25,7 +25,7 @@ namespace UnityAtoms.Editor
             }
             else
             {
-                // Quaternion property height is not handled correctly by Unity in versions
+                // Quaternion property height is not handled correctly by Unity in version
                 // 2021.2 and above. Taking that into account here.
 #if UNITY_2021_2_OR_NEWER
                 if (property.propertyType == SerializedPropertyType.Quaternion)
