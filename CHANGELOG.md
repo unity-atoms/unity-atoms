@@ -6,6 +6,18 @@
 💅 = Polish
 🚀 = New features
 
+# 4.5.0 (December 19, 2023)
+
+## 🐛 Bug fixes
+- [#437](https://github.com/unity-atoms/unity-atoms/pull/437) Fixing a Rendering issue of QuaternionReferenceDrawer ([@soraphis](https://github.com/soraphis))
+- [#447](https://github.com/unity-atoms/unity-atoms/pull/447) Fix value field height of Quaternions in reference drawer for older Unity versions ([@AdamRamberg](https://github.com/AdamRamberg))
+
+## 🏃‍♀ Performance
+- [#435](https://github.com/unity-atoms/unity-atoms/pull/435) Reduced debug overhead of Events ([@soraphis](https://github.com/soraphis))
+
+## 🚀 New features
+- [#440](https://github.com/unity-atoms/unity-atoms/pull/440) Auto drag and drop atom references through inspector without the need to manually switch usage type ([toasterhead-master](https://github.com/toasterhead-master))
+
 # 4.4.8 (August 8, 2023)
 
 ## 🐛 Bug fixes
