@@ -24,24 +24,31 @@ namespace UnityAtoms
 
         public class BoolPreference : Preference<bool>
         {
+            private bool? _cached = null;
             public override bool Get()
             {
+                if (_cached != null) return _cached.Value;
+                
                 if (!EditorPrefs.HasKey(Key))
                 {
                     EditorPrefs.SetBool(Key, DefaultValue);
+                    _cached = DefaultValue;
+                    return _cached.Value;
                 }
 
-                return EditorPrefs.GetBool(Key);
+                _cached = EditorPrefs.GetBool(Key);
+                return _cached.Value;
             }
 
             public override void Set(bool value)
             {
+                _cached = value;
                 EditorPrefs.SetBool(Key, value);
             }
         }
 
         public static bool IsDebugModeEnabled { get => DEBUG_MODE_PREF.Get(); }
-
+        
         private static BoolPreference DEBUG_MODE_PREF = new BoolPreference() { DefaultValue = false, Key = "UnityAtoms.DebugMode" };
 
 #if UNITY_2019_1_OR_NEWER
