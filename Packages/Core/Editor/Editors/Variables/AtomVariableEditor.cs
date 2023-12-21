@@ -25,7 +25,18 @@ namespace UnityAtoms.Editor
             }
             else
             {
-                EditorGUILayout.PropertyField(property, true);
+                // Quaternion property height is not handled correctly by Unity in version
+                // 2021.2 and above. Taking that into account here.
+#if UNITY_2021_2_OR_NEWER
+                if (property.propertyType == SerializedPropertyType.Quaternion)
+                {
+                    EditorGUILayout.PropertyField(property, false);
+                }
+                else
+#endif
+                {
+                    EditorGUILayout.PropertyField(property, true);
+                }
             }
         }
 

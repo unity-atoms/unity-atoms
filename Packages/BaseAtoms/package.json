@@ -1,7 +1,7 @@
 {
   "name": "com.unity-atoms.unity-atoms-base-atoms",
   "displayName": "Unity Atoms Base Atoms",
-  "version": "4.4.8",
+  "version": "4.5.0",
   "unity": "2018.3",
   "description": "Base set of Atoms based on Unity Atoms Core.",
   "keywords": [
@@ -22,6 +22,6 @@
   "dependencies": {
     "com.unity.modules.physics": "1.0.0",
     "com.unity.modules.physics2d": "1.0.0",
-    "com.unity-atoms.unity-atoms-core": "4.4.8"
+    "com.unity-atoms.unity-atoms-core": "4.5.0"
   }
 }
