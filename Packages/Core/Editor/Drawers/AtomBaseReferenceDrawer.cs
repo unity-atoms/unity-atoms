@@ -24,6 +24,8 @@ namespace UnityAtoms.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            Rect initialPosition = position;
+            
             if (_popupStyle == null)
             {
                 _popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"))
@@ -42,9 +44,9 @@ namespace UnityAtoms.Editor
                 {
                     EditorGUI.BeginChangeCheck();
                     {
-                        DetermineDragAndDropFieldReferenceType(property, position);
-                        DrawConfigurationButton(property, ref position);
-                        DrawField(property, label, position, initialPosition);
+                        DetermineDragAndDropFieldReferenceType(position, property);
+                        DrawConfigurationButton(ref position, property);
+                        DrawField(position, property, label, initialPosition);
                     }
                     if (EditorGUI.EndChangeCheck())
                     {
@@ -70,13 +72,20 @@ namespace UnityAtoms.Editor
             }
 
             var innerProperty = property.FindPropertyRelative(usageData.PropertyName);
+            bool forceSingleLine = false;
+            
+#if UNITY_2021_2_OR_NEWER
+            // This is needed for similar reasons as described in the comment in the DrawField method below.
+            // This is basically a hack to fix a bug on Unity's side, which we need to revert when / if Unity fix it on their side.
+            forceSingleLine = innerProperty != null && innerProperty.propertyType == SerializedPropertyType.Quaternion;
+#endif
 
-            return innerProperty == null ?
+            return innerProperty == null || forceSingleLine ?
                 EditorGUIUtility.singleLineHeight :
                 EditorGUI.GetPropertyHeight(innerProperty, label);
         }
 
-        private void DrawConfigurationButton(SerializedProperty property, ref Rect position)
+        private void DrawConfigurationButton(ref Rect position, SerializedProperty property)
         {
             Rect button = new Rect(position);
             button.yMin += _popupStyle.margin.top;
@@ -89,7 +98,7 @@ namespace UnityAtoms.Editor
             SetUsageIndex(property, newUsageValue);
         }
 
-        private void DrawField(SerializedProperty property, GUIContent label, in Rect position, in Rect originalPosition)
+        private void DrawField(in Rect position, SerializedProperty property, GUIContent label, in Rect originalPosition)
         {
 			string usageTypePropertyName = GetUsages(property)[GetUsageIndex(property)].PropertyName;
             var usageTypeProperty = property.FindPropertyRelative(usageTypePropertyName);
@@ -134,7 +143,7 @@ namespace UnityAtoms.Editor
 
 
         #region Auto Drag And Drop Usage Type Detection
-        private void DetermineDragAndDropFieldReferenceType(SerializedProperty property, in Rect position)
+        private void DetermineDragAndDropFieldReferenceType(in Rect position, SerializedProperty property)
         {
             EventType mouseEventType = Event.current.type;
 
@@ -189,13 +198,13 @@ namespace UnityAtoms.Editor
                     if (isDraggedTypeSameAsUsageType)
                     {
                         bool isUsageSetByUser = currentUsageIndex == index;
+                        bool isNewUsageIndexSet = newUsageIndex > -1;
 
                         if (isUsageSetByUser)
                         {
                             return;
                         }
-
-                        bool isNewUsageIndexSet = newUsageIndex > -1;
+                        
                         if (!isNewUsageIndexSet)
                         {
                             newUsageIndex = index;
