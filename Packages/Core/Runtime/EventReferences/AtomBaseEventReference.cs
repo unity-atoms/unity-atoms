@@ -24,6 +24,8 @@ namespace UnityAtoms
         /// </summary>
         [SerializeField]
         protected int _usage;
+
+        public abstract void Raise();
     }
 
     /// <summary>
@@ -65,6 +67,26 @@ namespace UnityAtoms
                         throw new NotSupportedException($"Event not reassignable for usage {_usage}.");
                 }
             }
+        }
+
+        public override void Raise()
+        {
+            var eventRef = Event;
+
+            if (eventRef)
+                eventRef.Raise();
+            else
+                Debug.LogError("Event is null");
+        }
+        
+        public void Raise(T value)
+        {
+            var eventRef = Event;
+
+            if (eventRef)
+                eventRef.Raise(value);
+            else
+                Debug.LogError("Event is null");
         }
 
         /// <summary>
