@@ -30,18 +30,18 @@ namespace UnityAtoms.FSM
         private bool _raiseEventToCompleteTransition = default;
 
         private FiniteStateMachine _fsmReference;
-        private Action _onComplete;
+        private Action<bool> _onComplete;
 
 
-        private void Complete()
+        private void Complete(bool completeTransition)
         {
-            _onComplete();
+            _onComplete(completeTransition);
 
             _fsmReference = null;
             _onComplete = null;
         }
 
-        public void Begin(FiniteStateMachine fsm, Action onComplete)
+        public void Begin(FiniteStateMachine fsm, Action<bool> onComplete)
         {
             _fsmReference = fsm;
             _onComplete = onComplete;
@@ -59,16 +59,13 @@ namespace UnityAtoms.FSM
                 }
             }
 
-            Complete();
+            Complete(completeTransition: true);
         }
 
         public void OnEventRaised(bool completeTransition)
         {
-            if (completeTransition)
-            {
-                _fsmReference.CompleteCurrentTransition.UnregisterListener(this);
-                Complete();
-            }
+            _fsmReference.CompleteCurrentTransition.UnregisterListener(this);
+            Complete(completeTransition);
         }
 
         public bool TestCondition() => _testCondition == null || _testCondition.Value;
