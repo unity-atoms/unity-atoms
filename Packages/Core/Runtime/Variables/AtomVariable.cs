@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Serialization;
 #if UNITY_EDITOR
@@ -8,6 +9,17 @@ using UnityEditor;
 
 namespace UnityAtoms
 {
+
+    public interface IAtomVariable
+    {
+        public IAtomEvent GetChangedEvent();
+    }
+
+    public interface IAtomVariable<T> : IAtomVariable
+    {
+        public T Value { get; set; }
+    }
+    
     /// <summary>
     /// Generic base class for Variables. Inherits from `AtomBaseVariable&lt;T&gt;`.
     /// </summary>
@@ -17,7 +29,7 @@ namespace UnityAtoms
     /// <typeparam name="E2">Event of type `AtomEvent&lt;T, T&gt;`.</typeparam>
     /// <typeparam name="F">Function of type `FunctionEvent&lt;T, T&gt;`.</typeparam>
     [EditorIcon("atom-icon-lush")]
-    public abstract class AtomVariable<T, P, E1, E2, F> : AtomBaseVariable<T>, IGetEvent, ISetEvent, IGetOrCreateEvent
+    public abstract class AtomVariable<T, P, E1, E2, F> : AtomBaseVariable<T>, IAtomVariable<T>, IGetEvent, ISetEvent, IGetOrCreateEvent
         where P : struct, IPair<T>
         where E1 : AtomEvent<T>
         where E2 : AtomEvent<P>
@@ -59,6 +71,8 @@ namespace UnityAtoms
                 _changed = value;
             }
         }
+
+        public IAtomEvent GetChangedEvent() => Changed;
 
         /// <summary>
         /// Changed with history Event triggered when the Variable value gets changed.
