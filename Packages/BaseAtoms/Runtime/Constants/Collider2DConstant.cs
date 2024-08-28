@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
@@ -9,3 +10,4 @@ namespace UnityAtoms.BaseAtoms
     [CreateAssetMenu(menuName = "Unity Atoms/Constants/Collider2D", fileName = "Collider2DConstant")]
     public sealed class Collider2DConstant : AtomBaseVariable<Collider2D> { }
 }
+#endif

@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using System;
 using UnityEngine.Events;
 using UnityEngine;
@@ -10,3 +11,4 @@ namespace UnityAtoms.BaseAtoms
     [Serializable]
     public sealed class Collider2DPairUnityEvent : UnityEvent<Collider2DPair> { }
 }
+#endif

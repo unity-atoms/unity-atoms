@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityEngine;
 using UnityAtoms.MonoHooks;
 
@@ -10,3 +11,4 @@ namespace UnityAtoms.MonoHooks
     [CreateAssetMenu(menuName = "Unity Atoms/Value Lists/Collision2DGameObject", fileName = "Collision2DGameObjectValueList")]
     public sealed class Collision2DGameObjectValueList : AtomValueList<Collision2DGameObject, Collision2DGameObjectEvent> { }
 }
+#endif

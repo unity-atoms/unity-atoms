@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
@@ -9,3 +10,4 @@ namespace UnityAtoms.BaseAtoms
     [AddComponentMenu("Unity Atoms/Event Instancers/Collision2DPair Event Instancer")]
     public class Collision2DPairEventInstancer : AtomEventInstancer<Collision2DPair, Collision2DPairEvent> { }
 }
+#endif

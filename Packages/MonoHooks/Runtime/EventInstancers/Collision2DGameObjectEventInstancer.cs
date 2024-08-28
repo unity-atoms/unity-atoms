@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityEngine;
 using UnityAtoms.MonoHooks;
 
@@ -10,3 +11,4 @@ namespace UnityAtoms.MonoHooks
     [AddComponentMenu("Unity Atoms/Event Instancers/Collision2DGameObject Event Instancer")]
     public class Collision2DGameObjectEventInstancer : AtomEventInstancer<Collision2DGameObject, Collision2DGameObjectEvent> { }
 }
+#endif

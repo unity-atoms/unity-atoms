@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityAtoms.MonoHooks;
 namespace UnityAtoms.MonoHooks
 {
@@ -7,3 +8,4 @@ namespace UnityAtoms.MonoHooks
     [EditorIcon("atom-icon-teal")]
     public abstract class Collision2DGameObjectCondition : AtomCondition<Collision2DGameObject> { }
 }
+#endif

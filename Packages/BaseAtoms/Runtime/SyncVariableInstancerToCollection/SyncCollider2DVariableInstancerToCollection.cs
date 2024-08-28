@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
@@ -10,3 +11,4 @@ namespace UnityAtoms.BaseAtoms
     [EditorIcon("atom-icon-delicate")]
     public class SyncCollider2DVariableInstancerToCollection : SyncVariableInstancerToCollection<Collider2D, Collider2DVariable, Collider2DVariableInstancer> { }
 }
+#endif

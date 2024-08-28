@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityEngine;
 using UnityAtoms.MonoHooks;
 
@@ -10,3 +11,4 @@ namespace UnityAtoms.MonoHooks
     [CreateAssetMenu(menuName = "Unity Atoms/Constants/Collision2DGameObject", fileName = "Collision2DGameObjectConstant")]
     public sealed class Collision2DGameObjectConstant : AtomBaseVariable<Collision2DGameObject> { }
 }
+#endif

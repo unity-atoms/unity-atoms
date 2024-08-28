@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using UnityAtoms.MonoHooks;
@@ -21,3 +22,4 @@ namespace UnityAtoms.MonoHooks
         Collision2DGameObjectVariableInstancer>
     { }
 }
+#endif

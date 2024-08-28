@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityEngine;
 namespace UnityAtoms.BaseAtoms
 {
@@ -7,3 +8,4 @@ namespace UnityAtoms.BaseAtoms
     [EditorIcon("atom-icon-purple")]
     public abstract class Collider2DAction : AtomAction<Collider2D> { }
 }
+#endif

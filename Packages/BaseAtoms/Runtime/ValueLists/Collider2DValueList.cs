@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
@@ -9,3 +10,4 @@ namespace UnityAtoms.BaseAtoms
     [CreateAssetMenu(menuName = "Unity Atoms/Value Lists/Collider2D", fileName = "Collider2DValueList")]
     public sealed class Collider2DValueList : AtomValueList<Collider2D, Collider2DEvent> { }
 }
+#endif

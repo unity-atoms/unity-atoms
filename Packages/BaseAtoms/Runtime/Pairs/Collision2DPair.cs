@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using System;
 using UnityEngine;
 namespace UnityAtoms.BaseAtoms
@@ -19,3 +20,4 @@ namespace UnityAtoms.BaseAtoms
         public void Deconstruct(out Collision2D item1, out Collision2D item2) { item1 = Item1; item2 = Item2; }
     }
 }
+#endif

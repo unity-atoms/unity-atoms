@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using System;
 using UnityAtoms.MonoHooks;
 
@@ -15,3 +16,4 @@ namespace UnityAtoms.MonoHooks
         Collider2DGameObjectPairEventInstancer>, IGetEvent 
     { }
 }
+#endif

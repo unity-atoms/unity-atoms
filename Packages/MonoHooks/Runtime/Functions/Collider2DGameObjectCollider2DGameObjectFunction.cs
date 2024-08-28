@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityAtoms.MonoHooks;
 namespace UnityAtoms.MonoHooks
 {
@@ -7,3 +8,4 @@ namespace UnityAtoms.MonoHooks
     [EditorIcon("atom-icon-sand")]
     public abstract class Collider2DGameObjectCollider2DGameObjectFunction : AtomFunction<Collider2DGameObject, Collider2DGameObject> { }
 }
+#endif

@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using UnityAtoms.MonoHooks;
@@ -11,3 +12,4 @@ namespace UnityAtoms.MonoHooks
     [EditorIcon("atom-icon-delicate")]
     public class SyncCollision2DGameObjectVariableInstancerToCollection : SyncVariableInstancerToCollection<Collision2DGameObject, Collision2DGameObjectVariable, Collision2DGameObjectVariableInstancer> { }
 }
+#endif

@@ -1,4 +1,4 @@
-#if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER && PACKAGE_UNITY_PHYSICS2D
 using UnityEditor;
 using UnityAtoms.Editor;
 

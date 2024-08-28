@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS2D
 using System;
 using UnityEngine.Events;
 using UnityAtoms.MonoHooks;
@@ -10,3 +11,4 @@ namespace UnityAtoms.MonoHooks
     [Serializable]
     public sealed class Collision2DGameObjectUnityEvent : UnityEvent<Collision2DGameObject> { }
 }
+#endif
