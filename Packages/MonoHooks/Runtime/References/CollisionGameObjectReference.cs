@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using System;
 using UnityAtoms.BaseAtoms;
 using UnityAtoms.MonoHooks;
@@ -23,3 +24,4 @@ namespace UnityAtoms.MonoHooks
         public bool Equals(CollisionGameObjectReference other) { return base.Equals(other); }
     }
 }
+#endif

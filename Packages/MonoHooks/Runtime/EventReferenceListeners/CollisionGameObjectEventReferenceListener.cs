@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityEngine;
 using UnityAtoms.MonoHooks;
 
@@ -15,3 +16,4 @@ namespace UnityAtoms.MonoHooks
         CollisionGameObjectUnityEvent>
     { }
 }
+#endif

@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityAtoms.MonoHooks;
 namespace UnityAtoms.MonoHooks
 {
@@ -7,3 +8,4 @@ namespace UnityAtoms.MonoHooks
     [EditorIcon("atom-icon-teal")]
     public abstract class ColliderGameObjectCondition : AtomCondition<ColliderGameObject> { }
 }
+#endif

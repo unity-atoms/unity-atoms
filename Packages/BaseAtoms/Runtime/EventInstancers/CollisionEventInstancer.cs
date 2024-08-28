@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
@@ -9,3 +10,4 @@ namespace UnityAtoms.BaseAtoms
     [AddComponentMenu("Unity Atoms/Event Instancers/Collision Event Instancer")]
     public class CollisionEventInstancer : AtomEventInstancer<Collision, CollisionEvent> { }
 }
+#endif

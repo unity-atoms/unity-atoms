@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityEditor;
 using UnityAtoms.Editor;
 using UnityAtoms.MonoHooks;
@@ -10,3 +11,4 @@ namespace UnityAtoms.MonoHooks.Editor
     [CustomEditor(typeof(CollisionGameObjectVariable))]
     public sealed class CollisionGameObjectVariableEditor : AtomVariableEditor<CollisionGameObject, CollisionGameObjectPair> { }
 }
+#endif

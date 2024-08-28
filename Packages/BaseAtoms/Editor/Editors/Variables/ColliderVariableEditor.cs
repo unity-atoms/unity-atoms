@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityEditor;
 using UnityAtoms.Editor;
 using UnityEngine;
@@ -10,3 +11,4 @@ namespace UnityAtoms.BaseAtoms.Editor
     [CustomEditor(typeof(ColliderVariable))]
     public sealed class ColliderVariableEditor : AtomVariableEditor<Collider, ColliderPair> { }
 }
+#endif

@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityEngine;
 namespace UnityAtoms.BaseAtoms
 {
@@ -7,3 +8,4 @@ namespace UnityAtoms.BaseAtoms
     [EditorIcon("atom-icon-teal")]
     public abstract class ColliderCondition : AtomCondition<Collider> { }
 }
+#endif

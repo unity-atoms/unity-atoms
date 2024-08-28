@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityEngine;
 
 namespace UnityAtoms.MonoHooks
@@ -41,3 +42,4 @@ namespace UnityAtoms.MonoHooks
         }
     }
 }
+#endif

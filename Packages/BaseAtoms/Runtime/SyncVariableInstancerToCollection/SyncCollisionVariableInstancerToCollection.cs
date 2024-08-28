@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
@@ -10,3 +11,4 @@ namespace UnityAtoms.BaseAtoms
     [EditorIcon("atom-icon-delicate")]
     public class SyncCollisionVariableInstancerToCollection : SyncVariableInstancerToCollection<Collision, CollisionVariable, CollisionVariableInstancer> { }
 }
+#endif

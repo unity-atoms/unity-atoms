@@ -1,4 +1,4 @@
-#if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER && PACKAGE_UNITY_PHYSICS
 using UnityEditor;
 using UnityEngine.UIElements;
 using UnityAtoms.Editor;
@@ -12,4 +12,5 @@ namespace UnityAtoms.MonoHooks.Editor
     [CustomEditor(typeof(CollisionGameObjectPairEvent))]
     public sealed class CollisionGameObjectPairEventEditor : AtomEventEditor<CollisionGameObjectPair, CollisionGameObjectPairEvent> { }
 }
+
 #endif

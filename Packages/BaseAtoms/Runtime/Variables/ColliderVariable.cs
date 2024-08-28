@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using System;
 using UnityEngine;
 
@@ -16,3 +17,4 @@ namespace UnityAtoms.BaseAtoms
         }
     }
 }
+#endif

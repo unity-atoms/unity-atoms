@@ -1,5 +1,6 @@
 {
     "name": "UnityAtoms.UnityAtomsMonoHooks.Editor",
+    "rootNamespace": "",
     "references": [
         "UnityAtoms.UnityAtomsCore.Runtime",
         "UnityAtoms.UnityAtomsCore.Editor",
@@ -16,6 +17,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.physics",
+            "expression": "0.0.0",
+            "define": "PACKAGE_UNITY_PHYSICS"
+        }
+    ],
     "noEngineReferences": false
 }

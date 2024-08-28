@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityEngine;
 
 namespace UnityAtoms.BaseAtoms
@@ -9,3 +10,4 @@ namespace UnityAtoms.BaseAtoms
     [CreateAssetMenu(menuName = "Unity Atoms/Constants/Collision", fileName = "CollisionConstant")]
     public sealed class CollisionConstant : AtomBaseVariable<Collision> { }
 }
+#endif

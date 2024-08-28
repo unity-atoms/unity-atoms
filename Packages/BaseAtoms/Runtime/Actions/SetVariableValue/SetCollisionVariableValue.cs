@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
@@ -20,3 +21,4 @@ namespace UnityAtoms.BaseAtoms
         CollisionVariableInstancer>
     { }
 }
+#endif

@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using System;
 using UnityEngine;
 using UnityAtoms.MonoHooks;
@@ -20,3 +21,4 @@ namespace UnityAtoms.MonoHooks
         public void Deconstruct(out CollisionGameObject item1, out CollisionGameObject item2) { item1 = Item1; item2 = Item2; }
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if PACKAGE_UNITY_PHYSICS
 using UnityEngine;
 using UnityAtoms.MonoHooks;
 
@@ -10,3 +11,4 @@ namespace UnityAtoms.MonoHooks
     [AddComponentMenu("Unity Atoms/Event Instancers/ColliderGameObjectPair Event Instancer")]
     public class ColliderGameObjectPairEventInstancer : AtomEventInstancer<ColliderGameObjectPair, ColliderGameObjectPairEvent> { }
 }
+#endif

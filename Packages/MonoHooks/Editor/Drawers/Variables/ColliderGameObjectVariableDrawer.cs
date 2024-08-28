@@ -1,6 +1,6 @@
-#if UNITY_2019_1_OR_NEWER
-using UnityEditor;
+#if UNITY_2019_1_OR_NEWER && PACKAGE_UNITY_PHYSICS
 using UnityAtoms.Editor;
+using UnityEditor;
 
 namespace UnityAtoms.MonoHooks.Editor
 {
