@@ -1,0 +1,27 @@
+{
+    "name": "UnityAtoms.UnityAtomsMonoHooks.Runtime.Physics2D",
+    "rootNamespace": "",
+    "references": [
+        "GUID:14165214884ae4a619bfb290f28194a7",
+        "GUID:39d90d64ded314c27a72b2586cd86439",
+        "GUID:29492541a59d04a81b47a7f225e8a22d",
+        "GUID:366baf501d38aa1438cb1f7561c5cf64"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_PHYSICS2D"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.physics2d",
+            "expression": "0",
+            "define": "UNITY_PHYSICS2D"
+        }
+    ],
+    "noEngineReferences": false
+}
