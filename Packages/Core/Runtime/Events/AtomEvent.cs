@@ -118,10 +118,14 @@ namespace UnityAtoms
         /// Register handler to be called when the Event triggers.
         /// </summary>
         /// <param name="action">The handler.</param>
-        public void Register(Action<T> action)
+        /// <param name="replayEventsBuffer">If this replays the events buffer to the new listener. Defaults to true.</param>
+        public void Register(Action<T> action, bool replayEventsBuffer = true)
         {
             _onEvent += action;
-            ReplayBufferToSubscriber(action);
+            if (replayEventsBuffer)
+            {
+                ReplayBufferToSubscriber(action);
+            }
         }
 
         /// <summary>
@@ -146,6 +150,7 @@ namespace UnityAtoms
         /// Register a Listener that in turn trigger all its associated handlers when the Event triggers.
         /// </summary>
         /// <param name="listener">The Listener to register.</param>
+        /// <param name="replayEventsBuffer">If this replays the events buffer to the new listener. Defaults to true.</param>
         public void RegisterListener(IAtomListener<T> listener, bool replayEventsBuffer = true)
         {
             _onEvent += listener.OnEventRaised;
