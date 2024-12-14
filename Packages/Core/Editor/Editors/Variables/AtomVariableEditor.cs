@@ -45,11 +45,7 @@ namespace UnityAtoms.Editor
             serializedObject.Update();
 
 
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
-            EditorGUILayout.Space();
-
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_id"));
-
+         
             EditorGUILayout.BeginHorizontal();
             EditorGUI.BeginDisabledGroup(_lockedInitialValue && EditorApplication.isPlayingOrWillChangePlaymode);
             DrawPotentiallyUnserializablePropertyField(serializedObject.FindProperty("_initialValue"), drawWarningWhenUnserializable: true);
@@ -96,6 +92,9 @@ namespace UnityAtoms.Editor
                     serializedObject.Update();
                 }
             }
+
+   
+
 
 
             EditorGUI.BeginDisabledGroup(true);
@@ -145,6 +144,12 @@ namespace UnityAtoms.Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("_triggerChangedOnOnEnable"), new GUIContent("Changed"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("_triggerChangedWithHistoryOnOnEnable"), new GUIContent("ChangedWithHistory"));
             }
+            
+            
+                                 
+            EditorGUILayout.Space();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_developerDescription"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_id"));
 
             serializedObject.ApplyModifiedProperties();
         }
