@@ -1,5 +1,6 @@
 ---
 id: "Readme"
+title: "Table of Contents"
 ---
 # Table of Contents
 
