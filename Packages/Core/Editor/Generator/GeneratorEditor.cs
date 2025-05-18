@@ -97,7 +97,7 @@ namespace UnityAtoms.Editor
         {
             if (disabledDeps != null && disabledDeps.Count > 0)
             {
-                string warningText = $"{String.Join(", ", disabledDeps.Select((a) => a.Name))} depend(s) on {atomType.Name}.";
+                string warningText = $"{String.Join(", ", disabledDeps.Select((a) => a.DisplayName))} depend(s) on {atomType.DisplayName}.";
                 _typesToGenerateInfoRow.Query<Label>().First().text = warningText;
             }
             else
