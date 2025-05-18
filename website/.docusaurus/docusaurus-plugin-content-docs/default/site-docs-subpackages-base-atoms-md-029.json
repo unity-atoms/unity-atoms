@@ -1,0 +1,30 @@
+{
+  "id": "subpackages/base-atoms",
+  "title": "Base Atoms",
+  "description": "Base set of Atoms based on Unity Atoms Core.",
+  "source": "@site/../docs/subpackages/base-atoms.md",
+  "sourceDirName": "subpackages",
+  "slug": "/subpackages/base-atoms",
+  "permalink": "/unity-atoms/docs/subpackages/base-atoms",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {
+    "id": "base-atoms",
+    "title": "Base Atoms",
+    "hide_title": true,
+    "sidebar_label": "Base Atoms"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Usage with UniRX",
+    "permalink": "/unity-atoms/docs/tutorials/unirx"
+  },
+  "next": {
+    "title": "FSM",
+    "permalink": "/unity-atoms/docs/subpackages/fsm"
+  }
+}

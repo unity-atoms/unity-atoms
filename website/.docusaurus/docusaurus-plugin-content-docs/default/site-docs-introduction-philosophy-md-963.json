@@ -1,0 +1,30 @@
+{
+  "id": "introduction/philosophy",
+  "title": "Philosophy",
+  "description": "This page describes the foundation and philosophy of which Unity Atoms is built upon.",
+  "source": "@site/../docs/introduction/philosophy.md",
+  "sourceDirName": "introduction",
+  "slug": "/introduction/philosophy",
+  "permalink": "/unity-atoms/docs/introduction/philosophy",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {
+    "id": "philosophy",
+    "title": "Philosophy",
+    "hide_title": true,
+    "sidebar_label": "Philosophy"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Installation",
+    "permalink": "/unity-atoms/docs/introduction/installation"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/unity-atoms/docs/introduction/overview"
+  }
+}

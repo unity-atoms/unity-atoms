@@ -1,0 +1,172 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/unity-atoms/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/unity-atoms/docs",
+          "mainDocId": "Readme",
+          "docs": [
+            {
+              "id": "introduction/faq",
+              "path": "/unity-atoms/docs/introduction/faq",
+              "sidebar": "docs"
+            },
+            {
+              "id": "introduction/installation",
+              "path": "/unity-atoms/docs/introduction/installation",
+              "sidebar": "docs"
+            },
+            {
+              "id": "introduction/overview",
+              "path": "/unity-atoms/docs/introduction/overview",
+              "sidebar": "docs"
+            },
+            {
+              "id": "introduction/philosophy",
+              "path": "/unity-atoms/docs/introduction/philosophy",
+              "sidebar": "docs"
+            },
+            {
+              "id": "introduction/preferences",
+              "path": "/unity-atoms/docs/introduction/preferences",
+              "sidebar": "docs"
+            },
+            {
+              "id": "Readme",
+              "path": "/unity-atoms/docs/"
+            },
+            {
+              "id": "subpackages/base-atoms",
+              "path": "/unity-atoms/docs/subpackages/base-atoms",
+              "sidebar": "docs"
+            },
+            {
+              "id": "subpackages/fsm",
+              "path": "/unity-atoms/docs/subpackages/fsm",
+              "sidebar": "docs"
+            },
+            {
+              "id": "subpackages/input-system",
+              "path": "/unity-atoms/docs/subpackages/input-system",
+              "sidebar": "docs"
+            },
+            {
+              "id": "subpackages/mobile",
+              "path": "/unity-atoms/docs/subpackages/mobile",
+              "sidebar": "docs"
+            },
+            {
+              "id": "subpackages/mono-hooks",
+              "path": "/unity-atoms/docs/subpackages/mono-hooks",
+              "sidebar": "docs"
+            },
+            {
+              "id": "subpackages/scene-mgmt",
+              "path": "/unity-atoms/docs/subpackages/scene-mgmt",
+              "sidebar": "docs"
+            },
+            {
+              "id": "subpackages/tags",
+              "path": "/unity-atoms/docs/subpackages/tags",
+              "sidebar": "docs"
+            },
+            {
+              "id": "subpackages/ui",
+              "path": "/unity-atoms/docs/subpackages/ui",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/actions",
+              "path": "/unity-atoms/docs/tutorials/actions",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/advanced-example",
+              "path": "/unity-atoms/docs/tutorials/advanced-example",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/conditions",
+              "path": "/unity-atoms/docs/tutorials/conditions",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/creating-atoms",
+              "path": "/unity-atoms/docs/tutorials/creating-atoms",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/event-instancer",
+              "path": "/unity-atoms/docs/tutorials/event-instancer",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/events",
+              "path": "/unity-atoms/docs/tutorials/events",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/generator",
+              "path": "/unity-atoms/docs/tutorials/generator",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/listeners",
+              "path": "/unity-atoms/docs/tutorials/listeners",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/mono-hooks",
+              "path": "/unity-atoms/docs/tutorials/mono-hooks",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/unirx",
+              "path": "/unity-atoms/docs/tutorials/unirx",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/variable-instancer",
+              "path": "/unity-atoms/docs/tutorials/variable-instancer",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/variable-transformers",
+              "path": "/unity-atoms/docs/tutorials/variable-transformers",
+              "sidebar": "docs"
+            },
+            {
+              "id": "tutorials/variables",
+              "path": "/unity-atoms/docs/tutorials/variables",
+              "sidebar": "docs"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "docs": {
+              "link": {
+                "path": "/unity-atoms/docs/introduction/installation",
+                "label": "introduction/installation"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  },
+  "@cmfcmf/docusaurus-search-local": {
+    "default": {
+      "titleBoost": 5,
+      "contentBoost": 1,
+      "tagsBoost": 3,
+      "parentCategoriesBoost": 2,
+      "indexDocSidebarParentCategories": 0,
+      "maxSearchResults": 8
+    }
+  }
+}

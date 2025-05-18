@@ -1,0 +1,26 @@
+{
+  "id": "introduction/installation",
+  "title": "Installation",
+  "description": "Welcome to Unity Atoms! There are several ways to add Unity Atoms to your project.",
+  "source": "@site/../docs/introduction/installation.md",
+  "sourceDirName": "introduction",
+  "slug": "/introduction/installation",
+  "permalink": "/unity-atoms/docs/introduction/installation",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {
+    "id": "installation",
+    "title": "Installation",
+    "hide_title": true,
+    "sidebar_label": "Installation"
+  },
+  "sidebar": "docs",
+  "next": {
+    "title": "Philosophy",
+    "permalink": "/unity-atoms/docs/introduction/philosophy"
+  }
+}

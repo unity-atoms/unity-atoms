@@ -1,0 +1,30 @@
+{
+  "id": "tutorials/actions",
+  "title": "Actions",
+  "description": "The ChangeFillAmount function created in the listeners tutorial is actually a Response of type UnityEvent. However, in Unity Atoms there is also the possibility to create Responses as Scriptable Objects called Actions. An Action is a function as a Scriptable Object that does not return a value. As a side note there are also Functions in Unity Atoms, which are exactly like Actions, but does return a value. To demonstrate the concept of an Action as a Response lets create an Action called HealthLogger.cs that gives some love to the console and logs the player’s health whenever it changes:",
+  "source": "@site/../docs/tutorials/actions.md",
+  "sourceDirName": "tutorials",
+  "slug": "/tutorials/actions",
+  "permalink": "/unity-atoms/docs/tutorials/actions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {
+    "id": "actions",
+    "title": "Actions",
+    "hide_title": true,
+    "sidebar_label": "Actions"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Listeners",
+    "permalink": "/unity-atoms/docs/tutorials/listeners"
+  },
+  "next": {
+    "title": "Mono Hooks",
+    "permalink": "/unity-atoms/docs/tutorials/mono-hooks"
+  }
+}

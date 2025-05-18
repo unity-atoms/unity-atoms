@@ -1,0 +1,381 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "banner": null,
+  "badge": false,
+  "noIndex": false,
+  "className": "docs-version-current",
+  "isLast": true,
+  "docsSidebars": {
+    "docs": [
+      {
+        "type": "category",
+        "label": "Introduction",
+        "items": [
+          {
+            "type": "link",
+            "label": "Installation",
+            "href": "/unity-atoms/docs/introduction/installation",
+            "docId": "introduction/installation"
+          },
+          {
+            "type": "link",
+            "label": "Philosophy",
+            "href": "/unity-atoms/docs/introduction/philosophy",
+            "docId": "introduction/philosophy"
+          },
+          {
+            "type": "link",
+            "label": "Overview",
+            "href": "/unity-atoms/docs/introduction/overview",
+            "docId": "introduction/overview"
+          },
+          {
+            "type": "link",
+            "label": "Preferences",
+            "href": "/unity-atoms/docs/introduction/preferences",
+            "docId": "introduction/preferences"
+          },
+          {
+            "type": "link",
+            "label": "FAQ",
+            "href": "/unity-atoms/docs/introduction/faq",
+            "docId": "introduction/faq"
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "category",
+        "label": "Tutorials",
+        "items": [
+          {
+            "type": "category",
+            "label": "Basics",
+            "items": [
+              {
+                "type": "link",
+                "label": "Creating Atoms",
+                "href": "/unity-atoms/docs/tutorials/creating-atoms",
+                "docId": "tutorials/creating-atoms"
+              },
+              {
+                "type": "link",
+                "label": "Variables",
+                "href": "/unity-atoms/docs/tutorials/variables",
+                "docId": "tutorials/variables"
+              },
+              {
+                "type": "link",
+                "label": "Events",
+                "href": "/unity-atoms/docs/tutorials/events",
+                "docId": "tutorials/events"
+              },
+              {
+                "type": "link",
+                "label": "Listeners",
+                "href": "/unity-atoms/docs/tutorials/listeners",
+                "docId": "tutorials/listeners"
+              },
+              {
+                "type": "link",
+                "label": "Actions",
+                "href": "/unity-atoms/docs/tutorials/actions",
+                "docId": "tutorials/actions"
+              },
+              {
+                "type": "link",
+                "label": "Mono Hooks",
+                "href": "/unity-atoms/docs/tutorials/mono-hooks",
+                "docId": "tutorials/mono-hooks"
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "category",
+            "label": "Intermediate",
+            "items": [
+              {
+                "type": "link",
+                "label": "Variable Pre Change Transformers",
+                "href": "/unity-atoms/docs/tutorials/variable-transformers",
+                "docId": "tutorials/variable-transformers"
+              },
+              {
+                "type": "link",
+                "label": "Variable Instancer",
+                "href": "/unity-atoms/docs/tutorials/variable-instancer",
+                "docId": "tutorials/variable-instancer"
+              },
+              {
+                "type": "link",
+                "label": "Event Instancer",
+                "href": "/unity-atoms/docs/tutorials/event-instancer",
+                "docId": "tutorials/event-instancer"
+              },
+              {
+                "type": "link",
+                "label": "Generator",
+                "href": "/unity-atoms/docs/tutorials/generator",
+                "docId": "tutorials/generator"
+              },
+              {
+                "type": "link",
+                "label": "Conditions",
+                "href": "/unity-atoms/docs/tutorials/conditions",
+                "docId": "tutorials/conditions"
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "category",
+            "label": "Advanced",
+            "items": [
+              {
+                "type": "link",
+                "label": "Advanced example",
+                "href": "/unity-atoms/docs/tutorials/advanced-example",
+                "docId": "tutorials/advanced-example"
+              },
+              {
+                "type": "link",
+                "label": "Usage with UniRX",
+                "href": "/unity-atoms/docs/tutorials/unirx",
+                "docId": "tutorials/unirx"
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "category",
+        "label": "Subpackages",
+        "items": [
+          {
+            "type": "link",
+            "label": "Base Atoms",
+            "href": "/unity-atoms/docs/subpackages/base-atoms",
+            "docId": "subpackages/base-atoms"
+          },
+          {
+            "type": "link",
+            "label": "FSM",
+            "href": "/unity-atoms/docs/subpackages/fsm",
+            "docId": "subpackages/fsm"
+          },
+          {
+            "type": "link",
+            "label": "Input System",
+            "href": "/unity-atoms/docs/subpackages/input-system",
+            "docId": "subpackages/input-system"
+          },
+          {
+            "type": "link",
+            "label": "Mobile",
+            "href": "/unity-atoms/docs/subpackages/mobile",
+            "docId": "subpackages/mobile"
+          },
+          {
+            "type": "link",
+            "label": "Mono Hooks",
+            "href": "/unity-atoms/docs/subpackages/mono-hooks",
+            "docId": "subpackages/mono-hooks"
+          },
+          {
+            "type": "link",
+            "label": "Scene Mgmt",
+            "href": "/unity-atoms/docs/subpackages/scene-mgmt",
+            "docId": "subpackages/scene-mgmt"
+          },
+          {
+            "type": "link",
+            "label": "Tags",
+            "href": "/unity-atoms/docs/subpackages/tags",
+            "docId": "subpackages/tags"
+          },
+          {
+            "type": "link",
+            "label": "UI",
+            "href": "/unity-atoms/docs/subpackages/ui",
+            "docId": "subpackages/ui"
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      }
+    ]
+  },
+  "docs": {
+    "introduction/faq": {
+      "id": "introduction/faq",
+      "title": "FAQ",
+      "description": "Q: Where can I read a summary of what Unity Atoms has to offer?",
+      "sidebar": "docs"
+    },
+    "introduction/installation": {
+      "id": "introduction/installation",
+      "title": "Installation",
+      "description": "Welcome to Unity Atoms! There are several ways to add Unity Atoms to your project.",
+      "sidebar": "docs"
+    },
+    "introduction/overview": {
+      "id": "introduction/overview",
+      "title": "Overview",
+      "description": "This chapter provides an overview of the building blocks and concepts of Unity Atoms. This knowledge helps you better understand a new way of thinking about data and state in your project.",
+      "sidebar": "docs"
+    },
+    "introduction/philosophy": {
+      "id": "introduction/philosophy",
+      "title": "Philosophy",
+      "description": "This page describes the foundation and philosophy of which Unity Atoms is built upon.",
+      "sidebar": "docs"
+    },
+    "introduction/preferences": {
+      "id": "introduction/preferences",
+      "title": "Preferences",
+      "description": "Preferences can be reached via Unity / Preferences.",
+      "sidebar": "docs"
+    },
+    "Readme": {
+      "id": "Readme",
+      "title": "Table of Contents",
+      "description": "-   Introduction"
+    },
+    "subpackages/base-atoms": {
+      "id": "subpackages/base-atoms",
+      "title": "Base Atoms",
+      "description": "Base set of Atoms based on Unity Atoms Core.",
+      "sidebar": "docs"
+    },
+    "subpackages/fsm": {
+      "id": "subpackages/fsm",
+      "title": "FSM",
+      "description": "Finite state machine implemented using Unity Atoms.",
+      "sidebar": "docs"
+    },
+    "subpackages/input-system": {
+      "id": "subpackages/input-system",
+      "title": "Input System",
+      "description": "Unity Atoms for Unity's Input System. Check out this video for an introduction to this sub package.",
+      "sidebar": "docs"
+    },
+    "subpackages/mobile": {
+      "id": "subpackages/mobile",
+      "title": "Mobile",
+      "description": "Unity Atoms specific for mobile projects.",
+      "sidebar": "docs"
+    },
+    "subpackages/mono-hooks": {
+      "id": "subpackages/mono-hooks",
+      "title": "Mono Hooks",
+      "description": "Hook into Unity's lifecycle methods with Atom Events.",
+      "sidebar": "docs"
+    },
+    "subpackages/scene-mgmt": {
+      "id": "subpackages/scene-mgmt",
+      "title": "Scene Mgmt",
+      "description": "Unity Atoms to manage your scenes.",
+      "sidebar": "docs"
+    },
+    "subpackages/tags": {
+      "id": "subpackages/tags",
+      "title": "Tags",
+      "description": "A replacement to Unity's tags based on Unity Atoms.",
+      "sidebar": "docs"
+    },
+    "subpackages/ui": {
+      "id": "subpackages/ui",
+      "title": "UI",
+      "description": "UI system using Unity Atoms. Still a very early WIP.",
+      "sidebar": "docs"
+    },
+    "tutorials/actions": {
+      "id": "tutorials/actions",
+      "title": "Actions",
+      "description": "The ChangeFillAmount function created in the listeners tutorial is actually a Response of type UnityEvent. However, in Unity Atoms there is also the possibility to create Responses as Scriptable Objects called Actions. An Action is a function as a Scriptable Object that does not return a value. As a side note there are also Functions in Unity Atoms, which are exactly like Actions, but does return a value. To demonstrate the concept of an Action as a Response lets create an Action called HealthLogger.cs that gives some love to the console and logs the player’s health whenever it changes:",
+      "sidebar": "docs"
+    },
+    "tutorials/advanced-example": {
+      "id": "tutorials/advanced-example",
+      "title": "Advanced example",
+      "description": "See the example scene \"InfiniteWaves\" in the example project.",
+      "sidebar": "docs"
+    },
+    "tutorials/conditions": {
+      "id": "tutorials/conditions",
+      "title": "Conditions",
+      "description": "Conditions control whether a listener responds to an event or not. Conditions are specialized Functions.",
+      "sidebar": "docs"
+    },
+    "tutorials/creating-atoms": {
+      "id": "tutorials/creating-atoms",
+      "title": "Creating Atoms",
+      "description": "There are several ways of creating Atoms in your project. The recommended way is to use the new Atoms Search function (introduced in 4.4.2) accessible in the usual Unity Create context menu or by pressing the hotkey Alt + 1:",
+      "sidebar": "docs"
+    },
+    "tutorials/event-instancer": {
+      "id": "tutorials/event-instancer",
+      "title": "Event Instancer",
+      "description": "Similar to Variables, Events can also be instantiated for use in prefabs. In this tutorial we will build a \"death\" Event for the monster prefab created in the variable instancer tutorial. The death Event will be fired once as the monster health drops below zero.",
+      "sidebar": "docs"
+    },
+    "tutorials/events": {
+      "id": "tutorials/events",
+      "title": "Events",
+      "description": "Events are things that happens in our game that other scripts or entities could listen and subscribe to. Events are (like Variables) also Scriptable Objects that live outside of a specific scene. In Unity Atoms Events can be of different types and thereby pass along data to listeners. Variables do by default have the possibility to raise two specific Events:",
+      "sidebar": "docs"
+    },
+    "tutorials/generator": {
+      "id": "tutorials/generator",
+      "title": "Generator",
+      "description": "Almost any project will eventually have custom data or reference types. These types can also be used as Unity Atoms variables or passed along as event data. Use the generator to create atoms for your own project specific types.",
+      "sidebar": "docs"
+    },
+    "tutorials/listeners": {
+      "id": "tutorials/listeners",
+      "title": "Listeners",
+      "description": "There is still an issue that the HealthBar.cs script is in charge of registering itself as a listener and at the same time defining what happens when a Event is raised. We need to seperate its concerns! This brings us to the third concept of Unity Atoms, Listeners. A Listener listens (sometimes also referred to as observes or subscribes) to an Event and responds by firing off zero to many responses. Listeners are MonoBehaviours and therefore live in a scene. They can be seen as the glue between Events and Actions.",
+      "sidebar": "docs"
+    },
+    "tutorials/mono-hooks": {
+      "id": "tutorials/mono-hooks",
+      "title": "Mono Hooks",
+      "description": "Mono Hooks save the effort of writing boilerplate code to raise Atoms Events from Unity's Event Functions.",
+      "sidebar": "docs"
+    },
+    "tutorials/unirx": {
+      "id": "tutorials/unirx",
+      "title": "Usage with UniRX",
+      "description": "Variables and Events exposes methods that returns IObservables. Atom Variables exposes ObserveChange and ObserveChangeWithHistory, while Atom Events exposes Observe. This makes it possible to use Unity Atoms seamlessly together with UniRx.",
+      "sidebar": "docs"
+    },
+    "tutorials/variable-instancer": {
+      "id": "tutorials/variable-instancer",
+      "title": "Variable Instancer",
+      "description": "Unity Atoms have no problems with prefabs. However, it will quickly become apparent that all instances of the prefab refer to the one and the same Atom asset, such as a specific IntVariable.",
+      "sidebar": "docs"
+    },
+    "tutorials/variable-transformers": {
+      "id": "tutorials/variable-transformers",
+      "title": "Variable Pre Change Transformers",
+      "description": "Variable pre change transformers provide a way to modify the value of a Variable before it gets changed. These are used to introduce customized logic into the process of updating the value of an Variable. For example, a pre change transformer could be used to limit a player's health within certain boundaries, such as ensuring that it never drops below zero.",
+      "sidebar": "docs"
+    },
+    "tutorials/variables": {
+      "id": "tutorials/variables",
+      "title": "Variables",
+      "description": "Below follows a step-by-step example of managing a player's health using Unity Atoms. If you haven't read the Creating Atoms, Philosophy and Overview section you should do that before proceeding.",
+      "sidebar": "docs"
+    }
+  }
+}

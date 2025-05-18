@@ -1,0 +1,30 @@
+{
+  "id": "tutorials/variables",
+  "title": "Variables",
+  "description": "Below follows a step-by-step example of managing a player's health using Unity Atoms. If you haven't read the Creating Atoms, Philosophy and Overview section you should do that before proceeding.",
+  "source": "@site/../docs/tutorials/variables.md",
+  "sourceDirName": "tutorials",
+  "slug": "/tutorials/variables",
+  "permalink": "/unity-atoms/docs/tutorials/variables",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {
+    "id": "variables",
+    "title": "Variables",
+    "hide_title": true,
+    "sidebar_label": "Variables"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Creating Atoms",
+    "permalink": "/unity-atoms/docs/tutorials/creating-atoms"
+  },
+  "next": {
+    "title": "Events",
+    "permalink": "/unity-atoms/docs/tutorials/events"
+  }
+}

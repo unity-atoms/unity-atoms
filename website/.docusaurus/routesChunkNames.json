@@ -1,0 +1,173 @@
+{
+  "/unity-atoms/__docusaurus/debug-78e": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---unity-atoms-docusaurus-debugb-38-73f"
+    }
+  },
+  "/unity-atoms/__docusaurus/debug/config-421": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---unity-atoms-docusaurus-debugb-38-73f"
+    }
+  },
+  "/unity-atoms/__docusaurus/debug/content-b89": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---unity-atoms-docusaurus-debugb-38-73f"
+    },
+    "__props": "__props---unity-atoms-docusaurus-debug-contentb-40-7ae"
+  },
+  "/unity-atoms/__docusaurus/debug/globalData-c0c": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---unity-atoms-docusaurus-debugb-38-73f"
+    }
+  },
+  "/unity-atoms/__docusaurus/debug/metadata-8a1": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---unity-atoms-docusaurus-debugb-38-73f"
+    }
+  },
+  "/unity-atoms/__docusaurus/debug/registry-256": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---unity-atoms-docusaurus-debugb-38-73f"
+    }
+  },
+  "/unity-atoms/__docusaurus/debug/routes-f01": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---unity-atoms-docusaurus-debugb-38-73f"
+    }
+  },
+  "/unity-atoms/docs-85f": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---unity-atoms-docsaba-8d0"
+    }
+  },
+  "/unity-atoms/docs-0cc": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---unity-atoms-docsbde-dfc"
+  },
+  "/unity-atoms/docs-d96": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/unity-atoms/docs/-52f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-608-5df"
+  },
+  "/unity-atoms/docs/introduction/faq-d78": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-introduction-faq-945-4ec"
+  },
+  "/unity-atoms/docs/introduction/installation-7f3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-introduction-installationb-3-e-9c3"
+  },
+  "/unity-atoms/docs/introduction/overview-0a1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-introduction-overviewf-8-f-d98"
+  },
+  "/unity-atoms/docs/introduction/philosophy-68b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-introduction-philosophy-963-0b3"
+  },
+  "/unity-atoms/docs/introduction/preferences-00d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-introduction-preferencesbaa-3ca"
+  },
+  "/unity-atoms/docs/subpackages/base-atoms-679": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-subpackages-base-atoms-029-34d"
+  },
+  "/unity-atoms/docs/subpackages/fsm-d71": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-subpackages-fsmbdb-450"
+  },
+  "/unity-atoms/docs/subpackages/input-system-d09": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-subpackages-input-systeme-70-337"
+  },
+  "/unity-atoms/docs/subpackages/mobile-685": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-subpackages-mobile-5-e-3-255"
+  },
+  "/unity-atoms/docs/subpackages/mono-hooks-0e1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-subpackages-mono-hooksaa-7-aba"
+  },
+  "/unity-atoms/docs/subpackages/scene-mgmt-20f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-subpackages-scene-mgmte-86-ffa"
+  },
+  "/unity-atoms/docs/subpackages/tags-03f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-subpackages-tags-13-f-0c5"
+  },
+  "/unity-atoms/docs/subpackages/ui-b8d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-subpackages-uia-0-a-18f"
+  },
+  "/unity-atoms/docs/tutorials/actions-fa3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-actions-3-a-0-cd5"
+  },
+  "/unity-atoms/docs/tutorials/advanced-example-950": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-advanced-examplebb-7-68e"
+  },
+  "/unity-atoms/docs/tutorials/conditions-59d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-conditions-375-422"
+  },
+  "/unity-atoms/docs/tutorials/creating-atoms-9df": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-creating-atoms-48-c-f8a"
+  },
+  "/unity-atoms/docs/tutorials/event-instancer-86b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-event-instancerd-02-3f0"
+  },
+  "/unity-atoms/docs/tutorials/events-48b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-events-0-f-8-400"
+  },
+  "/unity-atoms/docs/tutorials/generator-4e5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-generator-1-b-2-384"
+  },
+  "/unity-atoms/docs/tutorials/listeners-9f9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-listeners-044-69a"
+  },
+  "/unity-atoms/docs/tutorials/mono-hooks-703": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-mono-hooks-0-d-1-465"
+  },
+  "/unity-atoms/docs/tutorials/unirx-912": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-unirxab-5-5ab"
+  },
+  "/unity-atoms/docs/tutorials/variable-instancer-4ce": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-variable-instancerdd-6-289"
+  },
+  "/unity-atoms/docs/tutorials/variable-transformers-b66": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-variable-transformersc-7-b-c34"
+  },
+  "/unity-atoms/docs/tutorials/variables-13d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---unity-atoms-docs-tutorials-variablesf-87-01c"
+  },
+  "/unity-atoms/-048": {
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__context": {
+      "plugin": "plugin---unity-atoms-a-74-548"
+    },
+    "config": "config---unity-atoms-5-e-9-f11"
+  }
+}

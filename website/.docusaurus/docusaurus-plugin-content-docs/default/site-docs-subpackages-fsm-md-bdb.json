@@ -1,0 +1,30 @@
+{
+  "id": "subpackages/fsm",
+  "title": "FSM",
+  "description": "Finite state machine implemented using Unity Atoms.",
+  "source": "@site/../docs/subpackages/fsm.md",
+  "sourceDirName": "subpackages",
+  "slug": "/subpackages/fsm",
+  "permalink": "/unity-atoms/docs/subpackages/fsm",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {
+    "id": "fsm",
+    "title": "FSM",
+    "hide_title": true,
+    "sidebar_label": "FSM"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Base Atoms",
+    "permalink": "/unity-atoms/docs/subpackages/base-atoms"
+  },
+  "next": {
+    "title": "Input System",
+    "permalink": "/unity-atoms/docs/subpackages/input-system"
+  }
+}

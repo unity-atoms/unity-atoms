@@ -1,0 +1,30 @@
+{
+  "id": "subpackages/tags",
+  "title": "Tags",
+  "description": "A replacement to Unity's tags based on Unity Atoms.",
+  "source": "@site/../docs/subpackages/tags.md",
+  "sourceDirName": "subpackages",
+  "slug": "/subpackages/tags",
+  "permalink": "/unity-atoms/docs/subpackages/tags",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {
+    "id": "tags",
+    "title": "Tags",
+    "hide_title": true,
+    "sidebar_label": "Tags"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Scene Mgmt",
+    "permalink": "/unity-atoms/docs/subpackages/scene-mgmt"
+  },
+  "next": {
+    "title": "UI",
+    "permalink": "/unity-atoms/docs/subpackages/ui"
+  }
+}
