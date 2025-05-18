@@ -37,12 +37,13 @@ module.exports={
       }
     ]
   ],
-  "plugins": [require.resolve("@cmfcmf/docusaurus-search-local")],
+  "plugins": [],
   "themeConfig": {
     "navbar": {
       "title": "Unity Atoms",
       "logo": {
-        "src": "img/atoms-logo.svg"
+        "src": "img/atoms-icon-pure-purple.png",
+        "srcDark": "img/atoms-icon-white.png"
       },
       "items": [
         {

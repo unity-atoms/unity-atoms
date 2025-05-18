@@ -42,14 +42,13 @@ export default {
       }
     ]
   ],
-  "plugins": [
-    "/mnt/e/Users/sorap/Documents/_MeineProjekte/Unity3D/Github/unity-atoms-upstream-only/website/node_modules/@cmfcmf/docusaurus-search-local/lib/server/index.js"
-  ],
+  "plugins": [],
   "themeConfig": {
     "navbar": {
       "title": "Unity Atoms",
       "logo": {
-        "src": "img/atoms-logo.svg"
+        "src": "img/atoms-icon-pure-purple.png",
+        "srcDark": "img/atoms-icon-white.png"
       },
       "items": [
         {

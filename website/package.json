@@ -29,5 +29,11 @@
     "clsx": "^1.1.1",
     "react": "^18.0.2",
     "react-dom": "^18.0.2"
+  },
+  "overrides": {
+    "@cmfcmf/docusaurus-search-local": {
+      "@docusaurus/core": "^3.7.0",
+      "cheerio": "1.0.0-rc.12"
+    }
   }
 }
