@@ -8,13 +8,15 @@
   --ifm-color-primary-darkest: #40276C;
 
   --ifm-footer-background-color: #20232a;
+  --ifm-footer-color: hsla(0,0%,100%,.6);
+  --ifm-footer-title-color: white;
 }
 
 body[data-theme='dark']
 {
     --ifm-footer-background-color: #20232a;
     --ifm-footer-color: hsla(0,0%,100%,.6);
-
+    --ifm-footer-title-color: white;
 }
 
 .navbar__logo img

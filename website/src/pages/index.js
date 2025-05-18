@@ -4,26 +4,26 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import clsx from "clsx";
 import styles from "./index.module.css"; // optional, for custom CSS modules
-import atomsLogo from "@site/static/img/atoms-logo.svg";
-import icon_modular from "@site/static/img/box.svg";
-import icon_editable from "@site/static/img/pen.svg";
-import icon_debuggable from "@site/static/img/bug.svg";
+import AtomsLogo from "/img/atoms-logo.svg";
+import Icon_modular from "/img/box.svg";
+import Icon_editable from "/img/pen.svg";
+import Icon_debuggable from "/img/bug.svg";
 
 const FeatureList = [
   {
     title: "Modular",
-    image: <icon_modular />,
+    image: <Icon_modular style={{ width: 48, height: 48 }} />,
     description: "Avoid scripts and systems directly dependent on each other.",
   },
   {
     title: "Editable",
-    image: <icon_editable />,
+    image: <Icon_editable style={{ width: 48, height: 48 }}  />,
     description:
       "Scriptable Objects makes it possible to make changes to your game at runtime.",
   },
   {
     title: "Debuggable",
-    image: <icon_debuggable />,
+    image: <Icon_debuggable style={{ width: 48, height: 48 }} />,
     description: "Modular code is easier to debug than tightly coupled code.",
   },
 ];
@@ -48,7 +48,7 @@ function HomepageHeader() {
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
         <div className={styles.logoRow}>
-          <atomsLogo className={styles.logoPurple} />
+          <AtomsLogo className={styles.logoMain} />
           <h1 className="hero__title">{siteConfig.title}</h1>
         </div>
         <p className={clsx("hero__subtitle", "text--center")}>

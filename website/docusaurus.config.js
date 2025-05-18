@@ -111,8 +111,10 @@ module.exports={
               data-show-count="true"
               data-count-aria-label="# stargazers on GitHub"
               aria-label="Star this project on GitHub"
-            >`
-            }
+              >`
+            },
+          ]
+        },
       ],
       "copyright": "Copyright © 2025 Adam Ramberg",
       "logo": {

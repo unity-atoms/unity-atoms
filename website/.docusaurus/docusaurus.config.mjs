@@ -43,7 +43,7 @@ export default {
     ]
   ],
   "plugins": [
-    "/mnt/e/Users/sorap/Documents/_MeineProjekte/Unity3D/Github/unity-atoms-upstream-only/v2website/node_modules/@cmfcmf/docusaurus-search-local/lib/server/index.js"
+    "/mnt/e/Users/sorap/Documents/_MeineProjekte/Unity3D/Github/unity-atoms-upstream-only/website/node_modules/@cmfcmf/docusaurus-search-local/lib/server/index.js"
   ],
   "themeConfig": {
     "navbar": {
@@ -72,7 +72,50 @@ export default {
     },
     "image": "img/undraw_online.svg",
     "footer": {
-      "links": [],
+      "links": [
+        {
+          "title": "Docs",
+          "items": [
+            {
+              "label": "Installation",
+              "to": "docs/introduction/installation"
+            },
+            {
+              "label": "Tutorials",
+              "to": "docs/tutorials/creating-atoms"
+            },
+            {
+              "label": "Subpackages",
+              "to": "docs/subpackages/base-atoms"
+            }
+          ]
+        },
+        {
+          "title": "Community",
+          "items": [
+            {
+              "label": "Discord",
+              "href": "https://discord.gg/W4yd7E7"
+            }
+          ]
+        },
+        {
+          "title": "More",
+          "items": [
+            {
+              "label": "Blog",
+              "href": "https://medium.com/@adamramberg"
+            },
+            {
+              "label": "GitHub",
+              "href": "https://github.com/unity-atoms/unity-atoms"
+            },
+            {
+              "html": "<a\n              className=\"github-button\"\n              href={repoUrl}\n              data-icon=\"octicon-star\"\n              data-count-href=\"/AdamRamberg/unity-atoms/stargazers\"\n              data-show-count=\"true\"\n              data-count-aria-label=\"# stargazers on GitHub\"\n              aria-label=\"Star this project on GitHub\"\n              >"
+            }
+          ]
+        }
+      ],
       "copyright": "Copyright © 2025 Adam Ramberg",
       "logo": {
         "src": "img/atoms-logo.svg"

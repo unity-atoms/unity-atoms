@@ -1,5 +1,6 @@
 .heroBanner {
   padding: 4rem 0;
+  color: var(--ifm-font-heading-color);
 }
 
 .logoRow {
@@ -43,7 +44,8 @@ body[data-theme='dark']
   align-items: center;
 }
 
-.styles.logoPurple
-{
-    color: #5B389B;
+
+.icon{
+    color:white;
+    fill:white;
 }
