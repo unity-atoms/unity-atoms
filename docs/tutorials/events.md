@@ -10,7 +10,7 @@ sidebar_label: Events
 Events are things that happens in our game that other scripts or entities could listen and subscribe to. Events are (like Variables) also Scriptable Objects that live outside of a specific scene. In Unity Atoms Events can be of different types and thereby pass along data to listeners. Variables do by default have the possibility to raise two specific Events:
 
 -   `Changed` — raised every time a Variable’s value is changed. The Event contains the new value.
--   `Changed With History` — also raised every time a Variable’s value is changed. However, this Event contains both the new and the old value.
+-   `Changed With History` — also raised every time a Variable’s value is changed. However, this Event contains both the new and the old value. The callbacks to this event receive a FloatPair object, with Item1 being the new value and Item2 the old value.
 
 This makes it easier to make our game more data driven than just using Variables. Lets take a look at how that looks in our last example. We can [create](./creating-atoms.md) a new `IntEvent` and called `HealthChangedEvent`. Drop it on our `IntVariable` for the player’s health like this:
 
