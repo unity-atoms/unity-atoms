@@ -8,7 +8,7 @@ namespace UnityAtoms
     /// None generic base class for Events. Inherits from `BaseAtom` and `ISerializationCallbackReceiver`.
     /// </summary>
     [EditorIcon("atom-icon-cherry")]
-    public abstract class AtomEventBase : BaseAtom, ISerializationCallbackReceiver
+    public abstract class AtomEventBase : BaseAtom, ISerializationCallbackReceiver, ITryGetOrCreateEvent, ITryGetEvent
     {
         /// <summary>
         /// Event without value.
@@ -82,5 +82,31 @@ namespace UnityAtoms
             }
         }
 
+
+        /// <summary>
+        /// Contrary to the name, a new event is never created as it makes no sense (this is already an event class).
+        /// It is used for compatibility with the `ITryGetOrCreateEvent` interface.
+        /// </summary>
+        public bool TryGetOrCreateEvent<E>(out E atomEvent) where E : AtomEventBase
+        {
+            if (typeof(E).IsAssignableFrom(this.GetType()))
+            {
+                atomEvent = (E)this;
+                return true;
+            }
+            atomEvent = null;
+            return false;
+        }
+
+        public bool TryGetEvent<E>(out E atomEvent) where E : AtomEventBase
+        {
+            if (typeof(E).IsAssignableFrom(this.GetType()))
+            {
+                atomEvent = (E)this;
+                return true;
+            }
+            atomEvent = null;
+            return false;
+        }
     }
 }

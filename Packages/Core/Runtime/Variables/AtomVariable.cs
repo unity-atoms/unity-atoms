@@ -159,7 +159,7 @@ namespace UnityAtoms
             // NOTE: This will not be called when deleting the Atom from the editor.
             // Therefore, there might still be null instances, but even though not ideal,
             // it should not cause any problems.
-            // More info: https://issuetracker.unity3d.com/issues/ondisable-and-ondestroy-methods-are-not-called-when-a-scriptableobject-is-deleted-manually-in-project-window 
+            // More info: https://issuetracker.unity3d.com/issues/ondisable-and-ondestroy-methods-are-not-called-when-a-scriptableobject-is-deleted-manually-in-project-window
 #if UNITY_EDITOR
             _instances.Remove(this);
 #endif
@@ -341,15 +341,7 @@ namespace UnityAtoms
         /// </returns>
         public E GetEvent<E>() where E : AtomEventBase
         {
-            if (typeof(E) == typeof(E1))
-            {
-                return Changed as E;
-            }
-            if (typeof(E) == typeof(E2))
-            {
-                return ChangedWithHistory as E;
-            }
-
+            if(TryGetEvent(out E result)) return result;
             throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
         }
 
@@ -384,6 +376,29 @@ namespace UnityAtoms
         /// </returns>
         public E GetOrCreateEvent<E>() where E : AtomEventBase
         {
+            if (TryGetOrCreateEvent(out E result)) return result;
+
+            throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
+        }
+
+        public bool TryGetEvent<E>(out E atomEvent) where E : AtomEventBase
+        {
+            if (typeof(E) == typeof(E1))
+            {
+                atomEvent = Changed as E;
+                return true;
+            }
+            if (typeof(E) == typeof(E2))
+            {
+                atomEvent = ChangedWithHistory as E;
+                return true;
+            }
+            atomEvent = null;
+            return false;
+        }
+
+        public bool TryGetOrCreateEvent<E>(out E atomEvent) where E : AtomEventBase
+        {
             if (typeof(E) == typeof(E1))
             {
                 if (_changed == null)
@@ -392,7 +407,8 @@ namespace UnityAtoms
                     _changed.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}ChangedEvent_Runtime_{typeof(E1)}";
                 }
 
-                return _changed as E;
+                atomEvent = _changed as E;
+                return true;
             }
             if (typeof(E) == typeof(E2))
             {
@@ -402,10 +418,11 @@ namespace UnityAtoms
                     _changedWithHistory.name = $"{(String.IsNullOrWhiteSpace(name) ? "" : $"{name}_")}ChangedWithHistoryEvent_Runtime_{typeof(E2)}";
                 }
 
-                return _changedWithHistory as E;
+                atomEvent = _changedWithHistory as E;
+                return true;
             }
-
-            throw new NotSupportedException($"Event type {typeof(E)} not supported! Use {typeof(E1)} or {typeof(E2)}.");
+            atomEvent = null;
+            return false;
         }
     }
 }

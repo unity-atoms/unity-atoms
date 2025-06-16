@@ -11,10 +11,11 @@ namespace UnityAtoms
     /// <typeparam name="E">Event of type `T`.</typeparam>
     /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
     /// <typeparam name="EI">Event Instancer of type `T`.</typeparam>
-    public abstract class AtomEventReference<T, V, E, VI, EI> : AtomBaseEventReference<T, E, EI>, IGetEvent, ISetEvent
-        where V : IGetOrCreateEvent, ISetEvent
+    public abstract class AtomEventReference<T, V, E, VI, EI>
+        : AtomBaseEventReference<T, E, EI>, IGetEvent, ISetEvent, ITryGetOrCreateEvent, ITryGetEvent
+        where V : IGetOrCreateEvent, ITryGetEvent, ISetEvent
         where E : AtomEvent<T>
-        where VI : IGetOrCreateEvent, ISetEvent
+        where VI : IGetOrCreateEvent, ITryGetEvent, ISetEvent
         where EI : AtomEventInstancer<T, E>
     {
         /// <summary>
@@ -80,6 +81,52 @@ namespace UnityAtoms
         public static implicit operator E(AtomEventReference<T, V, E, VI, EI> reference)
         {
             return reference.Event;
+        }
+
+        public bool TryGetOrCreateEvent<E1>(out E1 atomEvent) where E1 : AtomEventBase
+        {
+            ITryGetOrCreateEvent bakingField = null;
+            switch (_usage)
+            {
+                case (AtomEventReferenceUsage.VARIABLE): bakingField = _variable; break;
+                case (AtomEventReferenceUsage.VARIABLE_INSTANCER): bakingField = _variableInstancer; break;
+                case (AtomEventReferenceUsage.EVENT_INSTANCER): bakingField = _eventInstancer; break;
+                case (AtomEventReferenceUsage.EVENT): bakingField = _event; break;
+                default: bakingField = null; break;
+            }
+            if (bakingField != null)
+            {
+                var result = bakingField.TryGetOrCreateEvent<E1>(out atomEvent);
+                return result;
+            }
+            else
+            {
+                atomEvent = null;
+                return false;
+            }
+        }
+
+        public bool TryGetEvent<E1>(out E1 atomEvent) where E1 : AtomEventBase
+        {
+            ITryGetEvent bakingField = null;
+            switch (_usage)
+            {
+                case (AtomEventReferenceUsage.VARIABLE): bakingField = _variable; break;
+                case (AtomEventReferenceUsage.VARIABLE_INSTANCER): bakingField = _variableInstancer; break;
+                case (AtomEventReferenceUsage.EVENT_INSTANCER): bakingField = _eventInstancer; break;
+                case (AtomEventReferenceUsage.EVENT): bakingField = _event; break;
+                default: bakingField = null; break;
+            }
+            if (bakingField != null)
+            {
+                var result = bakingField.TryGetEvent<E1>(out atomEvent);
+                return result;
+            }
+            else
+            {
+                atomEvent = null;
+                return false;
+            }
         }
     }
 }
