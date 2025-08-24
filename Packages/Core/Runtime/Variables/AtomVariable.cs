@@ -159,7 +159,7 @@ namespace UnityAtoms
             // NOTE: This will not be called when deleting the Atom from the editor.
             // Therefore, there might still be null instances, but even though not ideal,
             // it should not cause any problems.
-            // More info: https://issuetracker.unity3d.com/issues/ondisable-and-ondestroy-methods-are-not-called-when-a-scriptableobject-is-deleted-manually-in-project-window 
+            // More info: https://issuetracker.unity3d.com/issues/ondisable-and-ondestroy-methods-are-not-called-when-a-scriptableobject-is-deleted-manually-in-project-window
 #if UNITY_EDITOR
             _instances.Remove(this);
 #endif
@@ -192,8 +192,8 @@ namespace UnityAtoms
                     GetOrCreateEvent<E2>();
 
                 var pair = default(P);
-                pair.Item1 = _value;
-                pair.Item2 = _oldValue;
+                pair.Value = _value;
+                pair.OldValue = _oldValue;
                 ChangedWithHistory.Raise(pair);
             }
         }
@@ -260,8 +260,8 @@ namespace UnityAtoms
                 {
                     // NOTE: Doing new P() here, even though it is cleaner, generates garbage.
                     var pair = default(P);
-                    pair.Item1 = _value;
-                    pair.Item2 = _oldValue;
+                    pair.Value = _value;
+                    pair.OldValue = _oldValue;
                     ChangedWithHistory.Raise(pair);
                 }
             }

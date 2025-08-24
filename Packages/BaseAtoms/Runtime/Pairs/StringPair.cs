@@ -8,14 +8,14 @@ namespace UnityAtoms.BaseAtoms
     [Serializable]
     public struct StringPair : IPair<string>
     {
-        public string Item1 { get => _item1; set => _item1 = value; }
-        public string Item2 { get => _item2; set => _item2 = value; }
+        public string Value { get => _item1; set => _item1 = value; }
+        public string OldValue { get => _item2; set => _item2 = value; }
 
         [SerializeField]
         private string _item1;
         [SerializeField]
         private string _item2;
 
-        public void Deconstruct(out string item1, out string item2) { item1 = Item1; item2 = Item2; }
+        public void Deconstruct(out string item1, out string item2) { item1 = Value; item2 = OldValue; }
     }
 }

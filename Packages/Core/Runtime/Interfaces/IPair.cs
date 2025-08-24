@@ -5,9 +5,9 @@ namespace UnityAtoms
     /// </summary>
     public interface IPair<T>
     {
-        T Item1 { get; set; }
-        T Item2 { get; set; }
+        T Value { get; set; }
+        T OldValue { get; set; }
 
-        void Deconstruct(out T item1, out T item2);
+        void Deconstruct(out T Value, out T OldValue);
     }
 }

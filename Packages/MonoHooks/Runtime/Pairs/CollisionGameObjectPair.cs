@@ -9,14 +9,14 @@ namespace UnityAtoms.MonoHooks
     [Serializable]
     public struct CollisionGameObjectPair : IPair<CollisionGameObject>
     {
-        public CollisionGameObject Item1 { get => _item1; set => _item1 = value; }
-        public CollisionGameObject Item2 { get => _item2; set => _item2 = value; }
+        public CollisionGameObject Value { get => _item1; set => _item1 = value; }
+        public CollisionGameObject OldValue { get => _item2; set => _item2 = value; }
 
         [SerializeField]
         private CollisionGameObject _item1;
         [SerializeField]
         private CollisionGameObject _item2;
 
-        public void Deconstruct(out CollisionGameObject item1, out CollisionGameObject item2) { item1 = Item1; item2 = Item2; }
+        public void Deconstruct(out CollisionGameObject item1, out CollisionGameObject item2) { item1 = Value; item2 = OldValue; }
     }
 }

@@ -130,7 +130,7 @@ namespace UnityAtoms.Editor
                     {
                         var oldValueProp = serializedObject.FindProperty("_oldValue");
                         object oldValue = oldValueProp.GetPropertyValue();
-                        evt.GetType().GetMethod("RaiseEditor", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { (object)(new P() { Item1 = (T)atomTarget.BaseValue, Item2 = (T)oldValue }) });
+                        evt.GetType().GetMethod("RaiseEditor", BindingFlags.Public | BindingFlags.Instance)?.Invoke(evt, new[] { (object)(new P() { Value = (T)atomTarget.BaseValue, OldValue = (T)oldValue }) });
                     }
                 }
 
