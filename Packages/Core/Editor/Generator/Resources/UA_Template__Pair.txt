@@ -13,14 +13,14 @@ namespace UnityAtoms
     [Serializable]
     public struct {VALUE_TYPE_NAME}Pair : IPair<{VALUE_TYPE}>
     {
-        public {VALUE_TYPE} Item1 { get => _item1; set => _item1 = value; }
-        public {VALUE_TYPE} Item2 { get => _item2; set => _item2 = value; }
+        public {VALUE_TYPE} Value { get => _value; set => _value = value; }
+        public {VALUE_TYPE} OldValue { get => _oldValue; set => _oldValue = value; }
 
         [SerializeField]
-        private {VALUE_TYPE} _item1;
+        private {VALUE_TYPE} _value;
         [SerializeField]
-        private {VALUE_TYPE} _item2;
+        private {VALUE_TYPE} _oldValue;
 
-        public void Deconstruct(out {VALUE_TYPE} item1, out {VALUE_TYPE} item2) { item1 = Item1; item2 = Item2; }
+        public void Deconstruct(out {VALUE_TYPE} value, out {VALUE_TYPE} oldValue) { value = Value; oldValue = OldValue; }
     }
 }
