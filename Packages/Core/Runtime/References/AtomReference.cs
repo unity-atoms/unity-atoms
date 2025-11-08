@@ -14,7 +14,7 @@ namespace UnityAtoms
     /// <typeparam name="E2">Event of type `IPair&lt;T&gt;`.</typeparam>
     /// <typeparam name="F">Function of type `T => T`.</typeparam>
     /// <typeparam name="VI">Variable Instancer of type `T`.</typeparam>
-    public abstract class AtomReference<T, P, C, V, E1, E2, F, VI> : AtomBaseReference, IEquatable<AtomReference<T, P, C, V, E1, E2, F, VI>>, IGetEvent, ISetEvent
+    public abstract class AtomReference<T, P, C, V, E1, E2, F, VI> : AtomBaseReference, IEquatable<AtomReference<T, P, C, V, E1, E2, F, VI>>, IGetEvent, ISetEvent, ITryGetOrCreateEvent
         where P : struct, IPair<T>
         where C : AtomBaseVariable<T>
         where V : AtomVariable<T, P, E1, E2, F>
@@ -137,6 +137,44 @@ namespace UnityAtoms
             return Value == null ? 0 : Value.GetHashCode();
         }
 
+        public bool TryGetOrCreateEvent<E>(out E atomEvent) where E : AtomEventBase
+        {
+            switch (_usage)
+            {
+                case (AtomReferenceUsage.VARIABLE): return _variable.TryGetOrCreateEvent<E>(out atomEvent);
+                case (AtomReferenceUsage.VARIABLE_INSTANCER): return _variableInstancer.TryGetOrCreateEvent<E>(out atomEvent);
+                case (AtomReferenceUsage.VALUE):
+                case (AtomReferenceUsage.CONSTANT):
+                default:
+                {
+                    atomEvent = null;
+                    return false;
+                }
+            }
+        }
+
+        public bool TryGetEvent<E>(out E atomEvent) where E : AtomEventBase
+        {
+            switch (_usage)
+            {
+                case (AtomReferenceUsage.VARIABLE):
+                {
+                    return _variable.TryGetEvent<E>(out atomEvent);
+                }
+                case (AtomReferenceUsage.VARIABLE_INSTANCER):
+                {
+                    return _variableInstancer.TryGetEvent<E>(out atomEvent);
+                }
+                case (AtomReferenceUsage.VALUE):
+                case (AtomReferenceUsage.CONSTANT):
+                default:
+                {
+                    atomEvent = null;
+                    return false;
+                }
+            }
+        }
+
         /// <summary>
         /// Get event by type.
         /// </summary>
@@ -144,21 +182,8 @@ namespace UnityAtoms
         /// <returns>The event.</returns>
         public E GetEvent<E>() where E : AtomEventBase
         {
-            switch (_usage)
-            {
-                case (AtomReferenceUsage.VARIABLE):
-                    {
-                        return _variable.GetEvent<E>();
-                    }
-                case (AtomReferenceUsage.VARIABLE_INSTANCER):
-                    {
-                        return _variableInstancer.GetEvent<E>();
-                    }
-                case (AtomReferenceUsage.VALUE):
-                case (AtomReferenceUsage.CONSTANT):
-                default:
-                    throw new Exception($"Can't retrieve Event when usages is set to '{AtomReferenceUsage.DisplayName(_usage)}'! Usage needs to be set to '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE)}' or '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE_INSTANCER)}'.");
-            }
+            if(TryGetEvent(out E result)) return result;
+            throw new Exception($"Can't retrieve Event when usages is set to '{AtomReferenceUsage.DisplayName(_usage)}'! Usage needs to be set to '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE)}' or '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE_INSTANCER)}'.");
         }
 
         /// <summary>

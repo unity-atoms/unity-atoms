@@ -47,13 +47,13 @@ namespace UnityAtoms
                 _inMemoryCopy.ChangedWithHistory = _inMemoryCopy.GetOrCreateEvent<E2>();
             }
 
-            // Manually trigger initial events since base class has already instantiated Variable 
+            // Manually trigger initial events since base class has already instantiated Variable
             // and the Variable's OnEnable hook has therefore already been executed.
             _inMemoryCopy.TriggerInitialEvents();
         }
 
         /// <summary>
-        /// Get event by type. 
+        /// Get event by type.
         /// </summary>
         /// <typeparam name="E"></typeparam>
         /// <returns>The event.</returns>
@@ -62,8 +62,18 @@ namespace UnityAtoms
             return _inMemoryCopy.GetEvent<E>();
         }
 
+        public bool TryGetEvent<E>(out E atomEvent) where E : AtomEventBase
+        {
+            return _inMemoryCopy.TryGetEvent<E>(out atomEvent);
+        }
+
+        public bool TryGetOrCreateEvent<E>(out E atomEvent) where E : AtomEventBase
+        {
+            return _inMemoryCopy.TryGetOrCreateEvent<E>(out atomEvent);
+        }
+
         /// <summary>
-        /// Set event by type. 
+        /// Set event by type.
         /// </summary>
         /// <param name="e">The new event value.</param>
         /// <typeparam name="E"></typeparam>
@@ -81,5 +91,6 @@ namespace UnityAtoms
         {
             return _inMemoryCopy.GetOrCreateEvent<E>();
         }
+
     }
 }
