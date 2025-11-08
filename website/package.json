@@ -11,7 +11,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "docusaurus": "^1.13.0",
-    "eslint": "^6.5.1",
+    "eslint": "^9.32.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
