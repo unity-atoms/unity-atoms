@@ -64,6 +64,7 @@ namespace UnityAtoms.Editor
             var gutter = drawerData.UserClickedToCreateAtom ? 2f : 6f;
             Rect restRect = new Rect();
             Rect warningRect = new Rect();
+            Rect nestRect = new Rect();
 
             if (drawerData.WarningText.Length > 0)
             {
@@ -73,6 +74,10 @@ namespace UnityAtoms.Editor
             if (property.objectReferenceValue == null)
             {
                 position = IMGUIUtils.SnipRectH(position, position.width - restWidth, out restRect, gutter);
+            }
+            else if(property.GetParent() is BaseAtom ab && AtomFuser.IsValidFuse(ab))
+            {
+                position = IMGUIUtils.SnipRectH(position, position.width - restWidth, out nestRect, gutter);
             }
 
             var defaultGUIColor = GUI.color;
@@ -92,6 +97,22 @@ namespace UnityAtoms.Editor
                 var obj = EditorGUI.ObjectField(position, property.objectReferenceValue, typeof(T), false);
                 if (EditorGUI.EndChangeCheck())
                 {
+                    if (property.GetParent() is BaseAtom ab)
+                    {
+                        if (obj == null && AtomFuser.IsFused(property, ab))
+                        {
+                            AtomFuser.DiffuseAtom(property, ab);
+                        }
+                        else if (property.objectReferenceValue != null && AtomFuser.IsFused(property, ab))
+                        {
+                            if (property.objectReferenceValue.name != obj.name)
+                            {
+                                AtomFuser.DiffuseAtom(property, ab);
+                                property.objectReferenceValue = obj;
+                                AtomFuser.FuseAtom(property, ab);
+                            }
+                        }
+                    }
                     property.objectReferenceValue = obj;
                 }
             }
@@ -113,12 +134,24 @@ namespace UnityAtoms.Editor
                             {
                                 string path = AssetDatabase.GetAssetPath(property.serializedObject.targetObject);
                                 path = path == "" ? "Assets/" : Path.GetDirectoryName(path) + "/";
-                                // Create asset
+
                                 T so = ScriptableObject.CreateInstance<T>();
-                                AssetDatabase.CreateAsset(so, path + drawerData.NameOfNewAtom + ".asset");
-                                AssetDatabase.SaveAssets();
-                                // Assign the newly created SO
-                                property.objectReferenceValue = so;
+
+                                if (property.GetParent() is BaseAtom ab)
+                                {
+                                    so.name = drawerData.NameOfNewAtom;
+                                    AssetDatabase.AddObjectToAsset(so, ab);
+                                    AssetDatabase.SaveAssets();
+                                    AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(ab));
+                                    AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(so));
+                                    property.objectReferenceValue = so;
+                                }
+                                else
+                                {
+                                    AssetDatabase.CreateAsset(so, path + drawerData.NameOfNewAtom + ".asset");
+                                    AssetDatabase.SaveAssets();
+                                    property.objectReferenceValue = so;
+                                }
                             }
                             catch
                             {
@@ -160,7 +193,27 @@ namespace UnityAtoms.Editor
                     }
                 }
             }
-
+            else 
+            {
+                if (property.GetParent() is BaseAtom ab)
+                {
+                    var subAsset = AtomFuser.FindSubAsset(ab, property.objectReferenceValue);
+                    if (subAsset == null)
+                    {
+                        if (GUI.Button(nestRect, "Fuse"))
+                        {
+                            AtomFuser.FuseAtom(property, ab);
+                        }
+                    }
+                    else if(AtomFuser.IsValidFuse(ab))
+                    {
+                        if (GUI.Button(nestRect, "Diffuse"))
+                        {
+                            AtomFuser.DiffuseAtom(property, ab);
+                        }
+                    }
+                }                
+            }
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
         }
