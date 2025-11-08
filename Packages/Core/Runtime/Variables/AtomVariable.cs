@@ -255,14 +255,14 @@ namespace UnityAtoms
 
             if (triggerEvents)
             {
-                if (Changed != null) { Changed.Raise(_value); }
-                if (ChangedWithHistory != null)
+                if (_changed != null) { _changed.Raise(_value); }
+                if (_changedWithHistory != null)
                 {
                     // NOTE: Doing new P() here, even though it is cleaner, generates garbage.
                     var pair = default(P);
                     pair.Item1 = _value;
                     pair.Item2 = _oldValue;
-                    ChangedWithHistory.Raise(pair);
+                    _changedWithHistory.Raise(pair);
                 }
             }
 
