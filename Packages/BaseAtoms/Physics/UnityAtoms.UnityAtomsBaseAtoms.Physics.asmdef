@@ -1,0 +1,25 @@
+{
+    "name": "UnityAtoms.UnityAtomsBaseAtoms.Physics",
+    "rootNamespace": "",
+    "references": [
+        "GUID:14165214884ae4a619bfb290f28194a7",
+        "GUID:29492541a59d04a81b47a7f225e8a22d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_PHYSICS"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.physics",
+            "expression": "0.0.0",
+            "define": "UNITY_PHYSICS"
+        }
+    ],
+    "noEngineReferences": false
+}

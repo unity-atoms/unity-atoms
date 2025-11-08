@@ -1,0 +1,25 @@
+{
+    "name": "UnityAtoms.UnityAtomsBaseAtoms.Physics2D",
+    "rootNamespace": "",
+    "references": [
+        "GUID:14165214884ae4a619bfb290f28194a7",
+        "GUID:29492541a59d04a81b47a7f225e8a22d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_PHYSICS2D"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.physics2d",
+            "expression": "0",
+            "define": "UNITY_PHYSICS2D"
+        }
+    ],
+    "noEngineReferences": false
+}
