@@ -25,7 +25,6 @@ namespace UnityAtoms
 
         public int ReplayBufferSize { get => _replayBufferSize; set => _replayBufferSize = value; }
 
-        [SerializeField]
         protected event Action<T> _onEvent;
 
         /// <summary>
