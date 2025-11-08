@@ -1,8 +1,8 @@
 {
   "name": "com.unity-atoms.unity-atoms-input-system",
   "displayName": "Unity Atoms Input System",
-  "version": "4.5.0",
-  "unity": "2018.3",
+  "version": "4.6.0",
+  "unity": "2022.2",
   "description": "Unity Atoms with Unity's Input System.",
   "keywords": [
     "scriptable objects",

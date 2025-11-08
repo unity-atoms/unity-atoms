@@ -1,8 +1,8 @@
 {
   "name": "com.unity-atoms.unity-atoms-fsm",
   "displayName": "Unity Atoms FSM",
-  "version": "4.5.0",
-  "unity": "2018.3",
+  "version": "4.6.0",
+  "unity": "2022.2",
   "description": "Simple FSM using Unity Atoms.",
   "keywords": [
     "scriptable objects",

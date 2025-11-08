@@ -1,7 +1,7 @@
 {
   "name": "com.unity-atoms.unity-atoms",
   "displayName": "Unity Atoms",
-  "version": "4.5.0",
+  "version": "4.6.0",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
@@ -9,7 +9,7 @@
     "type": "git",
     "url": "git+https://github.com/unity-atoms/unity-atoms.git"
   },
-  "unity": "2018.3",
+  "unity": "2022.2",
   "description": "Tiny modular pieces utilizing the power of Scriptable Objects",
   "keywords": [
     "scriptable objects",

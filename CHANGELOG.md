@@ -6,6 +6,39 @@
 💅 = Polish
 🚀 = New features
 
+# 4.6.0 (November 8, 2025)
+
+## 🐛 Bug fixes
+
+- [#462](https://github.com/unity-atoms/unity-atoms/pull/462) Fixing an issue where AtomTags would disappear in builds ([@soraphis](https://github.com/soraphis))
+- [#463](https://github.com/unity-atoms/unity-atoms/pull/463) Fixing an issue where GameObjectValueList would show "(type missmatch)" when referencing scene objects ([@soraphis](https://github.com/soraphis))
+- [#471](https://github.com/unity-atoms/unity-atoms/pull/471) Fixing a wrong use of [SerializedField] that prevents compilation in newer Unity versions ([@soraphis](https://github.com/soraphis))
+- [#426](https://github.com/unity-atoms/unity-atoms/pull/426) Fixing a warning in Atom Generator to help better understanding of dependecies within Atom Types ([tomsseisums](https://github.com/tomsseisums))
+- [#459](https://github.com/unity-atoms/unity-atoms/pull/459) Updating outdated API ([RequieMa](https://github.com/RequieMa)) 
+
+## 🏃‍♀ Performance
+
+- [#446](https://github.com/unity-atoms/unity-atoms/pull/446) Unnecessary AtomEvent creation removed ([@soraphis](https://github.com/soraphis))
+
+## 🚀 New features
+
+ - [#465](https://github.com/unity-atoms/unity-atoms/pull/465) Added a unified, non-throwing way to get evens via ITryGetEvent/ITryGetOrCreateEvent interfaces ([@soraphis](https://github.com/soraphis))
+ - [#316](https://github.com/unity-atoms/unity-atoms/pull/316) Added a Fuse/Unfuse button to make Events child-assets of Variables for better organization ([@ThimoDEV](https://github.com/ThimoDEV))
+ - [#444](https://github.com/unity-atoms/unity-atoms/pull/444) Added Raise method to AtomBaseEventReference to be feature congruent with AtomEvents ([toasterhead-master](https://github.com/toasterhead-master))
+ - [#460](https://github.com/unity-atoms/unity-atoms/pull/460) Ability to remove entries in an AtomValueList via UnityEvents ([Esildor](https://github.com/Esildor))
+ - [#457](https://github.com/unity-atoms/unity-atoms/pull/457) Option to skip replayEventBuffers in AtomListeners when using Action<> types ([mutmedia](https://github.com/mutmedia))
+
+## 📝 Documentation
+
+- Updated Readme to be cleaner and useful links apparent at the top ([@soraphis](https://github.com/soraphis))
+- [#463](https://github.com/unity-atoms/unity-atoms/pull/463) Added a tutorial about ValueList ([@soraphis](https://github.com/soraphis))
+- [#449](https://github.com/unity-atoms/unity-atoms/pull/449) Added clarity in event documentation ([Pordrack](https://github.com/Pordrack))
+- [#461](https://github.com/unity-atoms/unity-atoms/pull/461) Updated Docusaurus to 3.7 ([@soraphis](https://github.com/soraphis))
+
+## 🏠 Internal
+
+- [#448](https://github.com/unity-atoms/unity-atoms/pull/448) Code Cleanup in AtomBaseReferenceDrawer ([toasterhead-master](https://github.com/toasterhead-master)))
+
 # 4.5.0 (December 19, 2023)
 
 ## 🐛 Bug fixes
