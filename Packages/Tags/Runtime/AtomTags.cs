@@ -52,16 +52,6 @@ namespace UnityAtoms.Tags
 
         public void OnBeforeSerialize()
         {
-#if UNITY_EDITOR
-            if (!EditorApplication.isPlaying
-            && !EditorApplication.isUpdating
-            && !EditorApplication.isCompiling) return;
-#endif
-            _tags.Clear();
-            foreach (var kvp in _sortedTags)
-            {
-                _tags.Add(kvp.Value);
-            }
         }
 
         public void OnAfterDeserialize()
@@ -96,13 +86,13 @@ namespace UnityAtoms.Tags
             {
                 TaggedGameObjects.Clear();
                 TagInstances.Clear();
-                var _atomTagsInScene = GameObject.FindObjectsOfType<AtomTags>();
+                var atomTagsInScene = GameObject.FindObjectsByType<AtomTags>(FindObjectsSortMode.None);
 
-                for (var i = 0; i < _atomTagsInScene.Length; ++i)
+                for (var i = 0; i < atomTagsInScene.Length; ++i)
                 {
-                    var atomTags = _atomTagsInScene[i];
+                    var atomTags = atomTagsInScene[i];
                     var tagCount = atomTags.Tags.Count;
-                    var go = _atomTagsInScene[i].gameObject;
+                    var go = atomTagsInScene[i].gameObject;
                     if (!TagInstances.ContainsKey(go)) TagInstances.Add(go, atomTags);
                     for (var y = 0; y < tagCount; ++y)
                     {
@@ -135,7 +125,7 @@ namespace UnityAtoms.Tags
 
         public static void OnInitialization(Action handler)
         {
-            var atomTags = GameObject.FindObjectOfType<AtomTags>();
+            var atomTags = GameObject.FindFirstObjectByType<AtomTags>();
             if (atomTags != null && !IsInitialized(atomTags.gameObject))
             {
                 _onInitialization += handler;
