@@ -90,10 +90,6 @@ namespace UnityAtoms.Editor
                     subUnityAtomsNamespace: "BaseAtoms"
                 ),
                 new RegenerateItem(valueType: "bool", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: "BaseAtoms"),
-                new RegenerateItem(valueType: "Collider2D", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: false, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
-                new RegenerateItem(valueType: "Collider", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: false, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
-                new RegenerateItem(valueType: "Collision2D", baseWritePath : Path.Combine (path, "BaseAtoms"), isValueEquatable : false, atomTypesToGenerate : AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
-                new RegenerateItem(valueType: "Collision", baseWritePath : Path.Combine (path, "BaseAtoms"), isValueEquatable : false, atomTypesToGenerate : AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
                 new RegenerateItem(valueType: "Color", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),
                 new RegenerateItem(valueType: "float", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: true, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "", subUnityAtomsNamespace: "BaseAtoms"),
                 new RegenerateItem(valueType: "GameObject", baseWritePath: Path.Combine(path, "BaseAtoms"), isValueEquatable: false, atomTypesToGenerate: AtomTypes.ALL_ATOM_TYPES, typeNamespace: "UnityEngine", subUnityAtomsNamespace: "BaseAtoms"),

@@ -1,0 +1,23 @@
+{
+    "name": "UnityAtoms.UnityAtomsMonoHooks.Editor.Physics",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3f0b3a8e35f2a6e4396a1963c40855f9",
+        "GUID:39d90d64ded314c27a72b2586cd86439",
+        "GUID:451fcf7f130c17a45a6ee22b28b17186",
+        "GUID:87264ae76e36244ae9adf5b5fbf7ca19",
+        "GUID:14165214884ae4a619bfb290f28194a7",
+        "GUID:9bc48b3aaac2247dbad05ace2c2d11d7"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

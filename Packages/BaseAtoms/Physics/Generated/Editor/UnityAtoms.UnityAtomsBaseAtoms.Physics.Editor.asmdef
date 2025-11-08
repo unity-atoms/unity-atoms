@@ -1,0 +1,28 @@
+{
+    "name": "UnityAtoms.UnityAtomsBaseAtoms.Physics.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:87264ae76e36244ae9adf5b5fbf7ca19",
+        "GUID:14165214884ae4a619bfb290f28194a7",
+        "GUID:451fcf7f130c17a45a6ee22b28b17186"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_PHYSICS"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.physics",
+            "expression": "0",
+            "define": "UNITY_PHYSICS"
+        }
+    ],
+    "noEngineReferences": false
+}

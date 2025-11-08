@@ -1,8 +1,10 @@
 {
     "name": "UnityAtoms.UnityAtomsMonoHooks.Runtime",
+    "rootNamespace": "",
     "references": [
         "UnityAtoms.UnityAtomsCore.Runtime",
-        "UnityAtoms.UnityAtomsBaseAtoms.Runtime"
+        "UnityAtoms.UnityAtomsBaseAtoms.Runtime",
+        "UnityAtoms.UnityAtomsBaseAtoms.Physics"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
