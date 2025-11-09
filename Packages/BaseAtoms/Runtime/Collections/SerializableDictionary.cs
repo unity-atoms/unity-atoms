@@ -96,7 +96,12 @@ namespace UnityAtoms.BaseAtoms
         public V this[K key]
         {
             get => _dict[key];
-            set => _dict[key] = value;
+            set
+            {
+                var contained = _dict.ContainsKey(key);
+                _dict[key] = value;
+                if(!contained) _added?.Invoke(value);
+            }
         }
 
         public void Add(K key, V value)
