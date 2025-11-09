@@ -18,7 +18,8 @@ namespace UnityAtoms.Editor
             position = EditorGUI.PrefixLabel(position, label);
 
             var inner = new SerializedObject(property.objectReferenceValue);
-            var valueProp = inner.FindProperty("_value");
+            var valueProp = inner.FindProperty(Application.isPlaying ? "_value" : "_initialValue")
+                ?? inner.FindProperty("_value"); // for AtomConstants, there is no _initialValue
             Rect previewRect = new Rect(position);
             previewRect.width = GetPreviewSpace(valueProp?.type);
             position.xMin = previewRect.xMax;

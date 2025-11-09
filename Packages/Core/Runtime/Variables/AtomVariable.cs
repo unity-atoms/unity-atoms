@@ -27,7 +27,26 @@ namespace UnityAtoms
         /// The Variable value as a property.
         /// </summary>
         /// <returns>Get or set the Variable's value.</returns>
-        public override T Value { get => _value; set => SetValue(value); }
+        public override T Value
+        {
+            get
+            {
+                #if UNITY_EDITOR
+                try
+                {
+                    if (!Application.isPlaying) return InitialValue;
+                }
+                catch (UnityException)
+                {
+                    // "get_isPlaying is not allowed to be called during serialization"
+                    // -> while compiling we can savely return InitialValue as OnEnable is to about to set Value = InitialValue
+                    return InitialValue;
+                }
+                #endif
+                return _value;
+            }
+            set => SetValue(value);
+        }
 
         /// <summary>
         /// The initial value as a property.
