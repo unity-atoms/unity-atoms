@@ -29,14 +29,6 @@ namespace UnityAtoms.BaseAtoms
         [SerializeField]
         private List<V> _serializedValues = new List<V>();
 
-        /// <summary>
-        /// Needed in order to keep track of duplicate keys in the dictionary.
-        /// </summary>
-        /// <typeparam name="int"></typeparam>
-        /// <returns></returns>
-        [SerializeField]
-        private List<int> _duplicateKeyIndices = new List<int>();
-
         public void OnAfterDeserialize()
         {
             if (_serializedKeys != null && _serializedValues != null)
@@ -44,7 +36,7 @@ namespace UnityAtoms.BaseAtoms
                 var keyCount = _serializedKeys.Count;
                 var valueCount = _serializedValues.Count;
 
-                // This is a precaution and might not be necessay. However, we make sure that _serializedKeys have the same length as _serializedValues. 
+                // This is a precaution and might not be necessay. However, we make sure that _serializedKeys have the same length as _serializedValues.
                 // Everything is assuming that the lists are in sync. The larger list will be reduced in length to the same as the smaller of the 2.
                 if (keyCount != valueCount)
                 {
@@ -59,17 +51,12 @@ namespace UnityAtoms.BaseAtoms
                 }
 
                 _dict.Clear();
-                _duplicateKeyIndices.Clear();
                 var length = _serializedKeys.Count;
                 for (var i = 0; i < length; ++i)
                 {
-                    if (!_dict.ContainsKey(_serializedKeys[i]))
+                    if (!_dict.ContainsKey(_serializedKeys[i]) && _serializedKeys[i] != null)
                     {
                         _dict.Add(_serializedKeys[i], _serializedValues[i]);
-                    }
-                    else
-                    {
-                        _duplicateKeyIndices.Add(i);
                     }
                 }
             }

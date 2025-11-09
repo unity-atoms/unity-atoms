@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityAtoms.Editor;
+using UnityEngine.Pool;
 
 namespace UnityAtoms.BaseAtoms.Editor
 {
     /// <summary>
-    /// A custom property drawer for SerializableDictionary. 
+    /// A custom property drawer for SerializableDictionary.
     /// </summary>
     public abstract class SerializableDictionaryDrawer<K, V, T> : PropertyDrawer
         where K : IEquatable<K>
@@ -22,7 +23,6 @@ namespace UnityAtoms.BaseAtoms.Editor
         static string WARNING_TEXT = "There are 1 or more duplicate keys. Duplicate keys are marked in red, are only shown in the editor and not included in the collection itself.";
         static string SERIALIZED_KEYS_PROPNAME = "_serializedKeys";
         static string SERIALIZED_VALUES_PROPNAME = "_serializedValues";
-        static string DUPLICATE_KEY_INDICES_PROPNAME = "_duplicateKeyIndices";
         static string COLLECTION_LABEL_NAME = "Collection";
 
         class DrawerData
@@ -80,7 +80,6 @@ namespace UnityAtoms.BaseAtoms.Editor
 
             var keyArrayProperty = property.FindPropertyRelative(SERIALIZED_KEYS_PROPNAME);
             var valueArrayProperty = property.FindPropertyRelative(SERIALIZED_VALUES_PROPNAME);
-            var duplicateKeyIndices = property.FindPropertyRelative(DUPLICATE_KEY_INDICES_PROPNAME);
 
             var restRect = new Rect();
             var initialPosition = new Rect(position);
@@ -106,14 +105,28 @@ namespace UnityAtoms.BaseAtoms.Editor
 
             var indexToDelete = -1;
             var invalidKeyExists = false;
+            var containedKeys = HashSetPool<string>.Get();
             foreach (var entry in EnumerateEntries(keyArrayProperty, valueArrayProperty))
             {
+                var lp = new Rect(linePosition);
+                linePosition.y += EditorGUIUtility.singleLineHeight + LINE_BOTTOM_MARGIN;
+
                 var keyProperty = entry.keyProperty;
                 var valueProperty = entry.valueProperty;
                 var currentIndex = entry.index;
-                var isKeyValid = !duplicateKeyIndices.ArrayContainsInt(currentIndex);
+                bool isKeyValid = false;
+                try
+                {
+                    var key = GetEffectiveStringValue(keyProperty);
+                    isKeyValid = key != null && containedKeys.Add(key);
+                }
+                catch (ArgumentException e)
+                {
+                    EditorGUI.HelpBox(lp, e.Message, MessageType.Error);
+                    continue;
+                }
 
-                var keyPosition = IMGUIUtils.SnipRectH(linePosition, (linePosition.width - BUTTON_WIDTH - GUTTER * 2) / 2, out restRect, GUTTER);
+                var keyPosition = IMGUIUtils.SnipRectH(lp, (lp.width - BUTTON_WIDTH - GUTTER * 2) / 2, out restRect, GUTTER);
                 if (!isKeyValid)
                 {
                     invalidKeyExists = true;
@@ -122,7 +135,7 @@ namespace UnityAtoms.BaseAtoms.Editor
                 EditorGUI.PropertyField(keyPosition, keyProperty, GUIContent.none, false);
 
                 EditorGUI.BeginDisabledGroup(!isKeyValid);
-                var valuePosition = IMGUIUtils.SnipRectH(restRect, (linePosition.width - BUTTON_WIDTH - GUTTER * 2) / 2, out restRect, GUTTER);
+                var valuePosition = IMGUIUtils.SnipRectH(restRect, (lp.width - BUTTON_WIDTH - GUTTER * 2) / 2, out restRect, GUTTER);
                 EditorGUI.PropertyField(valuePosition, valueProperty, GUIContent.none, false);
                 EditorGUI.EndDisabledGroup();
 
@@ -133,9 +146,9 @@ namespace UnityAtoms.BaseAtoms.Editor
                 {
                     indexToDelete = currentIndex;
                 }
-
-                linePosition.y += EditorGUIUtility.singleLineHeight + LINE_BOTTOM_MARGIN;
             }
+            HashSetPool<string>.Release(containedKeys);
+            containedKeys = null;
 
             var drawerData = GetDrawerData(property.propertyPath);
             drawerData.InvalidKeyExists = invalidKeyExists;
@@ -150,6 +163,13 @@ namespace UnityAtoms.BaseAtoms.Editor
                 if (keyArrayProperty != null)
                 {
                     keyArrayProperty.InsertArrayElementAtIndex(insertIndex);
+                    // by default unity duplicates but that makes no sense for dictionary keys, so we reset it here:
+                    var newKeyProperty = keyArrayProperty.GetArrayElementAtIndex(insertIndex);
+                    newKeyProperty.FindPropertyRelative("_usage").intValue = (int)AtomReferenceUsage.CONSTANT;
+                    newKeyProperty.FindPropertyRelative("_value").stringValue = null;
+                    newKeyProperty.FindPropertyRelative("_constant").objectReferenceValue = null;
+                    newKeyProperty.FindPropertyRelative("_variable").objectReferenceValue = null;
+                    newKeyProperty.FindPropertyRelative("_variableInstancer").objectReferenceValue = null;
                 }
 
                 if (valueArrayProperty != null)
@@ -176,6 +196,41 @@ namespace UnityAtoms.BaseAtoms.Editor
 
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
+        }
+
+        private string GetEffectiveStringValue(SerializedProperty keyProperty)
+        {
+            if(keyProperty == null) throw new ArgumentException("Key property is null");
+
+            if (keyProperty.type == "StringReference")
+            {
+                var usageProperty = keyProperty.FindPropertyRelative("_usage");
+                if (usageProperty == null)
+                    throw new ArgumentException("Expected property not found");
+
+                switch (usageProperty.intValue)
+                {
+                    case (int)AtomReferenceUsage.VALUE:
+                        return keyProperty.FindPropertyRelative("_value").stringValue;
+                    case (int)AtomReferenceUsage.CONSTANT:
+                        return (keyProperty.FindPropertyRelative("_constant").objectReferenceValue as StringConstant)?.Value;
+                    case (int)AtomReferenceUsage.VARIABLE:
+                        return (keyProperty.FindPropertyRelative("_variable").objectReferenceValue as StringVariable)?.Value;
+                    case (int)AtomReferenceUsage.VARIABLE_INSTANCER:
+                        // note: it makes no sense to have a variable instancer here.
+                        // a) the editor is only there at edit time, the collection is an asset and
+                        //  variable instancers are only available in scenes at runtime
+                        // b) sure, someone COULD create a prefab with a variable instancer,
+                        //  but accessing "Variable" is null, "Value" returns a NRE and "Base" means,
+                        //  we could also just use a Variable directly here
+                        // c) at runtime, adding to a SerializableDictionary doesn't go through the key/value lists
+                        //  but directly to the Dictionary.
+                        return (keyProperty.FindPropertyRelative("_variableInstancer").objectReferenceValue as StringVariableInstancer)?.Base?.Value;
+                    default:
+                        throw new ArgumentException("Unexpected usage value: " + usageProperty.intValue);
+                }
+            }
+            throw new ArgumentException("Key property type not supported: " + keyProperty.type + "");
         }
 
         static GUIContent IconContent(string name, string tooltip)
