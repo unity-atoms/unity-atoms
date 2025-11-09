@@ -14,9 +14,9 @@ namespace UnityAtoms.BaseAtoms
     public abstract class SerializableDictionary<K, V> : IDictionary<K, V>, ISerializationCallbackReceiver, IEnumerable<KeyValuePair<K, V>>, IEnumerable, ICollection<KeyValuePair<K, V>>
         where K : IEquatable<K>
     {
-        public Action<V> Added { get => _added; set => _added = value; }
-        public Action<V> Removed { get => _removed; set => _removed = value; }
-        public Action Cleared { get => _cleared; set => _cleared = value; }
+        public event Action<V> Added { add => _added += value; remove => _added -= value; }
+        public event Action<V> Removed { add => _removed += value; remove => _removed -= value; }
+        public event Action Cleared { add => _cleared += value; remove => _cleared -= value; }
 
         private event Action<V> _added;
         private event Action<V> _removed;
