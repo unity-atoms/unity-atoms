@@ -152,31 +152,18 @@ namespace UnityAtoms.BaseAtoms
         public void CopyTo(KeyValuePair<K, V>[] array, int index)
         {
             if (array == null)
-            {
                 throw new ArgumentNullException();
-            }
 
             if (index < 0 || index > array.Length)
-            {
                 throw new ArgumentOutOfRangeException();
-            }
 
-            var enumerator = _dict.GetEnumerator();
-            var cur = 0;
-            try
+            if (array.Length - index < _dict.Count) 
+                throw new ArgumentException("Destination array is too small.");
+
+            var i = index;
+            foreach (var kv in _dict)
             {
-                while (enumerator.MoveNext())
-                {
-                    if (cur >= index)
-                    {
-                        array[cur] = new KeyValuePair<K, V>(enumerator.Current.Key, enumerator.Current.Value);
-                    }
-                    ++cur;
-                }
-            }
-            finally
-            {
-                enumerator.Dispose();
+                array[i++] = kv;
             }
         }
 
