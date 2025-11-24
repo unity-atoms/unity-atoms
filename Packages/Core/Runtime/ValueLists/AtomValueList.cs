@@ -58,13 +58,10 @@ namespace UnityAtoms
         {
             base.OnEnable();
 #if UNITY_EDITOR
-            if (EditorSettings.enterPlayModeOptionsEnabled)
-            {
-                _instances.Add(this);
+            _instances.Add(this);
 
-                EditorApplication.playModeStateChanged -= HandlePlayModeStateChange;
-                EditorApplication.playModeStateChanged += HandlePlayModeStateChange;
-            }
+            EditorApplication.playModeStateChanged -= HandlePlayModeStateChange;
+            EditorApplication.playModeStateChanged += HandlePlayModeStateChange;
 #endif
         }
 
