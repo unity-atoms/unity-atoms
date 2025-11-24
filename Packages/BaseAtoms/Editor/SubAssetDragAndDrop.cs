@@ -188,8 +188,13 @@ namespace UnityAtoms.Editor
                 return "giparams";
             else if (obj is GUISkin)
                 return "guiskin";
+            #if UNITY_6000_0_OR_NEWER
+            else if (obj is PhysicsMaterial)
+                return "physicMaterial";
+            #else
             else if (obj is PhysicMaterial)
                 return "physicMaterial";
+            #endif
             else if (obj is PhysicsMaterial2D)
                 return "physicsMaterial2D";
             else if (obj is UnityEngine.Audio.AudioMixer)
