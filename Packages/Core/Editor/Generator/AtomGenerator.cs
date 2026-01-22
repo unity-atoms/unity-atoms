@@ -7,13 +7,21 @@ using UnityEngine;
 
 namespace UnityAtoms.Editor
 {
+    /// <summary>
+    /// Generator Inspector for Unity Atoms.
+    /// Manages the generation of Atom assets based on selected types.
+    /// </summary>
     [CreateAssetMenu(fileName = "AtomGenerator", menuName = "Unity Atoms/Generation/AtomGenerator", order = 0)]
     public class AtomGenerator : ScriptableObject
     {
-        [TextArea] public string FullQualifiedName;
+        [TextArea] 
+        [Tooltip("The full namespace and class name of the type to generate atoms for.")]
+        public string FullQualifiedName;
+        
         public string Namespace => string.IsNullOrWhiteSpace(FullQualifiedName) ? "" : Type.GetType(FullQualifiedName)?.Namespace;
         public string BaseType => string.IsNullOrWhiteSpace(FullQualifiedName) ? "" : Type.GetType(FullQualifiedName)?.Name;
 
+        [HideInInspector]
         public int GenerationOptions;
 
         // Referencing Generated Files here:
@@ -21,29 +29,27 @@ namespace UnityAtoms.Editor
 
         private void Reset()
         {
-            for(int i = 0; i < AtomTypes.ALL_ATOM_TYPES.Count; i++)
-            {
-                GenerationOptions |= (1 << i);
-            }
+            // Default to 0 (all unchecked) as requested.
+            GenerationOptions = 0;
         }
 
         public void Generate()
         {
             var type = Type.GetType($"{FullQualifiedName}");
             if (type == null) throw new TypeLoadException($"Type could not be found ({FullQualifiedName})");
+            
             var isValueTypeEquatable = typeof(IEquatable<>).MakeGenericType(type).IsAssignableFrom(type);
-
             var baseTypeAccordingNested = type.FullName.Replace('+', '.');
 
             var templateVariables = Generator.CreateTemplateVariablesMap(baseTypeAccordingNested, Namespace, "BaseAtoms");
             var capitalizedValueType = BaseType.Capitalize();
             var templates = Generator.GetTemplatePaths();
 
-            var templateConditions =
-                Generator.CreateTemplateConditions(isValueTypeEquatable, Namespace, "BaseAtoms", baseTypeAccordingNested);
-            var baseWritePath =
-                Path.Combine((Path.GetDirectoryName(AssetDatabase.GetAssetPath(this.GetInstanceID()))) ?? "Assets/",
-                    "Generated");
+            var templateConditions = Generator.CreateTemplateConditions(isValueTypeEquatable, Namespace, "BaseAtoms", baseTypeAccordingNested);
+            
+            var baseWritePath = Path.Combine(
+                (Path.GetDirectoryName(AssetDatabase.GetAssetPath(this.GetInstanceID()))) ?? "Assets/",
+                "Generated");
 
             Directory.CreateDirectory(baseWritePath);
 
@@ -54,9 +60,12 @@ namespace UnityAtoms.Editor
                 Scripts.Clear();
                 var t = GenerationOptions;
                 var idx = 0;
-                while (t > 0)
+                
+                // Iterate through bitmask
+                while (t > 0 || idx < AtomTypes.ALL_ATOM_TYPES.Count)
                 {
-                    if (t % 2 == 1)
+                    // Check if current bit is set
+                    if ((t & 1) == 1)
                     {
                         var atomType = AtomTypes.ALL_ATOM_TYPES[idx];
 
@@ -65,22 +74,24 @@ namespace UnityAtoms.Editor
                         templateVariables["VALUE_TYPE"] = valueType;
                         templateVariables["VALUE_TYPE_NAME_NO_PAIR"] = capitalizedValueType;
 
-                        var resolvedRelativeFilePath = Templating.ResolveVariables(templateVariables: templateVariables,
+                        var resolvedRelativeFilePath = Templating.ResolveVariables(
+                            templateVariables: templateVariables,
                             toResolve: atomType.RelativeFileNameAndPath);
+                        
                         var targetPath = Path.Combine(baseWritePath, resolvedRelativeFilePath);
-
                         var newCreated = !File.Exists(targetPath);
 
-                        Generator.Generate(new AtomReceipe(atomType, valueType), baseWritePath, templates,
-                            templateConditions, templateVariables);
+                        Generator.Generate(new AtomReceipe(atomType, valueType), baseWritePath, templates, templateConditions, templateVariables);
 
                         if (newCreated) AssetDatabase.ImportAsset(targetPath);
+                        
                         var ms = AssetDatabase.LoadAssetAtPath<MonoScript>(targetPath);
                         Scripts.Add(ms);
                     }
-                    else
+                    else if (idx < AtomTypes.ALL_ATOM_TYPES.Count)
                     {
-                        Scripts.Add(null);
+                        // Maintain list alignment even if skipped
+                         Scripts.Add(null);
                     }
 
                     idx++;
