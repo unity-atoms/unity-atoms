@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -33,7 +33,18 @@ namespace UnityAtoms.Editor
             }
         }
 
-        [MenuItem(itemName: "Assets/Create/Atoms Search &1", isValidateFunction: false, priority: -1)] // Adds to the project window's create menu
+        // Custom item to hold the Type data directly, avoiding ID/Index dependency issues in Unity 6
+        private class AtomsDropdownItem : AdvancedDropdownItem
+        {
+            public Type AtomType { get; }
+
+            public AtomsDropdownItem(string name, Type type) : base(name)
+            {
+                AtomType = type;
+            }
+        }
+
+        [MenuItem(itemName: "Assets/Create/Atoms Search &1", isValidateFunction: false, priority: -1)]
         public static void AtomsSearchMenu()
         {
             StringTree<Type> typeTree = new StringTree<Type>();
@@ -50,7 +61,16 @@ namespace UnityAtoms.Editor
             var projectBrowserType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.ProjectBrowser");
             var projectBrowser = EditorWindow.GetWindow(projectBrowserType);
 
-            Vector2 xy = new Vector2(projectBrowser.position.x + 10, projectBrowser.position.y + 60);
+            Rect rect;
+            if (projectBrowser != null)
+            {
+                Vector2 xy = new Vector2(projectBrowser.position.x + 10, projectBrowser.position.y + 60);
+                rect = new Rect(xy.x, xy.y, projectBrowser.position.width - 20, projectBrowser.position.height);
+            }
+            else
+            {
+                rect = new Rect(100, 100, 300, 400);
+            }
 
             var dropdown = new SearchTypeDropdown(new AdvancedDropdownState(), typeTree,
                 (s) =>
@@ -58,23 +78,24 @@ namespace UnityAtoms.Editor
                     EditorApplication.ExecuteMenuItem("Assets/Create/" + s.GetCustomAttribute<CreateAssetMenuAttribute>().menuName);
                 })
             {
-                MinimumSize = new Vector2(projectBrowser.position.width - 20, projectBrowser.position.height - 80)
+                MinimumSize = new Vector2(rect.width, rect.height - 80)
             };
 
-            var rect = new Rect(xy.x, xy.y, projectBrowser.position.width - 20, projectBrowser.position.height);
+            dropdown.Show(new Rect());
 
-            dropdown.Show(new Rect()); // don't use this to position the
-            var window = typeof(SearchTypeDropdown).GetField("m_WindowInstance", BindingFlags.Instance | BindingFlags.NonPublic)?.GetValue(dropdown) as EditorWindow;
-            window.position = rect;
+            var windowField = typeof(AdvancedDropdown).GetField("m_WindowInstance", BindingFlags.Instance | BindingFlags.NonPublic);
+            var window = windowField?.GetValue(dropdown) as EditorWindow;
+            if (window != null)
+            {
+                window.position = rect;
+            }
         }
 
         private class SearchTypeDropdown : AdvancedDropdown
         {
             private readonly StringTree<Type> _list;
             private readonly Action<Type> _func;
-
-            private readonly List<Type> _lookup = new List<Type>();
-
+            
             public Vector2 MinimumSize
             {
                 get => minimumSize;
@@ -90,15 +111,20 @@ namespace UnityAtoms.Editor
             protected override void ItemSelected(AdvancedDropdownItem item)
             {
                 base.ItemSelected(item);
-                _func?.Invoke(_lookup[item.id]);
+                
+                // Unity 6 safe check: verify if the item is our custom type and has data
+                if (item is AtomsDropdownItem atomsItem && atomsItem.AtomType != null)
+                {
+                    _func?.Invoke(atomsItem.AtomType);
+                }
             }
 
             private void Render(StringTree<Type> tree, string key, AdvancedDropdownItem parentGroup)
             {
                 if (tree.Value != null)
                 {
-                    _lookup.Add(tree.Value);
-                    parentGroup.AddChild(new AdvancedDropdownItem(key) { id = _lookup.Count - 1 });
+                    // Create custom item with the Type directly
+                    parentGroup.AddChild(new AtomsDropdownItem(key, tree.Value));
                 }
                 else
                 {
@@ -107,7 +133,6 @@ namespace UnityAtoms.Editor
                     {
                         Render(subtree.Value, subtree.Key, self);
                     }
-
                     parentGroup.AddChild(self);
                 }
             }
@@ -115,12 +140,10 @@ namespace UnityAtoms.Editor
             protected override AdvancedDropdownItem BuildRoot()
             {
                 var root = new AdvancedDropdownItem("Unity Atoms");
-
                 foreach (var subtree in _list.SubTrees)
                 {
                     Render(subtree.Value, subtree.Key, root);
                 }
-
                 return root;
             }
         }
