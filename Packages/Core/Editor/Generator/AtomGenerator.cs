@@ -17,6 +17,9 @@ namespace UnityAtoms.Editor
         [TextArea] 
         [Tooltip("The full namespace and class name of the type to generate atoms for.")]
         public string FullQualifiedName;
+
+        [Tooltip("Optional custom namespace prefix. If set to 'Gnarly', namespace becomes 'Gnarly.UnityAtoms'.")]
+        public string CustomNamespace;
         
         public string Namespace => string.IsNullOrWhiteSpace(FullQualifiedName) ? "" : Type.GetType(FullQualifiedName)?.Namespace;
         public string BaseType => string.IsNullOrWhiteSpace(FullQualifiedName) ? "" : Type.GetType(FullQualifiedName)?.Name;
@@ -81,7 +84,7 @@ namespace UnityAtoms.Editor
                         var targetPath = Path.Combine(baseWritePath, resolvedRelativeFilePath);
                         var newCreated = !File.Exists(targetPath);
 
-                        Generator.Generate(new AtomReceipe(atomType, valueType), baseWritePath, templates, templateConditions, templateVariables);
+                        Generator.Generate(new AtomReceipe(atomType, valueType), baseWritePath, templates, templateConditions, templateVariables, CustomNamespace);
 
                         if (newCreated) AssetDatabase.ImportAsset(targetPath);
                         

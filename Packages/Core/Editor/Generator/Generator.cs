@@ -57,6 +57,7 @@ namespace UnityAtoms.Editor
         /// <param name="atomTypesToGenerate">A list of `AtomType`s to be generated.</param>
         /// <param name="typeNamespace">If the `type` provided is defined under a namespace, provide that namespace here.</param>
         /// <param name="subUnityAtomsNamespace">By default the Atoms that gets generated will be under the namespace `UnityAtoms`. If you for example like it to be under `UnityAtoms.MyNamespace` you would then enter `MyNamespace` in this field.</param>
+        /// <param name="namespacePrefix">Optional custom namespace prefix (e.g. "Gnarly").</param>
         /// <example>
         /// <code>
         /// namespace MyNamespace
@@ -71,7 +72,7 @@ namespace UnityAtoms.Editor
         /// generator.Generate("MyStruct", "", false, new List&lt;AtomType&gt;() { AtomTypes.ACTION }, "MyNamespace", ""); // Generates an Atom Action of type MyStruct
         /// </code>
         /// </example>
-        public static void Generate(AtomReceipe atomReceipe, string baseWritePath, string[] templatePaths, List<string> templateConditions, Dictionary<string, string> templateVariables)
+        public static void Generate(AtomReceipe atomReceipe, string baseWritePath, string[] templatePaths, List<string> templateConditions, Dictionary<string, string> templateVariables, string namespacePrefix = null)
         {
             var (atomType, valueType) = atomReceipe;
 
@@ -105,6 +106,25 @@ namespace UnityAtoms.Editor
 
                 var resolvedRelativeFilePath = Templating.ResolveVariables(templateVariables: templateVariables, toResolve: relativeFilePath);
                 var template = File.ReadAllText(templatePath);
+                
+                if (!string.IsNullOrEmpty(namespacePrefix))
+                {
+                    // Add using UnityAtoms; so generated classes can find core types (like AtomAction, AtomEvent) 
+                    // when moved to a custom namespace (e.g. Gnarly.UnityAtoms).
+                    if (!template.Contains("using UnityAtoms;"))
+                    {
+                        template = "using UnityAtoms;\n" + template;
+                    }
+
+                    // Flatten sub-namespaces to keep it clean (e.g. Gnarly.ItemSystem.Atoms instead of Gnarly.ItemSystem.UnityAtoms.BaseAtoms)
+                    if (templateConditions.Contains("HAS_SUB_UA_NAMESPACE"))
+                    {
+                        templateConditions.Remove("HAS_SUB_UA_NAMESPACE");
+                    }
+
+                    template = template.Replace("namespace UnityAtoms", $"namespace {namespacePrefix}.Atoms");
+                }
+
                 var filePath = Path.Combine(baseWritePath, resolvedRelativeFilePath);
                 var fileDirectory = Path.GetDirectoryName(filePath);
 

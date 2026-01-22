@@ -17,6 +17,7 @@ namespace UnityAtoms.Editor
 
         private SerializedProperty _fullQualifiedName;
         private SerializedProperty _generatedOptions;
+        private SerializedProperty _customNamespace;
 
         private static bool _safeSearch = true;
 
@@ -24,6 +25,7 @@ namespace UnityAtoms.Editor
         {
             _fullQualifiedName = serializedObject.FindProperty(nameof(AtomGenerator.FullQualifiedName));
             _generatedOptions = serializedObject.FindProperty(nameof(AtomGenerator.GenerationOptions));
+            _customNamespace = serializedObject.FindProperty(nameof(AtomGenerator.CustomNamespace));
 
             CheckTypeSafety();
             RefreshDropdown();
@@ -130,6 +132,9 @@ namespace UnityAtoms.Editor
             }
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.PropertyField(_fullQualifiedName);
+            
+            EditorGUILayout.Space(2f);
+            EditorGUILayout.PropertyField(_customNamespace);
         }
 
         private void DrawOptionsToggles()
