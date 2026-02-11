@@ -14,7 +14,8 @@
 - [#463](https://github.com/unity-atoms/unity-atoms/pull/463) Fixing an issue where GameObjectValueList would show "(type missmatch)" when referencing scene objects ([@soraphis](https://github.com/soraphis))
 - [#471](https://github.com/unity-atoms/unity-atoms/pull/471) Fixing a wrong use of [SerializedField] that prevents compilation in newer Unity versions ([@soraphis](https://github.com/soraphis))
 - [#426](https://github.com/unity-atoms/unity-atoms/pull/426) Fixing a warning in Atom Generator to help better understanding of dependecies within Atom Types ([tomsseisums](https://github.com/tomsseisums))
-- [#459](https://github.com/unity-atoms/unity-atoms/pull/459) Updating outdated API ([RequieMa](https://github.com/RequieMa)) 
+- [#459](https://github.com/unity-atoms/unity-atoms/pull/459) Updating outdated API ([RequieMa](https://github.com/RequieMa))
+- 💥 [#479](https://github.com/unity-atoms/unity-atoms/pull/459) AtomCollection now serialies less data, updates faster in the editor and fixes event access. (minor breaking change) 
 
 ## 🏃‍♀ Performance
 
