@@ -28,6 +28,7 @@
  - [#444](https://github.com/unity-atoms/unity-atoms/pull/444) Added Raise method to AtomBaseEventReference to be feature congruent with AtomEvents ([toasterhead-master](https://github.com/toasterhead-master))
  - [#460](https://github.com/unity-atoms/unity-atoms/pull/460) Ability to remove entries in an AtomValueList via UnityEvents ([Esildor](https://github.com/Esildor))
  - [#457](https://github.com/unity-atoms/unity-atoms/pull/457) Option to skip replayEventBuffers in AtomListeners when using Action<> types ([mutmedia](https://github.com/mutmedia))
+ - [#494](https://github.com/unity-atoms/unity-atoms/pull/494) SetVariableValueAction can now force change events being raised ([builder-main](https://github.com/builder-main))
 
 ## 📝 Documentation
 

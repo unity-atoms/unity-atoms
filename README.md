@@ -45,8 +45,12 @@ Unity Atoms is an open source library that aims to make your game code:
 In the Package manager window, add a package via git url:
 
 ```
-    https://github.com/unity-atoms/unity-atoms.git#v4.5.0
+    Core: https://github.com/unity-atoms/unity-atoms.git?path=/Packages/Core#canary
+    Base Atoms: https://github.com/unity-atoms/unity-atoms.git?path=/Packages/BaseAtoms#canary
 ```
+
+for additional packages, just adjust the path
+
 
 <details>
 <summary><h3>NPM</h3></summary>
@@ -74,8 +78,8 @@ Add the following to your `manifest.json` (which is located under your project l
     ],
     "dependencies": {
         ...
-        "com.unity-atoms.unity-atoms-core": "4.5.0",
-        "com.unity-atoms.unity-atoms-base-atoms": "4.5.0",
+        "com.unity-atoms.unity-atoms-core": "4.6.1",
+        "com.unity-atoms.unity-atoms-base-atoms": "4.6.1",
         "com.unity-atoms.unity-atoms-fsm": "4.5.0",
         "com.unity-atoms.unity-atoms-mobile": "4.5.0",
         "com.unity-atoms.unity-atoms-mono-hooks": "4.5.0",
