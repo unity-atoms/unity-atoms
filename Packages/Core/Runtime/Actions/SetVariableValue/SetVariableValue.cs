@@ -38,11 +38,17 @@ namespace UnityAtoms
         private R _value = null;
 
         /// <summary>
+        /// Should we force if resulting value do not change.
+        /// </summary>
+        [SerializeField]
+        private bool _forceEvent = false;
+        
+        /// <summary>
         /// Perform the action.
         /// </summary>
         public override void Do()
         {
-            _variable.Value = _value.Value;
+            _variable.SetValue(_value.Value, _forceEvent);
         }
     }
 }
