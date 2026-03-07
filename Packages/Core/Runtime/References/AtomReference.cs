@@ -157,7 +157,8 @@ namespace UnityAtoms
                 case (AtomReferenceUsage.VALUE):
                 case (AtomReferenceUsage.CONSTANT):
                 default:
-                    throw new Exception($"Can't retrieve Event when usages is set to '{AtomReferenceUsage.DisplayName(_usage)}'! Usage needs to be set to '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE)}' or '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE_INSTANCER)}'.");
+                    Debug.LogWarning($"Can't retrieve Event when usages is set to '{AtomReferenceUsage.DisplayName(_usage)}'! Usage needs to be set to '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE)}' or '{AtomReferenceUsage.DisplayName(AtomReferenceUsage.VARIABLE_INSTANCER)}'.");
+                    return null;
             }
         }
 
