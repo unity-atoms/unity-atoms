@@ -5,15 +5,28 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace UnityAtoms
 {
+
+    public interface IAtomEventHandler
+    {
+        public void Handle<T>(T t);
+    }
+
+    public interface IAtomEvent
+    {
+        public void Register(IAtomEventHandler handler);
+        public void Unregister(IAtomEventHandler handler);
+    }
+    
     /// <summary>
     /// Generic base class for Events. Inherits from `AtomEventBase`.
     /// </summary>
     /// <typeparam name="T">The type for this Event.</typeparam>
     [EditorIcon("atom-icon-cherry")]
-    public class AtomEvent<T> : AtomEventBase
+    public class AtomEvent<T> : AtomEventBase, IAtomEvent
     {
         public T InspectorRaiseValue { get => _inspectorRaiseValue; }
 
@@ -26,6 +39,8 @@ namespace UnityAtoms
         public int ReplayBufferSize { get => _replayBufferSize; set => _replayBufferSize = value; }
 
         protected event Action<T> _onEvent;
+
+        [SerializeField] protected List<IAtomEventHandler> _handlers = new();
 
         /// <summary>
         /// The event replays the specified number of old values to new subscribers. Works like a ReplaySubject in Rx.
@@ -104,6 +119,7 @@ namespace UnityAtoms
 #endif
             base.Raise();
             _onEvent?.Invoke(item);
+            foreach (var handler in _handlers) handler.Handle(item);
             AddToReplayBuffer(item);
         }
 
@@ -139,6 +155,8 @@ namespace UnityAtoms
             }
         }
 
+        public void Register(IAtomEventHandler handler) => _handlers.Add(handler);
+
         /// <summary>
         /// Unregister handler that was registered using the `Register` method.
         /// </summary>
@@ -147,6 +165,8 @@ namespace UnityAtoms
         {
             _onEvent -= action;
         }
+        
+        public void Unregister(IAtomEventHandler handler) => _handlers.Remove(handler);
 
         /// <summary>
         /// Unregister all handlers that were registered using the `Register` method.
@@ -155,6 +175,7 @@ namespace UnityAtoms
         {
             base.UnregisterAll();
             _onEvent = null;
+            _handlers.Clear();
         }
 
         /// <summary>
@@ -210,6 +231,25 @@ namespace UnityAtoms
                     while (enumerator.MoveNext())
                     {
                         action(enumerator.Current);
+                    }
+                }
+                finally
+                {
+                    enumerator.Dispose();
+                }
+            }
+        }
+        
+        private void ReplayBufferToSubscriber(IAtomEventHandler handler)
+        {
+            if (_replayBufferSize > 0 && _replayBuffer.Count > 0)
+            {
+                var enumerator = _replayBuffer.GetEnumerator();
+                try
+                {
+                    while (enumerator.MoveNext())
+                    {
+                        handler.Handle(enumerator.Current);
                     }
                 }
                 finally
