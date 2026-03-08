@@ -45,8 +45,8 @@ Unity Atoms is an open source library that aims to make your game code:
 In the Package manager window, add a package via git url:
 
 ```
-    Core: https://github.com/unity-atoms/unity-atoms.git?path=/Packages/Core#canary
-    Base Atoms: https://github.com/unity-atoms/unity-atoms.git?path=/Packages/BaseAtoms#canary
+    Core: https://github.com/unity-atoms/unity-atoms.git?path=/Packages/Core#v4.6.1
+    Base Atoms: https://github.com/unity-atoms/unity-atoms.git?path=/Packages/BaseAtoms#v4.6.1
 ```
 
 for additional packages, just adjust the path
