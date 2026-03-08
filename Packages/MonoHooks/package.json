@@ -1,8 +1,8 @@
 {
   "name": "com.unity-atoms.unity-atoms-mono-hooks",
   "displayName": "Unity Atoms Mono Hooks",
-  "version": "4.5.0",
-  "unity": "2018.3",
+  "version": "4.6.1",
+  "unity": "2022.2",
   "description": "Hook into Unity's lifecycle methods with Atom Events.",
   "keywords": [
     "scriptable objects",
@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "com.unity.ugui": "1.0.0",
-    "com.unity-atoms.unity-atoms-core": "4.5.0",
-    "com.unity-atoms.unity-atoms-base-atoms": "4.5.0"
+    "com.unity-atoms.unity-atoms-core": "4.6.1",
+    "com.unity-atoms.unity-atoms-base-atoms": "4.6.1"
   }
 }

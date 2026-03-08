@@ -24,6 +24,8 @@ namespace UnityAtoms
         /// </summary>
         [SerializeField]
         protected int _usage;
+
+        public abstract void Raise();
     }
 
     /// <summary>
@@ -67,6 +69,26 @@ namespace UnityAtoms
             }
         }
 
+        public override void Raise()
+        {
+            var eventRef = Event;
+
+            if (eventRef)
+                eventRef.Raise();
+            else
+                Debug.LogError("Event is null");
+        }
+
+        public void Raise(T value)
+        {
+            var eventRef = Event;
+
+            if (eventRef)
+                eventRef.Raise(value);
+            else
+                Debug.LogError("Event is null");
+        }
+
         /// <summary>
         /// Event used if `Usage` is set to `Event`.
         /// </summary>
@@ -102,8 +124,15 @@ namespace UnityAtoms
             throw new Exception($"Event type {typeof(EO)} not supported! Use {typeof(E)}.");
         }
 
+
+        public bool TryGetEvent<EO>(out EO atomEvent) where EO : AtomEventBase
+        {
+            atomEvent = typeof(EO) == typeof(E) ? Event as EO : null;
+            return atomEvent != null;
+        }
+
         /// <summary>
-        /// Set event by type. 
+        /// Set event by type.
         /// </summary>
         /// <param name="e">The new event value.</param>
         /// <typeparam name="E"></typeparam>

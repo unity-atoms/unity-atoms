@@ -166,11 +166,16 @@ namespace UnityAtoms.Editor
 
         public static object GetValue(this object source, string name, int index)
         {
-            var enumerable = GetValue(source, name) as IEnumerable;
-            var enm = enumerable.GetEnumerator();
-            while (index-- >= 0)
-                enm.MoveNext();
-            return enm.Current;
+            var value = GetValue(source, name);
+            if (value is IEnumerable enumerable)
+            {
+                var enm = enumerable.GetEnumerator();
+                using var _ = enm as IDisposable;
+                while (index-- >= 0)
+                    enm.MoveNext();
+                return enm.Current;
+            }
+            return null;
         }
     }
 }

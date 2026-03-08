@@ -1,8 +1,8 @@
 {
   "name": "com.unity-atoms.unity-atoms-ui",
   "displayName": "Unity Atoms UI",
-  "version": "4.5.0",
-  "unity": "2018.3",
+  "version": "4.6.1",
+  "unity": "2022.2",
   "description": "UI system using Unity Atoms.",
   "keywords": [
     "scriptable objects",
@@ -18,7 +18,7 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.unity-atoms.unity-atoms-core": "4.5.0",
-    "com.unity-atoms.unity-atoms-base-atoms": "4.5.0"
+    "com.unity-atoms.unity-atoms-core": "4.6.1",
+    "com.unity-atoms.unity-atoms-base-atoms": "4.6.1"
   }
 }

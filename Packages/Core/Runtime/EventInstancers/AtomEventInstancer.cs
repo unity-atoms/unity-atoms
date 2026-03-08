@@ -7,13 +7,14 @@ namespace UnityAtoms
 
     /// <summary>
     /// An Event Instancer is a MonoBehaviour that takes an Event as a base and creates an in memory copy of it on OnEnable.
-    /// This is handy when you want to use Events for prefabs that are instantiated at runtime. 
+    /// This is handy when you want to use Events for prefabs that are instantiated at runtime.
     /// </summary>
     /// <typeparam name="T">The value type.</typeparam>
     /// <typeparam name="E">Event of type T.</typeparam>
     [EditorIcon("atom-icon-sign-blue")]
     [DefaultExecutionOrder(Runtime.ExecutionOrder.VARIABLE_INSTANCER)]
-    public abstract class AtomEventInstancer<T, E> : MonoBehaviour, IGetEvent, ISetEvent, IAtomInstancer
+    public abstract class AtomEventInstancer<T, E>
+        : MonoBehaviour, IGetEvent, ISetEvent, IAtomInstancer, ITryGetOrCreateEvent
         where E : AtomEvent<T>
     {
         public T InspectorRaiseValue { get => _inspectorRaiseValue; }
@@ -65,8 +66,25 @@ namespace UnityAtoms
             throw new Exception($"Event type {typeof(EO)} not supported! Use {typeof(E)}.");
         }
 
+
+        public bool TryGetEvent<EO>(out EO atomEvent) where EO : AtomEventBase
+        {
+            atomEvent = typeof(EO) == typeof(E) ? Event as EO : null;
+            return atomEvent != null;
+        }
+
         /// <summary>
-        /// Set event by type. 
+        /// Safely (no exception) Get event by type.
+        /// Contrary to the name, a new event is never created as it makes no sense (OnEnable has that handled already).
+        /// This interface implementation is mostly for compatibility.
+        /// </summary>
+        public bool TryGetOrCreateEvent<EO>(out EO atomEvent) where EO : AtomEventBase
+        {
+            return TryGetEvent(out atomEvent);
+        }
+
+        /// <summary>
+        /// Set event by type.
         /// </summary>
         /// <param name="e">The new event value.</param>
         /// <typeparam name="E"></typeparam>
@@ -82,6 +100,7 @@ namespace UnityAtoms
         {
             Event.Raise();
         }
+
 
         /// <summary>
         /// Raises the instanced Event.

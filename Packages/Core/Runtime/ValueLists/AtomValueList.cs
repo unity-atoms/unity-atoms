@@ -58,13 +58,10 @@ namespace UnityAtoms
         {
             base.OnEnable();
 #if UNITY_EDITOR
-            if (EditorSettings.enterPlayModeOptionsEnabled)
-            {
-                _instances.Add(this);
+            _instances.Add(this);
 
-                EditorApplication.playModeStateChanged -= HandlePlayModeStateChange;
-                EditorApplication.playModeStateChanged += HandlePlayModeStateChange;
-            }
+            EditorApplication.playModeStateChanged -= HandlePlayModeStateChange;
+            EditorApplication.playModeStateChanged += HandlePlayModeStateChange;
 #endif
         }
 
@@ -127,6 +124,13 @@ namespace UnityAtoms
             }
             return true;
         }
+
+        /// <summary>
+        /// Removes an item from the list. 
+        /// This is a wrapper for `bool Remove(T item)`, useful for usage in UnityEvents.
+        /// </summary>
+        /// <param name="item">The item to remove.</param>
+        public void RemoveItem(T item) => Remove(item);
 
         /// <summary>
         /// Does the list contain the item provided?

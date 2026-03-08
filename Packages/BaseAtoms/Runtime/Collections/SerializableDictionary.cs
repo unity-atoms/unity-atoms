@@ -14,9 +14,9 @@ namespace UnityAtoms.BaseAtoms
     public abstract class SerializableDictionary<K, V> : IDictionary<K, V>, ISerializationCallbackReceiver, IEnumerable<KeyValuePair<K, V>>, IEnumerable, ICollection<KeyValuePair<K, V>>
         where K : IEquatable<K>
     {
-        public Action<V> Added { get => _added; set => _added = value; }
-        public Action<V> Removed { get => _removed; set => _removed = value; }
-        public Action Cleared { get => _cleared; set => _cleared = value; }
+        public event Action<V> Added { add => _added += value; remove => _added -= value; }
+        public event Action<V> Removed { add => _removed += value; remove => _removed -= value; }
+        public event Action Cleared { add => _cleared += value; remove => _cleared -= value; }
 
         private event Action<V> _added;
         private event Action<V> _removed;
@@ -29,14 +29,6 @@ namespace UnityAtoms.BaseAtoms
         [SerializeField]
         private List<V> _serializedValues = new List<V>();
 
-        /// <summary>
-        /// Needed in order to keep track of duplicate keys in the dictionary.
-        /// </summary>
-        /// <typeparam name="int"></typeparam>
-        /// <returns></returns>
-        [SerializeField]
-        private List<int> _duplicateKeyIndices = new List<int>();
-
         public void OnAfterDeserialize()
         {
             if (_serializedKeys != null && _serializedValues != null)
@@ -44,7 +36,7 @@ namespace UnityAtoms.BaseAtoms
                 var keyCount = _serializedKeys.Count;
                 var valueCount = _serializedValues.Count;
 
-                // This is a precaution and might not be necessay. However, we make sure that _serializedKeys have the same length as _serializedValues. 
+                // This is a precaution and might not be necessay. However, we make sure that _serializedKeys have the same length as _serializedValues.
                 // Everything is assuming that the lists are in sync. The larger list will be reduced in length to the same as the smaller of the 2.
                 if (keyCount != valueCount)
                 {
@@ -59,17 +51,12 @@ namespace UnityAtoms.BaseAtoms
                 }
 
                 _dict.Clear();
-                _duplicateKeyIndices.Clear();
                 var length = _serializedKeys.Count;
                 for (var i = 0; i < length; ++i)
                 {
-                    if (!_dict.ContainsKey(_serializedKeys[i]))
+                    if (!_dict.ContainsKey(_serializedKeys[i]) && _serializedKeys[i] != null)
                     {
                         _dict.Add(_serializedKeys[i], _serializedValues[i]);
-                    }
-                    else
-                    {
-                        _duplicateKeyIndices.Add(i);
                     }
                 }
             }
@@ -109,7 +96,12 @@ namespace UnityAtoms.BaseAtoms
         public V this[K key]
         {
             get => _dict[key];
-            set => _dict[key] = value;
+            set
+            {
+                var contained = _dict.ContainsKey(key);
+                _dict[key] = value;
+                if(!contained) _added?.Invoke(value);
+            }
         }
 
         public void Add(K key, V value)
@@ -165,31 +157,18 @@ namespace UnityAtoms.BaseAtoms
         public void CopyTo(KeyValuePair<K, V>[] array, int index)
         {
             if (array == null)
-            {
                 throw new ArgumentNullException();
-            }
 
             if (index < 0 || index > array.Length)
-            {
                 throw new ArgumentOutOfRangeException();
-            }
 
-            var enumerator = _dict.GetEnumerator();
-            var cur = 0;
-            try
+            if (array.Length - index < _dict.Count) 
+                throw new ArgumentException("Destination array is too small.");
+
+            var i = index;
+            foreach (var kv in _dict)
             {
-                while (enumerator.MoveNext())
-                {
-                    if (cur >= index)
-                    {
-                        array[cur] = new KeyValuePair<K, V>(enumerator.Current.Key, enumerator.Current.Value);
-                    }
-                    ++cur;
-                }
-            }
-            finally
-            {
-                enumerator.Dispose();
+                array[i++] = kv;
             }
         }
 
