@@ -14,7 +14,6 @@
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^9.32.0",
-    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -24,8 +23,8 @@
   },
   "dependencies": {
     "@cmfcmf/docusaurus-search-local": "^1.2.0",
-    "@docusaurus/core": "^3.7.0",
-    "@docusaurus/preset-classic": "^3.7.0",
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
     "clsx": "^1.1.1",
     "react": "^18.0.2",
     "react-dom": "^18.0.2"

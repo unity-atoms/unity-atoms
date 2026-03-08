@@ -14,6 +14,7 @@
         "items": [
           "tutorials/creating-atoms",
           "tutorials/variables",
+          "tutorials/value-lists",
           "tutorials/events",
           "tutorials/listeners",
           "tutorials/actions",
