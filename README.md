@@ -85,7 +85,7 @@ Add the following to your `manifest.json` (which is located under your project l
         "com.unity-atoms.unity-atoms-mono-hooks": "4.6.1",
         "com.unity-atoms.unity-atoms-tags": "4.6.1",
         "com.unity-atoms.unity-atoms-scene-mgmt": "4.6.1",
-        "com.unity-atoms.unity-atoms-ui": 4.6.1",
+        "com.unity-atoms.unity-atoms-ui": "4.6.1",
 	    "com.unity-atoms.unity-atoms-input-system": "4.6.1",
         ...
     }
