@@ -50,7 +50,11 @@ namespace UnityAtoms.Editor
             {
                 AssetDatabase.DeleteAsset(sourcePath);
             }
+            #if UNITY_6000_3_OR_NEWER
+            EditorGUIUtility.PingObject(property.entityIdValue);
+            #else
             EditorGUIUtility.PingObject(property.objectReferenceInstanceIDValue);
+            #endif
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
@@ -64,7 +68,11 @@ namespace UnityAtoms.Editor
             var assetUniquePath = AssetDatabase.GenerateUniqueAssetPath(assetPath);
             AssetDatabase.RemoveObjectFromAsset(property.objectReferenceValue);
             AssetDatabase.CreateAsset(property.objectReferenceValue, assetUniquePath);
+            #if UNITY_6000_3_OR_NEWER
+            EditorGUIUtility.PingObject(property.entityIdValue);
+            #else
             EditorGUIUtility.PingObject(property.objectReferenceInstanceIDValue);
+            #endif
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }

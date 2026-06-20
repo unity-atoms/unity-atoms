@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using UnityEngine;
 
 #if !UNITY_6000_3_OR_NEWER
 using EntityId = System.Int32;
