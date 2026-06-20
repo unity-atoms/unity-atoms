@@ -42,7 +42,12 @@ namespace UnityAtoms.BaseAtoms
 
             if (_syncToCollection != null && _syncToCollection.GetValue() != null)
             {
-                _syncToCollection.GetValue().Add(String.IsNullOrWhiteSpace(_syncToCollectionKey) ? GetInstanceID().ToString() : _syncToCollectionKey, _variableInstancer.Variable);
+#if UNITY_6000_3_OR_NEWER
+                var key = String.IsNullOrWhiteSpace(_syncToCollectionKey) ? GetEntityId().ToString() : _syncToCollectionKey;
+#else
+                var key = String.IsNullOrWhiteSpace(_syncToCollectionKey) ? GetInstanceID().ToString() : _syncToCollectionKey;
+#endif
+                _syncToCollection.GetValue().Add(key, _variableInstancer.Variable);
             }
 
             if (_syncToList != null && _syncToList.GetValue() != null)
@@ -55,7 +60,12 @@ namespace UnityAtoms.BaseAtoms
         {
             if (_syncToCollection != null && _syncToCollection.GetValue() != null)
             {
-                _syncToCollection.GetValue().Remove(GetInstanceID().ToString());
+#if UNITY_6000_3_OR_NEWER
+                var key = String.IsNullOrWhiteSpace(_syncToCollectionKey) ? GetEntityId().ToString() : _syncToCollectionKey;
+#else
+                var key = String.IsNullOrWhiteSpace(_syncToCollectionKey) ? GetInstanceID().ToString() : _syncToCollectionKey;
+#endif              
+                _syncToCollection.GetValue().Remove(key);
             }
 
             if (_syncToList != null && _syncToList.GetValue() != null)
