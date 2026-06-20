@@ -100,7 +100,11 @@ namespace UnityAtoms
         public void Raise(T item)
         {
 #if !UNITY_ATOMS_GENERATE_DOCS && UNITY_EDITOR
+#if UNITY_6000_3_OR_NEWER
+            StackTraces.AddStackTrace(GetEntityId(), StackTraceEntry.Create(item));
+#else
             StackTraces.AddStackTrace(GetInstanceID(), StackTraceEntry.Create(item));
+#endif  
 #endif
             base.Raise();
             _onEvent?.Invoke(item);

@@ -33,7 +33,13 @@ namespace UnityAtoms.Editor
             root.Add(runtimeWrapper);
 
 #if !UNITY_ATOMS_GENERATE_DOCS
+#if UNITY_6000_3_OR_NEWER
+            StackTraceEditor.RenderStackTrace(root, atomEvent.GetEntityId());
+#else
             StackTraceEditor.RenderStackTrace(root, atomEvent.GetInstanceID());
+#endif      
+
+            
 #endif
 
             return root;
