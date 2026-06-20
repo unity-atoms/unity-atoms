@@ -6,6 +6,13 @@
 💅 = Polish
 🚀 = New features
 
+# 4.6.2 (June 20, 2026)
+
+## 🐛 Bug fixes
+
+* [#500](https://github.com/unity-atoms/unity-atoms/pull/500) Fix typo in README.md for unity-atoms-ui version by @TrueUnityGreatExpert
+* [#501](https://github.com/unity-atoms/unity-atoms/pull/501) fix: add missing folders and meta files to package.json by @soraphis
+
 # 4.6.0 (November 8, 2025)
 
 ## 🐛 Bug fixes

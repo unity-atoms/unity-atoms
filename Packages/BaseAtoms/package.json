@@ -24,6 +24,6 @@
     "/Documentation.meta"
   ],
   "dependencies": {
-    "com.unity-atoms.unity-atoms-core": "4.6.1"
+    "com.unity-atoms.unity-atoms-core": "4.6.2"
   }
 }
