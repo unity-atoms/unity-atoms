@@ -14,8 +14,10 @@
     "/package.json.meta",
     "/Runtime",
     "/Runtime.meta",
-    "/Editor",
-    "/Editor.meta",
+    "/Physics",
+    "/Physics.meta",
+    "/Physics2D",
+    "/Physics2D.meta",
     "/Documentation",
     "/Documentation.meta"
   ],
