@@ -7,11 +7,15 @@ using UnityEditor;
 using UnityEngine.UIElements;
 using UnityAtoms;
 
+#if !UNITY_6000_3_OR_NEWER
+using EntityId = System.Int32;
+#endif
+
 namespace UnityAtoms.Editor
 {
     public static class StackTraceEditor
     {
-        public static VisualElement RenderStackTrace(VisualElement parent, int instanceId)
+        public static VisualElement RenderStackTrace(VisualElement parent, EntityId instanceId)
         {
             if (!AtomPreferences.IsDebugModeEnabled) return null;
             var stackTraces = StackTraces.GetStackTraces(instanceId);
@@ -70,7 +74,7 @@ namespace UnityAtoms.Editor
             return wrapper;
         }
 
-        private static void RenderStackTraceDetails(VisualElement parent, ObservableCollection<StackTraceEntry> stackTraces, int instanceId)
+        private static void RenderStackTraceDetails(VisualElement parent, ObservableCollection<StackTraceEntry> stackTraces, EntityId instanceId)
         {
             var selectedStackTraceId = GetSelectedStackTraceId(instanceId);
 
@@ -120,7 +124,7 @@ namespace UnityAtoms.Editor
             });
         }
 
-        private static void RenderStackTracesOverview(VisualElement parent, ObservableCollection<StackTraceEntry> stackTraces, int instanceId)
+        private static void RenderStackTracesOverview(VisualElement parent, ObservableCollection<StackTraceEntry> stackTraces, EntityId instanceId)
         {
             var selectedStackTraceId = GetSelectedStackTraceId(instanceId);
 
@@ -193,15 +197,15 @@ namespace UnityAtoms.Editor
             return EditorGUIUtility.isProSkin ? proColor : basicColor;
         }
 
-        private static Dictionary<int, int> _stackTraceIdSelectedPerInstanceId = new Dictionary<int, int>();
-        private static int GetSelectedStackTraceId(int instanceId)
+        private static Dictionary<EntityId, int> _stackTraceIdSelectedPerInstanceId = new Dictionary<EntityId, int>();
+        private static int GetSelectedStackTraceId(EntityId instanceId)
         {
             if (!_stackTraceIdSelectedPerInstanceId.ContainsKey(instanceId)) _stackTraceIdSelectedPerInstanceId.Add(instanceId, -1);
 
             return _stackTraceIdSelectedPerInstanceId[instanceId];
         }
 
-        private static void SetSelectedStackTraceId(int instanceId, int selectedIndex)
+        private static void SetSelectedStackTraceId(EntityId instanceId, int selectedIndex)
         {
             if (!_stackTraceIdSelectedPerInstanceId.ContainsKey(instanceId)) _stackTraceIdSelectedPerInstanceId.Add(instanceId, -1);
 

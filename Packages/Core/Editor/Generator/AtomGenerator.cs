@@ -41,9 +41,15 @@ namespace UnityAtoms.Editor
 
             var templateConditions =
                 Generator.CreateTemplateConditions(isValueTypeEquatable, Namespace, "BaseAtoms", baseTypeAccordingNested);
+            #if UNITY_6000_3_OR_NEWER
+            var baseWritePath =
+                Path.Combine((Path.GetDirectoryName(AssetDatabase.GetAssetPath(this.GetEntityId()))) ?? "Assets/",
+                    "Generated");
+            #else
             var baseWritePath =
                 Path.Combine((Path.GetDirectoryName(AssetDatabase.GetAssetPath(this.GetInstanceID()))) ?? "Assets/",
                     "Generated");
+            #endif
 
             Directory.CreateDirectory(baseWritePath);
 
