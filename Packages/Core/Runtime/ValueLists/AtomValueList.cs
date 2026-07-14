@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -46,6 +45,7 @@ namespace UnityAtoms
 
         private List<T> _initial;
 
+        private bool _isInitialCaptured;
 
 #if UNITY_EDITOR
         /// <summary>
@@ -62,6 +62,13 @@ namespace UnityAtoms
 
             EditorApplication.playModeStateChanged -= HandlePlayModeStateChange;
             EditorApplication.playModeStateChanged += HandlePlayModeStateChange;
+
+            // Capture initial state if the ScriptableObject is loaded dynamically during Play Mode
+            if (EditorApplication.isPlaying && !_isInitialCaptured)
+            {
+                _initial = list != null ? new List<T>(list) : null;
+                _isInitialCaptured = true;
+            }
 #endif
         }
 
@@ -83,15 +90,24 @@ namespace UnityAtoms
             {
                 foreach (var instance in _instances)
                 {
-                    if (instance._startCleared) instance.list.Clear();
-                    instance._initial = instance.list.ToList();
+                    if (instance._startCleared)
+                    {
+                        instance.list?.Clear();
+                    }
+                    instance._initial = instance.list != null ? new List<T>(instance.list) : null;
+                    instance._isInitialCaptured = true;
                 }
             }
             else if (state == PlayModeStateChange.EnteredEditMode) // AFTER Playmode stopped
             {
                 foreach (var instance in _instances)
                 {
-                    instance.list = instance._initial;
+                    if (instance._isInitialCaptured)
+                    {
+                        instance.list = instance._initial;
+                        instance._initial = null;
+                        instance._isInitialCaptured = false;
+                    }
                 }
             }
         }
