@@ -1,0 +1,36 @@
+PropertyField.indented-list > ListView #unity-content{
+
+    margin-left: 6px;
+    padding-left: 10px;
+    border-left-width: 1px;
+    border-left-color: var(--unity-colors-button-background-hover);
+
+}
+
+Foldout.foldout-border > Toggle {
+    margin-left: 0;
+}
+
+Foldout.foldout-border > VisualElement#unity-content{
+    margin-left: 6px;
+    padding-left: 10px;
+    border-left-width: 1px;
+    border-left-color: var(--unity-colors-button-background-hover);
+}
+
+PropertyField#atoms--nested-operator-dropdown{
+    position: absolute;
+    left: 16px;
+    right: 80px;
+    bottom: 0px;
+}
+
+.dev-notes-wrapper > Label
+{
+    border-radius: 2px;
+    background-color: var(--unity-colors-input_field-background);
+    padding: 4px;
+    border-color: var(--unity-colors-input_field-border);
+    border-width: 1px;
+
+}
