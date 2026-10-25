@@ -73,8 +73,6 @@ namespace UnityAtoms.Editor
             private readonly StringTree<Type> _list;
             private readonly Action<Type> _func;
 
-            private readonly List<Type> _lookup = new List<Type>();
-
             public Vector2 MinimumSize
             {
                 get => minimumSize;
@@ -90,15 +88,14 @@ namespace UnityAtoms.Editor
             protected override void ItemSelected(AdvancedDropdownItem item)
             {
                 base.ItemSelected(item);
-                _func?.Invoke(_lookup[item.id]);
+                if (item is TypeDropdownItem typeItem) _func?.Invoke(typeItem.Type);
             }
 
             private void Render(StringTree<Type> tree, string key, AdvancedDropdownItem parentGroup)
             {
                 if (tree.Value != null)
                 {
-                    _lookup.Add(tree.Value);
-                    parentGroup.AddChild(new AdvancedDropdownItem(key) { id = _lookup.Count - 1 });
+                    parentGroup.AddChild(new TypeDropdownItem(key, tree.Value));
                 }
                 else
                 {
@@ -122,6 +119,17 @@ namespace UnityAtoms.Editor
                 }
 
                 return root;
+            }
+
+            // id is not a usable payload slot: Unity 6000.3+ overwrites it in AddChild.
+            private class TypeDropdownItem : AdvancedDropdownItem
+            {
+                public Type Type { get; }
+
+                public TypeDropdownItem(string name, Type type) : base(name)
+                {
+                    Type = type;
+                }
             }
         }
     }
